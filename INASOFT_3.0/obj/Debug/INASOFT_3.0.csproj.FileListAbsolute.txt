@@ -1,0 +1,158 @@
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe.config
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.pdb
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Guna.UI2.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.AssemblyReference.cache
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Principal.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Properties.Resources.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_HOME.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Productos.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.GenerateResource.cache
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CoreCompileInputs.cache
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Login.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\ZstdNet.dll
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.pdb
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ADDEDIT.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Clientes.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Proveedor.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Usuarios.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Factura.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Facturar1.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFactura.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaFinal.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Settings.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceClient.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceDate.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceMonth.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetailsInvoice.resources
+C:\Users\Kevin Munguia\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceRange.resources
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe.config
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.pdb
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\Guna.UI2.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\Ubiety.Dns.Core.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\ZstdNet.dll
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.pdb
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.xml
+D:\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csprojAssemblyReference.cache
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ADDEDIT.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Principal.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Login.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Properties.Resources.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Clientes.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Factura.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_HOME.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Productos.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Proveedor.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Settings.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Usuarios.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetailsInvoice.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFactura.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaFinal.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Facturar1.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceClient.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceDate.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceMonth.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceRange.resources
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.GenerateResource.cache
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CoreCompileInputs.cache
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
+D:\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe.config
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.exe
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\INASOFT_3.0.pdb
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Guna.UI2.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\ZstdNet.dll
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.pdb
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySql.Data.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Buffers.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Memory.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.AssemblyReference.cache
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ADDEDIT.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Principal.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Login.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Properties.Resources.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Clientes.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Factura.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_HOME.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Productos.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Proveedor.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Settings.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Usuarios.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetailsInvoice.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFactura.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaFinal.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Facturar1.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceClient.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceDate.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceMonth.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceRange.resources
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.GenerateResource.cache
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CoreCompileInputs.cache
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
+C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
