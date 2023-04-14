@@ -1,4 +1,5 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using Guna.UI2.WinForms;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace INASOFT_3._0.UserControls
 {
     public partial class UC_HOME : UserControl
     {
+        public string user = Modelos.Sesion.nombre;
         public UC_HOME()
         {
             InitializeComponent();
@@ -68,7 +70,7 @@ namespace INASOFT_3._0.UserControls
             }
             catch (SqlNullValueException)
             {
-                MessageBox.Show("Bienvenido");
+                MessageDialogInfo.Show("Bienvenido " + user.ToString() + " Hoy sera un Gran Dia 🤗");
             }
             
         }
