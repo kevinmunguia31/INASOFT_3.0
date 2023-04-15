@@ -82,7 +82,7 @@ namespace INASOFT_3._0.VistaFacturas
                 cbImpresoras.Items.Add(pkInstalledPrinters);
 
             }
-            cbImpresoras.Text = "PDFLite";
+            cbImpresoras.Text = "POS-80";
         }
 
         private void FacturaFinal_Load(object sender, EventArgs e)
@@ -152,7 +152,7 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageDialogInfo.Show("Se actualizo la Factura");
                 //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
                 clsFactura.CreaTicket Ticket1 = new clsFactura.CreaTicket();
-
+                
                 Ticket1.TextoCentro(lbNombreNegocio.Text); //imprime una linea de descripcion
                 Ticket1.TextoCentro("**********************************");
 

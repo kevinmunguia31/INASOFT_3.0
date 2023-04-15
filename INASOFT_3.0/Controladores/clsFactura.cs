@@ -113,7 +113,7 @@ namespace INASOFT_3._0.Controladores
                 }
                 else { parte1 = par1; }                      // **********
                 ticket = parte1;
-                parte2 = total.ToString("c");
+                parte2 = total.ToString("C$");
                 max = 40 - (parte1.Length + parte2.Length);
                 for (int i = 0; i < max; i++)                // **********
                 {
@@ -126,7 +126,7 @@ namespace INASOFT_3._0.Controladores
             // se le pasan los Aticulos  con sus detalles
             public void AgregaArticulo(string Articulo, float precio, float cant, float subtotal)
             {
-                if (cant.ToString().Length <= 3 && precio.ToString("c").Length <= 10 && subtotal.ToString("c").Length <= 11) // valida que cant precio y total esten dentro de rango
+                if (cant.ToString().Length <= 3 && precio.ToString("C$").Length <= 10 && subtotal.ToString("C$").Length <= 11) // valida que cant precio y total esten dentro de rango
                 {
                     string elementos = "", espacios = "";
                     bool bandera = false;
@@ -285,7 +285,7 @@ namespace INASOFT_3._0.Controladores
 
                 di.pDocName = "My C#.NET RAW Document";
                 di.pDataType = "RAW";
-                // di.pOutputFile = @"C:\Users\Roland\Documents\Visual Studio 2015\Projects\pjtVentas\Ventas";
+                //di.pOutputFile = @"C:\Users\DELL 5410\Documentos";
 
                 // Open the printer.
                 if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))
