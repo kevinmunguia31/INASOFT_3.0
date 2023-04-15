@@ -54,5 +54,10 @@ namespace INASOFT_3._0
         {
             txtPassword.UseSystemPasswordChar = !guna2CheckBox1.Checked;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
