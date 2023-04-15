@@ -20,7 +20,7 @@ namespace INASOFT_3._0
             InitializeComponent();
             CargarProveedor();
             txtObservacion.Text = "Ninguna";
-            txtDolar.Text = "36,10";
+            txtDolar.Text = "35,10";
             
         }
 
