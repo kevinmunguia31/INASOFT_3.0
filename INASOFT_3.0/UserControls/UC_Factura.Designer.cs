@@ -34,22 +34,22 @@ namespace INASOFT_3._0.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Factura));
             this.dataGridFatura = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verDetallesDeLaFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtNewInvoice = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btnRango = new Guna.UI2.WinForms.Guna2Button();
             this.btnSearchMonth = new Guna.UI2.WinForms.Guna2Button();
             this.btnSearchDate = new Guna.UI2.WinForms.Guna2Button();
             this.btnFacturaCliente = new Guna.UI2.WinForms.Guna2Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.verDetallesDeLaFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRango = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFatura)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridFatura
@@ -75,10 +75,12 @@ namespace INASOFT_3._0.UserControls
             this.dataGridFatura.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridFatura.EnableHeadersVisualStyles = false;
             this.dataGridFatura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridFatura.Location = new System.Drawing.Point(32, 53);
+            this.dataGridFatura.Location = new System.Drawing.Point(43, 65);
+            this.dataGridFatura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridFatura.Name = "dataGridFatura";
             this.dataGridFatura.ReadOnly = true;
             this.dataGridFatura.RowHeadersVisible = false;
+            this.dataGridFatura.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -86,17 +88,44 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridFatura.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridFatura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridFatura.Size = new System.Drawing.Size(901, 474);
+            this.dataGridFatura.Size = new System.Drawing.Size(1201, 583);
             this.dataGridFatura.TabIndex = 3;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verDetallesDeLaFacturaToolStripMenuItem,
+            this.eliminarFacturaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(304, 72);
+            // 
+            // verDetallesDeLaFacturaToolStripMenuItem
+            // 
+            this.verDetallesDeLaFacturaToolStripMenuItem.Font = new System.Drawing.Font("Poppins", 10F);
+            this.verDetallesDeLaFacturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verDetallesDeLaFacturaToolStripMenuItem.Image")));
+            this.verDetallesDeLaFacturaToolStripMenuItem.Name = "verDetallesDeLaFacturaToolStripMenuItem";
+            this.verDetallesDeLaFacturaToolStripMenuItem.Size = new System.Drawing.Size(303, 34);
+            this.verDetallesDeLaFacturaToolStripMenuItem.Text = "Ver Detalles de la Factura";
+            // 
+            // eliminarFacturaToolStripMenuItem
+            // 
+            this.eliminarFacturaToolStripMenuItem.Font = new System.Drawing.Font("Poppins", 10F);
+            this.eliminarFacturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarFacturaToolStripMenuItem.Image")));
+            this.eliminarFacturaToolStripMenuItem.Name = "eliminarFacturaToolStripMenuItem";
+            this.eliminarFacturaToolStripMenuItem.Size = new System.Drawing.Size(303, 34);
+            this.eliminarFacturaToolStripMenuItem.Text = "Eliminar Factura";
+            this.eliminarFacturaToolStripMenuItem.Click += new System.EventHandler(this.eliminarFacturaToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(26, 14);
+            this.label1.Location = new System.Drawing.Point(35, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(220, 36);
+            this.label1.Size = new System.Drawing.Size(273, 44);
             this.label1.TabIndex = 2;
             this.label1.Text = "Facturas Realizadas";
             // 
@@ -115,9 +144,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins Medium", 12F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(939, 53);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(1252, 65);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(300, 122);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(400, 150);
             this.guna2GroupBox1.TabIndex = 4;
             this.guna2GroupBox1.Text = "Facturación";
             // 
@@ -133,9 +163,10 @@ namespace INASOFT_3._0.UserControls
             this.txtNewInvoice.ForeColor = System.Drawing.Color.White;
             this.txtNewInvoice.Image = ((System.Drawing.Image)(resources.GetObject("txtNewInvoice.Image")));
             this.txtNewInvoice.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNewInvoice.Location = new System.Drawing.Point(29, 53);
+            this.txtNewInvoice.Location = new System.Drawing.Point(39, 65);
+            this.txtNewInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNewInvoice.Name = "txtNewInvoice";
-            this.txtNewInvoice.Size = new System.Drawing.Size(253, 49);
+            this.txtNewInvoice.Size = new System.Drawing.Size(337, 60);
             this.txtNewInvoice.TabIndex = 0;
             this.txtNewInvoice.Text = "Crear Nueva Factura";
             this.txtNewInvoice.Click += new System.EventHandler(this.txtNewInvoice_Click);
@@ -149,11 +180,32 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 12F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(939, 190);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1252, 234);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(300, 337);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(400, 415);
             this.guna2GroupBox2.TabIndex = 5;
             this.guna2GroupBox2.Text = "Buscar Facturas";
+            // 
+            // btnRango
+            // 
+            this.btnRango.BorderRadius = 10;
+            this.btnRango.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRango.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRango.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRango.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRango.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnRango.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRango.ForeColor = System.Drawing.Color.White;
+            this.btnRango.Image = ((System.Drawing.Image)(resources.GetObject("btnRango.Image")));
+            this.btnRango.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRango.Location = new System.Drawing.Point(39, 311);
+            this.btnRango.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRango.Name = "btnRango";
+            this.btnRango.Size = new System.Drawing.Size(337, 60);
+            this.btnRango.TabIndex = 4;
+            this.btnRango.Text = "Buscar por Rango de Fecha";
+            this.btnRango.Click += new System.EventHandler(this.btnRango_Click);
             // 
             // btnSearchMonth
             // 
@@ -167,9 +219,10 @@ namespace INASOFT_3._0.UserControls
             this.btnSearchMonth.ForeColor = System.Drawing.Color.White;
             this.btnSearchMonth.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchMonth.Image")));
             this.btnSearchMonth.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSearchMonth.Location = new System.Drawing.Point(29, 186);
+            this.btnSearchMonth.Location = new System.Drawing.Point(39, 229);
+            this.btnSearchMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearchMonth.Name = "btnSearchMonth";
-            this.btnSearchMonth.Size = new System.Drawing.Size(253, 49);
+            this.btnSearchMonth.Size = new System.Drawing.Size(337, 60);
             this.btnSearchMonth.TabIndex = 3;
             this.btnSearchMonth.Text = "Buscar por Mes";
             this.btnSearchMonth.Click += new System.EventHandler(this.btnSearchMonth_Click);
@@ -186,9 +239,10 @@ namespace INASOFT_3._0.UserControls
             this.btnSearchDate.ForeColor = System.Drawing.Color.White;
             this.btnSearchDate.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchDate.Image")));
             this.btnSearchDate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSearchDate.Location = new System.Drawing.Point(29, 119);
+            this.btnSearchDate.Location = new System.Drawing.Point(39, 146);
+            this.btnSearchDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearchDate.Name = "btnSearchDate";
-            this.btnSearchDate.Size = new System.Drawing.Size(253, 49);
+            this.btnSearchDate.Size = new System.Drawing.Size(337, 60);
             this.btnSearchDate.TabIndex = 2;
             this.btnSearchDate.Text = "Buscar Por Fecha";
             this.btnSearchDate.Click += new System.EventHandler(this.btnSearchDate_Click);
@@ -205,72 +259,31 @@ namespace INASOFT_3._0.UserControls
             this.btnFacturaCliente.ForeColor = System.Drawing.Color.White;
             this.btnFacturaCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturaCliente.Image")));
             this.btnFacturaCliente.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnFacturaCliente.Location = new System.Drawing.Point(29, 54);
+            this.btnFacturaCliente.Location = new System.Drawing.Point(39, 66);
+            this.btnFacturaCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFacturaCliente.Name = "btnFacturaCliente";
-            this.btnFacturaCliente.Size = new System.Drawing.Size(253, 49);
+            this.btnFacturaCliente.Size = new System.Drawing.Size(337, 60);
             this.btnFacturaCliente.TabIndex = 1;
             this.btnFacturaCliente.Text = "Buscar Por Cliente";
             this.btnFacturaCliente.Click += new System.EventHandler(this.btnFacturaCliente_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verDetallesDeLaFacturaToolStripMenuItem,
-            this.eliminarFacturaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(257, 64);
-            // 
-            // verDetallesDeLaFacturaToolStripMenuItem
-            // 
-            this.verDetallesDeLaFacturaToolStripMenuItem.Font = new System.Drawing.Font("Poppins", 10F);
-            this.verDetallesDeLaFacturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verDetallesDeLaFacturaToolStripMenuItem.Image")));
-            this.verDetallesDeLaFacturaToolStripMenuItem.Name = "verDetallesDeLaFacturaToolStripMenuItem";
-            this.verDetallesDeLaFacturaToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
-            this.verDetallesDeLaFacturaToolStripMenuItem.Text = "Ver Detalles de la Factura";
-            // 
-            // eliminarFacturaToolStripMenuItem
-            // 
-            this.eliminarFacturaToolStripMenuItem.Font = new System.Drawing.Font("Poppins", 10F);
-            this.eliminarFacturaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarFacturaToolStripMenuItem.Image")));
-            this.eliminarFacturaToolStripMenuItem.Name = "eliminarFacturaToolStripMenuItem";
-            this.eliminarFacturaToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
-            this.eliminarFacturaToolStripMenuItem.Text = "Eliminar Factura";
-            this.eliminarFacturaToolStripMenuItem.Click += new System.EventHandler(this.eliminarFacturaToolStripMenuItem_Click);
-            // 
-            // btnRango
-            // 
-            this.btnRango.BorderRadius = 10;
-            this.btnRango.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRango.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRango.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRango.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRango.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnRango.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRango.ForeColor = System.Drawing.Color.White;
-            this.btnRango.Image = ((System.Drawing.Image)(resources.GetObject("btnRango.Image")));
-            this.btnRango.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRango.Location = new System.Drawing.Point(29, 253);
-            this.btnRango.Name = "btnRango";
-            this.btnRango.Size = new System.Drawing.Size(253, 49);
-            this.btnRango.TabIndex = 4;
-            this.btnRango.Text = "Buscar por Rango de Fecha";
-            this.btnRango.Click += new System.EventHandler(this.btnRango_Click);
-            // 
             // UC_Factura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.dataGridFatura);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_Factura";
-            this.Size = new System.Drawing.Size(1247, 735);
+            this.Size = new System.Drawing.Size(1663, 905);
+            this.Load += new System.EventHandler(this.UC_Factura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFatura)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

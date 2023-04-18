@@ -15,15 +15,17 @@ namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Factura : UserControl
     {
+        public DataGridViewButtonColumn GB = new DataGridViewButtonColumn();
         public UC_Factura()
         {
             InitializeComponent();
             Facturas();
+            dataGridFatura.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         public void Facturas()
         {
-            string sql = "SELECT c.ID, c.Fecha, d.Nombre, SUM(a.cantidad) AS Total_de_Productos, c.Total_Final, c.Efectivo, c.Devolucion, e.Nombre AS Le_Atendio FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID RIGHT JOIN Clientes d ON c.ID_Cliente = d.ID RIGHT JOIN Usuarios e ON c.ID_Usuario = e.ID GROUP BY c.ID";
+            string sql = "SELECT c.ID, c.Fecha, d.Nombre, SUM(a.cantidad) AS Cant_Productos, c.Total_Final AS SubTotal, c.Efectivo, c.Devolucion, e.Nombre AS Caja FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID RIGHT JOIN Clientes d ON c.ID_Cliente = d.ID RIGHT JOIN Usuarios e ON c.ID_Usuario = e.ID GROUP BY c.ID";
             //string sql = "SELECT c.ID, c.Fecha, d.Nombre AS Cliente, SUM(a.cantidad) AS Total_de_Productos, c.Total_Final, c.Efectivo, c.Devolucion, e.Nombre AS Le_Atendio FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Usuarios e ON c.ID_Usuario = e.ID";
             try
             {
@@ -97,6 +99,16 @@ namespace INASOFT_3._0.UserControls
         {
             SearchInvoiceRange frm = new SearchInvoiceRange();
             frm.ShowDialog();
+        }
+
+        private void UC_Factura_Load(object sender, EventArgs e)
+        {
+            //Boton en Datagrid
+            GB.Name = "GB";
+            GB.Text = "Detalles →";
+            GB.HeaderText = "Ver Detalles";
+            GB.UseColumnTextForButtonValue = true;
+            dataGridFatura.Columns.Add(GB);
         }
     }
 }

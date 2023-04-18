@@ -19,7 +19,7 @@ namespace INASOFT_3._0.UserControls
 
         private void InfoNegocio()
         {
-            MySqlDataReader reader = null;
+            /*MySqlDataReader reader = null;
             string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio FROM infogeneral";
             try
             {
@@ -30,9 +30,9 @@ namespace INASOFT_3._0.UserControls
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    MemoryStream ms = new MemoryStream((byte[])reader["logoNegocio"]);
-                    Bitmap bmp = new Bitmap(ms);
-                    pbImagen.Image = bmp;
+                    byte[]Foto = (byte[])reader["logoNegocio"];
+                    MemoryStream ms = new MemoryStream(Foto);
+                    pbImagen.Image = Image.FromStream(ms);
                     txtId.Text = reader.GetString("idinfogeneral");
                     txtNameNgo.Text = reader.GetString("nombre_negocio");
                     txtAddress.Text = reader.GetString("direccion_negocio");
@@ -44,12 +44,46 @@ namespace INASOFT_3._0.UserControls
             catch (MySqlException ex)
             {
                MessageBox.Show(ex.Message.ToString());
+            }*/
+            string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio FROM infogeneral";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionDB);
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    MemoryStream ms = new MemoryStream((byte[])reader["logoNegocio"]);
+                    Bitmap bmp = new Bitmap(ms);
+                    pbImagen.Image = bmp;
+                    txtId.Text = reader["idinfogeneral"].ToString();
+                    txtNameNgo.Text = reader["nombre_negocio"].ToString();
+                    txtAddress.Text = reader["direccion_negocio"].ToString();
+                    txtRUC.Text = reader["num_ruc"].ToString();
+                    txtNameAdmin.Text = reader["nombre_admin"].ToString();
+                    txtTelefono.Text = reader["telefono"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No se hayo registro");
+                }
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
             }
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            bool bandera = false;
+            /*bool bandera = false;
             InfoNegocio _info = new InfoNegocio();
 
             MemoryStream ms = new MemoryStream();
@@ -83,6 +117,25 @@ namespace INASOFT_3._0.UserControls
             else
             {
                 MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
+            }*/
+            MemoryStream ms = new MemoryStream();
+            pbImagen.Image.Save(ms, ImageFormat.Jpeg);
+            byte[] aBayte = ms.ToArray();
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand("INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + txtNameNgo.Text + "','" + txtAddress.Text + "','" + txtRUC.Text + "','" + txtNameAdmin.Text + "','" + txtTelefono.Text + "', @logoNegocio)", conexionDB);
+                comando.Parameters.AddWithValue("logoNegocio", aBayte);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Datos Guardados con Exito");
+                pbImagen.Image = null;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al guardar los datos" + ex.Message);
             }
         }
 
