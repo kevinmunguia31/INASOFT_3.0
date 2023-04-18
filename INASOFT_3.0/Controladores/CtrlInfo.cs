@@ -16,7 +16,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono) VALUES ('" + datos.Nombre + "','" + datos.Direccion + "','" + datos.NumRUC + "','" + datos.NombreAdmin + "','" + datos.Telefono + "')";
+            string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + datos.Nombre + "','" + datos.Direccion + "','" + datos.NumRUC + "','" + datos.NombreAdmin + "','" + datos.Telefono + "', '"+ datos.Imagen + "')";
 
             try
             {
@@ -38,7 +38,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "UPDATE infogeneral SET nombre_negocio='" + datos.Nombre + "', direccion_negocio='" + datos.Direccion + "', num_ruc='" + datos.NumRUC + "', nombre_admin='" + datos.NombreAdmin + "', '" + datos.Telefono + "' WHERE id= '" + datos.Id + "'";
+            string sql = "UPDATE infogeneral SET nombre_negocio='" + datos.Nombre + "', direccion_negocio='" + datos.Direccion + "', num_ruc='" + datos.NumRUC + "', nombre_admin='" + datos.NombreAdmin + "', telefono='" + datos.Telefono + "', logoNegocio='" + datos.Imagen + "' WHERE id= '" + datos.Id + "'";
 
             try
             {
