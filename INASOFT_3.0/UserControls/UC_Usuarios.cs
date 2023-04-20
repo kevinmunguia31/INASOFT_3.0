@@ -101,6 +101,21 @@ namespace INASOFT_3._0.UserControls
                         txtUserName.Text = "";
                         txtpassword.Text = "";
                         txtConfirmP.Text = "";
+
+                        string log = "Se registro un Usuario a las " + DateTime.Now + " por: " + Sesion.nombre;
+                        MySqlConnection conexionDB = Conexion.getConexion();
+                        conexionDB.Open();
+
+                        try
+                        {
+                            MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                            comando.ExecuteNonQuery();
+                            Console.WriteLine("Logs Almacenado");
+                        }
+                        catch (MySqlException ex)
+                        {
+                            Console.WriteLine("Error al guardar el Log" + ex);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -128,6 +143,21 @@ namespace INASOFT_3._0.UserControls
                 {
                     MessageDialogInfo.Show("Usuario Eliminado con exito", "AVISO");
                     CargarTablaUser();
+
+                    string log = "Se elimino un Usuario a las " + DateTime.Now + " por: " + Sesion.nombre;
+                    MySqlConnection conexionDB = Conexion.getConexion();
+                    conexionDB.Open();
+
+                    try
+                    {
+                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                        comando.ExecuteNonQuery();
+                        Console.WriteLine("Logs Almacenado");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al guardar el Log" + ex);
+                    }
                 }
             }
         }

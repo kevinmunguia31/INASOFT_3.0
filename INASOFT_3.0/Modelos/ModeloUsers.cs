@@ -58,12 +58,12 @@ namespace INASOFT_3._0.Modelos
             MySqlConnection conexion = Conexion.getConexion();
             conexion.Open();
 
-            string sql = "INSERT INTO usuarios(usuario, password, nombre, id_tipo) VALUES(@usuario, @password, @nombre, @id_tipo)";
+            string sql = "INSERT INTO usuarios(nombre, usuario, password, id_tipo) VALUES(@nombre, @usuario, @password, @id_tipo)";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
             comando.Parameters.AddWithValue("@usuario", usuario.Usuario);
             comando.Parameters.AddWithValue("@password", usuario.Password);
-            comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
             comando.Parameters.AddWithValue("@id_tipo", usuario.Id_tipo);
 
             int resultado = comando.ExecuteNonQuery();

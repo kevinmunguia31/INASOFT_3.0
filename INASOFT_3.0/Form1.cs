@@ -1,4 +1,6 @@
-﻿using INASOFT_3._0.UserControls;
+﻿using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +36,7 @@ namespace INASOFT_3._0
             if (tipoUser == 1)
             {
                 lbTipoUser.Text = "(Administrador)";
-                lbTipoUser.ForeColor = Color.Green;
+                //.ForeColor = Color.Green;
             }
             else
             {
@@ -119,6 +121,20 @@ namespace INASOFT_3._0
             {
                 guna2MessageDialogErr.Show("Lo siento :( no tienes permisos para acceder aqui", ":(");
 
+                string log = "Intento de acceso a Registro de Usuarios a las " + DateTime.Now + " por: " + Sesion.nombre;
+                MySqlConnection conexionDB = Conexion.getConexion();
+                conexionDB.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                    comando.ExecuteNonQuery();
+                    Console.WriteLine("Logs Almacenado");
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error al guardar el Log" + ex);
+                }
             }
 
         }
@@ -139,6 +155,21 @@ namespace INASOFT_3._0
             else
             {
                 guna2MessageDialogErr.Show("Lo siento :( no tienes permisos para acceder aqui", ":(");
+
+                string log = "Intento de acceso a Configuraciones a las " + DateTime.Now + " por: " + Sesion.nombre;
+                MySqlConnection conexionDB = Conexion.getConexion();
+                conexionDB.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                    comando.ExecuteNonQuery();
+                    Console.WriteLine("Logs Almacenado");
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error al guardar el Log" + ex);
+                }
 
             }
             

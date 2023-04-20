@@ -63,8 +63,9 @@ namespace INASOFT_3._0
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1274, 54);
+            this.panel1.Size = new System.Drawing.Size(1592, 68);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -75,12 +76,13 @@ namespace INASOFT_3._0
             this.btnLogaut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogaut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogaut.Image")));
             this.btnLogaut.ImageRotate = 0F;
-            this.btnLogaut.Location = new System.Drawing.Point(1222, 3);
+            this.btnLogaut.Location = new System.Drawing.Point(1498, 4);
+            this.btnLogaut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogaut.Name = "btnLogaut";
             this.btnLogaut.ShadowDecoration.Depth = 10;
             this.btnLogaut.ShadowDecoration.Enabled = true;
             this.btnLogaut.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnLogaut.Size = new System.Drawing.Size(48, 48);
+            this.btnLogaut.Size = new System.Drawing.Size(90, 60);
             this.btnLogaut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnLogaut.TabIndex = 3;
             this.btnLogaut.TabStop = false;
@@ -92,9 +94,10 @@ namespace INASOFT_3._0
             this.lbTipoUser.BackColor = System.Drawing.Color.Transparent;
             this.lbTipoUser.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTipoUser.ForeColor = System.Drawing.Color.White;
-            this.lbTipoUser.Location = new System.Drawing.Point(1066, 27);
+            this.lbTipoUser.Location = new System.Drawing.Point(1333, 34);
+            this.lbTipoUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTipoUser.Name = "lbTipoUser";
-            this.lbTipoUser.Size = new System.Drawing.Size(126, 21);
+            this.lbTipoUser.Size = new System.Drawing.Size(158, 26);
             this.lbTipoUser.TabIndex = 5;
             this.lbTipoUser.Text = "Administrador";
             // 
@@ -104,9 +107,10 @@ namespace INASOFT_3._0
             this.lbUserName.BackColor = System.Drawing.Color.Transparent;
             this.lbUserName.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.ForeColor = System.Drawing.Color.White;
-            this.lbUserName.Location = new System.Drawing.Point(1063, 4);
+            this.lbUserName.Location = new System.Drawing.Point(1330, 5);
+            this.lbUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(178, 42);
+            this.lbUserName.Size = new System.Drawing.Size(222, 52);
             this.lbUserName.TabIndex = 4;
             this.lbUserName.Text = "Kevin Munguia";
             // 
@@ -115,9 +119,10 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 9);
+            this.label1.Location = new System.Drawing.Point(78, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 37);
+            this.label1.Size = new System.Drawing.Size(212, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "INASOFTWARE";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -125,9 +130,10 @@ namespace INASOFT_3._0
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 47);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 59);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -145,9 +151,10 @@ namespace INASOFT_3._0
             this.panel2.Controls.Add(this.btnProductos);
             this.panel2.Controls.Add(this.btnHome);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 54);
+            this.panel2.Location = new System.Drawing.Point(0, 68);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1274, 48);
+            this.panel2.Size = new System.Drawing.Size(1592, 60);
             this.panel2.TabIndex = 1;
             // 
             // btnSettings
@@ -165,9 +172,10 @@ namespace INASOFT_3._0
             this.btnSettings.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-            this.btnSettings.Location = new System.Drawing.Point(1093, 2);
+            this.btnSettings.Location = new System.Drawing.Point(1366, 2);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(176, 45);
+            this.btnSettings.Size = new System.Drawing.Size(220, 56);
             this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Configuraciones";
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -187,9 +195,10 @@ namespace INASOFT_3._0
             this.btnUser.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
-            this.btnUser.Location = new System.Drawing.Point(947, 2);
+            this.btnUser.Location = new System.Drawing.Point(1184, 2);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(140, 45);
+            this.btnUser.Size = new System.Drawing.Size(175, 56);
             this.btnUser.TabIndex = 6;
             this.btnUser.Text = "Usuarios";
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
@@ -209,9 +218,10 @@ namespace INASOFT_3._0
             this.btnReport.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
-            this.btnReport.Location = new System.Drawing.Point(780, 2);
+            this.btnReport.Location = new System.Drawing.Point(975, 2);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(161, 45);
+            this.btnReport.Size = new System.Drawing.Size(201, 56);
             this.btnReport.TabIndex = 5;
             this.btnReport.Text = "Reportes";
             // 
@@ -230,9 +240,10 @@ namespace INASOFT_3._0
             this.btnProvider.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnProvider.Image = ((System.Drawing.Image)(resources.GetObject("btnProvider.Image")));
-            this.btnProvider.Location = new System.Drawing.Point(613, 2);
+            this.btnProvider.Location = new System.Drawing.Point(766, 2);
+            this.btnProvider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProvider.Name = "btnProvider";
-            this.btnProvider.Size = new System.Drawing.Size(161, 45);
+            this.btnProvider.Size = new System.Drawing.Size(201, 56);
             this.btnProvider.TabIndex = 4;
             this.btnProvider.Text = "Proveedores";
             this.btnProvider.Click += new System.EventHandler(this.btnProvider_Click);
@@ -252,9 +263,10 @@ namespace INASOFT_3._0
             this.btnFactura.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
-            this.btnFactura.Location = new System.Drawing.Point(446, 2);
+            this.btnFactura.Location = new System.Drawing.Point(558, 2);
+            this.btnFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(161, 45);
+            this.btnFactura.Size = new System.Drawing.Size(201, 56);
             this.btnFactura.TabIndex = 3;
             this.btnFactura.Text = "Facturar";
             this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
@@ -274,9 +286,10 @@ namespace INASOFT_3._0
             this.btnClientes.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.Location = new System.Drawing.Point(303, 2);
+            this.btnClientes.Location = new System.Drawing.Point(379, 2);
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(137, 45);
+            this.btnClientes.Size = new System.Drawing.Size(171, 56);
             this.btnClientes.TabIndex = 2;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
@@ -296,9 +309,10 @@ namespace INASOFT_3._0
             this.btnProductos.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnProductos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
-            this.btnProductos.Location = new System.Drawing.Point(157, 2);
+            this.btnProductos.Location = new System.Drawing.Point(196, 2);
+            this.btnProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(140, 45);
+            this.btnProductos.Size = new System.Drawing.Size(175, 56);
             this.btnProductos.TabIndex = 1;
             this.btnProductos.Text = "Productos";
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
@@ -320,8 +334,9 @@ namespace INASOFT_3._0
             this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.Location = new System.Drawing.Point(1, 0);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(150, 45);
+            this.btnHome.Size = new System.Drawing.Size(188, 56);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
@@ -330,9 +345,10 @@ namespace INASOFT_3._0
             // 
             this.panelContenedor.AutoScroll = true;
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(0, 102);
+            this.panelContenedor.Location = new System.Drawing.Point(0, 128);
+            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1274, 379);
+            this.panelContenedor.Size = new System.Drawing.Size(1592, 473);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
@@ -347,15 +363,16 @@ namespace INASOFT_3._0
             // 
             // Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(200, 30);
-            this.ClientSize = new System.Drawing.Size(1274, 481);
+            this.ClientSize = new System.Drawing.Size(1592, 601);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INA-SOFTWARE vBeta 1.0.3";

@@ -2,6 +2,7 @@
 using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -15,6 +16,7 @@ namespace INASOFT_3._0.UserControls
         {
             InitializeComponent();
             InfoNegocio();
+            CargarLogs();
         }
 
         private void InfoNegocio()
@@ -149,6 +151,45 @@ namespace INASOFT_3._0.UserControls
             if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
             {
                 pbImagen.Image = Image.FromFile(ofdSeleccionar.FileName);
+            }
+        }
+
+        private void CargarLogs()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT descripcion FROM logs";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionDB);
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(dt);
+
+                listViewLogs.Clear();
+                listViewLogs.View = View.Details;
+
+                listViewLogs.FullRowSelect = true;
+                listViewLogs.Columns.Add(dt.Columns[0].ToString(), 800);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    string[] arr = new string[1];
+                    ListViewItem item = new ListViewItem();
+                    
+                    for (int i = 0; i < arr.Length; i++) 
+                    {
+                        arr[i] = row[i].ToString();
+                        item = new ListViewItem(arr);
+                    }
+                    listViewLogs.Items.Add(item);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
             }
         }
     }

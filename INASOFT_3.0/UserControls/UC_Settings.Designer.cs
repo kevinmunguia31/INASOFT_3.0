@@ -32,6 +32,9 @@ namespace INASOFT_3._0.UserControls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Settings));
             this.label1 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnguardar = new Guna.UI2.WinForms.Guna2Button();
             this.txtNameAdmin = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,12 +44,17 @@ namespace INASOFT_3._0.UserControls
             this.txtNameNgo = new Guna.UI2.WinForms.Guna2TextBox();
             this.MessageDialoginfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.ofdSeleccionar = new System.Windows.Forms.OpenFileDialog();
+            this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
+            this.infoNego = new System.Windows.Forms.TabPage();
+            this.logs = new System.Windows.Forms.TabPage();
+            this.listViewLogs = new System.Windows.Forms.ListView();
+            this.label3 = new System.Windows.Forms.Label();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            this.guna2TabControl1.SuspendLayout();
+            this.infoNego.SuspendLayout();
+            this.logs.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +71,9 @@ namespace INASOFT_3._0.UserControls
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GroupBox1.Controls.Add(this.button1);
             this.guna2GroupBox1.Controls.Add(this.label2);
             this.guna2GroupBox1.Controls.Add(this.pbImagen);
@@ -75,17 +86,47 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.Controls.Add(this.txtNameNgo);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 11F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(32, 74);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(7, 5);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1335, 382);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1222, 573);
             this.guna2GroupBox1.TabIndex = 1;
             this.guna2GroupBox1.Text = "Información del Negocio";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(771, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 34);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(586, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 34);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Logo del Negocio";
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.BackColor = System.Drawing.Color.Transparent;
+            this.pbImagen.Location = new System.Drawing.Point(592, 103);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(324, 257);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagen.TabIndex = 7;
+            this.pbImagen.TabStop = false;
+            // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(17, 322);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Location = new System.Drawing.Point(17, 468);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(39, 35);
             this.txtId.TabIndex = 6;
@@ -101,8 +142,8 @@ namespace INASOFT_3._0.UserControls
             this.btnguardar.Font = new System.Drawing.Font("Poppins Medium", 11F);
             this.btnguardar.ForeColor = System.Drawing.Color.White;
             this.btnguardar.Image = ((System.Drawing.Image)(resources.GetObject("btnguardar.Image")));
-            this.btnguardar.Location = new System.Drawing.Point(444, 303);
-            this.btnguardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnguardar.Location = new System.Drawing.Point(397, 448);
+            this.btnguardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(276, 55);
             this.btnguardar.TabIndex = 5;
@@ -122,7 +163,7 @@ namespace INASOFT_3._0.UserControls
             this.txtNameAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNameAdmin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameAdmin.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNameAdmin.IconLeft")));
-            this.txtNameAdmin.Location = new System.Drawing.Point(328, 231);
+            this.txtNameAdmin.Location = new System.Drawing.Point(17, 365);
             this.txtNameAdmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNameAdmin.Name = "txtNameAdmin";
             this.txtNameAdmin.PasswordChar = '\0';
@@ -145,14 +186,14 @@ namespace INASOFT_3._0.UserControls
             this.txtRUC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRUC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRUC.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtRUC.IconLeft")));
-            this.txtRUC.Location = new System.Drawing.Point(577, 146);
+            this.txtRUC.Location = new System.Drawing.Point(17, 218);
             this.txtRUC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.PasswordChar = '\0';
             this.txtRUC.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtRUC.PlaceholderText = "Número RUC";
             this.txtRUC.SelectedText = "";
-            this.txtRUC.Size = new System.Drawing.Size(376, 50);
+            this.txtRUC.Size = new System.Drawing.Size(501, 50);
             this.txtRUC.TabIndex = 3;
             // 
             // txtTelefono
@@ -168,14 +209,14 @@ namespace INASOFT_3._0.UserControls
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefono.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtTelefono.IconLeft")));
-            this.txtTelefono.Location = new System.Drawing.Point(577, 66);
+            this.txtTelefono.Location = new System.Drawing.Point(17, 289);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
             this.txtTelefono.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtTelefono.PlaceholderText = "Teléfono";
             this.txtTelefono.SelectedText = "";
-            this.txtTelefono.Size = new System.Drawing.Size(376, 50);
+            this.txtTelefono.Size = new System.Drawing.Size(501, 50);
             this.txtTelefono.TabIndex = 2;
             // 
             // txtAddress
@@ -242,52 +283,110 @@ namespace INASOFT_3._0.UserControls
             this.MessageDialogWar.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.MessageDialogWar.Text = null;
             // 
-            // pbImagen
-            // 
-            this.pbImagen.BackColor = System.Drawing.Color.Transparent;
-            this.pbImagen.Location = new System.Drawing.Point(980, 101);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(324, 257);
-            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagen.TabIndex = 7;
-            this.pbImagen.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(974, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 34);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Logo del Negocio";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1159, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 34);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // ofdSeleccionar
             // 
             this.ofdSeleccionar.FileName = "openFileDialog1";
+            // 
+            // guna2TabControl1
+            // 
+            this.guna2TabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2TabControl1.Controls.Add(this.infoNego);
+            this.guna2TabControl1.Controls.Add(this.logs);
+            this.guna2TabControl1.ItemSize = new System.Drawing.Size(210, 50);
+            this.guna2TabControl1.Location = new System.Drawing.Point(31, 73);
+            this.guna2TabControl1.Name = "guna2TabControl1";
+            this.guna2TabControl1.SelectedIndex = 0;
+            this.guna2TabControl1.Size = new System.Drawing.Size(1424, 647);
+            this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.guna2TabControl1.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2TabControl1.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.guna2TabControl1.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.guna2TabControl1.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.guna2TabControl1.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
+            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
+            this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(210, 50);
+            this.guna2TabControl1.TabButtonTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2TabControl1.TabIndex = 10;
+            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            // 
+            // infoNego
+            // 
+            this.infoNego.Controls.Add(this.guna2GroupBox1);
+            this.infoNego.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoNego.Location = new System.Drawing.Point(4, 54);
+            this.infoNego.Name = "infoNego";
+            this.infoNego.Padding = new System.Windows.Forms.Padding(3);
+            this.infoNego.Size = new System.Drawing.Size(1416, 589);
+            this.infoNego.TabIndex = 0;
+            this.infoNego.Text = "Información del Negocio";
+            this.infoNego.UseVisualStyleBackColor = true;
+            // 
+            // logs
+            // 
+            this.logs.Controls.Add(this.label3);
+            this.logs.Controls.Add(this.listViewLogs);
+            this.logs.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logs.Location = new System.Drawing.Point(4, 54);
+            this.logs.Name = "logs";
+            this.logs.Padding = new System.Windows.Forms.Padding(3);
+            this.logs.Size = new System.Drawing.Size(1416, 589);
+            this.logs.TabIndex = 1;
+            this.logs.Text = "Logs";
+            this.logs.UseVisualStyleBackColor = true;
+            // 
+            // listViewLogs
+            // 
+            this.listViewLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewLogs.BackColor = System.Drawing.Color.Black;
+            this.listViewLogs.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewLogs.ForeColor = System.Drawing.Color.Red;
+            this.listViewLogs.HideSelection = false;
+            this.listViewLogs.Location = new System.Drawing.Point(27, 61);
+            this.listViewLogs.Name = "listViewLogs";
+            this.listViewLogs.Size = new System.Drawing.Size(1383, 522);
+            this.listViewLogs.TabIndex = 0;
+            this.listViewLogs.UseCompatibleStateImageBehavior = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(20, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(358, 39);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Registro de Logs del Programa";
             // 
             // UC_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2GroupBox1);
+            this.AutoScroll = true;
+            this.Controls.Add(this.guna2TabControl1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Settings";
             this.Size = new System.Drawing.Size(1487, 720);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            this.guna2TabControl1.ResumeLayout(false);
+            this.infoNego.ResumeLayout(false);
+            this.logs.ResumeLayout(false);
+            this.logs.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +409,10 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog ofdSeleccionar;
+        private Guna.UI2.WinForms.Guna2TabControl guna2TabControl1;
+        private System.Windows.Forms.TabPage infoNego;
+        private System.Windows.Forms.TabPage logs;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListView listViewLogs;
     }
 }

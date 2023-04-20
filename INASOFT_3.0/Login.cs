@@ -1,4 +1,6 @@
-﻿using System;
+﻿using INASOFT_3._0.Modelos;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +37,20 @@ namespace INASOFT_3._0
                 if (respuesta.Length > 0)
                 {
                     guna2MessageWar.Show(respuesta, "Aviso");
+                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now;
+                    MySqlConnection conexionDB = Conexion.getConexion();
+                    conexionDB.Open();
+
+                    try
+                    {
+                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                        comando.ExecuteNonQuery();
+                        Console.WriteLine("Logs Almacenado");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al guardar el Log" + ex);
+                    }
                 }
                 else
                 {
@@ -42,9 +58,23 @@ namespace INASOFT_3._0
                     frm.Visible = true;
                     this.Visible = false;
 
+                    string log = "Inicio de Sesion a las " + DateTime.Now + " por: " + Sesion.nombre;
+                    MySqlConnection conexionDB = Conexion.getConexion();
+                    conexionDB.Open();
+
+                    try
+                    {
+                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                        comando.ExecuteNonQuery();
+                        Console.WriteLine("Logs Almacenado");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al guardar el Log" + ex);
+                    }
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -57,7 +87,7 @@ namespace INASOFT_3._0
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+             
         }
     }
 }
