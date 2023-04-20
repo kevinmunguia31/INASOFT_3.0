@@ -28,6 +28,8 @@ namespace INASOFT_3._0
         {
             string usuario = txtUser.Text;
             string password = txtPassword.Text;
+            System.Security.Principal.WindowsIdentity user = System.Security.Principal.WindowsIdentity.GetCurrent();
+            string PcUser = user.Name;
 
             try
             {
@@ -37,7 +39,7 @@ namespace INASOFT_3._0
                 if (respuesta.Length > 0)
                 {
                     guna2MessageWar.Show(respuesta, "Aviso");
-                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now;
+                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now + "por la PC: " + PcUser;
                     MySqlConnection conexionDB = Conexion.getConexion();
                     conexionDB.Open();
 
