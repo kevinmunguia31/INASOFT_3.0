@@ -190,9 +190,8 @@ namespace INASOFT_3._0.UserControls
             string existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             string precio_compra = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             string precio_venta = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            string precio_dolar = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            string observaciones = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-            string proveedor = dataGridView1.CurrentRow.Cells[9].Value.ToString();
+            string observaciones = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+            string proveedor = dataGridView1.CurrentRow.Cells[8].Value.ToString();
 
             ADDEDIT update = new ADDEDIT();
             update.labelTitle.Text = "EDITAR PRODUCTO";
@@ -202,7 +201,6 @@ namespace INASOFT_3._0.UserControls
             update.SpinExist.Value = int.Parse(existencia);
             update.txtPrecioCompra.Text = precio_compra;
             update.txtPrecioVenta.Text = precio_venta;
-            update.txtPrecioDolar.Text = precio_dolar;
             update.txtObservacion.Text = observaciones;
             update.ShowDialog();
         }

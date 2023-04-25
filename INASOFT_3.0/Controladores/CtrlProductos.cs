@@ -19,13 +19,13 @@ namespace INASOFT_3._0.Controladores
 
             if (dato == null)
             {
-                sql = "SELECT id, codigo, nombre, existencias, precio_compra, precio_venta, precio_dolar," +
+                sql = "SELECT id, codigo, nombre, existencias, precio_compra, precio_venta," +
                  " precio_total, observacion, id_proveedor FROM productos ORDER BY nombre ASC";
                 //sql = "SELECT a.ID, a.Codigo, a.Nombre, a.Existencias, a.Precio_Compra, a.Precio_Venta, a.Precio_Dolar, a.Precio_Total, a.Observacion, b.Nombre FROM Productos a INNER JOIN Proveedor b ON a.ID_Proveedor = b.ID  ORDER BY a.nombre ASC";
             }
             else
             {
-                sql = "SELECT id, codigo, nombre, existencias, precio_compra, precio_venta, precio_dolar," +
+                sql = "SELECT id, codigo, nombre, existencias, precio_compra, precio_venta," +
                      "precio_total, observacion, id_proveedor " +
                      "FROM productos WHERE codigo LIKE '%" + dato + "%' OR nombre LIKE '%" + dato + "%' ORDER BY nombre ASC";
             }
@@ -45,10 +45,9 @@ namespace INASOFT_3._0.Controladores
                     _producto.Existencias = int.Parse(reader.GetString(3));
                     _producto.Precio_compra = double.Parse(reader.GetString(4));
                     _producto.Precio_venta = double.Parse(reader.GetString(5));
-                    _producto.Precio_dolar = double.Parse(reader.GetString(6));
-                    _producto.Precio_total = double.Parse(reader.GetString(7));
-                    _producto.Observacion = reader.GetString(8);
-                    _producto.Id_proveedor = int.Parse(reader.GetString(9));
+                    _producto.Precio_total = double.Parse(reader.GetString(6));
+                    _producto.Observacion = reader.GetString(7);
+                    _producto.Id_proveedor = int.Parse(reader.GetString(8));
 
                     lista.Add(_producto);
                 }
@@ -66,7 +65,7 @@ namespace INASOFT_3._0.Controladores
 
             //string sql = "INSERT INTO productos (codigo, nombre, existencias, precio_unidad, precio_dolar, precio_total, observacion) VALUES ('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_unidad + "', '" + datos.Precio_dolar + "', '" + datos.Precio_total + "', '" + datos.Observacion + "')";
 
-            string sql = "CALL Insertar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Precio_dolar + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
+            string sql = "CALL Insertar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
 
 
             try
@@ -92,7 +91,7 @@ namespace INASOFT_3._0.Controladores
 
             //string sql = "UPDATE productos SET codigo='" + datos.Codigo + "', nombre='" + datos.Nombre + "', existencias='" + datos.Existencias + "', precio_compra='" + datos.Precio_compra + "', precio_venta='" + datos.Precio_venta + "', precio_dolar='" + datos.Precio_dolar + "', observacion='" + datos.Observacion + "' WHERE id= '" + datos.Id + "'";
             //string sql = "CALL Actualizar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Precio_dolar + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
-            string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Precio_dolar + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
+            string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
 
 
             try

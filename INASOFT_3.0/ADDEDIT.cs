@@ -19,11 +19,8 @@ namespace INASOFT_3._0
         {
             InitializeComponent();
             CargarProveedor();
-            txtObservacion.Text = "Ninguna";
-            txtDolar.Text = "35,10";
-            
+            //txtObservacion.Text = "Ninguna";
         }
-
 
         public void CargarProveedor()
         {
@@ -52,11 +49,6 @@ namespace INASOFT_3._0
             finally { conexioBD.Close(); }
         }
 
-        private void ADDEDIT_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -72,6 +64,11 @@ namespace INASOFT_3._0
 
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -92,45 +89,10 @@ namespace INASOFT_3._0
             }
         }
 
-        private void txtPrecioDolar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                           (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtDolar_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtDolar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                           (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }*/
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             bool bandera = false;
-            if (txtCodBarra.Text != "" && txtNameP.Text != "" && SpinExist.Value != 0 && txtPrecioCompra.Text != "" && txtPrecioVenta.Text != "" && txtPrecioDolar.Text != "" && txtObservacion.Text != "")
+            if (txtCodBarra.Text != "" && txtNameP.Text != "" && SpinExist.Value != 0 && txtPrecioCompra.Text != "" && txtPrecioVenta.Text != "" &&  txtObservacion.Text != "")
             {
                 Productos _producto = new Productos();
                 _producto.Codigo = txtCodBarra.Text;
@@ -138,7 +100,6 @@ namespace INASOFT_3._0
                 _producto.Existencias = int.Parse(SpinExist.Value.ToString());
                 _producto.Precio_compra = double.Parse(txtPrecioCompra.Text);
                 _producto.Precio_venta = double.Parse(txtPrecioVenta.Text);
-                _producto.Precio_dolar = double.Parse(txtPrecioDolar.Text);
                 _producto.Observacion = txtObservacion.Text;
                 _producto.Id_proveedor = Convert.ToInt32(cbProveedor.SelectedValue.ToString());
 
@@ -149,7 +110,7 @@ namespace INASOFT_3._0
                     _producto.Id = int.Parse(txtId.Text);
                     bandera = ctrl.actualizar(_producto);
                     MessageBox.Show("Registro Actualizado Con Exito", "Actualizar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show(_producto.Codigo + "\n" + _producto.Nombre + "\n" + _producto.Existencias + "\n" + _producto.Precio_compra + "\n" + _producto.Precio_venta + "\n" + _producto.Precio_dolar + "\n" + _producto.Observacion + "\n" + _producto.Id_proveedor);
+                    MessageBox.Show(_producto.Codigo + "\n" + _producto.Nombre + "\n" + _producto.Existencias + "\n" + _producto.Precio_compra + "\n" + _producto.Precio_venta + "\n" +  _producto.Observacion + "\n" + _producto.Id_proveedor);
                     this.Dispose();
                 }
                 else
@@ -179,12 +140,11 @@ namespace INASOFT_3._0
             SpinExist.Value = 0;
             txtPrecioCompra.Text = "";
             txtPrecioVenta.Text = "";
-            txtPrecioDolar.Text = "";
             txtObservacion.Text = "";
             //cbProveedor.Items.Clear();
 
         }
-
+    /*
         private void txtPrecioVenta_TextChanged(object sender, EventArgs e)
         {
             double precioVenta = double.Parse(txtPrecioVenta.Text);
@@ -194,5 +154,6 @@ namespace INASOFT_3._0
             precioDolar = precioVenta / Dolar;
             txtPrecioDolar.Text = precioDolar.ToString();
         }
+    */
     }
 }
