@@ -93,6 +93,8 @@ namespace INASOFT_3._0.VistaFacturas
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            ctrlFactura.Cancelar_Factura(ctrlFactura.ID_Factura());
         }
 
         private void guna2TextBox1_KeyPress(object sender, KeyPressEventArgs e)

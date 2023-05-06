@@ -152,6 +152,17 @@
   <metadata name="MessageDialogInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="guna2Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAUNJREFUWEft
+        lkFqAkEQRWelK7NKILcyoMcJyQXVYAJexFU2qVR1PWWcnjBtTZuI5EGhXfPr92e6EZt/rhaJsdW6x2Ic
+        7hdip/WITRz3EmE5CPID40O4TyjAO5/jjsM9QgEetGxzI/4mfP78AHwfH8Jnw3egyxZZOQzWClDsc4S5
+        8wc7YHMDAVgWw1gcfK4nQA2wLPNEexsB1Gap9ZEMW/C4HzRHEctekJxoaFlvofWVmh2Q9IOmRoA378iz
+        1oT2MD4zkLIAtdi7k8xolcFQjQAbd5IXrSntYXymyhHYBWzzqbXWWiLpJ0kVluEAhi4thG1qm7f5OQSC
+        E6MaqOVEy47D2NDOQVA9gKG2d+4ue1o5CC7xBqZar8lcZEU7B0EYbBK0utiP0xxJjmviYJOg1cb+Lz7x
+        +PfwvS9zr4pg/78LkNM033LlW/Num1+cAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="txtNewInvoice.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAUNJREFUWEft

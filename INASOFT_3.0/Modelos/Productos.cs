@@ -17,6 +17,7 @@ namespace INASOFT_3._0.Modelos
         private double precio_total;
         private string observacion;
         private int id_proveedor;
+        private string nombre_proveedor;
 
 
         public int Id { get => id; set => id = value; }
@@ -28,5 +29,6 @@ namespace INASOFT_3._0.Modelos
         public double Precio_total { get => precio_total; set => precio_total = value; }
         public string Observacion { get => observacion; set => observacion = value; }
         public int Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
+        public string Nombre_proveedor { get => nombre_proveedor; set => nombre_proveedor = value; }
     }
 }

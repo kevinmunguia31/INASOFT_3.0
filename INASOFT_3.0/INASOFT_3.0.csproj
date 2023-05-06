@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Controladores\clsFactura.cs" />
     <Compile Include="Controladores\CtrlClientes.cs" />
+    <Compile Include="Controladores\CtrlFactura.cs" />
     <Compile Include="Controladores\CtrlInfo.cs" />
     <Compile Include="Controladores\CtrlProductos.cs" />
     <Compile Include="Controladores\CtrlProveedor.cs" />

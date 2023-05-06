@@ -56,35 +56,42 @@ namespace INASOFT_3._0
 
         private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-               (e.KeyChar != '.'))
+            if (Char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = false;
             }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
             {
-                e.Handled = true;
+                e.Handled = false;
             }
-
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            else if ((e.KeyChar == '.') && (!txtPrecioCompra.Text.Contains(".")))
             {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
         }
 
         private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-               (e.KeyChar != '.'))
+            if (Char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = false;
             }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
             {
+                e.Handled = false;
+            }
+            else if ((e.KeyChar == '.') && (!txtPrecioVenta.Text.Contains(".")))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
         }

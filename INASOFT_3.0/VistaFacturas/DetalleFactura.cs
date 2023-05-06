@@ -17,12 +17,16 @@ namespace INASOFT_3._0.VistaFacturas
         public DetalleFactura()
         {
             InitializeComponent();
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            lbIdFactura.Text = ctrlFactura.Codigo_Factura().ToString();
             
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            ctrlFactura.Cancelar_Factura(ctrlFactura.ID_Factura());
         }
         public void obtenerIDFactura()
         {
@@ -104,7 +108,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + lbPrecio.Text + "','" + txtIdProduc.Text + "','" + lbIdFactura.Text + "')";
+            string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + lbPrecio.Text + "', '" + Txt_Descuento.Text + "','" + txtIdProduc.Text + "','" + lbIdFactura.Text + "')";
             try
             {
 
@@ -124,10 +128,11 @@ namespace INASOFT_3._0.VistaFacturas
                         ListaProductos[fila, 2] = SpinCantidad.Value.ToString();
                         ListaProductos[fila, 3] = (float.Parse(SpinCantidad.Value.ToString()) * float.Parse(lbPrecio.Text)).ToString();
                         ListaProductos[fila, 4] = txtIdProduc.Text;
-                        dataGridView1.Rows.Add(ListaProductos[fila, 0], ListaProductos[fila, 1], ListaProductos[fila, 2], ListaProductos[fila, 3], ListaProductos[fila, 4]);
+                        ListaProductos[fila, 5] = Txt_Descuento.Text;
+                        dataGridView1.Rows.Add(ListaProductos[fila, 0], ListaProductos[fila, 1], ListaProductos[fila, 2], ListaProductos[fila, 3], ListaProductos[fila, 4], ListaProductos[fila, 5]);
                         //AUMENTA LA FILA EN LA TABLA
                         fila++;
-                        txtCodigo.Text = lbProductName.Text = lbPrecio.Text = lbExistencias.Text = txtIdProduc.Text = "";
+                        txtCodigo.Text = lbProductName.Text = lbPrecio.Text = lbExistencias.Text = txtIdProduc.Text = Txt_Descuento.Text = "";
                         SpinCantidad.Value = 0;
                         txtCodigo.Focus();
                     }

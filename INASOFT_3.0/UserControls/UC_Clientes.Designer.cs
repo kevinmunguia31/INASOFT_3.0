@@ -162,7 +162,6 @@ namespace INASOFT_3._0.UserControls
             this.deleteClient});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(173, 48);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // editInfo
             // 
@@ -287,7 +286,6 @@ namespace INASOFT_3._0.UserControls
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registrar Nuevo Cliente";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtId
             // 
@@ -403,7 +401,6 @@ namespace INASOFT_3._0.UserControls
             this.Controls.Add(this.label1);
             this.Name = "UC_Clientes";
             this.Size = new System.Drawing.Size(1096, 585);
-            this.Load += new System.EventHandler(this.UC_Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
