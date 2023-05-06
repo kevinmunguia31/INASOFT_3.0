@@ -39,7 +39,7 @@ namespace INASOFT_3._0
                 if (respuesta.Length > 0)
                 {
                     guna2MessageWar.Show(respuesta, "Aviso");
-                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now + "por la PC: " + PcUser;
+                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now + " por la PC: " + PcUser;
                     MySqlConnection conexionDB = Conexion.getConexion();
                     conexionDB.Open();
 
