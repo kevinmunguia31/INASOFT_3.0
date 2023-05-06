@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,77 @@ namespace INASOFT_3._0.Controladores
 {
     class CtrlClientes
     {
+        public DataTable CargarClientes(string dato)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            if (dato == null)
+            {
+                sql = "SELECT * FROM Clientes WHERE ID != 1;";
+            }
+            else
+            {
+                sql = "SELECT * FROM Clientes WHERE ID != 1 AND nombre LIKE '%" + dato + "%' OR nombre LIKE '%" + dato + "%' ORDER BY nombre ASC;";
+            }
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+        public DataTable Cargar_NombreClientes ()
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Clientes WHERE ID != 1;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        public DataTable Buscar_NombreCliente(string dato)
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Clientes WHERE Nombre LIKE '%"+ dato +"%' AND ID != 1;";
+            
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        /*
         public List<Object> consulta(string dato)
         {
             MySqlDataReader reader;
@@ -57,8 +129,8 @@ namespace INASOFT_3._0.Controladores
                 MessageBox.Show("Faltan Datos de Clientes por Completar", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             return lista;
-
         }
+        */
 
         public bool insertar(Cliente datos)
         {
@@ -127,6 +199,26 @@ namespace INASOFT_3._0.Controladores
             }
 
             return bandera;
+        }
+
+        public int TotalClientes()
+        {
+            int total_clientes = 0;
+            string SQL = "SELECT COUNT(*) FROM clientes WHERE ID != 1;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                total_clientes = Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                total_clientes = 0;
+            }
+            return total_clientes;
         }
     }
 }

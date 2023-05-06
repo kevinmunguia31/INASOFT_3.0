@@ -19,28 +19,14 @@ namespace INASOFT_3._0.UserControls
         public UC_Factura()
         {
             InitializeComponent();
-            Facturas();
+            CargarFacturas();
             dataGridFatura.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        public void Facturas()
+        public void CargarFacturas()
         {
-            string sql = "SELECT c.ID, c.Fecha, d.Nombre, SUM(a.cantidad) AS Cant_Productos, c.Total_Final AS SubTotal, c.Efectivo, c.Devolucion, e.Nombre AS Caja FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID RIGHT JOIN Clientes d ON c.ID_Cliente = d.ID RIGHT JOIN Usuarios e ON c.ID_Usuario = e.ID GROUP BY c.ID";
-            //string sql = "SELECT c.ID, c.Fecha, d.Nombre AS Cliente, SUM(a.cantidad) AS Total_de_Productos, c.Total_Final, c.Efectivo, c.Devolucion, e.Nombre AS Le_Atendio FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Usuarios e ON c.ID_Usuario = e.ID";
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                MySqlDataAdapter da = new MySqlDataAdapter(comando);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dataGridFatura.DataSource = dt;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            dataGridFatura.DataSource = ctrlFactura.CargarFactura();
         }
 
         private void txtNewInvoice_Click(object sender, EventArgs e)
@@ -62,8 +48,7 @@ namespace INASOFT_3._0.UserControls
                     MySqlCommand comando = new MySqlCommand(sql, conexioBD);
                     comando.ExecuteNonQuery();
                     MessageDialogInfo.Show("Se elimino la Factura Seleccionada", "Eliminar Factura");
-                    Facturas();
-
+                    CargarFacturas();
                 }
                 catch (MySqlException ex)
                 {
@@ -109,6 +94,11 @@ namespace INASOFT_3._0.UserControls
             GB.HeaderText = "Ver Detalles";
             GB.UseColumnTextForButtonValue = true;
             dataGridFatura.Columns.Add(GB);
+        }
+
+        private void Guna2Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

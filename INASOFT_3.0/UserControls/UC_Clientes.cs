@@ -19,43 +19,16 @@ namespace INASOFT_3._0.UserControls
         {
             InitializeComponent();
             CargarTablaClient(null);
-            TotalClientes();
+            Controladores.CtrlClientes ctrlClientes = new CtrlClientes();
+            lbClientes.Text = ctrlClientes.TotalClientes().ToString();
         }
         public void CargarTablaClient(string dato)
         {
             List<Productos> lista = new List<Productos>();
             CtrlClientes _ctrlCliente = new CtrlClientes();
-            dataGridView1.DataSource = _ctrlCliente.consulta(dato);
+            dataGridView1.DataSource = _ctrlCliente.CargarClientes(dato);
         }
 
-        public void TotalClientes()
-        {
-            MySqlDataReader reader = null;
-            string sql = "SELECT count(*) FROM clientes";
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        lbClientes.Text = reader.GetString(0);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -75,7 +48,6 @@ namespace INASOFT_3._0.UserControls
                     _cliente.Id = int.Parse(txtId.Text);
                     bandera = ctrlClientes.actualizar(_cliente);
                     MessageBox.Show("Registro Actualizado Con Exito", "Actualizar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    TotalClientes();
                     CargarTablaClient(null);
                     txtNombreYapellido.Text = "";
                     txtTelefono.Text = "";
@@ -89,7 +61,7 @@ namespace INASOFT_3._0.UserControls
                     bandera = ctrlClientes.insertar(_cliente);
                     MessageBox.Show("Registro Guardado Con Exito", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarTablaClient(null);
-                    TotalClientes();
+                    lbClientes.Text = ctrlClientes.TotalClientes().ToString();
                     txtNombreYapellido.Text = "";
                     txtTelefono.Text = "";
                     txtDireccion.Text = "";
@@ -101,11 +73,6 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageBox.Show("Rellene Todos los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void UC_Clientes_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void editInfo_Click(object sender, EventArgs e)
@@ -136,7 +103,8 @@ namespace INASOFT_3._0.UserControls
                 {
                     MessageBox.Show("Registro Eliminado con exito", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarTablaClient(null);
-                    TotalClientes();
+                    Controladores.CtrlClientes ctrlClientes = new CtrlClientes();
+                    lbClientes.Text = ctrlClientes.TotalClientes().ToString();
                 }
             }
         }
@@ -150,11 +118,6 @@ namespace INASOFT_3._0.UserControls
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             CargarTablaClient(null);
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
         }
     }
 }

@@ -70,7 +70,7 @@ namespace INASOFT_3._0.UserControls
             }
             catch (SqlNullValueException)
             {
-                MessageDialogInfo.Show("Bienvenido " + user.ToString() + " Hoy sera un Gran Dia 🤗");
+                //MessageDialogInfo.Show("Bienvenido " + user.ToString() + " Hoy sera un Gran Dia 🤗");
             }
             
         }

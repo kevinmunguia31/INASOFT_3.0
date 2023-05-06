@@ -21,6 +21,11 @@ namespace INASOFT_3._0.VistaFacturas
             string hora = DateTime.Now.ToString("hh:mm:ss");
             lbFecha.Text = fecha + " " + hora;
             txtIdUser.Text = Sesion.id.ToString();
+            Cargar_Clientes();
+
+
+            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
+           txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
         }
 
 
@@ -29,39 +34,18 @@ namespace INASOFT_3._0.VistaFacturas
         {
             this.Dispose();
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void Cargar_Clientes()
         {
-            string dato = txtSearch.Text;
-            MySqlDataReader reader = null;
-            string consulta = "SELECT * FROM clientes WHERE nombre='" + dato + "'";
-            MySqlConnection conexionBD = Conexion.getConexion();
-            conexionBD.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        txtIdCliente.Text = reader.GetString("id");
-                        lbNombre.Text = reader.GetString("nombre");
-                    }
-                }
-                else
-                {
-                    MessageDialogWar.Show("No se encontro Cliente Con ese Nombre", "Aviso");
-                    txtIdCliente.Text = "";
-                    lbNombre.Text = "";
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error Al Buscar: " + ex.Message);
-            }
-            finally { conexionBD.Close(); }
+            Cbx_Clientes.DataSource = null;
+            Cbx_Clientes.Items.Clear();
+
+            Controladores.CtrlClientes ctrl = new Controladores.CtrlClientes();
+            Cbx_Clientes.DataSource = ctrl.Cargar_NombreClientes();
+            Cbx_Clientes.ValueMember = "ID";
+            Cbx_Clientes.DisplayMember = "Nombre";
+
         }
+
 
         private void btnAddCliente_Click(object sender, EventArgs e)
         {
@@ -83,7 +67,12 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAceppt_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO Facturas VALUES(NULL, '" + lbFecha.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "')";
+            //string sql = "INSERT INTO Facturas VALUES(NULL, '" + lbFecha.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "')";
+
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            int cod_fac = ctrlFactura.Codigo_Factura();
+            //string sql = "CALL Insertar_Factura("+ cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
+            string sql = "CALL Insertar_Factura(" + cod_fac + ", '" + lbFecha.Text + "', 1, '" + txtIdCliente.Text + "');";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -103,9 +92,21 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        private void Facturar1_Load(object sender, EventArgs e)
+        private void TxtBuscar_Clientes_TextChanged(object sender, EventArgs e)
         {
+            Controladores.CtrlClientes ctrl = new Controladores.CtrlClientes();
+            Cbx_Clientes.DataSource = ctrl.Buscar_NombreCliente(TxtBuscar_Clientes.Text);
+            Cbx_Clientes.ValueMember = "ID";
+            Cbx_Clientes.DisplayMember = "Nombre";
 
+            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
+            txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
+        }
+
+        private void Cbx_Clientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
+            txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
         }
     }
 }

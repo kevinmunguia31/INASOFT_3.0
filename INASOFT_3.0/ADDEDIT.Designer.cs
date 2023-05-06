@@ -44,8 +44,8 @@ namespace INASOFT_3._0
             this.txtNameP = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCodBarra = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbProveedor = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtPrecioDolar = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPrecioVenta = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPrecioCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
@@ -96,12 +96,12 @@ namespace INASOFT_3._0
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Poppins SemiBold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(56, 2);
+            this.labelTitle.Location = new System.Drawing.Point(57, 7);
             this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(339, 42);
+            this.labelTitle.Size = new System.Drawing.Size(336, 29);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "AÑADIR NUEVO PRODUCTO";
             // 
@@ -147,7 +147,7 @@ namespace INASOFT_3._0
             this.txtObservacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtObservacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtObservacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtObservacion.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtObservacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObservacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacion.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtObservacion.IconLeft")));
@@ -165,12 +165,12 @@ namespace INASOFT_3._0
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(8, 140);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 42);
+            this.label2.Size = new System.Drawing.Size(140, 29);
             this.label2.TabIndex = 4;
             this.label2.Text = "Existencias:";
             // 
@@ -178,7 +178,7 @@ namespace INASOFT_3._0
             // 
             this.SpinExist.BackColor = System.Drawing.Color.Transparent;
             this.SpinExist.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinExist.Font = new System.Drawing.Font("Poppins", 9F);
+            this.SpinExist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.SpinExist.Location = new System.Drawing.Point(180, 140);
             this.SpinExist.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SpinExist.Maximum = new decimal(new int[] {
@@ -202,7 +202,7 @@ namespace INASOFT_3._0
             this.txtNameP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtNameP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtNameP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNameP.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtNameP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtNameP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNameP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameP.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNameP.IconLeft")));
@@ -226,7 +226,7 @@ namespace INASOFT_3._0
             this.txtCodBarra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCodBarra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCodBarra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCodBarra.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtCodBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtCodBarra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCodBarra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodBarra.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtCodBarra.IconLeft")));
@@ -242,8 +242,8 @@ namespace INASOFT_3._0
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbProveedor);
-            this.groupBox2.Controls.Add(this.txtPrecioDolar);
             this.groupBox2.Controls.Add(this.txtPrecioVenta);
             this.groupBox2.Controls.Add(this.txtPrecioCompra);
             this.groupBox2.Location = new System.Drawing.Point(533, 57);
@@ -253,6 +253,18 @@ namespace INASOFT_3._0
             this.groupBox2.Size = new System.Drawing.Size(480, 343);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(8, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 29);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Proveedores:";
             // 
             // cbProveedor
             // 
@@ -264,36 +276,11 @@ namespace INASOFT_3._0
             this.cbProveedor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbProveedor.ItemHeight = 30;
-            this.cbProveedor.Location = new System.Drawing.Point(8, 220);
+            this.cbProveedor.Location = new System.Drawing.Point(8, 174);
             this.cbProveedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(445, 36);
             this.cbProveedor.TabIndex = 9;
-            // 
-            // txtPrecioDolar
-            // 
-            this.txtPrecioDolar.BorderColor = System.Drawing.Color.Silver;
-            this.txtPrecioDolar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPrecioDolar.DefaultText = "";
-            this.txtPrecioDolar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPrecioDolar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPrecioDolar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPrecioDolar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPrecioDolar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrecioDolar.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtPrecioDolar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPrecioDolar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrecioDolar.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioDolar.IconLeft")));
-            this.txtPrecioDolar.Location = new System.Drawing.Point(8, 151);
-            this.txtPrecioDolar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPrecioDolar.Name = "txtPrecioDolar";
-            this.txtPrecioDolar.PasswordChar = '\0';
-            this.txtPrecioDolar.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtPrecioDolar.PlaceholderText = "Precio En Dolar";
-            this.txtPrecioDolar.SelectedText = "";
-            this.txtPrecioDolar.Size = new System.Drawing.Size(447, 48);
-            this.txtPrecioDolar.TabIndex = 8;
-            this.txtPrecioDolar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioDolar_KeyPress);
             // 
             // txtPrecioVenta
             // 
@@ -305,7 +292,7 @@ namespace INASOFT_3._0
             this.txtPrecioVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrecioVenta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrecioVenta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtPrecioVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrecioVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioVenta.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioVenta.IconLeft")));
@@ -318,7 +305,6 @@ namespace INASOFT_3._0
             this.txtPrecioVenta.SelectedText = "";
             this.txtPrecioVenta.Size = new System.Drawing.Size(447, 48);
             this.txtPrecioVenta.TabIndex = 7;
-            this.txtPrecioVenta.TextChanged += new System.EventHandler(this.txtPrecioVenta_TextChanged);
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
@@ -331,7 +317,7 @@ namespace INASOFT_3._0
             this.txtPrecioCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrecioCompra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrecioCompra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtPrecioCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtPrecioCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrecioCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioCompra.IconLeft")));
@@ -354,7 +340,7 @@ namespace INASOFT_3._0
             this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(9)))), ((int)(((byte)(108)))));
-            this.btnAdd.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.Location = new System.Drawing.Point(381, 430);
@@ -383,7 +369,7 @@ namespace INASOFT_3._0
             this.txtDolar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDolar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDolar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDolar.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtDolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDolar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDolar.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtDolar.IconLeft")));
             this.txtDolar.Location = new System.Drawing.Point(16, 490);
@@ -395,8 +381,6 @@ namespace INASOFT_3._0
             this.txtDolar.SelectedText = "";
             this.txtDolar.Size = new System.Drawing.Size(148, 48);
             this.txtDolar.TabIndex = 10;
-            this.txtDolar.TextChanged += new System.EventHandler(this.txtDolar_TextChanged);
-            this.txtDolar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDolar_KeyPress);
             // 
             // ADDEDIT
             // 
@@ -416,7 +400,6 @@ namespace INASOFT_3._0
             this.Name = "ADDEDIT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADDEDIT";
-            this.Load += new System.EventHandler(this.ADDEDIT_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -424,6 +407,7 @@ namespace INASOFT_3._0
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,9 +431,9 @@ namespace INASOFT_3._0
         public Guna.UI2.WinForms.Guna2TextBox txtObservacion;
         public Guna.UI2.WinForms.Guna2TextBox txtPrecioCompra;
         public Guna.UI2.WinForms.Guna2TextBox txtPrecioVenta;
-        public Guna.UI2.WinForms.Guna2TextBox txtPrecioDolar;
         public Guna.UI2.WinForms.Guna2ComboBox cbProveedor;
         public System.Windows.Forms.Label labelTitle;
         public System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label1;
     }
 }
