@@ -23,6 +23,7 @@ namespace INASOFT_3._0.UserControls
             CargarTablaProduct(null);
             TotalProductos();
             CapitalInvertido();
+            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;

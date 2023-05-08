@@ -33,10 +33,10 @@ namespace INASOFT_3._0.Controladores
             public void TextoIzquierda(string par1)                          // agrega texto a la izquierda
             {
                 max = par1.Length;
-                if (max > 40)                                 // **********
+                if (max > 25)                                 // **********
                 {
-                    cort = max - 40;
-                    parte1 = par1.Remove(40, cort);        // si es mayor que 40 caracteres, lo corta
+                    cort = max - 25;
+                    parte1 = par1.Remove(25, cort);        // si es mayor que 40 caracteres, lo corta
                 }
                 else { parte1 = par1; }                      // **********
                 line.AppendLine(ticket = parte1);
@@ -46,13 +46,13 @@ namespace INASOFT_3._0.Controladores
             {
                 ticket = "";
                 max = par1.Length;
-                if (max > 40)                                 // **********
+                if (max > 25)                                 // **********
                 {
-                    cort = max - 40;
-                    parte1 = par1.Remove(40, cort);           // si es mayor que 40 caracteres, lo corta
+                    cort = max - 25;
+                    parte1 = par1.Remove(25, cort);           // si es mayor que 40 caracteres, lo corta
                 }
                 else { parte1 = par1; }                      // **********
-                max = 40 - par1.Length;                     // obtiene la cantidad de espacios para llegar a 40
+                max = 25 - par1.Length;                     // obtiene la cantidad de espacios para llegar a 40
                 for (int i = 0; i < max; i++)
                 {
                     ticket += " ";                          // agrega espacios para alinear a la derecha
@@ -134,8 +134,8 @@ namespace INASOFT_3._0.Controladores
 
                     if (Articulo.Length > 40)                                 // **********
                     {
-                        cort = max - 16;
-                        parte1 = Articulo.Remove(16, cort);          // corta a 16 la descripcion del articulo
+                        cort = max - 10;
+                        parte1 = Articulo.Remove(10, cort);          // corta a 16 la descripcion del articulo
                         nroEspacios = (3 - cant.ToString().Length);
                         espacios = "";
                         for (int i = 0; i < nroEspacios; i++)

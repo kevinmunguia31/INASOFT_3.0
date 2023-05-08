@@ -121,16 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtDolar.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEdj
-        GAWjYBTUvb0aOhAYaj0DQ+2ba/8HAkOtRzgg+OYmumKb21tCQRjuAIatmXTFtre2gPHQdADztpz/Eofb
-        /qudmQHGEofb/zNtz8GqFhcm2wHce8r+m11bAzcAhs2urv7PtbsMqx5sGKaPJAeAfA6yCNliZAySIzYk
-        YHowHCByqAkDs+8sBMtJHmlHsRAbBkUNSC1IDzazYPbA1GM4ANkwGIZpBMU3NnlkrHZmOlgtSA82eXR7
-        Bp8DQBrRMV2jAB+mSyIkhAc0G8LwgBZE1MKDxwGwBoL5xUX/6YnhDoABmAC9MdR6BgZYA4HeGGr9KBgF
-        IxYwMAAAUDMZQeLZO6UAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAYdJREFUWEft

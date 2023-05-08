@@ -1,10 +1,12 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,11 +57,20 @@ namespace INASOFT_3._0.VistaFacturas
             finally { conexionBD.Close(); }
         }
 
+        public void CargarTablaProduct(string dato)
+        {
+            //List<Productos> lista = new List<Productos>();
+            CtrlProductos _ctrlProductos = new CtrlProductos();
+            dataGridViewSearch.DataSource = _ctrlProductos.CargarProductos(dato);
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string dato = txtCodigo.Text;
+            CargarTablaProduct(dato);
+            /*string dato = txtCodigo.Text;
             MySqlDataReader reader = null;
-            string consulta = "SELECT id, nombre, existencias, precio_venta FROM productos WHERE codigo='" + dato + "'";
+            string consulta = "SELECT * FROM Mostrar_Producto WHERE Codigo LIKE '%" + dato + "%' OR Producto LIKE '%" + dato + "%' ORDER BY Producto ASC;";
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
             try
@@ -100,19 +111,17 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox.Show("Error Al Buscar: " + ex.Message);
             }
-            finally { conexionBD.Close(); }
+            finally { conexionBD.Close(); }*/
         }
 
-        string[,] ListaProductos = new string[200, 10];
-        int fila = 0;
 
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + lbPrecio.Text + "', '" + Txt_Descuento.Text + "','" + txtIdProduc.Text + "','" + lbIdFactura.Text + "')";
+            string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + txtPrecio.Text + "', '" + Txt_Descuento.Text + "','" + txtIdProduc.Text + "','" + lbIdFactura.Text + "')";
             try
             {
 
-                if (lbProductName.Text != "" && lbPrecio.Text != "" && txtIdProduc.Text != "" && SpinCantidad.Value !=  0)
+                if (lbProductName.Text != "" && txtPrecio.Text != "" && txtIdProduc.Text != "" && SpinCantidad.Value !=  0)
                 {
                     if (lbExistencias.Text != "0")
                     {
@@ -124,15 +133,15 @@ namespace INASOFT_3._0.VistaFacturas
 
                         //Agregar a la tabla
                         ListaProductos[fila, 0] = lbProductName.Text;
-                        ListaProductos[fila, 1] = lbPrecio.Text;
+                        ListaProductos[fila, 1] = txtPrecio.Text;
                         ListaProductos[fila, 2] = SpinCantidad.Value.ToString();
-                        ListaProductos[fila, 3] = (float.Parse(SpinCantidad.Value.ToString()) * float.Parse(lbPrecio.Text)).ToString();
+                        ListaProductos[fila, 3] = (float.Parse(SpinCantidad.Value.ToString()) * float.Parse(txtPrecio.Text)).ToString();
                         ListaProductos[fila, 4] = txtIdProduc.Text;
                         ListaProductos[fila, 5] = Txt_Descuento.Text;
                         dataGridView1.Rows.Add(ListaProductos[fila, 0], ListaProductos[fila, 1], ListaProductos[fila, 2], ListaProductos[fila, 3], ListaProductos[fila, 4], ListaProductos[fila, 5]);
                         //AUMENTA LA FILA EN LA TABLA
                         fila++;
-                        txtCodigo.Text = lbProductName.Text = lbPrecio.Text = lbExistencias.Text = txtIdProduc.Text = Txt_Descuento.Text = "";
+                        txtCodigo.Text = lbProductName.Text = txtPrecio.Text = lbExistencias.Text = txtIdProduc.Text = Txt_Descuento.Text = "";
                         SpinCantidad.Value = 0;
                         txtCodigo.Focus();
                     }
@@ -265,8 +274,22 @@ namespace INASOFT_3._0.VistaFacturas
             frm.lbNombreCliente.Text = lbClienteName.Text;
             frm.lbSubtotal.Text = lbSubtotal.Text;
             frm.txtIdCliente.Text = txtIdCliente.Text;
+            frm.lbTotal.Text = lbSubtotal.Text;
             frm.ShowDialog();
             this.Dispose();
         }
+
+        private void dataGridViewSearch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtIdProduc.Text = dataGridViewSearch.CurrentRow.Cells[0].Value.ToString();
+            lbProductName.Text = dataGridViewSearch.CurrentRow.Cells[2].Value.ToString();
+            txtPrecio.Text = dataGridViewSearch.CurrentRow.Cells[5].Value.ToString();
+            lbExistencias.Text = dataGridViewSearch.CurrentRow.Cells[3].Value.ToString();
+            int exist = int.Parse(lbExistencias.Text);
+            SpinCantidad.Maximum = exist;
+        }
+
+        string[,] ListaProductos = new string[200, 10];
+        int fila = 0;
     }
 }

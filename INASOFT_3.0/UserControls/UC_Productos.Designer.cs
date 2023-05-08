@@ -70,7 +70,6 @@ namespace INASOFT_3._0.UserControls
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,34 +81,28 @@ namespace INASOFT_3._0.UserControls
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(27, 10);
+            this.label1.Location = new System.Drawing.Point(36, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 25);
+            this.label1.Size = new System.Drawing.Size(282, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Productos En Inventario";
             // 
             // contextMenuStrip1
             // 
-            /*
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editar,
-            this.eliminar});
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // editar
             // 
-            this.editar.Image = ((System.Drawing.Image)(resources.GetObject("editar.Image")));
             this.editar.Name = "editar";
-            this.editar.Size = new System.Drawing.Size(169, 22);
-            this.editar.Text = "Editar Producto";
+            this.editar.Size = new System.Drawing.Size(32, 19);
             // 
             // eliminar
             // 
-            this.eliminar.Image = ((System.Drawing.Image)(resources.GetObject("eliminar.Image")));
             this.eliminar.Name = "eliminar";
-            this.eliminar.Size = new System.Drawing.Size(169, 22);
-            this.eliminar.Text = "Eliminar Producto";*/
+            this.eliminar.Size = new System.Drawing.Size(32, 19);
             // 
             // groupBox1
             // 
@@ -131,27 +124,31 @@ namespace INASOFT_3._0.UserControls
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(33, 390);
+            this.groupBox1.Location = new System.Drawing.Point(44, 480);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1123, 179);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1497, 220);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalles del Producto:";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(11, 19);
+            this.txtID.Location = new System.Drawing.Point(15, 23);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(32, 23);
+            this.txtID.Size = new System.Drawing.Size(41, 26);
             this.txtID.TabIndex = 18;
             // 
             // lbProveedor
             // 
             this.lbProveedor.AutoSize = true;
             this.lbProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProveedor.Location = new System.Drawing.Point(875, 87);
+            this.lbProveedor.Location = new System.Drawing.Point(1167, 107);
+            this.lbProveedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbProveedor.Name = "lbProveedor";
-            this.lbProveedor.Size = new System.Drawing.Size(28, 17);
+            this.lbProveedor.Size = new System.Drawing.Size(29, 20);
             this.lbProveedor.TabIndex = 17;
             this.lbProveedor.Text = ".....";
             // 
@@ -159,9 +156,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbObservaciones.AutoSize = true;
             this.lbObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbObservaciones.Location = new System.Drawing.Point(909, 42);
+            this.lbObservaciones.Location = new System.Drawing.Point(1212, 52);
+            this.lbObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbObservaciones.Name = "lbObservaciones";
-            this.lbObservaciones.Size = new System.Drawing.Size(28, 17);
+            this.lbObservaciones.Size = new System.Drawing.Size(29, 20);
             this.lbObservaciones.TabIndex = 16;
             this.lbObservaciones.Text = ".....";
             // 
@@ -169,9 +167,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioTotal.AutoSize = true;
             this.lbPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioTotal.Location = new System.Drawing.Point(597, 130);
+            this.lbPrecioTotal.Location = new System.Drawing.Point(796, 160);
+            this.lbPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioTotal.Name = "lbPrecioTotal";
-            this.lbPrecioTotal.Size = new System.Drawing.Size(28, 17);
+            this.lbPrecioTotal.Size = new System.Drawing.Size(29, 20);
             this.lbPrecioTotal.TabIndex = 15;
             this.lbPrecioTotal.Text = ".....";
             // 
@@ -179,9 +178,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioVenta.AutoSize = true;
             this.lbPrecioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioVenta.Location = new System.Drawing.Point(543, 85);
+            this.lbPrecioVenta.Location = new System.Drawing.Point(724, 105);
+            this.lbPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioVenta.Name = "lbPrecioVenta";
-            this.lbPrecioVenta.Size = new System.Drawing.Size(28, 17);
+            this.lbPrecioVenta.Size = new System.Drawing.Size(29, 20);
             this.lbPrecioVenta.TabIndex = 13;
             this.lbPrecioVenta.Text = ".....";
             // 
@@ -189,9 +189,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioCompra.AutoSize = true;
             this.lbPrecioCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioCompra.Location = new System.Drawing.Point(561, 42);
+            this.lbPrecioCompra.Location = new System.Drawing.Point(748, 52);
+            this.lbPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioCompra.Name = "lbPrecioCompra";
-            this.lbPrecioCompra.Size = new System.Drawing.Size(28, 17);
+            this.lbPrecioCompra.Size = new System.Drawing.Size(29, 20);
             this.lbPrecioCompra.TabIndex = 12;
             this.lbPrecioCompra.Text = ".....";
             // 
@@ -199,9 +200,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbExistencias.AutoSize = true;
             this.lbExistencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExistencias.Location = new System.Drawing.Point(98, 130);
+            this.lbExistencias.Location = new System.Drawing.Point(131, 160);
+            this.lbExistencias.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(28, 17);
+            this.lbExistencias.Size = new System.Drawing.Size(29, 20);
             this.lbExistencias.TabIndex = 11;
             this.lbExistencias.Text = ".....";
             // 
@@ -209,9 +211,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbNameP.AutoSize = true;
             this.lbNameP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameP.Location = new System.Drawing.Point(81, 85);
+            this.lbNameP.Location = new System.Drawing.Point(108, 105);
+            this.lbNameP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNameP.Name = "lbNameP";
-            this.lbNameP.Size = new System.Drawing.Size(28, 17);
+            this.lbNameP.Size = new System.Drawing.Size(29, 20);
             this.lbNameP.TabIndex = 10;
             this.lbNameP.Text = ".....";
             // 
@@ -219,9 +222,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbCodigo.AutoSize = true;
             this.lbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodigo.Location = new System.Drawing.Point(81, 42);
+            this.lbCodigo.Location = new System.Drawing.Point(108, 52);
+            this.lbCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(28, 17);
+            this.lbCodigo.Size = new System.Drawing.Size(29, 20);
             this.lbCodigo.TabIndex = 9;
             this.lbCodigo.Text = ".....";
             // 
@@ -229,9 +233,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(788, 87);
+            this.label8.Location = new System.Drawing.Point(1051, 107);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 17);
+            this.label8.Size = new System.Drawing.Size(100, 20);
             this.label8.TabIndex = 8;
             this.label8.Text = "Proveedor:";
             // 
@@ -239,9 +244,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(788, 42);
+            this.label9.Location = new System.Drawing.Point(1051, 52);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 17);
+            this.label9.Size = new System.Drawing.Size(140, 20);
             this.label9.TabIndex = 7;
             this.label9.Text = "Observaciones:";
             // 
@@ -249,9 +255,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(396, 130);
+            this.label10.Location = new System.Drawing.Point(528, 160);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(212, 17);
+            this.label10.Size = new System.Drawing.Size(249, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "Precio Total (Exit*Unid): C$ ";
             // 
@@ -259,9 +266,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(396, 85);
+            this.label6.Location = new System.Drawing.Point(528, 105);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 17);
+            this.label6.Size = new System.Drawing.Size(178, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Precio de Venta: C$";
             // 
@@ -269,9 +277,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(396, 42);
+            this.label7.Location = new System.Drawing.Point(528, 52);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(166, 17);
+            this.label7.Size = new System.Drawing.Size(195, 20);
             this.label7.TabIndex = 3;
             this.label7.Text = "Precio de Compra: C$";
             // 
@@ -279,9 +288,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 130);
+            this.label4.Location = new System.Drawing.Point(8, 160);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 17);
+            this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Existencias:";
             // 
@@ -289,9 +299,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 85);
+            this.label3.Location = new System.Drawing.Point(8, 105);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.Size = new System.Drawing.Size(90, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Producto:";
             // 
@@ -299,9 +310,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Location = new System.Drawing.Point(8, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 17);
+            this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Codigo:";
             // 
@@ -320,13 +332,13 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(844, 7);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearch.Location = new System.Drawing.Point(1125, 9);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Buscar Producto";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(216, 33);
+            this.txtSearch.Size = new System.Drawing.Size(288, 41);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -340,9 +352,10 @@ namespace INASOFT_3._0.UserControls
             this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1066, 7);
+            this.btnSearch.Location = new System.Drawing.Point(1421, 9);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(90, 34);
+            this.btnSearch.Size = new System.Drawing.Size(120, 42);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -354,9 +367,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.lbCantiTota);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(1172, 42);
+            this.groupBox2.Location = new System.Drawing.Point(1561, 480);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(181, 329);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(241, 327);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             // 
@@ -365,9 +380,10 @@ namespace INASOFT_3._0.UserControls
             this.lbCapital.AutoSize = true;
             this.lbCapital.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCapital.Location = new System.Drawing.Point(9, 205);
+            this.lbCapital.Location = new System.Drawing.Point(12, 252);
+            this.lbCapital.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCapital.Name = "lbCapital";
-            this.lbCapital.Size = new System.Drawing.Size(30, 31);
+            this.lbCapital.Size = new System.Drawing.Size(37, 39);
             this.lbCapital.TabIndex = 4;
             this.lbCapital.Text = "0";
             // 
@@ -376,9 +392,10 @@ namespace INASOFT_3._0.UserControls
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(44, 158);
+            this.label13.Location = new System.Drawing.Point(59, 194);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 31);
+            this.label13.Size = new System.Drawing.Size(63, 39);
             this.label13.TabIndex = 3;
             this.label13.Text = "C$";
             // 
@@ -386,9 +403,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 133);
+            this.label12.Location = new System.Drawing.Point(8, 164);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 17);
+            this.label12.Size = new System.Drawing.Size(119, 20);
             this.label12.TabIndex = 2;
             this.label12.Text = "Total Invertido:";
             // 
@@ -397,9 +415,10 @@ namespace INASOFT_3._0.UserControls
             this.lbCantiTota.AutoSize = true;
             this.lbCantiTota.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCantiTota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCantiTota.Location = new System.Drawing.Point(60, 41);
+            this.lbCantiTota.Location = new System.Drawing.Point(80, 50);
+            this.lbCantiTota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCantiTota.Name = "lbCantiTota";
-            this.lbCantiTota.Size = new System.Drawing.Size(37, 39);
+            this.lbCantiTota.Size = new System.Drawing.Size(44, 48);
             this.lbCantiTota.TabIndex = 1;
             this.lbCantiTota.Text = "0";
             // 
@@ -407,9 +426,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Location = new System.Drawing.Point(8, 20);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 17);
+            this.label11.Size = new System.Drawing.Size(150, 20);
             this.label11.TabIndex = 0;
             this.label11.Text = "Total de Productos";
             // 
@@ -424,9 +444,10 @@ namespace INASOFT_3._0.UserControls
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(1171, 7);
+            this.btnAdd.Location = new System.Drawing.Point(1561, 9);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(182, 34);
+            this.btnAdd.Size = new System.Drawing.Size(243, 42);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Añadir Producto";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -441,10 +462,11 @@ namespace INASOFT_3._0.UserControls
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(797, 2);
+            this.btnRefresh.Location = new System.Drawing.Point(1063, 2);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnRefresh.Size = new System.Drawing.Size(39, 40);
+            this.btnRefresh.Size = new System.Drawing.Size(52, 49);
             this.btnRefresh.TabIndex = 7;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -498,9 +520,11 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(32, 48);
+            this.dataGridView1.Location = new System.Drawing.Point(43, 59);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -508,7 +532,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1123, 324);
+            this.dataGridView1.Size = new System.Drawing.Size(1488, 399);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView1_CellFormatting);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
@@ -519,7 +543,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // UC_Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
@@ -531,9 +555,9 @@ namespace INASOFT_3._0.UserControls
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_Productos";
-            this.Size = new System.Drawing.Size(1360, 585);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1792, 699);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

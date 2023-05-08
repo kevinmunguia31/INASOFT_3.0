@@ -208,6 +208,9 @@
   <metadata name="guna2Elipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>619, 17</value>
+  </metadata>
   <data name="btnAccept.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAR9JREFUSEvt
@@ -233,20 +236,6 @@
   <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>619, 17</value>
-  </metadata>
-  <data name="eliminarProductoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAATJJREFUOE9j
-        GHrgf6aN4P9CFyUwDlNw/+/K9ei/C9cHMAaxwxXd4PJAtVBt2MH/XCfl/3kOP4D4P5H4B8hgqHZMALY1
-        w3z+/0TdA/8jlL/+D1f6jxWD5EBqQGrxGQgC/+0Ysv/bMvwnCgPVQrXhBkPLwH8FLv//9mTADfjbkwkW
-        g/FJM9Ce6f/v62f+//r58//f3qz/f/uywezf106D5Ug3EIT9xP7/vnX+/69fv8AYxAaJweVJNhCI/y5s
-        gRv4d2EzwjAQJtXAvzMqIC67e/n/7zuXIYYCxcgzEBSGx7f9/33v6v9/AZL//wVK/f99/9r/38e2UhCG
-        rlz///tLIFwEYrtwIvgkG0gIE2WgLUMMhkZc2I4hGqoNN/hvycAJVLwaiO/ixXYMq0BqodqGDGBgAACk
-        BMlPh3y+0AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnAñadirProducto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAmpJREFUWEft
@@ -2997,6 +2986,17 @@
         /+D/////////////////////////4P/////////////////////////g////////////////////////
         /+D/////////////////////////4P/////////////////////////g////////////////////////
         /+D/////////////////////////4P/////////////////////////g
+</value>
+  </data>
+  <data name="eliminarProductoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAATJJREFUOE9j
+        GHrgf6aN4P9CFyUwDlNw/+/K9ei/C9cHMAaxwxXd4PJAtVBt2MH/XCfl/3kOP4D4P5H4B8hgqHZMALY1
+        w3z+/0TdA/8jlL/+D1f6jxWD5EBqQGrxGQgC/+0Ysv/bMvwnCgPVQrXhBkPLwH8FLv//9mTADfjbkwkW
+        g/FJM9Ce6f/v62f+//r58//f3qz/f/uywezf106D5Ug3EIT9xP7/vnX+/69fv8AYxAaJweVJNhCI/y5s
+        gRv4d2EzwjAQJtXAvzMqIC67e/n/7zuXIYYCxcgzEBSGx7f9/33v6v9/AZL//wVK/f99/9r/38e2UhCG
+        rlz///tLIFwEYrtwIvgkG0gIE2WgLUMMhkZc2I4hGqoNN/hvycAJVLwaiO/ixXYMq0BqodqGDGBgAACk
+        BMlPh3y+0AAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
