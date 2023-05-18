@@ -129,5 +129,106 @@ namespace INASOFT_3._0.Controladores
             }
             return bandera;
         }
+
+        public DataTable Cargar_NombreProducto()
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Productos;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        public DataTable Buscar_NombreProducto(string dato)
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre, Codigo FROM Productos WHERE Nombre LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%'";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+        public string Nombre_Producto(int id)
+        {
+            string nombre_producto = "";
+            string SQL = "SELECT Nombre FROM Productos WHERE ID = "+ id +";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                nombre_producto = comando.ExecuteScalar().ToString();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                nombre_producto = "";
+            }
+            return nombre_producto;
+        }
+
+        public double Precio_Producto(int id)
+        {
+            double precio_producto = 0.00;
+            string SQL = "SELECT Precio_Venta FROM Productos WHERE ID = " + id + ";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                precio_producto = Convert.ToDouble(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                precio_producto = 0.00;
+            }
+            return precio_producto;
+        }
+
+        public int Existencias_Producto(int id)
+        {
+            int existencia_producto = 0;
+            string SQL = "SELECT Existencias FROM Productos WHERE ID = " + id + ";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                existencia_producto = Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                existencia_producto = 0;
+            }
+            return existencia_producto;
+        }
     }
 }

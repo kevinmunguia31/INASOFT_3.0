@@ -23,17 +23,14 @@ namespace INASOFT_3._0.VistaFacturas
             txtIdUser.Text = Sesion.id.ToString();
             Cargar_Clientes();
 
-
-            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
-           txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
+            Cbx_Clientes.SelectedIndex = -1;
         }
-
-
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
         private void Cargar_Clientes()
         {
             Cbx_Clientes.DataSource = null;
@@ -49,46 +46,59 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAddCliente_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO clientes(nombre, telefono, direccion, cedula) VALUES('" + txtNombre.Text + "','Ninguno', 'Ninguno', 'Ninguno')";
-            try
+            if (txtNombre.Text == "")
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                MessageDialogInfo.Show("Cliente Registrado Correctamente", "Registrar Cliete");
-                txtNombre.Text = "";
+                MessageBox.Show("Por favor introduzca el nombre del cliente");
             }
-            catch (MySqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
+                string sql = "INSERT INTO clientes(nombre, telefono, direccion, cedula) VALUES('" + txtNombre.Text + "','Ninguno', 'Ninguno', 'Ninguno')";
+                try
+                {
+                    MySqlConnection conexioBD = Conexion.getConexion();
+                    conexioBD.Open();
+                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                    comando.ExecuteNonQuery();
+                    MessageDialogInfo.Show("Cliente Registrado Correctamente", "Registrar Cliete");
+                    txtNombre.Text = "";
+                    Cargar_Clientes();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
 
         private void btnAceppt_Click(object sender, EventArgs e)
         {
-            //string sql = "INSERT INTO Facturas VALUES(NULL, '" + lbFecha.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "')";
-
-            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            int cod_fac = ctrlFactura.Codigo_Factura();
-            //string sql = "CALL Insertar_Factura("+ cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
-            string sql = "CALL Insertar_Factura(" + cod_fac + ", '" + lbFecha.Text + "', 1, '" + txtIdCliente.Text + "');";
-            try
+            if(Cbx_Clientes.SelectedIndex == -1)
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                MessageDialogInfo.Show("Factura Almacenada", "Facturación");
-                DetalleFactura frm = new DetalleFactura();
-                frm.lbClienteName.Text = lbNombre.Text;
-                frm.txtIdCliente.Text = txtIdCliente.Text;
-                frm.ShowDialog();
-                this.Dispose();
+                MessageDialogInfo.Show("Tiene que seleccionar a un cliente", "Importante");
             }
-            catch (MySqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
+                Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+                int cod_fac = ctrlFactura.Codigo_Factura();
+                //string sql = "CALL Insertar_Factura("+ cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
+                string sql = "CALL Insertar_Factura(" + cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
+                try
+                {
+                    MySqlConnection conexioBD = Conexion.getConexion();
+                    conexioBD.Open();
+                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                    comando.ExecuteNonQuery();
+                    MessageDialogInfo.Show("Factura Almacenada", "Facturación");
+                    DetalleFactura frm = new DetalleFactura();
+                    frm.lbClienteName.Text = lbNombre.Text;
+                    frm.txtIdCliente.Text = txtIdCliente.Text;
+                    frm.ShowDialog();
+                    this.Dispose();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
 
@@ -98,15 +108,29 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Clientes.DataSource = ctrl.Buscar_NombreCliente(TxtBuscar_Clientes.Text);
             Cbx_Clientes.ValueMember = "ID";
             Cbx_Clientes.DisplayMember = "Nombre";
-
-            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
-            txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
         }
 
         private void Cbx_Clientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbNombre.Text = Cbx_Clientes.SelectedText.ToString();
-            txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
+            try
+            {
+                if (Cbx_Clientes.SelectedIndex == -1)
+                {
+                    txtIdCliente.Text = "";
+                }
+                else
+                {
+                    txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            Cargar_Clientes();
         }
     }
 }

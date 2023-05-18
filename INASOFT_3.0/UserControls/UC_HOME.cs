@@ -78,7 +78,8 @@ namespace INASOFT_3._0.UserControls
         public void TotalFacturasHoy()
         {
             MySqlDataReader reader = null;
-            string sql = "SELECT COUNT(*) FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '" + lbdate.Text + "'";
+            //string sql = "SELECT COUNT(Codigo_Fac) FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '" + lbdate.Text + "' GROUP BY Codigo_Fac";
+            string sql = "CALL Total_FacturasRealizadas('"+ lbdate.Text +"')";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();

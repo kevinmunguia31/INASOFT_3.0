@@ -21,6 +21,8 @@ namespace INASOFT_3._0.VistaFacturas
             InitializeComponent();
             InstalledPrintersCombo();
             InfoNegocio();
+            Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+            txtIdFactura.Text = ctrlFactura.ID_Factura().ToString();
             lbUser.Text = Sesion.nombre;
         }
 
@@ -55,7 +57,7 @@ namespace INASOFT_3._0.VistaFacturas
         public DataTable InfoProducts()
         {
             string dato = txtIdCliente.Text;
-            string idFact = lbIdFactura.Text;
+            string idFact = txtIdFactura.Text;
             //MySqlDataReader reader = null;
             //string sql = " SELECT a.Cantidad, b.Nombre, a.Precio, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE d.ID = '"+ dato +"' && a.ID_Factura = '" + idFact +"'";
             string sql = "SELECT b.Nombre, a.Precio, a.Cantidad, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE d.ID = '" + dato + "' && a.ID_Factura = '" + idFact + "'";
@@ -114,27 +116,27 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void SpinDescuento_ValueChanged(object sender, EventArgs e)
         {
-            int iva = int.Parse(SpinDescuento.Value.ToString());
-            float subtotal = float.Parse(lbSubtotal.Text);
-            float total;
-            float descuento;
+            //int iva = int.Parse(SpinDescuento.Value.ToString());
+            //float subtotal = float.Parse(lbSubtotal.Text);
+            //float total;
+            //float descuento;
 
-            float desc = descuento = (float.Parse(iva.ToString()) / 100);
+            //float desc = descuento = (float.Parse(iva.ToString()) / 100);
 
-            descuento = (float.Parse(iva.ToString()) / 100) * subtotal;
-            total = subtotal - descuento;
+            //descuento = (float.Parse(iva.ToString()) / 100) * subtotal;
+            //total = subtotal - descuento;
 
-            lbTotal.Text = total.ToString();
-            lbPrecDesc.Text = descuento.ToString();
-            lbDescCant.Text = iva.ToString();
-            lbDesc.Text = desc.ToString();
+            //lbTotal.Text = total.ToString();
+            //lbPrecDesc.Text = descuento.ToString();
+            //lbDescCant.Text = iva.ToString();
+            //lbDesc.Text = desc.ToString();
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                lbDevolucion.Text = (float.Parse(guna2TextBox1.Text) - float.Parse(lbTotal.Text)).ToString();
+                lbDevolucion.Text = (float.Parse(Txt_Efectivo.Text) - float.Parse(lbTotal.Text)).ToString();
             }
             catch
             {
@@ -144,7 +146,18 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnFacturar_Click(object sender, EventArgs e)
         {
-            string sql = "CALL Facturacion_Final('" + lbDesc.Text + "','" + lbSubtotal.Text + "','" + guna2TextBox1.Text + "' , '" + lbIdFactura.Text + "')";
+            string tipoPago = "";
+            if (radioButton1.Checked == true)
+            {
+                tipoPago = "Dolares";
+            }
+
+            if(radioButton2.Checked == true)
+            {
+                tipoPago = "Cordobas";
+            }
+            //string sql = "CALL Facturacion_Final('" + Txt_descuento.Text + "','" + lbSubtotal.Text + "','" + guna2TextBox1.Text + "', '" + lbIdFactura.Text + ", '" + tipoPago + "')";
+            string sql = "CALL Facturacion_Final(" + Txt_descuento.Text + ", " + lbSubtotal.Text + ", " + Txt_Efectivo.Text + ", "+ txtIdFactura.Text +", '"+ tipoPago +"');";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -185,7 +198,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Ticket1.TextoIzquierda(" ");
                 Ticket1.AgregaTotales("Total", float.Parse(lbTotal.Text)); // imprime linea con total
                 Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Efectivo Entregado:", float.Parse(guna2TextBox1.Text));
+                Ticket1.AgregaTotales("Efectivo Entregado:", float.Parse(Txt_Efectivo.Text));
                 Ticket1.AgregaTotales("Efectivo Devuelto:", float.Parse(lbDevolucion.Text));
 
 
@@ -207,6 +220,18 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void Txt_descuento_TextChanged(object sender, EventArgs e)
+        {
+            /*try
+            {
+                lbTotal.Text = (double.Parse(lbTotal.Text) - double.Parse(Txt_descuento.Text)).ToString();
+            }
+            catch
+            {
+                lbTotal.Text = lbTotal.Text;
+            }*/
         }
     }
 }

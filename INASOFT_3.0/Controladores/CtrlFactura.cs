@@ -76,7 +76,7 @@ namespace INASOFT_3._0.Controladores
         public bool Cancelar_Factura(int id)
         {
             bool bandera = false;
-            string sql = "CALL Cancelar_Factura()";
+            string sql = "CALL Cancelar_Factura("+ id +")";
 
             try
             {
@@ -91,7 +91,6 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine(ex.Message.ToString());
                 bandera = false;
             }
-
             return bandera;
         }
     }

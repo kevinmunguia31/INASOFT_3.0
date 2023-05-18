@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS db_inasoftware;
 CREATE DATABASE db_inasoftware;
 
-CREATE USER 'kevin'@'localhost' IDENTIFIED WITH mysql_native_password BY '123qwe';
+-- CREATE USER 'kevin'@'localhost' IDENTIFIED WITH mysql_native_password BY '123qwe';
 USE db_inasoftware;
 
 GRANT ALL PRIVILEGES ON db_inasoftware TO 'Kevin'@'localhost' WITH GRANT OPTION;
@@ -72,6 +72,7 @@ CREATE TABLE `Facturas`(
 	`Total_Final` DOUBLE DEFAULT NULL,
 	`Efectivo` DOUBLE DEFAULT NULL,
 	`Devolucion` DOUBLE DEFAULT NULL,
+	`Tipo_Pago` VARCHAR(50) DEFAULT NULL,
 	`ID_Usuario` INT NOT NULL,
 	`ID_Cliente` INT NOT NULL,
 	CONSTRAINT Facturaspk PRIMARY KEY(ID),
@@ -85,7 +86,6 @@ CREATE TABLE `Detalle_Factura`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
 	`Cantidad` INT NOT NULL,
 	`Precio` DOUBLE NOT NULL,
-	`Descuento` DOUBLE,
 	`Total` DOUBLE NOT NULL,
 	`ID_Producto` INT NOT NULL,
 	`ID_Factura` INT NOT NULL,
@@ -96,20 +96,20 @@ CREATE TABLE `Detalle_Factura`(
 
 -- TABLA Información general
 CREATE TABLE `InfoGeneral` (
-	`idinfogeneral` int NOT NULL AUTO_INCREMENT,
-	`nombre_negocio` varchar(100) DEFAULT NULL,
-	`direccion_negocio` varchar(100) DEFAULT NULL,
-	`num_ruc` varchar(45) DEFAULT NULL,
-	`nombre_admin` varchar(45) DEFAULT NULL,
-	`telefono` varchar(10) DEFAULT NULL,
-	PRIMARY KEY (`idinfogeneral`)
+	`IDinfogeneral` INT NOT NULL AUTO_INCREMENT,
+	`Nombre_negocio` VARCHAR(100) DEFAULT NULL,
+	`Direccion_negocio` VARCHAR(100) DEFAULT NULL,
+	`Num_ruc` VARCHAR(45) DEFAULT NULL,
+	`Nombre_admin` VARCHAR(45) DEFAULT NULL,
+	`Telefono` VARCHAR(10) DEFAULT NULL,
+	PRIMARY KEY (`IDinfogeneral`)
 );
 
 -- TABLA Logs
-CREATE TABLE `logs` (
-	`idlogs` int NOT NULL AUTO_INCREMENT,
-	`descriocion` varchar(200) DEFAULT NULL,
-	PRIMARY KEY (`idlogs`)
+CREATE TABLE `Logs` (
+	`IDlogs` INT NOT NULL AUTO_INCREMENT,
+	`Descripcion` VARCHAR(200) DEFAULT NULL,
+	PRIMARY KEY (`IDlogs`)
 );
 
 
@@ -126,13 +126,10 @@ INSERT INTO Tipo_Usuarios VALUES(NULL, 'Empleado');
 
 INSERT INTO Usuarios VALUES (NULL,'Kevin Munguia','admin','05fe7461c607c33229772d402505601016a7d0ea',1);
 
--- INSERT INTO Usuarios VALUES (NULL,'Jeremy','admin','123',1);
-
 INSERT INTO Clientes VALUES (NULL, '--', NULL, NULL, NULL);
--- -----------------------------------------------------------------PROCEDURES-----------------------------------------------------------------
+-- ---------------------------------------------------------------------- PROCEDURES ----------------------------------------------------------------------
 
 -- INSERTAR Producto
-
 DELIMITER //
 	CREATE PROCEDURE Insertar_Producto(_Codigo VARCHAR(45), _Nombre VARCHAR(100), _Existencias INT, _Precio_Compra DOUBLE, _Precio_Venta DOUBLE, _Observacion VARCHAR(200), _ID_Proveedor INT)
 	BEGIN
@@ -144,7 +141,6 @@ DELIMITER ;
 
 
 -- ACTUALIZAR Producto
-
 DELIMITER //
 	CREATE PROCEDURE Actualizar_Producto(_ID_Producto INT, _Codigo VARCHAR(45), _Nombre VARCHAR(100), _Existencias INT, _Precio_Compra DOUBLE, _Precio_Venta DOUBLE, _Observacion VARCHAR(200), _ID_Proveedor INT)
 	BEGIN
@@ -172,63 +168,9 @@ CALL Insertar_Producto(0002, 'Martillo', 10, 100.5, 120.0, '--', 1);
 CALL Insertar_Producto(0003, 'Cinta', 30, 10.3, 14.0, '--', 1);
 CALL Insertar_Producto(0004, 'Alicate', 13, 56.2, 60.0, '--', 1);
 
--- -----------------------------------------------------------------FACTURACION-----------------------------------------------------------------
+-- -------------------------------------------------------------------- PROCEDURES DE FACTURACION --------------------------------------------------------------------
 		
--- REALIZAR Facturación de los prodcutos con el ID de la factura (Se pasa la cantidad del producto, el precio del producto, el ID del producto y el ID de la factura que creaste)
-
-DELIMITER //
-	CREATE PROCEDURE Facturar_Productos(_Cantidad INT, _Precio DOUBLE, _Descuento DOUBLE, _ID_Producto INT, _ID_Factura INT)
-	BEGIN
-		DECLARE Total DOUBLE;
-
-		IF (_Descuento = 0.00) THEN
-			SET Total = _Cantidad * _Precio;
-		ELSE 
-			SET Total = (_Cantidad * _Precio) - _Descuento;
-		END IF;
-
-		INSERT INTO Detalle_Factura VALUES(NULL, _Cantidad, _Precio, _Descuento, Total, _ID_Producto, _ID_Factura);
-		UPDATE Productos SET Existencias=(Existencias - _Cantidad) WHERE ID = _ID_Producto;
-		UPDATE Productos SET Precio_Total = (Precio_Venta * Existencias) WHERE ID  = _ID_Producto;
-		
-	END//
-DELIMITER ;
-
-/*
-DELIMITER //
-	CREATE PROCEDURE Insertar_Factura(_Fecha DATETIME, _ID_Usuario INT, _ID_Cliente INT)
-	BEGIN
-		DECLARE Codigo_Fac INT;
-        		IF (SELECT Codigo_Fac FROM Facturas) = 0 THEN 
-				INSERT INTO Facturas (Fecha, ID_Usuario, ID_Cliente) VALUES(_Fecha, _ID_Usuario, _ID_Cliente);
-				UPDATE Facturas SET Codigo_Fac = Codigo_Fac + 1;
-        		ELSE 
-				INSERT INTO Facturas (Fecha, ID_Usuario, ID_Cliente) VALUES(_Fecha, _ID_Usuario, _ID_Cliente);
-				SET Codigo_Fac = CONVERT((SELECT ID FROM Facturas ORDER BY ID DESC LIMIT 1), UNSIGNED);
-				UPDATE Facturas SET Codigo_Fac = Codigo_Fac + 1 WHERE ID = Codigo_Fac;
-    			END IF;
-	END//
-DELIMITER ;
-*/
-
-/*
-DELIMITER //
-	CREATE PROCEDURE Insertar_Factura(_Fecha DATETIME, _ID_Usuario INT, _ID_Cliente INT)
-	BEGIN
-		DECLARE Aux_Codigo INT;
-
-        	IF (SELECT ID FROM Facturas) IS NULL THEN 
-			INSERT INTO Facturas (Codigo_Fac, Fecha, ID_Usuario, ID_Cliente) VALUES(1, _Fecha, _ID_Usuario, _ID_Cliente);
-		ELSE
-			SET Aux_Codigo = CONVERT((SELECT Codigo_Fac FROM Facturas ORDER BY ID DESC LIMIT 1), UNSIGNED INT);
-			SELECT Aux_Codigo;
-			INSERT INTO Facturas (Codigo_Fac, Fecha, ID_Usuario, ID_Cliente) VALUES((Aux_Codigo + 1), _Fecha, _ID_Usuario, _ID_Cliente);
-		END IF;
-
-	END//
-DELIMITER ;
-*/
-
+-- Insertar nueva Factura con datos NULL
 DELIMITER //
 	CREATE PROCEDURE Insertar_Factura(_Codigo_Fac INT, _Fecha DATETIME, _ID_Usuario INT, _ID_Cliente INT)
 	BEGIN
@@ -237,6 +179,34 @@ DELIMITER //
 	END//
 DELIMITER ;
 
+
+-- Facturación de los prodcutos con el ID de la factura
+DELIMITER //
+	CREATE PROCEDURE Facturar_Productos(_Cantidad INT, _Precio DOUBLE, _ID_Producto INT, _ID_Factura INT)
+	BEGIN
+		DECLARE Total DOUBLE;
+
+		SET Total = _Cantidad * _Precio;
+
+		INSERT INTO Detalle_Factura VALUES(NULL, _Cantidad, _Precio, Total, _ID_Producto, _ID_Factura);
+		UPDATE Productos SET Existencias=(Existencias - _Cantidad) WHERE ID = _ID_Producto;
+		UPDATE Productos SET Precio_Total = (Precio_Venta * Existencias) WHERE ID  = _ID_Producto;
+		
+	END//
+DELIMITER ;
+
+
+-- Eliminar un producto que no desee facturar y devolver la cantidad del producto
+DELIMITER //
+	CREATE PROCEDURE Eliminar_Producto_Facturado(ID_Detalle_Factura INT, ID_Producto INT, _Cantidad INT)
+	BEGIN
+		UPDATE Productos SET Existencias=(Existencias + _Cantidad) WHERE ID = ID_Producto;
+		DELETE FROM Detalle_Factura WHERE ID = ID_Detalle_Factura;
+	END//
+DELIMITER ;
+
+
+-- Mostrar el último codigo de una factura realizada
 DELIMITER //
 	CREATE PROCEDURE Mostrar_Codigo()
 	BEGIN
@@ -250,14 +220,10 @@ DELIMITER //
 	END//
 DELIMITER ;
 
--- INSERT INTO Facturas (Fecha, ID_Usuario, ID_Cliente) VALUES('17/04/23', 1, 1);
--- CALL Insertar_Factura(0, '17/04/23', 1, 1);
--- CALL Mostrar_Codigo();
 
--- REALIZAR Facturación final (Acá se actualizan los campo añadiendo los campos faltantes de la Factura, se pasa el descuento realizado, el subtotal (Es el total del precio de todos los productos realizados), el efectivo con el que se paga y el ID de la factura)
-
+-- Facturación final
 DELIMITER //
-	CREATE PROCEDURE Facturacion_Final(_Descuento DOUBLE, _Subtotal DOUBLE, _Efectivo DOUBLE, _ID_Factura INT)
+	CREATE PROCEDURE Facturacion_Final(_Descuento DOUBLE, _Subtotal DOUBLE, _Efectivo DOUBLE, _ID_Factura INT, _TipoPago VARCHAR(50))
 	BEGIN
 		DECLARE Total DOUBLE;
 		DECLARE Vuelto DOUBLE;
@@ -269,26 +235,12 @@ DELIMITER //
 		END IF;
 		SET Vuelto = _Efectivo - Total;
 		
-		UPDATE Facturas SET Descuento = _Descuento, Subtotal = _Subtotal, Total_Final = Total, Efectivo = _Efectivo, Devolucion = Vuelto WHERE ID = _ID_Factura;
-
-		
-	END//
-DELIMITER ;
-
-
--- Eliminar un producto que no desee facturar y devolver la cantidad del producto.
-
-DELIMITER //
-	CREATE PROCEDURE Eliminar_Producto_Facturado(ID_Detalle_Factura INT, ID_Producto INT, _Cantidad INT)
-	BEGIN
-		UPDATE Productos SET Existencias=(Existencias + _Cantidad) WHERE ID = ID_Producto;
-		DELETE FROM Detalle_Factura WHERE ID = ID_Detalle_Factura;
+		UPDATE Facturas SET Descuento = _Descuento, Subtotal = _Subtotal, Total_Final = Total, Efectivo = _Efectivo, Devolucion = Vuelto, Tipo_Pago = _TipoPago WHERE ID = _ID_Factura;	
 	END//
 DELIMITER ;
 
 
 -- Eliminar factura y detalle facturas 
-
 DELIMITER //
 	CREATE PROCEDURE Eliminar_Factura(_ID_Factura INT)
 	BEGIN
@@ -299,7 +251,6 @@ DELIMITER ;
 
 
 -- Cancelar factura
-
 DELIMITER //
 	CREATE PROCEDURE Cancelar_Factura(_ID_Aux INT)
 	BEGIN
@@ -309,9 +260,10 @@ DELIMITER ;
 
 
 
+
 -- -----------------------------------------------------------------CONSULTAS-----------------------------------------------------------------
 -- Mostrar todos los productos
-CREATE VIEW Mostrar_Producto AS SELECT a.ID, a.Codigo, a.Nombre AS 'Producto', a.Existencias, a.Precio_Compra, a.Precio_Venta, a.Precio_Total, a.Observacion, b.Nombre AS 'Proveedor' FROM Productos a INNER JOIN Proveedor b ON a.ID_Proveedor = b.ID;
+CREATE VIEW Mostrar_Producto AS SELECT a.ID, a.Codigo AS 'Código', a.Nombre AS 'Producto', a.Existencias, a.Precio_Compra AS 'Precio de compra', a.Precio_Venta AS 'Precio de venta', ROUND(a.Precio_Total, 2) AS 'Precio total', a.Observacion AS 'Observaciones', b.Nombre AS 'Proveedores' FROM Productos a INNER JOIN Proveedor b ON a.ID_Proveedor = b.ID;
 
 -- Sumar los ingresos obtenidos de una determinada fecha
 -- SELECT SUM(Total_Final) AS "Total ingresado por fecha" FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '2022/08/10';
@@ -347,8 +299,36 @@ DELIMITER ;
 
 
 -- Mostrar facturación con campos especificos
-CREATE VIEW Mostrar_Factura AS SELECT c.ID, c.Fecha, d.Nombre AS 'Nombre cliente', SUM(a.cantidad), c.Total_Final, c.Efectivo, c.Devolucion, e.Nombre AS 'Nombre empleado' FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Usuarios e ON c.ID_Usuario = e.ID GROUP BY c.ID;
+CREATE VIEW Mostrar_Factura AS SELECT c.Codigo_Fac AS 'Codigo', c.Fecha, d.Nombre AS 'Nombre cliente', SUM(a.Cantidad) AS 'Cantidad de productos', c.Tipo_Pago AS 'Tipo de pago', c.Total_Final AS 'Total Final', c.Efectivo, c.Devolucion, e.Nombre AS 'Nombre empleado' FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Usuarios e ON c.ID_Usuario = e.ID WHERE c.Total_Final IS NOT NULL AND a.Cantidad IS NOT NULL AND c.Efectivo IS NOT NULL GROUP BY c.ID;
 
 
 -- Mostrar facturación con campos especificos (Pidiento un mes de referencia)
 -- SELECT c.ID, c.Fecha, d.Nombre, SUM(a.cantidad), c.Total_Final, c.Efectivo, c.Devolucion, e.Nombre FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID RIGHT JOIN Clientes d ON c.ID_Cliente = d.ID RIGHT JOIN Usuarios e ON c.ID_Usuario = e.ID WHERE month(fecha) = 8 GROUP BY c.ID;
+
+
+-- Mostrar el total de facturas realizadas en el dia
+DELIMITER //
+	CREATE PROCEDURE Total_FacturasRealizadas(_Fecha DATETIME)
+	BEGIN
+		IF (SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT Codigo_Fac) AS Facturas FROM Facturas WHERE Codigo_Fac != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY Codigo_Fac)AS Subconsulta) IS NULL THEN
+			SELECT 0;
+		ELSE 
+			SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT Codigo_Fac) AS Facturas FROM Facturas WHERE Codigo_Fac != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY Codigo_Fac)AS Subconsulta;
+		END IF;
+	END //
+DELIMITER ;
+
+-- Total vendido de los ultimos 5 días
+
+-- Total vendido por mes
+SELECT MONTH(Fecha) AS mes, SUM(Total_Final) AS Facturas
+FROM Facturas
+GROUP BY MONTH(Fecha);
+
+-- Total vendido por día
+
+-- Verificar el ingreso de comillas en la parte de ingresar producto
+
+
+
+

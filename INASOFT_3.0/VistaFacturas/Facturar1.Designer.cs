@@ -54,6 +54,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.btnAceppt = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -148,6 +149,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.Controls.Add(this.button1);
             this.guna2GroupBox1.Controls.Add(this.TxtBuscar_Clientes);
             this.guna2GroupBox1.Controls.Add(this.Cbx_Clientes);
             this.guna2GroupBox1.Controls.Add(this.txtIdUser);
@@ -344,6 +346,25 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2DragControl1.TargetControl = this.panel1;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Silver;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(167, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 34);
+            this.button1.TabIndex = 81;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            // 
             // Facturar1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,5 +420,6 @@ namespace INASOFT_3._0.VistaFacturas
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         public Guna.UI2.WinForms.Guna2TextBox TxtBuscar_Clientes;
         private System.Windows.Forms.ComboBox Cbx_Clientes;
+        public System.Windows.Forms.Button button1;
     }
 }
