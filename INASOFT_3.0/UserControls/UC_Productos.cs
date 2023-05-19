@@ -23,7 +23,7 @@ namespace INASOFT_3._0.UserControls
             CargarTablaProduct(null);
             TotalProductos();
             CapitalInvertido();
-            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
@@ -54,8 +54,8 @@ namespace INASOFT_3._0.UserControls
                     {
                         while (reader.Read())
                         {
-                            double d = Convert.ToDouble(reader.GetString(0), CultureInfo.InvariantCulture);
-                            lbCapital.Text = d.ToString("0,0.00", CultureInfo.InvariantCulture);
+                            //double d = Convert.ToDouble(reader.GetString(0), CultureInfo.InvariantCulture);
+                            lbCapital.Text = reader.GetString(0); //d.ToString("0,0.00", CultureInfo.InvariantCulture);
                         }
                     }
                 }

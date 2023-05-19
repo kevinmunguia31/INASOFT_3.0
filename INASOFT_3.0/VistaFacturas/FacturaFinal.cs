@@ -24,6 +24,7 @@ namespace INASOFT_3._0.VistaFacturas
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
             txtIdFactura.Text = ctrlFactura.ID_Factura().ToString();
             lbUser.Text = Sesion.nombre;
+            Txt_descuento.Text = "0";
         }
 
         private void InfoNegocio()

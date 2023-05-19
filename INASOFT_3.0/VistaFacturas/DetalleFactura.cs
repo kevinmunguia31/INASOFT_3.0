@@ -259,6 +259,9 @@ namespace INASOFT_3._0.VistaFacturas
                     lbProductName.Text = ctrlProductos.Nombre_Producto(id);
                     lbExistencias.Text = ctrlProductos.Existencias_Producto(id).ToString();
                     txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
+
+                    SpinCantidad.Value = Convert.ToDecimal(lbExistencias.Text);
+                    
                 }
             }
             catch (Exception ex)

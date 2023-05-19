@@ -100,5 +100,28 @@ namespace INASOFT_3._0.UserControls
         {
 
         }
+
+        private void dataGridFatura_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void dataGridFatura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridFatura.Columns.IndexOf(GB))
+            {
+                DetailsInvoice frm = new DetailsInvoice();
+                frm.lbClient.Text = dataGridFatura.CurrentRow.Cells[2].Value.ToString();
+                frm.lbFecha.Text = dataGridFatura.CurrentRow.Cells[1].Value.ToString();
+                frm.lbChange.Text = dataGridFatura.CurrentRow.Cells[7].Value.ToString();
+                frm.lbRecivied.Text = dataGridFatura.CurrentRow.Cells[6].Value.ToString();
+                frm.lbTotal.Text = dataGridFatura.CurrentRow.Cells[5].Value.ToString();
+                frm.lbUser.Text = dataGridFatura.CurrentRow.Cells[8].Value.ToString();
+                frm.lbCodFactura.Text = "FAC" + dataGridFatura.CurrentRow.Cells[0].Value.ToString();
+                frm.codigoFact = dataGridFatura.CurrentRow.Cells[0].Value.ToString();
+                MessageBox.Show(dataGridFatura.CurrentRow.Cells[0].Value.ToString());
+                frm.ShowDialog();
+            }
+        }
     }
 }

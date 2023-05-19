@@ -129,11 +129,23 @@ namespace INASOFT_3._0.UserControls
 
             try
             {
-                MySqlCommand comando = new MySqlCommand("INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + txtNameNgo.Text + "','" + txtAddress.Text + "','" + txtRUC.Text + "','" + txtNameAdmin.Text + "','" + txtTelefono.Text + "', @logoNegocio)", conexionDB);
-                comando.Parameters.AddWithValue("logoNegocio", aBayte);
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Datos Guardados con Exito");
-                pbImagen.Image = null;
+                if(txtNameAdmin.Text == "" && txtNameNgo.Text == "" && txtRUC.Text == "" && txtId.Text == "" && txtTelefono.Text == "")
+                {
+                    MySqlCommand comando = new MySqlCommand("INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + txtNameNgo.Text + "','" + txtAddress.Text + "','" + txtRUC.Text + "','" + txtNameAdmin.Text + "','" + txtTelefono.Text + "', @logoNegocio)", conexionDB);
+                    comando.Parameters.AddWithValue("logoNegocio", aBayte);
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Datos Guardados con Exito");
+                    pbImagen.Image = null;
+
+                }else if (txtNameAdmin.Text != "" && txtNameNgo.Text != "" && txtRUC.Text != "" && txtId.Text != "" && txtTelefono.Text != "")
+                {
+                    MySqlCommand comando = new MySqlCommand("UPDATE infogeneral SET nombre_negocio='" + txtNameNgo.Text + "', direccion_negocio='" + txtAddress.Text + "', num_ruc='" + txtRUC.Text + "', nombre_admin='" + txtNameAdmin.Text + "', telefono='" + txtTelefono.Text + "', logoNegocio=@logoNegocio WHERE IDinfogeneral= '" + txtId.Text + "'", conexionDB);
+                    comando.Parameters.AddWithValue("logoNegocio", aBayte);
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Datos Actualizados con Exito");
+                    pbImagen.Image = null;
+                }
+                
             }
             catch (MySqlException ex)
             {
