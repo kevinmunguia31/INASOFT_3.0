@@ -72,13 +72,18 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAceppt_Click(object sender, EventArgs e)
         {
-            if(Cbx_Clientes.SelectedIndex == -1)
+            if (Cbx_Clientes.SelectedIndex == -1)
             {
                 MessageDialogInfo.Show("Tiene que seleccionar a un cliente", "Importante");
             }
             else
             {
-                Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+                DetalleFactura frm = new DetalleFactura();
+                frm.lbClienteName.Text = lbNombre.Text;
+                frm.txtIdCliente.Text = txtIdCliente.Text;
+                frm.ShowDialog();
+                this.Dispose();
+                /*Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
                 int cod_fac = ctrlFactura.Codigo_Factura();
                 //string sql = "CALL Insertar_Factura("+ cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
                 string sql = "CALL Insertar_Factura(" + cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
@@ -98,7 +103,7 @@ namespace INASOFT_3._0.VistaFacturas
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
-                }
+                }*/
             }
         }
 

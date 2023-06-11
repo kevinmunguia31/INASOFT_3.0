@@ -32,7 +32,7 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
-
+        /*
         public int Codigo_Factura()
         {
             int id_codigo = 0;
@@ -52,7 +52,7 @@ namespace INASOFT_3._0.Controladores
             }
             return id_codigo;
         }
-
+        */
         public int ID_Factura()
         {
             int id_factura = 0;

@@ -65,7 +65,6 @@ CREATE TABLE `Productos` (
 -- TABLA Factura
 CREATE TABLE `Facturas`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
-	`Codigo_Fac` INT DEFAULT 0,
 	`Fecha` DATETIME NOT NULL,
 	`Descuento` DOUBLE DEFAULT NULL,
 	`Subtotal` DOUBLE DEFAULT NULL,
@@ -162,29 +161,19 @@ DELIMITER ;
 */
 
 
-
-INSERT INTO Proveedor VALUES (NULL, 'HALCOM', '23154365', 'Chinandega', 001);
-INSERT INTO Proveedor VALUES (NULL, 'PINTURAS LANCO', '23154365', 'Managua', 002);
-INSERT INTO Proveedor VALUES (NULL, 'SINSA', '23154365', 'Managua', 003);
-INSERT INTO Proveedor VALUES (NULL, 'CEMENTERA JAVIER', '23154365', 'Managua', 004);
-
-CALL Insertar_Producto(00001, 'TINSETICO MURO SECO BLANCO', 10, 190, 240.0, '--', 1);
-CALL Insertar_Producto(00002, 'CANAL AMARRE 1 5/8 x 10', 100, 68, 75.0, '--', 1);
-CALL Insertar_Producto(00003, 'CANAL AMARRE 2 1/2 x 10', 100, 68, 80.0, '--', 1);
-CALL Insertar_Producto(00004, 'CANAL AMARRE 3 5/8 x 10', 100, 68, 90.0, '--', 1);
-CALL Insertar_Producto(00005, 'LAMINA GYPSUM REG', 200, 315.0, 345.0, '--', 3);
-CALL Insertar_Producto(00006, 'ESQUINERO  VINILICO 1 1/4 X 10', 100, 45, 68.0, '--', 3);
-CALL Insertar_Producto(00007, 'CEMENTO HOLCIM', 100, 425.0, 430.0, '--', 4);
-CALL Insertar_Producto(00008, 'ANTICORROSIVO ROJO GALON', 5, 550.0, 750.0, '--', 2);
-
+INSERT INTO Proveedor VALUES (NULL, 'Pali', '23154365', 'Chinandega', 001);
+CALL Insertar_Producto(0001, 'Tornillo', 3, 2.3, 4.0, '--', 1);
+CALL Insertar_Producto(0002, 'Martillo', 10, 100.5, 120.0, '--', 1);
+CALL Insertar_Producto(0003, 'Cinta', 30, 10.3, 14.0, '--', 1);
+CALL Insertar_Producto(0004, 'Alicate', 13, 56.2, 60.0, '--', 1);
 
 -- -------------------------------------------------------------------- PROCEDURES DE FACTURACION --------------------------------------------------------------------
 		
 -- Insertar nueva Factura con datos NULL
 DELIMITER //
-	CREATE PROCEDURE Insertar_Factura(_Codigo_Fac INT, _Fecha DATETIME, _ID_Usuario INT, _ID_Cliente INT)
+	CREATE PROCEDURE Insertar_Factura(_Fecha DATETIME, _ID_Usuario INT, _ID_Cliente INT)
 	BEGIN
-		INSERT INTO Facturas (Codigo_Fac, Fecha, ID_Usuario, ID_Cliente) VALUES((_Codigo_Fac + 1), _Fecha, _ID_Usuario, _ID_Cliente);
+		INSERT INTO Facturas (Fecha, ID_Usuario, ID_Cliente) VALUES(_Fecha, _ID_Usuario, _ID_Cliente);
 
 	END//
 DELIMITER ;
@@ -216,16 +205,16 @@ DELIMITER //
 DELIMITER ;
 
 
--- Mostrar el último codigo de una factura realizada
+-- Mostrar el último ID de una factura realizada
 DELIMITER //
-	CREATE PROCEDURE Mostrar_Codigo()
+	CREATE PROCEDURE Mostrar_ID()
 	BEGIN
-		DECLARE Aux_Codigo INT;
-		SET Aux_Codigo = CONVERT((SELECT Codigo_Fac FROM Facturas ORDER BY ID DESC LIMIT 1), UNSIGNED INT);
-		IF (SELECT Aux_Codigo) IS NULL THEN 
+		DECLARE Aux_ID INT;
+		SET Aux_ID = CONVERT((SELECT ID FROM Facturas ORDER BY ID DESC LIMIT 1), UNSIGNED INT);
+		IF (SELECT Aux_ID ) IS NULL THEN 
 			SELECT 0;
 		ELSE
-			SELECT Aux_Codigo;
+			SELECT Aux_ID;
 		END IF;
 	END//
 DELIMITER ;
@@ -309,7 +298,7 @@ DELIMITER ;
 
 
 -- Mostrar facturación con campos especificos
-CREATE VIEW Mostrar_Factura AS SELECT c.Codigo_Fac AS 'Codigo', c.Fecha, d.Nombre AS 'Nombre cliente', SUM(a.Cantidad) AS 'Cantidad de productos', c.Tipo_Pago AS 'Tipo de pago', c.Total_Final AS 'Total Final', c.Efectivo, c.Devolucion, e.Nombre AS 'Nombre empleado' FROM Detalle_Factura a RIGHT JOIN Productos b ON a.ID_Producto = b.ID RIGHT JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Usuarios e ON c.ID_Usuario = e.ID WHERE c.Total_Final IS NOT NULL AND a.Cantidad IS NOT NULL AND c.Efectivo IS NOT NULL GROUP BY c.ID;
+CREATE VIEW Mostrar_Factura AS SELECT a.ID AS 'Codigo', a.Fecha, c.Nombre AS 'Nombre cliente', SUM(b.Cantidad) AS 'Cantidad de productos', a.Tipo_Pago AS 'Tipo de pago', a.Total_Final AS 'Total Final', a.Efectivo, a.Devolucion, d.Nombre AS 'Nombre empleado' FROM Facturas a INNER JOIN Detalle_Factura b ON a.ID = b.ID_Factura INNER JOIN Clientes c ON a.ID_Cliente = c.ID INNER JOIN Usuarios d ON a.ID_Usuario = d.ID WHERE a.Total_Final IS NOT NULL GROUP BY a.ID;
 
 
 -- Mostrar facturación con campos especificos (Pidiento un mes de referencia)
@@ -320,10 +309,10 @@ CREATE VIEW Mostrar_Factura AS SELECT c.Codigo_Fac AS 'Codigo', c.Fecha, d.Nombr
 DELIMITER //
 	CREATE PROCEDURE Total_FacturasRealizadas(_Fecha DATETIME)
 	BEGIN
-		IF (SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT Codigo_Fac) AS Facturas FROM Facturas WHERE Codigo_Fac != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY Codigo_Fac)AS Subconsulta) IS NULL THEN
+		IF (SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT ID) AS Facturas FROM Facturas WHERE ID != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY ID)AS Subconsulta) IS NULL THEN
 			SELECT 0;
 		ELSE 
-			SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT Codigo_Fac) AS Facturas FROM Facturas WHERE Codigo_Fac != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY Codigo_Fac)AS Subconsulta;
+			SELECT SUM(Facturas) AS Suma_COUNT FROM (SELECT COUNT(DISTINCT ID) AS Facturas FROM Facturas WHERE ID != 0 AND DATE_FORMAT(Fecha, '%Y/%m/%d') = _Fecha GROUP BY ID)AS Subconsulta;
 		END IF;
 	END //
 DELIMITER ;
@@ -336,9 +325,10 @@ FROM Facturas
 GROUP BY MONTH(Fecha);
 
 -- Total vendido por día
-SELECT MONTH(Fecha) AS Mes, SUM(Total_Final) AS Total_Vendido FROM Facturas GROUP BY MONTH(Fecha);
 
--- Verificar el ingreso de comillas en la parte de ingresar producto
+-- Verificar el ingreso de comillas en la parte de ingresar producto. (Cambio de variable @)
+-- Ultimos clientes registrados
+-- Ultima factura con el total
 
 
 

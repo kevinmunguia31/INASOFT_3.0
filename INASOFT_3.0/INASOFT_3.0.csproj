@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Conexion.cs" />
+    <Compile Include="Modelos\Detalle_Factura.cs" />
     <Compile Include="Modelos\InfoNegocio.cs" />
     <Compile Include="Modelos\ModeloUsers.cs" />
     <Compile Include="Modelos\Productos.cs" />

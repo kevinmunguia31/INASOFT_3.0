@@ -16,15 +16,17 @@ namespace INASOFT_3._0.VistaFacturas
 {
     public partial class DetalleFactura : Form
     {
+        public DataTable dataTable = new DataTable();
         public DetalleFactura()
         {
             InitializeComponent();
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            lbIdFactura.Text = ctrlFactura.Codigo_Factura().ToString();
-            txtIdFactura.Text = ctrlFactura.ID_Factura().ToString();
+            lbIdFactura.Text = (int.Parse(ctrlFactura.ID_Factura().ToString()) + 1).ToString();
+            txtIdFactura.Text = (int.Parse(ctrlFactura.ID_Factura().ToString()) + 1).ToString();
 
             Cargar_Productos();
             Cbx_Productos.SelectedIndex = -1;
+            cargar_tabla();
         }
 
         private void Cargar_Productos()
@@ -72,10 +74,36 @@ namespace INASOFT_3._0.VistaFacturas
             finally { conexionBD.Close(); }
         }
         */
+        public void cargar_tabla()
+        {
+            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("Nombre Producto");
+            dataTable.Columns.Add("Cantidad");
+            dataTable.Columns.Add("Precio");
+            dataTable.Columns.Add("Total");
 
+            dataGridView1.DataSource = dataTable;
+        }
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + txtPrecio.Text + "','" + txtIdProduc.Text + "','" + txtIdFactura.Text + "')";
+            //List<Modelos.Detalle_Factura> personas = new List<Modelos.Detalle_Factura>();
+
+            // Crea una nueva fila y asigna los valores de las columnas
+            DataRow newRow = dataTable.NewRow();
+            newRow[0] = txtIdProduc.Text;
+            newRow[1] = lbProductName.Text;
+            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[3] = txtPrecio.Text;
+            newRow[4] = double.Parse(txtPrecio.Text) * int.Parse(SpinCantidad.Value.ToString());
+            // Asigna valores a las demás columnas de la fila según sea necesario
+
+            // Agrega la fila al DataTable
+            dataTable.Rows.Add(newRow);
+
+            // Asigna el DataTable como origen de datos del DataGridView
+            dataGridView1.DataSource = dataTable;
+            limpiar();
+            /*string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + txtPrecio.Text + "','" + txtIdProduc.Text + "','" + txtIdFactura.Text + "')";
             try
             {
 
@@ -117,24 +145,31 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+            */
             Subtotal();
+        }
+
+        public void limpiar()
+        {
+            txtPrecio.Text = "";
+            lbExistencias.Text = "";
+            lbProductName.Text = "";
+            Cbx_Productos.SelectedIndex = -1;
         }
         public void Subtotal()
         {
             float subtotal = 0;
-            int conteo = 0;
 
-            conteo = dataGridView1.RowCount; //Cuenta los productos en la tabla
-
-            for (int i = 0; i < conteo; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                subtotal += float.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                subtotal += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
             }
             lbSubtotal.Text = subtotal.ToString();
         }
 
         private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             int id_producto = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
             int cantidad = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
             string sql = "CALL Eliminar_Producto_Facturado('" + txtIdDetalleFactura.Text + "','" + id_producto + "','" + cantidad + "')";
@@ -155,11 +190,12 @@ namespace INASOFT_3._0.VistaFacturas
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-            }
+            }*/
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             int id = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
             MySqlDataReader reader = null;
             string consulta = "SELECT id FROM detalle_factura WHERE id_producto='" + id + "'";
@@ -186,10 +222,12 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show("Error Al Buscar: " + ex.Message);
             }
             finally { conexionBD.Close(); }
+        */
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             int id = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
             MySqlDataReader reader = null;
             string consulta = "SELECT ID FROM Detalle_Factura WHERE ID_Producto='" + id + "'";
@@ -216,11 +254,47 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show("Error Al Buscar: " + ex.Message);
             }
             finally { conexionBD.Close(); }
+            */
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            
+            string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
+            string hora = DateTime.Now.ToString("hh:mm:ss");
+            string Fecha_final = fecha + " " + hora;
+            string user = Sesion.id.ToString();
+
+
+
+
+            string sql = "CALL Insertar_Factura('" + Fecha_final + "', '" + user + "', '" + txtIdCliente.Text + "');";
+
+            try
+            {
+                MySqlConnection conexioBD = Conexion.getConexion();
+                conexioBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                comando.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+            int id_factura = ctrlFactura.ID_Factura();
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+                //MessageBox.Show(int.Parse(row.Cells[2].Value.ToString())+ ", " + double.Parse(row.Cells[3].Value.ToString()) + ", " + int.Parse(row.Cells[0].Value.ToString()) + ", "+ id_factura);
+                string sql_1 = "CALL Facturar_Productos(" + int.Parse(row.Cells[2].Value.ToString()) + ", " + double.Parse(row.Cells[3].Value.ToString()) + ", " + int.Parse(row.Cells[0].Value.ToString()) + ", " + id_factura + ")";
+
+                MySqlConnection conexioBD = Conexion.getConexion();
+                conexioBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql_1, conexioBD);
+                comando.ExecuteNonQuery();
+            }
+
+            MessageDialogInfo.Show("Produsctos Agregados a la Factura", "AVISO");
             FacturaFinal frm = new FacturaFinal();
             frm.lbIdFactura.Text = lbIdFactura.Text;
             frm.lbNombreCliente.Text = lbClienteName.Text;
@@ -261,7 +335,7 @@ namespace INASOFT_3._0.VistaFacturas
                     txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
 
                     SpinCantidad.Value = Convert.ToDecimal(lbExistencias.Text);
-                    
+
                 }
             }
             catch (Exception ex)
@@ -274,5 +348,58 @@ namespace INASOFT_3._0.VistaFacturas
         {
             Cargar_Productos();
         }
+
+        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                }
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+        private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Borrar"))
+            {
+                id_pos = id_pos.Replace("Borrar", "");
+                Eliminar_Producto(int.Parse(id_pos));
+            }
+        }
+        private void Eliminar_Producto(int id_pos)
+        {
+            try
+            {
+                if (id_pos > -1 && id_pos != null)
+                {
+                    bool bandera = false;
+                    DialogResult resultado = MessageBox.Show("Seguro que desea eliminar el registro?", "Eliminar", MessageBoxButtons.YesNo);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        MessageBox.Show(id_pos.ToString());
+                        if (id_pos >= 0 && id_pos < dataGridView1.Rows.Count)
+                        {
+                            // Eliminar la fila del DataGridView
+                            //dataGridView1.Rows.RemoveAt(id_pos);
+                           
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex, "Error");
+            }
+        }
     }
 }
+
+ 

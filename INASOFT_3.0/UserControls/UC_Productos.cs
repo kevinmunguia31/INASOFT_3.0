@@ -40,7 +40,7 @@ namespace INASOFT_3._0.UserControls
         {
 
             MySqlDataReader reader = null;
-            string sql = "SELECT SUM(precio_total) FROM productos";
+            string sql = "SELECT ROUND(SUM(precio_total), 2) FROM productos";
 
             try
             {

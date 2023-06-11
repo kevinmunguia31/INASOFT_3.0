@@ -16,7 +16,7 @@ namespace INASOFT_3._0.VistaFacturas
 {
     public partial class DetailsInvoice : Form
     {
-        public string codigoFact;
+        public int codigoFact;
         public DetailsInvoice()
         {
             InitializeComponent();
@@ -65,7 +65,7 @@ namespace INASOFT_3._0.VistaFacturas
           
             //MySqlDataReader reader = null;
             //string sql = " SELECT a.Cantidad, b.Nombre, a.Precio, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE d.ID = '"+ dato +"' && a.ID_Factura = '" + idFact +"'";
-            string sql = "SELECT b.Nombre, a.Precio, a.Cantidad, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE c.Codigo_Fac = '" + codigoFact + "'";
+            string sql = "SELECT b.Nombre, a.Precio, a.Cantidad, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE c.ID = " + codigoFact + "";
 
             MySqlConnection conexioBD = Conexion.getConexion();
             conexioBD.Open();

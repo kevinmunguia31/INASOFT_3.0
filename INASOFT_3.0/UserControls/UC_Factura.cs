@@ -98,7 +98,11 @@ namespace INASOFT_3._0.UserControls
 
         private void Guna2Button1_Click(object sender, EventArgs e)
         {
-
+            DetalleFactura frm = new DetalleFactura();
+            frm.lbClienteName.Text = "";
+            frm.txtIdCliente.Text = "1";
+            frm.ShowDialog();
+            this.Dispose();
         }
 
         private void dataGridFatura_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -118,7 +122,7 @@ namespace INASOFT_3._0.UserControls
                 frm.lbTotal.Text = dataGridFatura.CurrentRow.Cells[5].Value.ToString();
                 frm.lbUser.Text = dataGridFatura.CurrentRow.Cells[8].Value.ToString();
                 frm.lbCodFactura.Text = "FAC" + dataGridFatura.CurrentRow.Cells[0].Value.ToString();
-                frm.codigoFact = dataGridFatura.CurrentRow.Cells[0].Value.ToString();
+                frm.codigoFact = int.Parse(dataGridFatura.CurrentRow.Cells[0].Value.ToString());
                 MessageBox.Show(dataGridFatura.CurrentRow.Cells[0].Value.ToString());
                 frm.ShowDialog();
             }
