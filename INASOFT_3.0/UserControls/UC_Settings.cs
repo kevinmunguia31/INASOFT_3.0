@@ -1,5 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
+using INASOFT_3._0.Properties;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -19,7 +20,7 @@ namespace INASOFT_3._0.UserControls
             CargarLogs();
         }
 
-        private void InfoNegocio()
+        private Image InfoNegocio()
         {
             /*MySqlDataReader reader = null;
             string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio FROM infogeneral";
@@ -60,9 +61,16 @@ namespace INASOFT_3._0.UserControls
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    MemoryStream ms = new MemoryStream((byte[])reader["logoNegocio"]);
-                    Bitmap bmp = new Bitmap(ms);
-                    pbImagen.Image = bmp;
+
+                    byte[] imagenBytes = (byte[])reader["logoNegocio"];
+                    using (MemoryStream stream = new MemoryStream(imagenBytes))
+                    {
+                        return Image.FromStream(stream);
+                        pbImagen.Image = Image.FromStream(stream);
+                    }
+
+                    
+
                     txtId.Text = reader["idinfogeneral"].ToString();
                     txtNameNgo.Text = reader["nombre_negocio"].ToString();
                     txtAddress.Text = reader["direccion_negocio"].ToString();
@@ -81,10 +89,12 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageBox.Show("Error:" + ex.Message);
             }
+            return null;
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
+            string rutaImagen = lbRuta.Text;
             /*bool bandera = false;
             InfoNegocio _info = new InfoNegocio();
 
@@ -120,9 +130,11 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
             }*/
-            MemoryStream ms = new MemoryStream();
+            /*MemoryStream ms = new MemoryStream();
             pbImagen.Image.Save(ms, ImageFormat.Jpeg);
-            byte[] aBayte = ms.ToArray();
+            byte[] aBayte = ms.ToArray();*/
+
+            byte[] imagenBytes = File.ReadAllBytes(rutaImagen);
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -132,7 +144,7 @@ namespace INASOFT_3._0.UserControls
                 if(txtNameAdmin.Text == "" && txtNameNgo.Text == "" && txtRUC.Text == "" && txtId.Text == "" && txtTelefono.Text == "")
                 {
                     MySqlCommand comando = new MySqlCommand("INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + txtNameNgo.Text + "','" + txtAddress.Text + "','" + txtRUC.Text + "','" + txtNameAdmin.Text + "','" + txtTelefono.Text + "', @logoNegocio)", conexionDB);
-                    comando.Parameters.AddWithValue("logoNegocio", aBayte);
+                    comando.Parameters.AddWithValue("logoNegocio", imagenBytes);
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Datos Guardados con Exito");
                     pbImagen.Image = null;
@@ -140,7 +152,7 @@ namespace INASOFT_3._0.UserControls
                 }else if (txtNameAdmin.Text != "" && txtNameNgo.Text != "" && txtRUC.Text != "" && txtId.Text != "" && txtTelefono.Text != "")
                 {
                     MySqlCommand comando = new MySqlCommand("UPDATE infogeneral SET nombre_negocio='" + txtNameNgo.Text + "', direccion_negocio='" + txtAddress.Text + "', num_ruc='" + txtRUC.Text + "', nombre_admin='" + txtNameAdmin.Text + "', telefono='" + txtTelefono.Text + "', logoNegocio=@logoNegocio WHERE IDinfogeneral= '" + txtId.Text + "'", conexionDB);
-                    comando.Parameters.AddWithValue("logoNegocio", aBayte);
+                    comando.Parameters.AddWithValue("logoNegocio", imagenBytes);
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Datos Actualizados con Exito");
                     pbImagen.Image = null;
@@ -162,6 +174,7 @@ namespace INASOFT_3._0.UserControls
 
             if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
             {
+                lbRuta.Text = ofdSeleccionar.FileName;
                 pbImagen.Image = Image.FromFile(ofdSeleccionar.FileName);
             }
         }

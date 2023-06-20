@@ -102,6 +102,7 @@ namespace INASOFT_3._0.VistaFacturas
 
             // Asigna el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dataTable;
+            Subtotal();
             limpiar();
             /*string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + txtPrecio.Text + "','" + txtIdProduc.Text + "','" + txtIdFactura.Text + "')";
             try
@@ -146,7 +147,7 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show(ex.Message.ToString());
             }
             */
-            Subtotal();
+            
         }
 
         public void limpiar()
@@ -160,7 +161,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             float subtotal = 0;
 
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 subtotal += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
             }
@@ -282,7 +283,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
             int id_factura = ctrlFactura.ID_Factura();
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 DataGridViewRow row = dataGridView1.Rows[i];
                 //MessageBox.Show(int.Parse(row.Cells[2].Value.ToString())+ ", " + double.Parse(row.Cells[3].Value.ToString()) + ", " + int.Parse(row.Cells[0].Value.ToString()) + ", "+ id_factura);
@@ -302,11 +303,12 @@ namespace INASOFT_3._0.VistaFacturas
             frm.txtIdCliente.Text = txtIdCliente.Text;
             frm.lbTotal.Text = lbSubtotal.Text;
             frm.ShowDialog();
+            this.Hide();
             this.Dispose();
         }
 
-        string[,] ListaProductos = new string[200, 10];
-        int fila = 0;
+        //string[,] ListaProductos = new string[200, 10];
+        //int fila = 0;
 
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
@@ -334,7 +336,7 @@ namespace INASOFT_3._0.VistaFacturas
                     lbExistencias.Text = ctrlProductos.Existencias_Producto(id).ToString();
                     txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
 
-                    SpinCantidad.Value = Convert.ToDecimal(lbExistencias.Text);
+                    SpinCantidad.Maximum = Convert.ToDecimal(lbExistencias.Text);
 
                 }
             }
@@ -398,6 +400,11 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox.Show("Error:" + ex, "Error");
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

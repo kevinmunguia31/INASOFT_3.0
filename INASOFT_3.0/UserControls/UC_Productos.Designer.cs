@@ -59,7 +59,6 @@ namespace INASOFT_3._0.UserControls
             this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbCapital = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lbCantiTota = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -106,6 +105,8 @@ namespace INASOFT_3._0.UserControls
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.lbProveedor);
             this.groupBox1.Controls.Add(this.lbObservaciones);
@@ -167,7 +168,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioTotal.AutoSize = true;
             this.lbPrecioTotal.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioTotal.Location = new System.Drawing.Point(796, 160);
+            this.lbPrecioTotal.Location = new System.Drawing.Point(758, 160);
             this.lbPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioTotal.Name = "lbPrecioTotal";
             this.lbPrecioTotal.Size = new System.Drawing.Size(33, 30);
@@ -177,11 +178,12 @@ namespace INASOFT_3._0.UserControls
             // lbPrecioVenta
             // 
             this.lbPrecioVenta.AutoSize = true;
-            this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioVenta.Location = new System.Drawing.Point(724, 105);
+            this.lbPrecioVenta.BackColor = System.Drawing.Color.PaleGreen;
+            this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecioVenta.Location = new System.Drawing.Point(692, 105);
             this.lbPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioVenta.Name = "lbPrecioVenta";
-            this.lbPrecioVenta.Size = new System.Drawing.Size(33, 30);
+            this.lbPrecioVenta.Size = new System.Drawing.Size(38, 30);
             this.lbPrecioVenta.TabIndex = 13;
             this.lbPrecioVenta.Text = ".....";
             // 
@@ -189,7 +191,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioCompra.AutoSize = true;
             this.lbPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioCompra.Location = new System.Drawing.Point(748, 52);
+            this.lbPrecioCompra.Location = new System.Drawing.Point(713, 50);
             this.lbPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioCompra.Name = "lbPrecioCompra";
             this.lbPrecioCompra.Size = new System.Drawing.Size(33, 30);
@@ -199,7 +201,9 @@ namespace INASOFT_3._0.UserControls
             // lbExistencias
             // 
             this.lbExistencias.AutoSize = true;
+            this.lbExistencias.BackColor = System.Drawing.Color.PapayaWhip;
             this.lbExistencias.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbExistencias.ForeColor = System.Drawing.Color.Red;
             this.lbExistencias.Location = new System.Drawing.Point(131, 160);
             this.lbExistencias.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbExistencias.Name = "lbExistencias";
@@ -258,9 +262,9 @@ namespace INASOFT_3._0.UserControls
             this.label10.Location = new System.Drawing.Point(528, 160);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(250, 30);
+            this.label10.Size = new System.Drawing.Size(222, 30);
             this.label10.TabIndex = 6;
-            this.label10.Text = "Precio Total (Exit*Unid): C$ ";
+            this.label10.Text = "Precio Total (Exit*Unid): ";
             // 
             // label6
             // 
@@ -269,9 +273,9 @@ namespace INASOFT_3._0.UserControls
             this.label6.Location = new System.Drawing.Point(528, 105);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(180, 30);
+            this.label6.Size = new System.Drawing.Size(156, 30);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Precio de Venta: C$";
+            this.label6.Text = "Precio de Venta: ";
             // 
             // label7
             // 
@@ -280,9 +284,9 @@ namespace INASOFT_3._0.UserControls
             this.label7.Location = new System.Drawing.Point(528, 52);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(201, 30);
+            this.label7.Size = new System.Drawing.Size(177, 30);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Precio de Compra: C$";
+            this.label7.Text = "Precio de Compra: ";
             // 
             // label4
             // 
@@ -319,6 +323,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // txtSearch
             // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Animated = true;
             this.txtSearch.BorderColor = System.Drawing.Color.Purple;
             this.txtSearch.BorderRadius = 10;
@@ -344,6 +349,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.BorderRadius = 10;
             this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -362,16 +368,17 @@ namespace INASOFT_3._0.UserControls
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lbCapital);
-            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.lbCantiTota);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(1561, 480);
+            this.groupBox2.Location = new System.Drawing.Point(1549, 485);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(241, 218);
+            this.groupBox2.Size = new System.Drawing.Size(241, 215);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             // 
@@ -380,24 +387,12 @@ namespace INASOFT_3._0.UserControls
             this.lbCapital.AutoSize = true;
             this.lbCapital.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCapital.Location = new System.Drawing.Point(6, 171);
+            this.lbCapital.Location = new System.Drawing.Point(5, 129);
             this.lbCapital.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCapital.Name = "lbCapital";
             this.lbCapital.Size = new System.Drawing.Size(35, 44);
             this.lbCapital.TabIndex = 4;
             this.lbCapital.Text = "0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(8, 128);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 44);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "C$";
             // 
             // label12
             // 
@@ -435,6 +430,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BorderRadius = 10;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -447,13 +443,14 @@ namespace INASOFT_3._0.UserControls
             this.btnAdd.Location = new System.Drawing.Point(1558, 9);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(243, 42);
+            this.btnAdd.Size = new System.Drawing.Size(232, 42);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Añadir Producto";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnRefresh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnRefresh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -501,7 +498,8 @@ namespace INASOFT_3._0.UserControls
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -509,7 +507,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -532,7 +530,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1758, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(1747, 399);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView1_CellFormatting);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
@@ -598,7 +596,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbCantiTota;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbCapital;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

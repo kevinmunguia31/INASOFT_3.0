@@ -38,7 +38,7 @@ namespace INASOFT_3._0.UserControls
         }
         public void CapitalInvertido()
         {
-
+            CultureInfo culturaLocal = CultureInfo.CurrentCulture;
             MySqlDataReader reader = null;
             string sql = "SELECT ROUND(SUM(precio_total), 2) FROM productos";
 
@@ -54,8 +54,8 @@ namespace INASOFT_3._0.UserControls
                     {
                         while (reader.Read())
                         {
-                            //double d = Convert.ToDouble(reader.GetString(0), CultureInfo.InvariantCulture);
-                            lbCapital.Text = reader.GetString(0); //d.ToString("0,0.00", CultureInfo.InvariantCulture);
+                            double d = Convert.ToDouble(reader.GetString(0), culturaLocal);
+                            lbCapital.Text = d.ToString("C", culturaLocal);
                         }
                     }
                 }
@@ -161,6 +161,7 @@ namespace INASOFT_3._0.UserControls
 
         private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
+            CultureInfo culturaLocal = CultureInfo.CurrentCulture;
             if (e.Button == MouseButtons.Left)
             {
                 int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
@@ -173,14 +174,14 @@ namespace INASOFT_3._0.UserControls
                     lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
 
                     //CASTEO DE DOBLE A MONEDA LOCAL
-                    double p = Convert.ToDouble(dataGridView1.Rows[pos].Cells[4].Value, CultureInfo.InvariantCulture);
-                    lbPrecioCompra.Text = p.ToString("0.00", CultureInfo.InvariantCulture);
+                    double p = Convert.ToDouble(dataGridView1.Rows[pos].Cells[4].Value, culturaLocal);
+                    lbPrecioCompra.Text = p.ToString("C", culturaLocal);
 
-                    double d = Convert.ToDouble(dataGridView1.Rows[pos].Cells[5].Value, CultureInfo.InvariantCulture);
-                    lbPrecioVenta.Text = d.ToString("0.00", CultureInfo.InvariantCulture);
+                    double d = Convert.ToDouble(dataGridView1.Rows[pos].Cells[5].Value, culturaLocal);
+                    lbPrecioVenta.Text = d.ToString("C", culturaLocal);
 
-                    double z = Convert.ToDouble(dataGridView1.Rows[pos].Cells[6].Value, CultureInfo.InvariantCulture);
-                    lbPrecioTotal.Text = z.ToString("0.00", CultureInfo.InvariantCulture);
+                    double z = Convert.ToDouble(dataGridView1.Rows[pos].Cells[6].Value, culturaLocal);
+                    lbPrecioTotal.Text = z.ToString("C", culturaLocal);
 
                     lbObservaciones.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
                     lbProveedor.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();

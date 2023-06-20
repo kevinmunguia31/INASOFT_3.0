@@ -1,12 +1,14 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,7 @@ namespace INASOFT_3._0.VistaFacturas
 {
     public partial class FacturaFinal : Form
     {
+        string imagen = "C:\\Users\\DELL 5410\\Desktop\\Ferreteria\\logo.png";
         public FacturaFinal()
         {
             InitializeComponent();
@@ -166,55 +169,17 @@ namespace INASOFT_3._0.VistaFacturas
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
                 comando.ExecuteNonQuery();
                 MessageDialogInfo.Show("Se actualizo la Factura");
+
                 //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                clsFactura.CreaTicket Ticket1 = new clsFactura.CreaTicket();
-                
-                Ticket1.TextoCentro(lbNombreNegocio.Text); //imprime una linea de descripcion
-                Ticket1.TextoCentro("**********************************");
-
-                Ticket1.TextoIzquierda(lbDireccionNegocio.Text);
-                Ticket1.TextoIzquierda(lbTelefono.Text);
-                Ticket1.TextoIzquierda(lbNmRUC.Text);
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta"); //imprime una linea de descripcion
-                Ticket1.TextoIzquierda("No Fac:" + lbIdFactura.Text);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Le Atendio: " + Sesion.nombre);
-                Ticket1.TextoIzquierda("Cliente: " + lbNombreCliente.Text);
-                Ticket1.TextoIzquierda("");
-                clsFactura.CreaTicket.LineasGuion();
-
-                clsFactura.CreaTicket.EncabezadoVenta();
-                clsFactura.CreaTicket.LineasGuion();
-                foreach (DataGridViewRow r in dataGridView1.Rows)
-                {
-                    // PROD                     //PrECIO                                    CANT                         TOTAL
-                    Ticket1.AgregaArticulo(r.Cells[0].Value.ToString(), float.Parse(r.Cells[1].Value.ToString()), float.Parse(r.Cells[2].Value.ToString()), float.Parse(r.Cells[3].Value.ToString())); //imprime una linea de descripcion
-                }
-
-
-                clsFactura.CreaTicket.LineasGuion();
-                Ticket1.AgregaTotales("Sub-Total", float.Parse(lbSubtotal.Text)); // imprime linea con Subtotal
-                Ticket1.AgregaTotales("Menos Descuento", float.Parse(lbPrecDesc.Text)); // imprime linea con decuento total
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total", float.Parse(lbTotal.Text)); // imprime linea con total
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Efectivo Entregado:", float.Parse(Txt_Efectivo.Text));
-                Ticket1.AgregaTotales("Efectivo Devuelto:", float.Parse(lbDevolucion.Text));
-
-
-                // Ticket1.LineasTotales(); // imprime linea 
-
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoCentro("*     Gracias por preferirnos    *");
-
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.ImprimirTiket(cbImpresoras.Text);
+                printDocument1 = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                ps.PrinterName = cbImpresoras.Text;
+                printDocument1.PrinterSettings = ps;
+                printDocument1.PrintPage += Imprimir;
+                printDocument1.Print();
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                this.Close();
+                this.Dispose();
 
             }
             catch (MySqlException ex)
@@ -225,14 +190,78 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void Txt_descuento_TextChanged(object sender, EventArgs e)
         {
-            /*try
+
+            try
             {
-                lbTotal.Text = (double.Parse(lbTotal.Text) - double.Parse(Txt_descuento.Text)).ToString();
+                //lbTotal.Text = (float.Parse(lbTotal.Text) - float.Parse(Txt_descuento.Text)).ToString();
+                double subtotal = Convert.ToDouble(lbSubtotal.Text);
+                double total = Convert.ToDouble(lbTotal.Text);
+                double desc = Convert.ToDouble(Txt_descuento.Text);
+
+                total = subtotal - desc;
+                lbTotal.Text = total.ToString();
             }
             catch
             {
-                lbTotal.Text = lbTotal.Text;
-            }*/
+                double subtotal = Convert.ToDouble(lbSubtotal.Text);
+                Txt_descuento.Text = "0";
+                lbSubtotal.Text = subtotal.ToString();
+            }
+
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            int width = 280;
+            int y = 20;
+            Font font2 = new Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font font3 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+            Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+
+            Image img = Image.FromFile(imagen);
+            e.Graphics.DrawImage(img, new Rectangle(40, y += 20, 200, 90));
+            e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
+            //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
+            e.Graphics.DrawString(lbTelefono.Text, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
+            e.Graphics.DrawString("Factura: FAC" +      lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 25, width, 20));
+            e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 25, width, 20));
+            e.Graphics.DrawString("Fecha: " + DateTime.Now + " Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 25, width, 20));
+            e.Graphics.DrawString("-------------------------------------", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Producto            Cant.       Precio      Total", font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("-------------------------------------", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
+            //e.Graphics.DrawString("LAM. GYPSUM REG      3         C$ 345      C$1,035", font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                // PROD                     //Cant                                 //Precio                         TOTAL
+                try
+                {
+                    string str = r.Cells[0].Value.ToString();
+                    int desiredLength = 18;
+                    string subStr = str.Substring(0, Math.Min(desiredLength, str.Length));
+                    float cant = float.Parse(r.Cells[2].Value.ToString());
+                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[1].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[3].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                }
+                catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
+                catch(ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }
+            }
+
+            float subtotal = float.Parse(lbSubtotal.Text, CultureInfo.InvariantCulture);
+            float descuento = float.Parse(Txt_descuento.Text, CultureInfo.InvariantCulture);
+            float total = float.Parse(lbTotal.Text, CultureInfo.InvariantCulture);
+            float recibido = float.Parse(Txt_Efectivo.Text, CultureInfo.InvariantCulture);
+            float cambio = float.Parse(lbDevolucion.Text, CultureInfo.InvariantCulture);
+
+            e.Graphics.DrawString("SubTotal:  C$" + subtotal.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 30, width, 20));
+            e.Graphics.DrawString("Descuento: C$" + descuento.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
+            e.Graphics.DrawString("Total:     C$" + total.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
+            e.Graphics.DrawString("---------------------------------", font3, Brushes.Black, new RectangleF(95, y += 20, width, 20));
+            e.Graphics.DrawString("Recibido:  C$" + recibido.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
+            e.Graphics.DrawString("Cambio:    C$" + cambio.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
+
+            e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 50, width, 20));
+            e.Graphics.DrawString("*  ¡GRACIAS POR SU COMPRA!   *", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
+            e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
+
         }
     }
 }

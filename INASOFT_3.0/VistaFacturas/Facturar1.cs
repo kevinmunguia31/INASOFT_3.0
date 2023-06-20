@@ -126,6 +126,27 @@ namespace INASOFT_3._0.VistaFacturas
                 else
                 {
                     txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
+                    string sql = "SELECT nombre FROM clientes WHERE id='" + txtIdCliente.Text + "'";
+                    MySqlDataReader reader = null;
+                    try
+                    {
+                        MySqlConnection conexioBD = Conexion.getConexion();
+                        conexioBD.Open();
+                        MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                        reader = comando.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                lbNombre.Text = reader.GetString("nombre");
+
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
             catch (Exception ex)

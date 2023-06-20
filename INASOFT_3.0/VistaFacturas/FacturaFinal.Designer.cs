@@ -56,13 +56,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.btnFacturar = new Guna.UI2.WinForms.Guna2Button();
             this.Txt_Efectivo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbDesc = new System.Windows.Forms.Label();
-            this.lbPrecDesc = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lbDescCant = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.lbDevolucion = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -71,6 +65,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.label7 = new System.Windows.Forms.Label();
             this.cbImpresoras = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnFacturar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lbUser = new System.Windows.Forms.Label();
@@ -81,6 +76,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.lbDireccionNegocio = new System.Windows.Forms.Label();
             this.lbNombreNegocio = new System.Windows.Forms.Label();
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -101,7 +97,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1164, 48);
             this.panel1.TabIndex = 3;
@@ -117,7 +113,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.Location = new System.Drawing.Point(1116, 7);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(43, 32);
             this.btnClose.TabIndex = 2;
@@ -139,7 +135,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(57, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,7 +155,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(16, 55);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(596, 177);
             this.guna2GroupBox1.TabIndex = 4;
@@ -168,7 +164,7 @@ namespace INASOFT_3._0.VistaFacturas
             // txtIdFactura
             // 
             this.txtIdFactura.Location = new System.Drawing.Point(552, 54);
-            this.txtIdFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdFactura.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdFactura.Name = "txtIdFactura";
             this.txtIdFactura.Size = new System.Drawing.Size(39, 28);
             this.txtIdFactura.TabIndex = 8;
@@ -176,7 +172,7 @@ namespace INASOFT_3._0.VistaFacturas
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(520, 138);
-            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(71, 28);
             this.txtIdCliente.TabIndex = 6;
@@ -185,13 +181,13 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbSubtotal.AutoSize = true;
             this.lbSubtotal.BackColor = System.Drawing.Color.White;
-            this.lbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lbSubtotal.Font = new System.Drawing.Font("Consolas", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSubtotal.Location = new System.Drawing.Point(139, 108);
             this.lbSubtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSubtotal.Name = "lbSubtotal";
-            this.lbSubtotal.Size = new System.Drawing.Size(54, 25);
+            this.lbSubtotal.Size = new System.Drawing.Size(64, 27);
             this.lbSubtotal.TabIndex = 5;
-            this.lbSubtotal.Text = "0.00";
+            this.lbSubtotal.Text = "1500";
             // 
             // label6
             // 
@@ -208,13 +204,13 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbNombreCliente.AutoSize = true;
             this.lbNombreCliente.BackColor = System.Drawing.Color.White;
-            this.lbNombreCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lbNombreCliente.Location = new System.Drawing.Point(348, 57);
+            this.lbNombreCliente.Font = new System.Drawing.Font("Consolas", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombreCliente.Location = new System.Drawing.Point(337, 57);
             this.lbNombreCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNombreCliente.Name = "lbNombreCliente";
-            this.lbNombreCliente.Size = new System.Drawing.Size(24, 25);
+            this.lbNombreCliente.Size = new System.Drawing.Size(103, 27);
             this.lbNombreCliente.TabIndex = 3;
-            this.lbNombreCliente.Text = "0";
+            this.lbNombreCliente.Text = "*******";
             // 
             // label5
             // 
@@ -231,11 +227,11 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbIdFactura.AutoSize = true;
             this.lbIdFactura.BackColor = System.Drawing.Color.White;
-            this.lbIdFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lbIdFactura.Font = new System.Drawing.Font("Consolas", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIdFactura.Location = new System.Drawing.Point(136, 57);
             this.lbIdFactura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbIdFactura.Name = "lbIdFactura";
-            this.lbIdFactura.Size = new System.Drawing.Size(24, 25);
+            this.lbIdFactura.Size = new System.Drawing.Size(25, 27);
             this.lbIdFactura.TabIndex = 1;
             this.lbIdFactura.Text = "0";
             // 
@@ -258,33 +254,35 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox2.Location = new System.Drawing.Point(16, 240);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(596, 389);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(596, 372);
             this.guna2GroupBox2.TabIndex = 5;
             this.guna2GroupBox2.Text = "Productos Facturados";
             // 
             // Txt_descuento
             // 
+            this.Txt_descuento.BorderColor = System.Drawing.Color.Green;
             this.Txt_descuento.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Txt_descuento.DefaultText = "";
             this.Txt_descuento.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Txt_descuento.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.Txt_descuento.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Txt_descuento.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_descuento.FillColor = System.Drawing.Color.Black;
             this.Txt_descuento.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Txt_descuento.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_descuento.ForeColor = System.Drawing.Color.Green;
             this.Txt_descuento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_descuento.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_descuento.IconLeft")));
-            this.Txt_descuento.Location = new System.Drawing.Point(229, 289);
+            this.Txt_descuento.Location = new System.Drawing.Point(222, 290);
             this.Txt_descuento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_descuento.Name = "Txt_descuento";
             this.Txt_descuento.PasswordChar = '\0';
-            this.Txt_descuento.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.Txt_descuento.PlaceholderForeColor = System.Drawing.Color.Green;
             this.Txt_descuento.PlaceholderText = "Ingrese el descuento";
             this.Txt_descuento.SelectedText = "";
-            this.Txt_descuento.Size = new System.Drawing.Size(203, 44);
+            this.Txt_descuento.Size = new System.Drawing.Size(363, 49);
             this.Txt_descuento.TabIndex = 25;
             this.Txt_descuento.TextChanged += new System.EventHandler(this.Txt_descuento_TextChanged);
             // 
@@ -309,7 +307,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
@@ -324,7 +322,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dataGridView1.Location = new System.Drawing.Point(9, 58);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -354,11 +352,6 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.guna2GroupBox3.Controls.Add(this.groupBox1);
             this.guna2GroupBox3.Controls.Add(this.Txt_Efectivo);
-            this.guna2GroupBox3.Controls.Add(this.lbDesc);
-            this.guna2GroupBox3.Controls.Add(this.lbPrecDesc);
-            this.guna2GroupBox3.Controls.Add(this.label10);
-            this.guna2GroupBox3.Controls.Add(this.lbDescCant);
-            this.guna2GroupBox3.Controls.Add(this.label4);
             this.guna2GroupBox3.Controls.Add(this.guna2GroupBox5);
             this.guna2GroupBox3.Controls.Add(this.guna2GroupBox4);
             this.guna2GroupBox3.Controls.Add(this.cbImpresoras);
@@ -366,9 +359,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox3.Location = new System.Drawing.Point(620, 55);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(528, 574);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(528, 557);
             this.guna2GroupBox3.TabIndex = 6;
             this.guna2GroupBox3.Text = "Pago e Impresión";
             // 
@@ -376,10 +369,10 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 444);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(13, 455);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(499, 69);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
@@ -389,7 +382,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(193, 30);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(113, 28);
             this.radioButton2.TabIndex = 27;
@@ -401,7 +394,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(8, 30);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 28);
             this.radioButton1.TabIndex = 26;
@@ -409,108 +402,33 @@ namespace INASOFT_3._0.VistaFacturas
             this.radioButton1.Text = "Dolares";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // btnFacturar
-            // 
-            this.btnFacturar.BorderRadius = 10;
-            this.btnFacturar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFacturar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFacturar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFacturar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFacturar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnFacturar.Font = new System.Drawing.Font("Poppins", 12F);
-            this.btnFacturar.ForeColor = System.Drawing.Color.White;
-            this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
-            this.btnFacturar.Location = new System.Drawing.Point(464, 648);
-            this.btnFacturar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(300, 67);
-            this.btnFacturar.TabIndex = 24;
-            this.btnFacturar.Text = "Facturar e Imprimir";
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
             // Txt_Efectivo
             // 
+            this.Txt_Efectivo.BackColor = System.Drawing.Color.Transparent;
+            this.Txt_Efectivo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Txt_Efectivo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Txt_Efectivo.DefaultText = "";
             this.Txt_Efectivo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Txt_Efectivo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.Txt_Efectivo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Txt_Efectivo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_Efectivo.FillColor = System.Drawing.SystemColors.InfoText;
             this.Txt_Efectivo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_Efectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Txt_Efectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Txt_Efectivo.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Efectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Txt_Efectivo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_Efectivo.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_Efectivo.IconLeft")));
-            this.Txt_Efectivo.Location = new System.Drawing.Point(13, 383);
+            this.Txt_Efectivo.Location = new System.Drawing.Point(13, 361);
             this.Txt_Efectivo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txt_Efectivo.Name = "Txt_Efectivo";
             this.Txt_Efectivo.PasswordChar = '\0';
-            this.Txt_Efectivo.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.Txt_Efectivo.PlaceholderForeColor = System.Drawing.Color.Green;
             this.Txt_Efectivo.PlaceholderText = "Ingrese el Efectivo";
             this.Txt_Efectivo.SelectedText = "";
-            this.Txt_Efectivo.Size = new System.Drawing.Size(499, 53);
+            this.Txt_Efectivo.Size = new System.Drawing.Size(499, 75);
             this.Txt_Efectivo.TabIndex = 15;
             this.Txt_Efectivo.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             this.Txt_Efectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2TextBox1_KeyPress);
-            // 
-            // lbDesc
-            // 
-            this.lbDesc.AutoSize = true;
-            this.lbDesc.BackColor = System.Drawing.Color.White;
-            this.lbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbDesc.Location = new System.Drawing.Point(451, 356);
-            this.lbDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDesc.Name = "lbDesc";
-            this.lbDesc.Size = new System.Drawing.Size(45, 24);
-            this.lbDesc.TabIndex = 14;
-            this.lbDesc.Text = "0.00";
-            // 
-            // lbPrecDesc
-            // 
-            this.lbPrecDesc.AutoSize = true;
-            this.lbPrecDesc.BackColor = System.Drawing.Color.White;
-            this.lbPrecDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbPrecDesc.Location = new System.Drawing.Point(241, 356);
-            this.lbPrecDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbPrecDesc.Name = "lbPrecDesc";
-            this.lbPrecDesc.Size = new System.Drawing.Size(45, 24);
-            this.lbPrecDesc.TabIndex = 13;
-            this.lbPrecDesc.Text = "0.00";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(175, 356);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 24);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "%:  C$";
-            // 
-            // lbDescCant
-            // 
-            this.lbDescCant.AutoSize = true;
-            this.lbDescCant.BackColor = System.Drawing.Color.White;
-            this.lbDescCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbDescCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbDescCant.Location = new System.Drawing.Point(153, 356);
-            this.lbDescCant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDescCant.Name = "lbDescCant";
-            this.lbDescCant.Size = new System.Drawing.Size(20, 24);
-            this.lbDescCant.TabIndex = 11;
-            this.lbDescCant.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(7, 356);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 24);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Descuento del ";
             // 
             // guna2GroupBox5
             // 
@@ -520,7 +438,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox5.Location = new System.Drawing.Point(13, 235);
-            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
             this.guna2GroupBox5.Size = new System.Drawing.Size(499, 117);
             this.guna2GroupBox5.TabIndex = 10;
@@ -530,12 +448,12 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbDevolucion.AutoSize = true;
             this.lbDevolucion.BackColor = System.Drawing.Color.White;
-            this.lbDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lbDevolucion.Font = new System.Drawing.Font("Consolas", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDevolucion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbDevolucion.Location = new System.Drawing.Point(195, 53);
             this.lbDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDevolucion.Name = "lbDevolucion";
-            this.lbDevolucion.Size = new System.Drawing.Size(87, 39);
+            this.lbDevolucion.Size = new System.Drawing.Size(89, 38);
             this.lbDevolucion.TabIndex = 8;
             this.lbDevolucion.Text = "0.00";
             // 
@@ -560,7 +478,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox4.Location = new System.Drawing.Point(13, 111);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.Size = new System.Drawing.Size(499, 117);
             this.guna2GroupBox4.TabIndex = 9;
@@ -570,14 +488,14 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbTotal.AutoSize = true;
             this.lbTotal.BackColor = System.Drawing.Color.White;
-            this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lbTotal.Font = new System.Drawing.Font("Consolas", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbTotal.Location = new System.Drawing.Point(195, 53);
             this.lbTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(87, 39);
+            this.lbTotal.Size = new System.Drawing.Size(89, 38);
             this.lbTotal.TabIndex = 8;
-            this.lbTotal.Text = "0.00";
+            this.lbTotal.Text = "1500";
             // 
             // label7
             // 
@@ -604,7 +522,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.cbImpresoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbImpresoras.ItemHeight = 30;
             this.cbImpresoras.Location = new System.Drawing.Point(139, 54);
-            this.cbImpresoras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbImpresoras.Margin = new System.Windows.Forms.Padding(4);
             this.cbImpresoras.Name = "cbImpresoras";
             this.cbImpresoras.Size = new System.Drawing.Size(372, 36);
             this.cbImpresoras.TabIndex = 8;
@@ -620,6 +538,25 @@ namespace INASOFT_3._0.VistaFacturas
             this.label3.TabIndex = 7;
             this.label3.Text = "Impresora:";
             // 
+            // btnFacturar
+            // 
+            this.btnFacturar.BorderRadius = 10;
+            this.btnFacturar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFacturar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFacturar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFacturar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFacturar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnFacturar.Font = new System.Drawing.Font("Poppins", 12F);
+            this.btnFacturar.ForeColor = System.Drawing.Color.White;
+            this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
+            this.btnFacturar.Location = new System.Drawing.Point(464, 630);
+            this.btnFacturar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(300, 67);
+            this.btnFacturar.TabIndex = 24;
+            this.btnFacturar.Text = "Facturar e Imprimir";
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            // 
             // guna2GroupBox6
             // 
             this.guna2GroupBox6.Controls.Add(this.label8);
@@ -634,7 +571,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.guna2GroupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox6.Location = new System.Drawing.Point(27, 749);
-            this.guna2GroupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox6.Name = "guna2GroupBox6";
             this.guna2GroupBox6.Size = new System.Drawing.Size(1132, 137);
             this.guna2GroupBox6.TabIndex = 7;
@@ -758,7 +695,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 729);
+            this.ClientSize = new System.Drawing.Size(1164, 712);
             this.Controls.Add(this.guna2GroupBox6);
             this.Controls.Add(this.btnFacturar);
             this.Controls.Add(this.guna2GroupBox3);
@@ -767,7 +704,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FacturaFinal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FacturaFinal";
@@ -810,11 +747,6 @@ namespace INASOFT_3._0.VistaFacturas
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
         private Guna.UI2.WinForms.Guna2TextBox Txt_Efectivo;
-        private System.Windows.Forms.Label lbDesc;
-        private System.Windows.Forms.Label lbPrecDesc;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lbDescCant;
-        private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox5;
         private System.Windows.Forms.Label lbDevolucion;
         private System.Windows.Forms.Label label9;
@@ -844,5 +776,6 @@ namespace INASOFT_3._0.VistaFacturas
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         public System.Windows.Forms.TextBox txtIdFactura;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

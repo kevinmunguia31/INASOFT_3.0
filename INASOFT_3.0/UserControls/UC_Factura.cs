@@ -21,6 +21,7 @@ namespace INASOFT_3._0.UserControls
             InitializeComponent();
             CargarFacturas();
             dataGridFatura.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+           
         }
 
         public void CargarFacturas()
@@ -94,6 +95,7 @@ namespace INASOFT_3._0.UserControls
             GB.HeaderText = "Ver Detalles";
             GB.UseColumnTextForButtonValue = true;
             dataGridFatura.Columns.Add(GB);
+            dataGridFatura.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void Guna2Button1_Click(object sender, EventArgs e)
@@ -126,6 +128,11 @@ namespace INASOFT_3._0.UserControls
                 MessageBox.Show(dataGridFatura.CurrentRow.Cells[0].Value.ToString());
                 frm.ShowDialog();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CargarFacturas();
         }
     }
 }

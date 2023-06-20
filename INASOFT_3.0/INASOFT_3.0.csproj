@@ -321,5 +321,11 @@
   <ItemGroup>
     <None Include="Resources\icons8-wifi-apagado-50.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-invoice-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

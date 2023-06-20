@@ -161,11 +161,20 @@ DELIMITER ;
 */
 
 
-INSERT INTO Proveedor VALUES (NULL, 'Pali', '23154365', 'Chinandega', 001);
-CALL Insertar_Producto(0001, 'Tornillo', 3, 2.3, 4.0, '--', 1);
-CALL Insertar_Producto(0002, 'Martillo', 10, 100.5, 120.0, '--', 1);
-CALL Insertar_Producto(0003, 'Cinta', 30, 10.3, 14.0, '--', 1);
-CALL Insertar_Producto(0004, 'Alicate', 13, 56.2, 60.0, '--', 1);
+INSERT INTO Proveedor VALUES (NULL, 'HALCOM', '23154365', 'Chinandega', 001);
+INSERT INTO Proveedor VALUES (NULL, 'PINTURAS LANCO', '23154365', 'Managua', 002);
+INSERT INTO Proveedor VALUES (NULL, 'SINSA', '23154365', 'Managua', 003);
+INSERT INTO Proveedor VALUES (NULL, 'CEMENTERA JAVIER', '23154365', 'Managua', 004);
+
+
+CALL Insertar_Producto(00001, 'TINSETICO MURO SECO BLANCO', 10, 190, 240.0, '--', 1);
+CALL Insertar_Producto(00002, 'CANAL AMARRE 1 5/8 x 10', 100, 68, 75.0, '--', 1);
+CALL Insertar_Producto(00003, 'CANAL AMARRE 2 1/2 x 10', 100, 68, 80.0, '--', 1);
+CALL Insertar_Producto(00004, 'CANAL AMARRE 3 5/8 x 10', 100, 68, 90.0, '--', 1);
+CALL Insertar_Producto(00005, 'LAMINA GYPSUM REG', 200, 315.0, 345.0, '--', 3);
+CALL Insertar_Producto(00006, 'ESQUINERO  VINILICO 1 1/4 X 10', 100, 45, 68.0, '--', 3);
+CALL Insertar_Producto(00007, 'CEMENTO HOLCIM', 100, 425.0, 430.0, '--', 4);
+CALL Insertar_Producto(00008, 'ANTICORROSIVO ROJO GALON', 5, 550.0, 750.0, '--', 2);
 
 -- -------------------------------------------------------------------- PROCEDURES DE FACTURACION --------------------------------------------------------------------
 		
