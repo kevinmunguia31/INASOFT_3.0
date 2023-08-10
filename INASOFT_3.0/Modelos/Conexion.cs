@@ -12,9 +12,11 @@ namespace INASOFT_3._0.Modelos
         public static MySqlConnection getConexion()
         {
             string servidor = "localhost";
-            string puerto = "3306";
+            //string puerto = "3306";
+            string puerto = "3307";
             string usuario = "root";
-            string password = "root";
+            //string password = "root";
+            string password = "mysql";
             string bd = "db_inasoftware";
 
             string cadenaConexion = "server=" + servidor + "; port=" + puerto + "; user id=" + usuario + "; password=" + password + "; database=" + bd;

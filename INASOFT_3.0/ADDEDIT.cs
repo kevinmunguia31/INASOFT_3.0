@@ -19,7 +19,6 @@ namespace INASOFT_3._0
         {
             InitializeComponent();
             CargarProveedor();
-            //txtObservacion.Text = "Ninguna";
         }
 
         public void CargarProveedor()
@@ -115,29 +114,30 @@ namespace INASOFT_3._0
                 if (txtId.Text != "")
                 {
                     _producto.Id = int.Parse(txtId.Text);
-                    bandera = ctrl.actualizar(_producto);
+                    bandera = ctrl.Actualizar(_producto);
                     MessageBox.Show("Registro Actualizado Con Exito", "Actualizar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show(_producto.Codigo + "\n" + _producto.Nombre + "\n" + _producto.Existencias + "\n" + _producto.Precio_compra + "\n" + _producto.Precio_venta + "\n" +  _producto.Observacion + "\n" + _producto.Id_proveedor);
+                    MessageBox.Show(_producto.Codigo + "\n" + _producto.Nombre + "\n" + _producto.Existencias + "\n" + _producto.Precio_compra + "\n" + _producto.Precio_venta + "\n" + _producto.Observacion + "\n" + _producto.Id_proveedor);
                     this.Dispose();
                 }
                 else
-                { 
+                {
                     try
                     {
-                        bandera = ctrl.insertar(_producto);
+                        bandera = ctrl.Insertar(_producto);
                         MessageBox.Show("Registro Guardado Con Exito", "Guardar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                         this.Dispose();
-                    }catch(MySqlException ex) { MessageBox.Show(ex.ToString()); }
-                    
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-
             }
             else
             {
                 MessageBox.Show("Rellene Todos los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         public void Clear()
@@ -148,19 +148,7 @@ namespace INASOFT_3._0
             txtPrecioCompra.Text = "";
             txtPrecioVenta.Text = "";
             txtObservacion.Text = "";
-            //cbProveedor.Items.Clear();
-
+            cbProveedor.SelectedIndex = -1;
         }
-    /*
-        private void txtPrecioVenta_TextChanged(object sender, EventArgs e)
-        {
-            double precioVenta = double.Parse(txtPrecioVenta.Text);
-            double Dolar = double.Parse(txtDolar.Text);
-            double precioDolar = 0;
-
-            precioDolar = precioVenta / Dolar;
-            txtPrecioDolar.Text = precioDolar.ToString();
-        }
-    */
     }
 }

@@ -26,10 +26,77 @@ namespace INASOFT_3._0.VistaFacturas
             InfoNegocio();
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
             txtIdFactura.Text = ctrlFactura.ID_Factura().ToString();
-            lbUser.Text = Sesion.nombre;
-            Txt_descuento.Text = "0";
+
+            InfoProducts();
+            lbUser.Text = Sesion.nombre;            
+
+            datagridView2.Rows.Add("Total", "", "", "", 0);
+
+            foreach (DataGridViewBand band in datagridView2.Columns)
+            {
+                band.ReadOnly = true;
+            }
+            Cargar_Total();
         }
 
+        public void Cargar_Total()
+        {
+            double Total = 0.00;
+            try
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                }
+                datagridView2.Rows[0].Cells[0].Value = "Total";
+                datagridView2.Rows[0].Cells[1].Value = "";
+                datagridView2.Rows[0].Cells[2].Value = "";
+                datagridView2.Rows[0].Cells[3].Value = "";
+                datagridView2.Rows[0].Cells[4].Value = Total;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        }
+
+        private void FacturaFinal_Load(object sender, EventArgs e)
+        {
+            if (txtIdCliente.Text == "1")
+            {
+                lbNombreCliente.Text = "Cliente génerico";
+            }
+            else
+            {
+                int limite = 20;
+                if (lbNombreCliente.Text.Length > limite)
+                {
+                    lbNombreCliente.Text = lbNombreCliente.Text.Substring(0, limite) + "...";
+                }
+                else
+                {
+                    lbNombreCliente.Text = lbNombreCliente.Text;
+                }
+            }
+            if (txtIdCliente.Text == "1")
+            {
+                RBtn_Credito.Visible = false;
+            }
+            else
+            {
+                RBtn_Credito.Visible = true;
+            }
+        }
+
+        public void Subtotal()
+        {
+            float subtotal = 0;
+
+            for (int i = 0; i < datagridView2.Rows.Count; i++)
+            {
+                subtotal += float.Parse(datagridView2.Rows[i].Cells[4].Value.ToString());
+            }
+        }
         private void InfoNegocio()
         {
             MySqlDataReader reader = null;
@@ -48,7 +115,6 @@ namespace INASOFT_3._0.VistaFacturas
                         lbDireccionNegocio.Text = reader.GetString("direccion_negocio");
                         lbNmRUC.Text = reader.GetString("num_ruc");
                         lbTelefono.Text = reader.GetString("telefono");
-
                     }
                 }
             }
@@ -58,89 +124,66 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        public DataTable InfoProducts()
+        public void InfoProducts()
         {
-            string dato = txtIdCliente.Text;
-            string idFact = txtIdFactura.Text;
-            //MySqlDataReader reader = null;
-            //string sql = " SELECT a.Cantidad, b.Nombre, a.Precio, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE d.ID = '"+ dato +"' && a.ID_Factura = '" + idFact +"'";
-            string sql = "SELECT b.Nombre, a.Precio, a.Cantidad, a.Total FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID WHERE d.ID = '" + dato + "' && a.ID_Factura = '" + idFact + "'";
-
-            MySqlConnection conexioBD = Conexion.getConexion();
-            conexioBD.Open();
-            //MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-            // reader = comando.ExecuteReader();
-            MySqlDataAdapter adp = new MySqlDataAdapter(sql, conexioBD);
-            DataTable consulta = new DataTable();
-            adp.Fill(consulta);
-
-            return consulta;
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            dataGridView1.DataSource = ctrlFactura.DetalleFactura(txtIdFactura.Text);    
         }
 
         private void InstalledPrintersCombo()
         {
-            // Add list of installed printers found to the combo box.
-            // The pkInstalledPrinters string will be used to provide the display string.
             String pkInstalledPrinters;
             for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
             {
                 pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
                 cbImpresoras.Items.Add(pkInstalledPrinters);
-
             }
             cbImpresoras.Text = "POS-80";
         }
-
-        private void FacturaFinal_Load(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = InfoProducts();
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            ctrlFactura.Cancelar_Factura(ctrlFactura.ID_Factura());
+            DialogResult resultado = guna2MessageDialog1.Show("Seguro que anular la factura?", "Eliminar");
+            if (resultado == DialogResult.Yes)
+            {
+                Anular_Factura frm = new Anular_Factura(txtIdFactura.Text);
+                frm.Txt_Facturar.Text = txtIdFactura.Text;
+                frm.Lb_Factura.Text = lbIdFactura.Text;
+                
+                frm.Show();
+                this.Close();
+            }
+            else
+            {
+
+            }
         }
 
         private void guna2TextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-               (e.KeyChar != '.'))
+            if (Char.IsDigit(e.KeyChar))
             {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else if ((e.KeyChar == '.') && (!Txt_Efectivo.Text.Contains(".")))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void SpinDescuento_ValueChanged(object sender, EventArgs e)
-        {
-            //int iva = int.Parse(SpinDescuento.Value.ToString());
-            //float subtotal = float.Parse(lbSubtotal.Text);
-            //float total;
-            //float descuento;
-
-            //float desc = descuento = (float.Parse(iva.ToString()) / 100);
-
-            //descuento = (float.Parse(iva.ToString()) / 100) * subtotal;
-            //total = subtotal - descuento;
-
-            //lbTotal.Text = total.ToString();
-            //lbPrecDesc.Text = descuento.ToString();
-            //lbDescCant.Text = iva.ToString();
-            //lbDesc.Text = desc.ToString();
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                lbDevolucion.Text = (float.Parse(Txt_Efectivo.Text) - float.Parse(lbTotal.Text)).ToString();
+                lbDevolucion.Text = (double.Parse(Txt_Efectivo.Text) - double.Parse(lbTotal.Text)).ToString();
             }
             catch
             {
@@ -151,63 +194,190 @@ namespace INASOFT_3._0.VistaFacturas
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             string tipoPago = "";
-            if (radioButton1.Checked == true)
+            string estado = "";
+            string tipoFactura = "";
+            double debe = 0.00;
+            double descuento = 0.00;
+            double total = double.Parse(lbTotal.Text);
+            double subtotal = double.Parse(lbSubtotal.Text);
+            double efectivo;
+            int id_factura = int.Parse(txtIdFactura.Text);
+            double devolucion = double.Parse(lbDevolucion.Text);
+
+            if(Txt_descuento.Text == "")
             {
-                tipoPago = "Dolares";
+                descuento = 0.00;
+            }
+            else
+            {
+                descuento = double.Parse(Txt_descuento.Text);
             }
 
-            if(radioButton2.Checked == true)
+            if (Txt_Efectivo.Text == "")
             {
-                tipoPago = "Cordobas";
+                efectivo = 0.00;
             }
-            //string sql = "CALL Facturacion_Final('" + Txt_descuento.Text + "','" + lbSubtotal.Text + "','" + guna2TextBox1.Text + "', '" + lbIdFactura.Text + ", '" + tipoPago + "')";
-            string sql = "CALL Facturacion_Final(" + Txt_descuento.Text + ", " + lbSubtotal.Text + ", " + Txt_Efectivo.Text + ", "+ txtIdFactura.Text +", '"+ tipoPago +"');";
-            try
+            else
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                MessageDialogInfo.Show("Se actualizo la Factura");
-
-                //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                printDocument1 = new PrintDocument();
-                PrinterSettings ps = new PrinterSettings();
-                ps.PrinterName = cbImpresoras.Text;
-                printDocument1.PrinterSettings = ps;
-                printDocument1.PrintPage += Imprimir;
-                printDocument1.Print();
-
-                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                this.Dispose();
-
+                efectivo = double.Parse(Txt_Efectivo.Text);
             }
-            catch (MySqlException ex)
+            
+            if (cbImpresoras.SelectedIndex == -1)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
+            }
+            else
+            {
+                if (Rbtn_TipoDolares.Checked == false && Rbtn_TipoCordobas.Checked == false)
+                {
+                    MessageBox_Error.Show("Neceita marcar el tipo de pago con el que se realizará la factura");
+                }
+                else
+                {
+                    if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == false)
+                    {
+                        MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará");
+                    }
+                    //FACTURA AL CRÉDITO
+                    else if (RBtn_Credito.Checked == true && RBtn_AlContado.Checked == false)
+                    {
+                        tipoFactura = "Crédito";
+                        estado = "Pendiente";
+
+                        efectivo = 0.00;
+                        debe = double.Parse(lbTotal.Text);
+                        devolucion = 0.00;
+
+                        if (Rbtn_TipoDolares.Checked == true)
+                        {
+                            tipoPago = "Dolares";
+                        }
+                        if (Rbtn_TipoCordobas.Checked == true)
+                        {
+                            tipoPago = "Cordobas";
+                        }
+
+                        if (Txt_descuento.Text == "")
+                        {
+                            Txt_descuento.Text = "0.00";
+                        }
+                        else
+                        {
+                            Txt_descuento.Text = Txt_descuento.Text;
+                        }
+                        Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+
+                        bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, id_factura, tipoPago, tipoFactura);
+
+                        if (bandera)
+                        {
+                            FacturaAlCredito frm = new FacturaAlCredito();
+                            frm.Lb_Cargo.Text = total.ToString();
+                            frm.Lb_Saldo.Text = total.ToString();
+                            frm.Lb_Trabajador.Text = lbUser.Text;
+                            frm.Lb_Cliente.Text = lbNombreCliente.Text;
+                            frm.Lb_Descuento.Text = descuento.ToString();
+                            frm.Txt_IDCliente.Text = txtIdCliente.Text;
+                            frm.Txt_IDFactura.Text = txtIdFactura.Text;                         
+                            frm.Show();
+                            this.Hide();
+                        }
+                    }
+                    //FACTURA AL CONTADO
+                    else if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == true)
+                    {
+                        if (Txt_Efectivo.Text == "")
+                        {
+                            MessageBox_Error.Show("No deje la casilla de 'Efectivo' sin marcar", "Error");
+                        }
+                        else
+                        {
+                            if (double.Parse(lbDevolucion.Text) < 0)
+                            {
+                                MessageBox_Error.Show("Tiene que pagar completo la compra", "Error");
+                            }
+                            else
+                            {
+                                tipoFactura = "Al contado";
+                                estado = "Cancelado";
+                                debe = 0.00;
+
+                                if (Rbtn_TipoDolares.Checked == true)
+                                {
+                                    tipoPago = "Dólares";
+                                }
+                                if (Rbtn_TipoCordobas.Checked == true)
+                                {
+                                    tipoPago = "Córdobas";
+                                }
+
+                                if (Txt_descuento.Text == "")
+                                {
+                                    Txt_descuento.Text = "0.00";
+                                }
+                                else
+                                {
+                                    Txt_descuento.Text = Txt_descuento.Text;
+                                }
+
+                                try
+                                {
+                                    Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+
+                                    bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, id_factura, tipoPago, tipoFactura);
+
+                                    if (bandera)
+                                    {
+                                        //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                                        printDocument1 = new PrintDocument();
+                                        PrinterSettings ps = new PrinterSettings();
+                                        ps.PrinterName = cbImpresoras.Text;
+                                        printDocument1.PrinterSettings = ps;
+                                        printDocument1.PrintPage += Imprimir;
+                                        printDocument1.Print();
+
+                                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                                        uC_Factura.CargarFacturas();
+                                        this.Close();
+                                    }
+                                }
+                                catch (MySqlException ex)
+                                {
+                                    MessageBox.Show(ex.Message.ToString());
+                                }
+                            }
+                        } 
+                    }
+                } 
             }
         }
 
         private void Txt_descuento_TextChanged(object sender, EventArgs e)
         {
-
+            double subtotal = double.Parse(lbSubtotal.Text);
+            double total = double.Parse(lbTotal.Text);
+            double desc;
             try
             {
-                //lbTotal.Text = (float.Parse(lbTotal.Text) - float.Parse(Txt_descuento.Text)).ToString();
-                double subtotal = Convert.ToDouble(lbSubtotal.Text);
-                double total = Convert.ToDouble(lbTotal.Text);
-                double desc = Convert.ToDouble(Txt_descuento.Text);
-
-                total = subtotal - desc;
-                lbTotal.Text = total.ToString();
+                if (Txt_descuento.Text == "")
+                {
+                    desc = 0.00;
+                    Txt_descuento.Text = "";
+                    lbTotal.Text = subtotal.ToString();
+                }
+                else
+                {
+                   desc = double.Parse(Txt_descuento.Text);
+                   total = subtotal - desc;
+                   lbTotal.Text = total.ToString();
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                double subtotal = Convert.ToDouble(lbSubtotal.Text);
-                Txt_descuento.Text = "0";
+                Txt_descuento.Text = "";
                 lbSubtotal.Text = subtotal.ToString();
             }
-
         }
 
         private void Imprimir(object sender, PrintPageEventArgs e)
@@ -261,7 +431,44 @@ namespace INASOFT_3._0.VistaFacturas
             e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 50, width, 20));
             e.Graphics.DrawString("*  ¡GRACIAS POR SU COMPRA!   *", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
             e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
+        }
 
+        private void Txt_descuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else if ((e.KeyChar == '.') && (!Txt_descuento.Text.Contains(".")))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
+
+        private void RBtn_AlContado_CheckedChanged(object sender, EventArgs e)
+        {
+            btnFacturar.Text = "Facturar e Imprimir";
+            label4.Visible = true;
+            Txt_Efectivo.Visible = true;
+            guna2GroupBox5.Enabled = true;
+        }
+
+        private void RBtn_Credito_CheckedChanged(object sender, EventArgs e)
+        {
+            btnFacturar.Text = "Continuar >>";
+            lbDevolucion.Text = "0.00";
+            label4.Visible = false;
+            Txt_Efectivo.Visible = false;
+            guna2GroupBox5.Enabled = false;
         }
     }
 }

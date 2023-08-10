@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Globalization;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -17,20 +18,19 @@ namespace INASOFT_3._0.Controladores
             DataTable dt = new DataTable();
             string sql;
 
-            if (dato == null)
+            if (dato == "")
             {
                 sql = "SELECT * FROM Mostrar_Producto";
-                //sql = "SELECT a.ID, a.Codigo, a.Nombre, a.Existencias, a.Precio_Compra, a.Precio_Venta, a.Precio_Total, a.Observacion, b.Nombre FROM Productos a INNER JOIN Proveedor b ON a.ID_Proveedor = b.ID ORDER BY a.Nombre ASC";
             }
             else
             {
-                sql = "SELECT * FROM Mostrar_Producto WHERE Codigo LIKE '%" + dato + "%' OR Producto LIKE '%" + dato + "%' ORDER BY Producto ASC;";
-                //sql = "SELECT a.ID, a.Codigo, a.Nombre, a.Existencias, a.Precio_Compra, a.Precio_Venta, a.Precio_Total, a.Observacion, b.Nombre FROM Productos a INNER JOIN Proveedor b ON a.ID_Proveedor = b.ID WHERE a.Codigo LIKE '%" + dato + "%' OR a.Nombre LIKE '%" + dato + "%' ORDER BY a.Nombre ASC";
+                sql = "SELECT * FROM Mostrar_Producto WHERE Código LIKE '"+dato+"%' OR Producto LIKE '"+dato+"%' ORDER BY Código ASC;";
             }
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
             try
             {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
                 MySqlCommand comando = new MySqlCommand(sql, conexionBD);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 adaptador.Fill(dt);
@@ -42,15 +42,15 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool insertar(Productos datos)
+        public bool Insertar(Productos datos)
         {
             bool bandera = false;
             string sql = "CALL Insertar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
 
+            MySqlConnection conexioBD = Conexion.getConexion();
+            conexioBD.Open();
             try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
+            { 
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
                 comando.ExecuteNonQuery();
                 bandera = true;
@@ -60,7 +60,6 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine(ex.Message.ToString());
                 bandera = false;
             }
-
             return bandera;
         }
 
@@ -84,18 +83,15 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool actualizar(Productos datos)
+        public bool Actualizar(Productos datos)
         {
             bool bandera = false;
-
-            //string sql = "UPDATE productos SET codigo='" + datos.Codigo + "', nombre='" + datos.Nombre + "', existencias='" + datos.Existencias + "', precio_compra='" + datos.Precio_compra + "', precio_venta='" + datos.Precio_venta + "', precio_dolar='" + datos.Precio_dolar + "', observacion='" + datos.Observacion + "' WHERE id= '" + datos.Id + "'";
-            //string sql = "CALL Actualizar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Precio_dolar + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
             string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
 
+            MySqlConnection conexioBD = Conexion.getConexion();
+            conexioBD.Open();
             try
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
                 comando.ExecuteNonQuery();
                 bandera = true;
@@ -108,16 +104,15 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool eliminar(int id)
+        public bool Eliminar(int id)
         {
             bool bandera = false;
-
             string sql = "DELETE FROM Productos WHERE ID = '" + id + "'";
 
+            MySqlConnection conexioBD = Conexion.getConexion();
+            conexioBD.Open();
             try
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
                 comando.ExecuteNonQuery();
                 bandera = true;
@@ -154,7 +149,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable Buscar_NombreProducto(string dato)
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre, Codigo FROM Productos WHERE Nombre LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%'";
+            string SQL = "SELECT * FROM Productos WHERE Nombre LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%'";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -211,6 +206,26 @@ namespace INASOFT_3._0.Controladores
             return precio_producto;
         }
 
+        public string Codigo_Producto(int id)
+        {
+            string codigo = "";
+            string SQL = "SELECT Codigo FROM Productos WHERE ID = " + id + ";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                codigo = comando.ExecuteScalar().ToString();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                codigo = "";
+            }
+            return codigo;
+        }
+
         public int Existencias_Producto(int id)
         {
             int existencia_producto = 0;
@@ -229,6 +244,49 @@ namespace INASOFT_3._0.Controladores
                 existencia_producto = 0;
             }
             return existencia_producto;
+        }
+
+        public string CapitalInvertido()
+        {
+            string capital = "";
+            CultureInfo culturaLocal = CultureInfo.CurrentCulture;
+            string SQL = "SELECT ROUND(SUM(precio_total), 2) FROM productos";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                double d = Convert.ToInt32(comando.ExecuteScalar());
+                capital = d.ToString("C", culturaLocal);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                capital = "";
+            }
+            return capital;
+        }
+
+        public string TotalProductos()
+        {
+            string total = "";
+            string SQL = "SELECT count(*) FROM productos";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                double aux = Convert.ToInt32(comando.ExecuteScalar());
+                total = aux.ToString();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                total = "";
+            }
+            return total;
         }
     }
 }

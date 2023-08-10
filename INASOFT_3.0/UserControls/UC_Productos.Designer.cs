@@ -30,14 +30,24 @@ namespace INASOFT_3._0.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Productos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Productos));
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editar = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbCapital = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbCantiTota = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.MessageDialog = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.groupBox_Detalle = new System.Windows.Forms.GroupBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lbProveedor = new System.Windows.Forms.Label();
             this.lbObservaciones = new System.Windows.Forms.Label();
@@ -47,6 +57,13 @@ namespace INASOFT_3._0.UserControls
             this.lbExistencias = new System.Windows.Forms.Label();
             this.lbNameP = new System.Windows.Forms.Label();
             this.lbCodigo = new System.Windows.Forms.Label();
+            this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.MessageBox_Question = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Error = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Ok = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Warnings = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,23 +72,17 @@ namespace INASOFT_3._0.UserControls
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbCapital = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lbCantiTota = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.Bttn_Info = new System.Windows.Forms.Button();
             this.btnRefresh = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.MessageDialog = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.guna2GroupBox1.SuspendLayout();
+            this.groupBox_Detalle.SuspendLayout();
+            this.guna2GroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,10 +91,9 @@ namespace INASOFT_3._0.UserControls
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(36, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(53, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 44);
+            this.label1.Size = new System.Drawing.Size(259, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Productos En Inventario";
             // 
@@ -103,269 +113,6 @@ namespace INASOFT_3._0.UserControls
             this.eliminar.Name = "eliminar";
             this.eliminar.Size = new System.Drawing.Size(32, 19);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Controls.Add(this.lbProveedor);
-            this.groupBox1.Controls.Add(this.lbObservaciones);
-            this.groupBox1.Controls.Add(this.lbPrecioTotal);
-            this.groupBox1.Controls.Add(this.lbPrecioVenta);
-            this.groupBox1.Controls.Add(this.lbPrecioCompra);
-            this.groupBox1.Controls.Add(this.lbExistencias);
-            this.groupBox1.Controls.Add(this.lbNameP);
-            this.groupBox1.Controls.Add(this.lbCodigo);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(44, 480);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1497, 220);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detalles del Producto:";
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(15, 23);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(41, 32);
-            this.txtID.TabIndex = 18;
-            // 
-            // lbProveedor
-            // 
-            this.lbProveedor.AutoSize = true;
-            this.lbProveedor.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProveedor.Location = new System.Drawing.Point(1167, 107);
-            this.lbProveedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbProveedor.Name = "lbProveedor";
-            this.lbProveedor.Size = new System.Drawing.Size(33, 30);
-            this.lbProveedor.TabIndex = 17;
-            this.lbProveedor.Text = ".....";
-            // 
-            // lbObservaciones
-            // 
-            this.lbObservaciones.AutoSize = true;
-            this.lbObservaciones.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbObservaciones.Location = new System.Drawing.Point(1212, 52);
-            this.lbObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbObservaciones.Name = "lbObservaciones";
-            this.lbObservaciones.Size = new System.Drawing.Size(33, 30);
-            this.lbObservaciones.TabIndex = 16;
-            this.lbObservaciones.Text = ".....";
-            // 
-            // lbPrecioTotal
-            // 
-            this.lbPrecioTotal.AutoSize = true;
-            this.lbPrecioTotal.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioTotal.Location = new System.Drawing.Point(758, 160);
-            this.lbPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbPrecioTotal.Name = "lbPrecioTotal";
-            this.lbPrecioTotal.Size = new System.Drawing.Size(33, 30);
-            this.lbPrecioTotal.TabIndex = 15;
-            this.lbPrecioTotal.Text = ".....";
-            // 
-            // lbPrecioVenta
-            // 
-            this.lbPrecioVenta.AutoSize = true;
-            this.lbPrecioVenta.BackColor = System.Drawing.Color.PaleGreen;
-            this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioVenta.Location = new System.Drawing.Point(692, 105);
-            this.lbPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbPrecioVenta.Name = "lbPrecioVenta";
-            this.lbPrecioVenta.Size = new System.Drawing.Size(38, 30);
-            this.lbPrecioVenta.TabIndex = 13;
-            this.lbPrecioVenta.Text = ".....";
-            // 
-            // lbPrecioCompra
-            // 
-            this.lbPrecioCompra.AutoSize = true;
-            this.lbPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioCompra.Location = new System.Drawing.Point(713, 50);
-            this.lbPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbPrecioCompra.Name = "lbPrecioCompra";
-            this.lbPrecioCompra.Size = new System.Drawing.Size(33, 30);
-            this.lbPrecioCompra.TabIndex = 12;
-            this.lbPrecioCompra.Text = ".....";
-            // 
-            // lbExistencias
-            // 
-            this.lbExistencias.AutoSize = true;
-            this.lbExistencias.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lbExistencias.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExistencias.ForeColor = System.Drawing.Color.Red;
-            this.lbExistencias.Location = new System.Drawing.Point(131, 160);
-            this.lbExistencias.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(33, 30);
-            this.lbExistencias.TabIndex = 11;
-            this.lbExistencias.Text = ".....";
-            // 
-            // lbNameP
-            // 
-            this.lbNameP.AutoSize = true;
-            this.lbNameP.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameP.Location = new System.Drawing.Point(108, 105);
-            this.lbNameP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbNameP.Name = "lbNameP";
-            this.lbNameP.Size = new System.Drawing.Size(33, 30);
-            this.lbNameP.TabIndex = 10;
-            this.lbNameP.Text = ".....";
-            // 
-            // lbCodigo
-            // 
-            this.lbCodigo.AutoSize = true;
-            this.lbCodigo.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodigo.Location = new System.Drawing.Point(108, 52);
-            this.lbCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(33, 30);
-            this.lbCodigo.TabIndex = 9;
-            this.lbCodigo.Text = ".....";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1051, 107);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 30);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Proveedor:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1051, 52);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 30);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Observaciones:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(528, 160);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(222, 30);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Precio Total (Exit*Unid): ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(528, 105);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(156, 30);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Precio de Venta: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(528, 52);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(177, 30);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Precio de Compra: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 160);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 30);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Existencias:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 105);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 30);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Producto:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 30);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Codigo:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Animated = true;
-            this.txtSearch.BorderColor = System.Drawing.Color.Purple;
-            this.txtSearch.BorderRadius = 10;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(1125, 9);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderText = "Buscar Producto";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(288, 41);
-            this.txtSearch.TabIndex = 3;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BorderRadius = 10;
-            this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnSearch.Font = new System.Drawing.Font("Poppins", 12F);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1421, 9);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(120, 42);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Buscar";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -374,23 +121,20 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.lbCantiTota);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(1549, 485);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(0, 41);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(241, 215);
+            this.groupBox2.Size = new System.Drawing.Size(275, 173);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             // 
             // lbCapital
             // 
             this.lbCapital.AutoSize = true;
-            this.lbCapital.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCapital.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCapital.Location = new System.Drawing.Point(5, 129);
-            this.lbCapital.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCapital.Location = new System.Drawing.Point(118, 104);
             this.lbCapital.Name = "lbCapital";
-            this.lbCapital.Size = new System.Drawing.Size(35, 44);
+            this.lbCapital.Size = new System.Drawing.Size(22, 28);
             this.lbCapital.TabIndex = 4;
             this.lbCapital.Text = "0";
             // 
@@ -398,22 +142,20 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 99);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(6, 104);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 30);
+            this.label12.Size = new System.Drawing.Size(117, 25);
             this.label12.TabIndex = 2;
             this.label12.Text = "Total Invertido:";
             // 
             // lbCantiTota
             // 
             this.lbCantiTota.AutoSize = true;
-            this.lbCantiTota.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCantiTota.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCantiTota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCantiTota.Location = new System.Drawing.Point(80, 50);
-            this.lbCantiTota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCantiTota.Location = new System.Drawing.Point(150, 39);
             this.lbCantiTota.Name = "lbCantiTota";
-            this.lbCantiTota.Size = new System.Drawing.Size(35, 44);
+            this.lbCantiTota.Size = new System.Drawing.Size(22, 28);
             this.lbCantiTota.TabIndex = 1;
             this.lbCantiTota.Text = "0";
             // 
@@ -421,51 +163,11 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(8, 20);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(6, 42);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(180, 30);
+            this.label11.Size = new System.Drawing.Size(147, 25);
             this.label11.TabIndex = 0;
             this.label11.Text = "Total de Productos:";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.BorderRadius = 10;
-            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAdd.Font = new System.Drawing.Font("Poppins", 12F);
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(1558, 9);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(232, 42);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Añadir Producto";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRefresh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRefresh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRefresh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(1063, 2);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnRefresh.Size = new System.Drawing.Size(52, 49);
-            this.btnRefresh.TabIndex = 7;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // MessageDialog
             // 
@@ -518,8 +220,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(43, 59);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -530,10 +231,388 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1747, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(1333, 310);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView1_CellFormatting);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
+            // 
+            // guna2GroupBox1
+            // 
+            this.guna2GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2GroupBox1.Controls.Add(this.txtID);
+            this.guna2GroupBox1.Controls.Add(this.groupBox_Detalle);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox1.Location = new System.Drawing.Point(9, 364);
+            this.guna2GroupBox1.Name = "guna2GroupBox1";
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1048, 214);
+            this.guna2GroupBox1.TabIndex = 77;
+            this.guna2GroupBox1.Text = "Detalles del Producto:";
+            // 
+            // groupBox_Detalle
+            // 
+            this.groupBox_Detalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_Detalle.Controls.Add(this.lbProveedor);
+            this.groupBox_Detalle.Controls.Add(this.lbObservaciones);
+            this.groupBox_Detalle.Controls.Add(this.lbPrecioTotal);
+            this.groupBox_Detalle.Controls.Add(this.lbPrecioVenta);
+            this.groupBox_Detalle.Controls.Add(this.lbPrecioCompra);
+            this.groupBox_Detalle.Controls.Add(this.lbExistencias);
+            this.groupBox_Detalle.Controls.Add(this.lbNameP);
+            this.groupBox_Detalle.Controls.Add(this.lbCodigo);
+            this.groupBox_Detalle.Controls.Add(this.label8);
+            this.groupBox_Detalle.Controls.Add(this.label9);
+            this.groupBox_Detalle.Controls.Add(this.label10);
+            this.groupBox_Detalle.Controls.Add(this.label6);
+            this.groupBox_Detalle.Controls.Add(this.label7);
+            this.groupBox_Detalle.Controls.Add(this.label4);
+            this.groupBox_Detalle.Controls.Add(this.label3);
+            this.groupBox_Detalle.Controls.Add(this.label2);
+            this.groupBox_Detalle.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Detalle.Location = new System.Drawing.Point(0, 41);
+            this.groupBox_Detalle.Name = "groupBox_Detalle";
+            this.groupBox_Detalle.Size = new System.Drawing.Size(1048, 173);
+            this.groupBox_Detalle.TabIndex = 3;
+            this.groupBox_Detalle.TabStop = false;
+            this.groupBox_Detalle.Text = "Producto ....";
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(1013, 8);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(32, 30);
+            this.txtID.TabIndex = 18;
+            this.txtID.Visible = false;
+            // 
+            // lbProveedor
+            // 
+            this.lbProveedor.AutoSize = true;
+            this.lbProveedor.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProveedor.Location = new System.Drawing.Point(834, 73);
+            this.lbProveedor.Name = "lbProveedor";
+            this.lbProveedor.Size = new System.Drawing.Size(27, 25);
+            this.lbProveedor.TabIndex = 17;
+            this.lbProveedor.Text = ".....";
+            // 
+            // lbObservaciones
+            // 
+            this.lbObservaciones.AutoSize = true;
+            this.lbObservaciones.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbObservaciones.Location = new System.Drawing.Point(866, 28);
+            this.lbObservaciones.Name = "lbObservaciones";
+            this.lbObservaciones.Size = new System.Drawing.Size(27, 25);
+            this.lbObservaciones.TabIndex = 16;
+            this.lbObservaciones.Text = ".....";
+            // 
+            // lbPrecioTotal
+            // 
+            this.lbPrecioTotal.AutoSize = true;
+            this.lbPrecioTotal.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecioTotal.Location = new System.Drawing.Point(536, 117);
+            this.lbPrecioTotal.Name = "lbPrecioTotal";
+            this.lbPrecioTotal.Size = new System.Drawing.Size(27, 25);
+            this.lbPrecioTotal.TabIndex = 15;
+            this.lbPrecioTotal.Text = ".....";
+            // 
+            // lbPrecioVenta
+            // 
+            this.lbPrecioVenta.AutoSize = true;
+            this.lbPrecioVenta.BackColor = System.Drawing.Color.PaleGreen;
+            this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecioVenta.Location = new System.Drawing.Point(486, 72);
+            this.lbPrecioVenta.Name = "lbPrecioVenta";
+            this.lbPrecioVenta.Size = new System.Drawing.Size(32, 25);
+            this.lbPrecioVenta.TabIndex = 13;
+            this.lbPrecioVenta.Text = ".....";
+            // 
+            // lbPrecioCompra
+            // 
+            this.lbPrecioCompra.AutoSize = true;
+            this.lbPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecioCompra.Location = new System.Drawing.Point(504, 29);
+            this.lbPrecioCompra.Name = "lbPrecioCompra";
+            this.lbPrecioCompra.Size = new System.Drawing.Size(27, 25);
+            this.lbPrecioCompra.TabIndex = 12;
+            this.lbPrecioCompra.Text = ".....";
+            // 
+            // lbExistencias
+            // 
+            this.lbExistencias.AutoSize = true;
+            this.lbExistencias.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lbExistencias.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbExistencias.ForeColor = System.Drawing.Color.Red;
+            this.lbExistencias.Location = new System.Drawing.Point(118, 117);
+            this.lbExistencias.Name = "lbExistencias";
+            this.lbExistencias.Size = new System.Drawing.Size(27, 25);
+            this.lbExistencias.TabIndex = 11;
+            this.lbExistencias.Text = ".....";
+            // 
+            // lbNameP
+            // 
+            this.lbNameP.AutoSize = true;
+            this.lbNameP.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameP.Location = new System.Drawing.Point(104, 72);
+            this.lbNameP.Name = "lbNameP";
+            this.lbNameP.Size = new System.Drawing.Size(27, 25);
+            this.lbNameP.TabIndex = 10;
+            this.lbNameP.Text = ".....";
+            // 
+            // lbCodigo
+            // 
+            this.lbCodigo.AutoSize = true;
+            this.lbCodigo.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCodigo.Location = new System.Drawing.Point(90, 28);
+            this.lbCodigo.Name = "lbCodigo";
+            this.lbCodigo.Size = new System.Drawing.Size(27, 25);
+            this.lbCodigo.TabIndex = 9;
+            this.lbCodigo.Text = ".....";
+            // 
+            // guna2GroupBox2
+            // 
+            this.guna2GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2GroupBox2.Controls.Add(this.groupBox2);
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1063, 364);
+            this.guna2GroupBox2.Name = "guna2GroupBox2";
+            this.guna2GroupBox2.Size = new System.Drawing.Size(275, 214);
+            this.guna2GroupBox2.TabIndex = 78;
+            this.guna2GroupBox2.Text = "Datos generales";
+            // 
+            // MessageBox_Question
+            // 
+            this.MessageBox_Question.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            this.MessageBox_Question.Caption = null;
+            this.MessageBox_Question.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            this.MessageBox_Question.Parent = null;
+            this.MessageBox_Question.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Question.Text = null;
+            // 
+            // MessageBox_Error
+            // 
+            this.MessageBox_Error.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Error.Caption = null;
+            this.MessageBox_Error.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+            this.MessageBox_Error.Parent = null;
+            this.MessageBox_Error.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Error.Text = null;
+            // 
+            // MessageBox_Ok
+            // 
+            this.MessageBox_Ok.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Ok.Caption = null;
+            this.MessageBox_Ok.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Ok.Parent = null;
+            this.MessageBox_Ok.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Ok.Text = null;
+            // 
+            // MessageBox_Warnings
+            // 
+            this.MessageBox_Warnings.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Warnings.Caption = null;
+            this.MessageBox_Warnings.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            this.MessageBox_Warnings.Parent = null;
+            this.MessageBox_Warnings.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Warnings.Text = null;
+            // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.MessageBox_Import.Text = null;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
+            this.pictureBox1.Location = new System.Drawing.Point(9, 3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 84;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_20px;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Location = new System.Drawing.Point(728, 73);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 25);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "       Proveedor:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Image = global::INASOFT_3._0.Properties.Resources.icons8_invisible_20px;
+            this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label9.Location = new System.Drawing.Point(728, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(144, 25);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "       Observaciones:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
+            this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.Location = new System.Drawing.Point(342, 117);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(203, 25);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "       Precio Total (Exit*Unid): ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(342, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(151, 25);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "       Precio de Venta: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
+            this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.Location = new System.Drawing.Point(342, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(168, 25);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "       Precio de Compra: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Image = global::INASOFT_3._0.Properties.Resources.icons8_load_resume_template_20px1;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(6, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 25);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "       Existencias:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_20px;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "       Producto:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Image = global::INASOFT_3._0.Properties.Resources.icons8_shift_20px;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(6, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "       Codigo:";
+            // 
+            // Bttn_Info
+            // 
+            this.Bttn_Info.BackColor = System.Drawing.Color.Transparent;
+            this.Bttn_Info.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Bttn_Info.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Bttn_Info.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Bttn_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Bttn_Info.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Bttn_Info.ForeColor = System.Drawing.SystemColors.Control;
+            this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
+            this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Bttn_Info.Location = new System.Drawing.Point(307, 10);
+            this.Bttn_Info.Name = "Bttn_Info";
+            this.Bttn_Info.Size = new System.Drawing.Size(31, 29);
+            this.Bttn_Info.TabIndex = 76;
+            this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Bttn_Info.UseVisualStyleBackColor = false;
+            this.Bttn_Info.Click += new System.EventHandler(this.Bttn_Info_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRefresh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRefresh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRefresh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(902, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnRefresh.Size = new System.Drawing.Size(39, 40);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.BorderRadius = 10;
+            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAdd.Font = new System.Drawing.Font("Poppins", 12F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(1168, 7);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(174, 34);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Añadir Producto";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Animated = true;
+            this.txtSearch.BorderColor = System.Drawing.Color.Purple;
+            this.txtSearch.BorderRadius = 10;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.DefaultText = "";
+            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
+            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
+            this.txtSearch.Location = new System.Drawing.Point(947, 7);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.PlaceholderText = "Buscar Producto";
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.Size = new System.Drawing.Size(216, 33);
+            this.txtSearch.TabIndex = 3;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // productosBindingSource
             // 
@@ -541,26 +620,30 @@ namespace INASOFT_3._0.UserControls
             // 
             // UC_Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.guna2GroupBox2);
+            this.Controls.Add(this.guna2GroupBox1);
+            this.Controls.Add(this.Bttn_Info);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Productos";
-            this.Size = new System.Drawing.Size(1806, 723);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Size = new System.Drawing.Size(1354, 587);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.guna2GroupBox1.ResumeLayout(false);
+            this.guna2GroupBox1.PerformLayout();
+            this.groupBox_Detalle.ResumeLayout(false);
+            this.groupBox_Detalle.PerformLayout();
+            this.guna2GroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -572,26 +655,7 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn preciodolarDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productosBindingSource;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lbNameP;
-        private System.Windows.Forms.Label lbCodigo;
-        private System.Windows.Forms.Label lbProveedor;
-        private System.Windows.Forms.Label lbObservaciones;
-        private System.Windows.Forms.Label lbPrecioTotal;
-        private System.Windows.Forms.Label lbPrecioVenta;
-        private System.Windows.Forms.Label lbPrecioCompra;
-        private System.Windows.Forms.Label lbExistencias;
-        private System.Windows.Forms.TextBox txtID;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2Button btnSearch;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbCantiTota;
@@ -606,5 +670,32 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogInfo;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogWar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Button Bttn_Info;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private System.Windows.Forms.GroupBox groupBox_Detalle;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lbProveedor;
+        private System.Windows.Forms.Label lbObservaciones;
+        private System.Windows.Forms.Label lbPrecioTotal;
+        private System.Windows.Forms.Label lbPrecioVenta;
+        private System.Windows.Forms.Label lbPrecioCompra;
+        private System.Windows.Forms.Label lbExistencias;
+        private System.Windows.Forms.Label lbNameP;
+        private System.Windows.Forms.Label lbCodigo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Question;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Error;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Ok;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Warnings;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

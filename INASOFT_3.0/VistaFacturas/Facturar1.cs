@@ -17,9 +17,6 @@ namespace INASOFT_3._0.VistaFacturas
         public Facturar1()
         {
             InitializeComponent();
-            string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-            string hora = DateTime.Now.ToString("hh:mm:ss");
-            lbFecha.Text = fecha + " " + hora;
             txtIdUser.Text = Sesion.id.ToString();
             Cargar_Clientes();
 
@@ -29,6 +26,8 @@ namespace INASOFT_3._0.VistaFacturas
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            this.Hide();
+            this.Close();
         }
 
         private void Cargar_Clientes()
@@ -40,32 +39,23 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Clientes.DataSource = ctrl.Cargar_NombreClientes();
             Cbx_Clientes.ValueMember = "ID";
             Cbx_Clientes.DisplayMember = "Nombre";
-
         }
-
 
         private void btnAddCliente_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text == "")
             {
-                MessageBox.Show("Por favor introduzca el nombre del cliente");
+                MessageBox_Import.Show("Por favor introduzca el nombre del cliente");
             }
             else
             {
-                string sql = "INSERT INTO clientes(nombre, telefono, direccion, cedula) VALUES('" + txtNombre.Text + "','Ninguno', 'Ninguno', 'Ninguno')";
-                try
+                Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
+                if (ctrlClientes.Insertar_NombreCliente(txtNombre.Text))
                 {
-                    MySqlConnection conexioBD = Conexion.getConexion();
-                    conexioBD.Open();
-                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                    comando.ExecuteNonQuery();
-                    MessageDialogInfo.Show("Cliente Registrado Correctamente", "Registrar Cliete");
+                    MessageBox_Ok.Show("Cliente Registrado Correctamente", "Registrar Cliete");
                     txtNombre.Text = "";
+                    Limpiar();
                     Cargar_Clientes();
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
                 }
             }
         }
@@ -74,36 +64,35 @@ namespace INASOFT_3._0.VistaFacturas
         {
             if (Cbx_Clientes.SelectedIndex == -1)
             {
-                MessageDialogInfo.Show("Tiene que seleccionar a un cliente", "Importante");
+                MessageBox_Import.Show("Tiene que seleccionar a un cliente", "Importante");
             }
             else
             {
                 DetalleFactura frm = new DetalleFactura();
-                frm.lbClienteName.Text = lbNombre.Text;
                 frm.txtIdCliente.Text = txtIdCliente.Text;
-                frm.ShowDialog();
-                this.Dispose();
-                /*Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-                int cod_fac = ctrlFactura.Codigo_Factura();
-                //string sql = "CALL Insertar_Factura("+ cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
-                string sql = "CALL Insertar_Factura(" + cod_fac + ", '" + lbFecha.Text + "', '" + txtIdUser.Text + "', '" + txtIdCliente.Text + "');";
-                try
+                int limite = 20;
+
+                if (lbNombre.Text.Length > limite)
                 {
-                    MySqlConnection conexioBD = Conexion.getConexion();
-                    conexioBD.Open();
-                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                    comando.ExecuteNonQuery();
-                    MessageDialogInfo.Show("Factura Almacenada", "Facturación");
-                    DetalleFactura frm = new DetalleFactura();
-                    frm.lbClienteName.Text = lbNombre.Text;
-                    frm.txtIdCliente.Text = txtIdCliente.Text;
-                    frm.ShowDialog();
-                    this.Dispose();
+                    frm.lbClienteName.Text = lbNombre.Text.Substring(0, limite) + "...";
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    MessageBox.Show(ex.Message.ToString());
-                }*/
+                    frm.lbClienteName.Text = lbNombre.Text;
+                }
+
+                if (Lb_User.Text.Length > limite)
+                {
+                    frm.Lb_User.Text = Lb_User.Text.Substring(0, limite) + "...";
+                }
+                else
+                {
+                    frm.Lb_User.Text = Lb_User.Text;
+                }
+
+                frm.Show();
+                this.Hide();
+                this.Close();
             }
         }
 
@@ -115,48 +104,58 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Clientes.DisplayMember = "Nombre";
         }
 
+        public void Limpiar()
+        {
+            lbNombre.Text = "";
+            lbCedula.Text = "";
+            lbDireccion.Text = "";
+            lbTelefono.Text = "";
+        }
+
         private void Cbx_Clientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 if (Cbx_Clientes.SelectedIndex == -1)
                 {
+                    Limpiar();
                     txtIdCliente.Text = "";
                 }
                 else
                 {
                     txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
-                    string sql = "SELECT nombre FROM clientes WHERE id='" + txtIdCliente.Text + "'";
-                    MySqlDataReader reader = null;
-                    try
-                    {
-                        MySqlConnection conexioBD = Conexion.getConexion();
-                        conexioBD.Open();
-                        MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                        reader = comando.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                lbNombre.Text = reader.GetString("nombre");
+                    int id = int.Parse(txtIdCliente.Text);
+                    Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
+                    lbNombre.Text = ctrlClientes.Nombre_Cliente(id);
+                    lbTelefono.Text = ctrlClientes.Telefono_Cliente(id);
+                    lbDireccion.Text = ctrlClientes.Direccion_Cliente(id);
+                    lbCedula.Text = ctrlClientes.Cedula_Cliente(id);
 
-                            }
-                        }
-                    }
-                    catch (MySqlException ex)
+                    int limite = 15;
+
+                    if (lbDireccion.Text.Length > limite)
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        lbDireccion.Text = lbDireccion.Text.Substring(0, limite) + "...";
+                    }
+                    else
+                    {
+                        lbDireccion.Text = lbDireccion.Text;
                     }
                 }
             }
             catch (Exception ex)
             {
-
+                //MessageBox.Show("Error: " + ex.Message);
             }
         }
         private void Button1_Click_1(object sender, EventArgs e)
         {
             Cargar_Clientes();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            lbFecha.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

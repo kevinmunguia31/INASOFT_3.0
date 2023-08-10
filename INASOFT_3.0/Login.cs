@@ -23,6 +23,11 @@ namespace INASOFT_3._0
         {
             Application.Exit();
         }
+        public void Limpiar()
+        {
+            txtPassword.Text = "";
+            txtUser.Text = "";
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -34,25 +39,15 @@ namespace INASOFT_3._0
             try
             {
                 Controladores.ctrlUsuarios ctrl = new Controladores.ctrlUsuarios();
+                Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
                 string respuesta = ctrl.ctrlLogin(usuario, password);
 
                 if (respuesta.Length > 0)
                 {
                     guna2MessageWar.Show(respuesta, "Aviso");
-                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now + " por la PC: " + PcUser;
-                    MySqlConnection conexionDB = Conexion.getConexion();
-                    conexionDB.Open();
-
-                    try
-                    {
-                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
-                        comando.ExecuteNonQuery();
-                        Console.WriteLine("Logs Almacenado");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        Console.WriteLine("Error al guardar el Log" + ex);
-                    }
+                    string log = "Intento Fallido de inicio de Sesion a las " + DateTime.Now + " por la PC: " + PcUser;                    
+                    ctrlInfo.InsertarLog(log);
+                    Limpiar();
                 }
                 else
                 {
@@ -61,19 +56,7 @@ namespace INASOFT_3._0
                     this.Visible = false;
 
                     string log = "Inicio de Sesion a las " + DateTime.Now + " por: " + Sesion.nombre;
-                    MySqlConnection conexionDB = Conexion.getConexion();
-                    conexionDB.Open();
-
-                    try
-                    {
-                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
-                        comando.ExecuteNonQuery();
-                        Console.WriteLine("Logs Almacenado");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        Console.WriteLine("Error al guardar el Log" + ex);
-                    }
+                    ctrlInfo.InsertarLog(log);
                 }
             }
             catch (MySqlException ex)
@@ -82,14 +65,9 @@ namespace INASOFT_3._0
             }
         }
 
-        private void guna2CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void Guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = !guna2CheckBox1.Checked;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-             
+            txtPassword.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
         }
     }
 }

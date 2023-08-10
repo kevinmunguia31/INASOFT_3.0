@@ -203,16 +203,21 @@
         0lveKPTzUtl9ilRGx4Quxr8JLhE0JnXAuyt3hYnF8j/jTdt/4zx+oQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Txt_descuento.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEdj
-        GAWjYBTUvb0aOhAYaj0DQ+2ba/8HAkOtRzgg+OYmumKb21tCQRjuAIatmXTFtre2gPHQdADztpz/Eofb
-        /qudmQHGEofb/zNtz8GqFhcm2wHce8r+m11bAzcAhs2urv7PtbsMqx5sGKaPJAeAfA6yCNliZAySIzYk
-        YHowHCByqAkDs+8sBMtJHmlHsRAbBkUNSC1IDzazYPbA1GM4ANkwGIZpBMU3NnlkrHZmOlgtSA82eXR7
-        Bp8DQBrRMV2jAB+mSyIkhAc0G8LwgBZE1MKDxwGwBoL5xUX/6YnhDoABmAC9MdR6BgZYA4HeGGr9KBgF
-        IxYwMAAAUDMZQeLZO6UAAAAASUVORK5CYII=
-</value>
-  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="guna2Elipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -238,6 +243,16 @@
         iY33Nx+vhz4iQw9xqP//H76hCw9toisO6H/zfZrbtj/0Tuia7/AN3aB0iNi8fy6UaM1Yv3j4htaUHsL8
         h2/oRv1DpA7f0Nqh/rmHb2ht/yHs7vAN3bD5qht/Y7DJV93o/8LYpH+qEfeP/mb/nb9w9E5O3gO5PgUP
         ilZrlwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Txt_descuento.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEdj
+        GAWjYBTUvb0aOhAYaj0DQ+2ba/8HAkOtRzgg+OYmumKb21tCQRjuAIatmXTFtre2gPHQdADztpz/Eofb
+        /qudmQHGEofb/zNtz8GqFhcm2wHce8r+m11bAzcAhs2urv7PtbsMqx5sGKaPJAeAfA6yCNliZAySIzYk
+        YHowHCByqAkDs+8sBMtJHmlHsRAbBkUNSC1IDzazYPbA1GM4ANkwGIZpBMU3NnlkrHZmOlgtSA82eXR7
+        Bp8DQBrRMV2jAB+mSyIkhAc0G8LwgBZE1MKDxwGwBoL5xUX/6YnhDoABmAC9MdR6BgZYA4HeGGr9KBgF
+        IxYwMAAAUDMZQeLZO6UAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="Txt_Efectivo.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -2994,5 +3009,23 @@
   </metadata>
   <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>485, 17</value>
+  </metadata>
+  <metadata name="MessageBox_Import.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>24, 49</value>
+  </metadata>
+  <metadata name="MessageBox_Warnings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>186, 49</value>
+  </metadata>
+  <metadata name="MessageBox_Ok.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>362, 49</value>
+  </metadata>
+  <metadata name="MessageBox_Error.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>502, 49</value>
+  </metadata>
+  <metadata name="MessageBox_Question.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>653, 49</value>
+  </metadata>
+  <metadata name="guna2MessageDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>827, 49</value>
   </metadata>
 </root>

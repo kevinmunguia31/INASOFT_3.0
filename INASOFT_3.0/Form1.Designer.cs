@@ -37,12 +37,13 @@ namespace INASOFT_3._0
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnProvider = new Guna.UI2.WinForms.Guna2Button();
+            this.btnClientes = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.btnSettings = new Guna.UI2.WinForms.Guna2Button();
             this.btnUser = new Guna.UI2.WinForms.Guna2Button();
-            this.btnReport = new Guna.UI2.WinForms.Guna2Button();
-            this.btnProvider = new Guna.UI2.WinForms.Guna2Button();
             this.btnFactura = new Guna.UI2.WinForms.Guna2Button();
-            this.btnClientes = new Guna.UI2.WinForms.Guna2Button();
             this.btnProductos = new Guna.UI2.WinForms.Guna2Button();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
@@ -63,11 +64,9 @@ namespace INASOFT_3._0
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1592, 68);
+            this.panel1.Size = new System.Drawing.Size(1096, 54);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnLogaut
             // 
@@ -76,13 +75,12 @@ namespace INASOFT_3._0
             this.btnLogaut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogaut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogaut.Image")));
             this.btnLogaut.ImageRotate = 0F;
-            this.btnLogaut.Location = new System.Drawing.Point(1498, 4);
-            this.btnLogaut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogaut.Location = new System.Drawing.Point(1020, 3);
             this.btnLogaut.Name = "btnLogaut";
             this.btnLogaut.ShadowDecoration.Depth = 10;
             this.btnLogaut.ShadowDecoration.Enabled = true;
             this.btnLogaut.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnLogaut.Size = new System.Drawing.Size(90, 60);
+            this.btnLogaut.Size = new System.Drawing.Size(72, 48);
             this.btnLogaut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnLogaut.TabIndex = 3;
             this.btnLogaut.TabStop = false;
@@ -94,10 +92,9 @@ namespace INASOFT_3._0
             this.lbTipoUser.BackColor = System.Drawing.Color.Transparent;
             this.lbTipoUser.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTipoUser.ForeColor = System.Drawing.Color.White;
-            this.lbTipoUser.Location = new System.Drawing.Point(1333, 34);
-            this.lbTipoUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTipoUser.Location = new System.Drawing.Point(888, 27);
             this.lbTipoUser.Name = "lbTipoUser";
-            this.lbTipoUser.Size = new System.Drawing.Size(158, 26);
+            this.lbTipoUser.Size = new System.Drawing.Size(126, 21);
             this.lbTipoUser.TabIndex = 5;
             this.lbTipoUser.Text = "Administrador";
             // 
@@ -107,10 +104,9 @@ namespace INASOFT_3._0
             this.lbUserName.BackColor = System.Drawing.Color.Transparent;
             this.lbUserName.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.ForeColor = System.Drawing.Color.White;
-            this.lbUserName.Location = new System.Drawing.Point(1330, 5);
-            this.lbUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUserName.Location = new System.Drawing.Point(886, 4);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(222, 52);
+            this.lbUserName.Size = new System.Drawing.Size(178, 42);
             this.lbUserName.TabIndex = 4;
             this.lbUserName.Text = "Kevin Munguia";
             // 
@@ -119,21 +115,18 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(78, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(62, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 48);
+            this.label1.Size = new System.Drawing.Size(166, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "INASOFTWARE";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 59);
+            this.pictureBox1.Size = new System.Drawing.Size(51, 47);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -142,20 +135,108 @@ namespace INASOFT_3._0
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnProvider);
+            this.panel2.Controls.Add(this.btnClientes);
+            this.panel2.Controls.Add(this.guna2Button1);
+            this.panel2.Controls.Add(this.guna2Button2);
             this.panel2.Controls.Add(this.btnSettings);
             this.panel2.Controls.Add(this.btnUser);
-            this.panel2.Controls.Add(this.btnReport);
-            this.panel2.Controls.Add(this.btnProvider);
             this.panel2.Controls.Add(this.btnFactura);
-            this.panel2.Controls.Add(this.btnClientes);
             this.panel2.Controls.Add(this.btnProductos);
             this.panel2.Controls.Add(this.btnHome);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 68);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 54);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1592, 60);
+            this.panel2.Size = new System.Drawing.Size(1096, 48);
             this.panel2.TabIndex = 1;
+            // 
+            // btnProvider
+            // 
+            this.btnProvider.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnProvider.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
+            this.btnProvider.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnProvider.CustomBorderColor = System.Drawing.Color.White;
+            this.btnProvider.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.btnProvider.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnProvider.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnProvider.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnProvider.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnProvider.FillColor = System.Drawing.Color.White;
+            this.btnProvider.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
+            this.btnProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.btnProvider.Image = ((System.Drawing.Image)(resources.GetObject("btnProvider.Image")));
+            this.btnProvider.Location = new System.Drawing.Point(756, 0);
+            this.btnProvider.Name = "btnProvider";
+            this.btnProvider.Size = new System.Drawing.Size(134, 45);
+            this.btnProvider.TabIndex = 4;
+            this.btnProvider.Text = "Proveedores";
+            this.btnProvider.Click += new System.EventHandler(this.btnProvider_Click);
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnClientes.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
+            this.btnClientes.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnClientes.CustomBorderColor = System.Drawing.Color.White;
+            this.btnClientes.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.btnClientes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClientes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClientes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClientes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClientes.FillColor = System.Drawing.Color.White;
+            this.btnClientes.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
+            this.btnClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
+            this.btnClientes.Location = new System.Drawing.Point(635, 0);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(115, 45);
+            this.btnClientes.TabIndex = 2;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button1.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2Button1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_40px_1;
+            this.guna2Button1.Location = new System.Drawing.Point(363, 0);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(145, 45);
+            this.guna2Button1.TabIndex = 8;
+            this.guna2Button1.Text = "Devoluciones";
+            this.guna2Button1.Click += new System.EventHandler(this.Guna2Button1_Click);
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button2.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
+            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.White;
+            this.guna2Button2.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2Button2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.White;
+            this.guna2Button2.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.guna2Button2.Image = global::INASOFT_3._0.Properties.Resources.icons8_credit_control_40px;
+            this.guna2Button2.Location = new System.Drawing.Point(514, 0);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(115, 45);
+            this.guna2Button2.TabIndex = 9;
+            this.guna2Button2.Text = "Crédito";
+            this.guna2Button2.Click += new System.EventHandler(this.Guna2Button2_Click);
             // 
             // btnSettings
             // 
@@ -172,10 +253,9 @@ namespace INASOFT_3._0
             this.btnSettings.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-            this.btnSettings.Location = new System.Drawing.Point(1366, 2);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSettings.Location = new System.Drawing.Point(1017, 0);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(220, 56);
+            this.btnSettings.Size = new System.Drawing.Size(176, 45);
             this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Configuraciones";
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -195,58 +275,12 @@ namespace INASOFT_3._0
             this.btnUser.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
-            this.btnUser.Location = new System.Drawing.Point(1184, 2);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUser.Location = new System.Drawing.Point(896, 0);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(175, 56);
+            this.btnUser.Size = new System.Drawing.Size(115, 45);
             this.btnUser.TabIndex = 6;
             this.btnUser.Text = "Usuarios";
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
-            // btnReport
-            // 
-            this.btnReport.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnReport.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
-            this.btnReport.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnReport.CustomBorderColor = System.Drawing.Color.White;
-            this.btnReport.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.btnReport.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReport.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReport.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReport.FillColor = System.Drawing.Color.White;
-            this.btnReport.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
-            this.btnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
-            this.btnReport.Location = new System.Drawing.Point(975, 2);
-            this.btnReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(201, 56);
-            this.btnReport.TabIndex = 5;
-            this.btnReport.Text = "Reportes";
-            // 
-            // btnProvider
-            // 
-            this.btnProvider.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnProvider.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
-            this.btnProvider.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnProvider.CustomBorderColor = System.Drawing.Color.White;
-            this.btnProvider.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.btnProvider.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnProvider.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnProvider.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnProvider.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnProvider.FillColor = System.Drawing.Color.White;
-            this.btnProvider.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
-            this.btnProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.btnProvider.Image = ((System.Drawing.Image)(resources.GetObject("btnProvider.Image")));
-            this.btnProvider.Location = new System.Drawing.Point(766, 2);
-            this.btnProvider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnProvider.Name = "btnProvider";
-            this.btnProvider.Size = new System.Drawing.Size(201, 56);
-            this.btnProvider.TabIndex = 4;
-            this.btnProvider.Text = "Proveedores";
-            this.btnProvider.Click += new System.EventHandler(this.btnProvider_Click);
             // 
             // btnFactura
             // 
@@ -263,36 +297,12 @@ namespace INASOFT_3._0
             this.btnFactura.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnFactura.Image")));
-            this.btnFactura.Location = new System.Drawing.Point(558, 2);
-            this.btnFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFactura.Location = new System.Drawing.Point(242, 0);
             this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(201, 56);
+            this.btnFactura.Size = new System.Drawing.Size(115, 45);
             this.btnFactura.TabIndex = 3;
             this.btnFactura.Text = "Facturar";
             this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnClientes.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(78)))), ((int)(((byte)(221)))));
-            this.btnClientes.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnClientes.CustomBorderColor = System.Drawing.Color.White;
-            this.btnClientes.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.btnClientes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClientes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClientes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClientes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClientes.FillColor = System.Drawing.Color.White;
-            this.btnClientes.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
-            this.btnClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.Location = new System.Drawing.Point(379, 2);
-            this.btnClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(171, 56);
-            this.btnClientes.TabIndex = 2;
-            this.btnClientes.Text = "Clientes";
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnProductos
             // 
@@ -309,10 +319,9 @@ namespace INASOFT_3._0
             this.btnProductos.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnProductos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
-            this.btnProductos.Location = new System.Drawing.Point(196, 2);
-            this.btnProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductos.Location = new System.Drawing.Point(121, 0);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(175, 56);
+            this.btnProductos.Size = new System.Drawing.Size(115, 45);
             this.btnProductos.TabIndex = 1;
             this.btnProductos.Text = "Productos";
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
@@ -333,10 +342,9 @@ namespace INASOFT_3._0
             this.btnHome.Font = new System.Drawing.Font("Poppins SemiBold", 12F);
             this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.Location = new System.Drawing.Point(1, 0);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(188, 56);
+            this.btnHome.Size = new System.Drawing.Size(115, 45);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
@@ -345,12 +353,10 @@ namespace INASOFT_3._0
             // 
             this.panelContenedor.AutoScroll = true;
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(0, 128);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelContenedor.Location = new System.Drawing.Point(0, 102);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1592, 473);
+            this.panelContenedor.Size = new System.Drawing.Size(1096, 379);
             this.panelContenedor.TabIndex = 2;
-            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
             // guna2MessageDialogErr
             // 
@@ -363,22 +369,20 @@ namespace INASOFT_3._0
             // 
             // Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(200, 30);
-            this.ClientSize = new System.Drawing.Size(1592, 601);
+            this.ClientSize = new System.Drawing.Size(1096, 481);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INA-SOFTWARE vBeta 1.0.3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
-            this.Load += new System.EventHandler(this.Principal_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogaut)).EndInit();
@@ -398,7 +402,6 @@ namespace INASOFT_3._0
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Button btnSettings;
         private Guna.UI2.WinForms.Guna2Button btnUser;
-        private Guna.UI2.WinForms.Guna2Button btnReport;
         private Guna.UI2.WinForms.Guna2Button btnProvider;
         private Guna.UI2.WinForms.Guna2Button btnFactura;
         private Guna.UI2.WinForms.Guna2Button btnClientes;
@@ -407,6 +410,8 @@ namespace INASOFT_3._0
         private System.Windows.Forms.Panel panelContenedor;
         private Guna.UI2.WinForms.Guna2CirclePictureBox btnLogaut;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialogErr;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }
 

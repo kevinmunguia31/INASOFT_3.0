@@ -30,7 +30,6 @@ namespace INASOFT_3._0.UserControls
             HayInternet();
             LoadSalesXMonth();
             GraficoVentasDiarias();
-
         }
 
         private void UC_HOME_Load(object sender, EventArgs e)

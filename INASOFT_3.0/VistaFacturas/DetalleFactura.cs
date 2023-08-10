@@ -17,16 +17,54 @@ namespace INASOFT_3._0.VistaFacturas
     public partial class DetalleFactura : Form
     {
         public DataTable dataTable = new DataTable();
+
         public DetalleFactura()
         {
             InitializeComponent();
+            
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            lbIdFactura.Text = (int.Parse(ctrlFactura.ID_Factura().ToString()) + 1).ToString();
-            txtIdFactura.Text = (int.Parse(ctrlFactura.ID_Factura().ToString()) + 1).ToString();
+            lbIdFactura.Text = ctrlFactura.Codigo_Factura().ToString();
+            //txtIdFactura.Text = (int.Parse(ctrlFactura.ID_Factura().ToString()) + 1).ToString();
 
             Cargar_Productos();
-            Cbx_Productos.SelectedIndex = -1;
             cargar_tabla();
+            Limpiar();
+
+            datagridView1.Columns[0].ReadOnly = true;
+            datagridView1.Columns[1].ReadOnly = true;
+            datagridView1.Columns[4].ReadOnly = true;
+
+            datagridView2.Rows.Add("Total", "", "", "", 0);
+
+            foreach (DataGridViewBand band in datagridView2.Columns)
+            {
+                band.ReadOnly = true;
+            }
+            Cargar_Total();
+        }
+
+        private void DetalleFactura_Load(object sender, EventArgs e)
+        {
+            if (txtIdCliente.Text == "1")
+            {
+                MessageBox_Import.Show("En está opción no se permitirá facturar al crédito", "AVISO");
+            }
+            if (txtIdCliente.Text == "1")
+            {
+                lbClienteName.Text = "Cliente génerico";
+            }
+            else
+            {
+                int limite = 25;
+                if (lbClienteName.Text.Length > limite)
+                {
+                    lbClienteName.Text = lbClienteName.Text.Substring(0, limite) + "...";
+                }
+                else
+                {
+                    lbClienteName.Text = lbClienteName.Text;
+                }
+            }
         }
 
         private void Cargar_Productos()
@@ -40,275 +78,177 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Productos.DisplayMember = "Nombre";
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        public void Cargar_Total()
         {
-            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            ctrlFactura.Cancelar_Factura(ctrlFactura.ID_Factura());
-            this.Dispose();
-        }
-        /*
-        public void obtenerIDFactura()
-        {
-            string dato = txtIdCliente.Text;
-            MySqlDataReader reader = null;
-            string consulta = "SELECT ID FROM facturas WHERE id_cliente='" + dato + "'";
-            MySqlConnection conexionBD = Conexion.getConexion();
-            conexionBD.Open();
+            double Total = 0.00;
             try
             {
-                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
+                for (int i = 0; i < datagridView1.Rows.Count; i++)
                 {
-                    while (reader.Read())
-                    {
-                        lbIdFactura.Text = reader.GetString("id");
-                    }
+                    Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
                 }
-
+                datagridView2.Rows[0].Cells[0].Value = "Total";
+                datagridView2.Rows[0].Cells[1].Value = "";
+                datagridView2.Rows[0].Cells[2].Value = "";
+                datagridView2.Rows[0].Cells[3].Value = "";
+                datagridView2.Rows[0].Cells[4].Value = Total;
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error Al Buscar: " + ex.Message);
+                MessageBox.Show("Error: " + ex);
             }
-            finally { conexionBD.Close(); }
         }
-        */
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Hide();
+            this.Close();
+        }
+
         public void cargar_tabla()
         {
-            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("Código");
             dataTable.Columns.Add("Nombre Producto");
             dataTable.Columns.Add("Cantidad");
             dataTable.Columns.Add("Precio");
             dataTable.Columns.Add("Total");
 
-            dataGridView1.DataSource = dataTable;
+            datagridView1.DataSource = dataTable;
         }
+
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            //List<Modelos.Detalle_Factura> personas = new List<Modelos.Detalle_Factura>();
+            bool seRepite = false;
 
-            // Crea una nueva fila y asigna los valores de las columnas
-            DataRow newRow = dataTable.NewRow();
-            newRow[0] = txtIdProduc.Text;
-            newRow[1] = lbProductName.Text;
-            newRow[2] = SpinCantidad.Value.ToString();
-            newRow[3] = txtPrecio.Text;
-            newRow[4] = double.Parse(txtPrecio.Text) * int.Parse(SpinCantidad.Value.ToString());
-            // Asigna valores a las demás columnas de la fila según sea necesario
-
-            // Agrega la fila al DataTable
-            dataTable.Rows.Add(newRow);
-
-            // Asigna el DataTable como origen de datos del DataGridView
-            dataGridView1.DataSource = dataTable;
-            Subtotal();
-            limpiar();
-            /*string sql = "CALL Facturar_Productos('" + SpinCantidad.Value + "','" + txtPrecio.Text + "','" + txtIdProduc.Text + "','" + txtIdFactura.Text + "')";
-            try
+            if (Cbx_Productos.SelectedIndex == -1)
             {
-
-                if (lbProductName.Text != "" && txtPrecio.Text != "" && txtIdProduc.Text != "" && SpinCantidad.Value !=  0)
+                MessageBox_Error.Show("Tiene que escoger un producto a facturar", "Error");
+                Limpiar();
+            }
+            else
+            {
+                if (SpinCantidad.Value == 0)
                 {
-                    if (lbExistencias.Text != "0")
-                    {
-                        MySqlConnection conexioBD = Conexion.getConexion();
-                        conexioBD.Open();
-                        MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                        comando.ExecuteNonQuery();
-                        MessageDialogInfo.Show("Produsctos Agregados a la Factura", "AVISO");
+                    MessageBox_Error.Show("Tiene que indicar la cantidad", "Error");
+                    errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar");
 
-                        //Agregar a la tabla
-                        ListaProductos[fila, 0] = lbProductName.Text;
-                        ListaProductos[fila, 1] = txtPrecio.Text;
-                        ListaProductos[fila, 2] = SpinCantidad.Value.ToString();
-                        ListaProductos[fila, 3] = (float.Parse(SpinCantidad.Value.ToString()) * float.Parse(txtPrecio.Text)).ToString();
-                        ListaProductos[fila, 4] = txtIdProduc.Text;
-                        dataGridView1.Rows.Add(ListaProductos[fila, 0], ListaProductos[fila, 1], ListaProductos[fila, 2], ListaProductos[fila, 3], ListaProductos[fila, 4]);
-                        //AUMENTA LA FILA EN LA TABLA
-                        fila++;
-                        lbProductName.Text = txtPrecio.Text = lbExistencias.Text = txtIdProduc.Text = "";
-                        Cbx_Productos.SelectedIndex = -1;
-                        SpinCantidad.Value = 0;
-                    }
-                    else
-                    {
-                        MessageDialogError.Show("No hay existencias de este producto", "AVISO");
-                    }
-
+                }
+                else if (lbExistencias.Text == "0")
+                {
+                    MessageBox_Error.Show("Se acabo esté producto en el inventario", "Error");
+                }
+                else if (txtPrecio.Text == "")
+                {
+                    MessageBox_Error.Show("No deje campos obligatorios sin marcar", "Error");
+                    errorProvider1.SetError(txtPrecio, "Debe indicar el precio del producto");
+                }
+                else if(lbCodProdu.Text == "..." || lbProductName.Text == "...")
+                {
+                    MessageBox_Error.Show("No ha seleccionado un producto a facturar.", "Error");
                 }
                 else
                 {
-                    MessageDialogWar.Show("Verifique la Cantidad del Producto", "AVISO");
+                    foreach (DataGridViewRow fila in datagridView1.Rows)
+                    {
+                        if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text)
+                        {
+                            seRepite = true;
+                            break;
+                        }
+                    }
+
+                    if (seRepite)
+                    {
+                        MessageBox_Import.Show("Ya se agrego ese producto, puede editarlo o borrarlo si desea", "Importante");
+                        Limpiar();
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtPrecio, "");
+                        errorProvider1.SetError(SpinCantidad, "");
+
+                        Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+                        DataRow newRow = dataTable.NewRow();
+                        newRow[0] = ctrlProductos.Codigo_Producto(int.Parse(txtIdProduc.Text));
+                        newRow[1] = ctrlProductos.Nombre_Producto(int.Parse(txtIdProduc.Text));
+                        newRow[2] = SpinCantidad.Value.ToString();
+                        newRow[3] = double.Parse(txtPrecio.Text);
+                        newRow[4] = double.Parse(txtPrecio.Text) * int.Parse(SpinCantidad.Value.ToString());
+
+                        dataTable.Rows.Add(newRow);
+
+                        datagridView1.DataSource = dataTable;
+                        Subtotal();
+                        Limpiar();
+                        Cargar_Total();
+                    }
                 }
             }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            */
-            
+            Limpiar();
         }
 
-        public void limpiar()
+        public void Limpiar()
         {
             txtPrecio.Text = "";
-            lbExistencias.Text = "";
-            lbProductName.Text = "";
+            lbExistencias.Text = "...";
+            lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
+            SpinCantidad.Value = 0;
+            lbCodProdu.Text = "...";
+            txtIdProduc.Text = "";
+            TxtBuscar_Productos.Text = "";
         }
+
         public void Subtotal()
         {
             float subtotal = 0;
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < datagridView1.Rows.Count; i++)
             {
-                subtotal += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                subtotal += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
             }
             lbSubtotal.Text = subtotal.ToString();
         }
 
-        private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /*
-            int id_producto = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            int cantidad = int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-            string sql = "CALL Eliminar_Producto_Facturado('" + txtIdDetalleFactura.Text + "','" + id_producto + "','" + cantidad + "')";
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                MessageDialogInfo.Show("Se elimino el Producto Seleccionado", "AVISO");
-                if (dataGridView1.CurrentRow == null)
-                    return;
-                dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
-                txtIdDetalleFactura.Text = "";
-                Subtotal();
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }*/
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*
-            int id = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            MySqlDataReader reader = null;
-            string consulta = "SELECT id FROM detalle_factura WHERE id_producto='" + id + "'";
-            MySqlConnection conexionBD = Conexion.getConexion();
-            conexionBD.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        txtIdDetalleFactura.Text = reader.GetString("id");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron Productos Con ese Codigo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error Al Buscar: " + ex.Message);
-            }
-            finally { conexionBD.Close(); }
-        */
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*
-            int id = int.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            MySqlDataReader reader = null;
-            string consulta = "SELECT ID FROM Detalle_Factura WHERE ID_Producto='" + id + "'";
-            MySqlConnection conexionBD = Conexion.getConexion();
-            conexionBD.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        txtIdDetalleFactura.Text = reader.GetString("id");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron Productos Con ese Codigo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error Al Buscar: " + ex.Message);
-            }
-            finally { conexionBD.Close(); }
-            */
-        }
-
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-            string hora = DateTime.Now.ToString("hh:mm:ss");
-            string Fecha_final = fecha + " " + hora;
-            string user = Sesion.id.ToString();
-
-
-
-
-            string sql = "CALL Insertar_Factura('" + Fecha_final + "', '" + user + "', '" + txtIdCliente.Text + "');";
-
-            try
+            if (datagridView1.RowCount == 0)
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
+                MessageBox_Error.Show("No se ha almacenado ningún productos para la facturación, al menos facturé un producto", "Error");
             }
-            catch (MySqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-            int id_factura = ctrlFactura.ID_Factura();
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                DataGridViewRow row = dataGridView1.Rows[i];
-                //MessageBox.Show(int.Parse(row.Cells[2].Value.ToString())+ ", " + double.Parse(row.Cells[3].Value.ToString()) + ", " + int.Parse(row.Cells[0].Value.ToString()) + ", "+ id_factura);
-                string sql_1 = "CALL Facturar_Productos(" + int.Parse(row.Cells[2].Value.ToString()) + ", " + double.Parse(row.Cells[3].Value.ToString()) + ", " + int.Parse(row.Cells[0].Value.ToString()) + ", " + id_factura + ")";
+                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
+                string hora = DateTime.Now.ToString("hh:mm:ss");
+                string Fecha_final = fecha + " " + hora;
+                string User = Sesion.id.ToString();
+                int id_cliente = int.Parse(txtIdCliente.Text);
 
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql_1, conexioBD);
-                comando.ExecuteNonQuery();
-            }
+                Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+                bool bandera1 = ctrlFactura.Insertar_Factura(Fecha_final, User, id_cliente);
 
-            MessageDialogInfo.Show("Produsctos Agregados a la Factura", "AVISO");
-            FacturaFinal frm = new FacturaFinal();
-            frm.lbIdFactura.Text = lbIdFactura.Text;
-            frm.lbNombreCliente.Text = lbClienteName.Text;
-            frm.lbSubtotal.Text = lbSubtotal.Text;
-            frm.txtIdCliente.Text = txtIdCliente.Text;
-            frm.lbTotal.Text = lbSubtotal.Text;
-            frm.ShowDialog();
-            this.Hide();
-            this.Dispose();
+                int id_factura = ctrlFactura.ID_Factura();
+
+                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                {
+                    DataGridViewRow row = datagridView1.Rows[i];
+                    ctrlFactura.Facturar_Productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), id_factura);
+                }
+                MessageBox_Ok.Show("Productos agregados a la factura", "AVISO");
+                FacturaFinal frm = new FacturaFinal();
+                frm.lbIdFactura.Text = lbIdFactura.Text;
+                frm.lbNombreCliente.Text = lbClienteName.Text;
+                frm.lbSubtotal.Text = lbSubtotal.Text;
+                frm.txtIdCliente.Text = txtIdCliente.Text;
+                frm.lbTotal.Text = lbSubtotal.Text;
+                frm.Lb_User.Text = Lb_User.Text;
+
+                frm.Show();
+                this.Hide();
+                this.Close();
+            }
         }
-
-        //string[,] ListaProductos = new string[200, 10];
-        //int fila = 0;
 
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
@@ -324,25 +264,61 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
-                    txtIdProduc.Text = "";
+                    Limpiar();
                 }
                 else
                 {
                     txtIdProduc.Text = Cbx_Productos.SelectedValue.ToString();
                     int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
-                    //MessageBox.Show(txtIdProduc.Text);
                     Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-                    lbProductName.Text = ctrlProductos.Nombre_Producto(id);
+                    string aux_NombProd = ctrlProductos.Nombre_Producto(id);
+                    int limite = 15;
+
+                    if (aux_NombProd.Length > limite)
+                    {
+                        lbProductName.Text = aux_NombProd.Substring(0, limite) + "...";
+                    }
+                    else
+                    {
+                        lbProductName.Text = aux_NombProd;
+                    }
+                    string aux_CodProd = ctrlProductos.Codigo_Producto(id);
+
+                    if (aux_CodProd.Length > limite)
+                    {
+                        lbCodProdu.Text = aux_CodProd.Substring(0, limite) + "...";
+                    }
+                    else
+                    {
+                        lbCodProdu.Text = aux_CodProd;
+                    }
                     lbExistencias.Text = ctrlProductos.Existencias_Producto(id).ToString();
                     txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
-
                     SpinCantidad.Maximum = Convert.ToDecimal(lbExistencias.Text);
 
+                    if (int.Parse(lbExistencias.Text) <= 0)
+                    {
+                        errorProvider1.SetError(lbExistencias, "Ya no hay productos en el almacen.");
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(lbExistencias, "");
+                    }
+                }
+                if (Cbx_Productos.SelectedIndex == -1)
+                {
+                    txtPrecio.Enabled = false;
+                    SpinCantidad.Enabled = false;
+                }
+                else
+                {
+                    txtPrecio.Enabled = true;
+                    SpinCantidad.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
-
+                //MessageBox.Show("Error: " + ex);
             }
         }
 
@@ -351,21 +327,6 @@ namespace INASOFT_3._0.VistaFacturas
             Cargar_Productos();
         }
 
-        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
-                }
-                menu.Show(dataGridView1, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
-            }
-        }
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
         {
             string id_pos = e.ClickedItem.Name.ToString();
@@ -387,12 +348,14 @@ namespace INASOFT_3._0.VistaFacturas
                     if (resultado == DialogResult.Yes)
                     {
                         MessageBox.Show(id_pos.ToString());
-                        if (id_pos >= 0 && id_pos < dataGridView1.Rows.Count)
-                        {
-                            // Eliminar la fila del DataGridView
-                            //dataGridView1.Rows.RemoveAt(id_pos);
-                           
-                        }
+                        datagridView1.Rows.RemoveAt(id_pos);
+                        Subtotal();
+                        Limpiar();
+                        Cargar_Total();
+                    }
+                    else
+                    {
+
                     }
                 }
             }
@@ -402,9 +365,99 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void DatagridView1_MouseClick_1(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
 
+                int pos = datagridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                }
+                menu.Show(datagridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void DatagridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == datagridView1.Columns["Cantidad"].Index && e.RowIndex >= 0)
+                {
+                    DataGridViewCell CantidadCell = datagridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                    DataGridViewCell PrecioCell = datagridView1.Rows[e.RowIndex].Cells["Precio"];
+                    DataGridViewCell TotalCell = datagridView1.Rows[e.RowIndex].Cells["Total"];
+
+                    decimal cantidad = Convert.ToDecimal(CantidadCell.Value);
+                    decimal precio = Convert.ToDecimal(PrecioCell.Value);
+                    decimal total = precio * cantidad;
+                    TotalCell.Value = total;
+                }
+                if (e.ColumnIndex == datagridView1.Columns["Precio"].Index && e.RowIndex >= 0)
+                {
+                    DataGridViewCell CantidadCell = datagridView1.Rows[e.RowIndex].Cells["Cantidad"];
+                    DataGridViewCell PrecioCell = datagridView1.Rows[e.RowIndex].Cells["Precio"];
+                    DataGridViewCell TotalCell = datagridView1.Rows[e.RowIndex].Cells["Total"];
+
+                    decimal cantidad = Convert.ToDecimal(CantidadCell.Value);
+                    decimal precio = Convert.ToDecimal(PrecioCell.Value);
+                    decimal total = precio * cantidad;
+                    TotalCell.Value = total;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxError.Show("Error: " + ex.Message);
+            }
+            Cargar_Total();
+            Subtotal();
+        }
+
+
+        private void TxtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else if ((e.KeyChar == '.') && (!txtPrecio.Text.Contains(".")))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
+
+        private void DatagridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if(e.ColumnIndex == 2)
+            {
+                bool isINT = int.TryParse(e.FormattedValue.ToString(), out int resultado);
+                if (isINT == false)
+                {
+                    e.Cancel = true;
+                    MessageBox_Error.Show("El dato debe ser numérico", "Error");
+                }
+            }
+            if(e.ColumnIndex == 3)
+            {
+                bool isDouble = double.TryParse(e.FormattedValue.ToString(), out double resultado);
+                if (isDouble == false)
+                {
+                    e.Cancel = true;
+                    MessageBox_Error.Show("El dato debe ser numérico", "Error");
+                }
+            }
         }
     }
 }

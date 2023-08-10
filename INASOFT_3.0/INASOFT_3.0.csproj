@@ -110,6 +110,8 @@
     </Compile>
     <Compile Include="Controladores\clsFactura.cs" />
     <Compile Include="Controladores\CtrlClientes.cs" />
+    <Compile Include="Controladores\CtrlCredito_Abono.cs" />
+    <Compile Include="Controladores\CtrlDevolucion.cs" />
     <Compile Include="Controladores\CtrlFactura.cs" />
     <Compile Include="Controladores\CtrlInfo.cs" />
     <Compile Include="Controladores\CtrlProductos.cs" />
@@ -138,11 +140,28 @@
     <Compile Include="Modelos\Usuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_Clientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UC_Clientes.Designer.cs">
       <DependentUpon>UC_Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Creditos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Creditos.Designer.cs">
+      <DependentUpon>UC_Creditos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Devoluciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Devoluciones.Designer.cs">
+      <DependentUpon>UC_Devoluciones.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_Factura.cs">
       <SubType>UserControl</SubType>
@@ -180,17 +199,47 @@
     <Compile Include="UserControls\UC_Usuarios.Designer.cs">
       <DependentUpon>UC_Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaFacturas\Anular_Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\Anular_Factura.Designer.cs">
+      <DependentUpon>Anular_Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\DetailsInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VistaFacturas\DetailsInvoice.Designer.cs">
       <DependentUpon>DetailsInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaFacturas\DetalleDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\DetalleDevolucion.Designer.cs">
+      <DependentUpon>DetalleDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\DetalleFactura.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VistaFacturas\DetalleFactura.Designer.cs">
       <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\Devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\Devolucion.Designer.cs">
+      <DependentUpon>Devolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\EstadoDelCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\EstadoDelCredito.Designer.cs">
+      <DependentUpon>EstadoDelCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\FacturaAlCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\FacturaAlCredito.Designer.cs">
+      <DependentUpon>FacturaAlCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\FacturaFinal.cs">
       <SubType>Form</SubType>
@@ -204,29 +253,11 @@
     <Compile Include="VistaFacturas\Facturar1.Designer.cs">
       <DependentUpon>Facturar1.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceClient.cs">
+    <Compile Include="VistaFacturas\RealizarAbono.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceClient.Designer.cs">
-      <DependentUpon>SearchInvoiceClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceDate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceDate.Designer.cs">
-      <DependentUpon>SearchInvoiceDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceMonth.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceMonth.Designer.cs">
-      <DependentUpon>SearchInvoiceMonth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceRange.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VistaFacturas\SearchInvoiceRange.Designer.cs">
-      <DependentUpon>SearchInvoiceRange.cs</DependentUpon>
+    <Compile Include="VistaFacturas\RealizarAbono.Designer.cs">
+      <DependentUpon>RealizarAbono.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ADDEDIT.resx">
       <DependentUpon>ADDEDIT.cs</DependentUpon>
@@ -239,16 +270,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserControls\UC_Clientes.resx">
       <DependentUpon>UC_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Creditos.resx">
+      <DependentUpon>UC_Creditos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Devoluciones.resx">
+      <DependentUpon>UC_Devoluciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Factura.resx">
       <DependentUpon>UC_Factura.cs</DependentUpon>
@@ -268,11 +300,26 @@
     <EmbeddedResource Include="UserControls\UC_Usuarios.resx">
       <DependentUpon>UC_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\Anular_Factura.resx">
+      <DependentUpon>Anular_Factura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\DetailsInvoice.resx">
       <DependentUpon>DetailsInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\DetalleDevolucion.resx">
+      <DependentUpon>DetalleDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\DetalleFactura.resx">
       <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\Devolucion.resx">
+      <DependentUpon>Devolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\EstadoDelCredito.resx">
+      <DependentUpon>EstadoDelCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\FacturaAlCredito.resx">
+      <DependentUpon>FacturaAlCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\FacturaFinal.resx">
       <DependentUpon>FacturaFinal.cs</DependentUpon>
@@ -280,17 +327,8 @@
     <EmbeddedResource Include="VistaFacturas\Facturar1.resx">
       <DependentUpon>Facturar1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\SearchInvoiceClient.resx">
-      <DependentUpon>SearchInvoiceClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\SearchInvoiceDate.resx">
-      <DependentUpon>SearchInvoiceDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\SearchInvoiceMonth.resx">
-      <DependentUpon>SearchInvoiceMonth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\SearchInvoiceRange.resx">
-      <DependentUpon>SearchInvoiceRange.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\RealizarAbono.resx">
+      <DependentUpon>RealizarAbono.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\INASOFT_3._0.Modelos.Cliente.datasource" />
@@ -326,6 +364,105 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-user-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_shift_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_schedule_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_team_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_load_resume_template_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_user_male_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_transaction_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_return_purchase_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_buy_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_client_management_40px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_more_info_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_trolley_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bill_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_address_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_identification_documents_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_phone_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_maintenance_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_maintenance_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cash_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_invisible_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_buy_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_client_management_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_buy_40px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_control_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_login_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pdf_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_microsoft_excel_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_restart_80px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_unavailable_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cancel_subscription_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_multiply_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_show_property_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_buy_50px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

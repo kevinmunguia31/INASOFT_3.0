@@ -11,12 +11,12 @@ namespace INASOFT_3._0.Controladores
 {
     class CtrlInfo
     {
-       
+
         public bool insertar(InfoNegocio datos)
         {
             bool bandera = false;
 
-            string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + datos.Nombre + "','" + datos.Direccion + "','" + datos.NumRUC + "','" + datos.NombreAdmin + "','" + datos.Telefono + "', '"+ datos.Imagen + "')";
+            string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + datos.Nombre + "','" + datos.Direccion + "','" + datos.NumRUC + "','" + datos.NombreAdmin + "','" + datos.Telefono + "', '" + datos.Imagen + "')";
 
             try
             {
@@ -57,11 +57,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-       /* public bool eliminar(int id)
+        public bool InsertarLog(string desc)
         {
             bool bandera = false;
 
-            string sql = "DELETE FROM clientes WHERE id= '" + id + "'";
+            string sql = "INSERT INTO logs (descripcion) VALUES ('" + desc + "')";
 
             try
             {
@@ -73,11 +73,34 @@ namespace INASOFT_3._0.Controladores
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString());
                 bandera = false;
             }
 
             return bandera;
-        }*/
+        }
+
+        /* public bool eliminar(int id)
+         {
+             bool bandera = false;
+
+             string sql = "DELETE FROM clientes WHERE id= '" + id + "'";
+
+             try
+             {
+                 MySqlConnection conexioBD = Conexion.getConexion();
+                 conexioBD.Open();
+                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                 comando.ExecuteNonQuery();
+                 bandera = true;
+             }
+             catch (MySqlException ex)
+             {
+                 Console.WriteLine(ex.Message.ToString());
+                 bandera = false;
+             }
+
+             return bandera;
+         }*/
     }
 }

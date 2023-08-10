@@ -46,7 +46,7 @@ namespace INASOFT_3._0.UserControls
                 if (txtId.Text != "")
                 {
                     _cliente.Id = int.Parse(txtId.Text);
-                    bandera = ctrlClientes.actualizar(_cliente);
+                    bandera = ctrlClientes.Actualizar(_cliente);
                     MessageBox.Show("Registro Actualizado Con Exito", "Actualizar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarTablaClient(null);
                     txtNombreYapellido.Text = "";
@@ -58,7 +58,7 @@ namespace INASOFT_3._0.UserControls
                 }
                 else
                 {
-                    bandera = ctrlClientes.insertar(_cliente);
+                    bandera = ctrlClientes.Insertar(_cliente);
                     MessageBox.Show("Registro Guardado Con Exito", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarTablaClient(null);
                     lbClientes.Text = ctrlClientes.TotalClientes().ToString();
@@ -98,7 +98,7 @@ namespace INASOFT_3._0.UserControls
             {
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 CtrlClientes _ctrl = new CtrlClientes();
-                bandera = _ctrl.eliminar(id);
+                bandera = _ctrl.Eliminar(id);
                 if (bandera)
                 {
                     MessageBox.Show("Registro Eliminado con exito", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);

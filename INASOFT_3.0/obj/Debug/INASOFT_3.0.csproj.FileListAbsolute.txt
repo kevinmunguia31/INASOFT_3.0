@@ -146,10 +146,6 @@ C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Vista
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFactura.resources
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaFinal.resources
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Facturar1.resources
-C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceClient.resources
-C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceDate.resources
-C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceMonth.resources
-C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.SearchInvoiceRange.resources
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.GenerateResource.cache
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CoreCompileInputs.cache
 C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
@@ -208,3 +204,11 @@ C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.cs
 C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
 C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
 C:\Users\DELL 5410\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Devoluciones.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Devolucion.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaAlCredito.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Creditos.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleDevolucion.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.EstadoDelCredito.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarAbono.resources
+C:\Users\jerem\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Anular_Factura.resources

@@ -20,7 +20,7 @@ namespace INASOFT_3._0
         {
             InitializeComponent();
 
-           // VScrollBar vScrollBar = new VScrollBar();
+            // VScrollBar vScrollBar = new VScrollBar();
             ///vScrollBar.Height = 15;
             //vScrollBar.Width = 200;
             //vScrollBar.Dock = DockStyle.Bottom;
@@ -41,7 +41,6 @@ namespace INASOFT_3._0
             else
             {
                 lbTipoUser.Text = "(Empleado)";
-                
             }
         }
 
@@ -51,11 +50,6 @@ namespace INASOFT_3._0
             panelContenedor.Controls.Clear();
             panelContenedor.Controls.Add(userControl);
             userControl.BringToFront();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -70,27 +64,12 @@ namespace INASOFT_3._0
             addUserControl(uc);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnLogaut_Click(object sender, EventArgs e)
         {
             this.Hide();
             Login frm = new Login();
             frm.Visible = true;
             Modelos.Sesion sesion = new Modelos.Sesion();
-        }
-
-        private void panelContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Principal_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
@@ -112,7 +91,7 @@ namespace INASOFT_3._0
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            if(tipoUser == 1)
+            if (tipoUser == 1)
             {
                 UC_Usuarios uc = new UC_Usuarios();
                 addUserControl(uc);
@@ -136,7 +115,6 @@ namespace INASOFT_3._0
                     Console.WriteLine("Error al guardar el Log" + ex);
                 }
             }
-
         }
 
         private void btnFactura_Click(object sender, EventArgs e)
@@ -170,9 +148,19 @@ namespace INASOFT_3._0
                 {
                     Console.WriteLine("Error al guardar el Log" + ex);
                 }
-
             }
-            
+        }
+
+        private void Guna2Button1_Click(object sender, EventArgs e)
+        {
+            UC_Devoluciones uc = new UC_Devoluciones();
+            addUserControl(uc);
+        }
+
+        private void Guna2Button2_Click(object sender, EventArgs e)
+        {
+            UC_Creditos uc = new UC_Creditos();
+            addUserControl(uc);
         }
     }
 }
