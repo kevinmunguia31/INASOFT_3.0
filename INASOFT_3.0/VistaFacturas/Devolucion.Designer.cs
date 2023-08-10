@@ -124,11 +124,11 @@
             this.btnBuscar.Controls.Add(this.label4);
             this.btnBuscar.Controls.Add(this.label3);
             this.btnBuscar.Controls.Add(this.SpinCantidad);
-            this.btnBuscar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnBuscar.Location = new System.Drawing.Point(12, 119);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(964, 244);
+            this.btnBuscar.Size = new System.Drawing.Size(978, 244);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Datos de los productos";
             // 
@@ -159,7 +159,7 @@
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(0, 47);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(456, 194);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(470, 194);
             this.guna2GroupBox2.TabIndex = 98;
             this.guna2GroupBox2.Text = "Productos facturados";
             // 
@@ -199,7 +199,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView1.Size = new System.Drawing.Size(456, 155);
+            this.datagridView1.Size = new System.Drawing.Size(470, 155);
             this.datagridView1.TabIndex = 85;
             this.datagridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DatagridView1_MouseClick_1);
             // 
@@ -207,10 +207,10 @@
             // 
             this.LbPrecio.AutoSize = true;
             this.LbPrecio.BackColor = System.Drawing.Color.White;
-            this.LbPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.LbPrecio.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbPrecio.Location = new System.Drawing.Point(855, 57);
             this.LbPrecio.Name = "LbPrecio";
-            this.LbPrecio.Size = new System.Drawing.Size(17, 18);
+            this.LbPrecio.Size = new System.Drawing.Size(18, 23);
             this.LbPrecio.TabIndex = 97;
             this.LbPrecio.Text = "0";
             // 
@@ -218,10 +218,10 @@
             // 
             this.lbCodProdu.AutoSize = true;
             this.lbCodProdu.BackColor = System.Drawing.Color.White;
-            this.lbCodProdu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.lbCodProdu.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCodProdu.Location = new System.Drawing.Point(554, 94);
             this.lbCodProdu.Name = "lbCodProdu";
-            this.lbCodProdu.Size = new System.Drawing.Size(23, 18);
+            this.lbCodProdu.Size = new System.Drawing.Size(19, 23);
             this.lbCodProdu.TabIndex = 96;
             this.lbCodProdu.Text = "...";
             // 
@@ -229,10 +229,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(475, 91);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 28);
+            this.label9.Size = new System.Drawing.Size(62, 23);
             this.label9.TabIndex = 94;
             this.label9.Text = "Código:";
             // 
@@ -240,10 +240,10 @@
             // 
             this.lbExistencias.AutoSize = true;
             this.lbExistencias.BackColor = System.Drawing.Color.White;
-            this.lbExistencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.lbExistencias.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbExistencias.Location = new System.Drawing.Point(673, 131);
             this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(17, 18);
+            this.lbExistencias.Size = new System.Drawing.Size(18, 23);
             this.lbExistencias.TabIndex = 91;
             this.lbExistencias.Text = "0";
             // 
@@ -251,10 +251,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Poppins", 12F);
+            this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(475, 128);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(192, 28);
+            this.label10.Size = new System.Drawing.Size(163, 23);
             this.label10.TabIndex = 90;
             this.label10.Text = "Productos comprados:";
             // 
@@ -262,10 +262,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Poppins", 12F);
+            this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(761, 54);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 28);
+            this.label8.Size = new System.Drawing.Size(78, 23);
             this.label8.TabIndex = 89;
             this.label8.Text = "Precio: C$";
             // 
@@ -291,10 +291,10 @@
             // 
             this.lbProductName.AutoSize = true;
             this.lbProductName.BackColor = System.Drawing.Color.White;
-            this.lbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.lbProductName.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProductName.Location = new System.Drawing.Point(565, 55);
             this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(23, 18);
+            this.lbProductName.Size = new System.Drawing.Size(19, 23);
             this.lbProductName.TabIndex = 88;
             this.lbProductName.Text = "...";
             // 
@@ -302,10 +302,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(472, 51);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 28);
+            this.label4.Size = new System.Drawing.Size(75, 23);
             this.label4.TabIndex = 87;
             this.label4.Text = "Producto:";
             // 
@@ -313,10 +313,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Poppins", 12F);
+            this.label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(761, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 28);
+            this.label3.Size = new System.Drawing.Size(78, 23);
             this.label3.TabIndex = 92;
             this.label3.Text = "Cantidad:";
             // 
@@ -350,7 +350,7 @@
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(12, 369);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(469, 257);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(572, 257);
             this.guna2GroupBox1.TabIndex = 85;
             this.guna2GroupBox1.Text = "Productos devueltos al inventario";
             // 
@@ -390,7 +390,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView2.Size = new System.Drawing.Size(469, 217);
+            this.datagridView2.Size = new System.Drawing.Size(572, 217);
             this.datagridView2.TabIndex = 85;
             // 
             // guna2Elipse1
@@ -402,10 +402,10 @@
             // 
             this.lbClienteName.AutoSize = true;
             this.lbClienteName.BackColor = System.Drawing.Color.Transparent;
-            this.lbClienteName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbClienteName.Location = new System.Drawing.Point(453, 51);
+            this.lbClienteName.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClienteName.Location = new System.Drawing.Point(433, 51);
             this.lbClienteName.Name = "lbClienteName";
-            this.lbClienteName.Size = new System.Drawing.Size(24, 26);
+            this.lbClienteName.Size = new System.Drawing.Size(19, 23);
             this.lbClienteName.TabIndex = 97;
             this.lbClienteName.Text = "...";
             // 
@@ -413,10 +413,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(376, 51);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 28);
+            this.label5.Size = new System.Drawing.Size(62, 23);
             this.label5.TabIndex = 96;
             this.label5.Text = "Cliente:";
             // 
@@ -424,10 +424,10 @@
             // 
             this.lbIdFactura.AutoSize = true;
             this.lbIdFactura.BackColor = System.Drawing.Color.Transparent;
-            this.lbIdFactura.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdFactura.Location = new System.Drawing.Point(124, 54);
+            this.lbIdFactura.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdFactura.Location = new System.Drawing.Point(103, 51);
             this.lbIdFactura.Name = "lbIdFactura";
-            this.lbIdFactura.Size = new System.Drawing.Size(27, 19);
+            this.lbIdFactura.Size = new System.Drawing.Size(18, 23);
             this.lbIdFactura.TabIndex = 95;
             this.lbIdFactura.Text = "11";
             // 
@@ -435,10 +435,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(20, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 28);
+            this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 94;
             this.label2.Text = "Factura No:";
             // 
@@ -773,11 +773,11 @@
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(20, 88);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(137, 28);
+            this.label15.Size = new System.Drawing.Size(117, 23);
             this.label15.TabIndex = 12;
             this.label15.Text = "Tipo de factura:";
             // 
@@ -785,11 +785,11 @@
             // 
             this.Lb_tipoFactura.AutoSize = true;
             this.Lb_tipoFactura.BackColor = System.Drawing.Color.Transparent;
-            this.Lb_tipoFactura.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_tipoFactura.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_tipoFactura.ForeColor = System.Drawing.Color.Black;
-            this.Lb_tipoFactura.Location = new System.Drawing.Point(154, 90);
+            this.Lb_tipoFactura.Location = new System.Drawing.Point(133, 88);
             this.Lb_tipoFactura.Name = "Lb_tipoFactura";
-            this.Lb_tipoFactura.Size = new System.Drawing.Size(30, 28);
+            this.Lb_tipoFactura.Size = new System.Drawing.Size(24, 23);
             this.Lb_tipoFactura.TabIndex = 10;
             this.Lb_tipoFactura.Text = "--";
             // 
@@ -797,10 +797,10 @@
             // 
             this.Lb_Trabajador.AutoSize = true;
             this.Lb_Trabajador.BackColor = System.Drawing.Color.Transparent;
-            this.Lb_Trabajador.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_Trabajador.Location = new System.Drawing.Point(487, 90);
+            this.Lb_Trabajador.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Trabajador.Location = new System.Drawing.Point(463, 88);
             this.Lb_Trabajador.Name = "Lb_Trabajador";
-            this.Lb_Trabajador.Size = new System.Drawing.Size(24, 26);
+            this.Lb_Trabajador.Size = new System.Drawing.Size(19, 23);
             this.Lb_Trabajador.TabIndex = 99;
             this.Lb_Trabajador.Text = "...";
             // 
@@ -808,10 +808,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(376, 88);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 28);
+            this.label13.Size = new System.Drawing.Size(91, 23);
             this.label13.TabIndex = 98;
             this.label13.Text = "Trabajador:";
             // 
@@ -882,7 +882,7 @@
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.Location = new System.Drawing.Point(948, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(190, 26);
+            this.btnClose.Size = new System.Drawing.Size(293, 26);
             this.btnClose.TabIndex = 2;
             // 
             // guna2Button1
@@ -899,7 +899,7 @@
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.Location = new System.Drawing.Point(942, 3);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(43, 26);
+            this.guna2Button1.Size = new System.Drawing.Size(146, 26);
             this.guna2Button1.TabIndex = 94;
             this.guna2Button1.Click += new System.EventHandler(this.Guna2Button1_Click);
             // 
@@ -913,14 +913,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(988, 39);
+            this.panel1.Size = new System.Drawing.Size(1027, 39);
             this.panel1.TabIndex = 5;
             // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 638);
+            this.ClientSize = new System.Drawing.Size(1027, 655);
             this.Controls.Add(this.Lb_Trabajador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.guna2GroupBox3);

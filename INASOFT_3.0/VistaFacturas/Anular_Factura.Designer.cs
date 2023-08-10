@@ -35,7 +35,9 @@
             this.datagridView1 = new System.Windows.Forms.DataGridView();
             this.AnularFactura = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Txt_Devolucion = new System.Windows.Forms.TextBox();
             this.Txt_Facturar = new System.Windows.Forms.TextBox();
@@ -46,8 +48,6 @@
             this.Lb_Fecha = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -123,6 +123,24 @@
             this.panel1.Size = new System.Drawing.Size(487, 39);
             this.panel1.TabIndex = 103;
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(442, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 26);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -133,6 +151,16 @@
             this.label5.Size = new System.Drawing.Size(187, 28);
             this.label5.TabIndex = 1;
             this.label5.Text = "Anulación de factura";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_cancel_subscription_50px;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 33);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -176,6 +204,7 @@
             this.Lb_Credito1.Size = new System.Drawing.Size(267, 22);
             this.Lb_Credito1.TabIndex = 107;
             this.Lb_Credito1.Text = "Está factura está al pendiente de completar";
+            this.Lb_Credito1.Visible = false;
             // 
             // Lb_Credito2
             // 
@@ -187,6 +216,7 @@
             this.Lb_Credito2.Size = new System.Drawing.Size(262, 22);
             this.Lb_Credito2.TabIndex = 108;
             this.Lb_Credito2.Text = "el crédito, si se anula, tendrá que devolver: ";
+            this.Lb_Credito2.Visible = false;
             // 
             // Lb_Factura
             // 
@@ -244,34 +274,6 @@
             this.txtDescripcion.Size = new System.Drawing.Size(435, 75);
             this.txtDescripcion.TabIndex = 106;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.Transparent;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(442, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 26);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_cancel_subscription_50px;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // Anular_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +292,7 @@
             this.Controls.Add(this.AnularFactura);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Anular_Factura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Anular_Factura";
             ((System.ComponentModel.ISupportInitialize)(this.datagridView1)).EndInit();
             this.panel1.ResumeLayout(false);
