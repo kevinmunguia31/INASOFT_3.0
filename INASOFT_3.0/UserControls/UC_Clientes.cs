@@ -22,13 +22,12 @@ namespace INASOFT_3._0.UserControls
             Controladores.CtrlClientes ctrlClientes = new CtrlClientes();
             lbClientes.Text = ctrlClientes.TotalClientes().ToString();
         }
+
         public void CargarTablaClient(string dato)
         {
-            List<Productos> lista = new List<Productos>();
             CtrlClientes _ctrlCliente = new CtrlClientes();
             dataGridView1.DataSource = _ctrlCliente.CargarClientes(dato);
         }
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -41,25 +40,23 @@ namespace INASOFT_3._0.UserControls
                 _cliente.Direccion = txtDireccion.Text;
                 _cliente.Cedula = txtCedula.Text;
                
-
                 CtrlClientes ctrlClientes = new CtrlClientes();
                 if (txtId.Text != "")
                 {
                     _cliente.Id = int.Parse(txtId.Text);
                     bandera = ctrlClientes.Actualizar(_cliente);
-                    MessageBox.Show("Registro Actualizado Con Exito", "Actualizar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox_Import.Show("Registro Actualizado Con Exito", "Actualizar Cliente");
                     CargarTablaClient(null);
                     txtNombreYapellido.Text = "";
                     txtTelefono.Text = "";
                     txtDireccion.Text = "";
                     txtCedula.Text = "";
                     txtId.Text = "";
-
                 }
                 else
                 {
                     bandera = ctrlClientes.Insertar(_cliente);
-                    MessageBox.Show("Registro Guardado Con Exito", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox_Import.Show("Registro Guardado Con Exito", "Guardar Cliente");
                     CargarTablaClient(null);
                     lbClientes.Text = ctrlClientes.TotalClientes().ToString();
                     txtNombreYapellido.Text = "";
@@ -71,7 +68,7 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-                MessageBox.Show("Rellene Todos los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox_Error.Show("Rellene Todos los campos", "Error");
             }
         }
 
@@ -93,7 +90,7 @@ namespace INASOFT_3._0.UserControls
         private void deleteClient_Click(object sender, EventArgs e)
         {
             bool bandera = false;
-            DialogResult resultado = MessageBox.Show("Seguro que desea eliminar el registro?", "Eliminar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            DialogResult resultado = guna2MessageDialog6.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
             if (resultado == DialogResult.Yes)
             {
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
@@ -109,15 +106,24 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string dato = txtSearch.Text;
-            CargarTablaClient(dato);
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             CargarTablaClient(null);
+        }
+
+        private void Bttn_Info_Click(object sender, EventArgs e)
+        {
+            MessageBox_Import.Show(
+             "1. Tendrá la opción de añadir un nuevo usuario.\n" +
+             "2. Al dar click derecho se desplega un menú con dos opciones: Editar y Eliminar.\n" +
+             "3. Tiene que rellenar todos los campos que se le pide en el formulario.\n\n" +
+             "\n", "Modúlo de cliente");
+        }
+
+        private void Guna2Button2_Click(object sender, EventArgs e)
+        {
+            string dato = txtSearch.Text;
+            CargarTablaClient(dato);
         }
     }
 }

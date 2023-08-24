@@ -206,6 +206,26 @@ namespace INASOFT_3._0.Controladores
             return precio_producto;
         }
 
+        public double Precio_Compra(int id)
+        {
+            double precio_producto = 0.00;
+            string SQL = "SELECT Precio_Compra FROM Productos WHERE ID = " + id + ";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                precio_producto = Convert.ToDouble(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                precio_producto = 0.00;
+            }
+            return precio_producto;
+        }
+
         public string Codigo_Producto(int id)
         {
             string codigo = "";

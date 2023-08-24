@@ -110,6 +110,7 @@ namespace INASOFT_3._0.VistaFacturas
             lbCedula.Text = "";
             lbDireccion.Text = "";
             lbTelefono.Text = "";
+            Cbx_Clientes.SelectedIndex = -1;
         }
 
         private void Cbx_Clientes_SelectedIndexChanged(object sender, EventArgs e)

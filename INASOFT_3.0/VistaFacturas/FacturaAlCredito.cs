@@ -15,7 +15,6 @@ namespace INASOFT_3._0.VistaFacturas
         public FacturaAlCredito()
         {
             InitializeComponent();
-            Lb_TiempoInicial.Text = DateTime.Now.ToShortDateString();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -31,7 +30,7 @@ namespace INASOFT_3._0.VistaFacturas
             double monto = 0.00;
             string fecha_vencimiento = DateTime_vencimiento.Text;
             string fecha_inicioDevolucion = (fecha +" "+ hora);
-            string fecha_inicio = fecha;
+            string fecha_inicio = DateTime_inicio.Text;
             double cargo = double.Parse(Lb_Cargo.Text);
             double saldo_nuevo = 0.00;
             double saldo_anterior = 0.00;
@@ -40,68 +39,73 @@ namespace INASOFT_3._0.VistaFacturas
             int id_cliente = int.Parse(Txt_IDCliente.Text);
             string desc_credito = "";
             string desc_abono = "";
+            string tipoPago = "";
 
-            if(txtDescripcion.Text == "")
+            if(Rbtn_TipoCordobas.Checked == false && Rbtn_TipoDolares.Checked == false)
             {
-                desc_credito = "Factura realizada al crédito al cliente " + Lb_Cliente.Text;
+                MessageBoxError.Show("No deje la casilla 'Tipo de pago' sin marcar", "Error");
             }
             else
             {
-                desc_credito = txtDescripcion.Text;
-            }
+                if (txtDescripcion.Text == "")
+                {
+                    desc_credito = "Factura realizada al crédito al cliente " + Lb_Cliente.Text + " con un saldo pendiente de: " + Lb_Saldo.Text;
+                }
+                else
+                {
+                    desc_credito = txtDescripcion.Text;
+                }
 
-            if (TxtMonto.Text == "")
-            {
-                monto = 0.00;
-                desc_abono = "Primer abono realizado es de C$ 0.00";
-                saldo_nuevo = double.Parse(Lb_Cargo.Text);
-            }
-            else
-            {
-                monto = double.Parse(TxtMonto.Text);
-                desc_abono = "Primer abono realizado es de C$" + monto;
-                saldo_nuevo = double.Parse(Lb_Cargo.Text) - monto;
-            }
+                if (Rbtn_TipoCordobas.Checked == true)
+                {
+                    tipoPago = "Córdobas";
+                }
+                if (Rbtn_TipoDolares.Checked == true)
+                {
+                    tipoPago = "Dólares";
+                }
 
-            Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-            bool bandera = ctrlCredito_Abono.Insertar_Credito(fecha_inicio, fecha_vencimiento, cargo, estado, desc_credito, id_factura, id_cliente);
-            //MessageBox.Show(fecha_inicio + "\n" + fecha_vencimiento + "\n" + cargo +"\n"+ saldo + "\n" +estado + "\n" + id_factura + "\n" + id_cliente);
-            //MessageBox.Show(fecha_inicio + "\n" + monto + "\n" + desc + "\n");
-            if (bandera)
-            {
-                int id_credito = ctrlCredito_Abono.ID_Credito();
-                ctrlCredito_Abono.Realizar_Abono(fecha_inicioDevolucion, monto, saldo_anterior, saldo_nuevo, desc_abono, id_credito, id_factura);
-                MessageBox_Import.Show("Se realizó la acción con exito", "Importante");
-                this.Close();
+                if (TxtMonto.Text == "")
+                {
+                    monto = 0.00;
+                    desc_abono = "Primer abono realizado es de C$ 0.00 el mismo día que se hizo la factura.";
+                    saldo_nuevo = double.Parse(Lb_Cargo.Text);
+                }
+                else
+                {
+                    monto = double.Parse(TxtMonto.Text);
+                    desc_abono = "Primer abono realizado es de C$" + monto + " el mismo día que se hizo la factura.";
+                    saldo_nuevo = double.Parse(Lb_Cargo.Text) - monto;
+                }
+
+                Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
+                bool bandera = ctrlCredito_Abono.Insertar_Credito(tipoPago, fecha_inicio, fecha_vencimiento, cargo, estado, desc_credito, id_factura, id_cliente);
+                //MessageBox.Show(fecha_inicio + "\n" + fecha_vencimiento + "\n" + cargo +"\n"+ saldo + "\n" +estado + "\n" + id_factura + "\n" + id_cliente);
+                //MessageBox.Show(fecha_inicio + "\n" + monto + "\n" + desc + "\n");
+                if (bandera)
+                {
+                    int id_credito = ctrlCredito_Abono.ID_Credito();
+                    ctrlCredito_Abono.Realizar_Abono(fecha_inicioDevolucion, monto, saldo_anterior, saldo_nuevo, desc_abono, id_credito, id_factura);
+                    MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + Lb_Saldo.Text + "\n", "Importante");
+                    UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                    uC_Factura.CargarFacturas();
+                    this.Close();
+                }
             }
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            Lb_Fecha.Text = "Fecha: " + DateTime.Now.ToLongDateString();
-            Lb_Hora.Text = "Hora: " + DateTime.Now.ToString("hh:mm:ss tt");
+            Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
+        }
+        private void FacturaAlCredito_Load(object sender, EventArgs e)
+        {
+            if(double.Parse(Lb_Descuento.Text) > 0.00)
+            {
+                Lb_Descuento.ForeColor = Color.Red;
+            }
         }
 
-        private void TxtMonto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!TxtMonto.Text.Contains(".")))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                //el resto de teclas pulsadas se desactivan
-                e.Handled = true;
-            }
-        }
 
         private void TxtMonto_TextChanged(object sender, EventArgs e)
         {
@@ -125,6 +129,27 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 TxtMonto.Text = "";
                 Lb_Saldo.Text = Lb_Cargo.Text;
+            }
+        }
+
+        private void TxtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else if ((e.KeyChar == '.') && (!TxtMonto.Text.Contains(".")))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
             }
         }
     }

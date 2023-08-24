@@ -64,18 +64,6 @@ namespace INASOFT_3._0.VistaFacturas
                     }
                 }
             }
-            if(e.Button == MouseButtons.Right)
-            {
-                ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = datagridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
-                }
-                menu.Show(datagridView1, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
-            }
         }
         private void Eliminar_Producto(int id_pos)
         {
@@ -84,11 +72,11 @@ namespace INASOFT_3._0.VistaFacturas
                 if (id_pos > -1 && id_pos != null)
                 {
                     bool bandera = false;
-                    DialogResult resultado = MessageBox.Show("Seguro que desea eliminar el registro?", "Eliminar", MessageBoxButtons.YesNo);
+                    DialogResult resultado = guna2MessageDialog1.Show("Seguro que desea eliminar el registro?", "Eliminar");
                     if (resultado == DialogResult.Yes)
                     {
-                        MessageBox.Show(id_pos.ToString());
-                        datagridView1.Rows.RemoveAt(id_pos);
+                        //MessageBox.Show(id_pos.ToString());
+                        datagridView2.Rows.RemoveAt(id_pos);
                         Limpiar();
                         Cargar_Total();
                     }
@@ -118,7 +106,7 @@ namespace INASOFT_3._0.VistaFacturas
         public void cargar_tabla()
         {
             dataTable.Columns.Add("Código");
-            dataTable.Columns.Add("Nombre Producto");
+            dataTable.Columns.Add("Nombre");
             dataTable.Columns.Add("Cantidad");
             dataTable.Columns.Add("Precio");
             dataTable.Columns.Add("Total");
@@ -173,9 +161,16 @@ namespace INASOFT_3._0.VistaFacturas
                 string Fecha_final = fecha + " " + hora;
                 string descripcion;
 
-                if(txtDescripcion.Text == "")
+                int cantidad = 0;
+
+                for (int i = 0; i < datagridView2.Rows.Count; i++)
                 {
-                    descripcion = "--";
+                    cantidad += int.Parse(datagridView2.Rows[i].Cells[2].Value.ToString());
+                }
+
+                if (txtDescripcion.Text == "")
+                {
+                    descripcion = "El cliente "+ lbClienteName.Text + " ha hecho una devolución de "+ cantidad + " productos";
                 }
                 else
                 {
@@ -197,7 +192,9 @@ namespace INASOFT_3._0.VistaFacturas
                 int id_factura = int.Parse(Txt_Factura.Text);
 
                 ctrlDevolucion.Actualizar_Factura(Devolucion, id_factura);
-                MessageBox_Import.Show("Devolución realizada", "Importante");
+                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                uC_Factura.CargarFacturas();
+                MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n" , "Importante");
 
                 this.Hide();
                 this.Close();
@@ -269,37 +266,102 @@ namespace INASOFT_3._0.VistaFacturas
                     lbClienteName.Text = lbClienteName.Text;
                 }
             }
+            if (Lb_EstadoFactura.Text == "Cancelado")
+            {
+                Lb_EstadoFactura.ForeColor = Color.Green;
+            }
+            else
+            {
+                Lb_EstadoFactura.ForeColor = Color.Orange;
+            }
+
+            if(double.Parse(Lb_Debe.Text) > 0.00)
+            {
+                Lb_Debe.ForeColor = Color.Red;
+                label22.ForeColor = Color.Red;
+            }
+            else
+            {
+                Lb_Debe.ForeColor = Color.Green;
+                label22.ForeColor = Color.Green;
+            }
         }
 
         private void Guna2Button2_Click(object sender, EventArgs e)
         {
-            string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-            string hora = DateTime.Now.ToString("hh:mm:ss");
-            string Fecha_final = fecha + " " + hora;
-            string descripcion = "Devolución de todos los productos";
-            double Devolucion = 0;
-            int ID_factura = int.Parse(Txt_Factura.Text);
-
-            Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
-            bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, ID_factura);
-
-            int ID_devolucion = ctrlDevolucion.ID_Devolucion();
-
-            for (int i = 0; i < datagridView1.Rows.Count; i++)
+            DialogResult resultado = guna2MessageDialog1.Show("Al devolver todos los productos la factura quedará anulada, ¿está seguro que desea devolver todos los productos?\n\n", "Eliminar");
+            if (resultado == DialogResult.Yes)
             {
-                DataGridViewRow row = datagridView1.Rows[i];
-                ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[3].Value.ToString()), double.Parse(row.Cells[2].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), ID_devolucion, ID_factura);
-            }
+                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
+                string hora = DateTime.Now.ToString("hh:mm:ss");
+                string Fecha_final = fecha + " " + hora;
+                string descripcion = "Se hizo una devolución de todos los productos";
+                double Devolucion = 0;
+                int ID_factura = int.Parse(Txt_Factura.Text);
 
-            for (int i = 0; i < datagridView1.Rows.Count; i++)
+                Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
+                bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, ID_factura);
+
+                int ID_devolucion = ctrlDevolucion.ID_Devolucion();
+
+                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                {
+                    DataGridViewRow row = datagridView1.Rows[i];
+                    ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[3].Value.ToString()), double.Parse(row.Cells[2].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), ID_devolucion, ID_factura);
+                }
+
+                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                {
+                    Devolucion += double.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
+                }
+                ctrlDevolucion.Actualizar_Factura(Devolucion, ID_factura);
+
+                this.Hide();
+
+                Anular_Factura frm = new Anular_Factura(Txt_Factura.Text);
+                frm.Txt_Facturar.Text = Txt_Factura.Text;
+                frm.Lb_Factura.Text = lbIdFactura.Text;
+                if (Lb_EstadoFactura.Text == "Pendiente")
+                {
+                    frm.Lb_Credito1.Visible = true;
+                    frm.Lb_Credito2.Visible = true;
+                    frm.Lb_Devolucion3.Visible = true;
+                    frm.Lb_Credito2.Text = frm.Lb_Credito2.Text + " " + Devolucion;
+                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + Devolucion;
+                }
+                else
+                {
+                    frm.Lb_Credito1.Visible = false;
+                    frm.Lb_Credito2.Visible = false;
+                    frm.Lb_Devolucion3.Visible = true;
+                    frm.Lb_Devolucion3.Location = new Point(6, 133);
+                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + Devolucion;
+                }
+                frm.ShowDialog();
+
+                this.Close();
+            }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
+        }
+
+        private void DatagridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
             {
-                Devolucion += double.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
-            }
-            ctrlDevolucion.Actualizar_Factura(Devolucion, ID_factura);
-            MessageBox_Import.Show("Devolución realizada", "Importante");
+                ContextMenuStrip menu = new ContextMenuStrip();
 
-            this.Hide();
-            this.Close();
+                int pos = datagridView2.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                }
+                menu.Show(datagridView2, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
         }
     }
 }

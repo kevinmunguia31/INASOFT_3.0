@@ -63,14 +63,6 @@ namespace INASOFT_3._0.UserControls
             lbProveedor.Text = "...";
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            CargarTablaProduct("");
-            Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-            lbCapital.Text = ctrlProductos.CapitalInvertido();
-            lbCantiTota.Text = ctrlProductos.TotalProductos();
-        }
-
         private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (this.dataGridView1.Columns[e.ColumnIndex].Index == 3)
@@ -109,7 +101,16 @@ namespace INASOFT_3._0.UserControls
                     txtID.Text = dataGridView1.Rows[pos].Cells[0].Value.ToString();
                     lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
                     lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
-                    lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
+                    if(int.Parse(dataGridView1.Rows[pos].Cells[3].Value.ToString()) > 0)
+                    {
+                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
+                        lbExistencias.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
+                        lbExistencias.ForeColor = Color.Red;
+                    }
                     lbObservaciones.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
                     lbProveedor.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
                     groupBox_Detalle.Text = "Producto " + dataGridView1.Rows[pos].Cells[2].Value.ToString();
@@ -248,6 +249,14 @@ namespace INASOFT_3._0.UserControls
              "2. Tiene la función de buscar un producto determinado ya sea por su nombre o por su código.\n" +
              "3. Puede agregar, editar y eliminar un producto si desea hacerlo." +
              "\n", "¿Cómo funciona este apartado?");
+        }
+
+        private void Guna2Button6_Click(object sender, EventArgs e)
+        {
+            CargarTablaProduct("");
+            Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+            lbCapital.Text = ctrlProductos.CapitalInvertido();
+            lbCantiTota.Text = ctrlProductos.TotalProductos();
         }
     }
 }

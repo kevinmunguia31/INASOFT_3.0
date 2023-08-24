@@ -33,6 +33,93 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable Credito_RangoFecha(string fecha_ini, string fecha_end)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Credito_RangoFecha('" + fecha_ini + "', '" + fecha_end + "');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Credito_NombreCliente(string nombre)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Credito_NombreCliente('" + nombre + "');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Credito_EstadoFact(string estado)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Credito_EstadoFact('" + estado + "');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Credito_DiasVencidos(int estado)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Creditos_DiasVencidost(" + estado + ");";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
         public DataTable Cargar_EstadoDeCredito(int idCredito)
         {
             DataTable dt = new DataTable();
@@ -55,10 +142,10 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Insertar_Credito(string DiaDeCredito , string DiaDeVencimiento, double Cargo, string Estado, string Desc, int ID_Factura, int ID_Cliente)
+        public bool Insertar_Credito(string tipoPago, string DiaDeCredito , string DiaDeVencimiento, double Cargo, string Estado, string Desc, int ID_Factura, int ID_Cliente)
         {
             bool bandera = false;
-            string sql = "CALL Agregar_Credito('" + DiaDeCredito + "', '" + DiaDeVencimiento + "', " + Cargo + ", '" + Estado + "', '" + Desc + "'," + ID_Factura + ", " + ID_Cliente + ");";
+            string sql = "CALL Agregar_Credito('" + tipoPago + "', '" + DiaDeCredito + "', '" + DiaDeVencimiento + "', " + Cargo + ", '" + Estado + "', '" + Desc + "'," + ID_Factura + ", " + ID_Cliente + ");";
 
             try
             {

@@ -26,6 +26,7 @@ namespace INASOFT_3._0.VistaFacturas
             InfoNegocio();
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
             txtIdFactura.Text = ctrlFactura.ID_Factura().ToString();
+            //lbIdFactura.Text = ctrlFactura.Codigo_Factura().ToString();
 
             InfoProducts();
             lbUser.Text = Sesion.nombre;            
@@ -81,6 +82,8 @@ namespace INASOFT_3._0.VistaFacturas
             if (txtIdCliente.Text == "1")
             {
                 RBtn_Credito.Visible = false;
+                RBtn_AlContado.Checked = true;
+                groupBox2.Enabled = false;
             }
             else
             {
@@ -142,14 +145,18 @@ namespace INASOFT_3._0.VistaFacturas
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = guna2MessageDialog1.Show("Seguro que anular la factura?", "Eliminar");
+            DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea anular la factura?", "Eliminar");
             if (resultado == DialogResult.Yes)
             {
+                this.Hide();
                 Anular_Factura frm = new Anular_Factura(txtIdFactura.Text);
                 frm.Txt_Facturar.Text = txtIdFactura.Text;
                 frm.Lb_Factura.Text = lbIdFactura.Text;
-                
-                frm.Show();
+                frm.Lb_Credito1.Visible = false;
+                frm.Lb_Credito2.Visible = false;
+                frm.Lb_Devolucion3.Visible = false;
+
+                frm.ShowDialog();
                 this.Close();
             }
             else
@@ -204,179 +211,129 @@ namespace INASOFT_3._0.VistaFacturas
             int id_factura = int.Parse(txtIdFactura.Text);
             double devolucion = double.Parse(lbDevolucion.Text);
 
-            if(Txt_descuento.Text == "")
+            if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == false)
             {
-                descuento = 0.00;
+                MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará");
             }
-            else
+            //FACTURA AL CRÉDITO
+            else if (RBtn_Credito.Checked == true && RBtn_AlContado.Checked == false)
             {
-                descuento = double.Parse(Txt_descuento.Text);
-            }
+                tipoFactura = "Crédito";
+                estado = "Pendiente";
 
-            if (Txt_Efectivo.Text == "")
-            {
                 efectivo = 0.00;
-            }
-            else
-            {
-                efectivo = double.Parse(Txt_Efectivo.Text);
-            }
-            
-            if (cbImpresoras.SelectedIndex == -1)
-            {
-                MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
-            }
-            else
-            {
-                if (Rbtn_TipoDolares.Checked == false && Rbtn_TipoCordobas.Checked == false)
+                debe = double.Parse(lbTotal.Text);
+                devolucion = 0.00;
+
+                //Descuento
+                if (Txt_descuento.Text == "")
                 {
-                    MessageBox_Error.Show("Neceita marcar el tipo de pago con el que se realizará la factura");
+                    descuento = 0.00;
+                }
+                else if (double.Parse(Txt_descuento.Text) > double.Parse(lbTotal.Text) / 2)
+                {
+                    MessageBox_Error.Show("El descuento realizado es demasiado.", "Error");
+                    Txt_descuento.Text = "";
+                    Txt_Efectivo.Text = "";
                 }
                 else
                 {
-                    if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == false)
+                    descuento = double.Parse(Txt_descuento.Text);
+                }
+
+                Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+
+                bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, id_factura, tipoPago, tipoFactura);
+
+                if (bandera)
+                {
+                    FacturaAlCredito frm = new FacturaAlCredito();
+                    frm.Lb_Cargo.Text = total.ToString();
+                    frm.Lb_Saldo.Text = total.ToString();
+                    frm.Lb_Trabajador.Text = lbUser.Text;
+                    frm.Lb_Cliente.Text = lbNombreCliente.Text;
+                    frm.Lb_Descuento.Text = descuento.ToString();
+                    frm.Txt_IDCliente.Text = txtIdCliente.Text;
+                    frm.Txt_IDFactura.Text = txtIdFactura.Text;
+                    frm.Show();
+                    this.Hide();
+                }
+            }
+            //FACTURA AL CONTADO
+            else if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == true)
+            {
+                if (cbImpresoras.SelectedIndex == -1)
+                {
+                    MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
+                }
+                else if (Rbtn_TipoCordobas.Checked == false && Rbtn_TipoDolares.Checked == false)
+                {
+                    MessageBox_Error.Show("No deje la la opción de 'Tipo de pago' sin marcar.", "Error");
+                }
+                else if (Txt_Efectivo.Text == "")
+                {
+                    MessageBox_Error.Show("No deje la casilla de 'Efectivo' sin marcar", "Error");
+                }
+                else if (double.Parse(lbDevolucion.Text) < 0)
+                {
+                    MessageBox_Error.Show("Tiene que pagar completo la compra", "Error");
+                }
+                else if (Txt_descuento.Text != "" && double.Parse(Txt_descuento.Text) > double.Parse(lbTotal.Text) / 2)
+                {
+                    MessageBox_Error.Show("El descuento realizado es demasiado.", "Error");
+                    Txt_descuento.Text = "";
+                }
+                else
+                {
+                    tipoFactura = "Al contado";
+                    estado = "Cancelado";
+                    debe = 0.00;
+                    efectivo = double.Parse(Txt_Efectivo.Text);
+                    //Descuento
+                    if (Txt_descuento.Text == "")
                     {
-                        MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará");
+                        descuento = 0.00;
                     }
-                    //FACTURA AL CRÉDITO
-                    else if (RBtn_Credito.Checked == true && RBtn_AlContado.Checked == false)
+                    else
                     {
-                        tipoFactura = "Crédito";
-                        estado = "Pendiente";
+                        descuento = double.Parse(Txt_descuento.Text);
+                    }
 
-                        efectivo = 0.00;
-                        debe = double.Parse(lbTotal.Text);
-                        devolucion = 0.00;
-
-                        if (Rbtn_TipoDolares.Checked == true)
-                        {
-                            tipoPago = "Dolares";
-                        }
-                        if (Rbtn_TipoCordobas.Checked == true)
-                        {
-                            tipoPago = "Cordobas";
-                        }
-
-                        if (Txt_descuento.Text == "")
-                        {
-                            Txt_descuento.Text = "0.00";
-                        }
-                        else
-                        {
-                            Txt_descuento.Text = Txt_descuento.Text;
-                        }
+                    if(Rbtn_TipoCordobas.Checked == true)
+                    {
+                        tipoPago = "Córdobas";
+                    }
+                    if (Rbtn_TipoDolares.Checked == true)
+                    {
+                        tipoPago = "Dólares";
+                    }
+                    try
+                    {
                         Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
 
                         bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, id_factura, tipoPago, tipoFactura);
 
                         if (bandera)
                         {
-                            FacturaAlCredito frm = new FacturaAlCredito();
-                            frm.Lb_Cargo.Text = total.ToString();
-                            frm.Lb_Saldo.Text = total.ToString();
-                            frm.Lb_Trabajador.Text = lbUser.Text;
-                            frm.Lb_Cliente.Text = lbNombreCliente.Text;
-                            frm.Lb_Descuento.Text = descuento.ToString();
-                            frm.Txt_IDCliente.Text = txtIdCliente.Text;
-                            frm.Txt_IDFactura.Text = txtIdFactura.Text;                         
-                            frm.Show();
-                            this.Hide();
+                            //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                            printDocument1 = new PrintDocument();
+                            PrinterSettings ps = new PrinterSettings();
+                            ps.PrinterName = cbImpresoras.Text;
+                            printDocument1.PrinterSettings = ps;
+                            printDocument1.PrintPage += Imprimir;
+                            printDocument1.Print();
+
+                            MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                            UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                            uC_Factura.CargarFacturas();
+                            this.Close();
                         }
                     }
-                    //FACTURA AL CONTADO
-                    else if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == true)
+                    catch (MySqlException ex)
                     {
-                        if (Txt_Efectivo.Text == "")
-                        {
-                            MessageBox_Error.Show("No deje la casilla de 'Efectivo' sin marcar", "Error");
-                        }
-                        else
-                        {
-                            if (double.Parse(lbDevolucion.Text) < 0)
-                            {
-                                MessageBox_Error.Show("Tiene que pagar completo la compra", "Error");
-                            }
-                            else
-                            {
-                                tipoFactura = "Al contado";
-                                estado = "Cancelado";
-                                debe = 0.00;
-
-                                if (Rbtn_TipoDolares.Checked == true)
-                                {
-                                    tipoPago = "Dólares";
-                                }
-                                if (Rbtn_TipoCordobas.Checked == true)
-                                {
-                                    tipoPago = "Córdobas";
-                                }
-
-                                if (Txt_descuento.Text == "")
-                                {
-                                    Txt_descuento.Text = "0.00";
-                                }
-                                else
-                                {
-                                    Txt_descuento.Text = Txt_descuento.Text;
-                                }
-
-                                try
-                                {
-                                    Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-
-                                    bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, id_factura, tipoPago, tipoFactura);
-
-                                    if (bandera)
-                                    {
-                                        //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                                        printDocument1 = new PrintDocument();
-                                        PrinterSettings ps = new PrinterSettings();
-                                        ps.PrinterName = cbImpresoras.Text;
-                                        printDocument1.PrinterSettings = ps;
-                                        printDocument1.PrintPage += Imprimir;
-                                        printDocument1.Print();
-
-                                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                                        uC_Factura.CargarFacturas();
-                                        this.Close();
-                                    }
-                                }
-                                catch (MySqlException ex)
-                                {
-                                    MessageBox.Show(ex.Message.ToString());
-                                }
-                            }
-                        } 
+                        MessageBox.Show(ex.Message.ToString());
                     }
-                } 
-            }
-        }
-
-        private void Txt_descuento_TextChanged(object sender, EventArgs e)
-        {
-            double subtotal = double.Parse(lbSubtotal.Text);
-            double total = double.Parse(lbTotal.Text);
-            double desc;
-            try
-            {
-                if (Txt_descuento.Text == "")
-                {
-                    desc = 0.00;
-                    Txt_descuento.Text = "";
-                    lbTotal.Text = subtotal.ToString();
                 }
-                else
-                {
-                   desc = double.Parse(Txt_descuento.Text);
-                   total = subtotal - desc;
-                   lbTotal.Text = total.ToString();
-                }
-            }
-            catch(Exception ex)
-            {
-                Txt_descuento.Text = "";
-                lbSubtotal.Text = subtotal.ToString();
             }
         }
 
@@ -433,7 +390,65 @@ namespace INASOFT_3._0.VistaFacturas
             e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
         }
 
-        private void Txt_descuento_KeyPress(object sender, KeyPressEventArgs e)
+        private void RBtn_AlContado_CheckedChanged(object sender, EventArgs e)
+        {
+            btnFacturar.Text = "Facturar e Imprimir";
+            label4.Visible = true;
+            Txt_Efectivo.Visible = true;
+            guna2GroupBox5.Enabled = true;
+            cbImpresoras.Visible = true;
+            groupBox1.Visible = true;
+            guna2GroupBox4.Location = new Point(17, 154);
+            guna2GroupBox5.Location = new Point(202, 154);
+            label13.Location = new Point(12, 306);
+            label6.Location = new Point(143, 306);
+            Txt_descuento.Location = new Point(172, 302);
+        }
+
+        private void RBtn_Credito_CheckedChanged(object sender, EventArgs e)
+        {
+            btnFacturar.Text = "Continuar >>";
+            lbDevolucion.Text = "0.00";
+            label4.Visible = false;
+            Txt_Efectivo.Visible = false;
+            guna2GroupBox5.Enabled = false;
+            cbImpresoras.Visible = false;
+            groupBox1.Visible = false;
+            guna2GroupBox4.Location = new Point(17, 110);
+            guna2GroupBox5.Location = new Point(202, 110);
+            label13.Location = new Point(12, 194);
+            label6.Location = new Point(143, 194);
+            Txt_descuento.Location = new Point(172, 194);
+        }
+
+        private void Txt_descuento_TextChanged(object sender, EventArgs e)
+        {
+            double subtotal = double.Parse(lbSubtotal.Text);
+            double total = double.Parse(lbTotal.Text);
+            double desc;
+            try
+            {
+                if (Txt_descuento.Text == "")
+                {
+                    desc = 0.00;
+                    Txt_descuento.Text = "";
+                    lbTotal.Text = subtotal.ToString();
+                }
+                else
+                {
+                    desc = double.Parse(Txt_descuento.Text);
+                    total = subtotal - desc;
+                    lbTotal.Text = total.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Txt_descuento.Text = "";
+                lbSubtotal.Text = subtotal.ToString();
+            }
+        }
+
+        private void Txt_descuento_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -452,23 +467,6 @@ namespace INASOFT_3._0.VistaFacturas
                 //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
-        }
-
-        private void RBtn_AlContado_CheckedChanged(object sender, EventArgs e)
-        {
-            btnFacturar.Text = "Facturar e Imprimir";
-            label4.Visible = true;
-            Txt_Efectivo.Visible = true;
-            guna2GroupBox5.Enabled = true;
-        }
-
-        private void RBtn_Credito_CheckedChanged(object sender, EventArgs e)
-        {
-            btnFacturar.Text = "Continuar >>";
-            lbDevolucion.Text = "0.00";
-            label4.Visible = false;
-            Txt_Efectivo.Visible = false;
-            guna2GroupBox5.Enabled = false;
         }
     }
 }

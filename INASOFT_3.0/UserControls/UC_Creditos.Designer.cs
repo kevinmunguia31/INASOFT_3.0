@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Creditos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,6 +44,16 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.Rbtn_DiasEstables = new System.Windows.Forms.RadioButton();
+            this.Rbtn_DiasVencidos = new System.Windows.Forms.RadioButton();
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.Rbtn_Canceladas = new System.Windows.Forms.RadioButton();
+            this.Rbtn_Pendientes = new System.Windows.Forms.RadioButton();
+            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.DateTimeTimer_Ini = new System.Windows.Forms.DateTimePicker();
@@ -58,11 +68,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Question = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Warnings = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Ok = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Error = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -86,14 +106,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -103,15 +123,16 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1007, 505);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView1_CellFormatting);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
             // 
             // label2
@@ -137,12 +158,13 @@
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(250, 11);
+            this.button1.Location = new System.Drawing.Point(251, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 29);
             this.button1.TabIndex = 88;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // pictureBox1
             // 
@@ -164,11 +186,11 @@
             this.guna2GroupBox1.Controls.Add(this.guna2Button1);
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(1040, 339);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(1040, 471);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(363, 120);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(363, 98);
             this.guna2GroupBox1.TabIndex = 97;
             this.guna2GroupBox1.Text = "Exportación de tabla";
             // 
@@ -183,7 +205,7 @@
             this.button2.ForeColor = System.Drawing.Color.Transparent;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(193, 3);
+            this.button2.Location = new System.Drawing.Point(156, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 29);
             this.button2.TabIndex = 95;
@@ -202,11 +224,12 @@
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
-            this.guna2Button2.Location = new System.Drawing.Point(193, 48);
+            this.guna2Button2.Location = new System.Drawing.Point(193, 46);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(157, 59);
+            this.guna2Button2.Size = new System.Drawing.Size(157, 43);
             this.guna2Button2.TabIndex = 92;
             this.guna2Button2.Text = "Exportar a EXCEL";
+            this.guna2Button2.Click += new System.EventHandler(this.Guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -220,9 +243,9 @@
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
-            this.guna2Button1.Location = new System.Drawing.Point(17, 48);
+            this.guna2Button1.Location = new System.Drawing.Point(17, 46);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(157, 59);
+            this.guna2Button1.Size = new System.Drawing.Size(157, 43);
             this.guna2Button1.TabIndex = 91;
             this.guna2Button1.Text = "Exportar a PDF";
             // 
@@ -240,6 +263,8 @@
             // 
             this.guna2GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GroupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.guna2GroupBox2.Controls.Add(this.groupBox6);
+            this.guna2GroupBox2.Controls.Add(this.groupBox4);
             this.guna2GroupBox2.Controls.Add(this.groupBox3);
             this.guna2GroupBox2.Controls.Add(this.groupBox2);
             this.guna2GroupBox2.Controls.Add(this.Bttn_Info);
@@ -247,13 +272,150 @@
             this.guna2GroupBox2.Controls.Add(this.label3);
             this.guna2GroupBox2.Controls.Add(this.label1);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(1040, 64);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1040, 11);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(363, 259);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(363, 454);
             this.guna2GroupBox2.TabIndex = 98;
-            this.guna2GroupBox2.Text = "Buscar Facturas";
+            this.guna2GroupBox2.Text = "Buscar facturas al crédito";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.groupBox7);
+            this.groupBox6.Controls.Add(this.guna2Button7);
+            this.groupBox6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.ForeColor = System.Drawing.Color.Black;
+            this.groupBox6.Location = new System.Drawing.Point(0, 343);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(363, 111);
+            this.groupBox6.TabIndex = 101;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Buscador por días vencidos";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox7.Controls.Add(this.Rbtn_DiasEstables);
+            this.groupBox7.Controls.Add(this.Rbtn_DiasVencidos);
+            this.groupBox7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(6, 26);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(231, 79);
+            this.groupBox7.TabIndex = 92;
+            this.groupBox7.TabStop = false;
+            // 
+            // Rbtn_DiasEstables
+            // 
+            this.Rbtn_DiasEstables.AutoSize = true;
+            this.Rbtn_DiasEstables.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_DiasEstables.Location = new System.Drawing.Point(6, 46);
+            this.Rbtn_DiasEstables.Name = "Rbtn_DiasEstables";
+            this.Rbtn_DiasEstables.Size = new System.Drawing.Size(115, 27);
+            this.Rbtn_DiasEstables.TabIndex = 27;
+            this.Rbtn_DiasEstables.TabStop = true;
+            this.Rbtn_DiasEstables.Text = "Días estables";
+            this.Rbtn_DiasEstables.UseVisualStyleBackColor = true;
+            // 
+            // Rbtn_DiasVencidos
+            // 
+            this.Rbtn_DiasVencidos.AutoSize = true;
+            this.Rbtn_DiasVencidos.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_DiasVencidos.Location = new System.Drawing.Point(5, 13);
+            this.Rbtn_DiasVencidos.Name = "Rbtn_DiasVencidos";
+            this.Rbtn_DiasVencidos.Size = new System.Drawing.Size(117, 27);
+            this.Rbtn_DiasVencidos.TabIndex = 26;
+            this.Rbtn_DiasVencidos.TabStop = true;
+            this.Rbtn_DiasVencidos.Text = "Días vencidos";
+            this.Rbtn_DiasVencidos.UseVisualStyleBackColor = true;
+            // 
+            // guna2Button7
+            // 
+            this.guna2Button7.BorderRadius = 10;
+            this.guna2Button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button7.Image")));
+            this.guna2Button7.Location = new System.Drawing.Point(259, 69);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.Size = new System.Drawing.Size(91, 36);
+            this.guna2Button7.TabIndex = 91;
+            this.guna2Button7.Text = "Buscar";
+            this.guna2Button7.Click += new System.EventHandler(this.Guna2Button7_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Controls.Add(this.guna2Button5);
+            this.groupBox4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.Black;
+            this.groupBox4.Location = new System.Drawing.Point(0, 247);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(363, 90);
+            this.groupBox4.TabIndex = 100;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Buscardor por tipos de facturas";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox5.Controls.Add(this.Rbtn_Canceladas);
+            this.groupBox5.Controls.Add(this.Rbtn_Pendientes);
+            this.groupBox5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(6, 26);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(231, 56);
+            this.groupBox5.TabIndex = 92;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Facturas";
+            // 
+            // Rbtn_Canceladas
+            // 
+            this.Rbtn_Canceladas.AutoSize = true;
+            this.Rbtn_Canceladas.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_Canceladas.Location = new System.Drawing.Point(117, 23);
+            this.Rbtn_Canceladas.Name = "Rbtn_Canceladas";
+            this.Rbtn_Canceladas.Size = new System.Drawing.Size(108, 27);
+            this.Rbtn_Canceladas.TabIndex = 27;
+            this.Rbtn_Canceladas.TabStop = true;
+            this.Rbtn_Canceladas.Text = "Canceladas";
+            this.Rbtn_Canceladas.UseVisualStyleBackColor = true;
+            // 
+            // Rbtn_Pendientes
+            // 
+            this.Rbtn_Pendientes.AutoSize = true;
+            this.Rbtn_Pendientes.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_Pendientes.Location = new System.Drawing.Point(6, 24);
+            this.Rbtn_Pendientes.Name = "Rbtn_Pendientes";
+            this.Rbtn_Pendientes.Size = new System.Drawing.Size(100, 27);
+            this.Rbtn_Pendientes.TabIndex = 26;
+            this.Rbtn_Pendientes.TabStop = true;
+            this.Rbtn_Pendientes.Text = "Pendientes";
+            this.Rbtn_Pendientes.UseVisualStyleBackColor = true;
+            // 
+            // guna2Button5
+            // 
+            this.guna2Button5.BorderRadius = 10;
+            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button5.ForeColor = System.Drawing.Color.White;
+            this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
+            this.guna2Button5.Location = new System.Drawing.Point(259, 46);
+            this.guna2Button5.Name = "guna2Button5";
+            this.guna2Button5.Size = new System.Drawing.Size(91, 36);
+            this.guna2Button5.TabIndex = 91;
+            this.guna2Button5.Text = "Buscar";
+            this.guna2Button5.Click += new System.EventHandler(this.Guna2Button5_Click_1);
             // 
             // groupBox3
             // 
@@ -263,23 +425,23 @@
             this.groupBox3.Controls.Add(this.guna2Button3);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.DateTimeTimer_End);
-            this.groupBox3.Font = new System.Drawing.Font("Poppins", 9.75F);
+            this.groupBox3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(0, 138);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(369, 121);
+            this.groupBox3.Size = new System.Drawing.Size(363, 103);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Buscador por fecha:";
+            this.groupBox3.Text = "Buscador por fecha";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(13, 77);
+            this.label5.Location = new System.Drawing.Point(13, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 23);
+            this.label5.Size = new System.Drawing.Size(54, 23);
             this.label5.TabIndex = 99;
             this.label5.Text = "Hasta:";
             // 
@@ -304,11 +466,12 @@
             this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.Location = new System.Drawing.Point(254, 64);
+            this.guna2Button3.Location = new System.Drawing.Point(259, 61);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(91, 36);
             this.guna2Button3.TabIndex = 91;
             this.guna2Button3.Text = "Buscar";
+            this.guna2Button3.Click += new System.EventHandler(this.Guna2Button3_Click_1);
             // 
             // label4
             // 
@@ -317,7 +480,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(13, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 23);
+            this.label4.Size = new System.Drawing.Size(31, 23);
             this.label4.TabIndex = 98;
             this.label4.Text = "De:";
             // 
@@ -326,7 +489,7 @@
             this.DateTimeTimer_End.CustomFormat = "yyyy/MM/dd";
             this.DateTimeTimer_End.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 77);
+            this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 64);
             this.DateTimeTimer_End.Name = "DateTimeTimer_End";
             this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 23);
             this.DateTimeTimer_End.TabIndex = 97;
@@ -336,10 +499,10 @@
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.txt_NonbCliente);
             this.groupBox2.Controls.Add(this.guna2Button4);
-            this.groupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 51);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(369, 81);
+            this.groupBox2.Size = new System.Drawing.Size(363, 81);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Busqueda por cliente";
@@ -376,11 +539,12 @@
             this.guna2Button4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
-            this.guna2Button4.Location = new System.Drawing.Point(254, 29);
+            this.guna2Button4.Location = new System.Drawing.Point(259, 39);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(91, 36);
             this.guna2Button4.TabIndex = 86;
             this.guna2Button4.Text = "Buscar";
+            this.guna2Button4.Click += new System.EventHandler(this.Guna2Button4_Click);
             // 
             // Bttn_Info
             // 
@@ -393,7 +557,7 @@
             this.Bttn_Info.ForeColor = System.Drawing.SystemColors.Control;
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Bttn_Info.Location = new System.Drawing.Point(159, 5);
+            this.Bttn_Info.Location = new System.Drawing.Point(193, 4);
             this.Bttn_Info.Name = "Bttn_Info";
             this.Bttn_Info.Size = new System.Drawing.Size(31, 29);
             this.Bttn_Info.TabIndex = 94;
@@ -434,6 +598,7 @@
             // 
             // guna2Button6
             // 
+            this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button6.Animated = true;
             this.guna2Button6.BackColor = System.Drawing.Color.Transparent;
             this.guna2Button6.BorderColor = System.Drawing.Color.Transparent;
@@ -449,7 +614,7 @@
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(884, 11);
+            this.guna2Button6.Location = new System.Drawing.Point(887, 10);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(135, 33);
             this.guna2Button6.TabIndex = 99;
@@ -457,10 +622,56 @@
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.guna2Button6.Click += new System.EventHandler(this.Guna2Button6_Click);
             // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.MessageBox_Import.Text = null;
+            // 
+            // MessageBox_Question
+            // 
+            this.MessageBox_Question.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            this.MessageBox_Question.Caption = null;
+            this.MessageBox_Question.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            this.MessageBox_Question.Parent = null;
+            this.MessageBox_Question.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Question.Text = null;
+            // 
+            // MessageBox_Warnings
+            // 
+            this.MessageBox_Warnings.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Warnings.Caption = null;
+            this.MessageBox_Warnings.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            this.MessageBox_Warnings.Parent = null;
+            this.MessageBox_Warnings.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Warnings.Text = null;
+            // 
+            // MessageBox_Ok
+            // 
+            this.MessageBox_Ok.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Ok.Caption = null;
+            this.MessageBox_Ok.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Ok.Parent = null;
+            this.MessageBox_Ok.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Ok.Text = null;
+            // 
+            // MessageBox_Error
+            // 
+            this.MessageBox_Error.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Error.Caption = null;
+            this.MessageBox_Error.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+            this.MessageBox_Error.Parent = null;
+            this.MessageBox_Error.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Error.Text = null;
+            // 
             // UC_Creditos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.guna2Button6);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);
@@ -476,6 +687,12 @@
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -511,5 +728,21 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Question;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Warnings;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Ok;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Error;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.RadioButton Rbtn_DiasEstables;
+        private System.Windows.Forms.RadioButton Rbtn_DiasVencidos;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.RadioButton Rbtn_Canceladas;
+        private System.Windows.Forms.RadioButton Rbtn_Pendientes;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

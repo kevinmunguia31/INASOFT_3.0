@@ -23,6 +23,7 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 band.ReadOnly = true;
             }
+            datagridView1.Columns[6].Visible = false;
         }
         public void CargarDetalleCredito()
         {
@@ -33,6 +34,35 @@ namespace INASOFT_3._0.VistaFacturas
         private void Guna2Button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void EstadoDelCredito_Load(object sender, EventArgs e)
+        {
+            int diasvencidos = int.Parse(Lb_DiasVencidos.Text);
+            string estado = Lb_Estado.Text;
+            double pendiente = double.Parse(Lb_Pendiente.Text);
+            if(diasvencidos > 0)
+            {
+                Lb_DiasVencidos.ForeColor = Color.Red;
+            }
+            if(estado == "Cancelado")
+            {
+                Lb_Estado.ForeColor = Color.Green;
+            }
+            else
+            {
+                Lb_Estado.ForeColor = Color.Orange;
+            }
+            if(pendiente > 0)
+            {
+                Lb_Pendiente.ForeColor = Color.Red;
+                label6.ForeColor = Color.Red;
+            }
+            else
+            {
+                Lb_Pendiente.ForeColor = Color.Green;
+                label6.ForeColor = Color.Green;
+            }
         }
     }
 }

@@ -29,24 +29,10 @@ namespace INASOFT_3._0.UserControls
             dataGridView1.DataSource = _ctrlProveedor.consulta(dato);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtNombreYapellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UC_Proveedor_Load(object sender, EventArgs e)
-        {
-
-        }
         public void TotalProovedor()
         {
             MySqlDataReader reader = null;
-            string sql = "SELECT count(*) FROM proveedor";
+            string sql = "SELECT count(*) FROM proveedor WHERE ID != 1";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -67,8 +53,46 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
+        private void editarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string direccion = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            string ruc = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
-        private void btnSave_Click(object sender, EventArgs e)
+            txtId.Text = id;
+            txtNombreYapellido.Text = nombre;
+            txtTelefono.Text = telefono;
+            txtDireccion.Text = direccion;
+            txtRuc.Text = ruc;
+        }
+
+        private void eliminarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool bandera = false;
+            DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
+            if (resultado == DialogResult.Yes)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                CtrlProveedor _ctrl = new CtrlProveedor();
+                bandera = _ctrl.eliminar(id);
+                if (bandera)
+                {
+                    MessageDialogInfo.Show("Registro Eliminado con exito", "Importante");
+                    CargarTablaProvider(null);
+                    TotalProovedor();
+                }
+            }
+        }
+
+        private void Guna2Button2_Click(object sender, EventArgs e)
+        {
+            string dato = txtSearch.Text;
+            CargarTablaProvider(dato);
+        }
+
+        private void Guna2Button1_Click(object sender, EventArgs e)
         {
             bool bandera = false;
             if (txtNombreYapellido.Text != "" && txtTelefono.Text != "" && txtDireccion.Text != "" && txtRuc.Text != "")
@@ -78,7 +102,7 @@ namespace INASOFT_3._0.UserControls
                 _proveedor.Telefono = txtTelefono.Text;
                 _proveedor.Direccion = txtDireccion.Text;
                 _proveedor.Ruc = txtRuc.Text;
-                
+
 
                 CtrlProveedor ctrProveedor = new CtrlProveedor();
                 if (txtId.Text != "")
@@ -111,50 +135,6 @@ namespace INASOFT_3._0.UserControls
             else
             {
                 MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string dato = txtSearch.Text;
-            CargarTablaProvider(dato);
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            CargarTablaProvider(null);
-        }
-
-        private void editarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            string direccion = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            string ruc = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-
-            txtId.Text = id;
-            txtNombreYapellido.Text = nombre;
-            txtTelefono.Text = telefono;
-            txtDireccion.Text = direccion;
-            txtRuc.Text = ruc;
-        }
-
-        private void eliminarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool bandera = false;
-            DialogResult resultado = MessageDialog.Show("Seguro que desea eliminar el registro?", "Eliminar");
-            if (resultado == DialogResult.Yes)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                CtrlProveedor _ctrl = new CtrlProveedor();
-                bandera = _ctrl.eliminar(id);
-                if (bandera)
-                {
-                    MessageDialogInfo.Show("Registro Eliminado con exito", "Eliminar");
-                    CargarTablaProvider(null);
-                    TotalProovedor();
-                }
             }
         }
     }

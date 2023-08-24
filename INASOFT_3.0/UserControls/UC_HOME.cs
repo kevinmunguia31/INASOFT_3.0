@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -28,15 +29,49 @@ namespace INASOFT_3._0.UserControls
             string fecha = DateTime.Now.ToString("yyyy/MM/dd");
             lbdate.Text = fecha;
             HayInternet();
-            LoadSalesXMonth();
             GraficoVentasDiarias();
+            Cargar_TotalxMes();
+            Grafica();
+            Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
+            lbCantInvoice.Text = ctrlHome.Total_Facturas_Realizads(fecha).ToString();
+            lbTotalHoy.Text = ctrlHome.TotalFinal_Facturas(fecha).ToString();
+            Lb_FactAnuladas.Text = ctrlHome.Total_FacturasAnuldas().ToString();
+            Lb_Total.Text = ctrlHome.TotalFinal().ToString();
+            foreach (DataGridViewBand band in dataGridView1.Columns)
+            {
+                band.ReadOnly = true;
+            }
         }
 
+        //Cargar el dataGridView
+        public void Cargar_TotalxMes()
+        {
+            Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
+            dataGridView1.DataSource = ctrlHome.Cargar_TotalxMes();
+        }
+
+        public void Grafica()
+        {
+            Series series = new Series("Datos del DataGridView");
+            series.ChartType = SeriesChartType.Column; // Tipo de gráfico (puede ser diferente)
+
+            // Recorrer las filas del DataGridView
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                // Obtener el valor de la celda deseada (supongamos que es la columna 1)
+                if (fila.Cells[1].Value != null)
+                {
+                    double valor = Convert.ToDouble(fila.Cells[2].Value);
+                    series.Points.AddXY(fila.Index, valor); // Añadir el punto a la serie
+                }
+            }
+
+            // Agregar la serie al Chart
+            chart2.Series.Add(series);
+        }
         private void UC_HOME_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
-            TotalFacturadoHoy();
-            TotalFacturasHoy();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -45,108 +80,9 @@ namespace INASOFT_3._0.UserControls
             lbFecha.Text = DateTime.Now.ToLongDateString();
         }
 
-        public void TotalFacturadoHoy()
-        {
-            MySqlDataReader reader = null;
-            
-            string sql = "SELECT SUM(Total_Final) FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '" + lbdate.Text + "'";
-            
-            try
-            {
-                try
-                {
-                    MySqlConnection conexioBD = Conexion.getConexion();
-                    conexioBD.Open();
-                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                    reader = comando.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            double d = Convert.ToDouble(reader.GetString(0), CultureInfo.InvariantCulture);
-                            lbTotalHoy.Text = d.ToString("0,0.00", CultureInfo.InvariantCulture);
-                        }
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine(ex.Message.ToString());
-                }
-            }
-            catch (SqlNullValueException)
-            {
-                //MessageDialogInfo.Show("Bienvenido " + user.ToString() + " Hoy sera un Gran Dia 🤗");
-            }
-            
-        }
-
-        public void TotalFacturasHoy()
-        {
-            MySqlDataReader reader = null;
-            //string sql = "SELECT COUNT(Codigo_Fac) FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '" + lbdate.Text + "' GROUP BY Codigo_Fac";
-            string sql = "CALL Total_FacturasRealizadas('"+ lbdate.Text +"')";
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        lbCantInvoice.Text = (reader.GetString(0));
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-        }
-
-        public void LoadSalesXMonth()
-        {
-            DataTable dt = new DataTable();
-            string sql = "SELECT MONTH(Fecha) AS Mes, SUM(Total_Final) AS Total_Vendido FROM Facturas GROUP BY MONTH(Fecha)";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexionDB);
-                MySqlDataAdapter da = new MySqlDataAdapter(comando);
-                da.Fill(dt);
-
-                listViewVentas.Clear();
-                listViewVentas.View = View.Details;
-
-                listViewVentas.FullRowSelect = true;
-                listViewVentas.Columns.Add(dt.Columns[0].ToString(), 100);
-                listViewVentas.Columns.Add(dt.Columns[1].ToString(), 200);
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    string[] arr = new string[2];
-                    ListViewItem item = new ListViewItem();
-
-                    for (int i = 0; i < arr.Length; i++)
-                    {
-                        arr[i] = row[i].ToString();
-                        item = new ListViewItem(arr);
-                    }
-                    listViewVentas.Items.Add(item);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error:" + ex.Message);
-            }
-        }
-
         public void GraficoVentasDiarias()
         {
+            /*
             string sql = "SELECT fecha, SUM(Total_Final) AS Total_Vendido FROM facturas GROUP BY fecha";
             try
             {
@@ -166,6 +102,7 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageBox.Show(ex.Message.ToString());
             };
+            */
         }
 
         private bool HayInternet()

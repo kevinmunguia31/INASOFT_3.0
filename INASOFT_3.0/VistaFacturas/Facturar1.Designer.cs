@@ -32,21 +32,32 @@ namespace INASOFT_3._0.VistaFacturas
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Facturar1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbTelefono = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lbDireccion = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lbCedula = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.TxtBuscar_Clientes = new Guna.UI2.WinForms.Guna2TextBox();
             this.Cbx_Clientes = new System.Windows.Forms.ComboBox();
             this.txtIdUser = new System.Windows.Forms.TextBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnAddCliente = new Guna.UI2.WinForms.Guna2Button();
+            this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
@@ -56,26 +67,20 @@ namespace INASOFT_3._0.VistaFacturas
             this.MessageBox_Question = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbFecha = new System.Windows.Forms.Label();
-            this.btnAceppt = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnAddCliente = new Guna.UI2.WinForms.Guna2Button();
-            this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Lb_User = new System.Windows.Forms.Label();
+            this.btnAceppt = new Guna.UI2.WinForms.Guna2Button();
+            this.GroupBox_Fact = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.GroupBox_Fact.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,16 +95,42 @@ namespace INASOFT_3._0.VistaFacturas
             this.panel1.Size = new System.Drawing.Size(736, 39);
             this.panel1.TabIndex = 1;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.Location = new System.Drawing.Point(689, 5);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(32, 26);
+            this.guna2Button1.TabIndex = 2;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(42, 5);
+            this.label1.Location = new System.Drawing.Point(43, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 24);
+            this.label1.Size = new System.Drawing.Size(291, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Información general de la factura";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 33);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // guna2Elipse1
             // 
@@ -115,13 +146,24 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox1.Controls.Add(this.Cbx_Clientes);
             this.guna2GroupBox1.Controls.Add(this.txtIdUser);
             this.guna2GroupBox1.Controls.Add(this.txtIdCliente);
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(12, 73);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(12, 115);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(381, 273);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(381, 258);
             this.guna2GroupBox1.TabIndex = 5;
-            this.guna2GroupBox1.Text = "       Información del cliente";
+            this.guna2GroupBox1.Text = "          Información del cliente";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_more_info_40px;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
             // 
             // groupBox1
             // 
@@ -134,10 +176,10 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lbNombre);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 103);
+            this.groupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 170);
+            this.groupBox1.Size = new System.Drawing.Size(381, 168);
             this.groupBox1.TabIndex = 86;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del cliente";
@@ -146,45 +188,120 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.lbTelefono.AutoSize = true;
             this.lbTelefono.BackColor = System.Drawing.Color.White;
-            this.lbTelefono.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTelefono.Location = new System.Drawing.Point(116, 134);
+            this.lbTelefono.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTelefono.Location = new System.Drawing.Point(98, 134);
             this.lbTelefono.Name = "lbTelefono";
-            this.lbTelefono.Size = new System.Drawing.Size(24, 26);
+            this.lbTelefono.Size = new System.Drawing.Size(22, 23);
             this.lbTelefono.TabIndex = 93;
             this.lbTelefono.Text = "....";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Image = global::INASOFT_3._0.Properties.Resources.icons8_phone_20px;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Location = new System.Drawing.Point(6, 134);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 23);
+            this.label8.TabIndex = 92;
+            this.label8.Text = "        Telefóno:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbDireccion
             // 
             this.lbDireccion.AutoSize = true;
             this.lbDireccion.BackColor = System.Drawing.Color.White;
-            this.lbDireccion.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDireccion.Location = new System.Drawing.Point(120, 98);
+            this.lbDireccion.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDireccion.Location = new System.Drawing.Point(104, 98);
             this.lbDireccion.Name = "lbDireccion";
-            this.lbDireccion.Size = new System.Drawing.Size(24, 26);
+            this.lbDireccion.Size = new System.Drawing.Size(22, 23);
             this.lbDireccion.TabIndex = 91;
             this.lbDireccion.Text = "....";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Image = global::INASOFT_3._0.Properties.Resources.icons8_address_20px;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(6, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 23);
+            this.label6.TabIndex = 90;
+            this.label6.Text = "        Dirección:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbCedula
             // 
             this.lbCedula.AutoSize = true;
             this.lbCedula.BackColor = System.Drawing.Color.White;
-            this.lbCedula.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCedula.Location = new System.Drawing.Point(106, 66);
+            this.lbCedula.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCedula.Location = new System.Drawing.Point(89, 66);
             this.lbCedula.Name = "lbCedula";
-            this.lbCedula.Size = new System.Drawing.Size(24, 26);
+            this.lbCedula.Size = new System.Drawing.Size(22, 23);
             this.lbCedula.TabIndex = 89;
             this.lbCedula.Text = "....";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Image = global::INASOFT_3._0.Properties.Resources.icons8_identification_documents_20px;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(6, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 23);
+            this.label4.TabIndex = 88;
+            this.label4.Text = "        Cédula:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
             this.lbNombre.BackColor = System.Drawing.Color.White;
-            this.lbNombre.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombre.Location = new System.Drawing.Point(120, 29);
+            this.lbNombre.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombre.Location = new System.Drawing.Point(104, 29);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(24, 26);
+            this.lbNombre.Size = new System.Drawing.Size(22, 23);
             this.lbNombre.TabIndex = 87;
             this.lbNombre.Text = "....";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Image = global::INASOFT_3._0.Properties.Resources.icons8_team_20px;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(6, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 86;
+            this.label3.Text = "        Nombres:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(323, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 34);
+            this.button1.TabIndex = 81;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // TxtBuscar_Clientes
             // 
@@ -219,12 +336,12 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.Cbx_Clientes.DropDownHeight = 90;
             this.Cbx_Clientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbx_Clientes.Font = new System.Drawing.Font("Poppins", 11F);
+            this.Cbx_Clientes.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Clientes.FormattingEnabled = true;
             this.Cbx_Clientes.IntegralHeight = false;
             this.Cbx_Clientes.Location = new System.Drawing.Point(14, 49);
             this.Cbx_Clientes.Name = "Cbx_Clientes";
-            this.Cbx_Clientes.Size = new System.Drawing.Size(175, 34);
+            this.Cbx_Clientes.Size = new System.Drawing.Size(175, 31);
             this.Cbx_Clientes.TabIndex = 66;
             this.Cbx_Clientes.SelectedIndexChanged += new System.EventHandler(this.Cbx_Clientes_SelectedIndexChanged);
             // 
@@ -232,14 +349,14 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.txtIdUser.Location = new System.Drawing.Point(336, 3);
             this.txtIdUser.Name = "txtIdUser";
-            this.txtIdUser.Size = new System.Drawing.Size(31, 30);
+            this.txtIdUser.Size = new System.Drawing.Size(31, 27);
             this.txtIdUser.TabIndex = 16;
             // 
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(299, 3);
             this.txtIdCliente.Name = "txtIdCliente";
-            this.txtIdCliente.Size = new System.Drawing.Size(31, 30);
+            this.txtIdCliente.Size = new System.Drawing.Size(31, 27);
             this.txtIdCliente.TabIndex = 15;
             // 
             // MessageDialogWar
@@ -257,26 +374,77 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.Controls.Add(this.label10);
             this.guna2GroupBox2.Controls.Add(this.btnAddCliente);
             this.guna2GroupBox2.Controls.Add(this.txtNombre);
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(399, 73);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(399, 115);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(322, 183);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(322, 166);
             this.guna2GroupBox2.TabIndex = 6;
-            this.guna2GroupBox2.Text = "       Registrar nuevo cliente";
+            this.guna2GroupBox2.Text = "          Registrar nuevo cliente";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_add_user_male_40px1;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label10.Location = new System.Drawing.Point(3, 47);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(157, 26);
+            this.label10.Size = new System.Drawing.Size(142, 23);
             this.label10.TabIndex = 92;
             this.label10.Text = "Nombre del cliente:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAddCliente
+            // 
+            this.btnAddCliente.BorderRadius = 10;
+            this.btnAddCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddCliente.FillColor = System.Drawing.Color.Purple;
+            this.btnAddCliente.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCliente.ForeColor = System.Drawing.Color.White;
+            this.btnAddCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCliente.Image")));
+            this.btnAddCliente.Location = new System.Drawing.Point(156, 119);
+            this.btnAddCliente.Name = "btnAddCliente";
+            this.btnAddCliente.Size = new System.Drawing.Size(157, 36);
+            this.btnAddCliente.TabIndex = 17;
+            this.btnAddCliente.Text = "Registrar Cliente";
+            this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombre.DefaultText = "";
+            this.txtNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNombre.IconLeft")));
+            this.txtNombre.Location = new System.Drawing.Point(7, 74);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.PasswordChar = '\0';
+            this.txtNombre.PlaceholderText = "Ingrese el nombre del Cliente";
+            this.txtNombre.SelectedText = "";
+            this.txtNombre.Size = new System.Drawing.Size(230, 30);
+            this.txtNombre.TabIndex = 17;
             // 
             // MessageDialogInfo
             // 
@@ -347,14 +515,26 @@ namespace INASOFT_3._0.VistaFacturas
             // lbFecha
             // 
             this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbFecha.Location = new System.Drawing.Point(470, 44);
+            this.lbFecha.Location = new System.Drawing.Point(6, 23);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(28, 26);
+            this.lbFecha.Size = new System.Drawing.Size(19, 23);
             this.lbFecha.TabIndex = 4;
-            this.lbFecha.Text = "--";
+            this.lbFecha.Text = "...";
             this.lbFecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Lb_User
+            // 
+            this.Lb_User.AutoSize = true;
+            this.Lb_User.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_User.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Lb_User.Location = new System.Drawing.Point(98, 32);
+            this.Lb_User.Name = "Lb_User";
+            this.Lb_User.Size = new System.Drawing.Size(19, 23);
+            this.Lb_User.TabIndex = 19;
+            this.Lb_User.Text = "...";
+            this.Lb_User.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAceppt
             // 
@@ -364,202 +544,61 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnAceppt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAceppt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAceppt.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAceppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAceppt.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceppt.ForeColor = System.Drawing.Color.White;
             this.btnAceppt.Image = ((System.Drawing.Image)(resources.GetObject("btnAceppt.Image")));
-            this.btnAceppt.Location = new System.Drawing.Point(524, 310);
+            this.btnAceppt.Location = new System.Drawing.Point(558, 337);
             this.btnAceppt.Name = "btnAceppt";
-            this.btnAceppt.Size = new System.Drawing.Size(197, 36);
+            this.btnAceppt.Size = new System.Drawing.Size(166, 36);
             this.btnAceppt.TabIndex = 18;
             this.btnAceppt.Text = "Aceptar y Continuar";
             this.btnAceppt.Click += new System.EventHandler(this.btnAceppt_Click);
             // 
-            // pictureBox3
+            // GroupBox_Fact
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_add_user_male_40px1;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 33);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
+            this.GroupBox_Fact.Controls.Add(this.label11);
+            this.GroupBox_Fact.Controls.Add(this.Lb_User);
+            this.GroupBox_Fact.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GroupBox_Fact.Location = new System.Drawing.Point(12, 41);
+            this.GroupBox_Fact.Name = "GroupBox_Fact";
+            this.GroupBox_Fact.Size = new System.Drawing.Size(404, 68);
+            this.GroupBox_Fact.TabIndex = 128;
+            this.GroupBox_Fact.TabStop = false;
+            this.GroupBox_Fact.Text = "Detalle de la Factura";
             // 
-            // btnAddCliente
+            // label11
             // 
-            this.btnAddCliente.BorderRadius = 10;
-            this.btnAddCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddCliente.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAddCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAddCliente.ForeColor = System.Drawing.Color.White;
-            this.btnAddCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCliente.Image")));
-            this.btnAddCliente.Location = new System.Drawing.Point(118, 135);
-            this.btnAddCliente.Name = "btnAddCliente";
-            this.btnAddCliente.Size = new System.Drawing.Size(188, 36);
-            this.btnAddCliente.TabIndex = 17;
-            this.btnAddCliente.Text = "Registrar Cliente";
-            this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(10, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 23);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Trabajador:";
             // 
-            // txtNombre
+            // groupBox2
             // 
-            this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNombre.DefaultText = "";
-            this.txtNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Font = new System.Drawing.Font("Poppins", 11F);
-            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNombre.IconLeft")));
-            this.txtNombre.Location = new System.Drawing.Point(8, 77);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.PasswordChar = '\0';
-            this.txtNombre.PlaceholderText = "Ingrese el nombre del Cliente";
-            this.txtNombre.SelectedText = "";
-            this.txtNombre.Size = new System.Drawing.Size(239, 36);
-            this.txtNombre.TabIndex = 17;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_more_info_40px;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Image = global::INASOFT_3._0.Properties.Resources.icons8_phone_20px;
-            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(6, 134);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 26);
-            this.label8.TabIndex = 92;
-            this.label8.Text = "      Telefóno:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Image = global::INASOFT_3._0.Properties.Resources.icons8_address_20px;
-            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(6, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 26);
-            this.label6.TabIndex = 90;
-            this.label6.Text = "      Dirección:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Image = global::INASOFT_3._0.Properties.Resources.icons8_identification_documents_20px;
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(6, 66);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 26);
-            this.label4.TabIndex = 88;
-            this.label4.Text = "      Cédula:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Image = global::INASOFT_3._0.Properties.Resources.icons8_team_20px;
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(6, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 26);
-            this.label3.TabIndex = 86;
-            this.label3.Text = "      Nombres:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(323, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 34);
-            this.button1.TabIndex = 81;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.Location = new System.Drawing.Point(689, 5);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(32, 26);
-            this.guna2Button1.TabIndex = 2;
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Lb_User
-            // 
-            this.Lb_User.AutoSize = true;
-            this.Lb_User.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_User.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Lb_User.Location = new System.Drawing.Point(18, 44);
-            this.Lb_User.Name = "Lb_User";
-            this.Lb_User.Size = new System.Drawing.Size(28, 26);
-            this.Lb_User.TabIndex = 19;
-            this.Lb_User.Text = "--";
-            this.Lb_User.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox2.Controls.Add(this.lbFecha);
+            this.groupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(427, 45);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(285, 64);
+            this.groupBox2.TabIndex = 127;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Fecha de hoy";
             // 
             // Facturar1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(736, 358);
-            this.Controls.Add(this.Lb_User);
+            this.ClientSize = new System.Drawing.Size(736, 388);
+            this.Controls.Add(this.GroupBox_Fact);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAceppt);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);
-            this.Controls.Add(this.lbFecha);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -568,17 +607,20 @@ namespace INASOFT_3._0.VistaFacturas
             this.Text = "Facturar1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.GroupBox_Fact.ResumeLayout(false);
+            this.GroupBox_Fact.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -622,5 +664,8 @@ namespace INASOFT_3._0.VistaFacturas
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.Label Lb_User;
+        public System.Windows.Forms.GroupBox GroupBox_Fact;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

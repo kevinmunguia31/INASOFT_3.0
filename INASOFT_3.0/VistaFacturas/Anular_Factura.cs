@@ -16,7 +16,7 @@ namespace INASOFT_3._0.VistaFacturas
         public Anular_Factura(string id_Factura)
         {
             InitializeComponent();
-            Txt_Facturar.Text = "Factura n°: " + id_Factura;
+            Txt_Facturar.Text = id_Factura;
             CargarDetalleDevolucion();
 
             foreach (DataGridViewBand band in datagridView1.Columns)
@@ -46,7 +46,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
             if(txtDescripcion.Text == "")
             {
-                txtDescripcion.Text = "Está factura queda anulada por algún tipo de error";
+                txtDescripcion.Text = "La fact. "+Lb_Factura.Text+" queda anulada por algún tipo de error no detallada";
             }
             else
             {
@@ -56,7 +56,7 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 UserControls.UC_Factura uc_Factura = new UserControls.UC_Factura();
                 uc_Factura.CargarFacturas();
-                MessageBox.Show("Factura anulada");
+                MessageBox.Show("La fact. "+ Lb_Factura.Text + " fue anulada con éxito\n");
                 this.Close();
             }
         }

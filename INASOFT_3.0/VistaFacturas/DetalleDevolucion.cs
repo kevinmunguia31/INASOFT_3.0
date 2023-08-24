@@ -37,7 +37,7 @@ namespace INASOFT_3._0.VistaFacturas
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            Lb_FechaHoy.Text = "Fecha: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
+            Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
         }
 
         private void DatagridView1_MouseClick_1(object sender, MouseEventArgs e)

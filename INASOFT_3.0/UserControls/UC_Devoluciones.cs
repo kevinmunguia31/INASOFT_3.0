@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using INASOFT_3._0.VistaFacturas;
+using SpreadsheetLight;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -28,6 +29,24 @@ namespace INASOFT_3._0.UserControls
         {
             Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
             dataGridDevolucion.DataSource = ctrlDevolucion.Mostrar_Devolucion();
+        }
+
+        public void Devolucion_NombreCliente(string dato)
+        {
+            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
+            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_NombreCliente(dato);
+        }
+
+        public void Devolucion_Fechas(string dato1, string dato2)
+        {
+            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
+            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_RangoFecha(dato1, dato2);
+        }
+
+        public void Devolucion_Estado(string dato)
+        {
+            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
+            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_EstadoFact(dato);
         }
 
         private void Devolucion_Producto(int id_pos)
@@ -82,6 +101,59 @@ namespace INASOFT_3._0.UserControls
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
             Cargar_devolucion();
+        }
+
+        private void Guna2Button4_Click(object sender, EventArgs e)
+        {
+            string nombre_cliente = txt_NonbCliente.Text;
+            if (txt_NonbCliente.Text == "")
+            {
+                MessageBox_Error.Show("Por favor ingrese el nombre del cliente a buscar", "Error");
+            }
+            else
+            {
+                Devolucion_NombreCliente(nombre_cliente);
+            }
+        }
+
+        private void Guna2Button2_Click(object sender, EventArgs e)
+        {
+            Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
+
+            SLDocument sL = ctrl.Reporte_Devolucion(dataGridDevolucion);
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
+            }
+        }
+        
+        private void Guna2Button3_Click(object sender, EventArgs e)
+        {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
+            MessageBox.Show(fecha_Ini + " " + fecha_End);
+
+            Devolucion_Fechas(fecha_Ini, fecha_End);
+        }
+
+        private void Guna2Button5_Click(object sender, EventArgs e)
+        {
+            string estado = "";
+            if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
+            {
+                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
+            }
+            else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
+            {
+                estado = "Pendiente";
+                Devolucion_Estado(estado);
+            }
+            else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
+            {
+                estado = "Cancelado";
+                Devolucion_Estado(estado);
+            }
         }
     }
 }

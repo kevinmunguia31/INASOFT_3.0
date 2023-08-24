@@ -33,6 +33,28 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable CargarTodasFacturas()
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "SELECT * FROM Mostrar_TodasFactura;";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
         public bool Insertar_Factura(string Fecha, string Usuario, int ID_Cliente)
         {
             bool bandera = false;

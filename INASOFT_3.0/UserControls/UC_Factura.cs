@@ -1,6 +1,7 @@
 ﻿using INASOFT_3._0.Modelos;
 using INASOFT_3._0.VistaFacturas;
 using MySql.Data.MySqlClient;
+using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,12 @@ namespace INASOFT_3._0.UserControls
             dataGridFatura.DataSource = ctrlFactura.Factura_Fecha(dato1, dato2);
         }
 
+        public void Todas_Facturas()
+        {
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            dataGridFatura.DataSource = ctrlFactura.CargarTodasFacturas();
+        }
+
         public void Factura_Mes(string dato)
         {
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
@@ -83,7 +90,7 @@ namespace INASOFT_3._0.UserControls
             string nombre_cliente = txt_NonbCliente.Text;
             if (txt_NonbCliente.Text == "")
             {
-                MessageBox.Show("Por favor ingrese el nombre del cliente a buscar");
+                MessageBox_Error.Show("Por favor ingrese el nombre del cliente a buscar", "Error");
             }
             else
             {
@@ -225,37 +232,36 @@ namespace INASOFT_3._0.UserControls
                         }
                         else
                         {
-                            if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Anulada")
-                            {
-                                MessageBox_Error.Show("Está factura ya está anulada", "Eror");
-                            }
-                            else
-                            {
-                                Devolucion frm = new Devolucion(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
-                                frm.lbIdFactura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
-                                frm.lbClienteName.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
-                                frm.Lb_tipoFactura.Text = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
+                            Devolucion frm = new Devolucion(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
+                            frm.lbIdFactura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
+                            frm.lbClienteName.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
+                            frm.Lb_EstadoFactura.Text = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
 
-                                string aux1 = dataGridFatura.Rows[id_pos].Cells[9].Value.ToString();
-                                string[] words1 = aux1.Split(' ');
-                                double aux_total = Double.Parse(words1[1]);
+                            string aux1 = dataGridFatura.Rows[id_pos].Cells[9].Value.ToString();
+                            string[] words1 = aux1.Split(' ');
+                            double aux_total = Double.Parse(words1[1]);
 
-                                string aux2 = dataGridFatura.Rows[id_pos].Cells[8].Value.ToString();
-                                string[] words2 = aux2.Split(' ');
-                                double aux_desc = Double.Parse(words2[1]);
+                            string aux2 = dataGridFatura.Rows[id_pos].Cells[8].Value.ToString();
+                            string[] words2 = aux2.Split(' ');
+                            double aux_desc = Double.Parse(words2[1]);
 
-                                frm.Lb_Subtotal.Text = (aux_total + aux_desc).ToString();
-                                frm.Lb_TotalFacturado.Text = aux_total.ToString();
-                                frm.Lb_Descuento.Text = "- " + aux_desc.ToString();
+                            frm.Lb_Subtotal.Text = (aux_total + aux_desc).ToString();
+                            frm.Lb_TotalFacturado.Text = aux_total.ToString();
+                            frm.Lb_Descuento.Text = "- " + aux_desc.ToString();
 
-                                string aux3 = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
-                                string[] words3 = aux3.Split(' ');
-                                double aux_efectivo = Double.Parse(words3[1]);
+                            string aux3 = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
+                            string[] words3 = aux3.Split(' ');
+                            double aux_efectivo = Double.Parse(words3[1]);
 
-                                frm.Lb_Efectivo.Text = aux_efectivo.ToString();
-                                frm.Lb_Trabajador.Text = dataGridFatura.Rows[id_pos].Cells[13].Value.ToString();
-                                frm.Show();
-                            }
+                            frm.Lb_Efectivo.Text = aux_efectivo.ToString();
+
+                            string aux4 = dataGridFatura.Rows[id_pos].Cells[12].Value.ToString();
+                            string[] words4 = aux4.Split(' ');
+                            double aux_pendiente = Double.Parse(words4[1]);
+
+                            frm.Lb_Debe.Text = aux_pendiente.ToString();
+                            frm.Lb_Trabajador.Text = dataGridFatura.Rows[id_pos].Cells[13].Value.ToString();
+                            frm.Show();
                         }
                     }
                 }
@@ -274,21 +280,31 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-                Anular_Factura frm = new Anular_Factura(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
-                frm.Txt_Facturar.Text = dataGridFatura.Rows[id_pos].Cells[0].Value.ToString();
-                frm.Lb_Factura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
-                if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Pendiente")
+                DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea anular la factura?", "Eliminar");
+                if (resultado == DialogResult.Yes)
                 {
-                    frm.Lb_Credito1.Visible = true;
-                    frm.Lb_Credito2.Visible = true;
-                    frm.Lb_Credito2.Text = frm.Lb_Credito2.Text + " " + dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
+                    Anular_Factura frm = new Anular_Factura(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
+                    frm.Txt_Facturar.Text = dataGridFatura.Rows[id_pos].Cells[0].Value.ToString();
+                    frm.Lb_Factura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
+                    if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Pendiente")
+                    {
+                        frm.Lb_Credito1.Visible = true;
+                        frm.Lb_Credito2.Visible = true;
+                        frm.Lb_Devolucion3.Visible = false;
+                        frm.Lb_Credito2.Text = frm.Lb_Credito2.Text + " " + dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
+                    }
+                    else
+                    {
+                        frm.Lb_Credito1.Visible = false;
+                        frm.Lb_Credito2.Visible = false;
+                        frm.Lb_Devolucion3.Visible = false;
+                    }
+                    frm.ShowDialog();
                 }
                 else
                 {
-                    frm.Lb_Credito1.Visible = false;
-                    frm.Lb_Credito2.Visible = false;
+
                 }
-                frm.Show();
             }
             //MessageBox_Import.Show("Factura anulada con exito");
         }
@@ -381,6 +397,31 @@ namespace INASOFT_3._0.UserControls
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
             CargarFacturas();
+        }
+
+        private void Guna2Button4_Click(object sender, EventArgs e)
+        {
+            Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
+
+            SLDocument sL = ctrl.Reporte_Facturas(dataGridFatura);
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
+            }
+        }
+
+        private void Guna2Button7_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea mostrar todas las facturas?, está opcion puede dilatarse en realizar\n\n", "Aviso");
+            if (resultado == DialogResult.Yes)
+            {
+                Todas_Facturas();
+            }
+            else
+            {
+
+            }
         }
     }
 }

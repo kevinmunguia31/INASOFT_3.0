@@ -268,11 +268,11 @@ namespace INASOFT_3._0
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.Purple;
-            this.btnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(113, 410);
+            this.btnLogin.Location = new System.Drawing.Point(130, 388);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(180, 45);
+            this.btnLogin.Size = new System.Drawing.Size(136, 32);
             this.btnLogin.TabIndex = 20;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -302,7 +302,7 @@ namespace INASOFT_3._0
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(395, 467);
+            this.ClientSize = new System.Drawing.Size(395, 444);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.guna2ToggleSwitch1);
             this.Controls.Add(this.panel2);

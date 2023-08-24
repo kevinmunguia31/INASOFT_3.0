@@ -33,6 +33,72 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable Devoluciones_RangoFecha(string fecha_ini, string fecha_end)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Devoluciones_RangoFecha('"+ fecha_ini +"', '"+ fecha_end +"');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Devoluciones_NombreCliente(string nombre)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Devoluciones_NombreCliente('" + nombre + "');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Devoluciones_EstadoFact(string estado)
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "CALL Devoluciones_EstadoFact('" + estado + "');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
         public DataTable DetalleDevolución(string idDevolucion)
         {
             DataTable dt = new DataTable();

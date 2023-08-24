@@ -173,6 +173,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_cancel_subscription_50px1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_cancel_subscription_50px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_cash_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_cash_20px", resourceCulture);
@@ -206,6 +216,26 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_credit_control_40px {
             get {
                 object obj = ResourceManager.GetObject("icons8_credit_control_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_document_20px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_document_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_file_delete_20px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_file_delete_20px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -336,6 +366,36 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_phone_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_phone_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_product_20px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_product_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_product_20px_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_product_20px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_product_20px_21 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_product_20px_21", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

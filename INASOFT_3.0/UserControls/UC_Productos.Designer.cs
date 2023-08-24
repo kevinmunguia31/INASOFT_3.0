@@ -47,8 +47,8 @@ namespace INASOFT_3._0.UserControls
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.groupBox_Detalle = new System.Windows.Forms.GroupBox();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.groupBox_Detalle = new System.Windows.Forms.GroupBox();
             this.lbProveedor = new System.Windows.Forms.Label();
             this.lbObservaciones = new System.Windows.Forms.Label();
             this.lbPrecioTotal = new System.Windows.Forms.Label();
@@ -63,7 +63,10 @@ namespace INASOFT_3._0.UserControls
             this.MessageBox_Ok = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBox_Warnings = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -73,7 +76,6 @@ namespace INASOFT_3._0.UserControls
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Bttn_Info = new System.Windows.Forms.Button();
-            this.btnRefresh = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -83,6 +85,8 @@ namespace INASOFT_3._0.UserControls
             this.groupBox_Detalle.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,15 +243,24 @@ namespace INASOFT_3._0.UserControls
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2GroupBox1.Controls.Add(this.pictureBox3);
             this.guna2GroupBox1.Controls.Add(this.txtID);
             this.guna2GroupBox1.Controls.Add(this.groupBox_Detalle);
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(9, 364);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1048, 214);
             this.guna2GroupBox1.TabIndex = 77;
-            this.guna2GroupBox1.Text = "Detalles del Producto:";
+            this.guna2GroupBox1.Text = "          Detalles del Producto:";
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(1013, 8);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(32, 27);
+            this.txtID.TabIndex = 18;
+            this.txtID.Visible = false;
             // 
             // groupBox_Detalle
             // 
@@ -269,21 +282,13 @@ namespace INASOFT_3._0.UserControls
             this.groupBox_Detalle.Controls.Add(this.label4);
             this.groupBox_Detalle.Controls.Add(this.label3);
             this.groupBox_Detalle.Controls.Add(this.label2);
-            this.groupBox_Detalle.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Detalle.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Detalle.Location = new System.Drawing.Point(0, 41);
             this.groupBox_Detalle.Name = "groupBox_Detalle";
             this.groupBox_Detalle.Size = new System.Drawing.Size(1048, 173);
             this.groupBox_Detalle.TabIndex = 3;
             this.groupBox_Detalle.TabStop = false;
             this.groupBox_Detalle.Text = "Producto ....";
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(1013, 8);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(32, 30);
-            this.txtID.TabIndex = 18;
-            this.txtID.Visible = false;
             // 
             // lbProveedor
             // 
@@ -318,7 +323,7 @@ namespace INASOFT_3._0.UserControls
             // lbPrecioVenta
             // 
             this.lbPrecioVenta.AutoSize = true;
-            this.lbPrecioVenta.BackColor = System.Drawing.Color.PaleGreen;
+            this.lbPrecioVenta.BackColor = System.Drawing.Color.Transparent;
             this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrecioVenta.Location = new System.Drawing.Point(486, 72);
             this.lbPrecioVenta.Name = "lbPrecioVenta";
@@ -329,6 +334,7 @@ namespace INASOFT_3._0.UserControls
             // lbPrecioCompra
             // 
             this.lbPrecioCompra.AutoSize = true;
+            this.lbPrecioCompra.BackColor = System.Drawing.Color.Transparent;
             this.lbPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrecioCompra.Location = new System.Drawing.Point(504, 29);
             this.lbPrecioCompra.Name = "lbPrecioCompra";
@@ -339,9 +345,9 @@ namespace INASOFT_3._0.UserControls
             // lbExistencias
             // 
             this.lbExistencias.AutoSize = true;
-            this.lbExistencias.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lbExistencias.BackColor = System.Drawing.Color.Transparent;
             this.lbExistencias.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExistencias.ForeColor = System.Drawing.Color.Red;
+            this.lbExistencias.ForeColor = System.Drawing.Color.Black;
             this.lbExistencias.Location = new System.Drawing.Point(118, 117);
             this.lbExistencias.Name = "lbExistencias";
             this.lbExistencias.Size = new System.Drawing.Size(27, 25);
@@ -371,14 +377,15 @@ namespace INASOFT_3._0.UserControls
             // guna2GroupBox2
             // 
             this.guna2GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2GroupBox2.Controls.Add(this.pictureBox2);
             this.guna2GroupBox2.Controls.Add(this.groupBox2);
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(1063, 364);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(275, 214);
             this.guna2GroupBox2.TabIndex = 78;
-            this.guna2GroupBox2.Text = "Datos generales";
+            this.guna2GroupBox2.Text = "          Datos generales";
             // 
             // MessageBox_Question
             // 
@@ -425,6 +432,32 @@ namespace INASOFT_3._0.UserControls
             this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.MessageBox_Import.Text = null;
             // 
+            // guna2Button6
+            // 
+            this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button6.Animated = true;
+            this.guna2Button6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button6.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button6.BorderRadius = 10;
+            this.guna2Button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button6.ForeColor = System.Drawing.Color.White;
+            this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
+            this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2Button6.Location = new System.Drawing.Point(848, 5);
+            this.guna2Button6.Name = "guna2Button6";
+            this.guna2Button6.Size = new System.Drawing.Size(135, 36);
+            this.guna2Button6.TabIndex = 88;
+            this.guna2Button6.Text = "Restablecer";
+            this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.guna2Button6.Click += new System.EventHandler(this.Guna2Button6_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
@@ -435,6 +468,28 @@ namespace INASOFT_3._0.UserControls
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 84;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_product_20px_21;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 87;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_document_20px;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 87;
+            this.pictureBox3.TabStop = false;
             // 
             // label8
             // 
@@ -551,24 +606,6 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.UseVisualStyleBackColor = false;
             this.Bttn_Info.Click += new System.EventHandler(this.Bttn_Info_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRefresh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRefresh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRefresh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(902, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnRefresh.Size = new System.Drawing.Size(39, 40);
-            this.btnRefresh.TabIndex = 7;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -578,12 +615,12 @@ namespace INASOFT_3._0.UserControls
             this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAdd.Font = new System.Drawing.Font("Poppins", 12F);
+            this.btnAdd.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(1168, 7);
+            this.btnAdd.Location = new System.Drawing.Point(1204, 7);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(174, 34);
+            this.btnAdd.Size = new System.Drawing.Size(138, 34);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Añadir Producto";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -604,7 +641,7 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(947, 7);
+            this.txtSearch.Location = new System.Drawing.Point(987, 8);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -623,13 +660,13 @@ namespace INASOFT_3._0.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.guna2Button6);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.Bttn_Info);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
@@ -644,6 +681,8 @@ namespace INASOFT_3._0.UserControls
             this.groupBox_Detalle.PerformLayout();
             this.guna2GroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -665,7 +704,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editar;
         private System.Windows.Forms.ToolStripMenuItem eliminar;
-        private Guna.UI2.WinForms.Guna2CircleButton btnRefresh;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialog;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogInfo;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogWar;
@@ -697,5 +735,8 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Warnings;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

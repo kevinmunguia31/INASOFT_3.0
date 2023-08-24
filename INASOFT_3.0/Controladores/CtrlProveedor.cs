@@ -18,11 +18,11 @@ namespace INASOFT_3._0.Controladores
 
             if (dato == null)
             {
-                sql = "SELECT id, nombre, telefono, direccion, ruc FROM proveedor ORDER BY nombre ASC";
+                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor WHERE ID != 1 ORDER BY ID ASC";
             }
             else
             {
-                sql = "SELECT id, nombre, telefono, direccion, ruc FROM proveedor WHERE nombre LIKE '%" + dato + "%' OR nombre LIKE '%" + dato + "%' ORDER BY nombre ASC";
+                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor WHERE ID != 1 AND Nombre LIKE '%" + dato + "%' ORDER BY ID ASC";
             }
             try
             {
@@ -54,7 +54,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "INSERT INTO proveedor (nombre, telefono, direccion, ruc) VALUES ('" + datos.Nombre + "','" + datos.Telefono + "','" + datos.Direccion + "','" + datos.Ruc + "')";
+            string sql = "INSERT INTO Proveedor (Nombre, Telefono, Direccion, RUC) VALUES ('" + datos.Nombre + "','" + datos.Telefono + "','" + datos.Direccion + "','" + datos.Ruc + "')";
 
             try
             {
@@ -76,7 +76,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "UPDATE proveedor SET nombre='" + datos.Nombre + "', telefono='" + datos.Telefono + "', direccion='" + datos.Direccion + "', ruc='" + datos.Ruc + "' WHERE id= '" + datos.Id + "'";
+            string sql = "UPDATE Proveedor SET Nombre='" + datos.Nombre + "', Telefono='" + datos.Telefono + "', Direccion='" + datos.Direccion + "', RUC ='" + datos.Ruc + "' WHERE id= '" + datos.Id + "'";
 
             try
             {
@@ -99,7 +99,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "DELETE FROM proveedor WHERE id= '" + id + "'";
+            string sql = "DELETE FROM Proveedor WHERE ID= '" + id + "'";
 
             try
             {
