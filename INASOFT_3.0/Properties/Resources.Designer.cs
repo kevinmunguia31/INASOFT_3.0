@@ -313,6 +313,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_logout_56 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-logout-56", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_maintenance_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_maintenance_20px", resourceCulture);

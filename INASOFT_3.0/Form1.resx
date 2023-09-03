@@ -118,25 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnLogaut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAxRJREFUaEPtmrtrFFEUhxMlYnyCKLFMxE7RGLQxov4HgvZiF1+FRbARLEUwnaBi
-        lICVj0oUFB+IhTaCgqJgRE2rQkQtVHxcv3PuGdndmZ2dYJadud4PPpI55+yd+WWTmZ3NdkUikUgkEolE
-        2o1zbgNO4DN8HYiSRTINWkwPhb34E0NFso0kYbfgL/yNp3AzrgpEyXIaJZuEHpbA11E4oT+BACHbmI/o
-        rsnGR/+967d+cJBtwEd007KhWC9YLKYrRWB2vxLH8TlmnW2LOIk7bMkU9JSOB2bXq/GDHsS/M2rLprB+
-        KQLf8UfgbuBGzDrbZnkYv6LwGfdhty2bQqego4HZ7VKUS8Y3XGzlXJhbgZcw4S62POH60c4H7vd7d1NW
-        yoW5XfhOH1HgWa1FHwFlCfzWSpnQl9+EizrpKfSs1uIfVoHA9HrxiU7lPKvUlmXVE+gpVQh8yI+4Nzhg
-        5Tqob0V5eXzESinoKbMemKV6cIlt5sJckcBX/YjbbaUU9Pb4ETdhpRTWb0vg2ziNa63UFGaKBL7nR9x2
-        K6Wg19HA5/yKbgr7rJwJ/SACz8eHuqhzj3CBtVLQq35ggeWW4ytd2LkrOMdadVAvb2BGhvCLDjv3Anus
-        fl4r+RzURRqgXurA8p6XXAcFuatJAid/s3ns10UaoB7sr3TmCwLq8aTVCL3SBz7rV/x/LktyXzvTFx5N
-        75bolT7wXFxkm7kwV3s/nPlylHr5T1ozgV3f90fgbuIm1LN/AtvBBV6D7/UgPLespbCdG5j6Qkzulcsf
-        WGD3fXgG5fp+zMoK200DU9uG8o6l8B13WiuFHylJ4Dw4tFRgvpc3BY6j3AMLT3HI2pn4sQoG5uswvtSK
-        cz9Qgs/T4Rx0GqoQWC5zwiieRDmrC49xnY21xD+kGoEP+CP8i/ytHsW6s3krmJf7gE9VCNyN8r7WA7yM
-        hZ/VWnic3PwMlj7wrEPW4P9dWgdBk3+Ij1kpbAgqp3n5OICc/eTiH9JHHnotZj00RlCuaaExaRHT0FyP
-        8v5USB9bumDxIpFIJBKJRCJtpqvrD+i0AfeqkOxkAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlwAAAPoCAYAAAALMCBnAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW

@@ -388,13 +388,10 @@ namespace INASOFT_3._0.VistaFacturas
                 try
                 {
                     string str = r.Cells[1].Value.ToString();
-                    string LineTotal = r.Cells[4].Value.ToString();
                     int desiredLength = 18;
-                    int SpaceTotal = 4;
                     string subStr = str.Substring(0, Math.Min(desiredLength, str.Length));
-                    string Subtotal = LineTotal.Substring(0, Math.Min(SpaceTotal, str.Length));
                     float cant = float.Parse(r.Cells[3].Value.ToString());
-                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + LineTotal.PadRight(SpaceTotal, ' '), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[4].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
                 catch(ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }
