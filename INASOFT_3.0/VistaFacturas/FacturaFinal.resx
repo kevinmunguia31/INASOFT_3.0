@@ -245,30 +245,6 @@
         ilZrlwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Txt_descuento.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAglJREFUWEft
-        kztIXEEUhm9iwCJFTBAfhb0GQozYKESbtApC0FYs0qVwq5QbhOy6bxYLg0WsL1poiApWgiBY2NiEBEkK
-        wQeJWNn4WL+zHmXudTZ71WsT7g8fszPnnDn/3Jl1bMpmsy6UQsbV7atLkn3FYRCaAYn9C1uNEI4BTako
-        W43y/1zBbYkMRAYiA5GBGxmISUHIxHT7SJGqK5VKNWUymXc8nEkYz+VyrzV0f4rH4w9p1AcLND0Fz9+I
-        9dlCodCo6Vbl8/l2ySN/B77xu5NxDrZhk3ib67o1MjJvKRel0+nHnHaUhV/gaWphD/rLhYaor2d9Cq4Z
-        N9HD/TTWYo4uehIDMMUp6qQ5YzNzuSoXI8vwx8irxpK4f2sJBGGX2jEMdMkXKH8KFbFukGuw1V1yKFfk
-        yJ0w2fIFb8sRLLLxM0x98MVM1og/V7/lO3xvSfJAznfGY/+6DXJ7GIf967API/LgtfWF5CES+Gsk2tjj
-        ZAMwyO8k42c/rKe5kjelUukBv+X1X9aewEQikXiqLa+LhE9GQSXOON004ytO8UhLr1QsFmsx0kvOvFGz
-        iql2TaksvkIDyXKHZsO78Bszfbp9MFH0RYtncN0hpmQT5l9BPqO/iY1jagrJZPKJbhtcfLpWuUOdesTG
-        LRBn8x9GMz8rxF9oyf2JRi8x+5FxHQ5gA4bk8WlKQDnOOboT9lI/imqRAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="Txt_Efectivo.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEdj
-        GAWjYBTUvb0aOhAYaj0DQ+2ba/8HAkOtRzgg+OYmumKb21tCQRjuAIatmXTFtre2gPHQdADztpz/Eofb
-        /qudmQHGEofb/zNtz8GqFhcm2wHce8r+m11bAzcAhs2urv7PtbsMqx5sGKaPJAeAfA6yCNliZAySIzYk
-        YHowHCByqAkDs+8sBMtJHmlHsRAbBkUNSC1IDzazYPbA1GM4ANkwGIZpBMU3NnlkrHZmOlgtSA82eXR7
-        Bp8DQBrRMV2jAB+mSyIkhAc0G8LwgBZE1MKDxwGwBoL5xUX/6YnhDoABmAC9MdR6BgZYA4HeGGr9KBgF
-        IxYwMAAAUDMZQeLZO6UAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAmwAAAAEAIAAogAIAFgAAACgAAACbAAAAAAIAAAEAIAAAAAAAAGwCACUWAAAlFgAAAAAAAAAA
@@ -3008,6 +2984,30 @@
   <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>141, 17</value>
   </metadata>
+  <data name="Txt_descuento.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAglJREFUWEft
+        kztIXEEUhm9iwCJFTBAfhb0GQozYKESbtApC0FYs0qVwq5QbhOy6bxYLg0WsL1poiApWgiBY2NiEBEkK
+        wQeJWNn4WL+zHmXudTZ71WsT7g8fszPnnDn/3Jl1bMpmsy6UQsbV7atLkn3FYRCaAYn9C1uNEI4BTako
+        W43y/1zBbYkMRAYiA5GBGxmISUHIxHT7SJGqK5VKNWUymXc8nEkYz+VyrzV0f4rH4w9p1AcLND0Fz9+I
+        9dlCodCo6Vbl8/l2ySN/B77xu5NxDrZhk3ib67o1MjJvKRel0+nHnHaUhV/gaWphD/rLhYaor2d9Cq4Z
+        N9HD/TTWYo4uehIDMMUp6qQ5YzNzuSoXI8vwx8irxpK4f2sJBGGX2jEMdMkXKH8KFbFukGuw1V1yKFfk
+        yJ0w2fIFb8sRLLLxM0x98MVM1og/V7/lO3xvSfJAznfGY/+6DXJ7GIf967API/LgtfWF5CES+Gsk2tjj
+        ZAMwyO8k42c/rKe5kjelUukBv+X1X9aewEQikXiqLa+LhE9GQSXOON004ytO8UhLr1QsFmsx0kvOvFGz
+        iql2TaksvkIDyXKHZsO78Bszfbp9MFH0RYtncN0hpmQT5l9BPqO/iY1jagrJZPKJbhtcfLpWuUOdesTG
+        LRBn8x9GMz8rxF9oyf2JRi8x+5FxHQ5gA4bk8WlKQDnOOboT9lI/imqRAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Txt_Efectivo.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEdj
+        GAWjYBTUvb0aOhAYaj0DQ+2ba/8HAkOtRzgg+OYmumKb21tCQRjuAIatmXTFtre2gPHQdADztpz/Eofb
+        /qudmQHGEofb/zNtz8GqFhcm2wHce8r+m11bAzcAhs2urv7PtbsMqx5sGKaPJAeAfA6yCNliZAySIzYk
+        YHowHCByqAkDs+8sBMtJHmlHsRAbBkUNSC1IDzazYPbA1GM4ANkwGIZpBMU3NnlkrHZmOlgtSA82eXR7
+        Bp8DQBrRMV2jAB+mSyIkhAc0G8LwgBZE1MKDxwGwBoL5xUX/6YnhDoABmAC9MdR6BgZYA4HeGGr9KBgF
+        IxYwMAAAUDMZQeLZO6UAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="MessageDialogInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>301, 17</value>
   </metadata>

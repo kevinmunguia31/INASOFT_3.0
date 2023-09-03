@@ -1,5 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace INASOFT_3._0.VistaFacturas
         public DetalleFactura()
         {
             InitializeComponent();
-            
+
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
             lbIdFactura.Text = lbIdFactura.Text + " " + ctrlFactura.Codigo_Factura().ToString();
             Lb_AuxCodFac.Text = ctrlFactura.Codigo_Factura().ToString();
@@ -94,17 +95,19 @@ namespace INASOFT_3._0.VistaFacturas
         public void Cargar_Total()
         {
             double Total = 0.00;
+            
             try
             {
                 for (int i = 0; i < datagridView1.Rows.Count; i++)
                 {
-                    Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
+                    Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());                   
                 }
+                int numeroRedondeado = (int)Math.Ceiling(Total);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = Total;
+                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
             }
             catch (Exception ex)
             {

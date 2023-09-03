@@ -1,4 +1,6 @@
-﻿using INASOFT_3._0.Controladores;
+﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DocumentFormat.OpenXml.Vml;
+using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
@@ -38,6 +40,7 @@ namespace INASOFT_3._0.VistaFacturas
                 band.ReadOnly = true;
             }
             Cargar_Total();
+            
         }
 
         public void Cargar_Total()
@@ -49,11 +52,12 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                 }
+                int numeroRedondeado = (int)Math.Ceiling(Total);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = Total;
+                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
             }
             catch (Exception ex)
             {
@@ -65,7 +69,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             if (txtIdCliente.Text == "1")
             {
-                lbNombreCliente.Text = "Cliente génerico";
+                lbNombreCliente.Text = "Cliente generico";
             }
             else
             {
@@ -89,6 +93,8 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 RBtn_Credito.Visible = true;
             }
+
+            Txt_descuento.Text = "0";
         }
 
         public void Subtotal()
@@ -98,6 +104,7 @@ namespace INASOFT_3._0.VistaFacturas
             for (int i = 0; i < datagridView2.Rows.Count; i++)
             {
                 subtotal += float.Parse(datagridView2.Rows[i].Cells[4].Value.ToString());
+                
             }
         }
         private void InfoNegocio()
@@ -315,18 +322,33 @@ namespace INASOFT_3._0.VistaFacturas
 
                         if (bandera)
                         {
-                            //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                            printDocument1 = new PrintDocument();
-                            PrinterSettings ps = new PrinterSettings();
-                            ps.PrinterName = cbImpresoras.Text;
-                            printDocument1.PrinterSettings = ps;
-                            printDocument1.PrintPage += Imprimir;
-                            printDocument1.Print();
+                            DialogResult result = MessageBox_Question.Show("¿Desea Imprimir la factura?");
 
-                            MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                            UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                            uC_Factura.CargarFacturas();
-                            this.Close();
+                            if (result == DialogResult.Yes)
+                            {
+                                //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                                printDocument1 = new PrintDocument();
+                                PrinterSettings ps = new PrinterSettings();
+                                ps.PrinterName = cbImpresoras.Text;
+                                printDocument1.PrinterSettings = ps;
+                                printDocument1.PrintPage += Imprimir;
+                                printDocument1.Print();
+
+                                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                                uC_Factura.CargarFacturas();
+                                this.Close();
+                            }
+                            else if(result == DialogResult.No)
+                            {
+                                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                                uC_Factura.CargarFacturas();
+                                this.Close();
+                            }
+                           
+
+                           
                         }
                     }
                     catch (MySqlException ex)
@@ -341,53 +363,59 @@ namespace INASOFT_3._0.VistaFacturas
         {
             int width = 280;
             int y = 20;
-            Font font2 = new Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point);
-            Font font3 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+            Font font2 = new Font("Consolas", 9, FontStyle.Regular, GraphicsUnit.Point);
+            Font font3 = new Font("Consolas", 8, FontStyle.Regular, GraphicsUnit.Point);
             Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+            Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
             Image img = Image.FromFile(imagen);
-            e.Graphics.DrawImage(img, new Rectangle(40, y += 20, 200, 90));
+            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
             e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono.Text, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
-            e.Graphics.DrawString("Factura: FAC" +      lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 25, width, 20));
-            e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 25, width, 20));
-            e.Graphics.DrawString("Fecha: " + DateTime.Now + " Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 25, width, 20));
-            e.Graphics.DrawString("-------------------------------------", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Producto            Cant.       Precio      Total", font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("-------------------------------------", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Factura:" +      lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
+            e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Fecha: " + DateTime.Now, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Producto            Cant.       P.Unit      Total", font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
             //e.Graphics.DrawString("LAM. GYPSUM REG      3         C$ 345      C$1,035", font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
                 // PROD                     //Cant                                 //Precio                         TOTAL
                 try
                 {
-                    string str = r.Cells[0].Value.ToString();
+                    string str = r.Cells[1].Value.ToString();
+                    string LineTotal = r.Cells[4].Value.ToString();
                     int desiredLength = 18;
+                    int SpaceTotal = 4;
                     string subStr = str.Substring(0, Math.Min(desiredLength, str.Length));
-                    float cant = float.Parse(r.Cells[2].Value.ToString());
-                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[1].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[3].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                    string Subtotal = LineTotal.Substring(0, Math.Min(SpaceTotal, str.Length));
+                    float cant = float.Parse(r.Cells[3].Value.ToString());
+                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + LineTotal.PadRight(SpaceTotal, ' '), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
                 catch(ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }
             }
 
             float subtotal = float.Parse(lbSubtotal.Text, CultureInfo.InvariantCulture);
-            float descuento = float.Parse(Txt_descuento.Text, CultureInfo.InvariantCulture);
+            double descuento = double.Parse(Txt_descuento.Text, CultureInfo.InvariantCulture);
             float total = float.Parse(lbTotal.Text, CultureInfo.InvariantCulture);
             float recibido = float.Parse(Txt_Efectivo.Text, CultureInfo.InvariantCulture);
             float cambio = float.Parse(lbDevolucion.Text, CultureInfo.InvariantCulture);
 
-            e.Graphics.DrawString("SubTotal:  C$" + subtotal.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 30, width, 20));
-            e.Graphics.DrawString("Descuento: C$" + descuento.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
-            e.Graphics.DrawString("Total:     C$" + total.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
-            e.Graphics.DrawString("---------------------------------", font3, Brushes.Black, new RectangleF(95, y += 20, width, 20));
-            e.Graphics.DrawString("Recibido:  C$" + recibido.ToString("0,00", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
-            e.Graphics.DrawString("Cambio:    C$" + cambio.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(120, y += 20, width, 20));
+            e.Graphics.DrawString("SubTotal:  C$" + subtotal.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 35, width, 20));
+            e.Graphics.DrawString("Descuento: C$" + descuento.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("Total:     C$" + total.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("Recibido:  C$" + recibido.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("Cambio:    C$" + cambio.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
 
-            e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 50, width, 20));
-            e.Graphics.DrawString("*  ¡GRACIAS POR SU COMPRA!   *", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
-            e.Graphics.DrawString("------------------------------", font3, Brushes.Black, new RectangleF(50, y += 20, width, 20));
+            e.Graphics.DrawString("******************************", font3, Brushes.Black, new RectangleF(45, y += 50, width, 20));
+            e.Graphics.DrawString("*      ¡DIOS TE BENDIGA!     *", font3, Brushes.Black, new RectangleF(45, y += 20, width, 20));
+            e.Graphics.DrawString("******************************", font3, Brushes.Black, new RectangleF(45, y += 20, width, 20));
         }
 
         private void RBtn_AlContado_CheckedChanged(object sender, EventArgs e)

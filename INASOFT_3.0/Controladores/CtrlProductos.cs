@@ -24,7 +24,7 @@ namespace INASOFT_3._0.Controladores
             }
             else
             {
-                sql = "SELECT * FROM Mostrar_Producto WHERE Código LIKE '"+dato+"%' OR Producto LIKE '"+dato+"%' ORDER BY Código ASC;";
+                sql = "SELECT * FROM Mostrar_Producto WHERE Codigo LIKE '"+dato+"%' OR Producto LIKE '"+dato+"%' ORDER BY Codigo ASC;";
             }
 
             MySqlConnection conexionBD = Conexion.getConexion();

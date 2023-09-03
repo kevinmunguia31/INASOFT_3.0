@@ -65,12 +65,9 @@ namespace INASOFT_3._0.UserControls
                     byte[] imagenBytes = (byte[])reader["logoNegocio"];
                     using (MemoryStream stream = new MemoryStream(imagenBytes))
                     {
-                        return Image.FromStream(stream);
-                        pbImagen.Image = Image.FromStream(stream);
+                        return pbImagen.Image = Image.FromStream(stream);
+
                     }
-
-                    
-
                     txtId.Text = reader["idinfogeneral"].ToString();
                     txtNameNgo.Text = reader["nombre_negocio"].ToString();
                     txtAddress.Text = reader["direccion_negocio"].ToString();

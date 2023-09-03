@@ -30,7 +30,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsInvoice));
             this.lbDireccion = new System.Windows.Forms.Label();
             this.lbTelefono = new System.Windows.Forms.Label();
@@ -87,6 +87,18 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lbusuario = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.labtel = new System.Windows.Forms.Label();
+            this.lbNmRUC = new System.Windows.Forms.Label();
+            this.lbDireccionNegocio = new System.Windows.Forms.Label();
+            this.lbNombreNegocio = new System.Windows.Forms.Label();
+            this.cbImpresoras = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -98,6 +110,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox3.SuspendLayout();
+            this.guna2GroupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbDireccion
@@ -232,9 +245,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -371,14 +384,15 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPrint.FillColor = System.Drawing.Color.Purple;
-            this.btnPrint.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(82, 244);
+            this.btnPrint.Location = new System.Drawing.Point(7, 244);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(145, 37);
+            this.btnPrint.Size = new System.Drawing.Size(124, 52);
             this.btnPrint.TabIndex = 25;
             this.btnPrint.Text = "Imprimir Factura";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // Lb_Devolucion1
             // 
@@ -411,7 +425,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             // guna2GroupBox1
             // 
-            this.guna2GroupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.guna2GroupBox1.BackColor = System.Drawing.Color.White;
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.guna2GroupBox1.Controls.Add(this.Lb_Anulada);
             this.guna2GroupBox1.Controls.Add(this.pictureBox3);
@@ -443,8 +457,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox1.Controls.Add(this.label8);
             this.guna2GroupBox1.Controls.Add(this.label9);
             this.guna2GroupBox1.Controls.Add(this.lbSubT);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.BlueViolet;
-            this.guna2GroupBox1.FillColor = System.Drawing.Color.LightGray;
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.CornflowerBlue;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(12, 54);
@@ -564,6 +577,8 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             // guna2GroupBox2
             // 
+            this.guna2GroupBox2.Controls.Add(this.cbImpresoras);
+            this.guna2GroupBox2.Controls.Add(this.label17);
             this.guna2GroupBox2.Controls.Add(this.groupBox1);
             this.guna2GroupBox2.Controls.Add(this.groupBox2);
             this.guna2GroupBox2.Controls.Add(this.btnPrint);
@@ -572,7 +587,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(411, 57);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(318, 298);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(318, 312);
             this.guna2GroupBox2.TabIndex = 119;
             this.guna2GroupBox2.Text = "Detalle de la factura";
             this.guna2GroupBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -769,12 +784,156 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2Elipse4.BorderRadius = 12;
             this.guna2Elipse4.TargetControl = this.guna2GroupBox3;
             // 
+            // guna2GroupBox6
+            // 
+            this.guna2GroupBox6.Controls.Add(this.label15);
+            this.guna2GroupBox6.Controls.Add(this.lbusuario);
+            this.guna2GroupBox6.Controls.Add(this.label19);
+            this.guna2GroupBox6.Controls.Add(this.label21);
+            this.guna2GroupBox6.Controls.Add(this.labtel);
+            this.guna2GroupBox6.Controls.Add(this.lbNmRUC);
+            this.guna2GroupBox6.Controls.Add(this.lbDireccionNegocio);
+            this.guna2GroupBox6.Controls.Add(this.lbNombreNegocio);
+            this.guna2GroupBox6.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.guna2GroupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.guna2GroupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2GroupBox6.Location = new System.Drawing.Point(12, 630);
+            this.guna2GroupBox6.Name = "guna2GroupBox6";
+            this.guna2GroupBox6.Size = new System.Drawing.Size(849, 111);
+            this.guna2GroupBox6.TabIndex = 121;
+            this.guna2GroupBox6.Text = "Información del Negocio";
+            this.guna2GroupBox6.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(632, 61);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 18);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "CAJA:";
+            // 
+            // lbusuario
+            // 
+            this.lbusuario.AutoSize = true;
+            this.lbusuario.BackColor = System.Drawing.Color.White;
+            this.lbusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic);
+            this.lbusuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbusuario.Location = new System.Drawing.Point(689, 61);
+            this.lbusuario.Name = "lbusuario";
+            this.lbusuario.Size = new System.Drawing.Size(107, 18);
+            this.lbusuario.TabIndex = 31;
+            this.lbusuario.Text = "Descuento del ";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label19.Location = new System.Drawing.Point(353, 78);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(36, 18);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Tel:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.White;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label21.Location = new System.Drawing.Point(344, 49);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(49, 18);
+            this.label21.TabIndex = 29;
+            this.label21.Text = "RUC:";
+            // 
+            // labtel
+            // 
+            this.labtel.AutoSize = true;
+            this.labtel.BackColor = System.Drawing.Color.White;
+            this.labtel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic);
+            this.labtel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labtel.Location = new System.Drawing.Point(386, 78);
+            this.labtel.Name = "labtel";
+            this.labtel.Size = new System.Drawing.Size(107, 18);
+            this.labtel.TabIndex = 28;
+            this.labtel.Text = "Descuento del ";
+            // 
+            // lbNmRUC
+            // 
+            this.lbNmRUC.AutoSize = true;
+            this.lbNmRUC.BackColor = System.Drawing.Color.White;
+            this.lbNmRUC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic);
+            this.lbNmRUC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbNmRUC.Location = new System.Drawing.Point(399, 49);
+            this.lbNmRUC.Name = "lbNmRUC";
+            this.lbNmRUC.Size = new System.Drawing.Size(107, 18);
+            this.lbNmRUC.TabIndex = 27;
+            this.lbNmRUC.Text = "Descuento del ";
+            // 
+            // lbDireccionNegocio
+            // 
+            this.lbDireccionNegocio.AutoSize = true;
+            this.lbDireccionNegocio.BackColor = System.Drawing.Color.White;
+            this.lbDireccionNegocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic);
+            this.lbDireccionNegocio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbDireccionNegocio.Location = new System.Drawing.Point(9, 78);
+            this.lbDireccionNegocio.Name = "lbDireccionNegocio";
+            this.lbDireccionNegocio.Size = new System.Drawing.Size(107, 18);
+            this.lbDireccionNegocio.TabIndex = 26;
+            this.lbDireccionNegocio.Text = "Descuento del ";
+            // 
+            // lbNombreNegocio
+            // 
+            this.lbNombreNegocio.AutoSize = true;
+            this.lbNombreNegocio.BackColor = System.Drawing.Color.White;
+            this.lbNombreNegocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic);
+            this.lbNombreNegocio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbNombreNegocio.Location = new System.Drawing.Point(9, 49);
+            this.lbNombreNegocio.Name = "lbNombreNegocio";
+            this.lbNombreNegocio.Size = new System.Drawing.Size(107, 18);
+            this.lbNombreNegocio.TabIndex = 25;
+            this.lbNombreNegocio.Text = "Descuento del ";
+            // 
+            // cbImpresoras
+            // 
+            this.cbImpresoras.BackColor = System.Drawing.Color.Transparent;
+            this.cbImpresoras.BorderRadius = 10;
+            this.cbImpresoras.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbImpresoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbImpresoras.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbImpresoras.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbImpresoras.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbImpresoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbImpresoras.ItemHeight = 30;
+            this.cbImpresoras.Location = new System.Drawing.Point(137, 260);
+            this.cbImpresoras.Name = "cbImpresoras";
+            this.cbImpresoras.Size = new System.Drawing.Size(166, 36);
+            this.cbImpresoras.TabIndex = 124;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(179, 238);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(85, 23);
+            this.label17.TabIndex = 123;
+            this.label17.Text = "Impresora:";
+            // 
             // DetailsInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(741, 628);
+            this.ClientSize = new System.Drawing.Size(741, 802);
+            this.Controls.Add(this.guna2GroupBox6);
             this.Controls.Add(this.guna2GroupBox3);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.panel1);
@@ -793,11 +952,14 @@ namespace INASOFT_3._0.VistaFacturas
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.guna2GroupBox2.ResumeLayout(false);
+            this.guna2GroupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.guna2GroupBox3.ResumeLayout(false);
+            this.guna2GroupBox6.ResumeLayout(false);
+            this.guna2GroupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -858,5 +1020,17 @@ namespace INASOFT_3._0.VistaFacturas
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox6;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbusuario;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label labtel;
+        private System.Windows.Forms.Label lbNmRUC;
+        private System.Windows.Forms.Label lbDireccionNegocio;
+        private System.Windows.Forms.Label lbNombreNegocio;
+        private Guna.UI2.WinForms.Guna2ComboBox cbImpresoras;
+        private System.Windows.Forms.Label label17;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
