@@ -25,7 +25,7 @@ namespace INASOFT_3._0.UserControls
             Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
             ctrlInfo.consulta(null);
 
-            txtId.Text = ctrlInfo.;
+           /* txtId.Text = ctrlInfo.;
             txtNameNgo.Text = reader["nombre_negocio"].ToString();
             txtAddress.Text = reader["direccion_negocio"].ToString();
             txtRUC.Text = reader["num_ruc"].ToString();
