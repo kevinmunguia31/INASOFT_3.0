@@ -305,7 +305,6 @@ C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.Threading.Ta
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\System.ValueTuple.dll
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\Ubiety.Dns.Core.dll
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\ZstdNet.dll
-C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\BouncyCastle.Crypto.xml
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.pdb
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\Google.Protobuf.xml
@@ -371,3 +370,6 @@ C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\itextsharp.dll
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\itextsharp.xml

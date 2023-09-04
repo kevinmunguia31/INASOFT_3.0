@@ -14,14 +14,16 @@ namespace INASOFT_3._0.Modelos
         private string numRUC;
         private string nombreAdmin;
         private string telefono;
-        private byte[] imagen;
-
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public string NumRUC { get => numRUC; set => numRUC = value; }
         public string NombreAdmin { get => nombreAdmin; set => nombreAdmin = value; }
         public string Telefono { get => telefono; set => telefono = value; }
-        public byte[] Imagen { get => imagen; set => imagen = value; }
+
+        public static implicit operator InfoNegocio(Proveedor v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

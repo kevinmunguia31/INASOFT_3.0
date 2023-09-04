@@ -1,16 +1,15 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
 using INASOFT_3._0.VistaFacturas;
-using MySql.Data.MySqlClient;
 using SpreadsheetLight;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using Document = iTextSharp.text.Document;
+using INASOFT_3._0.Modelos;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -157,7 +156,7 @@ namespace INASOFT_3._0.UserControls
                         frm.label20.Visible = false;
                         frm.pictureBox3.Visible = true;
                         frm.Lb_Anulada.Visible = true;
-                        frm.Lb_Anulada.ForeColor = Color.Red;
+                        frm.Lb_Anulada.ForeColor = System.Drawing.Color.Red;
                         frm.guna2GroupBox2.Enabled = false;
                         frm.guna2GroupBox2.Visible = false;
                         frm.btnPrint.Enabled = false;
@@ -356,11 +355,11 @@ namespace INASOFT_3._0.UserControls
                 {
                     if (e.Value.ToString() == "C$ 0.00")
                     {
-                        e.CellStyle.ForeColor = Color.Green;
+                        e.CellStyle.ForeColor = System.Drawing.Color.Green;
                     }
                     else
                     {
-                        e.CellStyle.ForeColor = Color.Red;
+                        e.CellStyle.ForeColor = System.Drawing.Color.Red;
                     }
                 }
             }
@@ -372,19 +371,19 @@ namespace INASOFT_3._0.UserControls
                     {
                         if (e.Value.ToString() == "Cancelado")
                         {
-                            e.CellStyle.BackColor = Color.Green;
-                            e.CellStyle.ForeColor = Color.White;
+                            e.CellStyle.BackColor = System.Drawing.Color.Green;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
                         }
                         else if (e.Value.ToString() == "Pendiente")
                         {
-                            e.CellStyle.BackColor = Color.Yellow;
-                            e.CellStyle.ForeColor = Color.Black;
+                            e.CellStyle.BackColor = System.Drawing.Color.Yellow;
+                            e.CellStyle.ForeColor = System.Drawing.Color.Black;
                         }
                         else if (e.Value.ToString() == "Anulada")
                         {
-                            e.CellStyle.BackColor = Color.Red;
-                            e.CellStyle.ForeColor = Color.White;
-                        }
+                            e.CellStyle.BackColor = System.Drawing.Color.Red;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
+                        }  
                     }
                 }
                 catch (NullReferenceException ex)
@@ -420,6 +419,50 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
+
+            }
+        }
+        //BTN EXPORTAR PDF///
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            InfoNegocio infoNegocio = new InfoNegocio();
+            SaveFileDialog guardar = new SaveFileDialog();
+            guardar.FileName = "Inventario-Productos" + DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+
+            string paginaHtml_texto = Properties.Resources.facturaTemplate.ToString();
+            paginaHtml_texto = paginaHtml_texto.Replace("@NombreNegocio", infoNegocio.Nombre);
+
+            if (guardar.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
+                {
+                    //Creamos un nuevo documento y lo definimos como PDF
+                    Document pdfDoc = new Document(iTextSharp.text.PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    //Agregamos la imagen del banner al documento
+                    /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.icons8_wifi_apagado_50, System.Drawing.Imaging.ImageFormat.Png);
+                    img.ScaleToFit(60, 60);
+                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                    //img.SetAbsolutePosition(10,100);
+                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                    pdfDoc.Add(img);*/
+
+
+                    //pdfDoc.Add(new Phrase("Hola Mundo"));
+                    using (StringReader sr = new StringReader(paginaHtml_texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+                    MessageBox.Show("Exportando Facturas a PDF.....\n" +
+                        "Espere un momento.....", "Exportando a PDF");
+                    pdfDoc.Close();
+                    stream.Close();
+                    MessageBox.Show("Inventario Exportado a PDF", "Exportando a PDF");
+                }
 
             }
         }

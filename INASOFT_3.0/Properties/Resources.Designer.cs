@@ -81,6 +81,15 @@ namespace INASOFT_3._0.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string facturaTemplate {
+            get {
+                return ResourceManager.GetString("facturaTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_add_user_male_40px {

@@ -20,35 +20,19 @@ namespace INASOFT_3._0.UserControls
             CargarLogs();
         }
 
-        private Image InfoNegocio()
+        private void InfoNegocio()
         {
-            /*MySqlDataReader reader = null;
-            string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio FROM infogeneral";
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    byte[]Foto = (byte[])reader["logoNegocio"];
-                    MemoryStream ms = new MemoryStream(Foto);
-                    pbImagen.Image = Image.FromStream(ms);
-                    txtId.Text = reader.GetString("idinfogeneral");
-                    txtNameNgo.Text = reader.GetString("nombre_negocio");
-                    txtAddress.Text = reader.GetString("direccion_negocio");
-                    txtRUC.Text = reader.GetString("num_ruc");
-                    txtNameAdmin.Text = reader.GetString("nombre_admin");
-                    txtTelefono.Text = reader.GetString("telefono");
-                }
-            }
-            catch (MySqlException ex)
-            {
-               MessageBox.Show(ex.Message.ToString());
-            }*/
-            string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio FROM infogeneral";
+            Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
+            ctrlInfo.consulta(null);
+
+            txtId.Text = ctrlInfo.;
+            txtNameNgo.Text = reader["nombre_negocio"].ToString();
+            txtAddress.Text = reader["direccion_negocio"].ToString();
+            txtRUC.Text = reader["num_ruc"].ToString();
+            txtNameAdmin.Text = reader["nombre_admin"].ToString();
+            txtTelefono.Text = reader["telefono"].ToString();
+            /*
+            string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono FROM infogeneral";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -61,13 +45,6 @@ namespace INASOFT_3._0.UserControls
                 if (reader.HasRows)
                 {
                     reader.Read();
-
-                    byte[] imagenBytes = (byte[])reader["logoNegocio"];
-                    using (MemoryStream stream = new MemoryStream(imagenBytes))
-                    {
-                        return pbImagen.Image = Image.FromStream(stream);
-
-                    }
                     txtId.Text = reader["idinfogeneral"].ToString();
                     txtNameNgo.Text = reader["nombre_negocio"].ToString();
                     txtAddress.Text = reader["direccion_negocio"].ToString();
@@ -86,18 +63,15 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageBox.Show("Error:" + ex.Message);
             }
-            return null;
+            return null;*/
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            string rutaImagen = lbRuta.Text;
-            /*bool bandera = false;
+            bool bandera = false;
             InfoNegocio _info = new InfoNegocio();
 
-            MemoryStream ms = new MemoryStream();
-            pbImagen.Image.Save(ms, ImageFormat.Jpeg);
-
+            
             if (txtNameNgo.Text != "" && txtAddress.Text != "" && txtRUC.Text != "" && txtTelefono.Text != "" && txtNameAdmin.Text != "")
             {
                 _info.Nombre = txtNameNgo.Text;
@@ -105,7 +79,6 @@ namespace INASOFT_3._0.UserControls
                 _info.NumRUC = txtRUC.Text;
                 _info.NombreAdmin = txtNameAdmin.Text;
                 _info.Telefono = txtTelefono.Text;
-                _info.Imagen = ms.ToArray();
 
                 CtrlInfo ctrlInfo = new CtrlInfo();
                 if (txtId.Text != "")
@@ -126,39 +99,6 @@ namespace INASOFT_3._0.UserControls
             else
             {
                 MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
-            }*/
-            /*MemoryStream ms = new MemoryStream();
-            pbImagen.Image.Save(ms, ImageFormat.Jpeg);
-            byte[] aBayte = ms.ToArray();*/
-
-            byte[] imagenBytes = File.ReadAllBytes(rutaImagen);
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-
-            try
-            {
-                if(txtNameAdmin.Text == "" && txtNameNgo.Text == "" && txtRUC.Text == "" && txtId.Text == "" && txtTelefono.Text == "")
-                {
-                    MySqlCommand comando = new MySqlCommand("INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono, logoNegocio) VALUES ('" + txtNameNgo.Text + "','" + txtAddress.Text + "','" + txtRUC.Text + "','" + txtNameAdmin.Text + "','" + txtTelefono.Text + "', @logoNegocio)", conexionDB);
-                    comando.Parameters.AddWithValue("logoNegocio", imagenBytes);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("Datos Guardados con Exito");
-                    pbImagen.Image = null;
-
-                }else if (txtNameAdmin.Text != "" && txtNameNgo.Text != "" && txtRUC.Text != "" && txtId.Text != "" && txtTelefono.Text != "")
-                {
-                    MySqlCommand comando = new MySqlCommand("UPDATE infogeneral SET nombre_negocio='" + txtNameNgo.Text + "', direccion_negocio='" + txtAddress.Text + "', num_ruc='" + txtRUC.Text + "', nombre_admin='" + txtNameAdmin.Text + "', telefono='" + txtTelefono.Text + "', logoNegocio=@logoNegocio WHERE IDinfogeneral= '" + txtId.Text + "'", conexionDB);
-                    comando.Parameters.AddWithValue("logoNegocio", imagenBytes);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("Datos Actualizados con Exito");
-                    pbImagen.Image = null;
-                }
-                
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error al guardar los datos" + ex.Message);
             }
         }
 
