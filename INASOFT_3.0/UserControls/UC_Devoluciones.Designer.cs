@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Devoluciones));
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,10 +48,9 @@
             this.MessageBox_Error = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Rbtn_Canceladas = new System.Windows.Forms.RadioButton();
-            this.Rbtn_Pendientes = new System.Windows.Forms.RadioButton();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.Rbtn_Pendientes = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.DateTimeTimer_Ini = new System.Windows.Forms.DateTimePicker();
@@ -77,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -116,7 +115,7 @@
             this.dataGridDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -129,18 +128,27 @@
             this.dataGridDevolucion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dataGridDevolucion.Location = new System.Drawing.Point(3, 16);
             this.dataGridDevolucion.Name = "dataGridDevolucion";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridDevolucion.RowHeadersVisible = false;
             this.dataGridDevolucion.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridDevolucion.Size = new System.Drawing.Size(1007, 505);
-            this.dataGridDevolucion.TabIndex = 11;
-            this.dataGridDevolucion.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridDevolucion_MouseClick_1);
+            this.dataGridDevolucion.TabIndex = 10;
+            this.dataGridDevolucion.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridDevolucion_CellFormatting);
+            this.dataGridDevolucion.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridDevolucion_MouseClick);
             // 
             // guna2Elipse1
             // 
@@ -192,14 +200,14 @@
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.guna2Button6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(887, 10);
+            this.guna2Button6.Location = new System.Drawing.Point(893, 10);
             this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(135, 33);
+            this.guna2Button6.Size = new System.Drawing.Size(129, 33);
             this.guna2Button6.TabIndex = 96;
             this.guna2Button6.Text = "Restablecer";
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -262,64 +270,40 @@
             this.guna2GroupBox2.Controls.Add(this.label3);
             this.guna2GroupBox2.Controls.Add(this.label1);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox2.Location = new System.Drawing.Point(1039, 10);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(363, 340);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(363, 323);
             this.guna2GroupBox2.TabIndex = 100;
             this.guna2GroupBox2.Text = "Buscar Devoluciones";
             // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Controls.Add(this.Rbtn_Canceladas);
             this.groupBox4.Controls.Add(this.guna2Button5);
-            this.groupBox4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Controls.Add(this.Rbtn_Pendientes);
+            this.groupBox4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
             this.groupBox4.Location = new System.Drawing.Point(0, 247);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(360, 90);
+            this.groupBox4.Size = new System.Drawing.Size(360, 75);
             this.groupBox4.TabIndex = 100;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Buscardor por tipos de facturas";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox5.Controls.Add(this.Rbtn_Canceladas);
-            this.groupBox5.Controls.Add(this.Rbtn_Pendientes);
-            this.groupBox5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 26);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(231, 56);
-            this.groupBox5.TabIndex = 92;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Facturas";
-            // 
             // Rbtn_Canceladas
             // 
             this.Rbtn_Canceladas.AutoSize = true;
-            this.Rbtn_Canceladas.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Canceladas.Location = new System.Drawing.Point(117, 23);
+            this.Rbtn_Canceladas.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_Canceladas.Location = new System.Drawing.Point(123, 33);
             this.Rbtn_Canceladas.Name = "Rbtn_Canceladas";
-            this.Rbtn_Canceladas.Size = new System.Drawing.Size(108, 27);
+            this.Rbtn_Canceladas.Size = new System.Drawing.Size(100, 26);
             this.Rbtn_Canceladas.TabIndex = 27;
             this.Rbtn_Canceladas.TabStop = true;
             this.Rbtn_Canceladas.Text = "Canceladas";
             this.Rbtn_Canceladas.UseVisualStyleBackColor = true;
-            // 
-            // Rbtn_Pendientes
-            // 
-            this.Rbtn_Pendientes.AutoSize = true;
-            this.Rbtn_Pendientes.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Pendientes.Location = new System.Drawing.Point(6, 24);
-            this.Rbtn_Pendientes.Name = "Rbtn_Pendientes";
-            this.Rbtn_Pendientes.Size = new System.Drawing.Size(100, 27);
-            this.Rbtn_Pendientes.TabIndex = 26;
-            this.Rbtn_Pendientes.TabStop = true;
-            this.Rbtn_Pendientes.Text = "Pendientes";
-            this.Rbtn_Pendientes.UseVisualStyleBackColor = true;
             // 
             // guna2Button5
             // 
@@ -329,15 +313,27 @@
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2Button5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
             this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
-            this.guna2Button5.Location = new System.Drawing.Point(259, 46);
+            this.guna2Button5.Location = new System.Drawing.Point(259, 28);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(91, 36);
+            this.guna2Button5.Size = new System.Drawing.Size(91, 32);
             this.guna2Button5.TabIndex = 91;
             this.guna2Button5.Text = "Buscar";
             this.guna2Button5.Click += new System.EventHandler(this.Guna2Button5_Click);
+            // 
+            // Rbtn_Pendientes
+            // 
+            this.Rbtn_Pendientes.AutoSize = true;
+            this.Rbtn_Pendientes.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbtn_Pendientes.Location = new System.Drawing.Point(12, 34);
+            this.Rbtn_Pendientes.Name = "Rbtn_Pendientes";
+            this.Rbtn_Pendientes.Size = new System.Drawing.Size(93, 26);
+            this.Rbtn_Pendientes.TabIndex = 26;
+            this.Rbtn_Pendientes.TabStop = true;
+            this.Rbtn_Pendientes.Text = "Pendientes";
+            this.Rbtn_Pendientes.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -347,7 +343,7 @@
             this.groupBox3.Controls.Add(this.guna2Button3);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.DateTimeTimer_End);
-            this.groupBox3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(0, 138);
             this.groupBox3.Name = "groupBox3";
@@ -360,21 +356,22 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(13, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 23);
+            this.label5.Size = new System.Drawing.Size(47, 22);
             this.label5.TabIndex = 99;
             this.label5.Text = "Hasta:";
             // 
             // DateTimeTimer_Ini
             // 
             this.DateTimeTimer_Ini.CustomFormat = "yyyy/MM/dd";
-            this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_Ini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateTimeTimer_Ini.Location = new System.Drawing.Point(69, 32);
             this.DateTimeTimer_Ini.Name = "DateTimeTimer_Ini";
-            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(145, 23);
+            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(145, 25);
             this.DateTimeTimer_Ini.TabIndex = 96;
             // 
             // guna2Button3
@@ -385,12 +382,12 @@
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.Location = new System.Drawing.Point(259, 61);
+            this.guna2Button3.Location = new System.Drawing.Point(259, 57);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(91, 36);
+            this.guna2Button3.Size = new System.Drawing.Size(91, 32);
             this.guna2Button3.TabIndex = 91;
             this.guna2Button3.Text = "Buscar";
             this.guna2Button3.Click += new System.EventHandler(this.Guna2Button3_Click);
@@ -399,21 +396,22 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(13, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 23);
+            this.label4.Size = new System.Drawing.Size(28, 22);
             this.label4.TabIndex = 98;
             this.label4.Text = "De:";
             // 
             // DateTimeTimer_End
             // 
             this.DateTimeTimer_End.CustomFormat = "yyyy/MM/dd";
-            this.DateTimeTimer_End.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeTimer_End.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 64);
             this.DateTimeTimer_End.Name = "DateTimeTimer_End";
-            this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 23);
+            this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 25);
             this.DateTimeTimer_End.TabIndex = 97;
             // 
             // groupBox2
@@ -421,7 +419,7 @@
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.txt_NonbCliente);
             this.groupBox2.Controls.Add(this.guna2Button4);
-            this.groupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 51);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(360, 81);
@@ -438,7 +436,7 @@
             this.txt_NonbCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txt_NonbCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txt_NonbCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_NonbCliente.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NonbCliente.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NonbCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_NonbCliente.IconLeft = ((System.Drawing.Image)(resources.GetObject("txt_NonbCliente.IconLeft")));
             this.txt_NonbCliente.Location = new System.Drawing.Point(11, 29);
@@ -447,7 +445,7 @@
             this.txt_NonbCliente.PasswordChar = '\0';
             this.txt_NonbCliente.PlaceholderText = "Ingrese el nombre del Cliente";
             this.txt_NonbCliente.SelectedText = "";
-            this.txt_NonbCliente.Size = new System.Drawing.Size(203, 36);
+            this.txt_NonbCliente.Size = new System.Drawing.Size(203, 30);
             this.txt_NonbCliente.TabIndex = 5;
             // 
             // guna2Button4
@@ -458,12 +456,12 @@
             this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2Button4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
-            this.guna2Button4.Location = new System.Drawing.Point(259, 39);
+            this.guna2Button4.Location = new System.Drawing.Point(259, 29);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(91, 36);
+            this.guna2Button4.Size = new System.Drawing.Size(91, 32);
             this.guna2Button4.TabIndex = 86;
             this.guna2Button4.Text = "Buscar";
             this.guna2Button4.Click += new System.EventHandler(this.Guna2Button4_Click);
@@ -527,11 +525,11 @@
             this.guna2GroupBox1.Controls.Add(this.guna2Button1);
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(1039, 470);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(1039, 352);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(363, 98);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(363, 107);
             this.guna2GroupBox1.TabIndex = 99;
             this.guna2GroupBox1.Text = "Exportación de tabla";
             // 
@@ -562,12 +560,12 @@
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
-            this.guna2Button2.Location = new System.Drawing.Point(193, 46);
+            this.guna2Button2.Location = new System.Drawing.Point(203, 52);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(157, 43);
+            this.guna2Button2.Size = new System.Drawing.Size(134, 43);
             this.guna2Button2.TabIndex = 92;
             this.guna2Button2.Text = "Exportar a EXCEL";
             this.guna2Button2.Click += new System.EventHandler(this.Guna2Button2_Click);
@@ -581,12 +579,12 @@
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
-            this.guna2Button1.Location = new System.Drawing.Point(17, 46);
+            this.guna2Button1.Location = new System.Drawing.Point(27, 52);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(157, 43);
+            this.guna2Button1.Size = new System.Drawing.Size(134, 43);
             this.guna2Button1.TabIndex = 91;
             this.guna2Button1.Text = "Exportar a PDF";
             // 
@@ -620,8 +618,7 @@
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -636,7 +633,6 @@
         public System.Windows.Forms.Button Bttn_Info;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridDevolucion;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
@@ -647,7 +643,6 @@
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Error;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.RadioButton Rbtn_Canceladas;
         private System.Windows.Forms.RadioButton Rbtn_Pendientes;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
@@ -672,5 +667,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.DataGridView dataGridDevolucion;
     }
 }

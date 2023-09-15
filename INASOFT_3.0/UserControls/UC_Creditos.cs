@@ -153,23 +153,6 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Realizar abono").Name = "Realizar abono" + pos;
-                    menu.Items.Add("Ver estado del crédito").Name = "Ver estado del crédito" + pos;
-                }
-                menu.Show(dataGridView1, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
-            }
-        }
-
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
             Cargar_credito();
@@ -212,7 +195,71 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void Guna2Button3_Click_1(object sender, EventArgs e)
+        {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
+            MessageBox.Show(fecha_Ini + " " + fecha_End);
+
+            Credito_Fechas(fecha_Ini, fecha_End);
+        }
+
+        private void Guna2Button5_Click_1(object sender, EventArgs e)
+        {
+            string estado = "";
+            if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
+            {
+                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
+            }
+            else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
+            {
+                estado = "Pendiente";
+                Credito_Estado(estado);
+            }
+            else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
+            {
+                estado = "Cancelado";
+                Credito_Estado(estado);
+            }
+        }
+
+        private void Guna2Button7_Click(object sender, EventArgs e)
+        {
+            int bandera = 0;
+            if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == false)
+            {
+                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
+            }
+            else if (Rbtn_DiasVencidos.Checked == true && Rbtn_DiasEstables.Checked == false)
+            {
+                bandera = 1;
+                Credito_DiasVencidos(bandera);
+            }
+            else if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == true)
+            {
+                bandera = 2;
+                Credito_DiasVencidos(bandera);
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Realizar abono").Name = "Realizar abono" + pos;
+                    menu.Items.Add("Ver estado del crédito").Name = "Ver estado del crédito" + pos;
+                }
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dataGridView1.Columns[e.ColumnIndex].Index == 8)
             {
@@ -264,53 +311,6 @@ namespace INASOFT_3._0.UserControls
                 {
                     MessageBox.Show("" + ex);
                 }
-            }
-        }
-
-        private void Guna2Button3_Click_1(object sender, EventArgs e)
-        {
-            string fecha_Ini = DateTimeTimer_Ini.Text;
-            string fecha_End = DateTimeTimer_End.Text;
-            MessageBox.Show(fecha_Ini + " " + fecha_End);
-
-            Credito_Fechas(fecha_Ini, fecha_End);
-        }
-
-        private void Guna2Button5_Click_1(object sender, EventArgs e)
-        {
-            string estado = "";
-            if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
-            {
-                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
-            }
-            else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
-            {
-                estado = "Pendiente";
-                Credito_Estado(estado);
-            }
-            else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
-            {
-                estado = "Cancelado";
-                Credito_Estado(estado);
-            }
-        }
-
-        private void Guna2Button7_Click(object sender, EventArgs e)
-        {
-            int bandera = 0;
-            if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == false)
-            {
-                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
-            }
-            else if (Rbtn_DiasVencidos.Checked == true && Rbtn_DiasEstables.Checked == false)
-            {
-                bandera = 1;
-                Credito_DiasVencidos(bandera);
-            }
-            else if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == true)
-            {
-                bandera = 2;
-                Credito_DiasVencidos(bandera);
             }
         }
     }

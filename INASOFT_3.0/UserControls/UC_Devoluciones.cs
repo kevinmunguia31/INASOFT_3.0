@@ -82,22 +82,6 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void DataGridDevolucion_MouseClick_1(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = dataGridDevolucion.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Ver detalle devolución").Name = "Ver detalle devolución" + pos;
-                }
-                menu.Show(dataGridDevolucion, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
-            }
-        }
-
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
             Cargar_devolucion();
@@ -153,6 +137,27 @@ namespace INASOFT_3._0.UserControls
             {
                 estado = "Cancelado";
                 Devolucion_Estado(estado);
+            }
+        }
+
+        private void dataGridDevolucion_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
+        private void dataGridDevolucion_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridDevolucion.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Ver detalle devolución").Name = "Ver detalle devolución" + pos;
+                }
+                menu.Show(dataGridDevolucion, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
             }
         }
     }

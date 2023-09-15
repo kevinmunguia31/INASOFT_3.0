@@ -8,24 +8,56 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
+using iText.StyledXmlParser.Jsoup.Select;
+using System.Windows.Forms;
 
 namespace INASOFT_3._0.Controladores
 {
     class CtrlProductos
     {
-        public DataTable CargarProductos(string dato)
+        public DataTable CargarProductos()
         {
             DataTable dt = new DataTable();
-            string sql;
+            string sql = "SELECT * FROM Mostrar_Producto;";
 
-            if (dato == "")
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
             {
-                sql = "SELECT * FROM Mostrar_Producto";
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
             }
-            else
+            catch (MySqlException ex)
             {
-                sql = "SELECT * FROM Mostrar_Producto WHERE Codigo LIKE '"+dato+"%' OR Producto LIKE '"+dato+"%' ORDER BY Codigo ASC;";
+                Console.WriteLine(ex.Message.ToString());
             }
+            return dt;
+        }
+        public DataTable CargarDetalleProductos()
+        {
+            DataTable dt = new DataTable();
+            string sql = " SELECT Codigo, Nombre, Estado, Existencias, Precio_Compra AS 'Precio de compra', Precio_Venta AS 'Precio de venta', Precio_Total AS 'Total' FROM Productos;";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+       
+        public DataTable BuscarProducto(string dato)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT * FROM Productos WHERE Nombre LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%'";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
@@ -269,16 +301,16 @@ namespace INASOFT_3._0.Controladores
         public string CapitalInvertido()
         {
             string capital = "";
-            CultureInfo culturaLocal = CultureInfo.CurrentCulture;
-            string SQL = "SELECT ROUND(SUM(precio_total), 2) FROM productos";
+            CultureInfo culturaLocal = new CultureInfo("es-NI");
+            string SQL = "SELECT CASE WHEN ROUND(SUM(precio_total), 2) IS NULL THEN '0' ELSE ROUND(SUM(precio_total), 2) END 'Precio Total' FROM productos;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                double d = Convert.ToInt32(comando.ExecuteScalar());
-                capital = d.ToString("C", culturaLocal);
+                double d = Convert.ToDouble(comando.ExecuteScalar());
+                capital = d.ToString(culturaLocal);
             }
             catch (MySqlException ex)
             {

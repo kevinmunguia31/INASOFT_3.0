@@ -243,25 +243,26 @@ namespace INASOFT_3._0.VistaFacturas
             }
             else
             {
-                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                string hora = DateTime.Now.ToString("hh:mm:ss");
-                string Fecha_final = fecha + " " + hora;
-                string User = Sesion.id.ToString();
-                int id_cliente = int.Parse(txtIdCliente.Text);
+                List<Detalle_Factura> listaProductos = new List<Detalle_Factura>();
 
-                Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-                bool bandera1 = ctrlFactura.Insertar_Factura(Fecha_final, User, id_cliente);
-
-                int id_factura = ctrlFactura.ID_Factura();
-
-                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                foreach (DataGridViewRow fila in datagridView1.Rows)
                 {
-                    DataGridViewRow row = datagridView1.Rows[i];
-                    ctrlFactura.Facturar_Productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), id_factura);
+                    if (!fila.IsNewRow) // Evita la fila en blanco al final del DataGridView
+                    {
+                        Detalle_Factura productos = new Detalle_Factura
+                        {
+                            Codigo_producto = fila.Cells[0].Value.ToString(),
+                            Nombre_producto = fila.Cells[1].Value.ToString(),
+                            Cantidad = Convert.ToInt32(fila.Cells[2].Value),
+                            Precio = Convert.ToDouble(fila.Cells[3].Value),
+                            Total = Convert.ToDouble(fila.Cells[4].Value)
+                        };
+
+                        listaProductos.Add(productos);
+                    }
                 }
-                MessageBox_Ok.Show("Productos agregados a la factura", "AVISO");
-                FacturaFinal frm = new FacturaFinal();
-                frm.lbIdFactura.Text = ctrlFactura.Codigo_Factura().ToString(); ;
+                MessageBox_Ok.Show("Productos agregados a la factura", "Aviso");
+                FacturaFinal frm = new FacturaFinal(listaProductos);
                 frm.lbNombreCliente.Text = lbClienteName.Text;
                 frm.lbSubtotal.Text = lbSubtotal.Text;
                 frm.txtIdCliente.Text = txtIdCliente.Text;

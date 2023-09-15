@@ -1,5 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
+using INASOFT_3._0.VistaFacturas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,11 @@ namespace INASOFT_3._0.UserControls
         public UC_Productos()
         {
             InitializeComponent();
-            CargarTablaProduct("");
+            CargarTablaProduct();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
-            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
             //dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
@@ -33,21 +34,22 @@ namespace INASOFT_3._0.UserControls
         }
 
         //Cargar el dataGridView
-        public void CargarTablaProduct(string dato)
+        public void CargarTablaProduct()
         {
             CtrlProductos _ctrlProductos = new CtrlProductos();
-            dataGridView1.DataSource = _ctrlProductos.CargarProductos(dato);
+            dataGridView1.DataSource = _ctrlProductos.CargarProductos();
         }
 
         //Buscador de productos
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            CargarTablaProduct(txtSearch.Text);
+            CtrlProductos _ctrlProductos = new CtrlProductos();
+            dataGridView1.DataSource = _ctrlProductos.BuscarProducto(txtSearch.Text);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ADDEDIT frm = new ADDEDIT();
+            Agregar_Producto frm = new Agregar_Producto();
             frm.ShowDialog();
         }
 
@@ -63,92 +65,6 @@ namespace INASOFT_3._0.UserControls
             lbProveedor.Text = "...";
         }
 
-        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (this.dataGridView1.Columns[e.ColumnIndex].Index == 3)
-            {
-                try
-                {
-                    if (e.Value.GetType() != typeof(System.DBNull))
-                    {
-                        if (Convert.ToInt32(e.Value) > 0)
-                        {
-                            e.CellStyle.BackColor = Color.Green;
-                            e.CellStyle.ForeColor = Color.White;
-                        }
-                        else
-                        {
-                            e.CellStyle.BackColor = Color.Red;
-                            e.CellStyle.ForeColor = Color.White;
-                        }
-                    }
-                }
-                catch (NullReferenceException ex)
-                {
-                    MessageBox.Show("" + ex);
-                }
-            }
-        }
-
-        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            CultureInfo culturaLocal = CultureInfo.CurrentCulture;
-            if (e.Button == MouseButtons.Left)
-            {
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1 && pos != null)
-                {
-                    txtID.Text = dataGridView1.Rows[pos].Cells[0].Value.ToString();
-                    lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
-                    lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
-                    if(int.Parse(dataGridView1.Rows[pos].Cells[3].Value.ToString()) > 0)
-                    {
-                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
-                        lbExistencias.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[3].Value.ToString();
-                        lbExistencias.ForeColor = Color.Red;
-                    }
-                    lbObservaciones.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
-                    lbProveedor.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
-                    groupBox_Detalle.Text = "Producto " + dataGridView1.Rows[pos].Cells[2].Value.ToString();
-
-                    //CASTEO DE DOBLE A MONEDA LOCAL
-                    string aux_precio1 = dataGridView1.Rows[pos].Cells[4].Value.ToString();
-                    string[] words1 = aux_precio1.Split(' ');
-                    double precio1 = Double.Parse(words1[1]);
-                    double p = Convert.ToDouble(precio1, culturaLocal);
-                    lbPrecioCompra.Text = p.ToString("C", culturaLocal);
-
-                    string aux_precio2 = dataGridView1.Rows[pos].Cells[5].Value.ToString();
-                    string[] words2 = aux_precio2.Split(' ');
-                    double precio2 = Double.Parse(words2[1]);
-                    double d = Convert.ToDouble(precio2, culturaLocal);
-                    lbPrecioVenta.Text = d.ToString("C", culturaLocal);
-
-                    string aux_precio = dataGridView1.Rows[pos].Cells[6].Value.ToString();
-                    string[] words = aux_precio.Split(' ');
-                    double precio_Total = Double.Parse(words[1]);
-                    double z = Convert.ToDouble(precio_Total, culturaLocal);
-                    lbPrecioTotal.Text = z.ToString("C", culturaLocal);
-                }
-            }
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
-                    menu.Items.Add("Editar").Name = "Editar" + pos;
-                }
-                menu.Show(dataGridView1, e.X, e.Y);
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
-            }
-        }
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
         {
             string id_pos = e.ClickedItem.Name.ToString();
@@ -181,31 +97,30 @@ namespace INASOFT_3._0.UserControls
                     string id = dataGridView1.Rows[id_pos].Cells[0].Value.ToString();
                     string codigo = dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
                     string nombre = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
-                    string existencia = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
+                    string estado = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
+                    string existencia = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
 
-                    string aux1 = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
+                    string aux1 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
                     string[] words1 = aux1.Split(' ');
                     string aux_PrecioCompra = words1[1];
                     string precio_compra = aux_PrecioCompra;
 
-                    string aux2 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
+                    string aux2 = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
                     string[] words2 = aux2.Split(' ');
                     string aux_PrecioVenta = words2[1];
 
                     string precio_venta = aux_PrecioVenta;
-                    string observaciones = dataGridView1.Rows[id_pos].Cells[7].Value.ToString();
-                    string proveedor = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
+                    string observaciones = dataGridView1.Rows[id_pos].Cells[8].Value.ToString();
                     
-                    ADDEDIT update = new ADDEDIT();
-                    update.labelTitle.Text = "Editar producto";
-                    update.txtId.Text = id;
+                    Ver_EditarProducto update = new Ver_EditarProducto();
+                    //update.labelTitle.Text = "Editar producto";
                     update.txtCodBarra.Text = codigo;
                     update.txtNameP.Text = nombre;
                     update.SpinExist.Value = int.Parse(existencia);
                     update.txtPrecioCompra.Text = precio_compra;
                     update.txtPrecioVenta.Text = precio_venta;
                     update.txtObservacion.Text = observaciones;
-                    update.cbProveedor.SelectedValue = proveedor;
+                    update.Cbx_Estados.SelectedItem = estado;
                     update.ShowDialog();
                 }
             }
@@ -231,7 +146,7 @@ namespace INASOFT_3._0.UserControls
                         if (bandera)
                         {
                             MessageDialogInfo.Show("Registro Eliminado con exito", "Aviso");
-                            CargarTablaProduct("");
+                            CargarTablaProduct();
                         }
                     }
                 }
@@ -253,10 +168,90 @@ namespace INASOFT_3._0.UserControls
 
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
-            CargarTablaProduct("");
+            CargarTablaProduct();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
+        }
+
+        private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dataGridView1.Columns[e.ColumnIndex].Index == 4)
+            {
+                try
+                {
+                    if (e.Value.GetType() != typeof(System.DBNull))
+                    {
+                        if (Convert.ToInt32(e.Value) > 0)
+                        {
+                            e.CellStyle.BackColor = Color.Green;
+                            e.CellStyle.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            e.CellStyle.BackColor = Color.Red;
+                            e.CellStyle.ForeColor = Color.White;
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    MessageBox.Show("" + ex);
+                }
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            CultureInfo culturaLocal = new CultureInfo("es-NI");
+            if (e.Button == MouseButtons.Left)
+            {
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1 && pos != null)
+                {
+                    txtID.Text = dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                    lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
+                    lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
+                    //lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
+                    if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) > 0)
+                    {
+                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
+                        lbExistencias.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
+                        lbExistencias.ForeColor = Color.Red;
+                    }
+                    lbObservaciones.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
+                    lbProveedor.Text = dataGridView1.Rows[pos].Cells[9].Value.ToString();
+                    groupBox_Detalle.Text = "Producto " + dataGridView1.Rows[pos].Cells[2].Value.ToString();
+
+                    lbPrecioCompra.Text = dataGridView1.Rows[pos].Cells[5].Value.ToString();                    
+
+                    lbPrecioVenta.Text = dataGridView1.Rows[pos].Cells[6].Value.ToString();
+
+                    lbPrecioTotal.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
+                }
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                    menu.Items.Add("Editar").Name = "Editar" + pos;
+                }
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

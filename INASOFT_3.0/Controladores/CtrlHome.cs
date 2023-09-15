@@ -1,4 +1,5 @@
 ﻿using INASOFT_3._0.Modelos;
+using iText.StyledXmlParser.Jsoup.Select;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -123,6 +125,47 @@ namespace INASOFT_3._0.Controladores
                 total = 0.00;
             }
             return total;
+        }
+        public DataTable Cargar_VentasXDias()
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), COUNT(ID) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable Cargar_ProductosMasVendidos()
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "SELECT Nombre_Prod AS 'Nombre producto', SUM(Cantidad) AS 'Cantidad Vendida' FROM Detalle_Factura WHERE cantidad > 0 GROUP BY Nombre_Prod  ORDER BY SUM(Cantidad) DESC LIMIT 5;";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
         }
     }
 }

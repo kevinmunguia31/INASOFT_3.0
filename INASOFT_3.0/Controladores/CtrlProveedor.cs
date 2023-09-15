@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,45 @@ namespace INASOFT_3._0.Controladores
             }
 
             return bandera;
+        }
+
+        public DataTable CargarProveddores()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT id, nombre FROM proveedor WHERE ID != 1 ORDER BY nombre ASC";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public string RUC(int id)
+        {
+            string ruc = "";
+            string SQL = "SELECT RUC FROM Proveedor WHERE ID = " + id + ";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                ruc = comando.ExecuteScalar().ToString();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                ruc = "";
+            }
+            return ruc;
         }
     }
 }

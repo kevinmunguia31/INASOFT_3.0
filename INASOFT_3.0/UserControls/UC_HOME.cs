@@ -1,9 +1,12 @@
-﻿using Guna.UI2.WinForms;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Guna.UI2.WinForms;
 using INASOFT_3._0.Modelos;
 using INASOFT_3._0.Properties;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +33,9 @@ namespace INASOFT_3._0.UserControls
             lbdate.Text = fecha;
             HayInternet();
             GraficoVentasDiarias();
-            Cargar_TotalxMes();
+            Cargar_VentasxDias();
+            Cargar_ProductosMasVendidos();
+            GraficaProductos();
             Grafica();
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
             lbCantInvoice.Text = ctrlHome.Total_Facturas_Realizads(fecha).ToString();
@@ -44,30 +49,46 @@ namespace INASOFT_3._0.UserControls
         }
 
         //Cargar el dataGridView
-        public void Cargar_TotalxMes()
+        /*public void Cargar_TotalxMes()
         {
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
             dataGridView1.DataSource = ctrlHome.Cargar_TotalxMes();
+        }*/
+
+        public void Cargar_VentasxDias()
+        {
+            Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
+            dataGridView1.DataSource = ctrlHomre.Cargar_VentasXDias();
+        }
+
+        public void Cargar_ProductosMasVendidos()
+        {
+            Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
+            dataGridView2.DataSource = ctrlHomre.Cargar_ProductosMasVendidos();
         }
 
         public void Grafica()
         {
-            Series series = new Series("Datos del DataGridView");
-            series.ChartType = SeriesChartType.Column; // Tipo de gráfico (puede ser diferente)
-
-            // Recorrer las filas del DataGridView
+            ArrayList fehca = new ArrayList();
+            ArrayList cantidad = new ArrayList();
             foreach (DataGridViewRow fila in dataGridView1.Rows)
             {
-                // Obtener el valor de la celda deseada (supongamos que es la columna 1)
-                if (fila.Cells[1].Value != null)
-                {
-                    double valor = Convert.ToDouble(fila.Cells[2].Value);
-                    series.Points.AddXY(fila.Index, valor); // Añadir el punto a la serie
-                }
+                fehca.Add(fila.Cells[0].Value);
+                cantidad.Add(fila.Cells[1].Value);
             }
+            chart2.Series[0].Points.DataBindXY(fehca,cantidad);
+        }
 
-            // Agregar la serie al Chart
-            chart2.Series.Add(series);
+        public void GraficaProductos()
+        {
+            ArrayList nombreProducto = new ArrayList();
+            ArrayList cantidad = new ArrayList();
+            foreach (DataGridViewRow fila in dataGridView2.Rows)
+            {
+                nombreProducto.Add(fila.Cells[0].Value);
+                cantidad.Add(fila.Cells[1].Value);
+            }
+            chart3.Series[0].Points.DataBindXY(nombreProducto, cantidad);
         }
         private void UC_HOME_Load(object sender, EventArgs e)
         {
@@ -124,6 +145,11 @@ namespace INASOFT_3._0.UserControls
                 pbWifi.Image = Resources.icons8_wifi_apagado_50;
                 return false;
             }
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

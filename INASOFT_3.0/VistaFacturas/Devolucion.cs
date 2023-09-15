@@ -152,52 +152,56 @@ namespace INASOFT_3._0.VistaFacturas
         {
             if (datagridView2.RowCount == 0)
             { 
-                MessageBox_Import.Show("No se ha almacenado ningún productos para devolver, necesita almenos ingresar uno", "Importante");
+                MessageBox_Import.Show("No se ha almacenado ningún productos para devolver, necesita al menos ingresar uno", "Importante");
             }
             else
             {
-                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                string hora = DateTime.Now.ToString("hh:mm:ss");
-                string Fecha_final = fecha + " " + hora;
-                string descripcion;
-
-                int cantidad = 0;
-
-                for (int i = 0; i < datagridView2.Rows.Count; i++)
+                DialogResult resultado = guna2MessageDialog1.Show("¿Está seguro que desea devolver estos productos?\n\n", "Devoluciòn");
+                if (resultado == DialogResult.Yes)
                 {
-                    cantidad += int.Parse(datagridView2.Rows[i].Cells[2].Value.ToString());
+                    string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
+                    string hora = DateTime.Now.ToString("hh:mm:ss");
+                    string Fecha_final = fecha + " " + hora;
+                    string descripcion;
+
+                    int cantidad = 0;
+
+                    for (int i = 0; i < datagridView2.Rows.Count; i++)
+                    {
+                        cantidad += int.Parse(datagridView2.Rows[i].Cells[2].Value.ToString());
+                    }
+
+                    if (txtDescripcion.Text == "")
+                    {
+                        descripcion = "El cliente " + lbClienteName.Text + " ha hecho una devolución de " + cantidad + " productos";
+                    }
+                    else
+                    {
+                        descripcion = txtDescripcion.Text;
+                    }
+
+                    Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
+                    bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, int.Parse(Txt_Factura.Text));
+
+                    int devolucion = ctrlDevolucion.ID_Devolucion();
+                    int factura = int.Parse(Txt_Factura.Text);
+
+                    for (int i = 0; i < datagridView2.Rows.Count; i++)
+                    {
+                        DataGridViewRow row = datagridView2.Rows[i];
+                        ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), devolucion, factura);
+                    }
+                    double Devolucion = double.Parse(lbTotalDevolucion.Text);
+                    int id_factura = int.Parse(Txt_Factura.Text);
+
+                    ctrlDevolucion.Actualizar_Factura(Devolucion, id_factura);
+                    UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                    uC_Factura.CargarFacturas();
+                    MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n", "Importante");
+
+                    this.Hide();
+                    this.Close();
                 }
-
-                if (txtDescripcion.Text == "")
-                {
-                    descripcion = "El cliente "+ lbClienteName.Text + " ha hecho una devolución de "+ cantidad + " productos";
-                }
-                else
-                {
-                    descripcion = txtDescripcion.Text;
-                }
-
-                Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
-                bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, int.Parse(Txt_Factura.Text));
-
-                int devolucion = ctrlDevolucion.ID_Devolucion();
-                int factura = int.Parse(Txt_Factura.Text);
-
-                for (int i = 0; i < datagridView2.Rows.Count; i++)
-                {
-                    DataGridViewRow row = datagridView2.Rows[i];
-                    ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), devolucion, factura);
-                }
-                double Devolucion = double.Parse(lbTotalDevolucion.Text);
-                int id_factura = int.Parse(Txt_Factura.Text);
-
-                ctrlDevolucion.Actualizar_Factura(Devolucion, id_factura);
-                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                uC_Factura.CargarFacturas();
-                MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n" , "Importante");
-
-                this.Hide();
-                this.Close();
             }
         }
 

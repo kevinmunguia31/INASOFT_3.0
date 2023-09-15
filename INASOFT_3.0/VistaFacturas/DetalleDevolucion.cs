@@ -65,7 +65,7 @@ namespace INASOFT_3._0.VistaFacturas
                         }
                         lbCodProdu.Text = datagridView1.Rows[pos].Cells[0].Value.ToString();
                         lbExistencias.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
-                        GroupB_Detalle.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
+                        //GroupB_Detalle.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
                     }
                 }
             }

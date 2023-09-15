@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
+using static iTextSharp.awt.geom.Point2D;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -118,10 +120,12 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Facturacion_Final(string estado, double descuento, double subtotal, double efectivo, double debe, int id_factura, string tipoPago, string tipoFactura)
+        public bool Facturacion_Final(string estado, double descuento, double subtotal, double efectivo, double debe, string tipoPago, string tipoFactura, int id_usuario, int id_cliente)
         {
             bool bandera = false;
-            string sql = "CALL Facturacion_Final('" + estado + "', " + descuento + ", " + subtotal + ", " + efectivo + ", " + debe + ", " + id_factura + ", '" + tipoPago + "', '" + tipoFactura + "');";
+            string sql = "CALL Facturacion_Final('"+ estado +"', "+ descuento +", "+ subtotal +", "+ efectivo+ ", "+ debe + ", '"+ tipoPago + "', '"+ tipoFactura + "', "+ id_usuario + ", "+ id_cliente +");";
+            
+            //string sql = "CALL Facturacion_Final('" + estado + "', " + descuento + ", " + subtotal + ", " + efectivo + ", " + debe + ", " + id_factura + ", '" + tipoPago + "', '" + tipoFactura + "');";
 
             try
             {

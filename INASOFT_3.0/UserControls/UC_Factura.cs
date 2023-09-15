@@ -221,6 +221,10 @@ namespace INASOFT_3._0.UserControls
                     {
                         MessageBox_Error.Show("Está factura ya está anulada", "Eror");
                     }
+                    if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Pendiente")
+                    {
+                        MessageBox_Error.Show("Está factura es al crédito, no se puede hacer una devoluciòn", "Eror");
+                    }
                     else
                     {
                         Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
@@ -246,7 +250,7 @@ namespace INASOFT_3._0.UserControls
 
                             frm.Lb_Subtotal.Text = (aux_total + aux_desc).ToString();
                             frm.Lb_TotalFacturado.Text = aux_total.ToString();
-                            frm.Lb_Descuento.Text = "- " + aux_desc.ToString();
+                            frm.Lb_Descuento.Text = aux_desc.ToString();
 
                             string aux3 = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
                             string[] words3 = aux3.Split(' ');
@@ -393,11 +397,6 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void Guna2Button6_Click(object sender, EventArgs e)
-        {
-            CargarFacturas();
-        }
-
         private void Guna2Button4_Click(object sender, EventArgs e)
         {
             Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
@@ -465,6 +464,11 @@ namespace INASOFT_3._0.UserControls
                 }
 
             }
+        }
+
+        private void guna2Button6_Click_1(object sender, EventArgs e)
+        {
+            CargarFacturas();
         }
     }
 }

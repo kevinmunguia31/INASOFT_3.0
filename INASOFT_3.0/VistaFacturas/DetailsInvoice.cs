@@ -88,13 +88,19 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-            printDocument1 = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            ps.PrinterName = cbImpresoras.Text;
-            printDocument1.PrinterSettings = ps;
-            printDocument1.PrintPage += Imprimir;
-            printDocument1.Print();
+            if(cbImpresoras.SelectedIndex == -1){
+                MessageBoxError.Show("Tiene que marcar una impresora", "Error");
+            }
+            else
+            {
+                //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                printDocument1 = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                ps.PrinterName = cbImpresoras.Text;
+                printDocument1.PrinterSettings = ps;
+                printDocument1.PrintPage += Imprimir;
+                printDocument1.Print();
+            }
         }
 
         private void Imprimir(object sender, PrintPageEventArgs e)
