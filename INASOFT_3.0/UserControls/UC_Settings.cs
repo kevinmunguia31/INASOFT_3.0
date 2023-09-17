@@ -165,9 +165,6 @@ namespace INASOFT_3._0.UserControls
             if (selecciona.ShowDialog() == DialogResult.OK)
             {
                 string ruta = selecciona.FileName;
-        
-
-                //string ruta = @"C:\Users\kevin\source\repos\INASOFTWARE\datos.sql";
 
                 MySqlConnection conexionBD = Conexion.getConexion();
                 MySqlCommand comando = new MySqlCommand();
@@ -178,6 +175,32 @@ namespace INASOFT_3._0.UserControls
                 bk.ExportToFile(ruta);
                 conexionBD.Close();
                 MessageDialoginfo.Show("Respaldo Generado con Exito!", "Aviso");
+            }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            string ruta = "";
+
+            OpenFileDialog selecciona = new OpenFileDialog();
+            selecciona.Filter = "Archivos SQL (*.sql)|*.sql";
+            selecciona.Title = "Seleccionar Respaldo";
+            selecciona.InitialDirectory = @"C:\";
+
+            if (selecciona.ShowDialog() == DialogResult.OK)
+            {
+                ruta = selecciona.FileName;
+                txtRuta.Text = ruta;
+
+                MySqlConnection conexionBD = Conexion.getConexion();
+                MySqlCommand comando = new MySqlCommand();
+                MySqlBackup respaldo = new MySqlBackup(comando);
+
+                comando.Connection = conexionBD;
+                conexionBD.Open();
+                respaldo.ImportFromFile(ruta);
+                conexionBD.Close();
+                MessageDialoginfo.Show("Respaldo se Restauro con Exito! ✅", "Aviso");
             }
         }
     }

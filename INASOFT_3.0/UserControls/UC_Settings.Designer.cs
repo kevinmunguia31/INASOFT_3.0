@@ -52,17 +52,24 @@ namespace INASOFT_3._0.UserControls
             this.label3 = new System.Windows.Forms.Label();
             this.listViewLogs = new System.Windows.Forms.ListView();
             this.backup = new System.Windows.Forms.TabPage();
+            this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBackup = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Bttn_Info = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.guna2TabControl1.SuspendLayout();
             this.infoNego.SuspendLayout();
             this.logs.SuspendLayout();
             this.backup.SuspendLayout();
+            this.guna2GroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -101,7 +108,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.Location = new System.Drawing.Point(7, 5);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1237, 574);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1027, 624);
             this.guna2GroupBox1.TabIndex = 1;
             this.guna2GroupBox1.Text = "Información del Negocio";
             // 
@@ -313,6 +320,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // guna2TabControl1
             // 
+            this.guna2TabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.guna2TabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -344,17 +352,16 @@ namespace INASOFT_3._0.UserControls
             this.guna2TabControl1.TabButtonTextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2TabControl1.TabIndex = 10;
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // infoNego
             // 
             this.infoNego.Controls.Add(this.guna2GroupBox1);
             this.infoNego.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoNego.Location = new System.Drawing.Point(4, 54);
+            this.infoNego.Location = new System.Drawing.Point(214, 4);
             this.infoNego.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.infoNego.Name = "infoNego";
             this.infoNego.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.infoNego.Size = new System.Drawing.Size(1432, 589);
+            this.infoNego.Size = new System.Drawing.Size(1222, 639);
             this.infoNego.TabIndex = 0;
             this.infoNego.Text = "Información del Negocio";
             this.infoNego.UseVisualStyleBackColor = true;
@@ -364,11 +371,11 @@ namespace INASOFT_3._0.UserControls
             this.logs.Controls.Add(this.label3);
             this.logs.Controls.Add(this.listViewLogs);
             this.logs.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logs.Location = new System.Drawing.Point(4, 54);
+            this.logs.Location = new System.Drawing.Point(214, 4);
             this.logs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logs.Name = "logs";
             this.logs.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.logs.Size = new System.Drawing.Size(1432, 589);
+            this.logs.Size = new System.Drawing.Size(1222, 639);
             this.logs.TabIndex = 1;
             this.logs.Text = "Logs";
             this.logs.UseVisualStyleBackColor = true;
@@ -395,22 +402,48 @@ namespace INASOFT_3._0.UserControls
             this.listViewLogs.Location = new System.Drawing.Point(27, 62);
             this.listViewLogs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewLogs.Name = "listViewLogs";
-            this.listViewLogs.Size = new System.Drawing.Size(1399, 522);
+            this.listViewLogs.Size = new System.Drawing.Size(1189, 522);
             this.listViewLogs.TabIndex = 0;
             this.listViewLogs.UseCompatibleStateImageBehavior = false;
             // 
             // backup
             // 
+            this.backup.Controls.Add(this.guna2GroupBox3);
             this.backup.Controls.Add(this.guna2GroupBox2);
             this.backup.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backup.Location = new System.Drawing.Point(4, 54);
+            this.backup.Location = new System.Drawing.Point(214, 4);
             this.backup.Name = "backup";
             this.backup.Padding = new System.Windows.Forms.Padding(3);
-            this.backup.Size = new System.Drawing.Size(1432, 589);
+            this.backup.Size = new System.Drawing.Size(1222, 639);
             this.backup.TabIndex = 2;
             this.backup.Text = "Respaldo";
             this.backup.ToolTipText = "Respaldo";
             this.backup.UseVisualStyleBackColor = true;
+            // 
+            // guna2GroupBox3
+            // 
+            this.guna2GroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2GroupBox3.Controls.Add(this.btnImport);
+            this.guna2GroupBox3.Controls.Add(this.txtRuta);
+            this.guna2GroupBox3.Controls.Add(this.pictureBox3);
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.Yellow;
+            this.guna2GroupBox3.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox3.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox3.Location = new System.Drawing.Point(6, 152);
+            this.guna2GroupBox3.Name = "guna2GroupBox3";
+            this.guna2GroupBox3.Size = new System.Drawing.Size(686, 159);
+            this.guna2GroupBox3.TabIndex = 2;
+            this.guna2GroupBox3.Text = "Importar Base de Datos del Software";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_database_daily_import_40;
+            this.pictureBox3.Location = new System.Drawing.Point(14, 52);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
             // 
             // guna2GroupBox2
             // 
@@ -418,18 +451,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox2.Controls.Add(this.pictureBox1);
             this.guna2GroupBox2.Controls.Add(this.btnBackup);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.LightGreen;
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(6, 6);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(475, 125);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(686, 125);
             this.guna2GroupBox2.TabIndex = 0;
             this.guna2GroupBox2.Text = "Exportar Base de Datos del Software";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_backup_66;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 44);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 41);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(66, 66);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -446,11 +479,11 @@ namespace INASOFT_3._0.UserControls
             this.btnBackup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnBackup.Font = new System.Drawing.Font("Poppins SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackup.ForeColor = System.Drawing.Color.White;
-            this.btnBackup.Location = new System.Drawing.Point(75, 49);
+            this.btnBackup.Location = new System.Drawing.Point(86, 52);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.ShadowDecoration.BorderRadius = 50;
             this.btnBackup.ShadowDecoration.Color = System.Drawing.Color.IndianRed;
-            this.btnBackup.Size = new System.Drawing.Size(387, 55);
+            this.btnBackup.Size = new System.Drawing.Size(549, 55);
             this.btnBackup.TabIndex = 0;
             this.btnBackup.Text = "RESPALDAR BASE DE DATOS";
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
@@ -485,6 +518,30 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Bttn_Info.UseVisualStyleBackColor = false;
             // 
+            // txtRuta
+            // 
+            this.txtRuta.Location = new System.Drawing.Point(86, 57);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(476, 33);
+            this.txtRuta.TabIndex = 2;
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.Color.Lime;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Location = new System.Drawing.Point(193, 101);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(271, 43);
+            this.btnImport.TabIndex = 3;
+            this.btnImport.Text = "Importar Base de Datos";
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // UC_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -506,6 +563,9 @@ namespace INASOFT_3._0.UserControls
             this.logs.ResumeLayout(false);
             this.logs.PerformLayout();
             this.backup.ResumeLayout(false);
+            this.guna2GroupBox3.ResumeLayout(false);
+            this.guna2GroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -544,5 +604,10 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnBackup;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.TextBox txtRuta;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -705,3 +705,4 @@ C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaF
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe.licenses
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySqlBackup.dll
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe.config
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ImportBD.resources

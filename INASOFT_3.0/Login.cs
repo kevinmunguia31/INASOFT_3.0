@@ -1,4 +1,5 @@
 ﻿using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -61,13 +62,21 @@ namespace INASOFT_3._0
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                guna2MessageWar.Show("No existe base de datos creada! :( \n" +
+                    "Exporte un respaldo en Configuraciones ⚙️");
             }
         }
 
         private void Guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            ImportBD importBD = new ImportBD();
+            importBD.Show();
         }
     }
 }

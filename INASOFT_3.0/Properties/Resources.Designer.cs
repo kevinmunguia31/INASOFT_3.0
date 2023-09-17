@@ -274,6 +274,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_database_daily_import_40 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-database-daily-import-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_document_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_document_20px", resourceCulture);
@@ -494,6 +504,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_return_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-return-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_return_purchase_40px {
             get {
                 object obj = ResourceManager.GetObject("icons8_return_purchase_40px", resourceCulture);
@@ -517,6 +537,16 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_search_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_search_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_settings_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-settings-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
