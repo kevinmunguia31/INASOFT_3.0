@@ -154,5 +154,31 @@ namespace INASOFT_3._0.UserControls
                 MessageBox.Show("Error:" + ex.Message);
             }
         }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog selecciona = new SaveFileDialog();
+            selecciona.Filter = "Archivo SQL (*.sql)| *.sql";
+            selecciona.InitialDirectory = @"C:\";
+            selecciona.Title = "Seleccionar Archivo de respaldo";
+
+            if (selecciona.ShowDialog() == DialogResult.OK)
+            {
+                string ruta = selecciona.FileName;
+        
+
+                //string ruta = @"C:\Users\kevin\source\repos\INASOFTWARE\datos.sql";
+
+                MySqlConnection conexionBD = Conexion.getConexion();
+                MySqlCommand comando = new MySqlCommand();
+                MySqlBackup bk = new MySqlBackup(comando);
+
+                comando.Connection = conexionBD;
+                conexionBD.Open();
+                bk.ExportToFile(ruta);
+                conexionBD.Close();
+                MessageDialoginfo.Show("Respaldo Generado con Exito!", "Aviso");
+            }
+        }
     }
 }
