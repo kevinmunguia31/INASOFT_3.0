@@ -10,6 +10,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using Document = iTextSharp.text.Document;
 using INASOFT_3._0.Modelos;
+using MySqlX.XDevAPI;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -426,10 +427,31 @@ namespace INASOFT_3._0.UserControls
         {
             InfoNegocio infoNegocio = new InfoNegocio();
             SaveFileDialog guardar = new SaveFileDialog();
-            guardar.FileName = "Inventario-Productos" + DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+            guardar.FileName = "Reporte de Ventas - " + DateTime.Now.ToString("ddMMyyyy") + ".pdf";
 
             string paginaHtml_texto = Properties.Resources.facturaTemplate.ToString();
             paginaHtml_texto = paginaHtml_texto.Replace("@NombreNegocio", infoNegocio.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Usuario", Sesion.nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            string filas = string.Empty;
+            double total = 0;
+            foreach (DataGridViewRow row in dataGridFatura.Rows)
+            {
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["Codigo"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Fecha"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Nombre cliente"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Total Final"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Debe"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Nombre empleado"].Value.ToString() + "</td>";
+                filas += "</tr>";
+                //total += double.Parse(row.Cells["Total Final"].Value.ToString());
+            }
+            paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", total.ToString());
+
 
             if (guardar.ShowDialog() == DialogResult.OK)
             {
