@@ -30,7 +30,7 @@ namespace INASOFT_3._0
         {
             InitializeComponent();
             CargarProveedor();
-            CargarProductos();
+            //CargarProductos();
             Cargar_Tabla();
 
             Lb_NombreUsuario.Text = Sesion.nombre;
@@ -57,10 +57,7 @@ namespace INASOFT_3._0
             {
                 groupBox7.Enabled = false;
             }
-            else
-            {
-                groupBox7.Enabled = true;
-            }
+            Cbx_Productos.Visible = false;
         }
 
         public void CargarProveedor()
@@ -74,13 +71,13 @@ namespace INASOFT_3._0
             cbProveedor.DisplayMember = "Nombre";
         }
 
-        private void CargarProductos()
+        private void CargarProductos(int id)
         {
             Cbx_Productos.DataSource = null;
             Cbx_Productos.Items.Clear();
 
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Cargar_NombreProducto();
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProducto_IDProveedor(id);
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }
@@ -192,8 +189,6 @@ namespace INASOFT_3._0
             txtPrecioCompra.Text = "";
             txtPrecioVenta.Text = "";
             txtObservacion.Text = "";
-            TxtBuscar_Productos.Text = "";
-            cbProveedor.SelectedIndex = -1;
             Cbx_Productos.SelectedIndex = -1;
             Txt_RUC.Text = "";
             Lb_CantStocks.Text = "...";
@@ -208,11 +203,7 @@ namespace INASOFT_3._0
             Clear();
             bloquearCampos(true);
             Cbx_Productos.Enabled = false;
-            TxtBuscar_Productos.Enabled = false;
-            button1.Enabled = false;
             Cbx_Productos.Visible = false;
-            TxtBuscar_Productos.Visible = false;
-            button1.Visible = false;
             txtCodBarra.Enabled = true;
             txtNameP.Enabled = true;
             txtPrecioCompra.Enabled = true;
@@ -226,11 +217,7 @@ namespace INASOFT_3._0
             Clear();
             bloquearCampos(true);
             Cbx_Productos.Enabled = true;
-            TxtBuscar_Productos.Enabled = true;
-            button1.Enabled = true;
             Cbx_Productos.Visible = true;
-            TxtBuscar_Productos.Visible = true;
-            button1.Visible = true;
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
             txtPrecioCompra.Enabled = false;
@@ -342,7 +329,6 @@ namespace INASOFT_3._0
                         newRow[0] = txtCodBarra.Text;
                         newRow[1] = txtNameP.Text;
                         newRow[2] = SpinExist.Value.ToString();
-
                         newRow[3] = double.Parse(txtPrecioCompra.Text);
                         newRow[4] = double.Parse(txtPrecioVenta.Text);
                         newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());                        
@@ -378,22 +364,14 @@ namespace INASOFT_3._0
             bloquearCampos(false);
             Rbtn_ActualizarProducto.Checked = false;
             Rbtn_NuevoProducto.Checked = false;
-        }
-
-        private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
-        {
-            Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Buscar_NombreProducto(TxtBuscar_Productos.Text);
-            Cbx_Productos.ValueMember = "ID";
-            Cbx_Productos.DisplayMember = "Nombre";
+            Cbx_Productos.Visible = false;
+            cbProveedor.SelectedIndex = -1;
         }
 
         private void bloquearCampos(bool bandera)
         {
             GroupBox_Products.Enabled = bandera;
             Cbx_Productos.Enabled = bandera;
-            TxtBuscar_Productos.Enabled = bandera;
-            button1.Enabled = bandera;
         }
 
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
@@ -541,12 +519,15 @@ namespace INASOFT_3._0
                 if (cbProveedor.SelectedIndex == -1)
                 {
                     Clear();
+                    Cbx_Productos.Enabled = false;
                 }
                 else
                 {
                     int id = int.Parse(cbProveedor.SelectedValue.ToString());
                     Controladores.CtrlProveedor ctrlProveedor = new CtrlProveedor();
                     Txt_RUC.Text = ctrlProveedor.RUC(id);
+                    Cbx_Productos.Enabled = true;
+                    CargarProductos(id);
                 }
             }
             catch (Exception ex)

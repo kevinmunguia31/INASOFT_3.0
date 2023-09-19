@@ -65,6 +65,7 @@ namespace INASOFT_3._0
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Txt_IDProd = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.Lb_AuxDescIVA = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.Txt_IVACompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -109,8 +110,6 @@ namespace INASOFT_3._0
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Rbtn_ActualizarProducto = new System.Windows.Forms.RadioButton();
             this.Rbtn_NuevoProducto = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.TxtBuscar_Productos = new Guna.UI2.WinForms.Guna2TextBox();
             this.Cbx_Productos = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -121,7 +120,7 @@ namespace INASOFT_3._0
             this.MessageInformation = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.Lb_AuxDescIVA = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -240,7 +239,7 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(186, 21);
+            this.label1.Location = new System.Drawing.Point(368, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 22);
             this.label1.TabIndex = 6;
@@ -520,14 +519,15 @@ namespace INASOFT_3._0
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Controls.Add(this.Txt_IDProd);
             this.groupBox6.Controls.Add(this.groupBox7);
             this.groupBox6.Controls.Add(this.guna2GroupBox1);
             this.groupBox6.Controls.Add(this.GroupBox_Products);
             this.groupBox6.Controls.Add(this.groupBox1);
-            this.groupBox6.Controls.Add(this.button1);
-            this.groupBox6.Controls.Add(this.TxtBuscar_Productos);
             this.groupBox6.Controls.Add(this.Cbx_Productos);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.cbProveedor);
             this.groupBox6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(1, 30);
             this.groupBox6.Name = "groupBox6";
@@ -569,10 +569,8 @@ namespace INASOFT_3._0
             this.groupBox7.Controls.Add(this.Txt_DescuentoCompra);
             this.groupBox7.Controls.Add(this.Txt_RUC);
             this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Controls.Add(this.cbProveedor);
             this.groupBox7.Controls.Add(this.Txt_TotalCompra);
             this.groupBox7.Controls.Add(this.label20);
-            this.groupBox7.Controls.Add(this.label1);
             this.groupBox7.Controls.Add(this.Txt_Descripcion);
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.label19);
@@ -587,6 +585,17 @@ namespace INASOFT_3._0
             this.groupBox7.TabIndex = 88;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Detalles importantes de la compra";
+            // 
+            // Lb_AuxDescIVA
+            // 
+            this.Lb_AuxDescIVA.AutoSize = true;
+            this.Lb_AuxDescIVA.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_AuxDescIVA.ForeColor = System.Drawing.Color.Black;
+            this.Lb_AuxDescIVA.Location = new System.Drawing.Point(245, 282);
+            this.Lb_AuxDescIVA.Name = "Lb_AuxDescIVA";
+            this.Lb_AuxDescIVA.Size = new System.Drawing.Size(31, 22);
+            this.Lb_AuxDescIVA.TabIndex = 102;
+            this.Lb_AuxDescIVA.Text = "---";
             // 
             // label14
             // 
@@ -702,7 +711,7 @@ namespace INASOFT_3._0
             this.cbProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.IntegralHeight = false;
-            this.cbProveedor.Location = new System.Drawing.Point(186, 46);
+            this.cbProveedor.Location = new System.Drawing.Point(368, 39);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(201, 30);
             this.cbProveedor.TabIndex = 89;
@@ -1233,55 +1242,6 @@ namespace INASOFT_3._0
             this.Rbtn_NuevoProducto.UseVisualStyleBackColor = true;
             this.Rbtn_NuevoProducto.CheckedChanged += new System.EventHandler(this.Rbtn_TipoDolares_CheckedChanged);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(790, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 31);
-            this.button1.TabIndex = 84;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // TxtBuscar_Productos
-            // 
-            this.TxtBuscar_Productos.Animated = true;
-            this.TxtBuscar_Productos.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TxtBuscar_Productos.BackgroundImage = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
-            this.TxtBuscar_Productos.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TxtBuscar_Productos.BorderRadius = 5;
-            this.TxtBuscar_Productos.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.TxtBuscar_Productos.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtBuscar_Productos.DefaultText = "";
-            this.TxtBuscar_Productos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtBuscar_Productos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtBuscar_Productos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtBuscar_Productos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtBuscar_Productos.FillColor = System.Drawing.SystemColors.Window;
-            this.TxtBuscar_Productos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtBuscar_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscar_Productos.ForeColor = System.Drawing.Color.Black;
-            this.TxtBuscar_Productos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtBuscar_Productos.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
-            this.TxtBuscar_Productos.Location = new System.Drawing.Point(611, 24);
-            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TxtBuscar_Productos.Name = "TxtBuscar_Productos";
-            this.TxtBuscar_Productos.PasswordChar = '\0';
-            this.TxtBuscar_Productos.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.TxtBuscar_Productos.PlaceholderText = "Buscar productos";
-            this.TxtBuscar_Productos.SelectedText = "";
-            this.TxtBuscar_Productos.Size = new System.Drawing.Size(173, 30);
-            this.TxtBuscar_Productos.TabIndex = 83;
-            this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
-            // 
             // Cbx_Productos
             // 
             this.Cbx_Productos.BackColor = System.Drawing.SystemColors.Control;
@@ -1291,9 +1251,9 @@ namespace INASOFT_3._0
             this.Cbx_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Productos.FormattingEnabled = true;
             this.Cbx_Productos.IntegralHeight = false;
-            this.Cbx_Productos.Location = new System.Drawing.Point(359, 24);
+            this.Cbx_Productos.Location = new System.Drawing.Point(599, 40);
             this.Cbx_Productos.Name = "Cbx_Productos";
-            this.Cbx_Productos.Size = new System.Drawing.Size(246, 30);
+            this.Cbx_Productos.Size = new System.Drawing.Size(229, 30);
             this.Cbx_Productos.TabIndex = 82;
             this.Cbx_Productos.SelectedIndexChanged += new System.EventHandler(this.Cbx_Productos_SelectedIndexChanged);
             // 
@@ -1370,16 +1330,16 @@ namespace INASOFT_3._0
             this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             this.MessageDialogError.Text = null;
             // 
-            // Lb_AuxDescIVA
+            // label16
             // 
-            this.Lb_AuxDescIVA.AutoSize = true;
-            this.Lb_AuxDescIVA.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_AuxDescIVA.ForeColor = System.Drawing.Color.Black;
-            this.Lb_AuxDescIVA.Location = new System.Drawing.Point(245, 282);
-            this.Lb_AuxDescIVA.Name = "Lb_AuxDescIVA";
-            this.Lb_AuxDescIVA.Size = new System.Drawing.Size(31, 22);
-            this.Lb_AuxDescIVA.TabIndex = 102;
-            this.Lb_AuxDescIVA.Text = "---";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(595, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(76, 22);
+            this.label16.TabIndex = 97;
+            this.label16.Text = "Productos:";
             // 
             // Agregar_Producto
             // 
@@ -1405,6 +1365,7 @@ namespace INASOFT_3._0
             this.groupBox4.PerformLayout();
             this.guna2GroupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1461,8 +1422,6 @@ namespace INASOFT_3._0
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label Lb_NombreUsuario;
         private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.Button button1;
-        public Guna.UI2.WinForms.Guna2TextBox TxtBuscar_Productos;
         private System.Windows.Forms.ComboBox Cbx_Productos;
         private System.Windows.Forms.GroupBox GroupBox_Products;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1517,5 +1476,6 @@ namespace INASOFT_3._0
         public Guna.UI2.WinForms.Guna2TextBox Txt_IVACompra;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label Lb_AuxDescIVA;
+        private System.Windows.Forms.Label label16;
     }
 }

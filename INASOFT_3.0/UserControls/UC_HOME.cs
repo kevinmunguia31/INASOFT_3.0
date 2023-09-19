@@ -76,7 +76,7 @@ namespace INASOFT_3._0.UserControls
                 fehca.Add(fila.Cells[0].Value);
                 cantidad.Add(fila.Cells[1].Value);
             }
-            chart2.Series[0].Points.DataBindXY(fehca,cantidad);
+            chart2.Series[0].Points.DataBindXY(fehca, cantidad);
         }
 
         public void GraficaProductos()
@@ -136,7 +136,7 @@ namespace INASOFT_3._0.UserControls
                 lbCN.Text = "Online";
                 pbWifi.Image = Resources.icons8_wifi_50;
                 return true;
-                
+
             }
             catch
             {
@@ -150,6 +150,22 @@ namespace INASOFT_3._0.UserControls
         private void chart2_Click(object sender, EventArgs e)
         {
 
+        }
+        private int imagenNumber = 1;
+
+        private void LoadNextImagen()
+        {
+            if(imagenNumber == 6)
+            {
+                imagenNumber = 1;
+            }
+            PictureBox_Slider.ImageLocation = string.Format(@"Imag\{0}.jpg", imagenNumber);
+            imagenNumber++;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            LoadNextImagen();
         }
     }
 }

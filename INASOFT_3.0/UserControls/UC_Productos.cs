@@ -22,15 +22,28 @@ namespace INASOFT_3._0.UserControls
         {
             InitializeComponent();
             CargarTablaProduct();
+            Cargar_Compras();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
             dataGridView1.Columns[10].Visible = false;
-            //dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView2.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
             }
+            foreach (DataGridViewBand band in dataGridView2.Columns)
+            {
+                band.ReadOnly = true;
+            }
+        }
+
+        public void Cargar_Compras()
+        {
+            Controladores.CtrlCompras ctrlCompras = new Controladores.CtrlCompras();
+            dataGridView2.DataSource = ctrlCompras.CargarCompras();
         }
 
         //Cargar el dataGridView

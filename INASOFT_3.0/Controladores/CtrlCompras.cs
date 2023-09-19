@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,26 @@ namespace INASOFT_3._0.Controladores
 {
     internal class CtrlCompras
     {
+        public DataTable CargarCompras()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT * FROM Mostrar_Compras";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
         public bool Insertar_Compra(Compras compra)
         {
             bool bandera = false;
@@ -31,7 +52,6 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        
         public bool Productos_Comprados(Productos productos)
         {
             bool bandera = false;

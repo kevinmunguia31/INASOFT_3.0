@@ -497,7 +497,6 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.descargar;
             this.pictureBox1.Location = new System.Drawing.Point(100, 45);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";

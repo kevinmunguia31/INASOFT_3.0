@@ -55,6 +55,10 @@ namespace INASOFT_3._0.VistaFacturas
             }
             Cargar_Total();
             Txt_descuento.Enabled = false;
+
+            RBtn_AlContado.Checked = true;
+            Rbtn_TipoCordobas.Checked = true;
+            radioButton1.Checked = true;
         }
 
         public void Cargar_Total()

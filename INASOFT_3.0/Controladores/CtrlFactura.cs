@@ -325,5 +325,45 @@ namespace INASOFT_3._0.Controladores
             }
             return tabla;
         }
+        public double Total_Cancelado()
+        {
+            double total = 0.00;
+            string SQL = "SELECT CASE WHEN SUM(Total_Final) IS NULL THEN '0' ELSE SUM(Total_Final) END 'Total' FROM Facturas WHERE Estado = 'Cancelado';";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                total = Convert.ToDouble(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                total = 0.00;
+            }
+            return total;
+        }
+
+        public double Total_Pendiente()
+        {
+            double total = 0.00;
+            string SQL = "SELECT CASE WHEN SUM(Efectivo) IS NULL THEN '0' ELSE SUM(Efectivo) END 'Total' FROM Facturas WHERE Estado = 'Pendiente';";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                total = Convert.ToDouble(comando.ExecuteScalar());
+                
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                total = 0.00;
+            }
+            return total;
+        }
     }
 }

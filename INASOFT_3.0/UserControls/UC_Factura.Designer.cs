@@ -77,6 +77,13 @@ namespace INASOFT_3._0.UserControls
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.Lb_TotalCredito = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Lb_TotalAlcontado = new System.Windows.Forms.Label();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,6 +92,9 @@ namespace INASOFT_3._0.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFatura)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2GroupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // MessageDialogInfo
@@ -670,11 +680,90 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button7.Text = "Mostrar todas las facturas";
             this.guna2Button7.Click += new System.EventHandler(this.Guna2Button7_Click);
             // 
+            // guna2GroupBox5
+            // 
+            this.guna2GroupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GroupBox5.Controls.Add(this.pictureBox2);
+            this.guna2GroupBox5.Controls.Add(this.groupBox4);
+            this.guna2GroupBox5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox5.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox5.Location = new System.Drawing.Point(1034, 471);
+            this.guna2GroupBox5.Name = "guna2GroupBox5";
+            this.guna2GroupBox5.Size = new System.Drawing.Size(363, 107);
+            this.guna2GroupBox5.TabIndex = 102;
+            this.guna2GroupBox5.Text = "          Datos generales";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 87;
+            this.pictureBox2.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.Lb_TotalCredito);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.Lb_TotalAlcontado);
+            this.groupBox4.Location = new System.Drawing.Point(3, 41);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(363, 66);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(9, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(153, 23);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Total Fact. Al contado:";
+            // 
+            // Lb_TotalCredito
+            // 
+            this.Lb_TotalCredito.AutoSize = true;
+            this.Lb_TotalCredito.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_TotalCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Lb_TotalCredito.Location = new System.Drawing.Point(144, 38);
+            this.Lb_TotalCredito.Name = "Lb_TotalCredito";
+            this.Lb_TotalCredito.Size = new System.Drawing.Size(18, 23);
+            this.Lb_TotalCredito.TabIndex = 4;
+            this.Lb_TotalCredito.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(9, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(131, 23);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Total Fact. Crédito:";
+            // 
+            // Lb_TotalAlcontado
+            // 
+            this.Lb_TotalAlcontado.AutoSize = true;
+            this.Lb_TotalAlcontado.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_TotalAlcontado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Lb_TotalAlcontado.Location = new System.Drawing.Point(168, 14);
+            this.Lb_TotalAlcontado.Name = "Lb_TotalAlcontado";
+            this.Lb_TotalAlcontado.Size = new System.Drawing.Size(18, 23);
+            this.Lb_TotalAlcontado.TabIndex = 1;
+            this.Lb_TotalAlcontado.Text = "0";
+            // 
             // UC_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.guna2GroupBox5);
             this.Controls.Add(this.guna2Button7);
             this.Controls.Add(this.guna2GroupBox3);
             this.Controls.Add(this.guna2Button6);
@@ -697,6 +786,10 @@ namespace INASOFT_3._0.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFatura)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2GroupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -746,5 +839,12 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private Guna.UI2.WinForms.Guna2Button guna2Button7;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox5;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label Lb_TotalCredito;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label Lb_TotalAlcontado;
     }
 }

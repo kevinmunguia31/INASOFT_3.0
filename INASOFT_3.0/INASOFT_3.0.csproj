@@ -623,5 +623,14 @@
   <ItemGroup>
     <None Include="Resources\icons8-return-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OIP %281%29.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imag\OIP %281%29.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Imag\1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

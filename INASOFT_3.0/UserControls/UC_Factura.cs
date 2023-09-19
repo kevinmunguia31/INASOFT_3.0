@@ -11,16 +11,23 @@ using iTextSharp.tool.xml;
 using Document = iTextSharp.text.Document;
 using INASOFT_3._0.Modelos;
 using MySqlX.XDevAPI;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DevExpress.XtraCharts;
+using System.Globalization;
 
 namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Factura : UserControl
     {
         //public DataGridViewButtonColumn GB = new DataGridViewButtonColumn();
+        CultureInfo culturaNicaragua = new CultureInfo("es-NI");
         public UC_Factura()
         {
             InitializeComponent();
             CargarFacturas();
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            Lb_TotalAlcontado.Text = string.Format(culturaNicaragua, "{0:C}", ctrlFactura.Total_Cancelado());
+            Lb_TotalCredito.Text = string.Format(culturaNicaragua, "{0:C}", ctrlFactura.Total_Pendiente());
             foreach (DataGridViewBand band in dataGridFatura.Columns)
             {
                 band.ReadOnly = true;
@@ -435,7 +442,7 @@ namespace INASOFT_3._0.UserControls
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
             string filas = string.Empty;
-            double total = 0;
+            double Total = 0.00;
             foreach (DataGridViewRow row in dataGridFatura.Rows)
             {
                 filas += "<tr>";
@@ -447,10 +454,25 @@ namespace INASOFT_3._0.UserControls
                 filas += "<td>" + row.Cells["Debe"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Nombre empleado"].Value.ToString() + "</td>";
                 filas += "</tr>";
+
                 //total += double.Parse(row.Cells["Total Final"].Value.ToString());
             }
+            if (dataGridFatura.RowCount == 0)
+            {
+                Total = 0.00;
+            }
+            else
+            {
+                for (int i = 0; i < dataGridFatura.Rows.Count; i++)
+                {
+                    string aux1 = dataGridFatura.Rows[i].Cells[9].Value.ToString();
+                    string[] words1 = aux1.Split('$');
+                    string aux_Total = words1[1];
+                    Total += double.Parse(aux_Total);
+                }
+            }
             paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
-            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", total.ToString());
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", string.Format(culturaNicaragua, "{0:C}", Total.ToString()));
 
 
             if (guardar.ShowDialog() == DialogResult.OK)
@@ -478,11 +500,11 @@ namespace INASOFT_3._0.UserControls
                     {
                         XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
                     }
-                    MessageBox.Show("Exportando Facturas a PDF.....\n" +
+                    MessageBox_Import.Show("Exportando Facturas a PDF.....\n" +
                         "Espere un momento.....", "Exportando a PDF");
                     pdfDoc.Close();
                     stream.Close();
-                    MessageBox.Show("Inventario Exportado a PDF", "Exportando a PDF");
+                    MessageBox_Ok.Show("Inventario Exportado a PDF", "Exportando a PDF");
                 }
 
             }

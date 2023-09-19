@@ -157,6 +157,27 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable Cargar_NombreProducto_IDProveedor(int idProveedor)
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT a.ID, a.Nombre FROM Productos a INNER JOIN Detalle_Compra b ON a.ID_DetalleCompra = b.ID INNER JOIN Compras c ON b.ID_Compra = c.ID WHERE c.ID_Proveedor = "+ idProveedor +";";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+
+        }
         public DataTable Buscar_NombreProducto(string dato)
         {
             DataTable dt = new DataTable();
@@ -302,14 +323,14 @@ namespace INASOFT_3._0.Controladores
         public string TotalProductos()
         {
             string total = "";
-            string SQL = "SELECT count(*) FROM productos";
+            string SQL = "SELECT CASE WHEN COUNT(*) IS NULL THEN '0' ELSE COUNT(*)  END 'Cantidad de productos' FROM productos;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                double aux = Convert.ToInt32(comando.ExecuteScalar());
+                double aux = Convert.ToDouble(comando.ExecuteScalar());
                 total = aux.ToString();
             }
             catch (MySqlException ex)
