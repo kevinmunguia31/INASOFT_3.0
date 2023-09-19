@@ -24,6 +24,7 @@ namespace INASOFT_3._0
     {
         public DataTable dataTable = new DataTable();
         CultureInfo culturaNicaragua = new CultureInfo("es-NI");
+        protected double aux_DescIVA;
 
         public Agregar_Producto()
         {
@@ -36,17 +37,13 @@ namespace INASOFT_3._0
             Txt_RUC.Enabled = false;
             Txt_TotalCompra.Enabled = false;
 
-            datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "", "", "");
+            datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[7].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
 
             datagridView2.Columns[6].Visible = false;
             datagridView2.Columns[7].Visible = false;
-            datagridView2.Columns[8].Visible = false;
-            datagridView2.Columns[9].Visible = false;
 
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
@@ -55,6 +52,15 @@ namespace INASOFT_3._0
             Cargar_Total();
             Clear();
             bloquearCampos(false);
+
+            if (dataGridView1.RowCount == 0)
+            {
+                groupBox7.Enabled = false;
+            }
+            else
+            {
+                groupBox7.Enabled = true;
+            }
         }
 
         public void CargarProveedor()
@@ -98,8 +104,6 @@ namespace INASOFT_3._0
                 datagridView2.Rows[0].Cells[5].Value = numeroRedondeado;
                 datagridView2.Rows[0].Cells[6].Value = "";
                 datagridView2.Rows[0].Cells[7].Value = "";
-                datagridView2.Rows[0].Cells[8].Value = "";
-                datagridView2.Rows[0].Cells[9].Value = "";
             }
             catch (Exception ex)
             {
@@ -128,8 +132,6 @@ namespace INASOFT_3._0
             dataTable.Columns.Add("Precio Venta");
             dataTable.Columns.Add("Total");
             dataTable.Columns.Add("ID");
-            dataTable.Columns.Add("IVA");
-            dataTable.Columns.Add("Descuento");
             dataTable.Columns.Add("Observación");
 
             dataGridView1.DataSource = dataTable;
@@ -195,8 +197,8 @@ namespace INASOFT_3._0
             Cbx_Productos.SelectedIndex = -1;
             Txt_RUC.Text = "";
             Lb_CantStocks.Text = "...";
-            Txt_IVA.Text = "";
-            Txt_DescuentoProd.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
 
             Txt_IDProd.Text = "";
         }
@@ -214,8 +216,7 @@ namespace INASOFT_3._0
             txtCodBarra.Enabled = true;
             txtNameP.Enabled = true;
             txtPrecioCompra.Enabled = true;
-            Rbtn_ActualizarProducto.Checked = false;
-            Rbtn_NuevoProducto.Checked = true;
+            GroupBox_CambioProd.Enabled = false;
 
             Txt_IDProd.Text = "0";
         }
@@ -233,6 +234,7 @@ namespace INASOFT_3._0
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
             txtPrecioCompra.Enabled = false;
+            GroupBox_CambioProd.Enabled = true;
             Txt_IDProd.Text = "";
         }
 
@@ -289,8 +291,6 @@ namespace INASOFT_3._0
         private void Btn_AddProducto_Click(object sender, EventArgs e)
         {
             bool seRepite = false;
-            double descuento = 0.00;
-            double iva = 0.00;
 
             if (txtCodBarra.Text == "" || txtNameP.Text == "")
             {
@@ -343,34 +343,10 @@ namespace INASOFT_3._0
                         newRow[1] = txtNameP.Text;
                         newRow[2] = SpinExist.Value.ToString();
 
-                        string aux1 = Lb_PrecioDescIVA.Text;
-                        string[] words1 = aux1.Split('$');
-                        string aux_PrecioCompra = words1[1];
-
-                        newRow[3] = double.Parse(aux_PrecioCompra);
+                        newRow[3] = double.Parse(txtPrecioCompra.Text);
                         newRow[4] = double.Parse(txtPrecioVenta.Text);
                         newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());                        
                         newRow[6] = Txt_IDProd.Text;
-                        if (Txt_IVA.Text == "")
-                        {
-                            iva = 0.00;
-                        }
-                        else
-                        {
-                            iva = double.Parse(Txt_IVA.Text);
-                        }
-                        newRow[7] = iva;
-
-                        if (Txt_DescuentoProd.Text == "")
-                        {
-                            descuento = 0.00;
-                        }
-                        else
-                        {
-                            descuento = double.Parse(Txt_DescuentoProd.Text);
-                        }
-                        newRow[8] = descuento;
-
                         if (txtObservacion.Text == "")
                         {
                             txtObservacion.Text = "Compra del producto " + txtNameP.Text;
@@ -379,18 +355,29 @@ namespace INASOFT_3._0
                         {
                             txtObservacion.Text = txtObservacion.Text;
                         }
-                        newRow[9] = txtObservacion.Text;
+                        newRow[7] = txtObservacion.Text;
 
                         dataTable.Rows.Add(newRow);
 
                         dataGridView1.DataSource = dataTable;
                         Cargar_Total();
                         Subtotal();
+
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            groupBox7.Enabled = false;
+                        }
+                        else
+                        {
+                            groupBox7.Enabled = true;
+                        }
                     }
                 }
             }
             Clear();
-            bloquearCampos(false);            
+            bloquearCampos(false);
+            Rbtn_ActualizarProducto.Checked = false;
+            Rbtn_NuevoProducto.Checked = false;
         }
 
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
@@ -401,101 +388,12 @@ namespace INASOFT_3._0
             Cbx_Productos.DisplayMember = "Nombre";
         }
 
-        private void txtPrecioCompra_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                CultureInfo culturaNicaragua = new CultureInfo("es-NI");
-                if (txtPrecioCompra.Text == "")
-                {
-                    Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", 0.00);
-                }
-                else
-                {
-                    Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", decimal.Parse(txtPrecioCompra.Text));
-                }
-            }
-            catch (Exception ex)
-            {
-                txtPrecioCompra.Text = "";
-                Lb_PrecioDescIVA.Text = "...";
-            }
-        }
-
         private void bloquearCampos(bool bandera)
         {
             GroupBox_Products.Enabled = bandera;
             Cbx_Productos.Enabled = bandera;
             TxtBuscar_Productos.Enabled = bandera;
             button1.Enabled = bandera;
-        }
-
-        private void Txt_IVA_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Txt_IVA.Text == "")
-                {
-                    Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", decimal.Parse(txtPrecioCompra.Text));
-                }
-                else if (decimal.TryParse(Txt_IVA.Text, out decimal tasaIVA))
-                {
-                    tasaIVA = tasaIVA / 100;
-
-                    if (decimal.TryParse(txtPrecioCompra.Text, out decimal precioCompra))
-                    {
-                        decimal iva = precioCompra + (precioCompra * tasaIVA);
-
-                        Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", iva);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Precio de compra no válido");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Porcentaje de IVA no válido");
-                }
-            }
-            catch (Exception ex)
-            {
-                //Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", decimal.Parse(txtPrecioCompra.Text));
-            }
-        }
-
-        private void Txt_DescuentoProd_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Txt_DescuentoProd.Text == "")
-                {
-                    Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", decimal.Parse(txtPrecioCompra.Text));
-                }
-                else if (decimal.TryParse(Txt_DescuentoProd.Text, out decimal decuento))
-                {
-                    decuento = decuento / 100;
-
-                    if (decimal.TryParse(txtPrecioCompra.Text, out decimal precioCompra))
-                    {
-                        decimal desc = precioCompra - (precioCompra * decuento);
-
-                        Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", desc);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Precio de compra no válido");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Porcentaje de IVA no válido");
-                }
-            }
-            catch (Exception ex)
-            {
-                //Lb_PrecioDescIVA.Text = string.Format(culturaNicaragua, "{0:C}", decimal.Parse(txtPrecioCompra.Text));
-            }
         }
 
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
@@ -570,13 +468,14 @@ namespace INASOFT_3._0
             {
                 string tipo_pago = "";
                 string descuento = "";
+                string iva = "";
                 if (Rbtn_Dolares.Checked == true)
                 {
-                    tipo_pago = "Dólares";
+                    tipo_pago = "Transferencia";
                 }
                 if (Rbtn_Cordobas.Checked == true)
                 {
-                    tipo_pago = "Córdobas";
+                    tipo_pago = "Al contado";
                 }
                 //Insertar datos a las tablas
                 Modelos.Compras compras = new Modelos.Compras();
@@ -585,13 +484,23 @@ namespace INASOFT_3._0
                 compras.Subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
                 if (Txt_DescuentoCompra.Text == "")
                 {
-                    descuento = "0.00";
+                    descuento = "0";
                 }
                 else
                 {
                     descuento = Txt_DescuentoCompra.Text;
                 }
+
+                if (Txt_IVACompra.Text == "")
+                {
+                    iva = "0";
+                }
+                else
+                {
+                    iva = Txt_IVACompra.Text;
+                }
                 compras.Descuento = double.Parse(descuento);
+                compras.Iva = double.Parse(iva);
                 compras.Descripcion = Txt_Descripcion.Text;
                 compras.Tipo_pago = tipo_pago;
                 compras.Id_usuario = Sesion.id;
@@ -613,13 +522,11 @@ namespace INASOFT_3._0
                         productos.Nombre = row.Cells[1].Value.ToString();
                         productos.Existencias = int.Parse(row.Cells[2].Value.ToString());
                         productos.Precio_compra = double.Parse(row.Cells[3].Value.ToString());
-                        detalle_Compras.Iva = double.Parse(row.Cells[7].Value.ToString());
-                        detalle_Compras.Descuento = double.Parse(row.Cells[8].Value.ToString());
-                        detalle_Compras.Total = double.Parse(row.Cells[5].Value.ToString());
+                        productos.Precio_total = double.Parse(row.Cells[5].Value.ToString());
                         productos.Precio_venta = double.Parse(row.Cells[4].Value.ToString());
-                        productos.Observacion = row.Cells[9].Value.ToString();
+                        productos.Observacion = row.Cells[7].Value.ToString();
 
-                        ctrlCompras.Productos_Comprados(detalle_Compras, productos);
+                        ctrlCompras.Productos_Comprados(productos);
                     } 
                     MessageBox_Import.Show("Se ha realizado la compra de manera éxitosa", "Importante");
                     this.Close();
@@ -651,24 +558,28 @@ namespace INASOFT_3._0
         private void Txt_DescuentoCompra_TextChanged(object sender, EventArgs e)
         {
             double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
-            double total = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
+            double total = 0.00;
             double desc;
+
             try
             {
                 if (Txt_DescuentoCompra.Text == "")
                 {
                     desc = 0.00;
                     Txt_DescuentoCompra.Text = "";
-                    //Txt_TotalCompra.Text = subtotal.ToString();
                     Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", subtotal);
+                    //Lb_AuxDescIVA.Text = subtotal.ToString();
+                    aux_DescIVA = subtotal;
                 }
                 else
                 {
                     desc = (double.Parse(Txt_DescuentoCompra.Text) / 100);
+                    total = subtotal - (subtotal * desc);
 
-                    total = subtotal - (subtotal -(subtotal * desc));
-                    //Txt_TotalCompra.Text = total.ToString();
+                    // Formatea el total con descuento como moneda
                     Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", total);
+                    //Lb_AuxDescIVA.Text = total.ToString();
+                    aux_DescIVA = total;
                 }
             }
             catch (Exception ex)
@@ -683,6 +594,48 @@ namespace INASOFT_3._0
             ver_EditarProducto.GroupBox_EditarProd.Visible = false;
             ver_EditarProducto.GroupBox_VerProd.Visible = true;
             ver_EditarProducto.ShowDialog();
+        }
+
+        private void Txt_IVACompra_TextChanged(object sender, EventArgs e)
+        {
+            double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
+            double total = 0.00;
+            double iva;
+
+            try
+            {
+                if (Txt_IVACompra.Text == "")
+                {
+                    iva = 0.00;
+                    Txt_DescuentoCompra.Text = "";
+                    Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", subtotal);
+                    //Lb_AuxDescIVA.Text = subtotal.ToString();
+                    aux_DescIVA = subtotal;
+                }
+                else
+                {
+                    iva = (double.Parse(Txt_IVACompra.Text) / 100);
+                    total = subtotal + (subtotal * iva);
+
+                    // Formatea el total con descuento como moneda
+                    Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", total);
+                    //Lb_AuxDescIVA.Text = total.ToString();
+                    aux_DescIVA = total;
+                }
+            }
+            catch (Exception ex)
+            {
+                Txt_IVACompra.Text = "";
+            }
+        }
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPrecioCompra.Enabled = false;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPrecioCompra.Enabled = true;
         }
     }
 }

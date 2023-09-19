@@ -11,6 +11,7 @@ namespace INASOFT_3._0.Modelos
         private int id;
         private string codigo;
         private string nombre;
+        private string estado;
         private int existencias;
         private double precio_compra;
         private double precio_venta;
@@ -30,5 +31,6 @@ namespace INASOFT_3._0.Modelos
         public string Observacion { get => observacion; set => observacion = value; }
         public int Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
         public string Nombre_proveedor { get => nombre_proveedor; set => nombre_proveedor = value; }
+        public string Estado { get => estado; set => estado = value; }
     }
 }

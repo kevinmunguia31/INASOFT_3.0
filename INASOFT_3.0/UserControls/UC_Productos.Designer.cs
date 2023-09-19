@@ -43,7 +43,6 @@ namespace INASOFT_3._0.UserControls
             this.lbCapital = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lbCantiTota = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.MessageDialog = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
@@ -92,6 +91,7 @@ namespace INASOFT_3._0.UserControls
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -141,10 +141,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.lbCapital);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.lbCantiTota);
-            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Location = new System.Drawing.Point(0, 41);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(247, 153);
@@ -156,7 +156,7 @@ namespace INASOFT_3._0.UserControls
             this.lbCapital.AutoSize = true;
             this.lbCapital.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCapital.Location = new System.Drawing.Point(118, 92);
+            this.lbCapital.Location = new System.Drawing.Point(143, 89);
             this.lbCapital.Name = "lbCapital";
             this.lbCapital.Size = new System.Drawing.Size(22, 28);
             this.lbCapital.TabIndex = 4;
@@ -166,7 +166,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 92);
+            this.label12.Location = new System.Drawing.Point(33, 92);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(117, 25);
             this.label12.TabIndex = 2;
@@ -177,21 +177,11 @@ namespace INASOFT_3._0.UserControls
             this.lbCantiTota.AutoSize = true;
             this.lbCantiTota.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCantiTota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCantiTota.Location = new System.Drawing.Point(150, 27);
+            this.lbCantiTota.Location = new System.Drawing.Point(160, 27);
             this.lbCantiTota.Name = "lbCantiTota";
             this.lbCantiTota.Size = new System.Drawing.Size(22, 28);
             this.lbCantiTota.TabIndex = 1;
             this.lbCantiTota.Text = "0";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(147, 25);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Total de Productos:";
             // 
             // MessageDialog
             // 
@@ -237,7 +227,6 @@ namespace INASOFT_3._0.UserControls
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_document_20px;
             this.pictureBox3.Location = new System.Drawing.Point(3, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 33);
@@ -369,7 +358,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_20px;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label8.Location = new System.Drawing.Point(728, 73);
             this.label8.Name = "label8";
@@ -381,7 +369,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Image = global::INASOFT_3._0.Properties.Resources.icons8_invisible_20px;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label9.Location = new System.Drawing.Point(728, 28);
             this.label9.Name = "label9";
@@ -393,7 +380,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label10.Location = new System.Drawing.Point(342, 117);
             this.label10.Name = "label10";
@@ -405,7 +391,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label6.Location = new System.Drawing.Point(342, 72);
             this.label6.Name = "label6";
@@ -417,7 +402,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Image = global::INASOFT_3._0.Properties.Resources.icons8_cash_20px;
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label7.Location = new System.Drawing.Point(342, 29);
             this.label7.Name = "label7";
@@ -429,7 +413,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Image = global::INASOFT_3._0.Properties.Resources.icons8_load_resume_template_20px1;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label4.Location = new System.Drawing.Point(6, 117);
             this.label4.Name = "label4";
@@ -441,7 +424,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_20px;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.Location = new System.Drawing.Point(6, 72);
             this.label3.Name = "label3";
@@ -453,7 +435,6 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Image = global::INASOFT_3._0.Properties.Resources.icons8_shift_20px;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label2.Location = new System.Drawing.Point(6, 29);
             this.label2.Name = "label2";
@@ -477,7 +458,6 @@ namespace INASOFT_3._0.UserControls
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_product_20px_21;
             this.pictureBox2.Location = new System.Drawing.Point(3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 33);
@@ -545,7 +525,6 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2Button6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2Button6.Location = new System.Drawing.Point(979, 8);
@@ -558,7 +537,6 @@ namespace INASOFT_3._0.UserControls
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
             this.pictureBox1.Location = new System.Drawing.Point(4, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -637,6 +615,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2TabControl1.Controls.Add(this.Inv);
             this.guna2TabControl1.Controls.Add(this.Compras);
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2TabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.ItemSize = new System.Drawing.Size(210, 50);
             this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
             this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -674,7 +653,7 @@ namespace INASOFT_3._0.UserControls
             this.Inv.Controls.Add(this.guna2GroupBox1);
             this.Inv.Controls.Add(this.Bttn_Info);
             this.Inv.Controls.Add(this.txtSearch);
-            this.Inv.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Inv.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Inv.Location = new System.Drawing.Point(4, 54);
             this.Inv.Margin = new System.Windows.Forms.Padding(2);
             this.Inv.Name = "Inv";
@@ -706,7 +685,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -717,7 +696,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(3, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 21);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -728,7 +707,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1332, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(1332, 256);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting_1);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -767,7 +746,6 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2Button1.Location = new System.Drawing.Point(840, 3);
@@ -851,7 +829,6 @@ namespace INASOFT_3._0.UserControls
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_50px;
             this.pictureBox4.Location = new System.Drawing.Point(4, 4);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
@@ -892,6 +869,16 @@ namespace INASOFT_3._0.UserControls
             // productosBindingSource
             // 
             this.productosBindingSource.DataSource = typeof(INASOFT_3._0.Modelos.Productos);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(15, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(150, 25);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Cant. de Productos:";
             // 
             // UC_Productos
             // 
@@ -934,7 +921,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.BindingSource productosBindingSource;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbCantiTota;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbCapital;
@@ -987,5 +973,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.DataGridView dataGridView2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

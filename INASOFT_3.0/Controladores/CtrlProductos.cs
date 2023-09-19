@@ -74,27 +74,6 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Insertar(Productos datos)
-        {
-            bool bandera = false;
-            string sql = "CALL Insertar_Producto('" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
-
-            MySqlConnection conexioBD = Conexion.getConexion();
-            conexioBD.Open();
-            try
-            { 
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                bandera = true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                bandera = false;
-            }
-            return bandera;
-        }
-
         public bool VerificarCodigo(int codigo)
         {
             bool bandera = false;
@@ -118,7 +97,7 @@ namespace INASOFT_3._0.Controladores
         public bool Actualizar(Productos datos)
         {
             bool bandera = false;
-            string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Codigo + "','" + datos.Nombre + "','" + datos.Existencias + "','" + datos.Precio_compra + "', '" + datos.Precio_venta + "', '" + datos.Observacion + "', '" + datos.Id_proveedor + "')";
+            string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Estado + "', " + datos.Existencias + ", " + datos.Precio_compra + ", " + datos.Precio_venta + ", " + datos.Observacion + ")";
 
             MySqlConnection conexioBD = Conexion.getConexion();
             conexioBD.Open();

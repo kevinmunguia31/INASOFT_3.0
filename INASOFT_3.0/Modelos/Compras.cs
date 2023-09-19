@@ -16,6 +16,7 @@ namespace INASOFT_3._0.Modelos
 		private string descripcion;
 		private double subtotal;
         private double descuento;
+        private double iva;
 		private double total;
 		private string tipo_pago;
 		private int id_usuario;
@@ -31,5 +32,6 @@ namespace INASOFT_3._0.Modelos
         public string Tipo_pago { get => tipo_pago; set => tipo_pago = value; }
         public int Id_usuario { get => id_usuario; set => id_usuario = value; }
         public int Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
+        public double Iva { get => iva; set => iva = value; }
     }
 }

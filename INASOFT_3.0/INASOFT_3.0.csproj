@@ -219,6 +219,11 @@
     </Compile>
     <Compile Include="Modelos\Compras.cs" />
     <Compile Include="Modelos\Detalle_Compras.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\Agregar_Producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,11 +264,6 @@
     <Compile Include="Modelos\Usuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UC_Clientes.cs">
       <SubType>UserControl</SubType>
     </Compile>

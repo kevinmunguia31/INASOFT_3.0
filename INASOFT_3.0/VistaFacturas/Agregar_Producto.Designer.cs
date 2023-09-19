@@ -48,8 +48,6 @@ namespace INASOFT_3._0
             this.txtObservacion = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNameP = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCodBarra = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SpinExist = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrecioVenta = new Guna.UI2.WinForms.Guna2TextBox();
@@ -67,6 +65,9 @@ namespace INASOFT_3._0
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Txt_IDProd = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Txt_IVACompra = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Txt_DescuentoCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.Txt_RUC = new System.Windows.Forms.Label();
@@ -93,23 +94,18 @@ namespace INASOFT_3._0
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox_Products = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.Txt_IVA = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.Txt_DescuentoProd = new Guna.UI2.WinForms.Guna2TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.SpinExist = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Lb_CantStocks = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GroupBox_CambioProd = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
-            this.Lb_PrecioDescIVA = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.Btn_AddProducto = new Guna.UI2.WinForms.Guna2Button();
-            this.Lb_CantStocks = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Rbtn_ActualizarProducto = new System.Windows.Forms.RadioButton();
             this.Rbtn_NuevoProducto = new System.Windows.Forms.RadioButton();
@@ -125,9 +121,9 @@ namespace INASOFT_3._0
             this.MessageInformation = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.Lb_AuxDescIVA = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -138,8 +134,10 @@ namespace INASOFT_3._0
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView2)).BeginInit();
             this.GroupBox_Products.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.GroupBox_CambioProd.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -158,7 +156,7 @@ namespace INASOFT_3._0
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1039, 36);
+            this.panel2.Size = new System.Drawing.Size(1011, 36);
             this.panel2.TabIndex = 1;
             // 
             // btnClose
@@ -171,9 +169,9 @@ namespace INASOFT_3._0
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(1004, 3);
+            this.btnClose.Location = new System.Drawing.Point(974, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 26);
+            this.btnClose.Size = new System.Drawing.Size(37, 26);
             this.btnClose.TabIndex = 2;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -242,7 +240,7 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(202, 21);
+            this.label1.Location = new System.Drawing.Point(186, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 22);
             this.label1.TabIndex = 6;
@@ -273,7 +271,7 @@ namespace INASOFT_3._0
             this.txtObservacion.PlaceholderText = "Observaciones";
             this.txtObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacion.SelectedText = "";
-            this.txtObservacion.Size = new System.Drawing.Size(235, 77);
+            this.txtObservacion.Size = new System.Drawing.Size(222, 54);
             this.txtObservacion.TabIndex = 5;
             // 
             // txtNameP
@@ -328,36 +326,6 @@ namespace INASOFT_3._0
             this.txtCodBarra.Size = new System.Drawing.Size(191, 30);
             this.txtCodBarra.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(463, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 22);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Cant. comprada:";
-            // 
-            // SpinExist
-            // 
-            this.SpinExist.BackColor = System.Drawing.SystemColors.Control;
-            this.SpinExist.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinExist.FillColor = System.Drawing.SystemColors.Control;
-            this.SpinExist.Font = new System.Drawing.Font("Poppins", 9F);
-            this.SpinExist.Location = new System.Drawing.Point(463, 155);
-            this.SpinExist.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SpinExist.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.SpinExist.Name = "SpinExist";
-            this.SpinExist.Size = new System.Drawing.Size(94, 30);
-            this.SpinExist.TabIndex = 3;
-            this.SpinExist.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.SpinExist.UpDownButtonForeColor = System.Drawing.Color.White;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -374,7 +342,7 @@ namespace INASOFT_3._0
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(463, 21);
+            this.label6.Location = new System.Drawing.Point(6, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 22);
             this.label6.TabIndex = 9;
@@ -423,7 +391,7 @@ namespace INASOFT_3._0
             this.txtPrecioCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrecioCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioCompra.IconLeft")));
-            this.txtPrecioCompra.Location = new System.Drawing.Point(463, 45);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(6, 99);
             this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.PasswordChar = '\0';
@@ -432,7 +400,6 @@ namespace INASOFT_3._0
             this.txtPrecioCompra.SelectedText = "";
             this.txtPrecioCompra.Size = new System.Drawing.Size(191, 30);
             this.txtPrecioCompra.TabIndex = 6;
-            this.txtPrecioCompra.TextChanged += new System.EventHandler(this.txtPrecioCompra_TextChanged);
             this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
             // Btn_RealizarCompra
@@ -446,7 +413,7 @@ namespace INASOFT_3._0
             this.Btn_RealizarCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_RealizarCompra.ForeColor = System.Drawing.Color.White;
             this.Btn_RealizarCompra.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RealizarCompra.Image")));
-            this.Btn_RealizarCompra.Location = new System.Drawing.Point(277, 282);
+            this.Btn_RealizarCompra.Location = new System.Drawing.Point(261, 333);
             this.Btn_RealizarCompra.Name = "Btn_RealizarCompra";
             this.Btn_RealizarCompra.Size = new System.Drawing.Size(137, 34);
             this.Btn_RealizarCompra.TabIndex = 4;
@@ -521,7 +488,7 @@ namespace INASOFT_3._0
             this.groupBox4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(666, 42);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(361, 51);
+            this.groupBox4.Size = new System.Drawing.Size(333, 51);
             this.groupBox4.TabIndex = 126;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Fecha de hoy";
@@ -546,7 +513,7 @@ namespace INASOFT_3._0
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(11, 99);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(1016, 651);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(989, 651);
             this.guna2GroupBox2.TabIndex = 127;
             this.guna2GroupBox2.Text = "Detalle de la compra";
             // 
@@ -564,7 +531,7 @@ namespace INASOFT_3._0
             this.groupBox6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(1, 30);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1015, 621);
+            this.groupBox6.Size = new System.Drawing.Size(987, 621);
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
             // 
@@ -582,7 +549,7 @@ namespace INASOFT_3._0
             this.Txt_IDProd.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_IDProd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_IDProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_IDProd.Location = new System.Drawing.Point(974, 14);
+            this.Txt_IDProd.Location = new System.Drawing.Point(942, 14);
             this.Txt_IDProd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_IDProd.Name = "Txt_IDProd";
             this.Txt_IDProd.PasswordChar = '\0';
@@ -594,6 +561,10 @@ namespace INASOFT_3._0
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.Lb_AuxDescIVA);
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.Txt_IVACompra);
+            this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.label10);
             this.groupBox7.Controls.Add(this.Txt_DescuentoCompra);
             this.groupBox7.Controls.Add(this.Txt_RUC);
@@ -610,19 +581,66 @@ namespace INASOFT_3._0
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.Btn_RealizarCompra);
             this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox7.Location = new System.Drawing.Point(584, 279);
+            this.groupBox7.Location = new System.Drawing.Point(583, 248);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(425, 327);
+            this.groupBox7.Size = new System.Drawing.Size(404, 373);
             this.groupBox7.TabIndex = 88;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Detalles importantes de la compra";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(78, 247);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(0, 23);
+            this.label14.TabIndex = 101;
+            // 
+            // Txt_IVACompra
+            // 
+            this.Txt_IVACompra.BackColor = System.Drawing.Color.Transparent;
+            this.Txt_IVACompra.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Txt_IVACompra.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Txt_IVACompra.DefaultText = "";
+            this.Txt_IVACompra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Txt_IVACompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Txt_IVACompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_IVACompra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_IVACompra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_IVACompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_IVACompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Txt_IVACompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_IVACompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_IVACompra.IconLeft")));
+            this.Txt_IVACompra.Location = new System.Drawing.Point(106, 244);
+            this.Txt_IVACompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_IVACompra.Name = "Txt_IVACompra";
+            this.Txt_IVACompra.PasswordChar = '\0';
+            this.Txt_IVACompra.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.Txt_IVACompra.PlaceholderText = "Ingrese el IVA";
+            this.Txt_IVACompra.SelectedText = "";
+            this.Txt_IVACompra.Size = new System.Drawing.Size(132, 26);
+            this.Txt_IVACompra.TabIndex = 100;
+            this.Txt_IVACompra.TextChanged += new System.EventHandler(this.Txt_IVACompra_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(48, 248);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 22);
+            this.label15.TabIndex = 99;
+            this.label15.Text = "IVA %:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(80, 251);
+            this.label10.Location = new System.Drawing.Point(78, 281);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 23);
             this.label10.TabIndex = 98;
@@ -642,12 +660,12 @@ namespace INASOFT_3._0
             this.Txt_DescuentoCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_DescuentoCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_DescuentoCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_DescuentoCompra.IconLeft")));
-            this.Txt_DescuentoCompra.Location = new System.Drawing.Point(108, 248);
+            this.Txt_DescuentoCompra.Location = new System.Drawing.Point(106, 278);
             this.Txt_DescuentoCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_DescuentoCompra.Name = "Txt_DescuentoCompra";
             this.Txt_DescuentoCompra.PasswordChar = '\0';
             this.Txt_DescuentoCompra.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_DescuentoCompra.PlaceholderText = "Descuento";
+            this.Txt_DescuentoCompra.PlaceholderText = "Ingrese el descuento";
             this.Txt_DescuentoCompra.SelectedText = "";
             this.Txt_DescuentoCompra.Size = new System.Drawing.Size(132, 26);
             this.Txt_DescuentoCompra.TabIndex = 97;
@@ -684,9 +702,9 @@ namespace INASOFT_3._0
             this.cbProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.IntegralHeight = false;
-            this.cbProveedor.Location = new System.Drawing.Point(202, 46);
+            this.cbProveedor.Location = new System.Drawing.Point(186, 46);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(212, 30);
+            this.cbProveedor.Size = new System.Drawing.Size(201, 30);
             this.cbProveedor.TabIndex = 89;
             this.cbProveedor.SelectedIndexChanged += new System.EventHandler(this.cbProveedor_SelectedIndexChanged_1);
             // 
@@ -706,7 +724,7 @@ namespace INASOFT_3._0
             this.Txt_TotalCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_TotalCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_TotalCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_TotalCompra.IconLeft")));
-            this.Txt_TotalCompra.Location = new System.Drawing.Point(108, 282);
+            this.Txt_TotalCompra.Location = new System.Drawing.Point(14, 336);
             this.Txt_TotalCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_TotalCompra.Name = "Txt_TotalCompra";
             this.Txt_TotalCompra.PasswordChar = '\0';
@@ -721,7 +739,7 @@ namespace INASOFT_3._0
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(55, 282);
+            this.label20.Location = new System.Drawing.Point(6, 310);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(45, 22);
             this.label20.TabIndex = 95;
@@ -743,16 +761,16 @@ namespace INASOFT_3._0
             this.Txt_Descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_Descripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_Descripcion.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_Descripcion.IconLeft")));
-            this.Txt_Descripcion.Location = new System.Drawing.Point(108, 171);
+            this.Txt_Descripcion.Location = new System.Drawing.Point(106, 171);
             this.Txt_Descripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_Descripcion.Multiline = true;
             this.Txt_Descripcion.Name = "Txt_Descripcion";
             this.Txt_Descripcion.PasswordChar = '\0';
             this.Txt_Descripcion.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_Descripcion.PlaceholderText = "Observaciones";
+            this.Txt_Descripcion.PlaceholderText = "Ingrese la referencia";
             this.Txt_Descripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Txt_Descripcion.SelectedText = "";
-            this.Txt_Descripcion.Size = new System.Drawing.Size(306, 65);
+            this.Txt_Descripcion.Size = new System.Drawing.Size(279, 65);
             this.Txt_Descripcion.TabIndex = 89;
             // 
             // label8
@@ -772,11 +790,11 @@ namespace INASOFT_3._0
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(15, 167);
+            this.label19.Location = new System.Drawing.Point(24, 167);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(87, 22);
+            this.label19.Size = new System.Drawing.Size(78, 22);
             this.label19.TabIndex = 89;
-            this.label19.Text = "Descripción:";
+            this.label19.Text = "Referencia:";
             // 
             // txt_NombreProveedor
             // 
@@ -801,7 +819,7 @@ namespace INASOFT_3._0
             this.txt_NombreProveedor.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txt_NombreProveedor.PlaceholderText = "Ingrese nombre del vendedor";
             this.txt_NombreProveedor.SelectedText = "";
-            this.txt_NombreProveedor.Size = new System.Drawing.Size(191, 30);
+            this.txt_NombreProveedor.Size = new System.Drawing.Size(173, 30);
             this.txt_NombreProveedor.TabIndex = 9;
             // 
             // label18
@@ -809,7 +827,7 @@ namespace INASOFT_3._0
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(8, 252);
+            this.label18.Location = new System.Drawing.Point(6, 282);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 22);
             this.label18.TabIndex = 93;
@@ -823,7 +841,7 @@ namespace INASOFT_3._0
             this.groupBox8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(10, 108);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(404, 56);
+            this.groupBox8.Size = new System.Drawing.Size(377, 56);
             this.groupBox8.TabIndex = 91;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Tipo de Pago";
@@ -832,12 +850,12 @@ namespace INASOFT_3._0
             // 
             this.Rbtn_Cordobas.AutoSize = true;
             this.Rbtn_Cordobas.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Cordobas.Location = new System.Drawing.Point(117, 23);
+            this.Rbtn_Cordobas.Location = new System.Drawing.Point(146, 23);
             this.Rbtn_Cordobas.Name = "Rbtn_Cordobas";
-            this.Rbtn_Cordobas.Size = new System.Drawing.Size(87, 26);
+            this.Rbtn_Cordobas.Size = new System.Drawing.Size(93, 26);
             this.Rbtn_Cordobas.TabIndex = 27;
             this.Rbtn_Cordobas.TabStop = true;
-            this.Rbtn_Cordobas.Text = "Córdobas";
+            this.Rbtn_Cordobas.Text = "Al contado";
             this.Rbtn_Cordobas.UseVisualStyleBackColor = true;
             // 
             // Rbtn_Dolares
@@ -846,10 +864,10 @@ namespace INASOFT_3._0
             this.Rbtn_Dolares.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rbtn_Dolares.Location = new System.Drawing.Point(6, 23);
             this.Rbtn_Dolares.Name = "Rbtn_Dolares";
-            this.Rbtn_Dolares.Size = new System.Drawing.Size(72, 26);
+            this.Rbtn_Dolares.Size = new System.Drawing.Size(108, 26);
             this.Rbtn_Dolares.TabIndex = 26;
             this.Rbtn_Dolares.TabStop = true;
-            this.Rbtn_Dolares.Text = "Dólares";
+            this.Rbtn_Dolares.Text = "Transferencia";
             this.Rbtn_Dolares.UseVisualStyleBackColor = true;
             // 
             // guna2GroupBox1
@@ -859,7 +877,7 @@ namespace INASOFT_3._0
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(10, 279);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(10, 248);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(568, 325);
             this.guna2GroupBox1.TabIndex = 87;
@@ -933,9 +951,7 @@ namespace INASOFT_3._0
             this.Column5,
             this.Column6,
             this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10});
+            this.Column8});
             this.datagridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.datagridView2.EnableHeadersVisualStyles = false;
             this.datagridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1007,172 +1023,141 @@ namespace INASOFT_3._0
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Column9";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Column10";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
             // GroupBox_Products
             // 
-            this.GroupBox_Products.Controls.Add(this.groupBox5);
+            this.GroupBox_Products.Controls.Add(this.groupBox9);
             this.GroupBox_Products.Controls.Add(this.groupBox2);
             this.GroupBox_Products.Controls.Add(this.button2);
-            this.GroupBox_Products.Controls.Add(this.Lb_PrecioDescIVA);
-            this.GroupBox_Products.Controls.Add(this.label14);
             this.GroupBox_Products.Controls.Add(this.Btn_AddProducto);
-            this.GroupBox_Products.Controls.Add(this.Lb_CantStocks);
-            this.GroupBox_Products.Controls.Add(this.label13);
             this.GroupBox_Products.Controls.Add(this.label4);
             this.GroupBox_Products.Controls.Add(this.txtNameP);
             this.GroupBox_Products.Controls.Add(this.txtCodBarra);
-            this.GroupBox_Products.Controls.Add(this.txtPrecioCompra);
             this.GroupBox_Products.Controls.Add(this.label5);
-            this.GroupBox_Products.Controls.Add(this.label2);
             this.GroupBox_Products.Controls.Add(this.txtPrecioVenta);
-            this.GroupBox_Products.Controls.Add(this.SpinExist);
             this.GroupBox_Products.Controls.Add(this.txtObservacion);
-            this.GroupBox_Products.Controls.Add(this.label6);
             this.GroupBox_Products.Controls.Add(this.label7);
             this.GroupBox_Products.Controls.Add(this.label3);
             this.GroupBox_Products.Location = new System.Drawing.Point(10, 70);
             this.GroupBox_Products.Name = "GroupBox_Products";
-            this.GroupBox_Products.Size = new System.Drawing.Size(999, 203);
+            this.GroupBox_Products.Size = new System.Drawing.Size(978, 172);
             this.GroupBox_Products.TabIndex = 86;
             this.GroupBox_Products.TabStop = false;
             this.GroupBox_Products.Text = "Detalle del producto";
             // 
-            // groupBox5
+            // groupBox9
             // 
-            this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox5.Controls.Add(this.Txt_IVA);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.Txt_DescuentoProd);
-            this.groupBox5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(586, 81);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(223, 104);
-            this.groupBox5.TabIndex = 87;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Detalle del producto";
+            this.groupBox9.Controls.Add(this.label13);
+            this.groupBox9.Controls.Add(this.SpinExist);
+            this.groupBox9.Controls.Add(this.label2);
+            this.groupBox9.Controls.Add(this.Lb_CantStocks);
+            this.groupBox9.Location = new System.Drawing.Point(675, 21);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(143, 141);
+            this.groupBox9.TabIndex = 98;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Detalle del Stock";
             // 
-            // Txt_IVA
+            // label13
             // 
-            this.Txt_IVA.BackColor = System.Drawing.Color.Transparent;
-            this.Txt_IVA.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Txt_IVA.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_IVA.DefaultText = "";
-            this.Txt_IVA.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_IVA.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_IVA.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_IVA.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_IVA.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_IVA.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_IVA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Txt_IVA.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_IVA.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_IVA.IconLeft")));
-            this.Txt_IVA.Location = new System.Drawing.Point(112, 23);
-            this.Txt_IVA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_IVA.Name = "Txt_IVA";
-            this.Txt_IVA.PasswordChar = '\0';
-            this.Txt_IVA.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_IVA.PlaceholderText = "IVA";
-            this.Txt_IVA.SelectedText = "";
-            this.Txt_IVA.Size = new System.Drawing.Size(94, 26);
-            this.Txt_IVA.TabIndex = 94;
-            this.Txt_IVA.TextChanged += new System.EventHandler(this.Txt_IVA_TextChanged);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(6, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(83, 22);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Cant. Stock:";
             // 
-            // label15
+            // SpinExist
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(11, 27);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 22);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "Insetar IVA %:";
+            this.SpinExist.BackColor = System.Drawing.SystemColors.Control;
+            this.SpinExist.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SpinExist.FillColor = System.Drawing.SystemColors.Control;
+            this.SpinExist.Font = new System.Drawing.Font("Poppins", 9F);
+            this.SpinExist.Location = new System.Drawing.Point(6, 93);
+            this.SpinExist.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SpinExist.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SpinExist.Name = "SpinExist";
+            this.SpinExist.Size = new System.Drawing.Size(94, 30);
+            this.SpinExist.TabIndex = 3;
+            this.SpinExist.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.SpinExist.UpDownButtonForeColor = System.Drawing.Color.White;
             // 
-            // label16
+            // label2
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(11, 70);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 22);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "Descuento %: ";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 22);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Cant. comprada:";
             // 
-            // Txt_DescuentoProd
+            // Lb_CantStocks
             // 
-            this.Txt_DescuentoProd.BackColor = System.Drawing.Color.Transparent;
-            this.Txt_DescuentoProd.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Txt_DescuentoProd.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_DescuentoProd.DefaultText = "";
-            this.Txt_DescuentoProd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_DescuentoProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_DescuentoProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_DescuentoProd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_DescuentoProd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_DescuentoProd.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_DescuentoProd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Txt_DescuentoProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_DescuentoProd.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_DescuentoProd.IconLeft")));
-            this.Txt_DescuentoProd.Location = new System.Drawing.Point(112, 66);
-            this.Txt_DescuentoProd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_DescuentoProd.Name = "Txt_DescuentoProd";
-            this.Txt_DescuentoProd.PasswordChar = '\0';
-            this.Txt_DescuentoProd.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_DescuentoProd.PlaceholderText = "Descuento";
-            this.Txt_DescuentoProd.SelectedText = "";
-            this.Txt_DescuentoProd.Size = new System.Drawing.Size(94, 26);
-            this.Txt_DescuentoProd.TabIndex = 95;
-            this.Txt_DescuentoProd.TextChanged += new System.EventHandler(this.Txt_DescuentoProd_TextChanged);
+            this.Lb_CantStocks.AutoSize = true;
+            this.Lb_CantStocks.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_CantStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Lb_CantStocks.Location = new System.Drawing.Point(6, 46);
+            this.Lb_CantStocks.Name = "Lb_CantStocks";
+            this.Lb_CantStocks.Size = new System.Drawing.Size(24, 22);
+            this.Lb_CantStocks.TabIndex = 12;
+            this.Lb_CantStocks.Text = "--";
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.GroupBox_CambioProd);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtPrecioCompra);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(663, 19);
+            this.groupBox2.Location = new System.Drawing.Point(442, 21);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(146, 56);
+            this.groupBox2.Size = new System.Drawing.Size(227, 141);
             this.groupBox2.TabIndex = 86;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cambiar precio";
+            this.groupBox2.Text = "Cambiar precio de compra";
+            // 
+            // GroupBox_CambioProd
+            // 
+            this.GroupBox_CambioProd.Controls.Add(this.radioButton1);
+            this.GroupBox_CambioProd.Controls.Add(this.radioButton2);
+            this.GroupBox_CambioProd.Location = new System.Drawing.Point(0, 20);
+            this.GroupBox_CambioProd.Name = "GroupBox_CambioProd";
+            this.GroupBox_CambioProd.Size = new System.Drawing.Size(227, 52);
+            this.GroupBox_CambioProd.TabIndex = 28;
+            this.GroupBox_CambioProd.TabStop = false;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(67, 24);
+            this.radioButton1.Location = new System.Drawing.Point(58, 18);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(44, 26);
             this.radioButton1.TabIndex = 27;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "No";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(19, 24);
+            this.radioButton2.Location = new System.Drawing.Point(10, 18);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(38, 26);
             this.radioButton2.TabIndex = 26;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Si";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // button2
             // 
@@ -1191,28 +1176,6 @@ namespace INASOFT_3._0
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Lb_PrecioDescIVA
-            // 
-            this.Lb_PrecioDescIVA.AutoSize = true;
-            this.Lb_PrecioDescIVA.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_PrecioDescIVA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Lb_PrecioDescIVA.Location = new System.Drawing.Point(821, 43);
-            this.Lb_PrecioDescIVA.Name = "Lb_PrecioDescIVA";
-            this.Lb_PrecioDescIVA.Size = new System.Drawing.Size(24, 22);
-            this.Lb_PrecioDescIVA.TabIndex = 90;
-            this.Lb_PrecioDescIVA.Text = "--";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(821, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(167, 22);
-            this.label14.TabIndex = 89;
-            this.label14.Text = "Nuevo precio (Desc/IVA):";
-            // 
             // Btn_AddProducto
             // 
             this.Btn_AddProducto.BorderRadius = 8;
@@ -1224,34 +1187,12 @@ namespace INASOFT_3._0
             this.Btn_AddProducto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_AddProducto.ForeColor = System.Drawing.Color.White;
             this.Btn_AddProducto.Image = ((System.Drawing.Image)(resources.GetObject("Btn_AddProducto.Image")));
-            this.Btn_AddProducto.Location = new System.Drawing.Point(851, 155);
+            this.Btn_AddProducto.Location = new System.Drawing.Point(834, 128);
             this.Btn_AddProducto.Name = "Btn_AddProducto";
             this.Btn_AddProducto.Size = new System.Drawing.Size(137, 34);
             this.Btn_AddProducto.TabIndex = 88;
             this.Btn_AddProducto.Text = "Agregar producto";
             this.Btn_AddProducto.Click += new System.EventHandler(this.Btn_AddProducto_Click);
-            // 
-            // Lb_CantStocks
-            // 
-            this.Lb_CantStocks.AutoSize = true;
-            this.Lb_CantStocks.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_CantStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Lb_CantStocks.Location = new System.Drawing.Point(463, 108);
-            this.Lb_CantStocks.Name = "Lb_CantStocks";
-            this.Lb_CantStocks.Size = new System.Drawing.Size(24, 22);
-            this.Lb_CantStocks.TabIndex = 12;
-            this.Lb_CantStocks.Text = "--";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(463, 88);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 22);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Cant. Stock:";
             // 
             // groupBox1
             // 
@@ -1429,12 +1370,23 @@ namespace INASOFT_3._0
             this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             this.MessageDialogError.Text = null;
             // 
+            // Lb_AuxDescIVA
+            // 
+            this.Lb_AuxDescIVA.AutoSize = true;
+            this.Lb_AuxDescIVA.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_AuxDescIVA.ForeColor = System.Drawing.Color.Black;
+            this.Lb_AuxDescIVA.Location = new System.Drawing.Point(245, 282);
+            this.Lb_AuxDescIVA.Name = "Lb_AuxDescIVA";
+            this.Lb_AuxDescIVA.Size = new System.Drawing.Size(31, 22);
+            this.Lb_AuxDescIVA.TabIndex = 102;
+            this.Lb_AuxDescIVA.Text = "---";
+            // 
             // Agregar_Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1039, 763);
+            this.ClientSize = new System.Drawing.Size(1011, 763);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1447,7 +1399,6 @@ namespace INASOFT_3._0
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1463,10 +1414,13 @@ namespace INASOFT_3._0
             ((System.ComponentModel.ISupportInitialize)(this.datagridView2)).EndInit();
             this.GroupBox_Products.ResumeLayout(false);
             this.GroupBox_Products.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.GroupBox_CambioProd.ResumeLayout(false);
+            this.GroupBox_CambioProd.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -1481,11 +1435,9 @@ namespace INASOFT_3._0
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button Btn_RealizarCompra;
         public Guna.UI2.WinForms.Guna2TextBox txtCodBarra;
         public Guna.UI2.WinForms.Guna2TextBox txtNameP;
-        public Guna.UI2.WinForms.Guna2NumericUpDown SpinExist;
         public Guna.UI2.WinForms.Guna2TextBox txtObservacion;
         public Guna.UI2.WinForms.Guna2TextBox txtPrecioCompra;
         public Guna.UI2.WinForms.Guna2TextBox txtPrecioVenta;
@@ -1519,11 +1471,8 @@ namespace INASOFT_3._0
         private System.Windows.Forms.DataGridView datagridView2;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox7;
         private Guna.UI2.WinForms.Guna2Button Btn_AddProducto;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label Lb_CantStocks;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox8;
@@ -1541,15 +1490,21 @@ namespace INASOFT_3._0
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBoxError;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageInformation;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageWarning;
-        private System.Windows.Forms.Label Lb_PrecioDescIVA;
-        private System.Windows.Forms.Label label14;
-        public Guna.UI2.WinForms.Guna2TextBox Txt_IVA;
-        public Guna.UI2.WinForms.Guna2TextBox Txt_DescuentoProd;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogError;
         private System.Windows.Forms.Label Txt_RUC;
         public Guna.UI2.WinForms.Guna2TextBox Txt_DescuentoCompra;
         public System.Windows.Forms.ComboBox cbProveedor;
         public Guna.UI2.WinForms.Guna2TextBox Txt_IDProd;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label2;
+        public Guna.UI2.WinForms.Guna2NumericUpDown SpinExist;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox GroupBox_CambioProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1558,13 +1513,9 @@ namespace INASOFT_3._0
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.Label label14;
+        public Guna.UI2.WinForms.Guna2TextBox Txt_IVACompra;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label Lb_AuxDescIVA;
     }
 }
