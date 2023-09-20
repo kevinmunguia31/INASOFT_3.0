@@ -49,24 +49,26 @@ namespace INASOFT_3._0.UserControls
             this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
             this.infoNego = new System.Windows.Forms.TabPage();
             this.logs = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.listViewLogs = new System.Windows.Forms.ListView();
             this.backup = new System.Windows.Forms.TabPage();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBackup = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Bttn_Info = new System.Windows.Forms.Button();
-            this.txtRuta = new System.Windows.Forms.TextBox();
-            this.btnImport = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.guna2TabControl1.SuspendLayout();
             this.infoNego.SuspendLayout();
             this.logs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.backup.SuspendLayout();
             this.guna2GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -368,6 +370,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // logs
             // 
+            this.logs.Controls.Add(this.pictureBox4);
             this.logs.Controls.Add(this.label3);
             this.logs.Controls.Add(this.listViewLogs);
             this.logs.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -380,12 +383,22 @@ namespace INASOFT_3._0.UserControls
             this.logs.Text = "Logs";
             this.logs.UseVisualStyleBackColor = true;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_logs_64;
+            this.pictureBox4.Location = new System.Drawing.Point(27, 5);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(50, 53);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(20, 18);
+            this.label3.Location = new System.Drawing.Point(83, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(358, 39);
             this.label3.TabIndex = 1;
@@ -397,7 +410,7 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewLogs.BackColor = System.Drawing.Color.Black;
             this.listViewLogs.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewLogs.ForeColor = System.Drawing.Color.Red;
+            this.listViewLogs.ForeColor = System.Drawing.Color.White;
             this.listViewLogs.HideSelection = false;
             this.listViewLogs.Location = new System.Drawing.Point(27, 62);
             this.listViewLogs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -434,6 +447,27 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox3.Size = new System.Drawing.Size(686, 159);
             this.guna2GroupBox3.TabIndex = 2;
             this.guna2GroupBox3.Text = "Importar Base de Datos del Software";
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.Color.Lime;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Location = new System.Drawing.Point(193, 101);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(271, 43);
+            this.btnImport.TabIndex = 3;
+            this.btnImport.Text = "Importar Base de Datos";
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Enabled = false;
+            this.txtRuta.Location = new System.Drawing.Point(86, 57);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(476, 33);
+            this.txtRuta.TabIndex = 2;
             // 
             // pictureBox3
             // 
@@ -518,26 +552,6 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Bttn_Info.UseVisualStyleBackColor = false;
             // 
-            // txtRuta
-            // 
-            this.txtRuta.Location = new System.Drawing.Point(86, 57);
-            this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(476, 33);
-            this.txtRuta.TabIndex = 2;
-            // 
-            // btnImport
-            // 
-            this.btnImport.BackColor = System.Drawing.Color.Lime;
-            this.btnImport.FlatAppearance.BorderSize = 0;
-            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImport.Location = new System.Drawing.Point(193, 101);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(271, 43);
-            this.btnImport.TabIndex = 3;
-            this.btnImport.Text = "Importar Base de Datos";
-            this.btnImport.UseVisualStyleBackColor = false;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -562,6 +576,7 @@ namespace INASOFT_3._0.UserControls
             this.infoNego.ResumeLayout(false);
             this.logs.ResumeLayout(false);
             this.logs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.backup.ResumeLayout(false);
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox3.PerformLayout();
@@ -609,5 +624,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.TextBox txtRuta;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

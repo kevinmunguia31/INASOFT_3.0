@@ -22,16 +22,6 @@ namespace INASOFT_3._0.UserControls
 
         private void InfoNegocio()
         {
-            Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
-            ctrlInfo.consulta(null);
-
-           /* txtId.Text = ctrlInfo.;
-            txtNameNgo.Text = reader["nombre_negocio"].ToString();
-            txtAddress.Text = reader["direccion_negocio"].ToString();
-            txtRUC.Text = reader["num_ruc"].ToString();
-            txtNameAdmin.Text = reader["nombre_admin"].ToString();
-            txtTelefono.Text = reader["telefono"].ToString();
-            /*
             string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono FROM infogeneral";
 
             MySqlConnection conexionDB = Conexion.getConexion();
@@ -63,7 +53,6 @@ namespace INASOFT_3._0.UserControls
             {
                 MessageBox.Show("Error:" + ex.Message);
             }
-            return null;*/
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
@@ -86,6 +75,9 @@ namespace INASOFT_3._0.UserControls
                     _info.Id = int.Parse(txtId.Text);
                     bandera = ctrlInfo.actualizar(_info);
                     MessageDialoginfo.Show("Registro Actualizado Con Exito", "Actualizar Información");
+                   
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " ha cambia la información del negocio";
+                    ctrlInfo.InsertarLog(log);
                     InfoNegocio();
 
                 }
@@ -93,6 +85,8 @@ namespace INASOFT_3._0.UserControls
                 {
                     bandera = ctrlInfo.insertar(_info);
                     MessageDialoginfo.Show("Información Guardada con Exito", "Guardar Información");
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Ha Registrado la Información del Negocio";
+                    ctrlInfo.InsertarLog(log);
                     InfoNegocio();
                 }
             }
@@ -157,10 +151,12 @@ namespace INASOFT_3._0.UserControls
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
+            CtrlInfo ctrlInfo = new CtrlInfo();
             SaveFileDialog selecciona = new SaveFileDialog();
             selecciona.Filter = "Archivo SQL (*.sql)| *.sql";
             selecciona.InitialDirectory = @"C:\";
             selecciona.Title = "Seleccionar Archivo de respaldo";
+            selecciona.FileName = "Respaldo_" + DateTime.Now.ToString("ddMMyyyy") + ".sql";
 
             if (selecciona.ShowDialog() == DialogResult.OK)
             {
@@ -175,6 +171,9 @@ namespace INASOFT_3._0.UserControls
                 bk.ExportToFile(ruta);
                 conexionBD.Close();
                 MessageDialoginfo.Show("Respaldo Generado con Exito!", "Aviso");
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero un Respaldo de la Base de Datos";
+                ctrlInfo.InsertarLog(log);
+
             }
         }
 

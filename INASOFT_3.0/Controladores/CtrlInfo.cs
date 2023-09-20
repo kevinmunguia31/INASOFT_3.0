@@ -17,18 +17,17 @@ namespace INASOFT_3._0.Controladores
             List<Object> lista = new List<object>();
             try
             {
-                string sql;
-
+                string sql ="";
                 if (dato == null)
                 {
                     sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono FROM infogeneral";
                 }
                 MySqlConnection conexionBD = Conexion.getConexion();
                 conexionBD.Open();
-                //MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                //reader = comando.ExecuteReader();
-               // Console.WriteLine(reader);
-               /* while (reader.Read())
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                reader = comando.ExecuteReader();
+                //Console.WriteLine(reader);
+                while (reader.Read())
                 {
                     InfoNegocio _infoNegocio = new InfoNegocio();
                     _infoNegocio.Id = int.Parse(reader.GetString(0));
@@ -39,7 +38,7 @@ namespace INASOFT_3._0.Controladores
                     _infoNegocio.NombreAdmin = reader.GetString(4);
 
                     lista.Add(_infoNegocio);
-                }*/
+                }
             }
             catch (MySqlException ex)
             {

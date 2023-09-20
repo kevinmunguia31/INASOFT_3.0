@@ -507,6 +507,9 @@ namespace INASOFT_3._0
                         ctrlCompras.Productos_Comprados(productos);
                     } 
                     MessageBox_Import.Show("Se ha realizado la compra de manera éxitosa", "Importante");
+                    CtrlInfo ctrlInfo = new CtrlInfo();
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una orden de compra con referencia: " + compras.Descripcion;
+                    ctrlInfo.InsertarLog(log);
                     this.Close();
                 }
             }

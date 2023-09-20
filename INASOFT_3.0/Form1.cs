@@ -100,7 +100,7 @@ namespace INASOFT_3._0
             {
                 guna2MessageDialogErr.Show("Lo siento :( no tienes permisos para acceder aqui", ":(");
 
-                string log = "Intento de acceso a Registro de Usuarios a las " + DateTime.Now + " por: " + Sesion.nombre;
+                string log = "[" + DateTime.Now + "] " + "Intento de acceso a Registro de Usuarios"+ " por: " + Sesion.nombre;
                 MySqlConnection conexionDB = Conexion.getConexion();
                 conexionDB.Open();
 
@@ -134,7 +134,7 @@ namespace INASOFT_3._0
             {
                 guna2MessageDialogErr.Show("Lo siento :( no tienes permisos para acceder aqui", ":(");
 
-                string log = "Intento de acceso a Configuraciones a las " + DateTime.Now + " por: " + Sesion.nombre;
+                string log = "[" + DateTime.Now + "] " + "Intento de acceso a Configuraciones" + " por: " + Sesion.nombre;
                 MySqlConnection conexionDB = Conexion.getConexion();
                 conexionDB.Open();
 

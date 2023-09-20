@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
+﻿using DevExpress.XtraBars.Controls.Internal;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Guna.UI2.WinForms;
 using INASOFT_3._0.Modelos;
@@ -46,6 +47,8 @@ namespace INASOFT_3._0.UserControls
             {
                 band.ReadOnly = true;
             }
+
+            lbNameNeg.Text = Modelos.InfoNegocio.nombre;
         }
 
         //Cargar el dataGridView

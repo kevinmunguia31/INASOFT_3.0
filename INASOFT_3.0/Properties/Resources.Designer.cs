@@ -404,6 +404,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_logs_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-logs-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_maintenance_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_maintenance_20px", resourceCulture);
@@ -637,6 +647,16 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_user_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-user-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_user_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-user-64 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

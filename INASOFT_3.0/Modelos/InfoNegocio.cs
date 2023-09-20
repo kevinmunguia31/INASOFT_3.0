@@ -8,12 +8,12 @@ namespace INASOFT_3._0.Modelos
 {
     class InfoNegocio
     {
-        private int id;
-        private string nombre;
-        private string direccion;
-        private string numRUC;
-        private string nombreAdmin;
-        private string telefono;
+        public static int id;
+        public static string nombre;
+        public static string direccion;
+        public static string numRUC;
+        public static string nombreAdmin;
+        public static string telefono;
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }

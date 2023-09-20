@@ -1,4 +1,6 @@
-﻿using System;
+﻿using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +56,10 @@ namespace INASOFT_3._0.VistaFacturas
             if (bandera)
             {
                 MessageBox_Import.Show("Se ha actualizado el producto", "Aviso");
+                CtrlInfo ctrlInfo = new CtrlInfo();
+
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Modifico el producto con codigo: " + productos.Codigo;
+                ctrlInfo.InsertarLog(log);
                 this.Close();
             }
         }

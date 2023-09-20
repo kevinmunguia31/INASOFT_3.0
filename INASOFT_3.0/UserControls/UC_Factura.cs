@@ -14,6 +14,7 @@ using MySqlX.XDevAPI;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using DevExpress.XtraCharts;
 using System.Globalization;
+using INASOFT_3._0.Controladores;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -408,12 +409,14 @@ namespace INASOFT_3._0.UserControls
         private void Guna2Button4_Click(object sender, EventArgs e)
         {
             Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
-
+            CtrlInfo ctrlInfo = new CtrlInfo();
             SLDocument sL = ctrl.Reporte_Facturas(dataGridFatura);
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Ventas en Excel";
+                ctrlInfo.InsertarLog(log);
             }
         }
 
@@ -455,7 +458,7 @@ namespace INASOFT_3._0.UserControls
                 filas += "<td>" + row.Cells["Nombre empleado"].Value.ToString() + "</td>";
                 filas += "</tr>";
 
-                //total += double.Parse(row.Cells["Total Final"].Value.ToString());
+                //Total += double.Parse(row.Cells["Total Final"].Value.ToString());
             }
             if (dataGridFatura.RowCount == 0)
             {
@@ -477,6 +480,7 @@ namespace INASOFT_3._0.UserControls
 
             if (guardar.ShowDialog() == DialogResult.OK)
             {
+                CtrlInfo ctrlInfo = new CtrlInfo();
                 using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
                 {
                     //Creamos un nuevo documento y lo definimos como PDF
@@ -504,7 +508,10 @@ namespace INASOFT_3._0.UserControls
                         "Espere un momento.....", "Exportando a PDF");
                     pdfDoc.Close();
                     stream.Close();
-                    MessageBox_Ok.Show("Inventario Exportado a PDF", "Exportando a PDF");
+                    MessageBox_Ok.Show("Reporte de Ventas Exportado a PDF", "Exportando a PDF");
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Ventas en PDF";
+                    ctrlInfo.InsertarLog(log);
+
                 }
 
             }

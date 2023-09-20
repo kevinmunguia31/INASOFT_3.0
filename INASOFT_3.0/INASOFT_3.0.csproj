@@ -632,5 +632,11 @@
   <ItemGroup>
     <None Include="bin\Debug\Imag\1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-logs-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

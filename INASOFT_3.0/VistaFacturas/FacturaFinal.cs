@@ -247,6 +247,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnFacturar_Click(object sender, EventArgs e)
         {
+            CtrlInfo ctrlInfo = new CtrlInfo();
             string tipoPago = "";
             string estado;
             string tipoFactura;
@@ -365,6 +366,9 @@ namespace INASOFT_3._0.VistaFacturas
                                     int id_credito = ctrlCredito_Abono.ID_Credito();
                                     ctrlCredito_Abono.Realizar_Abono(fecha_inicioDevolucion, monto, saldo_anterior, saldo_nuevo, desc_abono, id_credito, id_factura);
                                     MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
+
+                                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Credito: " + id_factura;
+                                    ctrlInfo.InsertarLog(log);
                                     UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                                     uC_Factura.CargarFacturas();
                                     this.Close();
@@ -455,6 +459,8 @@ namespace INASOFT_3._0.VistaFacturas
                                 printDocument1.Print();
 
                                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Contado: " + id_factura;
+                                ctrlInfo.InsertarLog(log);
                                 UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                                 uC_Factura.CargarFacturas();
                                 this.Close();
@@ -462,6 +468,8 @@ namespace INASOFT_3._0.VistaFacturas
                             else if(result == DialogResult.No)
                             {
                                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Contado: " + id_factura;
+                                ctrlInfo.InsertarLog(log);
                                 UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                                 uC_Factura.CargarFacturas();
                                 this.Close();
