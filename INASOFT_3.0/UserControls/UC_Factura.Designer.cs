@@ -117,7 +117,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox1.Location = new System.Drawing.Point(1379, 9);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(484, 118);
             this.guna2GroupBox1.TabIndex = 4;
@@ -135,7 +135,7 @@ namespace INASOFT_3._0.UserControls
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(191, 7);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 36);
             this.button2.TabIndex = 86;
@@ -158,7 +158,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
             this.guna2Button1.Location = new System.Drawing.Point(272, 58);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(188, 47);
             this.guna2Button1.TabIndex = 1;
@@ -184,7 +184,7 @@ namespace INASOFT_3._0.UserControls
             this.txtNewInvoice.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNewInvoice.ImageSize = new System.Drawing.Size(25, 25);
             this.txtNewInvoice.Location = new System.Drawing.Point(15, 58);
-            this.txtNewInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.txtNewInvoice.Name = "txtNewInvoice";
             this.txtNewInvoice.Size = new System.Drawing.Size(209, 47);
             this.txtNewInvoice.TabIndex = 0;
@@ -206,7 +206,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox2.Location = new System.Drawing.Point(1379, 134);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(484, 297);
             this.guna2GroupBox2.TabIndex = 5;
@@ -223,9 +223,9 @@ namespace INASOFT_3._0.UserControls
             this.groupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(0, 170);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(484, 127);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
@@ -250,7 +250,7 @@ namespace INASOFT_3._0.UserControls
             this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_Ini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateTimeTimer_Ini.Location = new System.Drawing.Point(92, 39);
-            this.DateTimeTimer_Ini.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateTimeTimer_Ini.Margin = new System.Windows.Forms.Padding(4);
             this.DateTimeTimer_Ini.Name = "DateTimeTimer_Ini";
             this.DateTimeTimer_Ini.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_Ini.TabIndex = 96;
@@ -267,7 +267,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
             this.guna2Button3.Location = new System.Drawing.Point(339, 63);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(121, 39);
             this.guna2Button3.TabIndex = 91;
@@ -293,7 +293,7 @@ namespace INASOFT_3._0.UserControls
             this.DateTimeTimer_End.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateTimeTimer_End.Location = new System.Drawing.Point(92, 79);
-            this.DateTimeTimer_End.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateTimeTimer_End.Margin = new System.Windows.Forms.Padding(4);
             this.DateTimeTimer_End.Name = "DateTimeTimer_End";
             this.DateTimeTimer_End.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_End.TabIndex = 97;
@@ -305,9 +305,9 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Controls.Add(this.guna2Button2);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 63);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(484, 100);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
@@ -346,7 +346,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
             this.guna2Button2.Location = new System.Drawing.Point(339, 36);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(121, 39);
             this.guna2Button2.TabIndex = 86;
@@ -365,7 +365,7 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Bttn_Info.Location = new System.Drawing.Point(168, 4);
-            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4);
             this.Bttn_Info.Name = "Bttn_Info";
             this.Bttn_Info.Size = new System.Drawing.Size(41, 36);
             this.Bttn_Info.TabIndex = 94;
@@ -377,7 +377,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox4.Location = new System.Drawing.Point(0, 49);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.Size = new System.Drawing.Size(0, 0);
             this.guna2GroupBox4.TabIndex = 92;
@@ -471,9 +471,9 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridFatura);
             this.groupBox1.Location = new System.Drawing.Point(12, 59);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1351, 645);
             this.groupBox1.TabIndex = 86;
             this.groupBox1.TabStop = false;
@@ -500,7 +500,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridFatura.EnableHeadersVisualStyles = false;
             this.dataGridFatura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dataGridFatura.Location = new System.Drawing.Point(4, 19);
-            this.dataGridFatura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridFatura.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridFatura.Name = "dataGridFatura";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -550,7 +550,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.White;
             this.guna2GroupBox3.Location = new System.Drawing.Point(1379, 438);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(484, 134);
             this.guna2GroupBox3.TabIndex = 100;
@@ -568,7 +568,7 @@ namespace INASOFT_3._0.UserControls
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(212, 4);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(41, 36);
             this.button3.TabIndex = 95;
@@ -588,7 +588,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button4.ForeColor = System.Drawing.Color.Black;
             this.guna2Button4.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
             this.guna2Button4.Location = new System.Drawing.Point(263, 64);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(181, 53);
             this.guna2Button4.TabIndex = 92;
@@ -608,7 +608,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button5.ForeColor = System.Drawing.Color.Black;
             this.guna2Button5.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
             this.guna2Button5.Location = new System.Drawing.Point(28, 64);
-            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(181, 53);
             this.guna2Button5.TabIndex = 91;
@@ -648,7 +648,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2Button6.Location = new System.Drawing.Point(1195, 11);
-            this.guna2Button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(164, 41);
             this.guna2Button6.TabIndex = 87;
@@ -668,7 +668,7 @@ namespace INASOFT_3._0.UserControls
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(365, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 36);
             this.button1.TabIndex = 85;
@@ -701,11 +701,12 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.guna2Button7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.Image = global::INASOFT_3._0.Properties.Resources.icons8_invisible_20px;
             this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button7.Location = new System.Drawing.Point(940, 12);
-            this.guna2Button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button7.Location = new System.Drawing.Point(918, 12);
+            this.guna2Button7.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button7.Name = "guna2Button7";
-            this.guna2Button7.Size = new System.Drawing.Size(247, 39);
+            this.guna2Button7.Size = new System.Drawing.Size(269, 39);
             this.guna2Button7.TabIndex = 101;
             this.guna2Button7.Text = "Mostrar todas las facturas";
             this.guna2Button7.Click += new System.EventHandler(this.Guna2Button7_Click);
@@ -718,7 +719,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox5.Location = new System.Drawing.Point(1379, 580);
-            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
             this.guna2GroupBox5.Size = new System.Drawing.Size(484, 132);
             this.guna2GroupBox5.TabIndex = 102;
@@ -728,7 +729,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(41, 41);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -743,9 +744,9 @@ namespace INASOFT_3._0.UserControls
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.Lb_TotalAlcontado);
             this.groupBox4.Location = new System.Drawing.Point(4, 50);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(484, 81);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
@@ -811,7 +812,7 @@ namespace INASOFT_3._0.UserControls
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Factura";
             this.Size = new System.Drawing.Size(1887, 722);
             this.Load += new System.EventHandler(this.UC_Factura_Load);

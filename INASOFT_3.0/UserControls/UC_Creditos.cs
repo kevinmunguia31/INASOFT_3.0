@@ -9,11 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using INASOFT_3._0.VistaFacturas;
 using SpreadsheetLight;
+using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
+using iTextSharp.tool.xml;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Document = iTextSharp.text.Document;
+using System.Globalization;
 
 namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Creditos : UserControl
     {
+        CultureInfo culturaNicaragua = new CultureInfo("es-NI");
         public UC_Creditos()
         {
             InitializeComponent();
@@ -311,6 +320,92 @@ namespace INASOFT_3._0.UserControls
                 {
                     MessageBox.Show("" + ex);
                 }
+            }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            InfoNegocio infoNegocio = new InfoNegocio();
+            SaveFileDialog guardar = new SaveFileDialog();
+            guardar.FileName = "Reporte de Fact_Credito - " + DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+
+            string paginaHtml_texto = Properties.Resources.CreditoTemplate.ToString();
+            paginaHtml_texto = paginaHtml_texto.Replace("@NombreNegocio", infoNegocio.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Direccion", infoNegocio.Direccion);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Telefono", infoNegocio.Telefono);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Usuario", Sesion.nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            string filas = string.Empty;
+            double Total = 0.00;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["Codigo de factura"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Nombre del cliente"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cargo"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Pendiente"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Fin del cr├®dito"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["D├¡as vencidos"].Value.ToString() + "</td>";
+                filas += "</tr>";
+
+                //Total += double.Parse(row.Cells["Total Final"].Value.ToString());
+            }
+            if (dataGridView1.RowCount == 0)
+            {
+                Total = 0.00;
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string aux1 = dataGridView1.Rows[i].Cells[7].Value.ToString();
+                    string[] words1 = aux1.Split('$');
+                    string aux_Total = words1[1];
+                    Total += double.Parse(aux_Total);
+                }
+            }
+            paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", Total.ToString("C"));
+
+
+            if (guardar.ShowDialog() == DialogResult.OK)
+            {
+                CtrlInfo ctrlInfo = new CtrlInfo();
+                using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
+                {
+                    //Creamos un nuevo documento y lo definimos como PDF
+                    Document pdfDoc = new Document(iTextSharp.text.PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    //Agregamos la imagen del banner al documento
+                    /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.icons8_wifi_apagado_50, System.Drawing.Imaging.ImageFormat.Png);
+                    img.ScaleToFit(60, 60);
+                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                    //img.SetAbsolutePosition(10,100);
+                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                    pdfDoc.Add(img);*/
+
+
+                    //pdfDoc.Add(new Phrase("Hola Mundo"));
+                    using (StringReader sr = new StringReader(paginaHtml_texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+                    MessageBox_Import.Show("Exportando Facturas al Cretido a PDF.....\n" +
+                        "Espere un momento.....", "Exportando a PDF");
+                    pdfDoc.Close();
+                    stream.Close();
+                    MessageBox_Ok.Show("Reporte de Facturas al Credito Exportado a PDF", "Exportando a PDF");
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Facturas al Credito en PDF";
+                    ctrlInfo.InsertarLog(log);
+
+                }
+
             }
         }
     }

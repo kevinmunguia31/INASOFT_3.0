@@ -104,7 +104,7 @@ namespace INASOFT_3._0
                     _infoNegocio.Direccion = reader.GetString(2);
                     _infoNegocio.NumRUC = reader.GetString(3);
                     _infoNegocio.NombreAdmin = reader.GetString(4);
-                    MessageBox.Show(_infoNegocio.Nombre);
+                    //MessageBox.Show(_infoNegocio.Nombre);
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace INASOFT_3._0
                     guna2MessageWar.Show("No existe base de datos creada! :( \n" +
                         "Exporte un respaldo en Configuraciones ⚙️");
                 }
-                MessageBox.Show("Se presionó Enter en el cuadro de texto.");
+               // MessageBox.Show("Se presionó Enter en el cuadro de texto.");
             }
         }
     }

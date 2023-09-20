@@ -441,6 +441,8 @@ namespace INASOFT_3._0.UserControls
 
             string paginaHtml_texto = Properties.Resources.facturaTemplate.ToString();
             paginaHtml_texto = paginaHtml_texto.Replace("@NombreNegocio", infoNegocio.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Direccion", infoNegocio.Direccion);
+            paginaHtml_texto = paginaHtml_texto.Replace("@Telefono", infoNegocio.Telefono);
             paginaHtml_texto = paginaHtml_texto.Replace("@Usuario", Sesion.nombre);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
@@ -475,7 +477,7 @@ namespace INASOFT_3._0.UserControls
                 }
             }
             paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
-            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", string.Format(culturaNicaragua, "{0:C}", Total.ToString()));
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", Total.ToString("C"));
 
 
             if (guardar.ShowDialog() == DialogResult.OK)

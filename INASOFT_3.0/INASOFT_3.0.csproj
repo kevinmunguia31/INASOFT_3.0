@@ -638,5 +638,11 @@
   <ItemGroup>
     <None Include="Resources\icons8-logs-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProductTemplate.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreditoTemplate.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
