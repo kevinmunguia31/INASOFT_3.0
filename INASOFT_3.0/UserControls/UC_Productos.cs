@@ -133,6 +133,7 @@ namespace INASOFT_3._0.UserControls
                     
                     Ver_EditarProducto update = new Ver_EditarProducto();
                     //update.labelTitle.Text = "Editar producto";
+                    update.Txt_IDProd.Text = id;
                     update.txtCodBarra.Text = codigo;
                     update.txtNameP.Text = nombre;
                     update.SpinExist.Value = int.Parse(existencia);

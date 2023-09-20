@@ -167,5 +167,26 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
+
+        public DataTable Cargar_TotalVentasxDias()
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), SUM(Efectivo - Debe) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
     }
 }

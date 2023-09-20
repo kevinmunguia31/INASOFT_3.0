@@ -97,7 +97,7 @@ namespace INASOFT_3._0.Controladores
         public bool Actualizar(Productos datos)
         {
             bool bandera = false;
-            string sql = "CALL Actualizar_Producto('" + datos.Id + "', '" + datos.Estado + "', " + datos.Existencias + ", " + datos.Precio_compra + ", " + datos.Precio_venta + ", " + datos.Observacion + ")";
+            string sql = "CALL Actualizar_Producto(" + datos.Id + ", '" + datos.Estado + "', " + datos.Existencias + ", " + datos.Precio_compra + ", " + datos.Precio_venta + ", '" + datos.Observacion + "')";
 
             MySqlConnection conexioBD = Conexion.getConexion();
             conexioBD.Open();

@@ -125,10 +125,9 @@ namespace INASOFT_3._0.UserControls
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(355, 43);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(266, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 29);
+            this.label1.Size = new System.Drawing.Size(146, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido(a) ";
             // 
@@ -137,10 +136,9 @@ namespace INASOFT_3._0.UserControls
             this.lbUser.AutoSize = true;
             this.lbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbUser.Location = new System.Drawing.Point(532, 43);
-            this.lbUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUser.Location = new System.Drawing.Point(399, 35);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(78, 29);
+            this.lbUser.Size = new System.Drawing.Size(61, 24);
             this.lbUser.TabIndex = 2;
             this.lbUser.Text = "Name";
             // 
@@ -150,10 +148,9 @@ namespace INASOFT_3._0.UserControls
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbFecha.Location = new System.Drawing.Point(1297, 18);
-            this.lbFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbFecha.Location = new System.Drawing.Point(973, 15);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(64, 25);
+            this.lbFecha.Size = new System.Drawing.Size(51, 20);
             this.lbFecha.TabIndex = 3;
             this.lbFecha.Text = "Name";
             // 
@@ -168,10 +165,9 @@ namespace INASOFT_3._0.UserControls
             this.lbhora.AutoSize = true;
             this.lbhora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbhora.Location = new System.Drawing.Point(1689, 14);
-            this.lbhora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbhora.Location = new System.Drawing.Point(1272, 17);
             this.lbhora.Name = "lbhora";
-            this.lbhora.Size = new System.Drawing.Size(64, 25);
+            this.lbhora.Size = new System.Drawing.Size(51, 20);
             this.lbhora.TabIndex = 5;
             this.lbhora.Text = "Name";
             // 
@@ -181,10 +177,9 @@ namespace INASOFT_3._0.UserControls
             this.lbTotalHoy.BackColor = System.Drawing.Color.Transparent;
             this.lbTotalHoy.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalHoy.ForeColor = System.Drawing.Color.Black;
-            this.lbTotalHoy.Location = new System.Drawing.Point(97, 43);
-            this.lbTotalHoy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTotalHoy.Location = new System.Drawing.Point(73, 35);
             this.lbTotalHoy.Name = "lbTotalHoy";
-            this.lbTotalHoy.Size = new System.Drawing.Size(51, 30);
+            this.lbTotalHoy.Size = new System.Drawing.Size(38, 23);
             this.lbTotalHoy.TabIndex = 1;
             this.lbTotalHoy.Text = "0.00";
             // 
@@ -194,20 +189,18 @@ namespace INASOFT_3._0.UserControls
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(64, 43);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(48, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 30);
+            this.label2.Size = new System.Drawing.Size(29, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "C$";
             // 
             // lbdate
             // 
             this.lbdate.AutoSize = true;
-            this.lbdate.Location = new System.Drawing.Point(1299, 43);
-            this.lbdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbdate.Location = new System.Drawing.Point(974, 35);
             this.lbdate.Name = "lbdate";
-            this.lbdate.Size = new System.Drawing.Size(44, 16);
+            this.lbdate.Size = new System.Drawing.Size(35, 13);
             this.lbdate.TabIndex = 8;
             this.lbdate.Text = "label3";
             this.lbdate.Visible = false;
@@ -218,10 +211,9 @@ namespace INASOFT_3._0.UserControls
             this.lbCantInvoice.BackColor = System.Drawing.Color.Transparent;
             this.lbCantInvoice.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCantInvoice.ForeColor = System.Drawing.Color.Black;
-            this.lbCantInvoice.Location = new System.Drawing.Point(64, 43);
-            this.lbCantInvoice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCantInvoice.Location = new System.Drawing.Point(48, 35);
             this.lbCantInvoice.Name = "lbCantInvoice";
-            this.lbCantInvoice.Size = new System.Drawing.Size(51, 30);
+            this.lbCantInvoice.Size = new System.Drawing.Size(38, 23);
             this.lbCantInvoice.TabIndex = 1;
             this.lbCantInvoice.Text = "0.00";
             // 
@@ -240,21 +232,18 @@ namespace INASOFT_3._0.UserControls
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(64, 12);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(48, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 30);
+            this.label3.Size = new System.Drawing.Size(146, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Total Facturado Hoy";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(1089, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(817, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(87, 73);
+            this.groupBox1.Size = new System.Drawing.Size(65, 59);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
@@ -280,8 +269,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(4, 19);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -292,7 +280,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(79, 50);
+            this.dataGridView1.Size = new System.Drawing.Size(59, 40);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.Visible = false;
             // 
@@ -301,9 +289,10 @@ namespace INASOFT_3._0.UserControls
             this.lbCN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbCN.AutoSize = true;
             this.lbCN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCN.Location = new System.Drawing.Point(1825, 729);
+            this.lbCN.Location = new System.Drawing.Point(1369, 592);
+            this.lbCN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCN.Name = "lbCN";
-            this.lbCN.Size = new System.Drawing.Size(21, 20);
+            this.lbCN.Size = new System.Drawing.Size(20, 17);
             this.lbCN.TabIndex = 14;
             this.lbCN.Text = "...";
             // 
@@ -313,9 +302,9 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator4.FillThickness = 2;
             this.guna2Separator4.Location = new System.Drawing.Point(0, 2);
-            this.guna2Separator4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Separator4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Separator4.Name = "guna2Separator4";
-            this.guna2Separator4.Size = new System.Drawing.Size(1883, 14);
+            this.guna2Separator4.Size = new System.Drawing.Size(1412, 11);
             this.guna2Separator4.TabIndex = 15;
             // 
             // chart2
@@ -327,14 +316,15 @@ namespace INASOFT_3._0.UserControls
             this.chart2.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(4, 50);
-            this.chart2.Margin = new System.Windows.Forms.Padding(4);
+            this.chart2.Location = new System.Drawing.Point(3, 41);
             this.chart2.Name = "chart2";
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(672, 306);
+            this.chart2.Size = new System.Drawing.Size(504, 249);
             this.chart2.TabIndex = 16;
             this.chart2.Text = "chart2";
             this.chart2.Click += new System.EventHandler(this.chart2_Click);
@@ -348,10 +338,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(31, 304);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(23, 247);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(680, 361);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(510, 293);
             this.guna2GroupBox1.TabIndex = 17;
             this.guna2GroupBox1.Text = "Cant. de ventas en los últimos 7 días";
             // 
@@ -359,10 +348,9 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::INASOFT_3._0.Properties.Resources.icons8_cancel_subscription_50px1;
-            this.pictureBox5.Location = new System.Drawing.Point(217, 43);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Location = new System.Drawing.Point(163, 35);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(48, 38);
+            this.pictureBox5.Size = new System.Drawing.Size(36, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
@@ -373,10 +361,9 @@ namespace INASOFT_3._0.UserControls
             this.Lb_FactAnuladas.BackColor = System.Drawing.Color.Transparent;
             this.Lb_FactAnuladas.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_FactAnuladas.ForeColor = System.Drawing.Color.Black;
-            this.Lb_FactAnuladas.Location = new System.Drawing.Point(64, 43);
-            this.Lb_FactAnuladas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lb_FactAnuladas.Location = new System.Drawing.Point(48, 35);
             this.Lb_FactAnuladas.Name = "Lb_FactAnuladas";
-            this.Lb_FactAnuladas.Size = new System.Drawing.Size(51, 30);
+            this.Lb_FactAnuladas.Size = new System.Drawing.Size(38, 23);
             this.Lb_FactAnuladas.TabIndex = 1;
             this.Lb_FactAnuladas.Text = "0.00";
             // 
@@ -384,10 +371,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pbWifi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbWifi.Image = global::INASOFT_3._0.Properties.Resources.icons8_wifi_50;
-            this.pbWifi.Location = new System.Drawing.Point(1797, 724);
-            this.pbWifi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbWifi.Location = new System.Drawing.Point(1348, 588);
+            this.pbWifi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbWifi.Name = "pbWifi";
-            this.pbWifi.Size = new System.Drawing.Size(27, 25);
+            this.pbWifi.Size = new System.Drawing.Size(20, 20);
             this.pbWifi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbWifi.TabIndex = 13;
             this.pbWifi.TabStop = false;
@@ -395,10 +382,10 @@ namespace INASOFT_3._0.UserControls
             // pbLogo
             // 
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(31, 26);
-            this.pbLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbLogo.Location = new System.Drawing.Point(23, 21);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(219, 117);
+            this.pbLogo.Size = new System.Drawing.Size(164, 95);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLogo.TabIndex = 11;
             this.pbLogo.TabStop = false;
@@ -407,8 +394,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1661, 18);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(1246, 15);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -419,8 +405,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1263, 21);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(947, 17);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -430,10 +415,9 @@ namespace INASOFT_3._0.UserControls
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(283, 30);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(212, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 53);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 43);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -445,9 +429,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GradientPanel3.BorderThickness = 3;
             this.guna2GradientPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2GradientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GradientPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
-            this.guna2GradientPanel3.Size = new System.Drawing.Size(57, 108);
+            this.guna2GradientPanel3.Size = new System.Drawing.Size(43, 88);
             this.guna2GradientPanel3.TabIndex = 10;
             // 
             // guna2GroupBox2
@@ -461,20 +445,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(31, 156);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(23, 127);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(301, 108);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(226, 88);
             this.guna2GroupBox2.TabIndex = 18;
             // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::INASOFT_3._0.Properties.Resources.icons8_invoice_64;
-            this.pictureBox6.Location = new System.Drawing.Point(232, 43);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox6.Location = new System.Drawing.Point(174, 35);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(48, 38);
+            this.pictureBox6.Size = new System.Drawing.Size(36, 31);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 4;
             this.pictureBox6.TabStop = false;
@@ -499,20 +481,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox3.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(387, 156);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(290, 127);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(301, 108);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(226, 88);
             this.guna2GroupBox3.TabIndex = 19;
             // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::INASOFT_3._0.Properties.Resources.icons8_invoice_64;
-            this.pictureBox7.Location = new System.Drawing.Point(229, 43);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox7.Location = new System.Drawing.Point(172, 35);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(48, 38);
+            this.pictureBox7.Size = new System.Drawing.Size(36, 31);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 4;
             this.pictureBox7.TabStop = false;
@@ -524,9 +504,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GradientPanel6.BorderThickness = 3;
             this.guna2GradientPanel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2GradientPanel6.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GradientPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2GradientPanel6.Name = "guna2GradientPanel6";
-            this.guna2GradientPanel6.Size = new System.Drawing.Size(57, 108);
+            this.guna2GradientPanel6.Size = new System.Drawing.Size(43, 88);
             this.guna2GradientPanel6.TabIndex = 10;
             // 
             // label10
@@ -535,10 +515,9 @@ namespace INASOFT_3._0.UserControls
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(64, 12);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(48, 10);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(180, 30);
+            this.label10.Size = new System.Drawing.Size(139, 23);
             this.label10.TabIndex = 2;
             this.label10.Text = "Cant. Facturas Hoy";
             // 
@@ -552,10 +531,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox4.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(744, 156);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(558, 127);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
-            this.guna2GroupBox4.Size = new System.Drawing.Size(301, 108);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(226, 88);
             this.guna2GroupBox4.TabIndex = 20;
             // 
             // guna2GradientPanel1
@@ -565,9 +543,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GradientPanel1.BorderThickness = 3;
             this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(57, 108);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(43, 88);
             this.guna2GradientPanel1.TabIndex = 10;
             // 
             // label6
@@ -576,10 +554,9 @@ namespace INASOFT_3._0.UserControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(64, 12);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(48, 10);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 30);
+            this.label6.Size = new System.Drawing.Size(112, 23);
             this.label6.TabIndex = 2;
             this.label6.Text = "Fact. Anuladas";
             // 
@@ -589,10 +566,9 @@ namespace INASOFT_3._0.UserControls
             this.Lb_Total.BackColor = System.Drawing.Color.Transparent;
             this.Lb_Total.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Total.ForeColor = System.Drawing.Color.Black;
-            this.Lb_Total.Location = new System.Drawing.Point(107, 43);
-            this.Lb_Total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lb_Total.Location = new System.Drawing.Point(80, 35);
             this.Lb_Total.Name = "Lb_Total";
-            this.Lb_Total.Size = new System.Drawing.Size(51, 30);
+            this.Lb_Total.Size = new System.Drawing.Size(38, 23);
             this.Lb_Total.TabIndex = 1;
             this.Lb_Total.Text = "0.00";
             // 
@@ -602,10 +578,9 @@ namespace INASOFT_3._0.UserControls
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(64, 43);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(48, 35);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 30);
+            this.label7.Size = new System.Drawing.Size(29, 23);
             this.label7.TabIndex = 0;
             this.label7.Text = "C$";
             // 
@@ -620,20 +595,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox5.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox5.Location = new System.Drawing.Point(1111, 156);
-            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox5.Location = new System.Drawing.Point(833, 127);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
-            this.guna2GroupBox5.Size = new System.Drawing.Size(301, 108);
+            this.guna2GroupBox5.Size = new System.Drawing.Size(226, 88);
             this.guna2GroupBox5.TabIndex = 21;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_bill_40px;
-            this.pictureBox4.Location = new System.Drawing.Point(228, 43);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Location = new System.Drawing.Point(171, 35);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(48, 38);
+            this.pictureBox4.Size = new System.Drawing.Size(36, 31);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
@@ -645,9 +618,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GradientPanel2.BorderThickness = 3;
             this.guna2GradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(57, 108);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(43, 88);
             this.guna2GradientPanel2.TabIndex = 10;
             // 
             // label4
@@ -656,10 +629,9 @@ namespace INASOFT_3._0.UserControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(64, 12);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(48, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 30);
+            this.label4.Size = new System.Drawing.Size(116, 23);
             this.label4.TabIndex = 2;
             this.label4.Text = "Total ingresado";
             // 
@@ -685,10 +657,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox6.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox6.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox6.Location = new System.Drawing.Point(744, 304);
-            this.guna2GroupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox6.Location = new System.Drawing.Point(558, 247);
             this.guna2GroupBox6.Name = "guna2GroupBox6";
-            this.guna2GroupBox6.Size = new System.Drawing.Size(668, 361);
+            this.guna2GroupBox6.Size = new System.Drawing.Size(501, 293);
             this.guna2GroupBox6.TabIndex = 18;
             this.guna2GroupBox6.Text = "Productos más vendidos";
             // 
@@ -700,8 +671,7 @@ namespace INASOFT_3._0.UserControls
             this.chart3.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart3.Legends.Add(legend2);
-            this.chart3.Location = new System.Drawing.Point(-3, 50);
-            this.chart3.Margin = new System.Windows.Forms.Padding(4);
+            this.chart3.Location = new System.Drawing.Point(-2, 41);
             this.chart3.Name = "chart3";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -710,7 +680,7 @@ namespace INASOFT_3._0.UserControls
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart3.Series.Add(series2);
-            this.chart3.Size = new System.Drawing.Size(683, 306);
+            this.chart3.Size = new System.Drawing.Size(512, 249);
             this.chart3.TabIndex = 22;
             this.chart3.Text = "chart3";
             // 
@@ -722,11 +692,9 @@ namespace INASOFT_3._0.UserControls
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Location = new System.Drawing.Point(995, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(746, 8);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(91, 73);
+            this.groupBox2.Size = new System.Drawing.Size(68, 59);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Visible = false;
@@ -752,8 +720,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView2.Location = new System.Drawing.Point(4, 19);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
@@ -764,7 +731,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(83, 50);
+            this.dataGridView2.Size = new System.Drawing.Size(62, 40);
             this.dataGridView2.TabIndex = 11;
             // 
             // panel1
@@ -773,10 +740,9 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.PictureBox_Slider);
-            this.panel1.Location = new System.Drawing.Point(1432, 156);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(1074, 127);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 505);
+            this.panel1.Size = new System.Drawing.Size(315, 410);
             this.panel1.TabIndex = 22;
             // 
             // PictureBox_Slider
@@ -784,9 +750,8 @@ namespace INASOFT_3._0.UserControls
             this.PictureBox_Slider.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox_Slider.Image = global::INASOFT_3._0.Properties.Resources._1;
             this.PictureBox_Slider.Location = new System.Drawing.Point(0, 0);
-            this.PictureBox_Slider.Margin = new System.Windows.Forms.Padding(4);
             this.PictureBox_Slider.Name = "PictureBox_Slider";
-            this.PictureBox_Slider.Size = new System.Drawing.Size(420, 505);
+            this.PictureBox_Slider.Size = new System.Drawing.Size(315, 410);
             this.PictureBox_Slider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_Slider.TabIndex = 23;
             this.PictureBox_Slider.TabStop = false;
@@ -803,15 +768,16 @@ namespace INASOFT_3._0.UserControls
             this.lbNameNeg.AutoSize = true;
             this.lbNameNeg.Font = new System.Drawing.Font("Poppins Black", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNameNeg.ForeColor = System.Drawing.Color.Indigo;
-            this.lbNameNeg.Location = new System.Drawing.Point(35, 669);
+            this.lbNameNeg.Location = new System.Drawing.Point(26, 544);
+            this.lbNameNeg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNameNeg.Name = "lbNameNeg";
-            this.lbNameNeg.Size = new System.Drawing.Size(172, 74);
+            this.lbNameNeg.Size = new System.Drawing.Size(136, 60);
             this.lbNameNeg.TabIndex = 23;
             this.lbNameNeg.Text = "label5";
             // 
             // UC_HOME
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lbNameNeg);
@@ -836,9 +802,8 @@ namespace INASOFT_3._0.UserControls
             this.Controls.Add(this.lbUser);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_HOME";
-            this.Size = new System.Drawing.Size(1891, 753);
+            this.Size = new System.Drawing.Size(1418, 612);
             this.Load += new System.EventHandler(this.UC_HOME_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

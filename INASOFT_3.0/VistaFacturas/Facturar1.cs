@@ -68,17 +68,17 @@ namespace INASOFT_3._0.VistaFacturas
             }
             else
             {
-                DetalleFactura frm = new DetalleFactura();
+                FacturaFinal frm = new FacturaFinal();
                 frm.txtIdCliente.Text = txtIdCliente.Text;
                 int limite = 20;
 
                 if (lbNombre.Text.Length > limite)
                 {
-                    frm.lbClienteName.Text = lbNombre.Text.Substring(0, limite) + "...";
+                    frm.lbNombreCliente.Text = lbNombre.Text.Substring(0, limite) + "...";
                 }
                 else
                 {
-                    frm.lbClienteName.Text = lbNombre.Text;
+                    frm.lbNombreCliente.Text = lbNombre.Text;
                 }
 
                 if (Lb_User.Text.Length > limite)

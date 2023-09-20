@@ -262,13 +262,13 @@ namespace INASOFT_3._0.VistaFacturas
                     }
                 }
                 MessageBox_Ok.Show("Productos agregados a la factura", "Aviso");
-                FacturaFinal frm = new FacturaFinal(listaProductos);
+                FacturaFinal frm = new FacturaFinal();
                 frm.lbNombreCliente.Text = lbClienteName.Text;
                 frm.lbSubtotal.Text = lbSubtotal.Text;
                 frm.txtIdCliente.Text = txtIdCliente.Text;
                 frm.lbTotal.Text = lbSubtotal.Text;
                 frm.Lb_User.Text = Lb_User.Text;
-                frm.lbIdFactura.Text = Lb_AuxCodFac.Text;
+                //frm.lbIdFactura.Text = Lb_AuxCodFac.Text;
 
                 frm.Show();
                 this.Hide();

@@ -86,9 +86,8 @@ namespace INASOFT_3._0.UserControls
 
         private void Guna2Button1_Click(object sender, EventArgs e)
         {
-            DetalleFactura frm = new DetalleFactura();
-            frm.lbClienteName.Text = "";
-            frm.Lb_User.Text = Modelos.Sesion.nombre;
+            FacturaFinal frm = new FacturaFinal();
+            frm.lbNombreCliente.Text = "";
             frm.txtIdCliente.Text = "1";
             frm.Show();
         }

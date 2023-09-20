@@ -61,7 +61,7 @@ namespace INASOFT_3._0.UserControls
         public void Cargar_VentasxDias()
         {
             Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
-            dataGridView1.DataSource = ctrlHomre.Cargar_VentasXDias();
+            dataGridView1.DataSource = ctrlHomre.Cargar_TotalVentasxDias();
         }
 
         public void Cargar_ProductosMasVendidos()
