@@ -84,6 +84,7 @@ namespace INASOFT_3._0.UserControls
             this.Lb_TotalCredito = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Lb_TotalAlcontado = new System.Windows.Forms.Label();
+            this.btnProforna = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -157,7 +158,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(272, 58);
+            this.guna2Button1.Location = new System.Drawing.Point(256, 58);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(188, 47);
@@ -467,7 +468,8 @@ namespace INASOFT_3._0.UserControls
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridFatura);
             this.groupBox1.Location = new System.Drawing.Point(12, 59);
@@ -482,6 +484,9 @@ namespace INASOFT_3._0.UserControls
             // 
             this.dataGridFatura.AllowUserToAddRows = false;
             this.dataGridFatura.AllowUserToDeleteRows = false;
+            this.dataGridFatura.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridFatura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridFatura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridFatura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
@@ -496,7 +501,6 @@ namespace INASOFT_3._0.UserControls
             this.dataGridFatura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridFatura.ColumnHeadersHeight = 35;
             this.dataGridFatura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridFatura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridFatura.EnableHeadersVisualStyles = false;
             this.dataGridFatura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.dataGridFatura.Location = new System.Drawing.Point(4, 19);
@@ -797,11 +801,37 @@ namespace INASOFT_3._0.UserControls
             this.Lb_TotalAlcontado.TabIndex = 1;
             this.Lb_TotalAlcontado.Text = "0";
             // 
+            // btnProforna
+            // 
+            this.btnProforna.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProforna.BackColor = System.Drawing.Color.Transparent;
+            this.btnProforna.BorderRadius = 10;
+            this.btnProforna.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProforna.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnProforna.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnProforna.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnProforna.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnProforna.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnProforna.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProforna.ForeColor = System.Drawing.Color.White;
+            this.btnProforna.Image = global::INASOFT_3._0.Properties.Resources.icons8_proforma_invoice_48;
+            this.btnProforna.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnProforna.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnProforna.Location = new System.Drawing.Point(711, 12);
+            this.btnProforna.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProforna.Name = "btnProforna";
+            this.btnProforna.Size = new System.Drawing.Size(199, 41);
+            this.btnProforna.TabIndex = 87;
+            this.btnProforna.Text = "Proforma";
+            this.btnProforna.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnProforna.Click += new System.EventHandler(this.btnProforna_Click);
+            // 
             // UC_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnProforna);
             this.Controls.Add(this.guna2GroupBox5);
             this.Controls.Add(this.guna2Button7);
             this.Controls.Add(this.guna2GroupBox3);
@@ -886,5 +916,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label Lb_TotalCredito;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label Lb_TotalAlcontado;
+        private Guna.UI2.WinForms.Guna2Button btnProforna;
     }
 }

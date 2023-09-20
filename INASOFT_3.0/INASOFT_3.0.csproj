@@ -644,5 +644,14 @@
   <ItemGroup>
     <None Include="Resources\CreditoTemplate.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-proforma-invoice-66.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-proforma-invoice-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProformaTemplate.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

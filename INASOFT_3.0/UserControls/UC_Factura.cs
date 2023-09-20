@@ -522,5 +522,15 @@ namespace INASOFT_3._0.UserControls
         {
             CargarFacturas();
         }
+
+        private void btnProforna_Click(object sender, EventArgs e)
+        {
+            DetalleFactura frm = new DetalleFactura();
+            frm.txtNombreCliente.Visible = true;
+            frm.Lb_User.Text = Sesion.nombre;
+            frm.btnGenerar.Visible = true;
+            frm.btnAccept.Visible = false;
+            frm.Show();
+        }
     }
 }

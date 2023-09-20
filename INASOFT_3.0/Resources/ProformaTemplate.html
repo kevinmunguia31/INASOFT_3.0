@@ -29,10 +29,10 @@
             <td style="width:20%"></td>
             <td style="width:60%" align="center" valign="top">
                 <table>
-                    <tr><td align="center"><h4 style="margin:0px;">@NombreNegocio</h4></td></tr>
+                    <tr><td align="center"><h4 style="margin:0px; font-size:20px;">@NombreNegocio</h4></td></tr>
                     <tr><td align="center">@Direccion</td></tr>
-                    <tr><td align="center">@Telefono</td></tr>
-                    <tr><td align="center"><h4 style="margin:0px;">REPORTE DE VENTAS</h4></td></tr>
+                    <tr><td align="center">Telefono: @Telefono</td></tr>
+                    <tr><td align="center"><h4 style="margin:0px;">FACTURA PROFORMA</h4></td></tr>
                 </table>
             </td>
 
@@ -44,11 +44,16 @@
             <td colspan="2">
                 <table style="width:100%">
                     <tr>
-                        <td style="width:20%">Generado Por:</td>
+                        <td style="width:20%">Cliente:</td>
+                        <td style="width:30%;border-bottom:1px solid black">@CLIENTE</td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">Vendedor:</td>
                         <td style="width:30%;border-bottom:1px solid black">@Usuario</td>
                         <td style="width:10%">Fecha:</td>
                         <td style="width:40%;border-bottom:1px solid black">@FECHA</td>
                     </tr>
+
                 </table>
             </td>
             <td></td>
@@ -60,17 +65,16 @@
             <td colspan="3">
                 <table class="border" style="width:100%;">
                     <thead>
-                        <tr style="background-color:#D8D8D8">
-                            <th>Cod.</th>
-                            <th>Estado</th>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Total</th>
-                            <th>Debe</th>
-                            <th>Vendedor</th>
+                        <tr style="background-color:#D8D8D8; font-size:14px;">
+                            <th>COD.</th>
+                            <th>PRODUCTO</th>
+                            <th>CANTIDAD</th>
+                            <th>PRECIO UNIT. C$</th>
+                            <th>SUBTOTAL C$</th>
+
                         </tr>
                     </thead>
-                    <tbody style="font-size:13px;">
+                    <tbody style="font-size:12px;">
                         <!--<tr>
                             <td>1</td>
                             <td>sdafsda</td>
@@ -82,8 +86,8 @@
                             <td style="border: 0px !important"></td>
                             <td style="border: 0px !important"></td>
                             <td style="border: 0px !important"></td>
-                            <td align="right">Total:</td>
-                            <td>@TOTAL</td>
+                            <td align="right" style="font-size:15px;">TOTAL C$:</td>
+                            <td style="font-size:14px;">@TOTAL</td>
                         </tr>
                     </tbody>
                 </table>
