@@ -2,10 +2,12 @@
 Software de gestión de Inventario y Facturación.
 
 Panel Principal
-![Dashboard](https://drive.google.com/file/d/1iykPm9GOuAyaesqITcrj06XGC9bKPNVw/view?usp=drive_link)
+![dashboard](https://github.com/kevinmunguia31/INASOFT_3.0/assets/79023436/67a7c95b-2fbb-46b4-9be6-c47db82d2ab1)
+
 
 Inventario de Productos
-![Inventory](https://drive.google.com/file/d/1cot3yX6KtLEWmZ5gzD8aY2NAE73UucPq/view?usp=drive_link)
+![Producto e Inventario](https://github.com/kevinmunguia31/INASOFT_3.0/assets/79023436/35be86c4-db93-4996-9e9e-4c845047fc3c)
+
 
 Facturacion
-![Inventory](https://drive.google.com/file/d/1lUtEpuYsi2Rc_vyrAlbhYOFEwnZeN6mn/view?usp=drive_link)
+![Facturacion](https://github.com/kevinmunguia31/INASOFT_3.0/assets/79023436/226a130a-d992-4913-83e1-8fb27be0426f)
