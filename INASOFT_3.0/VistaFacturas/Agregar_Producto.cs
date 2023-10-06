@@ -17,6 +17,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace INASOFT_3._0
 {
@@ -30,12 +32,15 @@ namespace INASOFT_3._0
         {
             InitializeComponent();
             CargarProveedor();
-            //CargarProductos();
+            CargarTiposPagos();
             Cargar_Tabla();
+            Clear();
+            bloquearCampos(false);
 
             Lb_NombreUsuario.Text = Sesion.nombre;
             Txt_RUC.Enabled = false;
             Txt_TotalCompra.Enabled = false;
+            radioButton1.Enabled = true;
 
             datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
@@ -50,14 +55,12 @@ namespace INASOFT_3._0
                 band.ReadOnly = true;
             }
             Cargar_Total();
-            Clear();
-            bloquearCampos(false);
-
             if (dataGridView1.RowCount == 0)
             {
                 groupBox7.Enabled = false;
             }
             Cbx_Productos.Visible = false;
+            Lb_Producto.Visible = false;
         }
 
         public void CargarProveedor()
@@ -69,6 +72,17 @@ namespace INASOFT_3._0
             cbProveedor.DataSource = ctrl.CargarProveddores();
             cbProveedor.ValueMember = "ID";
             cbProveedor.DisplayMember = "Nombre";
+        }
+
+        public void CargarTiposPagos()
+        {
+            CbxTipoPagos.DataSource = null;
+            CbxTipoPagos.Items.Clear();
+
+            Controladores.CtrlTipo_Pago ctrl = new Controladores.CtrlTipo_Pago();
+            CbxTipoPagos.DataSource = ctrl.Cargar_Tipos_Pago();
+            CbxTipoPagos.ValueMember = "ID";
+            CbxTipoPagos.DisplayMember = "Tipos";
         }
 
         private void CargarProductos(int id)
@@ -204,10 +218,12 @@ namespace INASOFT_3._0
             bloquearCampos(true);
             Cbx_Productos.Enabled = false;
             Cbx_Productos.Visible = false;
+            Lb_Producto.Visible = false;
             txtCodBarra.Enabled = true;
             txtNameP.Enabled = true;
             txtPrecioCompra.Enabled = true;
             GroupBox_CambioProd.Enabled = false;
+            cbProveedor.Enabled = true;
 
             Txt_IDProd.Text = "0";
         }
@@ -218,10 +234,12 @@ namespace INASOFT_3._0
             bloquearCampos(true);
             Cbx_Productos.Enabled = true;
             Cbx_Productos.Visible = true;
+            Lb_Producto.Visible = true;
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
             txtPrecioCompra.Enabled = false;
             GroupBox_CambioProd.Enabled = true;
+            cbProveedor.Enabled = true;
             Txt_IDProd.Text = "";
         }
 
@@ -232,146 +250,111 @@ namespace INASOFT_3._0
 
         private void Cbx_Productos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (Cbx_Productos.SelectedIndex == -1)
+            {
+                Clear();
+                return;
+            }
+
             try
             {
-                if (Cbx_Productos.SelectedIndex == -1)
-                {
-                    Clear();
-                }
-                else
-                {
-                    int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
-                    Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+                int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
+                Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
 
-                    Txt_IDProd.Text = id.ToString();
+                Txt_IDProd.Text = id.ToString();
 
-                    txtNameP.Text = ctrlProductos.Nombre_Producto(id);
+                Productos productos = new Productos();
+                productos = ctrlProductos.MostrarDatosProductos(id);
 
-                    txtCodBarra.Text = ctrlProductos.Codigo_Producto(id);                    
+                txtCodBarra.Text = productos.Codigo.ToString();
+                txtNameP.Text = productos.Nombre;
+                Lb_CantStocks.Text = productos.Existencias.ToString();
+                txtPrecioVenta.Text = productos.Precio_venta.ToString();
+                txtPrecioCompra.Text = productos.Precio_compra.ToString();
+                txtObservacion.Text = productos.Observacion.ToString();
 
-                    txtPrecioCompra.Text = ctrlProductos.Precio_Compra(id).ToString();
-
-                    Lb_CantStocks.Text = ctrlProductos.Existencias_Producto(id).ToString();
-
-                    //SpinExist.Maximum = 100;
-                    //SpinExist.Minimum = 1;
-
-
-                    if (int.Parse(Lb_CantStocks.Text) <= 0)
-                    {
-                        errorProvider1.SetError(Lb_CantStocks, "Ya no hay productos en el almacen.");
-                        Lb_CantStocks.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(Lb_CantStocks, "");
-                        Lb_CantStocks.ForeColor = Color.Black;
-                    }
-                }
+                int existencias = productos.Existencias;
+                errorProvider1.SetError(Lb_CantStocks, existencias <= 0 ? "Ya no hay productos en el almacén." : "");
+                Lb_CantStocks.ForeColor = existencias <= 0 ? Color.Red : Color.Black;
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error: " + ex);
+                // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla en un archivo de registro.
+                // MessageBox.Show("Error: " + ex.Message);
             }
         }
-
         private void Btn_AddProducto_Click(object sender, EventArgs e)
         {
-            bool seRepite = false;
-
-            if (txtCodBarra.Text == "" || txtNameP.Text == "")
+            if (string.IsNullOrEmpty(txtCodBarra.Text) || string.IsNullOrEmpty(txtNameP.Text))
             {
-                MessageBoxError.Show("Tiene que rellenar todos los campos solicitados", "Error");
+                MessageBoxError.Show("Debe completar todos los campos solicitados", "Error");
                 Clear();
+                return;
+            }
+
+            if (SpinExist.Value == 0)
+            {
+                MessageBoxError.Show("Debe indicar la cantidad", "Error");
+                errorProvider1.SetError(SpinExist, "Debe indicar la cantidad que desea facturar");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPrecioVenta.Text))
+            {
+                MessageBoxError.Show("No deje campos obligatorios sin marcar", "Error");
+                errorProvider1.SetError(txtPrecioVenta, "Debe indicar el precio del producto");
+                return;
+            }
+
+            if (double.Parse(txtPrecioCompra.Text) > double.Parse(txtPrecioVenta.Text))
+            {
+                MessageBoxError.Show("El precio de venta no puede ser menor al precio del que se compró el producto", "Error");
+                return;
+            }
+
+            errorProvider1.SetError(txtPrecioVenta, "");
+            errorProvider1.SetError(SpinExist, "");
+
+            bool seRepite = dataGridView1.Rows.Cast<DataGridViewRow>().Any(fila => fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == txtCodBarra.Text);
+
+            if (seRepite)
+            {
+                MessageBox_Import.Show("Ya se ha agregado ese producto. Puede editarlo o borrarlo si lo desea.", "Importante");
             }
             else
             {
-                if (SpinExist.Value == 0)
-                {
-                    MessageBoxError.Show("Tiene que indicar la cantidad", "Error");
-                    errorProvider1.SetError(SpinExist, "Debe indicar la cantidad que desea facturar");
+                DataRow newRow = dataTable.NewRow();
+                newRow[0] = txtCodBarra.Text;
+                newRow[1] = txtNameP.Text;
+                newRow[2] = SpinExist.Value.ToString();
+                newRow[3] = double.Parse(txtPrecioCompra.Text);
+                newRow[4] = double.Parse(txtPrecioVenta.Text);
+                newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());
+                newRow[6] = Txt_IDProd.Text;
+                newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Compra del producto {txtNameP.Text}" : txtObservacion.Text;
 
-                }
-                else if (txtPrecioVenta.Text == "")
-                {
-                    MessageBoxError.Show("No deje campos obligatorios sin marcar", "Error");
-                    errorProvider1.SetError(txtPrecioVenta, "Debe indicar el precio del producto");
-                }
-                else if (double.Parse(txtPrecioCompra.Text) > double.Parse(txtPrecioVenta.Text))
-                {
-                    MessageBoxError.Show("El precio de venta no puede ser menor al precio del que se compró el producto\n", "Error");
-                }
-                else
-                {
-                    errorProvider1.SetError(txtPrecioVenta, "");
-                    errorProvider1.SetError(SpinExist, "");
-                    timer1.Start();
+                dataTable.Rows.Add(newRow);
 
-                    foreach (DataGridViewRow fila in dataGridView1.Rows)
-                    {
-                        if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == txtCodBarra.Text)
-                        {
-                            seRepite = true;
-                            break;
-                        }
-                    }
+                dataGridView1.DataSource = dataTable;
+                Cargar_Total();
+                Subtotal();
 
-                    if (seRepite)
-                    {
-                        MessageBox_Import.Show("Ya se agrego ese producto, puede editarlo o borrarlo si desea", "Importante");
-                        Clear();
-                    }
-                    else
-                    {
-                        Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-
-                        DataRow newRow = dataTable.NewRow();
-                        newRow[0] = txtCodBarra.Text;
-                        newRow[1] = txtNameP.Text;
-                        newRow[2] = SpinExist.Value.ToString();
-                        newRow[3] = double.Parse(txtPrecioCompra.Text);
-                        newRow[4] = double.Parse(txtPrecioVenta.Text);
-                        newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());                        
-                        newRow[6] = Txt_IDProd.Text;
-                        if (txtObservacion.Text == "")
-                        {
-                            txtObservacion.Text = "Compra del producto " + txtNameP.Text;
-                        }
-                        else
-                        {
-                            txtObservacion.Text = txtObservacion.Text;
-                        }
-                        newRow[7] = txtObservacion.Text;
-
-                        dataTable.Rows.Add(newRow);
-
-                        dataGridView1.DataSource = dataTable;
-                        Cargar_Total();
-                        Subtotal();
-
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            groupBox7.Enabled = false;
-                        }
-                        else
-                        {
-                            groupBox7.Enabled = true;
-                        }
-                    }
-                }
+                groupBox7.Enabled = dataGridView1.RowCount > 0;
             }
+
             Clear();
             bloquearCampos(false);
             Rbtn_ActualizarProducto.Checked = false;
             Rbtn_NuevoProducto.Checked = false;
             Cbx_Productos.Visible = false;
-            cbProveedor.SelectedIndex = -1;
+            Cbx_Productos.SelectedIndex = -1;
         }
 
         private void bloquearCampos(bool bandera)
         {
             GroupBox_Products.Enabled = bandera;
             Cbx_Productos.Enabled = bandera;
+            cbProveedor.Enabled = bandera;
         }
 
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
@@ -430,88 +413,83 @@ namespace INASOFT_3._0
 
         private void Btn_RealizarCompra_Click(object sender, EventArgs e)
         {
-            if(cbProveedor.SelectedIndex == -1 || txt_NombreProveedor.Text == "")
+            if (cbProveedor.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txt_NombreProveedor.Text))
             {
                 MessageBoxError.Show("No deje los datos del proveedor sin rellenar", "Error");
+                return;
             }
-            else if(Rbtn_Cordobas.Checked == false && Rbtn_Dolares.Checked == false)
+
+            if (CbxTipoPagos.SelectedIndex == -1)
             {
                 MessageBoxError.Show("Tiene que indicar el tipo de pago", "Error");
+                return;
             }
-            else if (dataGridView1.RowCount == 0)
+
+            if (!Rbtn_Pendiente.Checked && !Rbtn_Cancelado.Checked)
             {
-                MessageBoxError.Show("No se ha almacenado nigún producto, al menos guarde uno en la tabla.", "Error");
+                MessageBoxError.Show("Tiene que indicar el estado de la compra", "Error");
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(Txt_Descripcion.Text))
             {
-                string tipo_pago = "";
-                string descuento = "";
-                string iva = "";
-                if (Rbtn_Dolares.Checked == true)
-                {
-                    tipo_pago = "Transferencia";
-                }
-                if (Rbtn_Cordobas.Checked == true)
-                {
-                    tipo_pago = "Al contado";
-                }
-                //Insertar datos a las tablas
-                Modelos.Compras compras = new Modelos.Compras();
+                MessageBoxError.Show("Tienes que indicar la referencia", "Error");
+                return;
+            }
 
-                compras.Nombre_venderdor = txt_NombreProveedor.Text;
-                compras.Subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
-                if (Txt_DescuentoCompra.Text == "")
-                {
-                    descuento = "0";
-                }
-                else
-                {
-                    descuento = Txt_DescuentoCompra.Text;
-                }
+            if (dataGridView1.RowCount == 0)
+            {
+                MessageBoxError.Show("No se ha almacenado ningún producto, al menos guarde uno en la tabla.", "Error");
+                return;
+            }
 
-                if (Txt_IVACompra.Text == "")
-                {
-                    iva = "0";
-                }
-                else
-                {
-                    iva = Txt_IVACompra.Text;
-                }
-                compras.Descuento = double.Parse(descuento);
-                compras.Iva = double.Parse(iva);
-                compras.Descripcion = Txt_Descripcion.Text;
-                compras.Tipo_pago = tipo_pago;
-                compras.Id_usuario = Sesion.id;
-                compras.Id_proveedor = int.Parse(cbProveedor.SelectedValue.ToString());
+            string estado = Rbtn_Cancelado.Checked ? "Cancelado" : "Pendiente";
+            double descuento = string.IsNullOrWhiteSpace(Txt_DescuentoCompra.Text) ? 0 : double.Parse(Txt_DescuentoCompra.Text);
+            double iva = string.IsNullOrWhiteSpace(Txt_IVACompra.Text) ? 0 : double.Parse(Txt_IVACompra.Text);
 
-                Controladores.CtrlCompras ctrlCompras = new Controladores.CtrlCompras();
-                bool bandera = ctrlCompras.Insertar_Compra(compras);
+            //Insertar datos a las tablas
+            Modelos.Compras compras = new Modelos.Compras
+            {
+                Nombre_venderdor = txt_NombreProveedor.Text,
+                Subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString()),
+                Descuento = descuento,
+                Iva = iva,
+                Descripcion = Txt_Descripcion.Text,
+                Estado = estado,
+                Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString()),
+                Id_usuario = Sesion.id,
+                Id_proveedor = int.Parse(cbProveedor.SelectedValue.ToString())
+            };
 
-                if (bandera)
+            Controladores.CtrlCompras ctrlCompras = new Controladores.CtrlCompras();
+            bool bandera = ctrlCompras.Insertar_Compra(compras);
+
+            if (bandera)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    Modelos.Productos productos = new Modelos.Productos();
-                    Modelos.Detalle_Compras detalle_Compras = new Modelos.Detalle_Compras();
-
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    Modelos.Productos productos = new Modelos.Productos
                     {
-                        DataGridViewRow row = dataGridView1.Rows[i];
-                        productos.Id = int.Parse(row.Cells[6].Value.ToString());
-                        productos.Codigo = row.Cells[0].Value.ToString();
-                        productos.Nombre = row.Cells[1].Value.ToString();
-                        productos.Existencias = int.Parse(row.Cells[2].Value.ToString());
-                        productos.Precio_compra = double.Parse(row.Cells[3].Value.ToString());
-                        productos.Precio_total = double.Parse(row.Cells[5].Value.ToString());
-                        productos.Precio_venta = double.Parse(row.Cells[4].Value.ToString());
-                        productos.Observacion = row.Cells[7].Value.ToString();
-
-                        ctrlCompras.Productos_Comprados(productos);
-                    } 
-                    MessageBox_Import.Show("Se ha realizado la compra de manera éxitosa", "Importante");
-                    CtrlInfo ctrlInfo = new CtrlInfo();
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una orden de compra con referencia: " + compras.Descripcion;
-                    ctrlInfo.InsertarLog(log);
-                    this.Close();
+                        Id = int.Parse(row.Cells[6].Value.ToString()),
+                        Codigo = row.Cells[0].Value.ToString(),
+                        Nombre = row.Cells[1].Value.ToString(),
+                        Existencias = int.Parse(row.Cells[2].Value.ToString()),
+                        Existencias_min = 1,
+                        Precio_compra = double.Parse(row.Cells[3].Value.ToString()),
+                        Precio_venta = double.Parse(row.Cells[4].Value.ToString()),
+                        Precio_total = double.Parse(row.Cells[5].Value.ToString()),
+                        Observacion = row.Cells[7].Value.ToString(),
+                        Id_Compra = ctrlCompras.ID_Compra()                    
+                    };
+                    
+                    ctrlCompras.Productos_Comprados(productos);
                 }
+
+                MessageBox_Import.Show("Se ha realizado la compra de manera exitosa", "Importante");
+                CtrlInfo ctrlInfo = new CtrlInfo();
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una orden de compra con referencia: " + compras.Descripcion;
+                ctrlInfo.InsertarLog(log);
+                this.Close();
             }
         }
 
@@ -574,10 +552,8 @@ namespace INASOFT_3._0
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Ver_EditarProducto ver_EditarProducto = new Ver_EditarProducto();
-            ver_EditarProducto.GroupBox_EditarProd.Visible = false;
-            ver_EditarProducto.GroupBox_VerProd.Visible = true;
-            ver_EditarProducto.ShowDialog();
+            VistaProductos vistaProductos = new VistaProductos();
+            vistaProductos.ShowDialog();
         }
 
         private void Txt_IVACompra_TextChanged(object sender, EventArgs e)
@@ -615,11 +591,13 @@ namespace INASOFT_3._0
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             txtPrecioCompra.Enabled = false;
+            txtPrecioVenta.Enabled = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             txtPrecioCompra.Enabled = true;
+            txtPrecioVenta.Enabled = true;
         }
     }
 }

@@ -99,11 +99,9 @@ namespace INASOFT_3._0.Properties {
         ///                padding: 5px;
         ///                border: 1px solid black;
         ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;table style=&quot;width:100%&quot;&gt;
-        ///        [resto de la cadena truncado]&quot;;.
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string CreditoTemplate {
             get {
@@ -140,11 +138,9 @@ namespace INASOFT_3._0.Properties {
         ///                padding: 5px;
         ///                border: 1px solid black;
         ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;table style=&quot;width:100%&quot;&gt;
-        ///        [resto de la cadena truncado]&quot;;.
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string facturaTemplate {
             get {
@@ -275,6 +271,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_choice_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_choice_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_client_management_40px_2 {
             get {
                 object obj = ResourceManager.GetObject("icons8_client_management_40px_2", resourceCulture);
@@ -308,6 +314,16 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_credit_control_40px1 {
             get {
                 object obj = ResourceManager.GetObject("icons8_credit_control_40px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_data_transfer_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_data_transfer_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -495,6 +511,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_paper_money_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_paper_money_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_pdf_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_pdf_20px", resourceCulture);
@@ -655,6 +681,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_toolbox_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_toolbox_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_transaction_30px {
             get {
                 object obj = ResourceManager.GetObject("icons8_transaction_30px", resourceCulture);
@@ -751,11 +787,9 @@ namespace INASOFT_3._0.Properties {
         ///                padding: 5px;
         ///                border: 1px solid black;
         ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;table style=&quot;width:100%&quot;&gt;
-        ///        [resto de la cadena truncado]&quot;;.
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string ProductTemplate {
             get {
@@ -782,11 +816,9 @@ namespace INASOFT_3._0.Properties {
         ///                padding: 5px;
         ///                border: 1px solid black;
         ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;table style=&quot;width:100%&quot;&gt;
-        ///        [resto de la cadena truncado]&quot;;.
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string ProformaTemplate {
             get {

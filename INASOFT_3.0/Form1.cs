@@ -162,5 +162,11 @@ namespace INASOFT_3._0
             UC_Creditos uc = new UC_Creditos();
             addUserControl(uc);
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            UC_Reportes uc = new UC_Reportes();
+            addUserControl(uc);
+        }
     }
 }

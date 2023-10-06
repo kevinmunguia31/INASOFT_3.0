@@ -1,11 +1,14 @@
 ﻿using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -142,10 +145,10 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Insertar_Credito(string tipoPago, string DiaDeCredito , string DiaDeVencimiento, double Cargo, string Estado, string Desc, int ID_Factura, int ID_Cliente)
+        public bool Insertar_Credito(Credito credito)
         {
             bool bandera = false;
-            string sql = "CALL Agregar_Credito('" + tipoPago + "', '" + DiaDeCredito + "', '" + DiaDeVencimiento + "', " + Cargo + ", '" + Estado + "', '" + Desc + "'," + ID_Factura + ", " + ID_Cliente + ");";
+            string sql = "CALL Agregar_Credito('"+ credito.Dia_Inicio +"','" + credito.Dia_Vencimiento +"', "+ credito.Cargo +", '"+ credito.Estado +"', '"+ credito.Descripcion +"', "+ credito.Id_Factura +", "+ credito.Id_Cliente +", "+ credito.Id_TipoPago +");";
 
             try
             {
@@ -163,10 +166,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Realizar_Abono(string Fecha, double Monto, double SaldoAnterior, double SaldoNuevo, string Desc, int ID_Credito, int ID_Factura)
+        public bool Realizar_Abono(Credito credito)
         {
             bool bandera = false;
-            string sql = "CALL Realziar_Abono('" + Fecha + "', " + Monto + ", " + SaldoAnterior + ",  " + SaldoNuevo + ", '" + Desc + "', " + ID_Credito + ", " + ID_Factura + ");";
+
+            string sql = "CALL Realziar_Abono("+ credito.Monto +", "+ credito.Saldo_Anterior +", "+ credito.Saldo_Nuevo +", '"+ credito.Descripcion_Abono +"', "+ credito.Id_Credito +", "+ credito.Id_Factura +");";
 
             try
             {
@@ -184,10 +188,10 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public int Actualizar_FacturaCredito(int ID_Credito, int ID_Factura)
+        public int Actualizar_FacturaCredito(Credito credito)
         {
             int bandera = 0;
-            string SQL = "CALL Actualizar_FacturaCredito(" + ID_Credito + ", " + ID_Factura + ");";
+            string SQL = "CALL Actualizar_FacturaCredito("+ credito.Id_Credito +", "+ credito.Id_Factura +");";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

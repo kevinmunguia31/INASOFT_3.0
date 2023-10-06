@@ -122,7 +122,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable CargarProveddores()
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT id, nombre FROM proveedor WHERE ID != 1 ORDER BY nombre ASC";
+            string sql = "SELECT ID, Nombre FROM Proveedor ORDER BY Nombre ASC";
             try
             {
                 MySqlConnection conexionBD = Conexion.getConexion();

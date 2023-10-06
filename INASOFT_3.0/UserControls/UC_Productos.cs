@@ -19,6 +19,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using Document = iTextSharp.text.Document;
+using DevExpress.XtraEditors;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -88,10 +90,10 @@ namespace INASOFT_3._0.UserControls
         {
             string id_pos = e.ClickedItem.Name.ToString();
 
-            if (id_pos.Contains("Borrar"))
+            if (id_pos.Contains("Cambiar estado"))
             {
-                id_pos = id_pos.Replace("Borrar", "");
-                Eliminar_Producto(int.Parse(id_pos));
+                id_pos = id_pos.Replace("Cambiar estado", "");
+                CambiarEstado(int.Parse(id_pos));
                 Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
                 lbCapital.Text = ctrlProductos.CapitalInvertido();
                 lbCantiTota.Text = ctrlProductos.TotalProductos();
@@ -118,29 +120,47 @@ namespace INASOFT_3._0.UserControls
                     string nombre = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
                     string estado = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
                     string existencia = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
+                    string existencia_min = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
 
-                    string aux1 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
+                    string aux1 = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
                     string[] words1 = aux1.Split(' ');
                     string aux_PrecioCompra = words1[1];
                     string precio_compra = aux_PrecioCompra;
 
-                    string aux2 = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
+                    string aux2 = dataGridView1.Rows[id_pos].Cells[7].Value.ToString();
                     string[] words2 = aux2.Split(' ');
                     string aux_PrecioVenta = words2[1];
 
                     string precio_venta = aux_PrecioVenta;
-                    string observaciones = dataGridView1.Rows[id_pos].Cells[8].Value.ToString();
+                    string observaciones = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
                     
                     Ver_EditarProducto update = new Ver_EditarProducto();
                     //update.labelTitle.Text = "Editar producto";
+                    update.Lb_titulo.Text = "Editar el producto " + nombre;
+                    update.GroupBox_EditarProd.Visible = true;
                     update.Txt_IDProd.Text = id;
                     update.txtCodBarra.Text = codigo;
                     update.txtNameP.Text = nombre;
-                    update.SpinExist.Value = int.Parse(existencia);
+                    update.Lb_CantStocks.Text = existencia;
+                    update.SpinExis_Min.Text = existencia_min;
                     update.txtPrecioCompra.Text = precio_compra;
                     update.txtPrecioVenta.Text = precio_venta;
                     update.txtObservacion.Text = observaciones;
                     update.Cbx_Estados.SelectedItem = estado;
+
+
+                    update.GroupBox_EditarProd.Enabled = true;
+                    update.GroupBox_EditarProd.Dock = DockStyle.Fill;
+                    update.txtCodBarra.Enabled = false;
+                    update.Rbttn_ExistProduct.Checked = true;
+                    update.txtPrecioCompra.Enabled = false;
+                    update.txtPrecioVenta.Enabled = false;
+                    update.SpinExist.Enabled = false;                    
+                    update.groupBox1.Visible = false;
+                    update.TxtBuscar_Productos.Enabled = false;
+                    update.button1.Enabled = false;
+                    update.Cbx_Productos.Enabled = false;
+                    update.Cbx_Estados.Enabled = false;
                     update.ShowDialog();
                 }
             }
@@ -150,30 +170,39 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void Eliminar_Producto(int id_pos)
+        private void CambiarEstado(int id_pos)
         {
             try
             {
-                if (id_pos > -1 && id_pos != null)
+                if (id_pos >= 0 && id_pos < dataGridView1.Rows.Count)
                 {
-                    bool bandera = false;
-                    DialogResult resultado = MessageDialog.Show("Seguro que desea eliminar el registro?", "Eliminar");
+                    DialogResult resultado = MessageDialog.Show("¿Seguro que desea cambiar el estado del producto?", "Estado del producto");
+
                     if (resultado == DialogResult.Yes)
                     {
-                        int id = int.Parse(dataGridView1.Rows[id_pos].Cells[0].Value.ToString());
+                        int Id = int.Parse(dataGridView1.Rows[id_pos].Cells[0].Value.ToString());
                         CtrlProductos _ctrl = new CtrlProductos();
-                        bandera = _ctrl.Eliminar(id);
+                        bool bandera = _ctrl.CambiarEstado(Id);
+
                         if (bandera)
                         {
-                            MessageDialogInfo.Show("Registro Eliminado con exito", "Aviso");
-                            CargarTablaProduct();
+                            MessageDialogInfo.Show("El estado del registro ha sido cambiado con éxito.", "Aviso");
+                            CargarTablaProduct(); // Asumiendo que esta función actualiza la tabla de productos.
+                        }
+                        else
+                        {
+                            MessageBox_Error.Show("No se pudo cambiar el estado del registro.", "Error");
                         }
                     }
+                }
+                else
+                {
+                    MessageBox_Error.Show("Seleccione una fila válida en la tabla.", "Error");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex, "Error");
+                MessageBox.Show("Error: " + ex.ToString(), "Error");
             }
         }
 
@@ -182,7 +211,7 @@ namespace INASOFT_3._0.UserControls
             MessageBox_Import.Show(
              "1. Tiene la opción de ver todos los productos que hay en el almacén.\n" +
              "2. Tiene la función de buscar un producto determinado ya sea por su nombre o por su código.\n" +
-             "3. Puede agregar, editar y eliminar un producto si desea hacerlo." +
+             "3. ." +
              "\n", "¿Cómo funciona este apartado?");
         }
 
@@ -223,55 +252,50 @@ namespace INASOFT_3._0.UserControls
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            CultureInfo culturaLocal = new CultureInfo("es-NI");
-            if (e.Button == MouseButtons.Left)
+            int limite = 20;
+            int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+            if (pos < 0)
+                return;
+
+            groupBox_Detalle.Text = "Producto " + lbNameP.Text;
+            txtID.Text = dataGridView1.Rows[pos].Cells[0].Value.ToString();
+            lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
+            lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
+            lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
+            lbPrecioCompra.Text = dataGridView1.Rows[pos].Cells[6].Value.ToString();
+            lbPrecioVenta.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
+            lbPrecioTotal.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
+            lbObservaciones.Text = dataGridView1.Rows[pos].Cells[9].Value.ToString();
+            lbProveedor.Text = dataGridView1.Rows[pos].Cells[11].Value.ToString();
+
+            if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) <= 0)
             {
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1 && pos != null)
-                {
-                    txtID.Text = dataGridView1.Rows[pos].Cells[0].Value.ToString();
-                    lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
-                    lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
-                    //lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
-                    if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) > 0)
-                    {
-                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
-                        lbExistencias.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
-                        lbExistencias.ForeColor = Color.Red;
-                    }
-                    lbObservaciones.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
-                    lbProveedor.Text = dataGridView1.Rows[pos].Cells[9].Value.ToString();
-                    groupBox_Detalle.Text = "Producto " + dataGridView1.Rows[pos].Cells[2].Value.ToString();
-
-                    lbPrecioCompra.Text = dataGridView1.Rows[pos].Cells[5].Value.ToString();                    
-
-                    lbPrecioVenta.Text = dataGridView1.Rows[pos].Cells[6].Value.ToString();
-
-                    lbPrecioTotal.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
-                }
+                lbExistencias.ForeColor = Color.Red;
             }
+            else
+            {
+                lbExistencias.ForeColor = Color.Black;
+            }
+
+            if (lbNameP.Text.Length > limite)
+            {
+                lbNameP.Text = lbNameP.Text.Substring(0, limite) + "...";
+            }
+
+            if (lbObservaciones.Text.Length > limite)
+            {
+                lbObservaciones.Text = lbObservaciones.Text.Substring(0, limite) + "...";
+            }
+
             if (e.Button == MouseButtons.Right)
             {
                 ContextMenuStrip menu = new ContextMenuStrip();
-
-                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1)
-                {
-                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
-                    menu.Items.Add("Editar").Name = "Editar" + pos;
-                }
+                menu.Items.Add("Cambiar estado").Name = "Cambiar estado" + pos;
+                menu.Items.Add("Editar").Name = "Editar" + pos;
                 menu.Show(dataGridView1, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
             }
-        }
-
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
@@ -292,7 +316,7 @@ namespace INASOFT_3._0.UserControls
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["Codigo"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Código"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Producto"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Existencias"].Value.ToString() + "</td>";
@@ -343,6 +367,19 @@ namespace INASOFT_3._0.UserControls
                 }
 
             }
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Ver_EditarProducto add = new Ver_EditarProducto();
+            add.Lb_titulo.Text = "Realizar remesa inventario";
+            add.ShowDialog();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            Controladores.CtrlReporte ctrl = new CtrlReporte();
+            ctrl.Reporte_Productos(dataGridView1);
         }
     }
 }

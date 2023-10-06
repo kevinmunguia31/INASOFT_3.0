@@ -1,4 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 namespace INASOFT_3._0.VistaFacturas
 {
@@ -40,14 +43,14 @@ namespace INASOFT_3._0.VistaFacturas
                 int pos = datagridView1.HitTest(e.X, e.Y).RowIndex;
                 if (pos > -1 && pos != null)
                 {
-                    if (lbCodProdu.Text == datagridView1.Rows[pos].Cells[0].Value.ToString())
+                    if (lbCodProdu.Text == datagridView1.Rows[pos].Cells[1].Value.ToString())
                     {
                         MessageBox_Error.Show("Ya estás trabajando con esté producto");
                     }
                     else
                     {
-
-                        lbProductName.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
+                        Txt_IdProducto.Text = datagridView1.Rows[pos].Cells[0].Value.ToString();
+                        lbProductName.Text = datagridView1.Rows[pos].Cells[2].Value.ToString();
                         int limite = 15;
                         if (lbProductName.Text.Length > limite)
                         {
@@ -57,10 +60,10 @@ namespace INASOFT_3._0.VistaFacturas
                         {
                             lbProductName.Text = lbProductName.Text;
                         }
-                        lbCodProdu.Text = datagridView1.Rows[pos].Cells[0].Value.ToString();
-                        LbPrecio.Text = datagridView1.Rows[pos].Cells[2].Value.ToString();
-                        lbExistencias.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
-                        SpinCantidad.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
+                        lbCodProdu.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
+                        LbPrecio.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
+                        lbExistencias.Text = datagridView1.Rows[pos].Cells[4].Value.ToString();
+                        SpinCantidad.Text = datagridView1.Rows[pos].Cells[4].Value.ToString();
                     }
                 }
             }
@@ -105,6 +108,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         public void cargar_tabla()
         {
+            dataTable.Columns.Add("ID");
             dataTable.Columns.Add("Código");
             dataTable.Columns.Add("Nombre");
             dataTable.Columns.Add("Cantidad");
@@ -128,7 +132,7 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 for (int i = 0; i < datagridView2.Rows.Count; i++)
                 {
-                    Total += float.Parse(datagridView2.Rows[i].Cells[4].Value.ToString());
+                    Total += float.Parse(datagridView2.Rows[i].Cells[5].Value.ToString());
                 }
                 lbTotalDevolucion.Text = Total.ToString();
             }
@@ -146,6 +150,7 @@ namespace INASOFT_3._0.VistaFacturas
             LbPrecio.Text = "...";
             SpinCantidad.Value = 0;
             lbCodProdu.Text = "...";
+            Txt_IdProducto.Text = "";
         }
 
         private void BttnConfirmar_Click(object sender, EventArgs e)
@@ -159,16 +164,12 @@ namespace INASOFT_3._0.VistaFacturas
                 DialogResult resultado = guna2MessageDialog1.Show("¿Está seguro que desea devolver estos productos?\n\n", "Devoluciòn");
                 if (resultado == DialogResult.Yes)
                 {
-                    string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                    string hora = DateTime.Now.ToString("hh:mm:ss");
-                    string Fecha_final = fecha + " " + hora;
                     string descripcion;
-
                     int cantidad = 0;
 
                     for (int i = 0; i < datagridView2.Rows.Count; i++)
                     {
-                        cantidad += int.Parse(datagridView2.Rows[i].Cells[2].Value.ToString());
+                        cantidad += int.Parse(datagridView2.Rows[i].Cells[3].Value.ToString());
                     }
 
                     if (txtDescripcion.Text == "")
@@ -180,21 +181,36 @@ namespace INASOFT_3._0.VistaFacturas
                         descripcion = txtDescripcion.Text;
                     }
 
+                    Modelos.Devolucion devolucion = new Modelos.Devolucion();
+                    devolucion.Descripcion = descripcion;
+                    devolucion.Id_Factura = int.Parse(Txt_Factura.Text);
+
                     Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
-                    bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, int.Parse(Txt_Factura.Text));
+                    bool bandera1 = ctrlDevolucion.Agregar_Devolucion(devolucion);
 
-                    int devolucion = ctrlDevolucion.ID_Devolucion();
-                    int factura = int.Parse(Txt_Factura.Text);
+                    List<Modelos.Devolucion> lista = new List<Modelos.Devolucion>();
 
-                    for (int i = 0; i < datagridView2.Rows.Count; i++)
+                    foreach (DataGridViewRow fila in datagridView2.Rows)
                     {
-                        DataGridViewRow row = datagridView2.Rows[i];
-                        ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), devolucion, factura);
-                    }
-                    double Devolucion = double.Parse(lbTotalDevolucion.Text);
-                    int id_factura = int.Parse(Txt_Factura.Text);
+                        if (!fila.IsNewRow) // Excluye la fila de nueva entrada si la tienes
+                        {
+                            Modelos.Devolucion devolucion1 = new Modelos.Devolucion();
+                            devolucion1.Cantidad = int.Parse(fila.Cells[3].Value.ToString());
+                            devolucion1.Id_devolucion = ctrlDevolucion.ID_Devolucion();
+                            devolucion1.Id_producto = int.Parse(fila.Cells[0].Value.ToString());
+                            devolucion1.Id_Factura = int.Parse(Txt_Factura.Text);
 
-                    ctrlDevolucion.Actualizar_Factura(Devolucion, id_factura);
+                            lista.Add(devolucion1);
+                        }
+                    }
+
+                    foreach (Modelos.Devolucion devolucion2 in lista)
+                    {
+                        ctrlDevolucion.Devolucion_productos(devolucion2);
+                    }
+                    devolucion.Id_devolucion = ctrlDevolucion.ID_Devolucion();
+
+                    ctrlDevolucion.Actualizar_Factura(devolucion);
                     UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                     uC_Factura.CargarFacturas();
                     MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n", "Importante");
@@ -222,7 +238,7 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     foreach (DataGridViewRow fila in datagridView2.Rows)
                     {
-                        if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text)
+                        if (fila.Cells[1].Value != null && fila.Cells[1].Value.ToString() == lbCodProdu.Text)
                         {
                             seRepite = true;
                             break;
@@ -236,11 +252,13 @@ namespace INASOFT_3._0.VistaFacturas
                     else
                     {
                         DataRow newRow = dataTable.NewRow();
-                        newRow[0] = lbCodProdu.Text;
-                        newRow[1] = lbProductName.Text;
-                        newRow[2] = SpinCantidad.Value;
-                        newRow[3] = LbPrecio.Text;
-                        newRow[4] = (double.Parse(LbPrecio.Text) * double.Parse(SpinCantidad.Value.ToString())).ToString();
+                        newRow[0] = Txt_IdProducto.Text;
+                        newRow[1] = lbCodProdu.Text;
+                        newRow[2] = lbProductName.Text;
+                        newRow[3] = SpinCantidad.Value;
+                        newRow[4] = LbPrecio.Text;
+                        newRow[5] = (double.Parse(LbPrecio.Text) * double.Parse(SpinCantidad.Value.ToString())).ToString();
+                        
 
                         dataTable.Rows.Add(newRow);
 
@@ -296,30 +314,59 @@ namespace INASOFT_3._0.VistaFacturas
             DialogResult resultado = guna2MessageDialog1.Show("Al devolver todos los productos la factura quedará anulada, ¿está seguro que desea devolver todos los productos?\n\n", "Eliminar");
             if (resultado == DialogResult.Yes)
             {
-                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                string hora = DateTime.Now.ToString("hh:mm:ss");
-                string Fecha_final = fecha + " " + hora;
-                string descripcion = "Se hizo una devolución de todos los productos";
-                double Devolucion = 0;
-                int ID_factura = int.Parse(Txt_Factura.Text);
+                string descripcion;
+                int cantidad = 0;
+                double devolucionTotal = 0.00;
+
+                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                {
+                    cantidad += int.Parse(datagridView1.Rows[i].Cells[3].Value.ToString());
+                }
+                foreach (DataGridViewRow fila in datagridView1.Rows)
+                {
+                    if (!fila.IsNewRow) // Excluye la fila de nueva entrada si la tienes
+                    {
+                        devolucionTotal += double.Parse(fila.Cells["Total"].Value.ToString());
+                    }
+                }
+                if (txtDescripcion.Text == "")
+                {
+                    descripcion = "El cliente " + lbClienteName.Text + " ha hecho una devolución de " + cantidad + " productos";
+                }
+                else
+                {
+                    descripcion = txtDescripcion.Text;
+                }
+
+                Modelos.Devolucion devolucion = new Modelos.Devolucion();
+                devolucion.Descripcion = descripcion;
+                devolucion.Id_Factura = int.Parse(Txt_Factura.Text);
 
                 Controladores.CtrlDevolucion ctrlDevolucion = new CtrlDevolucion();
-                bool bandera1 = ctrlDevolucion.Agregar_Devolucion(Fecha_final, descripcion, ID_factura);
+                bool bandera1 = ctrlDevolucion.Agregar_Devolucion(devolucion);
+                List<Modelos.Devolucion> lista = new List<Modelos.Devolucion>();
 
-                int ID_devolucion = ctrlDevolucion.ID_Devolucion();
-
-                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                foreach (DataGridViewRow fila in datagridView2.Rows)
                 {
-                    DataGridViewRow row = datagridView1.Rows[i];
-                    ctrlDevolucion.Devolucion_productos(int.Parse(row.Cells[3].Value.ToString()), double.Parse(row.Cells[2].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), ID_devolucion, ID_factura);
+                    if (!fila.IsNewRow) // Excluye la fila de nueva entrada si la tienes
+                    {
+                        Modelos.Devolucion devolucion1 = new Modelos.Devolucion();
+                        devolucion1.Cantidad = int.Parse(fila.Cells[3].Value.ToString());
+                        devolucion1.Id_devolucion = ctrlDevolucion.ID_Devolucion();
+                        devolucion1.Id_producto = int.Parse(fila.Cells[0].Value.ToString());
+                        devolucion1.Id_Factura = int.Parse(Txt_Factura.Text);
+
+                        lista.Add(devolucion1);
+                    }
                 }
 
-                for (int i = 0; i < datagridView1.Rows.Count; i++)
+                foreach (Modelos.Devolucion devolucion2 in lista)
                 {
-                    Devolucion += double.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
+                    ctrlDevolucion.Devolucion_productos(devolucion2);
                 }
-                ctrlDevolucion.Actualizar_Factura(Devolucion, ID_factura);
+                devolucion.Id_devolucion = ctrlDevolucion.ID_Devolucion();
 
+                ctrlDevolucion.Actualizar_Factura(devolucion);
                 this.Hide();
 
                 Anular_Factura frm = new Anular_Factura(Txt_Factura.Text);
@@ -330,8 +377,8 @@ namespace INASOFT_3._0.VistaFacturas
                     frm.Lb_Credito1.Visible = true;
                     frm.Lb_Credito2.Visible = true;
                     frm.Lb_Devolucion3.Visible = true;
-                    frm.Lb_Credito2.Text = frm.Lb_Credito2.Text + " " + Devolucion;
-                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + Devolucion;
+                    frm.Lb_Credito2.Text = frm.Lb_Credito2.Text + " " + devolucionTotal;
+                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + devolucionTotal;
                 }
                 else
                 {
@@ -339,7 +386,7 @@ namespace INASOFT_3._0.VistaFacturas
                     frm.Lb_Credito2.Visible = false;
                     frm.Lb_Devolucion3.Visible = true;
                     frm.Lb_Devolucion3.Location = new Point(6, 133);
-                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + Devolucion;
+                    frm.Lb_Devolucion3.Text = frm.Lb_Devolucion3.Text + " " + devolucionTotal;
                 }
                 frm.ShowDialog();
 

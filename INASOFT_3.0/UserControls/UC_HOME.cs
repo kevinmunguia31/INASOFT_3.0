@@ -34,10 +34,9 @@ namespace INASOFT_3._0.UserControls
             lbdate.Text = fecha;
             HayInternet();
             GraficoVentasDiarias();
-            Cargar_VentasxDias();
             Cargar_ProductosMasVendidos();
-            GraficaProductos();
-            Grafica();
+            GraficaCargar_ProductosMasVendidos();
+            GraficaCargar_TotalVentasxDias();
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
             lbCantInvoice.Text = ctrlHome.Total_Facturas_Realizads(fecha).ToString();
             lbTotalHoy.Text = ctrlHome.TotalFinal_Facturas(fecha).ToString();
@@ -51,38 +50,30 @@ namespace INASOFT_3._0.UserControls
             lbNameNeg.Text = Modelos.InfoNegocio.nombre;
         }
 
-        //Cargar el dataGridView
-        /*public void Cargar_TotalxMes()
-        {
-            Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
-            dataGridView1.DataSource = ctrlHome.Cargar_TotalxMes();
-        }*/
-
-        public void Cargar_VentasxDias()
-        {
-            Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
-            dataGridView1.DataSource = ctrlHomre.Cargar_TotalVentasxDias();
-        }
-
         public void Cargar_ProductosMasVendidos()
         {
             Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
             dataGridView2.DataSource = ctrlHomre.Cargar_ProductosMasVendidos();
         }
 
-        public void Grafica()
+        public void GraficaCargar_TotalVentasxDias()
         {
-            ArrayList fehca = new ArrayList();
-            ArrayList cantidad = new ArrayList();
-            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            Controladores.CtrlHome ctrl = new Controladores.CtrlHome();
+            List<Reporte> ganancias = ctrl.Cargar_TotalVentasxDias();
+
+            ArrayList fechas = new ArrayList();
+            ArrayList Ganancias = new ArrayList();
+
+            foreach (Reporte ganancia in ganancias)
             {
-                fehca.Add(fila.Cells[0].Value);
-                cantidad.Add(fila.Cells[1].Value);
+                fechas.Add(ganancia.Fecha);
+                Ganancias.Add(ganancia.Ganancias);
             }
-            chart2.Series[0].Points.DataBindXY(fehca, cantidad);
+
+            chart2.Series[0].Points.DataBindXY(fechas, Ganancias);
         }
 
-        public void GraficaProductos()
+        public void GraficaCargar_ProductosMasVendidos()
         {
             ArrayList nombreProducto = new ArrayList();
             ArrayList cantidad = new ArrayList();
@@ -91,7 +82,7 @@ namespace INASOFT_3._0.UserControls
                 nombreProducto.Add(fila.Cells[0].Value);
                 cantidad.Add(fila.Cells[1].Value);
             }
-            chart3.Series[0].Points.DataBindXY(nombreProducto, cantidad);
+            chartTopProducts.Series[0].Points.DataBindXY(nombreProducto, cantidad);
         }
         private void UC_HOME_Load(object sender, EventArgs e)
         {

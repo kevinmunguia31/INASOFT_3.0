@@ -1,4 +1,5 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using DevExpress.XtraCharts;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -57,33 +58,14 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Insertar_Factura(string Fecha, string Usuario, int ID_Cliente)
-        {
-            bool bandera = false;
-            string sql = "CALL Insertar_Factura('" + Fecha + "', '" + Usuario + "', '" + ID_Cliente + "'); ";
-
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-                comando.ExecuteNonQuery();
-                bandera = true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                bandera = false;
-            }
-            return bandera;
-        }
-
+       
         public DataTable DetalleFactura(string idFactura)
         {
             DataTable dt = new DataTable();
             string sql;
 
-            sql = "SELECT a.Codigo_Prod AS 'Codigo', a.Nombre_Prod AS 'Nombre', a.Precio, a.Cantidad, a.Total FROM Detalle_Factura a INNER JOIN Facturas b ON a.ID_Factura = b.ID INNER JOIN Clientes c ON b.ID_Cliente = c.ID WHERE a.ID_Factura = " + idFactura + ";";
+            sql = "SELECT c.ID, c.Codigo AS 'Codigo', c.Nombre AS 'Nombre', c.Precio_Venta, b.Cantidad, (c.Precio_Venta * b.Cantidad) AS 'Total' FROM Facturas a INNER JOIN Detalle_Factura b ON b.ID_Factura = a.ID INNER JOIN Productos c ON c.ID = b.ID_Producto WHERE a.ID = "+ idFactura +"";
+
             try
             {
                 MySqlConnection conexionBD = Conexion.getConexion();
@@ -99,10 +81,11 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Facturar_Productos(int cantidad, double precio, string codigo_prod, string nombre_prod, int id_factura)
+        public bool Facturar_Productos(Facturas facturas)
         {
             bool bandera = false;
-            string sql = "CALL Facturar_Productos(" + cantidad + ", " + precio + ", '" + codigo_prod + "', '" + nombre_prod + "', " + id_factura + ");";
+
+            string sql = "CALL Facturar_Productos("+ facturas.Cantidad +", "+ facturas.Id_Factura +", "+ facturas.Id_Producto+");";
 
             try
             {
@@ -120,12 +103,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Facturacion_Final(string estado, double descuento, double subtotal, double efectivo, double debe, string tipoPago, string tipoFactura, int id_usuario, int id_cliente)
+        public bool Facturacion_Final(Facturas facturas)
         {
             bool bandera = false;
-            string sql = "CALL Facturacion_Final('"+ estado +"', "+ descuento +", "+ subtotal +", "+ efectivo+ ", "+ debe + ", '"+ tipoPago + "', '"+ tipoFactura + "', "+ id_usuario + ", "+ id_cliente +");";
-            
-            //string sql = "CALL Facturacion_Final('" + estado + "', " + descuento + ", " + subtotal + ", " + efectivo + ", " + debe + ", " + id_factura + ", '" + tipoPago + "', '" + tipoFactura + "');";
+
+            string sql = "CALL Facturacion_Final('"+ facturas.Estado +"', "+ facturas.Descuento +", "+ facturas.Subtotal +", "+ facturas.Efectivo +", "+ facturas.Debe+", '"+ facturas.Tipo_Factura +"', "+ facturas.Id_Usuario +", "+ facturas.Id_Cliente +", "+ facturas.Id_TipoPago +");";
 
             try
             {
@@ -143,10 +125,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool AnularFactura(double precio, int cantidad, string cod_prod, int id_factura)
+        public bool AnularFactura(Facturas facturas)
         {
             bool bandera = false;
-            string sql = "CALL Anular_Factura(" + precio + ", " + cantidad + ", '" + cod_prod + "', " + id_factura + ");";
+
+            string sql = "CALL Anular_Factura("+ facturas.Cantidad +", "+ facturas.Id_Producto +", "+ facturas.Id_Factura+");";
 
             try
             {
@@ -164,10 +147,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Actualizar_FacturaAnulada(string desc, int id_factura)
+        public bool Actualizar_FacturaAnulada(Facturas facturas)
         {
             bool bandera = false;
-            string sql = "CALL Actualizar_FacturaAnulada('" + desc + "', " + id_factura + ")";
+
+            string sql = "CALL Actualizar_FacturaAnulada('"+ facturas.Descripcion +"', "+ facturas.Id_Factura +");";
 
             try
             {
@@ -188,7 +172,7 @@ namespace INASOFT_3._0.Controladores
         public string Desc_FacturaAnulada(int id_factura)
         {
             string desc = "";
-            string SQL = "SELECT descripcion FROM Facturas_Anuladas WHERE ID_Factura = "+ id_factura +";";
+            string SQL = "SELECT Descripcion FROM Facturas_Anuladas WHERE ID_Factura = "+ id_factura +";";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -228,7 +212,7 @@ namespace INASOFT_3._0.Controladores
         public string Codigo_Factura()
         {
             string cod_factura = "";
-            string SQL = "CALL  Mostrar_Cod()";
+            string SQL = "CALL Mostrar_Cod()";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -245,39 +229,12 @@ namespace INASOFT_3._0.Controladores
             return cod_factura;
         }
 
-        public DataTable Factura_NombreCliente(string dato)
+        public DataTable Factura_BuscarNombreRangoFecha(int op, string fechaIni, string fechaFin, string nombreCliente)
         {
             DataTable tabla = new DataTable();
             string SQL;
 
-            SQL = "CALL Factura_NombreCliente ('" + dato + "');";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = comando;
-                adapter.Fill(tabla);
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                conexionDB.Close();
-            }
-            return tabla;
-        }
-
-        public DataTable Factura_Fecha(string dato1, string dato2)
-        {
-            DataTable tabla = new DataTable();
-            string SQL;
-
-            SQL = "CALL Factura_RangoFecha('"+ dato1 +"', '"+ dato2 +"')";
+            SQL = "CALL SeleccionarProcedimiento("+ op +", '"+ fechaIni +"', '"+ fechaFin +"', '"+ nombreCliente +"');";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

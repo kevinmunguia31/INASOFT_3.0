@@ -42,16 +42,10 @@ namespace INASOFT_3._0.UserControls
             dataGridFatura.DataSource = ctrlFactura.CargarFactura();
         }
 
-        public void Factura_NombreCliente(string dato)
+        public void Factura_BuscarNombreRangoFecha(int op, string fechaIni, string fechaFin, string nombreCliente)
         {
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            dataGridFatura.DataSource = ctrlFactura.Factura_NombreCliente(dato);
-        }
-
-        public void Factura_Fechas(string dato1, string dato2)
-        {
-            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            dataGridFatura.DataSource = ctrlFactura.Factura_Fecha(dato1, dato2);
+            dataGridFatura.DataSource = ctrlFactura.Factura_BuscarNombreRangoFecha(op, fechaIni, fechaFin, nombreCliente);
         }
 
         public void Todas_Facturas()
@@ -73,17 +67,6 @@ namespace INASOFT_3._0.UserControls
             facturar.Show();
         }
 
-        private void UC_Factura_Load(object sender, EventArgs e)
-        {
-            //Boton en Datagrid
-            /*GB.Name = "GB";
-            GB.Text = "Detalles →";
-            GB.HeaderText = "Ver Detalles";
-            GB.UseColumnTextForButtonValue = true;
-            dataGridFatura.Columns.Add(GB);
-            dataGridFatura.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;*/
-        }
-
         private void Guna2Button1_Click(object sender, EventArgs e)
         {
             FacturaFinal frm = new FacturaFinal();
@@ -93,7 +76,8 @@ namespace INASOFT_3._0.UserControls
         }
 
         private void Guna2Button2_Click(object sender, EventArgs e)
-        {
+        {   string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             string nombre_cliente = txt_NonbCliente.Text;
             if (txt_NonbCliente.Text == "")
             {
@@ -101,7 +85,7 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-                Factura_NombreCliente(nombre_cliente);
+                Factura_BuscarNombreRangoFecha(2, fecha_Ini, fecha_End, nombre_cliente);
             }
         }
 
@@ -109,113 +93,124 @@ namespace INASOFT_3._0.UserControls
         {
             string fecha_Ini = DateTimeTimer_Ini.Text;
             string fecha_End = DateTimeTimer_End.Text;
-            MessageBox.Show(fecha_Ini + " " + fecha_End);
 
-            Factura_Fechas(fecha_Ini, fecha_End);
+            Factura_BuscarNombreRangoFecha(1, fecha_Ini, fecha_End, "");
         }
 
         private void VerFactura(int id_pos)
         {
             try
             {
-                if (id_pos > -1 && id_pos != null)
+                if (id_pos < 0)
+                    return;
+
+                DataGridViewRow row = dataGridFatura.Rows[id_pos];
+
+                DetailsInvoice frm = new DetailsInvoice(row.Cells[0].Value.ToString());
+
+                frm.lbCodFactura.Text = row.Cells[1].Value.ToString();
+                frm.lbFecha.Text = row.Cells[3].Value.ToString();
+                frm.lbClient.Text = row.Cells[4].Value.ToString();
+
+                double aux_desc = ParseValueFromCell(row.Cells[8]);
+                double aux_total = ParseValueFromCell(row.Cells[9]);
+                double aux_efectivo = ParseValueFromCell(row.Cells[10]);
+                double aux_devolucion = ParseValueFromCell(row.Cells[11]);
+
+                double subtotal = aux_desc + aux_total;
+
+                frm.lbSubT.Text = subtotal.ToString();
+                frm.lbTotal.Text = aux_total.ToString();
+                frm.lbDesc.Text = aux_desc.ToString();
+                frm.lbRecivied.Text = aux_efectivo.ToString();
+                frm.lbChange.Text = aux_devolucion.ToString();
+                frm.lbUser.Text = row.Cells[13].Value.ToString();
+                frm.Lb_CodFact.Text = row.Cells[1].Value.ToString();
+                frm.Lb_Cant_Prod.Text = row.Cells[5].Value.ToString();
+                frm.Lb_Estado.Text = row.Cells[2].Value.ToString();
+                frm.Lb_TipoPago.Text = row.Cells[6].Value.ToString();
+
+                if (frm.Lb_Estado.Text == "Anulada")
                 {
-                    DetailsInvoice frm = new DetailsInvoice(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
-
-                    frm.lbCodFactura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
-                    frm.lbFecha.Text = dataGridFatura.Rows[id_pos].Cells[3].Value.ToString();
-                    frm.lbClient.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
-
-                    string aux1 = dataGridFatura.Rows[id_pos].Cells[8].Value.ToString();
-                    string[] words1 = aux1.Split(' ');
-                    double aux_desc = Double.Parse(words1[1]);
-
-                    string aux2 = dataGridFatura.Rows[id_pos].Cells[9].Value.ToString();
-                    string[] words2 = aux2.Split(' ');
-                    double aux_total = Double.Parse(words2[1]);
-
-                    double subtotal = (aux_desc + aux_total);
-
-                    frm.lbSubT.Text = subtotal.ToString();
-                    frm.lbTotal.Text = aux_total.ToString();
-                    frm.lbDesc.Text = aux_desc.ToString();
-
-                    string aux3 = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
-                    string[] words3 = aux3.Split(' ');
-                    double aux_efectivo = Double.Parse(words3[1]);
-
-                    frm.lbRecivied.Text = aux_efectivo.ToString();
-
-                    string aux4 = dataGridFatura.Rows[id_pos].Cells[11].Value.ToString();
-                    string[] words4 = aux4.Split(' ');
-                    double aux_devolucion = Double.Parse(words4[1]);
-
-                    frm.lbChange.Text = aux_devolucion.ToString();
-                    frm.lbUser.Text = dataGridFatura.Rows[id_pos].Cells[13].Value.ToString();
-                    frm.Lb_CodFact.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
-                    frm.Lb_Cant_Prod.Text = dataGridFatura.Rows[id_pos].Cells[5].Value.ToString();
-                    frm.Lb_Estado.Text = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
-                    frm.Lb_TipoPago.Text = dataGridFatura.Rows[id_pos].Cells[6].Value.ToString();
-
-                    //Factura anulada
-                    if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Anulada")
-                    {
-                        frm.Lb_Debe.Visible = false;
-                        frm.label20.Visible = false;
-                        frm.pictureBox3.Visible = true;
-                        frm.Lb_Anulada.Visible = true;
-                        frm.Lb_Anulada.ForeColor = System.Drawing.Color.Red;
-                        frm.guna2GroupBox2.Enabled = false;
-                        frm.guna2GroupBox2.Visible = false;
-                        frm.btnPrint.Enabled = false;
-                        frm.guna2GroupBox3.Visible = true;
-                        frm.guna2GroupBox3.Location = new Point(411, 57);
-                        frm.guna2GroupBox3.Enabled = false;
-                        frm.guna2GroupBox1.Enabled = false;
-                        frm.Lb_Devolucion1.Visible = false;
-                        frm.Lb_Devolucion2.Visible = false;
-                        frm.PictBox_Devolucion.Visible = false;
-
-                        Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-                        frm.txtDescripcion.Text = ctrlFactura.Desc_FacturaAnulada(int.Parse(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString()));
-                        frm.ShowDialog();
-                    }
-                    else
-                    {
-                        //Factura cancelada
-                        if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Cancelado")
-                        {
-                            frm.Lb_Debe.Visible = false;
-                            frm.label20.Visible = false;
-                        }
-                        else
-                        {
-                            frm.Lb_Debe.Visible = true;
-                            frm.label20.Visible = true;
-                            frm.Lb_Debe.Text = dataGridFatura.Rows[id_pos].Cells[12].Value.ToString();
-                        }
-
-                        Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-                        int id_factura = int.Parse(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
-                        if (ctrlDevolucion.Verificar_Devolucion(id_factura) == 1)
-                        {
-                            frm.PictBox_Devolucion.Visible = true;
-                            frm.Lb_Devolucion1.Visible = true;
-                            frm.Lb_Devolucion2.Visible = true;
-                        }
-                        else
-                        {
-                            frm.PictBox_Devolucion.Visible = false;
-                            frm.Lb_Devolucion1.Visible = false;
-                            frm.Lb_Devolucion2.Visible = false;
-                        }
-                        frm.ShowDialog();
-                    }
+                    HandleAnulada(frm, id_pos);
                 }
+                else
+                {
+                    HandleCancelado(frm, row);
+                }
+
+                frm.ShowDialog();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private double ParseValueFromCell(DataGridViewCell cell)
+        {
+            if (cell == null || cell.Value == null)
+                return 0.0;
+
+            string cellText = cell.Value.ToString();
+            string[] words = cellText.Split(' ');
+            if (words.Length > 1)
+            {
+                return double.Parse(words[1]);
+            }
+            return 0.0;
+        }
+
+        private void HandleAnulada(DetailsInvoice frm, int id_pos)
+        {
+            frm.Lb_Debe.Visible = false;
+            frm.label20.Visible = false;
+            frm.pictureBox3.Visible = true;
+            frm.Lb_Anulada.Visible = true;
+            frm.Lb_Anulada.ForeColor = System.Drawing.Color.Red;
+            frm.guna2GroupBox2.Enabled = false;
+            frm.guna2GroupBox2.Visible = false;
+            frm.btnPrint.Enabled = false;
+            frm.guna2GroupBox3.Visible = true;
+            frm.guna2GroupBox3.Location = new Point(411, 57);
+            frm.guna2GroupBox3.Enabled = false;
+            frm.guna2GroupBox1.Enabled = false;
+            frm.Lb_Devolucion1.Visible = false;
+            frm.Lb_Devolucion2.Visible = false;
+            frm.PictBox_Devolucion.Visible = false;
+
+            Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
+            frm.txtDescripcion.Text = ctrlFactura.Desc_FacturaAnulada(int.Parse(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString()));
+        }
+
+        private void HandleCancelado(DetailsInvoice frm, DataGridViewRow row)
+        {
+            if (row.Cells[2].Value.ToString() == "Cancelado")
+            {
+                frm.Lb_Debe.Visible = false;
+                frm.label20.Visible = false;
+            }
+            else
+            {
+                frm.Lb_Debe.Visible = true;
+                frm.label20.Visible = true;
+                frm.Lb_Debe.Text = row.Cells[12].Value.ToString();
+            }
+
+            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
+            int id_factura = int.Parse(row.Cells[0].Value.ToString());
+
+            if (ctrlDevolucion.Verificar_Devolucion(id_factura) == 1)
+            {
+                frm.PictBox_Devolucion.Visible = true;
+                frm.Lb_Devolucion1.Visible = true;
+                frm.Lb_Devolucion2.Visible = true;
+            }
+            else
+            {
+                frm.PictBox_Devolucion.Visible = false;
+                frm.Lb_Devolucion1.Visible = false;
+                frm.Lb_Devolucion2.Visible = false;
             }
         }
 
@@ -243,7 +238,7 @@ namespace INASOFT_3._0.UserControls
                         }
                         else
                         {
-                            Devolucion frm = new Devolucion(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
+                            VistaFacturas.Devolucion frm = new VistaFacturas.Devolucion(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
                             frm.lbIdFactura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
                             frm.lbClienteName.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
                             frm.Lb_EstadoFactura.Text = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
@@ -409,14 +404,14 @@ namespace INASOFT_3._0.UserControls
         {
             Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
             CtrlInfo ctrlInfo = new CtrlInfo();
-            SLDocument sL = ctrl.Reporte_Facturas(dataGridFatura);
-
+            ctrl.Reporte_Facturas(dataGridFatura);
+            /*
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
                 string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Ventas en Excel";
                 ctrlInfo.InsertarLog(log);
-            }
+            }*/
         }
 
         private void Guna2Button7_Click(object sender, EventArgs e)
@@ -529,7 +524,6 @@ namespace INASOFT_3._0.UserControls
             frm.txtNombreCliente.Visible = true;
             frm.Lb_User.Text = Sesion.nombre;
             frm.btnGenerar.Visible = true;
-            frm.btnAccept.Visible = false;
             frm.Show();
         }
     }

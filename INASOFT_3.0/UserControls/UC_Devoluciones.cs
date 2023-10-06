@@ -104,12 +104,7 @@ namespace INASOFT_3._0.UserControls
         {
             Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
 
-            SLDocument sL = ctrl.Reporte_Devolucion(dataGridDevolucion);
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
-            }
+            ctrl.Reporte_Devolucion(dataGridDevolucion);
         }
         
         private void Guna2Button3_Click(object sender, EventArgs e)

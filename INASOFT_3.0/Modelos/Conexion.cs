@@ -17,7 +17,8 @@ namespace INASOFT_3._0.Modelos
             string usuario = "root";
             string password = "root";
             //string password = "mysql";
-            string bd = "db_inasoftware";
+            //string bd = "db_inasoftware";
+            string bd = "Prueba";
 
             string cadenaConexion = "server=" + servidor + "; port=" + puerto + "; user id=" + usuario + "; password=" + password + "; database=" + bd;
 

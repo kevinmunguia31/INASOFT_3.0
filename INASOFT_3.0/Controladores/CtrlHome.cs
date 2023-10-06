@@ -34,7 +34,7 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
-
+        
         public MySqlDataReader Grafico_TotalxMes()
         {
             MySqlDataReader reader;
@@ -126,6 +126,7 @@ namespace INASOFT_3._0.Controladores
             }
             return total;
         }
+        
         public DataTable Cargar_VentasXDias()
         {
             DataTable dt = new DataTable();
@@ -152,7 +153,7 @@ namespace INASOFT_3._0.Controladores
             DataTable dt = new DataTable();
             string sql;
 
-            sql = "SELECT Nombre_Prod AS 'Nombre producto', SUM(Cantidad) AS 'Cantidad Vendida' FROM Detalle_Factura WHERE cantidad > 0 GROUP BY Nombre_Prod  ORDER BY SUM(Cantidad) DESC LIMIT 5;";
+            sql = "SELECT b.Nombre AS 'Nombre producto', SUM(a.Cantidad) AS 'Cantidad Vendida' FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID WHERE a.Cantidad > 0 GROUP BY b.Nombre  ORDER BY SUM(a.Cantidad) DESC LIMIT 5;";
             try
             {
                 MySqlConnection conexionBD = Conexion.getConexion();
@@ -166,27 +167,42 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine(ex.Message.ToString());
             }
             return dt;
-        }
+        }       
 
-        public DataTable Cargar_TotalVentasxDias()
+        public List<Reporte> Cargar_TotalVentasxDias()
         {
-            DataTable dt = new DataTable();
-            string sql;
+            List<Reporte> ganancias = new List<Reporte>();
 
-            sql = "SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), SUM(Efectivo - Debe) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');";
+            string sql = "SELECT DATE_FORMAT(Fecha, '%H:00') AS Hora, FORMAT(SUM(Total_Final - Debe), 2) AS 'Ganancias' FROM Facturas WHERE Fecha >= CURDATE() AND Fecha < CURDATE() + INTERVAL 1 DAY GROUP BY Hora ORDER BY Hora;";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+
             try
             {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
                 MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Reporte ganancia = new Reporte
+                        {
+                            Fecha = reader[0].ToString(),
+                            Ganancias = Convert.ToDouble(reader[1])
+                        };
+                        ganancias.Add(ganancia);
+                    }
+                }
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message.ToString());
             }
-            return dt;
+            finally
+            {
+                conexionBD.Close();
+            }
+            return ganancias;
         }
     }
 }

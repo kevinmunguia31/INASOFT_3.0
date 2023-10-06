@@ -845,7 +845,6 @@ namespace INASOFT_3._0.UserControls
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Factura";
             this.Size = new System.Drawing.Size(1887, 722);
-            this.Load += new System.EventHandler(this.UC_Factura_Load);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();

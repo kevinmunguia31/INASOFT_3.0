@@ -17,6 +17,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Document = iTextSharp.text.Document;
 using System.Globalization;
+using System.Security.Policy;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -195,13 +196,14 @@ namespace INASOFT_3._0.UserControls
         private void Guna2Button2_Click(object sender, EventArgs e)
         {
             Controladores.CtrlReporte ctrl = new Controladores.CtrlReporte();
-
+            ctrl.Reporte_Credito(dataGridView1);
+            /*
             SLDocument sL = ctrl.Reporte_Credito(dataGridView1);
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sL.SaveAs(saveFileDialog1.FileName + ".xlsx");
-            }
+            }*/
         }
 
         private void Guna2Button3_Click_1(object sender, EventArgs e)

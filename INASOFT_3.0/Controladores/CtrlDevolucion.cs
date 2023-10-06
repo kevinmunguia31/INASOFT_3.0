@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -104,7 +105,7 @@ namespace INASOFT_3._0.Controladores
             DataTable dt = new DataTable();
             string sql;
 
-            sql = "SELECT a.Codigo_Prod AS 'Codigo', a.Nombre_Prod AS 'Nombre', a.Precio, a.Cantidad, a.Total FROM Detalle_Devolucion a INNER JOIN Devoluciones b ON a.ID_Devolucion= b.ID WHERE a.ID_Devolucion = " + idDevolucion + ";"; 
+            sql = "SELECT c.ID, c.Codigo AS 'Codigo', c.Nombre AS 'Nombre', c.Precio_Venta, b.Cantidad, (c.Precio_Venta * b.Cantidad) AS 'Total' FROM Devoluciones a INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Devolucion INNER JOIN Productos c ON c.ID = b.ID_Producto WHERE a.ID = " + idDevolucion + ";"; 
             try
             {
                 MySqlConnection conexionBD = Conexion.getConexion();
@@ -120,10 +121,10 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public bool Agregar_Devolucion(string Fecha, string Desc, int ID_Factura)
+        public bool Agregar_Devolucion(Devolucion devolucion)
         {
             bool bandera = false;
-            string sql = "CALL Agregar_Devolucion('" + Fecha + "', '" + Desc + "', " + ID_Factura + "); ";
+            string sql = "CALL Agregar_Devolucion('"+ devolucion.Descripcion +"', "+ devolucion.Id_Factura +");";
 
             try
             {
@@ -141,10 +142,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Devolucion_productos(int cantidad, double precio, string codigo_prod, string nombre_prod, int id_devolucion, int id_factura)
+        public bool Devolucion_productos(Devolucion devolucion)
         {
             bool bandera = false;
-            string sql = "CALL Devolver_Productos(" + cantidad + ", " + precio + ", '" + codigo_prod + "', '" + nombre_prod + "', "+ id_devolucion + ", " + id_factura + ");";
+            
+            string sql = "CALL Devolver_Productos("+ devolucion.Cantidad +", "+ devolucion.Id_devolucion +", "+ devolucion.Id_producto +", "+ devolucion.Id_Factura +");";
 
             try
             {
@@ -162,10 +164,11 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Actualizar_Factura(double Devolucion, int ID_Factura)
+        public bool Actualizar_Factura(Devolucion devolucion)
         {
             bool bandera = false;
-            string sql = "CALL Actualizar_facturacion(" + Devolucion + ", " + ID_Factura + ");";
+       
+            string sql = "CALL Actualizar_facturacion("+ devolucion.Id_devolucion +", "+ devolucion.Id_Factura +");";
 
             try
             {

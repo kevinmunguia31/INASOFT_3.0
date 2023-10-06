@@ -57,7 +57,6 @@ namespace INASOFT_3._0.VistaFacturas
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Al transcurrir el tiempo, limpiar el mensaje de error y detener el temporizador
-            errorProvider1.SetError(txtPrecio, "");
             errorProvider1.SetError(SpinCantidad, "");
             timer.Stop();
         }
@@ -140,85 +139,57 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            bool seRepite = false;
-
             if (Cbx_Productos.SelectedIndex == -1)
             {
                 MessageBox_Error.Show("Tiene que escoger un producto a facturar", "Error");
                 Limpiar();
+                return; // Salir del método si no se ha seleccionado un producto.
             }
-            else
+
+            if (SpinCantidad.Value == 0)
             {
-                if (SpinCantidad.Value == 0)
-                {
-                    MessageBox_Error.Show("Tiene que indicar la cantidad", "Error");
-                    errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar");
-
-                }
-                else if (lbExistencias.Text == "0")
-                {
-                    MessageBox_Error.Show("Se acabo esté producto en el inventario", "Error");
-                }
-                else if (txtPrecio.Text == "")
-                {
-                    MessageBox_Error.Show("No deje campos obligatorios sin marcar", "Error");
-                    errorProvider1.SetError(txtPrecio, "Debe indicar el precio del producto");
-                }
-                else if(lbCodProdu.Text == "..." || lbProductName.Text == "...")
-                {
-                    MessageBox_Error.Show("No ha seleccionado un producto a facturar.", "Error");
-                }
-                else if (double.Parse(Lb_PrecioCompra.Text) > double.Parse(txtPrecio.Text))
-                {
-                    MessageBoxError.Show("El precio no puede ser menor al precio del que se compró el producto\n", "Error");
-                }
-                else
-                {
-                    errorProvider1.SetError(txtPrecio, "");
-                    errorProvider1.SetError(SpinCantidad, "");
-                    timer.Start();
-
-                    foreach (DataGridViewRow fila in datagridView1.Rows)
-                    {
-                        if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text)
-                        {
-                            seRepite = true;
-                            break;
-                        }
-                    }
-
-                    if (seRepite)
-                    {
-                        MessageBox_Import.Show("Ya se agrego ese producto, puede editarlo o borrarlo si desea", "Importante");
-                        Limpiar();
-                    }
-                    else
-                    {
-
-                        Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-
-                        DataRow newRow = dataTable.NewRow();
-                        newRow[0] = ctrlProductos.Codigo_Producto(int.Parse(txtIdProduc.Text));
-                        newRow[1] = ctrlProductos.Nombre_Producto(int.Parse(txtIdProduc.Text));
-                        newRow[2] = SpinCantidad.Value.ToString();
-                        newRow[3] = double.Parse(txtPrecio.Text);
-                        newRow[4] = double.Parse(txtPrecio.Text) * int.Parse(SpinCantidad.Value.ToString());
-
-                        dataTable.Rows.Add(newRow);
-
-                        datagridView1.DataSource = dataTable;
-                        Subtotal();
-                        Limpiar();
-                        Cargar_Total();
-                    }
-                }
+                MessageBox_Error.Show("Tiene que indicar la cantidad", "Error");
+                errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar");
+                return; // Salir del método si la cantidad es cero.
             }
+
+            if (lbExistencias.Text == "0" || lbCodProdu.Text == "..." || lbProductName.Text == "...")
+            {
+                MessageBox_Error.Show("No ha seleccionado un producto a facturar.", "Error");
+                return; // Salir del método si hay problemas con el producto.
+            }
+
+            bool seRepite = datagridView1.Rows.Cast<DataGridViewRow>()
+                .Any(fila => fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text);
+
+            if (seRepite)
+            {
+                MessageBox_Import.Show("Ya se agregó ese producto, puede editarlo o borrarlo si desea", "Importante");
+                Limpiar();
+                return; // Salir del método si el producto ya está en la lista.
+            }
+
+            int id = int.Parse(txtIdProduc.Text);
+            Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+            Productos productos = ctrlProductos.MostrarDatosProductos(id);
+
+            DataRow newRow = dataTable.NewRow();
+            newRow[0] = productos.Codigo.ToString();
+            newRow[1] = productos.Nombre.ToString();
+            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[3] = double.Parse(Lb_Precio_Venta.Text);
+            newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
+
+            dataTable.Rows.Add(newRow);
+
+            datagridView1.DataSource = dataTable;
             Limpiar();
+            Cargar_Total();
         }
 
         public void Limpiar()
         {
-            txtPrecio.Text = "";
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
@@ -239,48 +210,6 @@ namespace INASOFT_3._0.VistaFacturas
             }
             lbSubtotal.Text = subtotal.ToString();
         }
-
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            if (datagridView1.RowCount == 0)
-            {
-                MessageBox_Error.Show("No se ha almacenado ningún productos para la facturación, al menos facturé un producto", "Error");
-            }
-            else
-            {
-                List<Detalle_Factura> listaProductos = new List<Detalle_Factura>();
-
-                foreach (DataGridViewRow fila in datagridView1.Rows)
-                {
-                    if (!fila.IsNewRow) // Evita la fila en blanco al final del DataGridView
-                    {
-                        Detalle_Factura productos = new Detalle_Factura
-                        {
-                            Codigo_producto = fila.Cells[0].Value.ToString(),
-                            Nombre_producto = fila.Cells[1].Value.ToString(),
-                            Cantidad = Convert.ToInt32(fila.Cells[2].Value),
-                            Precio = Convert.ToDouble(fila.Cells[3].Value),
-                            Total = Convert.ToDouble(fila.Cells[4].Value)
-                        };
-
-                        listaProductos.Add(productos);
-                    }
-                }
-                MessageBox_Ok.Show("Productos agregados a la factura", "Aviso");
-                FacturaFinal frm = new FacturaFinal();
-                frm.lbNombreCliente.Text = lbClienteName.Text;
-                frm.lbSubtotal.Text = lbSubtotal.Text;
-                frm.txtIdCliente.Text = txtIdCliente.Text;
-                frm.lbTotal.Text = lbSubtotal.Text;
-                frm.Lb_User.Text = Lb_User.Text;
-                //frm.lbIdFactura.Text = Lb_AuxCodFac.Text;
-
-                frm.Show();
-                this.Hide();
-                this.Close();
-            }
-        }
-
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
@@ -296,64 +225,41 @@ namespace INASOFT_3._0.VistaFacturas
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
+                    SpinCantidad.Enabled = false; // Si no hay selección, desactiva SpinCantidad
+                    return; // Salir del método ya que no hay selección válida
                 }
-                else
-                {
-                    txtIdProduc.Text = Cbx_Productos.SelectedValue.ToString();
-                    int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
-                    Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-                    string aux_NombProd = ctrlProductos.Nombre_Producto(id);
-                    int limite = 15;
 
-                    if (aux_NombProd.Length > limite)
-                    {
-                        lbProductName.Text = aux_NombProd.Substring(0, limite) + "...";
-                    }
-                    else
-                    {
-                        lbProductName.Text = aux_NombProd;
-                    }
-                    string aux_CodProd = ctrlProductos.Codigo_Producto(id);
+                int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
+                Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
 
-                    if (aux_CodProd.Length > limite)
-                    {
-                        lbCodProdu.Text = aux_CodProd.Substring(0, limite) + "...";
-                    }
-                    else
-                    {
-                        lbCodProdu.Text = aux_CodProd;
-                    }
-                    lbExistencias.Text = ctrlProductos.Existencias_Producto(id).ToString();
-                    txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
-                    SpinCantidad.Maximum = Convert.ToDecimal(lbExistencias.Text);
-                    Lb_PrecioCompra.Text = ctrlProductos.Precio_Compra(id).ToString();
+                Productos productos = ctrlProductos.MostrarDatosProductos(id);
 
-                    if (int.Parse(lbExistencias.Text) <= 0)
-                    {
-                        errorProvider1.SetError(lbExistencias, "Ya no hay productos en el almacen.");
-                        lbExistencias.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(lbExistencias, "");
-                        lbExistencias.ForeColor = Color.Black;
-                    }
-                }
-                if (Cbx_Productos.SelectedIndex == -1)
-                {
-                    txtPrecio.Enabled = false;
-                    SpinCantidad.Enabled = false;
-                }
-                else
-                {
-                    txtPrecio.Enabled = true;
-                    SpinCantidad.Enabled = true;
-                }
+                lbCodProdu.Text = productos.Codigo.ToString();
+                lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
+                lbExistencias.Text = productos.Existencias.ToString();
+                Lb_Precio_Venta.Text = productos.Precio_venta.ToString();
+                Lb_PrecioCompra.Text = productos.Precio_compra.ToString();
+
+                errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
+                lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
+
+                SpinCantidad.Enabled = true; // Habilitar SpinCantidad después de seleccionar un producto
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error: " + ex);
+                // Manejar la excepción aquí
+                // MessageBox.Show("Error: " + ex);
             }
+        }
+
+        // Función para limitar la longitud de una cadena y agregar "..." si es necesario
+        private string LimitarLongitud(string input, int maxLength)
+        {
+            if (input.Length > maxLength)
+            {
+                return input.Substring(0, maxLength) + "...";
+            }
+            return input;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -475,27 +381,6 @@ namespace INASOFT_3._0.VistaFacturas
         private void Timer1_Tick(object sender, EventArgs e)
         {
             Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
-        }
-
-        private void TxtPrecio_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!txtPrecio.Text.Contains(".")))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                //el resto de teclas pulsadas se desactivan
-                e.Handled = true;
-            }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)

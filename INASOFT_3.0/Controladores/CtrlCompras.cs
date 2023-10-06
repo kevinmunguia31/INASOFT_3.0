@@ -1,4 +1,7 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using DevExpress.XtraCharts;
+using DocumentFormat.OpenXml.Vml;
+using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -33,9 +37,7 @@ namespace INASOFT_3._0.Controladores
 
         public bool Insertar_Compra(Compras compra)
         {
-            bool bandera = false;
-            string sql = "CALL Realizar_Compra('" + compra.Nombre_venderdor + "', " + compra.Subtotal + ", " + compra.Descuento + "," + compra.Iva + ", '" + compra.Descripcion + "', '" + compra.Tipo_pago + "', " + compra.Id_usuario + ", "+ compra.Id_proveedor +");";
-
+            bool bandera = false; string sql = "CALL Realizar_Compra('" + compra.Nombre_venderdor + "', " + compra.Subtotal + ", " + compra.Descuento + "," + compra.Iva + ", '" + compra.Descripcion + "', '" + compra.Estado + "', " + compra.Id_usuario + ", "+ compra.Id_proveedor + ", "+ compra.Id_TipoPago +");";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -51,11 +53,31 @@ namespace INASOFT_3._0.Controladores
             }
             return bandera;
         }
+        public int ID_Compra()
+        {
+            int id_compra = 0;
+            string SQL = "SELECT ID FROM Compras ORDER BY ID DESC LIMIT 1;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                id_compra = Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                id_compra = 0;
+            }
+            return id_compra;
+        }
 
         public bool Productos_Comprados(Productos productos)
         {
             bool bandera = false;
-            string sql = "CALL Productos_Comprados("+ productos.Id +", '"+ productos.Codigo +"', '"+ productos.Nombre +"', "+ productos.Existencias +", "+ productos.Precio_compra +", "+ productos.Precio_total + ", "+ productos.Precio_venta +", '"+ productos.Observacion +"');";
+            //ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Total - Precio_Venta - Observacion - ID_Compra
+            string sql = "CALL Productos_Comprados("+ productos.Id +", '"+ productos.Codigo +"', '"+ productos.Nombre +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_total +", "+ productos.Precio_venta +", '"+ productos.Observacion +"', "+ productos.Id_Compra +");";
 
             try
             {

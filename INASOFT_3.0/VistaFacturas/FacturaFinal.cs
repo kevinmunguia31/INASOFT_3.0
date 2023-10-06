@@ -19,6 +19,7 @@ using System.IO;
 using DevExpress.Utils;
 using INASOFT_3._0.UserControls;
 using DevExpress.XtraCharts;
+using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 
 namespace INASOFT_3._0.VistaFacturas
@@ -43,6 +44,7 @@ namespace INASOFT_3._0.VistaFacturas
             InstalledPrintersCombo();
             InfoNegocio();
             Cargar_CbxProductos();
+            CargarTiposPagos();
             Cargar_TablaProducto();
             Limpiar();
 
@@ -54,9 +56,10 @@ namespace INASOFT_3._0.VistaFacturas
 
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = true;
             dataGridView1.Columns[4].ReadOnly = true;
 
-            datagridView2.Rows.Add("Total", "", "", "", 0);
+            datagridView2.Rows.Add("Total", "", "", "", 0, "");
 
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
@@ -66,7 +69,6 @@ namespace INASOFT_3._0.VistaFacturas
 
             Txt_descuento.Enabled = false;
             RBtn_AlContado.Checked = true;
-            Rbtn_TipoCordobas.Checked = true;
             radioButton1.Checked = true;
             btnFacturar.Enabled = false;
             Groupbox_fact.Enabled = false;
@@ -77,8 +79,6 @@ namespace INASOFT_3._0.VistaFacturas
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Al transcurrir el tiempo, limpiar el mensaje de error y detener el temporizador
-            errorProvider1.SetError(txtPrecio, "");
             errorProvider1.SetError(SpinCantidad, "");
             timer.Stop();
         }
@@ -89,9 +89,20 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Productos.Items.Clear();
 
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Cargar_NombreProducto();
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo();
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
+        }
+
+        public void CargarTiposPagos()
+        {
+            CbxTipoPagos.DataSource = null;
+            CbxTipoPagos.Items.Clear();
+
+            Controladores.CtrlTipo_Pago ctrl = new Controladores.CtrlTipo_Pago();
+            CbxTipoPagos.DataSource = ctrl.Cargar_Tipos_Pago();
+            CbxTipoPagos.ValueMember = "ID";
+            CbxTipoPagos.DisplayMember = "Tipos";
         }
 
         public void Cargar_Total()
@@ -126,13 +137,14 @@ namespace INASOFT_3._0.VistaFacturas
             dataTable.Columns.Add("Cantidad");
             dataTable.Columns.Add("Precio");
             dataTable.Columns.Add("Total");
+            dataTable.Columns.Add("ID");
 
             dataGridView1.DataSource = dataTable;
         }
 
         public void Limpiar()
         {
-            txtPrecio.Text = "";
+            Lb_Precio_Venta.Text = "...";
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
@@ -140,7 +152,6 @@ namespace INASOFT_3._0.VistaFacturas
             lbCodProdu.Text = "...";
             txtIdProduc.Text = "";
             TxtBuscar_Productos.Text = "";
-            Lb_PrecioCompra.Text = "...";
         }
 
         private void InfoNegocio()
@@ -157,9 +168,9 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     while (reader.Read())
                     {
-                        lbNombreNegocio= reader.GetString("nombre_negocio");
-                        lbDireccionNegocio= reader.GetString("direccion_negocio");
-                        lbNmRUC= reader.GetString("num_ruc");
+                        lbNombreNegocio = reader.GetString("nombre_negocio");
+                        lbDireccionNegocio = reader.GetString("direccion_negocio");
+                        lbNmRUC = reader.GetString("num_ruc");
                         lbTelefono = reader.GetString("telefono");
                     }
                 }
@@ -295,239 +306,142 @@ namespace INASOFT_3._0.VistaFacturas
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             CtrlInfo ctrlInfo = new CtrlInfo();
-            string tipoPago = "";
-            string estado;
-            string tipoFactura;
-            double debe;
-            double descuento;
-            double efectivo;
-            double total = double.Parse(lbTotal.Text);
-            double subtotal = double.Parse(lbSubtotal.Text);
-            double devolucion = double.Parse(lbDevolucion.Text);
-            int id_cliente = int.Parse(txtIdCliente.Text);
-            int id_usuario = int.Parse(txtIdUsuario.Text);
 
-            if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == false)
+            if (!RBtn_Credito.Checked && !RBtn_AlContado.Checked)
             {
                 MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará");
+                return;
             }
-            //FACTURA AL CRÉDITO
-            else if (RBtn_Credito.Checked == true && RBtn_AlContado.Checked == false)
+
+            if (cbImpresoras.SelectedIndex == -1)
             {
-                if (cbImpresoras.SelectedIndex == -1)
+                MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
+                return;
+            }
+
+            if (CbxTipoPagos.SelectedIndex == -1)
+            {
+                MessageBox_Error.Show("No deje la opción de 'Tipo de pago' sin marcar.", "Error");
+                return;
+            }
+
+            try
+            {
+                Modelos.Facturas facturas = new Modelos.Facturas
                 {
-                    MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
-                }
-                else if (Rbtn_TipoCordobas.Checked == false && Rbtn_TipoDolares.Checked == false)
+                    Estado = RBtn_Credito.Checked ? "Pendiente" : "Cancelado",
+                    Descuento = RBtn_Credito.Checked ? 0.00 : double.Parse(Txt_descuento.Text),
+                    Subtotal = double.Parse(lbSubtotal.Text),
+                    Efectivo = RBtn_Credito.Checked ? 0.00 : double.Parse(Txt_Efectivo.Text),
+                    Debe = RBtn_Credito.Checked ? double.Parse(lbSubtotal.Text) : 0.00,
+                    Tipo_Factura = RBtn_Credito.Checked ? "Crédito" : "Al contado",
+                    Id_Usuario = int.Parse(txtIdUsuario.Text),
+                    Id_Cliente = int.Parse(txtIdCliente.Text),
+                    Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
+                };
+
+                Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+                bool bandera = ctrlFactura.Facturacion_Final(facturas);
+
+                if (bandera)
                 {
-                    MessageBox_Error.Show("No deje la la opción de 'Tipo de pago' sin marcar.", "Error");
-                }
-                else
-                {
-                    tipoFactura = "Crédito";
-                    estado = "Pendiente";
-                    debe = double.Parse(lbSubtotal.Text);
+                    facturas.Id_Factura = ctrlFactura.ID_Factura();
+                    List<Modelos.Facturas> lista = new List<Modelos.Facturas>();
 
-                    efectivo = 0.00;
-                    devolucion = 0.00;
-                    descuento = 0.00;
-
-                    if (Rbtn_TipoCordobas.Checked == true)
+                    foreach (DataGridViewRow fila in dataGridView1.Rows)
                     {
-                        tipoPago = "Córdobas";
-                    }
-                    if (Rbtn_TipoDolares.Checked == true)
-                    {
-                        tipoPago = "Dólares";
-                    }
-                    try
-                    {
-                        Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-
-                        bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, tipoPago, tipoFactura, id_usuario, id_cliente);
-
-                        int id_factura = ctrlFactura.ID_Factura();
-
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        if (!fila.IsNewRow)
                         {
-                            DataGridViewRow row = dataGridView1.Rows[i];
-                            ctrlFactura.Facturar_Productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), id_factura);
-                        }
-                        if (bandera)
-                        {
-                            string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                            string hora = DateTime.Now.ToString("hh:mm:ss");
-
-                            double monto = 0.00;
-                            string fecha_vencimiento = DateTime_vencimiento.Text;
-                            string fecha_inicioDevolucion = (fecha + " " + hora);
-                            string fecha_inicio = DateTime_inicio.Text;
-                            double cargo = double.Parse(lbSubtotal.Text);
-                            double saldo_nuevo = 0.00;
-                            double saldo_anterior = 0.00;
-                            string desc_credito = "";
-                            string desc_abono = "";
-
-                            if (Rbtn_TipoCordobas.Checked == false && Rbtn_TipoDolares.Checked == false)
+                            Modelos.Facturas facturas1 = new Modelos.Facturas
                             {
-                                MessageBoxError.Show("No deje la casilla 'Tipo de pago' sin marcar", "Error");
-                            }
-                            else
-                            {
-                                if (txtDescripcion.Text == "")
-                                {
-                                    desc_credito = "Factura realizada al crédito al cliente " + lbNombreCliente.Text + " con un saldo pendiente de: " + lbTotal.Text;
-                                }
-                                else
-                                {
-                                    desc_credito = txtDescripcion.Text;
-                                }
-
-                                if (Rbtn_TipoCordobas.Checked == true)
-                                {
-                                    tipoPago = "Córdobas";
-                                }
-                                if (Rbtn_TipoDolares.Checked == true)
-                                {
-                                    tipoPago = "Dólares";
-                                }
-
-                                if (TxtMonto.Text == "")
-                                {
-                                    monto = 0.00;
-                                    desc_abono = "Primer abono realizado es de C$ 0.00 el mismo día que se hizo la factura.";
-                                    saldo_nuevo = double.Parse(lbSubtotal.Text);
-                                }
-                                else
-                                {
-                                    monto = double.Parse(TxtMonto.Text);
-                                    desc_abono = "Primer abono realizado es de C$" + monto + " el mismo día que se hizo la factura.";
-                                    saldo_nuevo = double.Parse(lbSubtotal.Text) - monto;
-                                }
-                                Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-                                bool bandera1 = ctrlCredito_Abono.Insertar_Credito(tipoPago, fecha_inicio, fecha_vencimiento, cargo, estado, desc_credito, id_factura, id_cliente);
-                                //MessageBox.Show(fecha_inicio + "\n" + fecha_vencimiento + "\n" + cargo +"\n"+ saldo + "\n" +estado + "\n" + id_factura + "\n" + id_cliente);
-                                //MessageBox.Show(fecha_inicio + "\n" + monto + "\n" + desc + "\n");
-                                if (bandera1)
-                                {
-                                    int id_credito = ctrlCredito_Abono.ID_Credito();
-                                    ctrlCredito_Abono.Realizar_Abono(fecha_inicioDevolucion, monto, saldo_anterior, saldo_nuevo, desc_abono, id_credito, id_factura);
-                                    MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
-
-                                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Credito: " + id_factura;
-                                    ctrlInfo.InsertarLog(log);
-                                    UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                                    uC_Factura.CargarFacturas();
-                                    this.Close();
-                                }
-                            }
+                                Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
+                                Id_Factura = ctrlFactura.ID_Factura(),
+                                Id_Producto = int.Parse(fila.Cells[5].Value.ToString())
+                            };
+                            lista.Add(facturas1);
                         }
                     }
-                    catch(Exception ex)
+
+                    foreach (Modelos.Facturas facturas2 in lista)
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        ctrlFactura.Facturar_Productos(facturas2);
                     }
-                   
+
+                    if (RBtn_Credito.Checked)
+                    {
+                        double monto = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text));
+                        double saldo_anterior = double.Parse(lbSubtotal.Text);
+                        double saldo_nuevo = saldo_anterior - monto; ;
+                        string desc_credito = (string.IsNullOrEmpty(txtDescripcion.Text) ? "Factura realizada al crédito al cliente " + lbNombreCliente.Text + " con un saldo pendiente de: " + lbTotal.Text : txtDescripcion.Text);
+                        string desc_abono = (monto > 0 ? "Primer abono realizado es de C$" + monto + " el mismo día que se hizo la factura." : "Primer abono realizado es de C$ 0.00 el mismo día que se hizo la factura.");
+
+                        Credito credito = new Credito
+                        {
+                            Dia_Inicio = DateTime_inicio.Text,
+                            Dia_Vencimiento = DateTime_vencimiento.Text,
+                            Cargo = double.Parse(lbSubtotal.Text),
+                            Estado = "Pendiente",
+                            Descripcion = desc_credito,
+                            Id_Factura = ctrlFactura.ID_Factura(),
+                            Id_Cliente = int.Parse(txtIdCliente.Text),
+                            Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
+                        };
+
+                        Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
+                        bool bandera1 = ctrlCredito_Abono.Insertar_Credito(credito);
+
+                        if (bandera1)
+                        {
+                            Credito credito1 = new Credito();
+                            credito1.Monto = monto;
+                            credito1.Saldo_Anterior = saldo_anterior;
+                            credito1.Saldo_Nuevo = saldo_nuevo;
+                            credito1.Descripcion_Abono = desc_abono;
+                            credito1.Id_Credito = ctrlCredito_Abono.ID_Credito();
+                            credito1.Id_Factura = ctrlFactura.ID_Factura();
+
+                            ctrlCredito_Abono.Realizar_Abono(credito1);
+
+                            MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
+
+                            string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Crédito: Fact." + ctrlFactura.ID_Factura();
+                            ctrlInfo.InsertarLog(log);
+                        }
+                    }
+
+                    DialogResult result = RBtn_Credito.Checked ? DialogResult.No : MessageBox_Question.Show("¿Desea Imprimir la factura?");
+
+                    if (result == DialogResult.Yes)
+                    {
+                        //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                        printDocument1 = new PrintDocument();
+                        PrinterSettings ps = new PrinterSettings();
+                        ps.PrinterName = cbImpresoras.Text;
+                        printDocument1.PrinterSettings = ps;
+                        printDocument1.PrintPage += Imprimir;
+                        printDocument1.Print();
+
+                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                        string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura: Fact." + ctrlFactura.ID_Factura();
+                        ctrlInfo.InsertarLog(log);
+                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                        uC_Factura.CargarFacturas();
+                        this.Close();
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                        string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura: Fact." + ctrlFactura.ID_Factura();
+                        ctrlInfo.InsertarLog(log);
+                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                        uC_Factura.CargarFacturas();
+                        this.Close();
+                    }
                 }
             }
-            //FACTURA AL CONTADO
-            else if (RBtn_Credito.Checked == false && RBtn_AlContado.Checked == true)
+            catch (MySqlException ex)
             {
-                if (cbImpresoras.SelectedIndex == -1)
-                {
-                    MessageBox_Error.Show("Debe seleccionar un tipo de impresora.", "Error");
-                }
-                else if (Rbtn_TipoCordobas.Checked == false && Rbtn_TipoDolares.Checked == false)
-                {
-                    MessageBox_Error.Show("No deje la la opción de 'Tipo de pago' sin marcar.", "Error");
-                }
-                else if (Txt_Efectivo.Text == "")
-                {
-                    MessageBox_Error.Show("No deje la casilla de 'Efectivo' sin marcar", "Error");
-                }
-                else if (double.Parse(lbDevolucion.Text) < 0)
-                {
-                    MessageBox_Error.Show("Tiene que pagar completo la compra", "Error");
-                }
-                else if (Txt_descuento.Text != "" && double.Parse(Txt_descuento.Text) > double.Parse(lbTotal.Text) / 2)
-                {
-                    MessageBox_Error.Show("El descuento realizado es demasiado.", "Error");
-                    Txt_descuento.Text = "";
-                }
-                else
-                {
-                    tipoFactura = "Al contado";
-                    estado = "Cancelado";
-                    debe = 0.00;
-                    efectivo = double.Parse(Txt_Efectivo.Text);
-                    //Descuento
-                    if (Txt_descuento.Text == "")
-                    {
-                        descuento = 0.00;
-                    }
-                    else
-                    {
-                        descuento = double.Parse(Txt_descuento.Text);
-                    }
-
-                    if(Rbtn_TipoCordobas.Checked == true)
-                    {
-                        tipoPago = "Córdobas";
-                    }
-                    if (Rbtn_TipoDolares.Checked == true)
-                    {
-                        tipoPago = "Dólares";
-                    }
-                    try
-                    {
-                        Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-
-                        bool bandera = ctrlFactura.Facturacion_Final(estado, descuento, subtotal, efectivo, debe, tipoPago, tipoFactura, id_usuario, id_cliente);
-                        int id_factura = ctrlFactura.ID_Factura();
-
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewRow row = dataGridView1.Rows[i];
-                            ctrlFactura.Facturar_Productos(int.Parse(row.Cells[2].Value.ToString()), double.Parse(row.Cells[3].Value.ToString()), row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), id_factura);
-                        }
-
-                        if (bandera)
-                        {
-                            DialogResult result = MessageBox_Question.Show("¿Desea Imprimir la factura?");
-
-                            if (result == DialogResult.Yes)
-                            {
-                                //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                                printDocument1 = new PrintDocument();
-                                PrinterSettings ps = new PrinterSettings();
-                                ps.PrinterName = cbImpresoras.Text;
-                                printDocument1.PrinterSettings = ps;
-                                printDocument1.PrintPage += Imprimir;
-                                printDocument1.Print();
-
-                                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Contado: " + id_factura;
-                                ctrlInfo.InsertarLog(log);
-                                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                                uC_Factura.CargarFacturas();
-                                this.Close();
-                            }
-                            else if(result == DialogResult.No)
-                            {
-                                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Contado: " + id_factura;
-                                ctrlInfo.InsertarLog(log);
-                                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                                uC_Factura.CargarFacturas();
-                                this.Close();
-                            }
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-                }
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -546,7 +460,7 @@ namespace INASOFT_3._0.VistaFacturas
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Factura:" +      lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
+            e.Graphics.DrawString("Factura:" + lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
             e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Fecha: " + DateTime.Now, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
@@ -566,7 +480,7 @@ namespace INASOFT_3._0.VistaFacturas
                     e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[4].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
-                catch(ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }
+                catch (ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }
             }
 
             float subtotal = float.Parse(lbSubtotal.Text, CultureInfo.InvariantCulture);
@@ -722,153 +636,110 @@ namespace INASOFT_3._0.VistaFacturas
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
+                    SpinCantidad.Enabled = false; // Si no hay selección, desactiva SpinCantidad
+                    return; // Salir del método ya que no hay selección válida
                 }
-                else
-                {
-                    txtIdProduc.Text = Cbx_Productos.SelectedValue.ToString();
-                    int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
-                    Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-                    string aux_NombProd = ctrlProductos.Nombre_Producto(id);
-                    int limite = 15;
 
-                    if (aux_NombProd.Length > limite)
-                    {
-                        lbProductName.Text = aux_NombProd.Substring(0, limite) + "...";
-                    }
-                    else
-                    {
-                        lbProductName.Text = aux_NombProd;
-                    }
-                    string aux_CodProd = ctrlProductos.Codigo_Producto(id);
+                int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
+                Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
 
-                    if (aux_CodProd.Length > limite)
-                    {
-                        lbCodProdu.Text = aux_CodProd.Substring(0, limite) + "...";
-                    }
-                    else
-                    {
-                        lbCodProdu.Text = aux_CodProd;
-                    }
-                    lbExistencias.Text = ctrlProductos.Existencias_Producto(id).ToString();
-                    txtPrecio.Text = ctrlProductos.Precio_Producto(id).ToString();
-                    SpinCantidad.Maximum = Convert.ToDecimal(lbExistencias.Text);
-                    Lb_PrecioCompra.Text = ctrlProductos.Precio_Compra(id).ToString();
+                Productos productos = ctrlProductos.MostrarDatosProductos(id);
 
-                    if (int.Parse(lbExistencias.Text) <= 0)
-                    {
-                        errorProvider1.SetError(lbExistencias, "Ya no hay productos en el almacen.");
-                        lbExistencias.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(lbExistencias, "");
-                        lbExistencias.ForeColor = Color.Black;
-                    }
-                }
-                if (Cbx_Productos.SelectedIndex == -1)
-                {
-                    txtPrecio.Enabled = false;
-                    SpinCantidad.Enabled = false;
-                }
-                else
-                {
-                    txtPrecio.Enabled = true;
-                    SpinCantidad.Enabled = true;
-                }
+                txtIdProduc.Text = id.ToString();
+                lbCodProdu.Text = productos.Codigo.ToString();
+                lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
+                lbExistencias.Text = productos.Existencias.ToString();
+                Lb_Precio_Venta.Text = productos.Precio_venta.ToString();
+
+                errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
+                lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
+
+                SpinCantidad.Enabled = true; // Habilitar SpinCantidad después de seleccionar un producto
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Error: " + ex);
+                // Manejar la excepción aquí
+                // MessageBox.Show("Error: " + ex);
             }
+        }
+
+        // Función para limitar la longitud de una cadena y agregar "..." si es necesario
+        private string LimitarLongitud(string input, int maxLength)
+        {
+            if (input.Length > maxLength)
+            {
+                return input.Substring(0, maxLength) + "...";
+            }
+            return input;
         }
 
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Buscar_NombreProducto(TxtBuscar_Productos.Text);
+            Cbx_Productos.DataSource = ctrl.BuscarProductoActivo(TxtBuscar_Productos.Text);
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }
 
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
-            bool seRepite = false;
-
             if (Cbx_Productos.SelectedIndex == -1)
             {
                 MessageBox_Error.Show("Tiene que escoger un producto a facturar", "Error");
                 Limpiar();
+                return; // Salir del método si no se ha seleccionado un producto.
             }
-            else
+
+            if (SpinCantidad.Value == 0)
             {
-                if (SpinCantidad.Value == 0)
-                {
-                    MessageBox_Error.Show("Tiene que indicar la cantidad", "Error");
-                    errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar");
-
-                }
-                else if (lbExistencias.Text == "0")
-                {
-                    MessageBox_Error.Show("Se acabo esté producto en el inventario", "Error");
-                }
-                else if (txtPrecio.Text == "")
-                {
-                    MessageBox_Error.Show("No deje campos obligatorios sin marcar", "Error");
-                    errorProvider1.SetError(txtPrecio, "Debe indicar el precio del producto");
-                }
-                else if (lbCodProdu.Text == "..." || lbProductName.Text == "...")
-                {
-                    MessageBox_Error.Show("No ha seleccionado un producto a facturar.", "Error");
-                }
-                else if (double.Parse(Lb_PrecioCompra.Text) > double.Parse(txtPrecio.Text))
-                {
-                    MessageBoxError.Show("El precio no puede ser menor al precio del que se compró el producto\n", "Error");
-                }
-                else
-                {
-                    errorProvider1.SetError(txtPrecio, "");
-                    errorProvider1.SetError(SpinCantidad, "");
-                    timer.Start();
-
-                    foreach (DataGridViewRow fila in dataGridView1.Rows)
-                    {
-                        if (fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text)
-                        {
-                            seRepite = true;
-                            break;
-                        }
-                    }
-
-                    if (seRepite)
-                    {
-                        MessageBox_Import.Show("Ya se agrego ese producto, puede editarlo o borrarlo si desea", "Importante");
-                        Limpiar();
-                    }
-                    else
-                    {
-
-                        Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-
-                        DataRow newRow = dataTable.NewRow();
-                        newRow[0] = ctrlProductos.Codigo_Producto(int.Parse(txtIdProduc.Text));
-                        newRow[1] = ctrlProductos.Nombre_Producto(int.Parse(txtIdProduc.Text));
-                        newRow[2] = SpinCantidad.Value.ToString();
-                        newRow[3] = double.Parse(txtPrecio.Text);
-                        newRow[4] = double.Parse(txtPrecio.Text) * int.Parse(SpinCantidad.Value.ToString());
-
-                        dataTable.Rows.Add(newRow);
-
-                        dataGridView1.DataSource = dataTable;
-                        Limpiar();
-                        Cargar_Total();
-                        Groupbox_fact.Enabled = true;
-                        btnFacturar.Enabled = true;
-                    }
-                }
+                MessageBox_Error.Show("Tiene que indicar la cantidad.", "Error");
+                errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar.");
+                return; // Salir del método si la cantidad es cero.
             }
-            Limpiar();
-        }
 
+            if (lbExistencias.Text == "0" || lbCodProdu.Text == "..." || lbProductName.Text == "...")
+            {
+                MessageBox_Error.Show("No ha seleccionado un producto a facturar.", "Error");
+                return; // Salir del método si hay problemas con el producto.
+            }
+
+            bool seRepite = dataGridView1.Rows.Cast<DataGridViewRow>()
+                .Any(fila => fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == lbCodProdu.Text);
+
+            if (seRepite)
+            {
+                MessageBox_Import.Show("Ya se agregó ese producto, puede editarlo o borrarlo si desea.", "Importante");
+                Limpiar();
+                return; // Salir del método si el producto ya está en la lista.
+            }
+
+            if(SpinCantidad.Value > int.Parse(lbExistencias.Text))
+            {
+                MessageBox_Error.Show("No hay esa cantidad en el Stock.", "Errir");
+                Limpiar();
+                return;
+            }
+
+            int id = int.Parse(txtIdProduc.Text);
+            Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+            Productos productos = ctrlProductos.MostrarDatosProductos(id);
+
+            DataRow newRow = dataTable.NewRow();
+            newRow[0] = productos.Codigo.ToString();
+            newRow[1] = productos.Nombre.ToString();
+            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[3] = double.Parse(Lb_Precio_Venta.Text);
+            newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
+
+            dataTable.Rows.Add(newRow);
+
+            dataGridView1.DataSource = dataTable;
+            Limpiar();
+            Cargar_Total();
+            Groupbox_fact.Enabled = true;
+            btnFacturar.Enabled = true;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Cargar_CbxProductos();
@@ -983,25 +854,9 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        private void CbxTipoPagos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!txtPrecio.Text.Contains(".")))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                //el resto de teclas pulsadas se desactivan
-                e.Handled = true;
-            }
         }
     }
 }
+

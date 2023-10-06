@@ -1,4 +1,6 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using DevExpress.XtraCharts;
+using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -69,93 +71,85 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void BtnAceppt_Click(object sender, EventArgs e)
         {
-            if(TxtMonto.Text == "" && Txt_Efectivo.Text == "")
+            double monto;
+            double efectivo;
+            double saldoNuevo;
+            double saldoAnterior;
+            // Validación básica de entrada
+            if (string.IsNullOrWhiteSpace(TxtMonto.Text) || string.IsNullOrWhiteSpace(Txt_Efectivo.Text))
             {
-                MessageBoxError.Show("No deje ninguna casilla vacía", "Error");                
+                MessageBoxError.Show("No deje ninguna casilla vacía", "Error");
+                return;
             }
-            else if(TxtMonto.Text != "" && Txt_Efectivo.Text == "")
+
+            if (!double.TryParse(TxtMonto.Text, out monto) || !double.TryParse(Txt_Efectivo.Text, out efectivo))
             {
-                MessageBoxError.Show("Debe ingresar el efectivo con el que pago", "Error");
+                MessageBoxError.Show("Ingrese montos válidos", "Error");
+                return;
             }
-            else if(TxtMonto.Text == "" && Txt_Efectivo.Text != "")
-            {
-                MessageBoxError.Show("Debe dejar una cantidad del monto para realizar la acción", "Error");
-            }
-            else if(double.Parse(Txt_Efectivo.Text) < double.Parse(TxtMonto.Text))
+
+            if (monto > efectivo)
             {
                 MessageBoxError.Show("El monto no puede ser mayor al efectivo que está dando", "Error");
+                return;
             }
-            else if(double.Parse(Lb_Pendiente.Text) < 0)
+
+            if (double.Parse(Lb_Pendiente.Text) < 0)
             {
-                MessageBoxError.Show("El monto se paso a lo que debe.", "Error");
+                MessageBoxError.Show("El monto se pasó a lo que debe.", "Error");
+                return;
             }
-            else
+
+            int idFactura = int.Parse(Txt_IDFactura.Text);
+            int idCredito = int.Parse(Txt_IDCredito.Text);
+            string desc = string.IsNullOrWhiteSpace(txtDescripcion.Text) ? $"Se realizó un abono de: C${monto}" : txtDescripcion.Text;
+
+            Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
+            saldoAnterior = ctrlCredito_Abono.Saldo_Credito(idCredito);
+            saldoNuevo = saldoAnterior - monto;
+
+            Modelos.Credito credito = new Modelos.Credito
             {
-                string fecha = DateTime.Today.Year.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Day.ToString();
-                string hora = DateTime.Now.ToString("hh:mm:ss");
-                string Fecha_final = fecha + " " + hora;
-                string User = Sesion.id.ToString();
-                double monto = double.Parse(TxtMonto.Text);
-                string desc = "";
-                int idfactura = int.Parse(Txt_IDFactura.Text);
-                int idcredito = int.Parse(Txt_IDCredito.Text);
-                double saldo_nuevo = 0.00;
-                double saldo_anterior = 0.00;
+                Monto = monto,
+                Saldo_Anterior = saldoAnterior,
+                Saldo_Nuevo = saldoNuevo,
+                Descripcion_Abono = desc,
+                Id_Credito = idCredito,
+                Id_Factura = idFactura
+            };
 
-                if (txtDescripcion.Text == "")
-                {
-                    desc = "Se realizo un abono de: C$" + monto;
-                }
-                else
-                {
-                    desc = txtDescripcion.Text;
-                }
-                
-                Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-                saldo_anterior = ctrlCredito_Abono.Saldo_Credito(idcredito);
-                saldo_nuevo = saldo_anterior - monto;
-                bool bandera = ctrlCredito_Abono.Realizar_Abono(Fecha_final, monto, saldo_anterior, saldo_nuevo, desc, idcredito, idfactura);
-                if (bandera)
-                {
-                    double vuelto = 0.00;
-                    if (double.Parse(Txt_Efectivo.Text) > double.Parse(TxtMonto.Text))
-                    {
-                        vuelto = double.Parse(Txt_Efectivo.Text) - double.Parse(TxtMonto.Text);
-                    }
-                    MessageBox_Import.Show("Se ha realizado correctamnete el abono, le debe devolver al cliente C$ " + vuelto +"\n\n","Importante");
-                    int bandera2 = ctrlCredito_Abono.Actualizar_FacturaCredito(idcredito, idfactura);
-                    if (bandera2 == 1)
-                    {
-                        MessageBox_Import.Show("Ya se completo la factura al crédito", "Importante");
-                    }
-                    UserControls.UC_Creditos uC_Creditos = new UserControls.UC_Creditos();
-                    uC_Creditos.Cargar_credito();
-                    DialogResult result = MessageBox_Question.Show("¿Desea Imprimir el Recibo?");
+            bool bandera = ctrlCredito_Abono.Realizar_Abono(credito);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                        printDocument1 = new PrintDocument();
-                        PrinterSettings ps = new PrinterSettings();
-                        ps.PrinterName = cbImpresoras.Text;
-                        printDocument1.PrinterSettings = ps;
-                        printDocument1.PrintPage += Imprimir;
-                        printDocument1.Print();
+            if (bandera)
+            {
+                double vuelto = efectivo > monto ? efectivo - monto : 0.00;
+                MessageBox_Import.Show($"Se ha realizado correctamente el abono, le debe devolver al cliente C$ {vuelto}\n\n", "Importante");
+                int bandera2 = ctrlCredito_Abono.Actualizar_FacturaCredito(credito);
 
-                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                        uC_Factura.CargarFacturas();
-                        this.Close();
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                        uC_Factura.CargarFacturas();
-                        this.Close();
-                    }
-                    this.Close();
+                if (bandera2 == 1)
+                {
+                    MessageBox_Import.Show("Ya se completó la factura al crédito", "Importante");
                 }
+
+                UserControls.UC_Creditos uC_Creditos = new UserControls.UC_Creditos();
+                uC_Creditos.Cargar_credito();
+                DialogResult result = MessageBox_Question.Show("¿Desea Imprimir el Recibo?");
+
+                if (result == DialogResult.Yes)
+                {
+                    //////////////// IMPRESIÓN DEL RECIBO /////////////////////////////////////////////////
+                    printDocument1 = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    ps.PrinterName = cbImpresoras.Text;
+                    printDocument1.PrinterSettings = ps;
+                    printDocument1.PrintPage += Imprimir;
+                    printDocument1.Print();
+                }
+
+                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                uC_Factura.CargarFacturas();
+                this.Close();
             }
         }
 
@@ -168,8 +162,8 @@ namespace INASOFT_3._0.VistaFacturas
             Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
-            Image img = Image.FromFile(imagen);
-            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
+            //Image img = Image.FromFile(imagen);
+            //e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
             e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono.Text, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));

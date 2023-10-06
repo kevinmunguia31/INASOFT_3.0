@@ -52,6 +52,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lb_Devolucion3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,7 +85,7 @@
             this.datagridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagridView1.EnableHeadersVisualStyles = false;
             this.datagridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.datagridView1.Location = new System.Drawing.Point(343, 15);
+            this.datagridView1.Location = new System.Drawing.Point(217, 0);
             this.datagridView1.Name = "datagridView1";
             this.datagridView1.ReadOnly = true;
             this.datagridView1.RowHeadersVisible = false;
@@ -96,9 +97,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView1.Size = new System.Drawing.Size(167, 23);
+            this.datagridView1.Size = new System.Drawing.Size(299, 91);
             this.datagridView1.TabIndex = 85;
-            this.datagridView1.Visible = false;
             // 
             // panel1
             // 
@@ -322,6 +322,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Anulación de la Fact.:";
             // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.MessageBox_Import.Text = null;
+            // 
             // Anular_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +384,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Label Lb_Devolucion3;
         private System.Windows.Forms.GroupBox groupBox3;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
     }
 }
