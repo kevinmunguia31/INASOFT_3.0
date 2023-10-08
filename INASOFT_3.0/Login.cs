@@ -20,7 +20,7 @@ namespace INASOFT_3._0
         public Login()
         {
             InitializeComponent();
-            InfoNegocio();
+           // InfoNegocio();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

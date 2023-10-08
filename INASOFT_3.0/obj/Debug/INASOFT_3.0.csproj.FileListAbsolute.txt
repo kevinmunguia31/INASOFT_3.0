@@ -712,3 +712,5 @@ C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\IN
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ImportBD.resources
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Reportes.resources
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.VistaProductos.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Reportes.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.VistaProductos.resources
