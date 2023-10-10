@@ -42,28 +42,10 @@ namespace INASOFT_3._0.UserControls
             dataGridView1.DataSource = ctrlCredito_Abono.Cargar_Creditos();
         }
 
-        public void Credito_NombreCliente(string dato)
+        public void Credito_Filtro(int op, string fechaIni, string fechaFin, string nombreCliente, string estado, int diasVencidos)
         {
             Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-            dataGridView1.DataSource = ctrlCredito_Abono.Credito_NombreCliente(dato);
-        }
-
-        public void Credito_Fechas(string dato1, string dato2)
-        {
-            Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-            dataGridView1.DataSource = ctrlCredito_Abono.Credito_RangoFecha(dato1, dato2);
-        }
-
-        public void Credito_Estado(string dato)
-        {
-            Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-            dataGridView1.DataSource = ctrlCredito_Abono.Credito_EstadoFact(dato);
-        }
-
-        public void Credito_DiasVencidos(int dato)
-        {
-            Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-            dataGridView1.DataSource = ctrlCredito_Abono.Credito_DiasVencidos(dato);
+            dataGridView1.DataSource = ctrlCredito_Abono.Creditos_BuscarNombreRangoFechaEstado(op, fechaIni, fechaFin, nombreCliente, estado, diasVencidos);
         }
 
         private void Realizar_Abono(int id_pos)
@@ -181,6 +163,8 @@ namespace INASOFT_3._0.UserControls
 
         private void Guna2Button4_Click(object sender, EventArgs e)
         {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             string nombre_cliente = txt_NonbCliente.Text;
             if (txt_NonbCliente.Text == "")
             {
@@ -188,7 +172,7 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-               Credito_NombreCliente(nombre_cliente);
+                Credito_Filtro(2, fecha_Ini, fecha_End, nombre_cliente, "", 0);
             }
         }
 
@@ -210,13 +194,15 @@ namespace INASOFT_3._0.UserControls
         {
             string fecha_Ini = DateTimeTimer_Ini.Text;
             string fecha_End = DateTimeTimer_End.Text;
-            MessageBox.Show(fecha_Ini + " " + fecha_End);
+            //MessageBox.Show(fecha_Ini + " " + fecha_End);
 
-            Credito_Fechas(fecha_Ini, fecha_End);
+            Credito_Filtro(1, fecha_Ini, fecha_End, "", "", 0);
         }
 
         private void Guna2Button5_Click_1(object sender, EventArgs e)
         {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             string estado = "";
             if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
             {
@@ -225,17 +211,19 @@ namespace INASOFT_3._0.UserControls
             else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
             {
                 estado = "Pendiente";
-                Credito_Estado(estado);
+                Credito_Filtro(3, fecha_Ini, fecha_End, "", estado, 0);
             }
             else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
             {
                 estado = "Cancelado";
-                Credito_Estado(estado);
+                Credito_Filtro(3, fecha_Ini, fecha_End, "", estado, 0);
             }
         }
 
         private void Guna2Button7_Click(object sender, EventArgs e)
         {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             int bandera = 0;
             if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == false)
             {
@@ -244,12 +232,12 @@ namespace INASOFT_3._0.UserControls
             else if (Rbtn_DiasVencidos.Checked == true && Rbtn_DiasEstables.Checked == false)
             {
                 bandera = 1;
-                Credito_DiasVencidos(bandera);
+                Credito_Filtro(4, fecha_Ini, fecha_End, "", "", bandera);
             }
             else if (Rbtn_DiasVencidos.Checked == false && Rbtn_DiasEstables.Checked == true)
             {
                 bandera = 2;
-                Credito_DiasVencidos(bandera);
+                Credito_Filtro(4, fecha_Ini, fecha_End, "", "", bandera);
             }
         }
 

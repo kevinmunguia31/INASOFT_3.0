@@ -33,71 +33,31 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
-
-        public DataTable Devoluciones_RangoFecha(string fecha_ini, string fecha_end)
+        public DataTable Devolucion_BuscarNombreRangoFechaEstado(int op, string fechaIni, string fechaFin, string nombreCliente, string estado)
         {
-            DataTable dt = new DataTable();
-            string sql;
+            DataTable tabla = new DataTable();
+            string SQL;
 
-            sql = "CALL Devoluciones_RangoFecha('"+ fecha_ini +"', '"+ fecha_end +"');";
+            SQL = "CALL ObtenerDevoluciones(" + op + ", '" + fechaIni + "', '" + fechaFin + "', '" + nombreCliente + "', '" + estado + "');";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
             try
             {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
-
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = comando;
+                adapter.Fill(tabla);
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine("Error: " + ex.Message);
             }
-            return dt;
-        }
-
-        public DataTable Devoluciones_NombreCliente(string nombre)
-        {
-            DataTable dt = new DataTable();
-            string sql;
-
-            sql = "CALL Devoluciones_NombreCliente('" + nombre + "');";
-            try
+            finally
             {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
-
+                conexionDB.Close();
             }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-            return dt;
-        }
-
-        public DataTable Devoluciones_EstadoFact(string estado)
-        {
-            DataTable dt = new DataTable();
-            string sql;
-
-            sql = "CALL Devoluciones_EstadoFact('" + estado + "');";
-            try
-            {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
-
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-            return dt;
+            return tabla;
         }
 
         public DataTable DetalleDevolución(string idDevolucion)

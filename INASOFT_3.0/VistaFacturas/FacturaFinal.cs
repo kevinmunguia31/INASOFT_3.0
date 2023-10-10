@@ -72,6 +72,7 @@ namespace INASOFT_3._0.VistaFacturas
             radioButton1.Checked = true;
             btnFacturar.Enabled = false;
             Groupbox_fact.Enabled = false;
+            CbxTipoPagos.SelectedIndex = 1;
 
             timer = new Timer();
             timer.Interval = 5000; // 5000 milisegundos = 5 segundos

@@ -94,5 +94,63 @@ namespace INASOFT_3._0.Controladores
             }
             return bandera;
         }
+
+        public DataTable Compras_Filtro(int op, int id, string estado)
+        {
+            DataTable tabla = new DataTable();
+            string SQL;
+
+            SQL = "CALL FiltrarCompras(" + op + ", '" + estado + "', " + id + ");";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = comando;
+                adapter.Fill(tabla);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                conexionDB.Close();
+            }
+            return tabla;
+        }
+
+        public bool CancelarCompra(int id)
+        {
+            bool bandera = false;
+            string sql = "UPDATE Compras " +
+                         "SET Estado = CASE " +
+                         "WHEN Estado = 'Pendiente' THEN 'Cancelada' " +
+                         "WHEN Estado = 'Cancelada' THEN 'Pendiente' " +
+                         "ELSE Estado " +
+                         "END " +
+                         "WHERE ID = " + id + ";";
+
+            MySqlConnection conexioBD = Conexion.getConexion();
+            conexioBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                comando.ExecuteNonQuery();
+                bandera = true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                bandera = false;
+            }
+            finally
+            {
+                conexioBD.Close();
+            }
+            return bandera;
+        }
     }
 }

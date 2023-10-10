@@ -180,21 +180,5 @@ namespace INASOFT_3._0.UserControls
         {
 
         }
-        private int imagenNumber = 1;
-
-        private void LoadNextImagen()
-        {
-            if(imagenNumber == 6)
-            {
-                imagenNumber = 1;
-            }
-            PictureBox_Slider.ImageLocation = string.Format(@"Imag\{0}.jpg", imagenNumber);
-            imagenNumber++;
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            LoadNextImagen();
-        }
     }
 }

@@ -90,8 +90,6 @@ namespace INASOFT_3._0.UserControls
             this.guna2Elipse6 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.PictureBox_Slider = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lbNameNeg = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -114,8 +112,6 @@ namespace INASOFT_3._0.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.chartTopProducts)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Slider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -313,9 +309,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(23, 247);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(23, 239);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(510, 293);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(817, 301);
             this.guna2GroupBox1.TabIndex = 17;
             this.guna2GroupBox1.Text = "Cant. de ventas en los últimos 7 días";
             // 
@@ -360,7 +356,7 @@ namespace INASOFT_3._0.UserControls
             series1.Name = "Series1";
             series1.YValuesPerPoint = 4;
             this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(469, 249);
+            this.chart2.Size = new System.Drawing.Size(770, 249);
             this.chart2.TabIndex = 40;
             this.chart2.Text = "chart2";
             // 
@@ -666,9 +662,9 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox6.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox6.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox6.Location = new System.Drawing.Point(558, 247);
+            this.guna2GroupBox6.Location = new System.Drawing.Point(886, 239);
             this.guna2GroupBox6.Name = "guna2GroupBox6";
-            this.guna2GroupBox6.Size = new System.Drawing.Size(501, 293);
+            this.guna2GroupBox6.Size = new System.Drawing.Size(503, 301);
             this.guna2GroupBox6.TabIndex = 18;
             this.guna2GroupBox6.Text = "Productos más vendidos";
             // 
@@ -683,7 +679,7 @@ namespace INASOFT_3._0.UserControls
             legend2.IsTextAutoFit = false;
             legend2.Name = "Legend1";
             this.chartTopProducts.Legends.Add(legend2);
-            this.chartTopProducts.Location = new System.Drawing.Point(19, 41);
+            this.chartTopProducts.Location = new System.Drawing.Point(26, 41);
             this.chartTopProducts.Margin = new System.Windows.Forms.Padding(5);
             this.chartTopProducts.Name = "chartTopProducts";
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
@@ -700,7 +696,7 @@ namespace INASOFT_3._0.UserControls
             series2.Name = "Series1";
             series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             this.chartTopProducts.Series.Add(series2);
-            this.chartTopProducts.Size = new System.Drawing.Size(447, 252);
+            this.chartTopProducts.Size = new System.Drawing.Size(458, 252);
             this.chartTopProducts.TabIndex = 30;
             this.chartTopProducts.Text = "chartTopProducts";
             // 
@@ -754,33 +750,10 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.Size = new System.Drawing.Size(62, 40);
             this.dataGridView2.TabIndex = 11;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.PictureBox_Slider);
-            this.panel1.Location = new System.Drawing.Point(1074, 127);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 410);
-            this.panel1.TabIndex = 22;
-            // 
-            // PictureBox_Slider
-            // 
-            this.PictureBox_Slider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBox_Slider.Image = global::INASOFT_3._0.Properties.Resources._1;
-            this.PictureBox_Slider.Location = new System.Drawing.Point(0, 0);
-            this.PictureBox_Slider.Name = "PictureBox_Slider";
-            this.PictureBox_Slider.Size = new System.Drawing.Size(315, 410);
-            this.PictureBox_Slider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox_Slider.TabIndex = 23;
-            this.PictureBox_Slider.TabStop = false;
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
             this.timer2.Interval = 2000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // lbNameNeg
             // 
@@ -801,7 +774,6 @@ namespace INASOFT_3._0.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lbNameNeg);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.guna2GroupBox6);
             this.Controls.Add(this.guna2GroupBox5);
@@ -848,8 +820,6 @@ namespace INASOFT_3._0.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.chartTopProducts)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Slider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -904,8 +874,6 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox PictureBox_Slider;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lbNameNeg;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;

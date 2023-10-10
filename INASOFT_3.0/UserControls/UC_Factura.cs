@@ -76,7 +76,8 @@ namespace INASOFT_3._0.UserControls
         }
 
         private void Guna2Button2_Click(object sender, EventArgs e)
-        {   string fecha_Ini = DateTimeTimer_Ini.Text;
+        {   
+            string fecha_Ini = DateTimeTimer_Ini.Text;
             string fecha_End = DateTimeTimer_End.Text;
             string nombre_cliente = txt_NonbCliente.Text;
             if (txt_NonbCliente.Text == "")

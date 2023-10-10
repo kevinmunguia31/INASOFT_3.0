@@ -516,9 +516,42 @@ namespace INASOFT_3._0
 
             }
         }
+        private void CalcularTotal()
+        {
+            double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
+            double total = 0.00;
+
+            double desc, iva;
+
+            if (string.IsNullOrWhiteSpace(Txt_DescuentoCompra.Text))
+            {
+                desc = 0.00;
+            }
+            else
+            {
+                desc = (double.Parse(Txt_DescuentoCompra.Text) / 100);
+            }
+
+            if (string.IsNullOrWhiteSpace(Txt_IVACompra.Text))
+            {
+                iva = 0.00;
+            }
+            else
+            {
+                iva = (double.Parse(Txt_IVACompra.Text) / 100);
+            }
+
+            // Calcular el total aplicando el descuento primero y luego el IVA
+            total = (subtotal - (subtotal * desc)) * (1 + iva);
+
+            // Formatea el total con descuento e IVA como moneda
+            Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", total);
+            aux_DescIVA = total;
+        }
 
         private void Txt_DescuentoCompra_TextChanged(object sender, EventArgs e)
         {
+            /*
             double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
             double total = 0.00;
             double desc;
@@ -548,6 +581,8 @@ namespace INASOFT_3._0
             {
                 Txt_DescuentoCompra.Text = "";
             }
+            */
+            CalcularTotal();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -558,35 +593,36 @@ namespace INASOFT_3._0
 
         private void Txt_IVACompra_TextChanged(object sender, EventArgs e)
         {
-            double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
-            double total = 0.00;
-            double iva;
+            /*   double subtotal = double.Parse(datagridView2.Rows[0].Cells[5].Value.ToString());
+               double total = 0.00;
+               double iva;
 
-            try
-            {
-                if (Txt_IVACompra.Text == "")
-                {
-                    iva = 0.00;
-                    Txt_DescuentoCompra.Text = "";
-                    Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", subtotal);
-                    //Lb_AuxDescIVA.Text = subtotal.ToString();
-                    aux_DescIVA = subtotal;
-                }
-                else
-                {
-                    iva = (double.Parse(Txt_IVACompra.Text) / 100);
-                    total = subtotal + (subtotal * iva);
+               try
+               {
+                   if (Txt_IVACompra.Text == "")
+                   {
+                       iva = 0.00;
+                       Txt_DescuentoCompra.Text = "";
+                       Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", subtotal);
+                       //Lb_AuxDescIVA.Text = subtotal.ToString();
+                       aux_DescIVA = subtotal;
+                   }
+                   else
+                   {
+                       iva = (double.Parse(Txt_IVACompra.Text) / 100);
+                       total = subtotal + (subtotal * iva);
 
-                    // Formatea el total con descuento como moneda
-                    Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", total);
-                    //Lb_AuxDescIVA.Text = total.ToString();
-                    aux_DescIVA = total;
-                }
-            }
-            catch (Exception ex)
-            {
-                Txt_IVACompra.Text = "";
-            }
+                       // Formatea el total con descuento como moneda
+                       Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", total);
+                       //Lb_AuxDescIVA.Text = total.ToString();
+                       aux_DescIVA = total;
+                   }
+               }
+               catch (Exception ex)
+               {
+                   Txt_IVACompra.Text = "";
+               }*/
+            CalcularTotal();
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {

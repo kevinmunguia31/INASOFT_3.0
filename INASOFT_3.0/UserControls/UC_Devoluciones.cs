@@ -31,22 +31,10 @@ namespace INASOFT_3._0.UserControls
             dataGridDevolucion.DataSource = ctrlDevolucion.Mostrar_Devolucion();
         }
 
-        public void Devolucion_NombreCliente(string dato)
+        public void Devolucion_Filtro(int op, string fechaIni, string fechaFin, string nombreCliente, string estado)
         {
             Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_NombreCliente(dato);
-        }
-
-        public void Devolucion_Fechas(string dato1, string dato2)
-        {
-            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_RangoFecha(dato1, dato2);
-        }
-
-        public void Devolucion_Estado(string dato)
-        {
-            Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-            dataGridDevolucion.DataSource = ctrlDevolucion.Devoluciones_EstadoFact(dato);
+            dataGridDevolucion.DataSource = ctrlDevolucion.Devolucion_BuscarNombreRangoFechaEstado(op, fechaIni, fechaFin, nombreCliente, estado);
         }
 
         private void Devolucion_Producto(int id_pos)
@@ -89,6 +77,8 @@ namespace INASOFT_3._0.UserControls
 
         private void Guna2Button4_Click(object sender, EventArgs e)
         {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             string nombre_cliente = txt_NonbCliente.Text;
             if (txt_NonbCliente.Text == "")
             {
@@ -96,7 +86,7 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-                Devolucion_NombreCliente(nombre_cliente);
+                Devolucion_Filtro(2, fecha_Ini, fecha_End, nombre_cliente, "");
             }
         }
 
@@ -111,14 +101,15 @@ namespace INASOFT_3._0.UserControls
         {
             string fecha_Ini = DateTimeTimer_Ini.Text;
             string fecha_End = DateTimeTimer_End.Text;
-            MessageBox.Show(fecha_Ini + " " + fecha_End);
 
-            Devolucion_Fechas(fecha_Ini, fecha_End);
+            Devolucion_Filtro(1, fecha_Ini, fecha_End, "", "");
         }
 
         private void Guna2Button5_Click(object sender, EventArgs e)
         {
             string estado = "";
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
             if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
             {
                 MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
@@ -126,12 +117,12 @@ namespace INASOFT_3._0.UserControls
             else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
             {
                 estado = "Pendiente";
-                Devolucion_Estado(estado);
+                Devolucion_Filtro(3, fecha_Ini, fecha_End, "", estado);
             }
             else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
             {
                 estado = "Cancelado";
-                Devolucion_Estado(estado);
+                Devolucion_Filtro(3, fecha_Ini, fecha_End, "", estado);
             }
         }
 

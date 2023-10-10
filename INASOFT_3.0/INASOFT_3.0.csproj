@@ -214,7 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\CtrlCompras.cs" />
-    <Compile Include="Controladores\CtrlRemesa.cs" />
+    <Compile Include="Controladores\CtrlRemision.cs" />
     <Compile Include="Controladores\CtrlReporteGraficos.cs" />
     <Compile Include="Controladores\CtrlTipo_Pago.cs" />
     <Compile Include="ImportBD.cs">
@@ -388,11 +388,11 @@
     <Compile Include="VistaFacturas\RealizarAbono.Designer.cs">
       <DependentUpon>RealizarAbono.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\Editar&amp;AddRemesa.cs">
+    <Compile Include="VistaFacturas\Editar&amp;AddRemision.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\Editar&amp;AddRemesa.Designer.cs">
-      <DependentUpon>Editar&amp;AddRemesa.cs</DependentUpon>
+    <Compile Include="VistaFacturas\Editar&amp;AddRemision.Designer.cs">
+      <DependentUpon>Editar&amp;AddRemision.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\VistaProductos.cs">
       <SubType>Form</SubType>
@@ -475,8 +475,8 @@
     <EmbeddedResource Include="VistaFacturas\RealizarAbono.resx">
       <DependentUpon>RealizarAbono.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\Editar&amp;AddRemesa.resx">
-      <DependentUpon>Editar&amp;AddRemesa.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\Editar&amp;AddRemision.resx">
+      <DependentUpon>Editar&amp;AddRemision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\VistaProductos.resx">
       <DependentUpon>VistaProductos.cs</DependentUpon>

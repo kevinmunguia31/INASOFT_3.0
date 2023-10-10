@@ -31,6 +31,7 @@ namespace INASOFT_3._0.UserControls
             InitializeComponent();
             CargarTablaProduct();
             Cargar_Compras();
+            CargarProveedor();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
@@ -59,6 +60,23 @@ namespace INASOFT_3._0.UserControls
         {
             CtrlProductos _ctrlProductos = new CtrlProductos();
             dataGridView1.DataSource = _ctrlProductos.CargarProductos();
+        }
+
+        public void CargarProveedor()
+        {
+            cbProveedor.DataSource = null;
+            cbProveedor.Items.Clear();
+
+            Controladores.CtrlProveedor ctrl = new Controladores.CtrlProveedor();
+            cbProveedor.DataSource = ctrl.CargarProveddores();
+            cbProveedor.ValueMember = "ID";
+            cbProveedor.DisplayMember = "Nombre";
+        }
+
+        public void ComprarFiltro(int op, int id, string estado)
+        {
+            Controladores.CtrlCompras ctrl = new Controladores.CtrlCompras();
+            dataGridView2.DataSource = ctrl.Compras_Filtro(op, id, estado);
         }
 
         //Buscador de productos
@@ -133,7 +151,7 @@ namespace INASOFT_3._0.UserControls
 
                     string precio_venta = aux_PrecioVenta;
                     string observaciones = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
-                    
+
                     Ver_EditarProducto update = new Ver_EditarProducto();
                     //update.labelTitle.Text = "Editar producto";
                     update.Lb_titulo.Text = "Editar el producto " + nombre;
@@ -155,7 +173,7 @@ namespace INASOFT_3._0.UserControls
                     update.Rbttn_ExistProduct.Checked = true;
                     update.txtPrecioCompra.Enabled = false;
                     update.txtPrecioVenta.Enabled = false;
-                    update.SpinExist.Enabled = false;                    
+                    update.SpinExist.Enabled = false;
                     update.groupBox1.Visible = false;
                     update.TxtBuscar_Productos.Enabled = false;
                     update.button1.Enabled = false;
@@ -382,8 +400,104 @@ namespace INASOFT_3._0.UserControls
             ctrl.Reporte_Productos(dataGridView1);
         }
 
-        private void txtID_TextChanged(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
+            Cargar_Compras();
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            if (cbProveedor.SelectedIndex == -1)
+            {
+                MessageBox_Error.Show("Error, tiene que marcar el proveedor", "Error");
+            }
+            else
+            {
+                int Id_proveedor = int.Parse(cbProveedor.SelectedValue.ToString());
+                ComprarFiltro(1, Id_proveedor, "");
+            }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            string estado = "";
+            if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == false)
+            {
+                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
+            }
+            else if (Rbtn_Pendientes.Checked == true && Rbtn_Canceladas.Checked == false)
+            {
+                estado = "Pendiente";
+                ComprarFiltro(2, 0, estado);
+            }
+            else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
+            {
+                estado = "Cancelada";
+                ComprarFiltro(2, 0, estado);
+            }
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            int pos = dataGridView2.HitTest(e.X, e.Y).RowIndex;
+
+            if (pos < 0)
+                return;
+
+
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+                menu.Items.Add("Cancelar compra").Name = "Cancelar compra" + pos;
+                menu.Show(dataGridView2, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_OpcionesCompras);
+            }
+        }
+
+        private void menuClick_OpcionesCompras(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Cancelar compra"))
+            {
+                id_pos = id_pos.Replace("Cancelar compra", "");
+                CancelarCompra(int.Parse(id_pos));
+            }
+        }
+
+        private void CancelarCompra(int id_pos)
+        {
+            try
+            {
+                if (id_pos >= 0 && id_pos < dataGridView2.Rows.Count)
+                {
+                    DialogResult resultado = MessageDialog.Show("¿Seguro que desea cancelar el estado de la compra?", "Estado de la compra");
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        int Id = int.Parse(dataGridView2.Rows[id_pos].Cells[0].Value.ToString());
+                        CtrlCompras _ctrl = new CtrlCompras();
+                        bool bandera = _ctrl.CancelarCompra(Id);
+
+                        if (bandera)
+                        {
+                            MessageDialogInfo.Show("El estado de la compra ha sido cambiado con éxito.", "Aviso");
+                            Cargar_Compras(); // Asumiendo que esta función actualiza la tabla de productos.
+                        }
+                        else
+                        {
+                            MessageBox_Error.Show("No se pudo cambiar el estado de la compra.", "Error");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox_Error.Show("Seleccione una fila válida en la tabla.", "Error");
+                }
+            } catch (Exception ex)
+            {
+                MessageBox_Error.Show("Error: " + ex.Message, "Error");
+            }
 
         }
     }
