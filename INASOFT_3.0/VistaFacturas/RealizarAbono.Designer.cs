@@ -35,7 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Groupbox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.cbImpresoras = new Guna.UI2.WinForms.Guna2ComboBox();
             this.TxtMonto = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Txt_Efectivo = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,8 +84,6 @@
             this.lbDireccionNegocio = new System.Windows.Forms.Label();
             this.lbNombreNegocio = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.cbImpresoras = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Groupbox.SuspendLayout();
@@ -162,6 +162,22 @@
             this.Groupbox.TabIndex = 7;
             this.Groupbox.Text = "Realizar abono de la factura al crédito";
             // 
+            // cbImpresoras
+            // 
+            this.cbImpresoras.BackColor = System.Drawing.Color.Transparent;
+            this.cbImpresoras.BorderRadius = 10;
+            this.cbImpresoras.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbImpresoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbImpresoras.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbImpresoras.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbImpresoras.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbImpresoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbImpresoras.ItemHeight = 30;
+            this.cbImpresoras.Location = new System.Drawing.Point(97, 243);
+            this.cbImpresoras.Name = "cbImpresoras";
+            this.cbImpresoras.Size = new System.Drawing.Size(156, 36);
+            this.cbImpresoras.TabIndex = 100;
+            // 
             // TxtMonto
             // 
             this.TxtMonto.BackColor = System.Drawing.Color.Transparent;
@@ -188,6 +204,17 @@
             this.TxtMonto.TabIndex = 99;
             this.TxtMonto.TextChanged += new System.EventHandler(this.TxtMonto_TextChanged_1);
             this.TxtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMonto_KeyPress_1);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(12, 248);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 23);
+            this.label13.TabIndex = 99;
+            this.label13.Text = "Impresora:";
             // 
             // label5
             // 
@@ -356,6 +383,7 @@
             this.Txt_IDCredito.Name = "Txt_IDCredito";
             this.Txt_IDCredito.Size = new System.Drawing.Size(32, 27);
             this.Txt_IDCredito.TabIndex = 93;
+            this.Txt_IDCredito.Visible = false;
             // 
             // Txt_IDFactura
             // 
@@ -363,6 +391,7 @@
             this.Txt_IDFactura.Name = "Txt_IDFactura";
             this.Txt_IDFactura.Size = new System.Drawing.Size(32, 27);
             this.Txt_IDFactura.TabIndex = 94;
+            this.Txt_IDFactura.Visible = false;
             // 
             // MessageDialogInfo
             // 
@@ -722,33 +751,6 @@
             this.lbNombreNegocio.Size = new System.Drawing.Size(107, 18);
             this.lbNombreNegocio.TabIndex = 25;
             this.lbNombreNegocio.Text = "Descuento del ";
-            // 
-            // cbImpresoras
-            // 
-            this.cbImpresoras.BackColor = System.Drawing.Color.Transparent;
-            this.cbImpresoras.BorderRadius = 10;
-            this.cbImpresoras.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbImpresoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbImpresoras.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbImpresoras.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbImpresoras.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbImpresoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbImpresoras.ItemHeight = 30;
-            this.cbImpresoras.Location = new System.Drawing.Point(97, 243);
-            this.cbImpresoras.Name = "cbImpresoras";
-            this.cbImpresoras.Size = new System.Drawing.Size(156, 36);
-            this.cbImpresoras.TabIndex = 100;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 248);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 23);
-            this.label13.TabIndex = 99;
-            this.label13.Text = "Impresora:";
             // 
             // RealizarAbono
             // 

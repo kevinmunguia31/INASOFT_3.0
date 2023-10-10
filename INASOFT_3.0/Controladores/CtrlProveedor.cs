@@ -19,11 +19,11 @@ namespace INASOFT_3._0.Controladores
 
             if (dato == null)
             {
-                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor WHERE ID != 1 ORDER BY ID ASC";
+                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor ORDER BY ID ASC";
             }
             else
             {
-                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor WHERE ID != 1 AND Nombre LIKE '%" + dato + "%' ORDER BY ID ASC";
+                sql = "SELECT ID, Nombre, Telefono, Direccion, RUC FROM Proveedor WHERE Nombre LIKE '%" + dato + "%' ORDER BY ID ASC";
             }
             try
             {

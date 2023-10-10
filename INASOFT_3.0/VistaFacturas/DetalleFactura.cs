@@ -179,7 +179,7 @@ namespace INASOFT_3._0.VistaFacturas
             newRow[2] = SpinCantidad.Value.ToString();
             newRow[3] = double.Parse(Lb_Precio_Venta.Text);
             newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
-            newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
+            //newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
 
             dataTable.Rows.Add(newRow);
 
@@ -233,7 +233,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
 
                 Productos productos = ctrlProductos.MostrarDatosProductos(id);
-
+                txtIdProduc.Text = id.ToString();
                 lbCodProdu.Text = productos.Codigo.ToString();
                 lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
                 lbExistencias.Text = productos.Existencias.ToString();

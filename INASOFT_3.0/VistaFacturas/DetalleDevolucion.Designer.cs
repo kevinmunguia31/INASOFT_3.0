@@ -331,6 +331,7 @@
             this.Txt_Devolucion.Name = "Txt_Devolucion";
             this.Txt_Devolucion.Size = new System.Drawing.Size(26, 25);
             this.Txt_Devolucion.TabIndex = 118;
+            this.Txt_Devolucion.Visible = false;
             // 
             // lbCodProdu
             // 

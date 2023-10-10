@@ -216,7 +216,7 @@
             this.GroupBox_EditarProd.Size = new System.Drawing.Size(653, 360);
             this.GroupBox_EditarProd.TabIndex = 88;
             this.GroupBox_EditarProd.TabStop = false;
-            this.GroupBox_EditarProd.Text = "Realizar Remesa";
+            this.GroupBox_EditarProd.Text = "Recepcionar Remisión";
             // 
             // button1
             // 
@@ -348,10 +348,9 @@
             // 
             // Cbx_Estados
             // 
-            this.Cbx_Estados.BackColor = System.Drawing.SystemColors.Control;
+            this.Cbx_Estados.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Cbx_Estados.DropDownHeight = 90;
             this.Cbx_Estados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbx_Estados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cbx_Estados.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Estados.FormattingEnabled = true;
             this.Cbx_Estados.IntegralHeight = false;
@@ -416,6 +415,7 @@
             this.Txt_IDProd.SelectedText = "";
             this.Txt_IDProd.Size = new System.Drawing.Size(29, 26);
             this.Txt_IDProd.TabIndex = 97;
+            this.Txt_IDProd.Visible = false;
             // 
             // txtPrecioCompra
             // 
@@ -670,7 +670,7 @@
             this.groupBox1.Size = new System.Drawing.Size(653, 63);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipo de remesa";
+            this.groupBox1.Text = "Tipo de Remisión";
             // 
             // label9
             // 

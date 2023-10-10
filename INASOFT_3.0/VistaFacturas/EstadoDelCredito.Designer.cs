@@ -286,6 +286,7 @@
             this.Txt_IDCredito.Name = "Txt_IDCredito";
             this.Txt_IDCredito.Size = new System.Drawing.Size(32, 27);
             this.Txt_IDCredito.TabIndex = 104;
+            this.Txt_IDCredito.Visible = false;
             // 
             // Txt_IDFactura
             // 
@@ -293,6 +294,7 @@
             this.Txt_IDFactura.Name = "Txt_IDFactura";
             this.Txt_IDFactura.Size = new System.Drawing.Size(32, 27);
             this.Txt_IDFactura.TabIndex = 105;
+            this.Txt_IDFactura.Visible = false;
             // 
             // datagridView1
             // 

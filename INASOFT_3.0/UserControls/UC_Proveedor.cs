@@ -32,7 +32,7 @@ namespace INASOFT_3._0.UserControls
         public void TotalProovedor()
         {
             MySqlDataReader reader = null;
-            string sql = "SELECT count(*) FROM proveedor WHERE ID != 1";
+            string sql = "SELECT count(*) FROM proveedor";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();

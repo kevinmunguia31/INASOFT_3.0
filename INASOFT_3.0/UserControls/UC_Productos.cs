@@ -381,5 +381,10 @@ namespace INASOFT_3._0.UserControls
             Controladores.CtrlReporte ctrl = new CtrlReporte();
             ctrl.Reporte_Productos(dataGridView1);
         }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

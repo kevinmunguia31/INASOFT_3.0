@@ -559,7 +559,7 @@ namespace INASOFT_3._0
             this.Txt_IDProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Txt_IDProd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Txt_IDProd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_IDProd.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_IDProd.Font = new System.Drawing.Font("Poppins", 9F);
             this.Txt_IDProd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_IDProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_IDProd.Location = new System.Drawing.Point(942, 14);
@@ -571,6 +571,7 @@ namespace INASOFT_3._0
             this.Txt_IDProd.SelectedText = "";
             this.Txt_IDProd.Size = new System.Drawing.Size(29, 26);
             this.Txt_IDProd.TabIndex = 96;
+            this.Txt_IDProd.Visible = false;
             // 
             // groupBox7
             // 

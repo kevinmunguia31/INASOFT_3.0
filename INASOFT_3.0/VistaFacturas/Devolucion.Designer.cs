@@ -49,6 +49,7 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.Txt_IdProducto = new System.Windows.Forms.TextBox();
             this.datagridView1 = new System.Windows.Forms.DataGridView();
             this.Txt_Factura = new System.Windows.Forms.TextBox();
             this.btnAñadirProducto = new Guna.UI2.WinForms.Guna2Button();
@@ -111,7 +112,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.guna2MessageDialog5 = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Txt_IdProducto = new System.Windows.Forms.TextBox();
             this.groupbox_p.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinCantidad)).BeginInit();
@@ -326,6 +326,14 @@
             this.guna2GroupBox2.TabIndex = 98;
             this.guna2GroupBox2.Text = "Productos facturados";
             // 
+            // Txt_IdProducto
+            // 
+            this.Txt_IdProducto.Location = new System.Drawing.Point(329, 3);
+            this.Txt_IdProducto.Name = "Txt_IdProducto";
+            this.Txt_IdProducto.Size = new System.Drawing.Size(30, 25);
+            this.Txt_IdProducto.TabIndex = 87;
+            this.Txt_IdProducto.Visible = false;
+            // 
             // datagridView1
             // 
             this.datagridView1.AllowUserToAddRows = false;
@@ -373,6 +381,7 @@
             this.Txt_Factura.Name = "Txt_Factura";
             this.Txt_Factura.Size = new System.Drawing.Size(30, 25);
             this.Txt_Factura.TabIndex = 86;
+            this.Txt_Factura.Visible = false;
             // 
             // btnAñadirProducto
             // 
@@ -1113,13 +1122,6 @@
             this.groupBox3.TabIndex = 125;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle de la factura";
-            // 
-            // Txt_IdProducto
-            // 
-            this.Txt_IdProducto.Location = new System.Drawing.Point(329, 3);
-            this.Txt_IdProducto.Name = "Txt_IdProducto";
-            this.Txt_IdProducto.Size = new System.Drawing.Size(30, 25);
-            this.Txt_IdProducto.TabIndex = 87;
             // 
             // Devolucion
             // 

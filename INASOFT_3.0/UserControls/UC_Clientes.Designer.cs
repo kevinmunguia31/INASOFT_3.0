@@ -219,6 +219,7 @@ namespace INASOFT_3._0.UserControls
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(31, 25);
             this.txtId.TabIndex = 5;
+            this.txtId.Visible = false;
             // 
             // groupBox2
             // 
@@ -227,7 +228,7 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 425);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 100);
+            this.groupBox2.Size = new System.Drawing.Size(573, 100);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "TOTAL DE CLIENTES REGISTRADOS";
@@ -237,7 +238,7 @@ namespace INASOFT_3._0.UserControls
             this.lbClientes.AutoSize = true;
             this.lbClientes.Font = new System.Drawing.Font("Poppins SemiBold", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbClientes.ForeColor = System.Drawing.Color.Green;
-            this.lbClientes.Location = new System.Drawing.Point(77, 27);
+            this.lbClientes.Location = new System.Drawing.Point(88, 27);
             this.lbClientes.Name = "lbClientes";
             this.lbClientes.Size = new System.Drawing.Size(47, 60);
             this.lbClientes.TabIndex = 1;

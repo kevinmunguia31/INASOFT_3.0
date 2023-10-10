@@ -460,7 +460,7 @@ namespace INASOFT_3._0.VistaFacturas
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Factura:" + lbIdFactura.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
+            e.Graphics.DrawString("Factura:" + Lb_AuxCodFac.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
             e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Fecha: " + DateTime.Now, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));

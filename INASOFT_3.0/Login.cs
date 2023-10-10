@@ -82,43 +82,6 @@ namespace INASOFT_3._0
             importBD.Show();
         }
 
-        private void InfoNegocio()
-        {
-            string sql = "SELECT idinfogeneral, nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono FROM infogeneral";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexionDB);
-                MySqlDataReader reader = comando.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    InfoNegocio _infoNegocio = new InfoNegocio();
-                    _infoNegocio.Id = int.Parse(reader.GetString(0));
-                    _infoNegocio.Nombre = reader.GetString(1);
-                    _infoNegocio.Telefono = reader.GetString(5);
-                    _infoNegocio.Direccion = reader.GetString(2);
-                    _infoNegocio.NumRUC = reader.GetString(3);
-                    _infoNegocio.NombreAdmin = reader.GetString(4);
-                    //MessageBox.Show(_infoNegocio.Nombre);
-                }
-                else
-                {
-                    MessageBox.Show("No se hayo registro");
-                }
-
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error:" + ex.Message);
-            }
-        }
-
         private void Login_Load(object sender, EventArgs e)
         {
         }

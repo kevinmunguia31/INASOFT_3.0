@@ -351,6 +351,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.txtIdUser.Name = "txtIdUser";
             this.txtIdUser.Size = new System.Drawing.Size(31, 27);
             this.txtIdUser.TabIndex = 16;
+            this.txtIdUser.Visible = false;
             // 
             // txtIdCliente
             // 
@@ -358,6 +359,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(31, 27);
             this.txtIdCliente.TabIndex = 15;
+            this.txtIdCliente.Visible = false;
             // 
             // MessageDialogWar
             // 

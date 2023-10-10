@@ -260,6 +260,7 @@ namespace INASOFT_3._0.UserControls
             this.txtID.Size = new System.Drawing.Size(32, 27);
             this.txtID.TabIndex = 18;
             this.txtID.Visible = false;
+            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // groupBox_Detalle
             // 
@@ -548,7 +549,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(837, 12);
+            this.guna2Button6.Location = new System.Drawing.Point(783, 12);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(135, 33);
             this.guna2Button6.TabIndex = 88;
@@ -620,7 +621,7 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(978, 12);
+            this.txtSearch.Location = new System.Drawing.Point(924, 12);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -697,11 +698,11 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(1200, 11);
+            this.guna2Button2.Location = new System.Drawing.Point(1146, 12);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(138, 34);
+            this.guna2Button2.Size = new System.Drawing.Size(195, 34);
             this.guna2Button2.TabIndex = 90;
-            this.guna2Button2.Text = "Realizar remesa";
+            this.guna2Button2.Text = "Recepcionar Remisión";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2GroupBox3
