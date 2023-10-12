@@ -97,7 +97,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView1.Size = new System.Drawing.Size(299, 91);
+            this.datagridView1.Size = new System.Drawing.Size(299, 29);
             this.datagridView1.TabIndex = 85;
             // 
             // panel1

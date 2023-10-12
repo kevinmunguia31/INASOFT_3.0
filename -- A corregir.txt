@@ -1,23 +1,29 @@
 -- A corregir
-
-1. Corregir en la base de datos de "REMESAS" a "REMISION" ✔
-2.En la tabla devolución cuando se muestran las devoluciones en la columna TOTAL aparece el precio de compra, no de venta del producto devuelto.✔
-3.El Filtrado de Devoluciones Canceladas o Pendientes no funciona correctamente ✔
-4.En Facturación Final, Establecer por defecto en "CORDOBAS" ✔
-5.En Modulo Factura, el buscador por fecha no reconoce la Segunda fecha, solo la primera. ✔
-6.En Productos
-	-Ver la posibilidad de Registrar una remison con varios productos. (NO)
-	-Verificar la funcionalidad de Editar la informacion de un producto ✔
-7.En Compras realizadas:
+En Productos
+	-Ver la posibilidad de Registrar una remison con varios productos. ✔
+	-Verificar la funcionalidad de Editar la informacion de un producto ✔ 
+a
+En Compras realizadas:
 	-Mostrar en los datos el estado de la factura(Cancelado, Pendiente) ✔
 	-En la orden de compra aplica mal el descuento ✔
 	-Añadir buscador de ordenes de compra por Proveedor y Estado(Pendiente de pago, Cancelado) ✔
 	-Añadir funcionalidad Boton Refrescar ✔
-8.En Creditos y Abono
+	-Filtro de facturas canceladas no funka ✔
+
+En Creditos y Abono
 	-El buscador de facturas al credito por estado, no funciona ✔ 
 	-El buscador por dias vencidos no funciona ✔
-9.Reportes:
+	-El filtro de búsqueda por días vencidos o estables, funciona alreves xd
+Reportes:
 	-Verificar la grafica de Reporte de Ganancias, no carga datos (Está bueno, solo que cuando haces la primera factura del dia no se ve visualizadas, porque está pegada a la linea, despues de la segunda se ve)
-10.HOME:
+
+HOME:
 	-El Slide no sirve ✔
+
+
+
+
+
+
+
 

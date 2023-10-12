@@ -37,6 +37,7 @@ namespace INASOFT_3._0.Controladores
 
         public bool Insertar_Compra(Compras compra)
         {
+            
             bool bandera = false; string sql = "CALL Realizar_Compra('" + compra.Nombre_venderdor + "', " + compra.Subtotal + ", " + compra.Descuento + "," + compra.Iva + ", '" + compra.Descripcion + "', '" + compra.Estado + "', " + compra.Id_usuario + ", "+ compra.Id_proveedor + ", "+ compra.Id_TipoPago +");";
             try
             {
@@ -76,8 +77,8 @@ namespace INASOFT_3._0.Controladores
         public bool Productos_Comprados(Productos productos)
         {
             bool bandera = false;
-            //ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Total - Precio_Venta - Observacion - ID_Compra
-            string sql = "CALL Productos_Comprados("+ productos.Id +", '"+ productos.Codigo +"', '"+ productos.Nombre +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_total +", "+ productos.Precio_venta +", '"+ productos.Observacion +"', "+ productos.Id_Compra +");";
+            //ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Precio_Venta - Observacion - ID_Compra
+            string sql = "CALL Productos_Comprados("+ productos.Id +", '"+ productos.Codigo +"', '"+ productos.Nombre +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_venta +", '"+ productos.Observacion +"', "+ productos.Id_Compra +");";
 
             try
             {

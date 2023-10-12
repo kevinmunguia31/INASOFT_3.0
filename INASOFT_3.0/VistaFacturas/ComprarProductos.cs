@@ -22,13 +22,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace INASOFT_3._0
 {
-    public partial class Agregar_Producto : Form
+    public partial class ComprarProductos : Form
     {
         public DataTable dataTable = new DataTable();
         CultureInfo culturaNicaragua = new CultureInfo("es-NI");
         protected double aux_DescIVA;
 
-        public Agregar_Producto()
+        public ComprarProductos()
         {
             InitializeComponent();
             CargarProveedor();
@@ -325,7 +325,7 @@ namespace INASOFT_3._0
             {
                 DataRow newRow = dataTable.NewRow();
                 newRow[0] = txtCodBarra.Text;
-                newRow[1] = txtNameP.Text;
+                newRow[1] = txtNameP.Text.ToUpper();
                 newRow[2] = SpinExist.Value.ToString();
                 newRow[3] = double.Parse(txtPrecioCompra.Text);
                 newRow[4] = double.Parse(txtPrecioVenta.Text);
@@ -477,7 +477,6 @@ namespace INASOFT_3._0
                         Existencias_min = 1,
                         Precio_compra = double.Parse(row.Cells[3].Value.ToString()),
                         Precio_venta = double.Parse(row.Cells[4].Value.ToString()),
-                        Precio_total = double.Parse(row.Cells[5].Value.ToString()),
                         Observacion = row.Cells[7].Value.ToString(),
                         Id_Compra = ctrlCompras.ID_Compra()                    
                     };

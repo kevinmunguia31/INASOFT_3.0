@@ -254,7 +254,7 @@ namespace INASOFT_3._0.Controladores
                 conexionDB.Close();
             }
             return tabla;
-        }
+        }   
 
         public DataTable Factura_Mes(string dato)
         {

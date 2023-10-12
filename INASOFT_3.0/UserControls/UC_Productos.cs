@@ -88,7 +88,7 @@ namespace INASOFT_3._0.UserControls
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Agregar_Producto frm = new Agregar_Producto();
+            ComprarProductos frm = new ComprarProductos();
             frm.ShowDialog();
         }
 
@@ -164,21 +164,14 @@ namespace INASOFT_3._0.UserControls
                     update.txtPrecioCompra.Text = precio_compra;
                     update.txtPrecioVenta.Text = precio_venta;
                     update.txtObservacion.Text = observaciones;
-                    update.Cbx_Estados.SelectedItem = estado;
 
 
                     update.GroupBox_EditarProd.Enabled = true;
                     update.GroupBox_EditarProd.Dock = DockStyle.Fill;
                     update.txtCodBarra.Enabled = false;
-                    update.Rbttn_ExistProduct.Checked = true;
                     update.txtPrecioCompra.Enabled = false;
                     update.txtPrecioVenta.Enabled = false;
                     update.SpinExist.Enabled = false;
-                    update.groupBox1.Visible = false;
-                    update.TxtBuscar_Productos.Enabled = false;
-                    update.button1.Enabled = false;
-                    update.Cbx_Productos.Enabled = false;
-                    update.Cbx_Estados.Enabled = false;
                     update.ShowDialog();
                 }
             }
@@ -389,8 +382,7 @@ namespace INASOFT_3._0.UserControls
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            Ver_EditarProducto add = new Ver_EditarProducto();
-            add.Lb_titulo.Text = "Realizar remesa inventario";
+            RealizarRemision add = new RealizarRemision();
             add.ShowDialog();
         }
 

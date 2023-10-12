@@ -72,7 +72,7 @@ namespace INASOFT_3._0.UserControls
         public void ObtenerMovimientosProductos(int dato)
         {
             Controladores.CtrlReporteGraficos ctrl = new Controladores.CtrlReporteGraficos();
-            dataGridView3.DataSource = ctrl.ObtenerMovimientosProductos(dato);
+            dataGridView3.DataSource = ctrl.HistorialTrasacciones();
         }
         public void InicarDatosGanancias()
         {

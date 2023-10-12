@@ -20,6 +20,7 @@ namespace INASOFT_3._0.Modelos
         private string observacion;
         private int id_proveedor;
         private int id_compra;
+        private int id_remision;
         private string nombre_proveedor;
 
 
@@ -36,5 +37,6 @@ namespace INASOFT_3._0.Modelos
         public string Estado { get => estado; set => estado = value; }
         public int Existencias_min { get => existencias_min; set => existencias_min = value; }
         public int Id_Compra { get => id_compra; set => id_compra = value; }
+        public int Id_remision { get => id_remision; set => id_remision = value; }
     }
 }

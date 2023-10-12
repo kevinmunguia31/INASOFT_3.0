@@ -315,5 +315,25 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
+
+        public System.Data.DataTable HistorialTrasacciones()
+        {
+            System.Data.DataTable dt = new System.Data.DataTable();
+            string sql = "SELECT * FROM HistorialTransacciones;";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
     }
 }

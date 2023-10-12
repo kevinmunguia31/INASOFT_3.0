@@ -141,7 +141,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
             
-            string sql = "CALL Actualizar_Producto("+ productos.Id +", "+ productos.Nombre +", '"+ productos.Estado +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_venta +", "+ productos.Observacion +");";
+            string sql = "CALL Actualizar_Producto(" + productos.Id +", '"+ productos.Nombre +"', '"+ productos.Estado +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_venta +", '"+ productos.Observacion +"');";
 
             MySqlConnection conexioBD = Conexion.getConexion();
             conexioBD.Open();

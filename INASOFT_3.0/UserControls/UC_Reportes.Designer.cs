@@ -1361,6 +1361,7 @@
             this.guna2Button9.Size = new System.Drawing.Size(170, 45);
             this.guna2Button9.TabIndex = 43;
             this.guna2Button9.Text = "Hoy";
+            this.guna2Button9.Visible = false;
             this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
             // 
             // guna2Button10
@@ -1383,6 +1384,7 @@
             this.guna2Button10.Size = new System.Drawing.Size(170, 45);
             this.guna2Button10.TabIndex = 42;
             this.guna2Button10.Text = "Úlimos 7 días";
+            this.guna2Button10.Visible = false;
             this.guna2Button10.Click += new System.EventHandler(this.guna2Button10_Click);
             // 
             // guna2Button11
@@ -1405,6 +1407,7 @@
             this.guna2Button11.Size = new System.Drawing.Size(170, 45);
             this.guna2Button11.TabIndex = 41;
             this.guna2Button11.Text = "Úlimos 15 días";
+            this.guna2Button11.Visible = false;
             this.guna2Button11.Click += new System.EventHandler(this.guna2Button11_Click);
             // 
             // guna2Button12
@@ -1427,6 +1430,7 @@
             this.guna2Button12.Size = new System.Drawing.Size(170, 45);
             this.guna2Button12.TabIndex = 40;
             this.guna2Button12.Text = "Este mes";
+            this.guna2Button12.Visible = false;
             this.guna2Button12.Click += new System.EventHandler(this.guna2Button12_Click);
             // 
             // panel7
@@ -1446,7 +1450,7 @@
             // 
             this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;

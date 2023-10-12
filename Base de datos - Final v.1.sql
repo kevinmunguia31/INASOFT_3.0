@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS Prueba;
-CREATE DATABASE Prueba;
+DROP DATABASE IF EXISTS Prueba2;
+CREATE DATABASE Prueba2;
 
-USE Prueba;
+USE Prueba2;
 
 -- TABLA Tipos de Usuarios
 CREATE TABLE `Tipo_Usuarios` (
@@ -37,6 +37,16 @@ CREATE TABLE `Tipos_Entradas` (
   	`Tipos` VARCHAR(100) NOT NULL,
   	CONSTRAINT Tipos_Entradaspk PRIMARY KEY(ID)
 );
+
+-- TABLA Historial de transacciones
+CREATE TABLE `HistorialTransacciones` (
+  	`ID` INT NOT NULL AUTO_INCREMENT,
+  	`Tipos` VARCHAR(100) NOT NULL,
+	`Fecha` DATETIME NOT NULL,
+	`Descripcioon` VARCHAR(300) NOT NULL,
+  	CONSTRAINT HistorialTransaccionespk PRIMARY KEY(ID)
+);
+
 
 -- TABLA Tipo de pago
 CREATE TABLE `Tipos_Pagos` (
@@ -85,12 +95,10 @@ CREATE TABLE `Compras`(
 	`Total_Final` DOUBLE DEFAULT NULL,
 	`ID_Usuario` INT NOT NULL,
 	`ID_Proveedor` INT NOT NULL,
-	`ID_Entrada` INT NOT NULL,
 	`ID_TiposPago` INT NOT NULL,
 	CONSTRAINT Compraspk PRIMARY KEY(ID),
 	CONSTRAINT Comprasfk1 FOREIGN KEY(ID_Usuario) REFERENCES Usuarios(ID) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT Comprasfk2 FOREIGN KEY(ID_Proveedor) REFERENCES Proveedor(ID) ON UPDATE CASCADE ON DELETE CASCADE,
-	CONSTRAINT Comprasfk3 FOREIGN KEY(ID_Entrada) REFERENCES Tipos_Entradas(ID) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT Comprasfk4 FOREIGN KEY(ID_TiposPago) REFERENCES Tipos_Pagos(ID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -119,13 +127,20 @@ CREATE TABLE `Historial_Precio` (
 -- TABLA Remisión de prodcutos
 CREATE TABLE `Remisiones` (
   	`ID` INT NOT NULL AUTO_INCREMENT,
-  	`Cantidad` INT NOT NULL,
+	`Descripcion` VARCHAR(100) NOT NULL,
 	`Fecha` DATETIME NOT NULL,
+  	CONSTRAINT Remisionespk PRIMARY KEY(ID)
+);
+
+-- TABLA Detalle remisión de prodcutos
+CREATE TABLE `Detalle_Remision`(
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`Cantidad` INT NOT NULL,
+	`ID_Remision` INT NOT NULL,
 	`ID_Producto` INT NOT NULL,
-	`ID_Entrada` INT NOT NULL,
-  	CONSTRAINT Remisionespk PRIMARY KEY(ID),
-	CONSTRAINT Remisionesfk1 FOREIGN KEY(ID_Producto) REFERENCES Productos(ID) ON UPDATE CASCADE ON DELETE CASCADE,
-	CONSTRAINT Remisionesfk2 FOREIGN KEY(ID_Entrada) REFERENCES Tipos_Entradas(ID) ON UPDATE CASCADE ON DELETE CASCADE
+	CONSTRAINT Detalle_Remisionpk PRIMARY KEY(ID),
+	CONSTRAINT Detalle_Remisionfk1 FOREIGN KEY(ID_Remision) REFERENCES Remisiones(ID) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT Detalle_Remisionfk2 FOREIGN KEY(ID_Producto) REFERENCES Productos(ID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- TABLA Facturas
@@ -236,6 +251,7 @@ CREATE TABLE `Logs` (
 	PRIMARY KEY (`IDlogs`)
 );
 
+
 -- ---------------------------------------------------------------- Insertar datos iniciales ----------------------------------------------------------------
 
 -- Insertar Tipos de usuarios
@@ -249,8 +265,8 @@ INSERT INTO Usuarios VALUES (NULL,'Administrador','admin','05fe7461c607c33229772
 INSERT INTO Clientes VALUES (NULL, 'Cliente génerico', NULL, NULL, NULL);
 
 -- Insetar Entradas
-INSERT INTO Tipos_Entradas VALUES (NULL, 'Compra');
-INSERT INTO Tipos_Entradas VALUES (NULL, 'Remisión');
+INSERT INTO Tipos_Entradas VALUES (NULL, 'Compra de productos');
+INSERT INTO Tipos_Entradas VALUES (NULL, 'Remisión de entrada');
 
 -- Insetar Tipos de pagos
 INSERT INTO Tipos_Pagos VALUES (NULL, 'Dólares');
@@ -263,19 +279,30 @@ INSERT INTO Tipos_Pagos VALUES (NULL, 'Cheque');
 
 -- Insertar Producto
 DELIMITER //
-	CREATE PROCEDURE Insertar_Producto(_Codigo VARCHAR(45), _Nombre VARCHAR(100), _Cantidad INT, _Existencias_Min INT, _Precio_Compra DOUBLE, _Precio_Venta DOUBLE, _Observacion VARCHAR(200), _ID_Entrada INT)
-	BEGIN
-		DECLARE Total FLOAT;
-		DECLARE Aux_IDProducto INT;
-		
-		SET Total = ROUND(_Precio_Compra * _Cantidad, 2);
-		INSERT INTO Productos (Codigo, Nombre, Estado, Existencias, Existencias_Minimas, Precio_Compra, Precio_Venta, Precio_Total, Observacion, ID_Entrada) VALUES(_Codigo, _Nombre, 'Activo', _Cantidad, _Existencias_Min , _Precio_Compra, _Precio_Venta, Total, _Observacion, _ID_Entrada);
-	END//
+CREATE PROCEDURE Insertar_Producto(
+    _Codigo VARCHAR(45),
+    _Nombre VARCHAR(100),
+    _Cantidad INT,
+    _Existencias_Min INT,
+    _Precio_Compra DOUBLE,
+    _Precio_Venta DOUBLE,
+    _Observacion VARCHAR(200),
+    _ID_Entrada INT
+)
+BEGIN
+    DECLARE Total FLOAT;
+    DECLARE Aux_IDProducto INT;
+    
+    SET Total = ROUND(_Precio_Compra * _Cantidad, 2);
+    INSERT INTO Productos (Codigo, Nombre, Estado, Existencias, Existencias_Minimas, Precio_Compra, Precio_Venta, Precio_Total, Observacion, ID_Entrada)
+    VALUES(_Codigo, _Nombre, 'Activo', _Cantidad, _Existencias_Min , _Precio_Compra, _Precio_Venta, Total, _Observacion, _ID_Entrada);
+    
+END //
 DELIMITER ;
+
 
 -- Actualizar Producto
 DELIMITER //
-
 CREATE PROCEDURE Actualizar_Producto(
     IN _ID_Producto INT,
 	IN _Nombre_Producto VARCHAR(100),
@@ -316,6 +343,7 @@ BEGIN
 
     -- Actualizar el Precio_Total y Existencias
     UPDATE Productos SET  Precio_Total = Precio_Total + Total,  Existencias = Existencias + _Existencias  WHERE ID = _ID_Producto;
+	
 END //
 DELIMITER ;
 
@@ -343,6 +371,17 @@ DELIMITER ;
 -- Insertar Remisión
 DELIMITER //
 CREATE PROCEDURE Realizar_Remision(
+    IN _Descripcion VARCHAR(200)
+)
+BEGIN
+    -- Insertar en la tabla Remisiones
+    INSERT INTO Remisiones (Descripcion, Fecha) VALUES (_Descripcion, NOW());
+END //
+DELIMITER ;
+
+-- Realizar remisiones de entrada de productos
+DELIMITER //
+CREATE PROCEDURE Detalle_RemisionEntrada(
     IN _ID_Producto INT,
     IN _Codigo_Producto VARCHAR(45),
     IN _Nombre_Producto VARCHAR(100),
@@ -351,29 +390,77 @@ CREATE PROCEDURE Realizar_Remision(
     IN _Precio_Compra DOUBLE,
     IN _Precio_Venta DOUBLE,
     IN _Observacion VARCHAR(200),
-    IN _ID_Entrada INT
-	)
-	BEGIN
-		DECLARE Aux_IDProducto INT;
-		DECLARE Aux INT;
+    IN _ID_Remision INT
+)
+BEGIN
+    DECLARE Aux_IDProducto INT;
 
-		-- Verificar si el dato ya existe en la tabla Productos
-		SELECT ID INTO Aux FROM Productos WHERE ID = _ID_Producto;
+    -- Verificar si el dato ya existe en la tabla Productos
+    SELECT ID INTO Aux_IDProducto FROM Productos WHERE ID = _ID_Producto;
 
-		-- Comprobar el resultado
-		IF Aux IS NOT NULL THEN
-			CALL Actualizar_Producto(_ID_Producto, _Nombre_Producto, 'Activo', _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion);
+    -- Comprobar el resultado
+    IF Aux_IDProducto IS NOT NULL THEN
+        CALL Actualizar_Producto(_ID_Producto, _Nombre_Producto, 'Activo', _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion);
+    ELSE
+        CALL Insertar_Producto(_Codigo_Producto, _Nombre_Producto, _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion, 2);
+        -- Obtener el ID del último producto insertado
+       SET Aux_IDProducto = LAST_INSERT_ID();
+    END IF;
+
+    -- Insertar en la tabla Detalle_Remisiones
+    INSERT INTO Detalle_Remision (Cantidad, ID_Remision, ID_Producto)
+    VALUES (_Cantidad, _ID_Remision, Aux_IDProducto);
+    
+    INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos mediante una remisión de entrada de ', _Cantidad, ' ', _Nombre_Producto));
+END //
+DELIMITER ;
+
+-- Realizar remisiones de salidas de productos
+DELIMITER //
+CREATE PROCEDURE Detalle_RemisionSalida(
+    IN _ID_Producto INT,
+    IN _Nombre_Producto VARCHAR(100),
+    IN _Cantidad INT,
+    IN _ID_Remision INT
+)
+BEGIN
+		DECLARE productoExistencias INT;
+		DECLARE Aux_ID_DetalleFactura INT;
+ 
+		-- Iniciar una transacción
+		START TRANSACTION;
+
+		-- Obtener existencias actuales del producto
+		SELECT Existencias INTO productoExistencias FROM Productos WHERE ID = _ID_Producto;
+
+		-- Verificar si hay suficientes existencias para la venta
+		IF productoExistencias >= _Cantidad THEN
+			-- Registrar la venta en Detalle_Factura
+			
+			INSERT INTO Detalle_Remision (Cantidad, ID_Remision, ID_Producto) VALUES (_Cantidad, _ID_Remision, _ID_Producto);
+
+			INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de salida', NOW(), CONCAT('Se ha hecho una transacción de salida de productos mediante una remisión de salida de ', _Cantidad, ' ', _Nombre_Producto));
+			
+			-- Actualizar existencias y precio total
+			UPDATE Productos SET Existencias = Existencias - _Cantidad WHERE ID = _ID_Producto;
+			UPDATE Productos SET Precio_Total =  (Precio_Compra * Existencias) WHERE ID = _ID_Producto;
+
+			-- Verificar si las existencias se han agotado
+			IF (productoExistencias - _Cantidad) = 0 THEN
+				UPDATE Productos SET Estado = 'No activo' WHERE ID = _ID_Producto;
+			END IF;
+
+			-- Confirmar la transacción
+			COMMIT;
 		ELSE
-			CALL Insertar_Producto(_Codigo_Producto, _Nombre_Producto, _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion, _ID_Entrada);
-			-- Obtener el ID del último producto insertado
-			SELECT LAST_INSERT_ID() INTO Aux_IDProducto;
+			-- Si no hay suficientes existencias, revertir la transacción
+			ROLLBACK;
+			SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'No hay suficientes existencias para esta venta.';
 		END IF;
-
-		-- Insertar en la tabla Remisiones
-		INSERT INTO Remisiones(Cantidad, Fecha, ID_Producto, ID_Entrada)
-		VALUES (_Cantidad, NOW(), IFNULL(Aux_IDProducto, _ID_Producto), 2);
 	END //
 DELIMITER ;
+
 
 -- ------------------------------------------------------------ Procedimientos de compras de productos------------------------------------------------------------
 
@@ -409,24 +496,8 @@ BEGIN
     END IF;
 
     -- Insertar la compra en la tabla Compras
-    INSERT INTO Compras (Fecha, Nombre_Vendedor, Descripcion, Estado, Subtotal,  Descuento, IVA, Total_Final, ID_Usuario, ID_Proveedor, ID_Entrada, ID_TiposPago) VALUES (NOW(), _Nombre_Vendedor,  _Descripcion, _Estado, _Subtotal,  _Descuento,  _IVA, Total, _ID_Usuario, _ID_Proveedor, 1, _ID_TipoPagos);
+    INSERT INTO Compras (Fecha, Nombre_Vendedor, Descripcion, Estado, Subtotal,  Descuento, IVA, Total_Final, ID_Usuario, ID_Proveedor, ID_TiposPago) VALUES (NOW(), _Nombre_Vendedor,  _Descripcion, _Estado, _Subtotal,  _Descuento,  _IVA, Total, _ID_Usuario, _ID_Proveedor, _ID_TipoPagos);
 END //
-
-DELIMITER ;
-
-
--- Mostrar el último ID de una compra realizada
-DELIMITER //
-	CREATE PROCEDURE Mostrar_IDCompra()
-	BEGIN
-		DECLARE Aux_ID INT;
-		SET Aux_ID = CONVERT((SELECT ID FROM Compras ORDER BY ID DESC LIMIT 1), UNSIGNED INT);
-		IF (SELECT Aux_ID ) IS NULL THEN 
-			SELECT 0;
-		ELSE
-			SELECT Aux_ID;
-		END IF;
-	END//
 DELIMITER ;
 
 
@@ -439,7 +510,6 @@ CREATE PROCEDURE Productos_Comprados(
     IN _Cantidad INT,
     IN _Existencias_Min INT,
     IN _Precio_Compra DOUBLE,
-    IN _Total DOUBLE,
     IN _Precio_Venta DOUBLE,
     IN _Observacion VARCHAR(200),
 	IN _ID_Compra INT
@@ -463,8 +533,25 @@ BEGIN
 
     -- Insertar en la tabla Detalle_Compra
     INSERT INTO Detalle_Compra (Cantidad, ID_Compra, ID_Producto) VALUES (_Cantidad, _ID_Compra, Aux_IDProducto);
+	INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una compra de ', _Cantidad, '  ', _Nombre_Producto));
 END //
 DELIMITER ;
+
+
+-- Mostrar el último ID de una compra realizada
+DELIMITER //
+	CREATE PROCEDURE Mostrar_IDCompra()
+	BEGIN
+		DECLARE Aux_ID INT;
+		SET Aux_ID = CONVERT((SELECT ID FROM Compras ORDER BY ID DESC LIMIT 1), UNSIGNED INT);
+		IF (SELECT Aux_ID ) IS NULL THEN 
+			SELECT 0;
+		ELSE
+			SELECT Aux_ID;
+		END IF;
+	END//
+DELIMITER ;
+
 
 -- ---------------------------------------------------------------- Procedimientos de facturación ----------------------------------------------------------------
 
@@ -533,12 +620,14 @@ CREATE PROCEDURE Facturar_Productos(
 BEGIN
     DECLARE productoExistencias INT;
     DECLARE Aux_ID_DetalleFactura INT;
+	DECLARE Aux_NombreProducto VARCHAR(100);
  
     -- Iniciar una transacción
     START TRANSACTION;
 
     -- Obtener existencias actuales del producto
     SELECT Existencias INTO productoExistencias FROM Productos WHERE ID = _ID_Producto;
+	SELECT Nombre INTO Aux_NombreProducto FROM Productos WHERE ID = _ID_Producto;
 
     -- Verificar si hay suficientes existencias para la venta
     IF productoExistencias >= _Cantidad THEN
@@ -547,14 +636,16 @@ BEGIN
 		SET Aux_ID_DetalleFactura = LAST_INSERT_ID();
 		
         -- Actualizar existencias y precio total
-        UPDATE Productos SET Existencias = Existencias - _Cantidad, Precio_Total = Precio_Venta * (Existencias - _Cantidad) WHERE ID = _ID_Producto;
-
+        UPDATE Productos SET Existencias = (Existencias - _Cantidad) WHERE ID = _ID_Producto;
+		UPDATE Productos SET Precio_Total =  (Precio_Compra * Existencias) WHERE ID = _ID_Producto;
+		
         -- Verificar si las existencias se han agotado
         IF (productoExistencias - _Cantidad) = 0 THEN
             UPDATE Productos SET Estado = 'No activo' WHERE ID = _ID_Producto;
-			UPDATE Productos SET Precio_Total =  Precio_Venta * Existencias WHERE ID = _ID_Producto;
         END IF;
-
+	
+		INSERT INTO HistorialTransacciones VALUES (NULL, 'Facturación', NOW(), CONCAT('Se ha hecho una transacción de salida de productos de mendiante una facturacion de ', _Cantidad, '  ', Aux_NombreProducto));
+			
         -- Confirmar la transacción
         COMMIT;
     ELSE
@@ -677,6 +768,7 @@ DELIMITER //
 		DECLARE Total_Prod DOUBLE;
 		DECLARE Aux_Precio DOUBLE;
 		DECLARE Aux_ID_Devolucion INT;
+		DECLARE Aux_NombreProducto VARCHAR(200);
 
 		-- Verificar si existe la devolución con el ID proporcionado
 		SELECT ID INTO Aux_ID_Devolucion FROM Devoluciones WHERE ID = _ID_Devolucion;
@@ -688,6 +780,7 @@ DELIMITER //
 
 			-- Obtener el precio de compra del producto
 			SELECT Precio_Compra INTO Aux_Precio FROM Productos WHERE ID = _ID_Producto;
+			SELECT Nombre INTO Aux_NombreProducto FROM Productos WHERE ID = _ID_Producto;
 
 			-- Calcular el Total_Producto
 			SET Total_Prod = Aux_Precio * _Cantidad;
@@ -702,6 +795,8 @@ DELIMITER //
 
 			-- Actualizar Detalle_Factura
 			UPDATE Detalle_Factura SET Cantidad = Cantidad - _Cantidad WHERE ID_Producto = _ID_Producto AND ID_Factura = _ID_Factura;
+			
+			INSERT INTO HistorialTransacciones VALUES (NULL, 'Devolución', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una devolución de ', _Cantidad, '  ', Aux_NombreProducto));
 
 			-- Confirmar la transacción
 			COMMIT;
@@ -1089,7 +1184,7 @@ ORDER BY a.ID ;
 DELIMITER //
 CREATE PROCEDURE SeleccionarProcedimiento(
 IN opcion INT,
-    IN FechaInicio DATE
+    IN FechaInicio DATE,
     IN FechaFinal DATE,
     IN _NombreCliente VARCHAR(100)
 )
@@ -1263,7 +1358,7 @@ BEGIN
         INNER JOIN Facturas d ON a.ID_Factura = d.ID
         INNER JOIN Clientes e ON d.ID_Cliente = e.ID
         INNER JOIN Usuarios f ON d.ID_Usuario = f.ID
-        WHERE c.Estado = _Estado
+        WHERE d.Estado = _Estado
         GROUP BY a.ID
         ORDER BY a.ID;
     ELSE
@@ -1739,11 +1834,12 @@ ORDER BY Fecha;
 SELECT 
 	p.Nombre AS 'Nombre del Producto', 
     DATE_FORMAT(r.Fecha, '%d %b, %Y') AS 'Fecha de la Remesa', 
-	SUM(r.Cantidad) AS 'Cantidad en Remesa'
+	SUM(dr.Cantidad) AS 'Cantidad en Remesa'
 FROM Remisiones r
-INNER JOIN Productos p ON r.ID_Producto = p.ID
+INNER JOIN Detalle_Remision dr ON r.ID = dr.ID_Remision
+INNER JOIN Productos p ON dr.ID_Producto = p.ID
 GROUP BY p.Nombre, DATE_FORMAT(r.Fecha, '%d %b, %Y')
-HAVING SUM(r.Cantidad) != 0;
+HAVING SUM(dr.Cantidad) != 0;
 
 -- Listar productos vendidos en un rango de fechas
 SELECT 
@@ -1821,12 +1917,13 @@ BEGIN
         'Entrada' AS 'Tipo', 
         DATE_FORMAT(r.Fecha, '%d %b, %Y') AS 'Fecha',
         p.Nombre AS 'Producto', 
-        SUM(r.Cantidad) AS 'Cantidad'
-    FROM Remesa_Productos r
-    INNER JOIN Productos p ON r.ID_Producto = p.ID
+        SUM(dr.Cantidad) AS 'Cantidad'
+    FROM Remisiones r
+	INNER JOIN Detalle_Remision dr ON r.ID = dr.ID_Remision
+	INNER JOIN Productos p ON dr.ID_Producto = p.ID
     WHERE r.Fecha >= fechaInicio
     GROUP BY 'Entrada', DATE_FORMAT(r.Fecha, '%d %b, %Y'), p.Nombre
-    HAVING SUM(r.Cantidad) != 0
+    HAVING SUM(dr.Cantidad) != 0
 
     UNION
 
@@ -1844,3 +1941,38 @@ BEGIN
     
 END //
 DELIMITER ;
+
+/*
+SELECT * FROM HistorialTransacciones;
+
+INSERT INTO InfoGeneral VALUES (1,'Ferreteria Luz','Iglesia Sn. Agustin, 80 vrs al S.','12515748412','Meyling Zuniga','8810-9566');
+
+INSERT INTO Proveedor VALUES (NULL, 'HALCOM', '23154365', 'Chinandega', 001);
+INSERT INTO Proveedor VALUES (NULL, 'PINTURAS LANCO', '23154365', 'Managua', 002);
+INSERT INTO Proveedor VALUES (NULL, 'SINSA', '23154365', 'Managua', 003);
+INSERT INTO Proveedor VALUES (NULL, 'CEMENTERA JAVIER', '23154365', 'Managua', 004);
+
+INSERT INTO Clientes VALUES(NULL, 'Jeremy Berríos', '58353275', 'León', '43243245435-5345L');
+
+CALL Realizar_Remision('Remision');
+CALL Realizar_Remision('Remision');
+
+-- ID producto - Codigo producto - Nombre producto - Cantidad - Existencias - Precio compra - Precio Venta - Observacion - ID Remision
+CALL Detalle_RemisionEntrada(0, '0001', 'Martillo de acero', 103, 5, 49.99, 56.44, '--', 1);
+CALL Detalle_RemisionEntrada(0, '0002', 'Martillo de Hierro', 120, 5, 54.99, 62.44, '--', 1);
+CALL Detalle_RemisionEntrada(0, '0003','Alambre de cobre', 130, 5, 23.99, 34.44, '--', 1);
+
+-- ID prodcuto  - Nombre producto - Cantidad - ID Remision
+CALL Detalle_RemisionSalida(1, 'Martillo de acero', 3 ,2);
+
+
+-- Nombre vendedor - Subtotal - Descuento - IVA - Descripcion - Estado - ID Usuario - ID Proveedor - ID Tipo Pagos
+CALL Realizar_Compra('Jorge Mendoza', 2104.00, 10, 16, '53454534543', 'Pendiente', 1, 3, 3);
+CALL Realizar_Compra('Mario Salazar', 300.00, 10, 16, '5435353535', 'Cancelado', 1, 2, 3);
+
+-- ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Total - Precio_Venta - Observacion - ID_Compra
+CALL Productos_Comprados(0, '0004', 'TINSETICO MURO SECO BLANCO', 190, 5, 240.00, 290.00, '--', 1);
+CALL Productos_Comprados(0, '0005', 'CANAL AMARRE 1 5/8 x 10', 100, 10, 68.00, 80.00, '--', 1);
+CALL Productos_Comprados(0, '0006', 'CANAL AMARRE 2 1/2 x 10', 100, 10, 68.00, 80.00, '--', 1);
+CALL Productos_Comprados(0, '0007', 'CANAL AMARRE 3 5/8 x 10', 100, 10, 68.00, 90.00, '--', 1);
+*/

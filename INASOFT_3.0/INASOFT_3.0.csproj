@@ -227,7 +227,7 @@
     <Compile Include="Modelos\Credito.cs" />
     <Compile Include="Modelos\Detalle_Compras.cs" />
     <Compile Include="Modelos\Devolucion.cs" />
-    <Compile Include="Modelos\Remesa.cs" />
+    <Compile Include="Modelos\Remision.cs" />
     <Compile Include="Modelos\Reporte.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -240,11 +240,11 @@
     <Compile Include="UserControls\UC_Reportes.Designer.cs">
       <DependentUpon>UC_Reportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\Agregar_Producto.cs">
+    <Compile Include="VistaFacturas\ComprarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\Agregar_Producto.Designer.cs">
-      <DependentUpon>Agregar_Producto.cs</DependentUpon>
+    <Compile Include="VistaFacturas\ComprarProductos.Designer.cs">
+      <DependentUpon>ComprarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Controladores\clsFactura.cs" />
     <Compile Include="Controladores\CtrlClientes.cs" />
@@ -388,11 +388,17 @@
     <Compile Include="VistaFacturas\RealizarAbono.Designer.cs">
       <DependentUpon>RealizarAbono.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\Editar&amp;AddRemision.cs">
+    <Compile Include="VistaFacturas\EditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\Editar&amp;AddRemision.Designer.cs">
-      <DependentUpon>Editar&amp;AddRemision.cs</DependentUpon>
+    <Compile Include="VistaFacturas\EditarProducto.Designer.cs">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\RealizarRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\RealizarRemision.Designer.cs">
+      <DependentUpon>RealizarRemision.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\VistaProductos.cs">
       <SubType>Form</SubType>
@@ -407,8 +413,8 @@
     <EmbeddedResource Include="UserControls\UC_Reportes.resx">
       <DependentUpon>UC_Reportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\Agregar_Producto.resx">
-      <DependentUpon>Agregar_Producto.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\ComprarProductos.resx">
+      <DependentUpon>ComprarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -475,8 +481,11 @@
     <EmbeddedResource Include="VistaFacturas\RealizarAbono.resx">
       <DependentUpon>RealizarAbono.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\Editar&amp;AddRemision.resx">
-      <DependentUpon>Editar&amp;AddRemision.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\EditarProducto.resx">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\RealizarRemision.resx">
+      <DependentUpon>RealizarRemision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\VistaProductos.resx">
       <DependentUpon>VistaProductos.cs</DependentUpon>

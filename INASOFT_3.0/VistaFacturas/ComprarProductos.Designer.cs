@@ -1,7 +1,7 @@
 ﻿
 namespace INASOFT_3._0
 {
-    partial class Agregar_Producto
+    partial class ComprarProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace INASOFT_3._0
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregar_Producto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarProductos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -241,7 +241,7 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(368, 14);
+            this.label1.Location = new System.Drawing.Point(368, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 22);
             this.label1.TabIndex = 6;
@@ -542,7 +542,7 @@ namespace INASOFT_3._0
             this.Lb_Producto.AutoSize = true;
             this.Lb_Producto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Lb_Producto.Location = new System.Drawing.Point(595, 14);
+            this.Lb_Producto.Location = new System.Drawing.Point(599, 15);
             this.Lb_Producto.Name = "Lb_Producto";
             this.Lb_Producto.Size = new System.Drawing.Size(76, 22);
             this.Lb_Producto.TabIndex = 97;
@@ -763,7 +763,7 @@ namespace INASOFT_3._0
             this.Txt_RUC.AutoSize = true;
             this.Txt_RUC.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_RUC.ForeColor = System.Drawing.Color.Black;
-            this.Txt_RUC.Location = new System.Drawing.Point(225, 21);
+            this.Txt_RUC.Location = new System.Drawing.Point(192, 43);
             this.Txt_RUC.Name = "Txt_RUC";
             this.Txt_RUC.Size = new System.Drawing.Size(31, 22);
             this.Txt_RUC.TabIndex = 96;
@@ -1277,7 +1277,7 @@ namespace INASOFT_3._0
             this.Cbx_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Productos.FormattingEnabled = true;
             this.Cbx_Productos.IntegralHeight = false;
-            this.Cbx_Productos.Location = new System.Drawing.Point(599, 34);
+            this.Cbx_Productos.Location = new System.Drawing.Point(600, 40);
             this.Cbx_Productos.Name = "Cbx_Productos";
             this.Cbx_Productos.Size = new System.Drawing.Size(229, 30);
             this.Cbx_Productos.TabIndex = 82;
@@ -1292,7 +1292,7 @@ namespace INASOFT_3._0
             this.cbProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.IntegralHeight = false;
-            this.cbProveedor.Location = new System.Drawing.Point(372, 34);
+            this.cbProveedor.Location = new System.Drawing.Point(372, 40);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(201, 30);
             this.cbProveedor.TabIndex = 89;
@@ -1371,7 +1371,7 @@ namespace INASOFT_3._0
             this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             this.MessageDialogError.Text = null;
             // 
-            // Agregar_Producto
+            // ComprarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1383,7 +1383,7 @@ namespace INASOFT_3._0
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Agregar_Producto";
+            this.Name = "ComprarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADDEDIT";
             this.panel2.ResumeLayout(false);

@@ -815,7 +815,6 @@ C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOF
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe.config
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ImportBD.resources
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Reportes.resources
-C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Agregar_Producto.resources
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Principal.resources
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Login.resources
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Properties.Resources.resources
@@ -845,3 +844,5 @@ C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOF
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.CopyComplete
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
+C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ComprarProductos.resources
+C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemision.resources
