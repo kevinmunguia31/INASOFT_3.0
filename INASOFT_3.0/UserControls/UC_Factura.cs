@@ -449,7 +449,7 @@ namespace INASOFT_3._0.UserControls
                 filas += "<td>" + row.Cells["Codigo"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Fecha"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Nombre cliente"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cliente"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Total Final"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Debe"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Nombre empleado"].Value.ToString() + "</td>";

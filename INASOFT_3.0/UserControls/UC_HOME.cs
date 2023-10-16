@@ -47,7 +47,13 @@ namespace INASOFT_3._0.UserControls
                 band.ReadOnly = true;
             }
 
-            lbNameNeg.Text = Modelos.InfoNegocio.nombre;
+            //lbNameNeg.Text = Modelos.InfoNegocio.nombre;
+            string rutaImagen = Properties.Settings.Default.RutaImagen;
+
+
+            // Carga la imagen desde la ruta especificada
+            Image imagen = Image.FromFile(rutaImagen);
+            pbImagen.Image = imagen;
         }
 
         private void InfoNegocio()

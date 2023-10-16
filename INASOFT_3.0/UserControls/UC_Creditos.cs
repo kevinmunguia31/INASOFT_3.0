@@ -120,7 +120,9 @@ namespace INASOFT_3._0.UserControls
                     frm.Lb_Pendiente.Text = aux_pendiente;
                     frm.Lb_Monto.Text = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
                     frm.groupBox1.Text = "Detalle del crédito del cliente " + dataGridView1.Rows[id_pos].Cells[2].Value.ToString(); 
+                    frm.lbCliente.Text = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
                     frm.guna2GroupBox2.Text = "          Estado de cuenta de la factura " + dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
+                    frm.lbFactura.Text = dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
                     frm.Show();
                 }
             }
@@ -331,13 +333,13 @@ namespace INASOFT_3._0.UserControls
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["Codigo de factura"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Nombre del cliente"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cod. Factura"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cliente"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Cargo"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Pendiente"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Fin del cr├®dito"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["D├¡as vencidos"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Fin del crédito"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Días vencidos"].Value.ToString() + "</td>";
                 filas += "</tr>";
 
                 //Total += double.Parse(row.Cells["Total Final"].Value.ToString());
@@ -350,7 +352,7 @@ namespace INASOFT_3._0.UserControls
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    string aux1 = dataGridView1.Rows[i].Cells[7].Value.ToString();
+                    string aux1 = dataGridView1.Rows[i].Cells[8].Value.ToString();
                     string[] words1 = aux1.Split('$');
                     string aux_Total = words1[1];
                     Total += double.Parse(aux_Total);
@@ -372,13 +374,14 @@ namespace INASOFT_3._0.UserControls
                     pdfDoc.Open();
 
                     //Agregamos la imagen del banner al documento
-                    /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.icons8_wifi_apagado_50, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
+                    string RutaImagen = Properties.Settings.Default.RutaImagen;
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(RutaImagen);
+                    img.ScaleToFit(100, 100);
                     img.Alignment = iTextSharp.text.Image.UNDERLYING;
 
                     //img.SetAbsolutePosition(10,100);
                     img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);*/
+                    pdfDoc.Add(img);
 
 
                     //pdfDoc.Add(new Phrase("Hola Mundo"));

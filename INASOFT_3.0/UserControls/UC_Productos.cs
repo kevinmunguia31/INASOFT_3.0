@@ -1,7 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using INASOFT_3._0.VistaFacturas;
-using iTextSharp.tool.xml;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -327,18 +326,34 @@ namespace INASOFT_3._0.UserControls
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["Código"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Codigo"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Producto"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Existencias"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Proveedores"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Tipo de entrada"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Precio de compra"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Precio de venta"].Value.ToString() + "</td>";
                 filas += "</tr>";
 
-                //Total += double.Parse(row.Cells["Total Final"].Value.ToString());
+               // Total += double.Parse(row.Cells["Total de compra"].Value.ToString());
+            }
+            if (dataGridView1.RowCount == 0)
+            {
+                Total = 0.00;
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string aux1 = dataGridView1.Rows[i].Cells[8].Value.ToString();
+                    string[] words1 = aux1.Split('$');
+                    string aux_Total = words1[1];
+                    Total += double.Parse(aux_Total);
+                }
             }
             paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL", Total.ToString("C"));
+            //paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
 
 
             if (guardar.ShowDialog() == DialogResult.OK)
@@ -353,14 +368,14 @@ namespace INASOFT_3._0.UserControls
                     pdfDoc.Open();
 
                     //Agregamos la imagen del banner al documento
-                    /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.icons8_wifi_apagado_50, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
+                    string RutaImagen = Properties.Settings.Default.RutaImagen;
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(RutaImagen);
+                    img.ScaleToFit(100, 100);
                     img.Alignment = iTextSharp.text.Image.UNDERLYING;
 
                     //img.SetAbsolutePosition(10,100);
                     img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);*/
-
+                    pdfDoc.Add(img);
 
                     //pdfDoc.Add(new Phrase("Hola Mundo"));
                     using (StringReader sr = new StringReader(paginaHtml_texto))

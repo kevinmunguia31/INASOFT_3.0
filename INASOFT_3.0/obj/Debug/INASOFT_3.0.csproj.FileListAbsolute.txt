@@ -598,7 +598,6 @@ C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\bin\Debug\ja
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.AssemblyReference.cache
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Agregar_Producto.resources
 C:\Users\jerem\source\repos\INASOFTWARE 4.0\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Ver_EditarProducto.resources
-C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Agregar_Producto.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Ver_EditarProducto.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe.licenses
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\bin\Debug\MySqlBackup.dll
@@ -846,3 +845,5 @@ C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOF
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ComprarProductos.resources
 C:\Users\jerem\source\repos\Tesis final\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemision.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ComprarProductos.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemision.resources

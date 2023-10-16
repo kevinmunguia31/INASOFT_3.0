@@ -13,11 +13,14 @@ namespace INASOFT_3._0.Modelos
         {
             string servidor = "localhost";
             //string puerto = "3306";
-            string puerto = "3307";
-            string usuario = "root";
+            //string puerto = "3307";
+            //string usuario = "root";
             //string password = "root";
-            string password = "mysql";
+            //string password = "mysql";
             //string bd = "db_inasoftware";
+            string puerto = Properties.Settings.Default.DbPort;
+            string usuario = Properties.Settings.Default.DbUser;
+            string password = Properties.Settings.Default.DbPassword;
             string bd = "Prueba2";
 
             string cadenaConexion = "server=" + servidor + "; port=" + puerto + "; user id=" + usuario + "; password=" + password + "; database=" + bd;

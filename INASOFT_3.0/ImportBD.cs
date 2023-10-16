@@ -17,6 +17,9 @@ namespace INASOFT_3._0
         public ImportBD()
         {
             InitializeComponent();
+            txtPort.Text = Properties.Settings.Default.DbPort;
+            txtUser.Text = Properties.Settings.Default.DbUser;
+            txtPassword.Text = Properties.Settings.Default.DbPassword;
             VerificarBD();
         }
 
@@ -53,7 +56,12 @@ namespace INASOFT_3._0
 
         private void btnCrearBD_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Uid=root;Pwd=root;";
+            string puerto = Properties.Settings.Default.DbPort;
+            string usuario = Properties.Settings.Default.DbUser;
+            string password = Properties.Settings.Default.DbPassword;
+
+            // Utiliza los valores recuperados para establecer la conexión a la base de datos MySQL.
+            string connectionString = "Server=localhost;Port=" + puerto + ";User Id=" + usuario + ";Password=" + password + ";";
             string databaseName = lbNameDB.Text;
 
             try
@@ -95,9 +103,14 @@ namespace INASOFT_3._0
 
         private void VerificarBD()
         {
-            string connectionString = "Server=localhost;Uid=root;Pwd=root;";
+            string puerto = Properties.Settings.Default.DbPort;
+            string usuario = Properties.Settings.Default.DbUser;
+            string password = Properties.Settings.Default.DbPassword;
 
-            string databaseNameToCheck = "Prueba"; // El nombre de la base de datos que deseas verificar
+            // Utiliza los valores recuperados para establecer la conexión a la base de datos MySQL.
+            string connectionString = "Server=localhost;Port=" + puerto + ";User Id=" + usuario + ";Password=" + password + ";";
+
+            string databaseNameToCheck = "Prueba2"; // El nombre de la base de datos que deseas verificar
 
             try
             {
@@ -136,6 +149,20 @@ namespace INASOFT_3._0
             MessageBox.Show(
              "Para Cargar un respaldo de la base de datos.\n" +
              "Solo cargar el archivo .SQL, no es necesario crear la base de datos para esto", "¿Cómo funciona este apartado?");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DbPort = txtPort.Text;
+            Properties.Settings.Default.DbUser = txtUser.Text;
+            Properties.Settings.Default.DbPassword = txtPassword.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Configuracion Guardada correctamente.");
+        }
+
+        private void ImportBD_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,17 +36,13 @@ namespace INASOFT_3._0.UserControls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Clientes));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cedulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteClient = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnPDF = new Guna.UI2.WinForms.Guna2Button();
             this.lbClientes = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
@@ -91,9 +87,10 @@ namespace INASOFT_3._0.UserControls
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(53, 7);
+            this.label1.Location = new System.Drawing.Point(71, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 36);
+            this.label1.Size = new System.Drawing.Size(384, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista de Clientes Registrados";
             // 
@@ -103,7 +100,6 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
@@ -118,14 +114,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.telefonoDataGridViewTextBoxColumn,
-            this.direccionDataGridViewTextBoxColumn,
-            this.cedulaDataGridViewTextBoxColumn});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.DataSource = this.clienteBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,10 +125,12 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(9, 48);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 59);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
@@ -147,57 +138,23 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(573, 359);
+            this.dataGridView1.Size = new System.Drawing.Size(764, 442);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telefonoDataGridViewTextBoxColumn
-            // 
-            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "Telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
-            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
-            this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // direccionDataGridViewTextBoxColumn
-            // 
-            this.direccionDataGridViewTextBoxColumn.DataPropertyName = "Direccion";
-            this.direccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            this.direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
-            this.direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cedulaDataGridViewTextBoxColumn
-            // 
-            this.cedulaDataGridViewTextBoxColumn.DataPropertyName = "Cedula";
-            this.cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
-            this.cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
-            this.cedulaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editInfo,
             this.deleteClient});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(206, 56);
             // 
             // editInfo
             // 
             this.editInfo.Image = ((System.Drawing.Image)(resources.GetObject("editInfo.Image")));
             this.editInfo.Name = "editInfo";
-            this.editInfo.Size = new System.Drawing.Size(172, 22);
+            this.editInfo.Size = new System.Drawing.Size(205, 26);
             this.editInfo.Text = "Editar Información";
             this.editInfo.Click += new System.EventHandler(this.editInfo_Click);
             // 
@@ -205,7 +162,7 @@ namespace INASOFT_3._0.UserControls
             // 
             this.deleteClient.Image = ((System.Drawing.Image)(resources.GetObject("deleteClient.Image")));
             this.deleteClient.Name = "deleteClient";
-            this.deleteClient.Size = new System.Drawing.Size(172, 22);
+            this.deleteClient.Size = new System.Drawing.Size(205, 26);
             this.deleteClient.Text = "Eliminar Cliente";
             this.deleteClient.Click += new System.EventHandler(this.deleteClient_Click);
             // 
@@ -215,41 +172,67 @@ namespace INASOFT_3._0.UserControls
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(440, 11);
+            this.txtId.Location = new System.Drawing.Point(587, 14);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(31, 25);
+            this.txtId.Size = new System.Drawing.Size(40, 30);
             this.txtId.TabIndex = 5;
             this.txtId.Visible = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnPDF);
             this.groupBox2.Controls.Add(this.lbClientes);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(9, 425);
+            this.groupBox2.Location = new System.Drawing.Point(12, 523);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(573, 100);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(764, 123);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "TOTAL DE CLIENTES REGISTRADOS";
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btnPDF.BorderRadius = 10;
+            this.btnPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPDF.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPDF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnPDF.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.ForeColor = System.Drawing.Color.Black;
+            this.btnPDF.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
+            this.btnPDF.Location = new System.Drawing.Point(573, 46);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(183, 53);
+            this.btnPDF.TabIndex = 92;
+            this.btnPDF.Text = "Exportar a PDF";
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // lbClientes
             // 
             this.lbClientes.AutoSize = true;
             this.lbClientes.Font = new System.Drawing.Font("Poppins SemiBold", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbClientes.ForeColor = System.Drawing.Color.Green;
-            this.lbClientes.Location = new System.Drawing.Point(88, 27);
+            this.lbClientes.Location = new System.Drawing.Point(117, 33);
+            this.lbClientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbClientes.Name = "lbClientes";
-            this.lbClientes.Size = new System.Drawing.Size(47, 60);
+            this.lbClientes.Size = new System.Drawing.Size(59, 74);
             this.lbClientes.TabIndex = 1;
             this.lbClientes.Text = "0";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(19, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 37);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(69, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -268,13 +251,13 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(727, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSearch.Location = new System.Drawing.Point(969, 14);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Buscar cliente por su nombre";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(257, 30);
+            this.txtSearch.Size = new System.Drawing.Size(343, 37);
             this.txtSearch.TabIndex = 6;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -325,6 +308,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.BorderThickness = 2;
             this.guna2GroupBox1.Controls.Add(this.pictureBox3);
             this.guna2GroupBox1.Controls.Add(this.label4);
             this.guna2GroupBox1.Controls.Add(this.label3);
@@ -338,9 +322,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.Controls.Add(this.txtTelefono);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(606, 48);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(808, 59);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(474, 359);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(632, 442);
             this.guna2GroupBox1.TabIndex = 78;
             this.guna2GroupBox1.Text = "          Datos personales";
             // 
@@ -348,9 +333,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_add_user_male_40px1;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox3.Size = new System.Drawing.Size(41, 41);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 86;
             this.pictureBox3.TabStop = false;
@@ -360,9 +346,10 @@ namespace INASOFT_3._0.UserControls
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 238);
+            this.label4.Location = new System.Drawing.Point(12, 293);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(200, 22);
+            this.label4.Size = new System.Drawing.Size(242, 26);
             this.label4.TabIndex = 109;
             this.label4.Text = "Ingrese la cédula de indetidad:";
             // 
@@ -371,9 +358,10 @@ namespace INASOFT_3._0.UserControls
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 175);
+            this.label3.Location = new System.Drawing.Point(12, 215);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 22);
+            this.label3.Size = new System.Drawing.Size(231, 26);
             this.label3.TabIndex = 108;
             this.label3.Text = "Ingrese el número telefonico:";
             // 
@@ -382,9 +370,10 @@ namespace INASOFT_3._0.UserControls
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 112);
+            this.label2.Location = new System.Drawing.Point(12, 138);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 22);
+            this.label2.Size = new System.Drawing.Size(163, 26);
             this.label2.TabIndex = 107;
             this.label2.Text = "Ingrese la dirección:";
             // 
@@ -393,9 +382,10 @@ namespace INASOFT_3._0.UserControls
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 49);
+            this.label5.Location = new System.Drawing.Point(12, 60);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(190, 22);
+            this.label5.Size = new System.Drawing.Size(228, 26);
             this.label5.TabIndex = 106;
             this.label5.Text = "Ingrese el nombre y apellido:";
             // 
@@ -410,9 +400,10 @@ namespace INASOFT_3._0.UserControls
             this.btnSave.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(313, 314);
+            this.btnSave.Location = new System.Drawing.Point(417, 386);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(130, 42);
+            this.btnSave.Size = new System.Drawing.Size(173, 52);
             this.btnSave.TabIndex = 4;
             this.btnSave.Tag = "";
             this.btnSave.Text = "Guardar Datos";
@@ -431,13 +422,13 @@ namespace INASOFT_3._0.UserControls
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccion.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtDireccion.IconLeft")));
-            this.txtDireccion.Location = new System.Drawing.Point(13, 140);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDireccion.Location = new System.Drawing.Point(17, 172);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PasswordChar = '\0';
             this.txtDireccion.PlaceholderText = "Dirección Domiciliar";
             this.txtDireccion.SelectedText = "";
-            this.txtDireccion.Size = new System.Drawing.Size(430, 30);
+            this.txtDireccion.Size = new System.Drawing.Size(573, 37);
             this.txtDireccion.TabIndex = 1;
             // 
             // txtCedula
@@ -453,13 +444,13 @@ namespace INASOFT_3._0.UserControls
             this.txtCedula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCedula.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCedula.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtCedula.IconLeft")));
-            this.txtCedula.Location = new System.Drawing.Point(13, 266);
-            this.txtCedula.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCedula.Location = new System.Drawing.Point(17, 327);
+            this.txtCedula.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.PasswordChar = '\0';
             this.txtCedula.PlaceholderText = "Cedula de Identidad";
             this.txtCedula.SelectedText = "";
-            this.txtCedula.Size = new System.Drawing.Size(430, 30);
+            this.txtCedula.Size = new System.Drawing.Size(573, 37);
             this.txtCedula.TabIndex = 3;
             // 
             // txtNombreYapellido
@@ -475,13 +466,13 @@ namespace INASOFT_3._0.UserControls
             this.txtNombreYapellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombreYapellido.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreYapellido.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNombreYapellido.IconLeft")));
-            this.txtNombreYapellido.Location = new System.Drawing.Point(13, 76);
-            this.txtNombreYapellido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombreYapellido.Location = new System.Drawing.Point(17, 94);
+            this.txtNombreYapellido.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNombreYapellido.Name = "txtNombreYapellido";
             this.txtNombreYapellido.PasswordChar = '\0';
             this.txtNombreYapellido.PlaceholderText = "Nombre y Apellidos";
             this.txtNombreYapellido.SelectedText = "";
-            this.txtNombreYapellido.Size = new System.Drawing.Size(430, 30);
+            this.txtNombreYapellido.Size = new System.Drawing.Size(573, 37);
             this.txtNombreYapellido.TabIndex = 0;
             // 
             // txtTelefono
@@ -497,13 +488,13 @@ namespace INASOFT_3._0.UserControls
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefono.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtTelefono.IconLeft")));
-            this.txtTelefono.Location = new System.Drawing.Point(13, 203);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.Location = new System.Drawing.Point(17, 250);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
             this.txtTelefono.PlaceholderText = "Número Telefonico";
             this.txtTelefono.SelectedText = "";
-            this.txtTelefono.Size = new System.Drawing.Size(430, 30);
+            this.txtTelefono.Size = new System.Drawing.Size(573, 37);
             this.txtTelefono.TabIndex = 2;
             // 
             // Bttn_Info
@@ -517,9 +508,10 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.ForeColor = System.Drawing.SystemColors.Control;
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Bttn_Info.Location = new System.Drawing.Point(359, 10);
+            this.Bttn_Info.Location = new System.Drawing.Point(479, 12);
+            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4);
             this.Bttn_Info.Name = "Bttn_Info";
-            this.Bttn_Info.Size = new System.Drawing.Size(31, 29);
+            this.Bttn_Info.Size = new System.Drawing.Size(41, 36);
             this.Bttn_Info.TabIndex = 77;
             this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Bttn_Info.UseVisualStyleBackColor = false;
@@ -590,9 +582,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(991, 11);
+            this.guna2Button2.Location = new System.Drawing.Point(1321, 14);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(91, 30);
+            this.guna2Button2.Size = new System.Drawing.Size(121, 37);
             this.guna2Button2.TabIndex = 87;
             this.guna2Button2.Text = "Buscar";
             this.guna2Button2.Click += new System.EventHandler(this.Guna2Button2_Click);
@@ -605,17 +598,17 @@ namespace INASOFT_3._0.UserControls
             // pictureBox2
             // 
             this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_client_management_50px;
-            this.pictureBox2.Location = new System.Drawing.Point(9, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox2.Size = new System.Drawing.Size(52, 49);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 85;
             this.pictureBox2.TabStop = false;
             // 
             // UC_Clientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
@@ -627,8 +620,9 @@ namespace INASOFT_3._0.UserControls
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Clientes";
-            this.Size = new System.Drawing.Size(1096, 585);
+            this.Size = new System.Drawing.Size(1461, 720);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
@@ -649,11 +643,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource clienteBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
         private Guna.UI2.WinForms.Guna2TextBox txtNombreYapellido;
         private Guna.UI2.WinForms.Guna2TextBox txtDireccion;
         private Guna.UI2.WinForms.Guna2TextBox txtTelefono;
@@ -688,5 +677,6 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2Button btnPDF;
     }
 }

@@ -99,6 +99,36 @@ namespace INASOFT_3._0.Properties {
         ///                padding: 5px;
         ///                border: 1px solid black;
         ///            }
+        ///
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///         [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ClientesTemplate {
+            get {
+                return ResourceManager.GetString("ClientesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Title of the document&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
         ///        .elemento-inferior {
         ///            position: fixed;
         ///           [resto de la cadena truncado]&quot;;.
@@ -116,6 +146,36 @@ namespace INASOFT_3._0.Properties {
             get {
                 object obj = ResourceManager.GetObject("descargar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Title of the document&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///         [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string EstadoCuentaTemplate {
+            get {
+                return ResourceManager.GetString("EstadoCuentaTemplate", resourceCulture);
             }
         }
         
@@ -823,6 +883,36 @@ namespace INASOFT_3._0.Properties {
         internal static string ProformaTemplate {
             get {
                 return ResourceManager.GetString("ProformaTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Title of the document&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///        .elemento-inferior {
+        ///            position: fixed;
+        ///         [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ProveedorTemplate {
+            get {
+                return ResourceManager.GetString("ProveedorTemplate", resourceCulture);
             }
         }
     }

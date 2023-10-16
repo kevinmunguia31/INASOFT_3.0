@@ -1009,12 +1009,12 @@ SELECT
     a.Fecha,
     a.Descripcion AS 'Referencia',
     e.Tipos AS 'Tipo de pago',
-    COUNT(b.ID) AS 'Cantidad de productos comprados',
+    COUNT(b.ID) AS 'Cant. Productos Comprados',
     CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
     CONCAT(a.Descuento, ' %') AS 'Descuento',
     CONCAT(a.IVA, ' %') AS 'IVA',
     CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total',
-    d.Nombre 'Nombre del usuario',
+    d.Nombre 'Usuario',
     a.Nombre_Vendedor AS 'Nombre del vendedor',
     c.Nombre 
 FROM Compras a 
@@ -1041,12 +1041,12 @@ BEGIN
             a.Fecha,
             a.Descripcion AS 'Referencia',
             e.Tipos AS 'Tipo de pago',
-            COUNT(b.ID) AS 'Cantidad de productos comprados',
+            COUNT(b.ID) AS 'Cant. Productos Comprados',
             CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
             CONCAT(a.Descuento, ' %') AS 'Descuento',
             CONCAT(a.IVA, ' %') AS 'IVA',
             CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total',
-            d.Nombre 'Nombre del usuario',
+            d.Nombre 'Usuario',
             a.Nombre_Vendedor AS 'Nombre del vendedor',
             c.Nombre
         FROM Compras a
@@ -1066,12 +1066,12 @@ BEGIN
             a.Fecha,
             a.Descripcion AS 'Referencia',
             e.Tipos AS 'Tipo de pago',
-            COUNT(b.ID) AS 'Cantidad de productos comprados',
+            COUNT(b.ID) AS 'Cant. Productos Comprados',
             CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
             CONCAT(a.Descuento, ' %') AS 'Descuento',
             CONCAT(a.IVA, ' %') AS 'IVA',
             CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total',
-            d.Nombre 'Nombre del usuario',
+            d.Nombre 'Usuario',
             a.Nombre_Vendedor AS 'Nombre del vendedor',
             c.Nombre
         FROM Compras a
@@ -1119,8 +1119,8 @@ ORDER BY Hora;
 
 -- Productos más vendidos en el día
 SELECT 
-    c.Nombre AS 'Nombre producto', 
-    SUM(a.Cantidad) AS 'Cantidad Vendida' 
+    c.Nombre AS 'Producto', 
+    SUM(a.Cantidad) AS 'Cant. Vendida' 
 FROM Detalle_Factura a
 INNER JOIN Facturas b ON a.ID_Factura = b.ID
 INNER JOIN Productos c ON a.ID_Producto = c.ID
@@ -1138,8 +1138,8 @@ CREATE VIEW Mostrar_Factura AS SELECT
     CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
     a.Estado,
     a.Fecha,
-    c.Nombre AS 'Nombre cliente',
-    SUM(b.Cantidad) AS 'Cantidad de productos',
+    c.Nombre AS 'Cliente',
+    SUM(b.Cantidad) AS 'Cant. Productos',
     e.Tipos AS 'Tipo de pago',
     CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
     CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
@@ -1162,8 +1162,8 @@ CREATE VIEW Mostrar_TodasFactura AS  SELECT
     CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
     a.Estado,
     a.Fecha,
-    c.Nombre AS 'Nombre cliente',
-    SUM(b.Cantidad) AS 'Cantidad de productos',
+    c.Nombre AS 'Cliente',
+    SUM(b.Cantidad) AS 'Cant. Productos',
     e.Tipos AS 'Tipo de pago',
     CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
     CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
@@ -1196,8 +1196,8 @@ BEGIN
             CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
             a.Estado,
             a.Fecha,
-            c.Nombre AS 'Nombre cliente',
-            SUM(b.Cantidad) AS 'Cantidad de productos',
+            c.Nombre AS 'Cliente',
+            SUM(b.Cantidad) AS 'Cant. Productos',
             e.Tipos AS 'Tipo de pago',
             CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
             CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
@@ -1221,8 +1221,8 @@ BEGIN
 			CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
 			a.Estado,
 			a.Fecha,
-			c.Nombre AS 'Nombre cliente',
-			SUM(b.Cantidad) AS 'Cantidad de productos',
+			c.Nombre AS 'Cliente',
+			SUM(b.Cantidad) AS 'Cant. Productos',
 			e.Tipos AS 'Tipo de pago',
 			CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
 			CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
@@ -1272,7 +1272,7 @@ INNER JOIN Productos c ON c.ID = b.ID_Producto WHERE a.ID = 1;
 -- Mostrar las devoluciones realizadas 
 CREATE VIEW Mostrar_Devoluciones AS SELECT
     a.ID AS 'ID',
-    CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+    CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
     a.Fecha,
     d.Estado,
     a.Descripcion,
@@ -1302,7 +1302,7 @@ BEGIN
         -- Mostrar las devoluciones (Rango entre fechas)
         SELECT
             a.ID AS 'ID',
-            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             a.Fecha,
             d.Estado,
             a.Descripcion,
@@ -1323,7 +1323,7 @@ BEGIN
         -- Buscar devolución por nombres de cliente
         SELECT
             a.ID AS 'ID',
-            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             a.Fecha,
             d.Estado,
             a.Descripcion,
@@ -1344,7 +1344,7 @@ BEGIN
         -- Buscar devolución por estado de factura
         SELECT
             a.ID AS 'ID',
-            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+            CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             a.Fecha,
             d.Estado,
             a.Descripcion,
@@ -1386,8 +1386,8 @@ WHERE a.ID = 1;
 -- Mostrar los creditos realizados
 CREATE VIEW Mostrar_Creditos AS SELECT
     a.ID,
-    CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
-    d.Nombre AS 'Nombre del cliente',
+    CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+    d.Nombre AS 'Cliente',
     a.Estado,
     a.DiaDeCredito AS 'Inicio del crédito',
     a.DiaDeVencimiento AS 'Fin del crédito',
@@ -1420,8 +1420,8 @@ BEGIN
         -- Mostrar las facturas al crédito (Rango entre fechas)
         SELECT
             a.ID,
-            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
-            d.Nombre AS 'Nombre del cliente',
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
             a.DiaDeVencimiento AS 'Fin del crédito',
@@ -1441,7 +1441,7 @@ BEGIN
         -- Buscar facturas al crédito por nombres de cliente
         SELECT
             a.ID,
-            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Nombre del cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
@@ -1462,8 +1462,8 @@ BEGIN
         -- Buscar facturas al crédito por estado de factura
         SELECT
             a.ID,
-            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
-            d.Nombre AS 'Nombre del cliente',
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
             a.DiaDeVencimiento AS 'Fin del crédito',
@@ -1483,7 +1483,7 @@ BEGIN
         -- Buscar facturas al crédito por días vencidos
         SELECT
             a.ID,
-            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Codigo de factura',
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Nombre del cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
@@ -1745,14 +1745,14 @@ INNER JOIN Historial_Precio b ON a.ID = b.ID_Producto;
 -- Productos activos y productos inactivos
 CREATE VIEW ProductosActivosNoActivos AS SELECT 
     'Activo' AS 'Estado',
-    Nombre AS 'Nombre del Producto', 
+    Nombre AS 'Producto', 
     Existencias AS 'Existencias Actuales'
 FROM Productos
 WHERE Estado = 'Activo' 
 UNION ALL
 SELECT 
     'No activo' AS 'Estado',
-    Nombre AS 'Nombre del Producto', 
+    Nombre AS 'Producto', 
     Existencias AS 'Existencias Actuales'
 FROM Productos
 WHERE Estado = 'No activo' 
@@ -1767,7 +1767,7 @@ WHERE Existencias < 10;
 
 -- Producto que no se han vendido
 SELECT
-    p.Nombre AS 'Nombre del Producto',
+    p.Nombre AS 'Producto',
     p.Existencias AS 'Existencias Actuales'
 FROM Productos p
 LEFT JOIN Detalle_Factura df ON p.ID = df.ID_Producto
@@ -1832,9 +1832,9 @@ ORDER BY Fecha;
 
 -- Listar productos en remesa por entrada
 SELECT 
-	p.Nombre AS 'Nombre del Producto', 
-    DATE_FORMAT(r.Fecha, '%d %b, %Y') AS 'Fecha de la Remesa', 
-	SUM(dr.Cantidad) AS 'Cantidad en Remesa'
+	p.Nombre AS 'Producto', 
+    DATE_FORMAT(r.Fecha, '%d %b, %Y') AS 'Fecha de Remision', 
+	SUM(dr.Cantidad) AS 'Cant. en Remison'
 FROM Remisiones r
 INNER JOIN Detalle_Remision dr ON r.ID = dr.ID_Remision
 INNER JOIN Productos p ON dr.ID_Producto = p.ID
@@ -1844,7 +1844,7 @@ HAVING SUM(dr.Cantidad) != 0;
 -- Listar productos vendidos en un rango de fechas
 SELECT 
 	df.ID_Producto, 
-	p.Nombre AS 'Nombre del Producto', 
+	p.Nombre AS 'Producto', 
 	SUM(df.Cantidad) AS 'Cantidad Vendida'
 FROM Detalle_Factura df
 INNER JOIN Facturas f ON df.ID_Factura = f.ID
@@ -1854,7 +1854,7 @@ GROUP BY df.ID_Producto
 ORDER BY df.ID_Producto;
 
 -- Listar todas las compras de un producto específico
-SELECT c.ID AS 'ID de Compra', c.Fecha, c.Nombre_Vendedor, df.Cantidad, p.Nombre AS 'Nombre del Producto'
+SELECT c.ID AS 'ID Compra', c.Fecha, c.Nombre_Vendedor, df.Cantidad, p.Nombre AS 'Producto'
 FROM Compras c
 INNER JOIN Detalle_Compra df ON c.ID = df.ID_Compra
 INNER JOIN Productos p ON df.ID_Producto = p.ID
@@ -1941,38 +1941,3 @@ BEGIN
     
 END //
 DELIMITER ;
-
-/*
-SELECT * FROM HistorialTransacciones;
-
-INSERT INTO InfoGeneral VALUES (1,'Ferreteria Luz','Iglesia Sn. Agustin, 80 vrs al S.','12515748412','Meyling Zuniga','8810-9566');
-
-INSERT INTO Proveedor VALUES (NULL, 'HALCOM', '23154365', 'Chinandega', 001);
-INSERT INTO Proveedor VALUES (NULL, 'PINTURAS LANCO', '23154365', 'Managua', 002);
-INSERT INTO Proveedor VALUES (NULL, 'SINSA', '23154365', 'Managua', 003);
-INSERT INTO Proveedor VALUES (NULL, 'CEMENTERA JAVIER', '23154365', 'Managua', 004);
-
-INSERT INTO Clientes VALUES(NULL, 'Jeremy Berríos', '58353275', 'León', '43243245435-5345L');
-
-CALL Realizar_Remision('Remision');
-CALL Realizar_Remision('Remision');
-
--- ID producto - Codigo producto - Nombre producto - Cantidad - Existencias - Precio compra - Precio Venta - Observacion - ID Remision
-CALL Detalle_RemisionEntrada(0, '0001', 'Martillo de acero', 103, 5, 49.99, 56.44, '--', 1);
-CALL Detalle_RemisionEntrada(0, '0002', 'Martillo de Hierro', 120, 5, 54.99, 62.44, '--', 1);
-CALL Detalle_RemisionEntrada(0, '0003','Alambre de cobre', 130, 5, 23.99, 34.44, '--', 1);
-
--- ID prodcuto  - Nombre producto - Cantidad - ID Remision
-CALL Detalle_RemisionSalida(1, 'Martillo de acero', 3 ,2);
-
-
--- Nombre vendedor - Subtotal - Descuento - IVA - Descripcion - Estado - ID Usuario - ID Proveedor - ID Tipo Pagos
-CALL Realizar_Compra('Jorge Mendoza', 2104.00, 10, 16, '53454534543', 'Pendiente', 1, 3, 3);
-CALL Realizar_Compra('Mario Salazar', 300.00, 10, 16, '5435353535', 'Cancelado', 1, 2, 3);
-
--- ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Total - Precio_Venta - Observacion - ID_Compra
-CALL Productos_Comprados(0, '0004', 'TINSETICO MURO SECO BLANCO', 190, 5, 240.00, 290.00, '--', 1);
-CALL Productos_Comprados(0, '0005', 'CANAL AMARRE 1 5/8 x 10', 100, 10, 68.00, 80.00, '--', 1);
-CALL Productos_Comprados(0, '0006', 'CANAL AMARRE 2 1/2 x 10', 100, 10, 68.00, 80.00, '--', 1);
-CALL Productos_Comprados(0, '0007', 'CANAL AMARRE 3 5/8 x 10', 100, 10, 68.00, 90.00, '--', 1);
-*/

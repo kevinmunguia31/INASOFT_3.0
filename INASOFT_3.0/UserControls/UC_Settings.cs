@@ -18,6 +18,7 @@ namespace INASOFT_3._0.UserControls
             InitializeComponent();
             InfoNegocio();
             CargarLogs();
+ 
         }
 
         private void InfoNegocio()
@@ -105,7 +106,7 @@ namespace INASOFT_3._0.UserControls
 
             if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
             {
-                lbRuta.Text = ofdSeleccionar.FileName;
+                txtPath.Text = ofdSeleccionar.FileName;
                 pbImagen.Image = Image.FromFile(ofdSeleccionar.FileName);
             }
         }
@@ -201,6 +202,27 @@ namespace INASOFT_3._0.UserControls
                 conexionBD.Close();
                 MessageDialoginfo.Show("Respaldo se Restauro con Exito! ✅", "Aviso");
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string rutaImagen = txtPath.Text;
+            Properties.Settings.Default.RutaImagen = rutaImagen;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Imagen Guardada correctamente.");
+        }
+
+        private void UC_Settings_Load(object sender, EventArgs e)
+        {
+            //Cargar Imagen
+            string rutaImagen = Properties.Settings.Default.RutaImagen;
+
+            
+                // Carga la imagen desde la ruta especificada
+                Image imagen = Image.FromFile(rutaImagen);
+                pbImagen.Image = imagen;
+                txtPath.Text = rutaImagen;
+
         }
     }
 }
