@@ -16,7 +16,7 @@ using MySql.Data.MySqlClient;
 namespace INASOFT_3._0.Controladores
 {
     public class CtrlReporteGraficos
-    {
+    {        
         public System.Data.DataTable CargarReporteGanancias(int dato)
         {
             System.Data.DataTable dt = new System.Data.DataTable();

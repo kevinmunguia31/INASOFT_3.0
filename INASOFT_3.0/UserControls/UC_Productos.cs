@@ -361,23 +361,21 @@ namespace INASOFT_3._0.UserControls
                 CtrlInfo ctrlInfo = new CtrlInfo();
                 using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
                 {
-                    //Creamos un nuevo documento y lo definimos como PDF
+                    // Creamos un nuevo documento y lo definimos como PDF
                     Document pdfDoc = new Document(iTextSharp.text.PageSize.A4, 25, 25, 25, 25);
-
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
 
-                    //Agregamos la imagen del banner al documento
+                    // Agregamos la imagen del banner al documento si la ruta es válida
                     string RutaImagen = Properties.Settings.Default.RutaImagen;
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(RutaImagen);
-                    img.ScaleToFit(100, 100);
-                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                    if (!string.IsNullOrEmpty(RutaImagen) && File.Exists(RutaImagen))
+                    {
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(RutaImagen);
+                        img.ScaleToFit(100, 100);
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        pdfDoc.Add(img);
+                    }
 
-                    //img.SetAbsolutePosition(10,100);
-                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);
-
-                    //pdfDoc.Add(new Phrase("Hola Mundo"));
                     using (StringReader sr = new StringReader(paginaHtml_texto))
                     {
                         XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
@@ -389,9 +387,7 @@ namespace INASOFT_3._0.UserControls
                     MessageBox_Ok.Show("Reporte de Inventario Exportado a PDF", "Exportando a PDF");
                     string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Inventario en PDF";
                     ctrlInfo.InsertarLog(log);
-
                 }
-
             }
         }
 

@@ -38,6 +38,7 @@ namespace INASOFT_3._0.UserControls
         {
             Controladores.CtrlReporteGraficos ctrl = new Controladores.CtrlReporteGraficos();
             dgvUnderstock.DataSource = ctrl.CargarReporteGanancias(dato);
+            
         }
 
         public void CargarReporteProductoMasVendidos(int dato)
@@ -100,14 +101,14 @@ namespace INASOFT_3._0.UserControls
         
         public void GraficaRangoFecha()
         {
-            ArrayList nombreProducto = new ArrayList();
+            ArrayList fecha = new ArrayList();
             ArrayList cantidad = new ArrayList();
             foreach (DataGridViewRow fila in dgvUnderstock.Rows)
             {
-                nombreProducto.Add(fila.Cells[0].Value);
+                fecha.Add(fila.Cells[0].Value);
                 cantidad.Add(fila.Cells[1].Value);
             }
-            chart1.Series[0].Points.DataBindXY(nombreProducto, cantidad);
+            chart1.Series[0].Points.DataBindXY(fecha, cantidad);
         }
 
         public void GraficasProductoBajoInventario()

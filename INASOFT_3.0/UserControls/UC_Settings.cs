@@ -219,9 +219,9 @@ namespace INASOFT_3._0.UserControls
 
             
                 // Carga la imagen desde la ruta especificada
-                Image imagen = Image.FromFile(rutaImagen);
-                pbImagen.Image = imagen;
-                txtPath.Text = rutaImagen;
+                //Image imagen = Image.FromFile(rutaImagen);
+                //pbImagen.Image = imagen;
+                //txtPath.Text = rutaImagen;
 
         }
     }

@@ -30,17 +30,24 @@ namespace INASOFT_3._0
 
         public ComprarProductos()
         {
+            Controladores.CtrlCompras ctrlCompras = new Controladores.CtrlCompras();
             InitializeComponent();
             CargarProveedor();
             CargarTiposPagos();
             Cargar_Tabla();
             Clear();
-            bloquearCampos(false);
 
             Lb_NombreUsuario.Text = Sesion.nombre;
+            GroupBox_Products.Enabled = false;            
             Txt_RUC.Enabled = false;
             Txt_TotalCompra.Enabled = false;
-            radioButton1.Enabled = true;
+            Txt_RUC.Enabled = false;
+            cbProveedor.SelectedIndex = -1;
+            Lb_ID_compra.Text = ctrlCompras.NumeroCompra().ToString();
+
+            Cbx_Productos.Visible = false;
+            Lb_Producto.Visible = false;
+
 
             datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
@@ -49,6 +56,11 @@ namespace INASOFT_3._0
 
             datagridView2.Columns[6].Visible = false;
             datagridView2.Columns[7].Visible = false;
+
+            foreach (DataGridViewBand band in dataGridView1.Columns)
+            {
+                band.ReadOnly = true;
+            }
 
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
@@ -59,8 +71,6 @@ namespace INASOFT_3._0
             {
                 groupBox7.Enabled = false;
             }
-            Cbx_Productos.Visible = false;
-            Lb_Producto.Visible = false;
         }
 
         public void CargarProveedor()
@@ -204,7 +214,6 @@ namespace INASOFT_3._0
             txtPrecioVenta.Text = "";
             txtObservacion.Text = "";
             Cbx_Productos.SelectedIndex = -1;
-            Txt_RUC.Text = "";
             Lb_CantStocks.Text = "...";
             radioButton1.Checked = false;
             radioButton2.Checked = false;
@@ -215,30 +224,30 @@ namespace INASOFT_3._0
         private void Rbtn_TipoDolares_CheckedChanged(object sender, EventArgs e)
         {
             Clear();
-            bloquearCampos(true);
+            GroupBox_Products.Enabled = true;
+            Cbx_Productos.SelectedIndex = -1;
             Cbx_Productos.Enabled = false;
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
-            txtCodBarra.Enabled = true;
             txtNameP.Enabled = true;
-            txtPrecioCompra.Enabled = true;
+            txtCodBarra.Enabled = true;
             GroupBox_CambioProd.Enabled = false;
-            cbProveedor.Enabled = true;
-
+            radioButton2.Checked = true;
             Txt_IDProd.Text = "0";
         }
 
         private void Rbtn_TipoCordobas_CheckedChanged(object sender, EventArgs e)
         {
             Clear();
-            bloquearCampos(true);
+            GroupBox_Products.Enabled = true;
+            Cbx_Productos.SelectedIndex = -1;
             Cbx_Productos.Enabled = true;
             Cbx_Productos.Visible = true;
             Lb_Producto.Visible = true;
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
-            txtPrecioCompra.Enabled = false;
             GroupBox_CambioProd.Enabled = true;
+            radioButton1.Checked = true;
             cbProveedor.Enabled = true;
             Txt_IDProd.Text = "";
         }
@@ -274,7 +283,7 @@ namespace INASOFT_3._0
                 txtObservacion.Text = productos.Observacion.ToString();
 
                 int existencias = productos.Existencias;
-                errorProvider1.SetError(Lb_CantStocks, existencias <= 0 ? "Ya no hay productos en el almacén." : "");
+                //errorProvider1.SetError(Lb_CantStocks, existencias <= 0 ? "Ya no hay productos en el almacén." : "");
                 Lb_CantStocks.ForeColor = existencias <= 0 ? Color.Red : Color.Black;
             }
             catch (Exception ex)
@@ -343,18 +352,12 @@ namespace INASOFT_3._0
             }
 
             Clear();
-            bloquearCampos(false);
             Rbtn_ActualizarProducto.Checked = false;
             Rbtn_NuevoProducto.Checked = false;
+            GroupBox_Products.Enabled = false;
             Cbx_Productos.Visible = false;
+            Lb_Producto.Visible = false;
             Cbx_Productos.SelectedIndex = -1;
-        }
-
-        private void bloquearCampos(bool bandera)
-        {
-            GroupBox_Products.Enabled = bandera;
-            Cbx_Productos.Enabled = bandera;
-            cbProveedor.Enabled = bandera;
         }
 
         private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
@@ -377,9 +380,8 @@ namespace INASOFT_3._0
                     DialogResult resultado = MessageDialogError.Show("Seguro que desea eliminar el registro?", "Eliminar");
                     if (resultado == DialogResult.Yes)
                     {
-                        MessageBox.Show(id_pos.ToString());
+                        //MessageBox.Show(id_pos.ToString());
                         dataGridView1.Rows.RemoveAt(id_pos);
-                        Subtotal();
                         Clear();
                         Cargar_Total();
                     }
@@ -394,6 +396,7 @@ namespace INASOFT_3._0
                 MessageBox.Show("Error:" + ex, "Error");
             }
         }
+
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -500,14 +503,16 @@ namespace INASOFT_3._0
                 {
                     Clear();
                     Cbx_Productos.Enabled = false;
+                    Cbx_Productos.SelectedIndex = -1;
                 }
                 else
                 {
                     int id = int.Parse(cbProveedor.SelectedValue.ToString());
                     Controladores.CtrlProveedor ctrlProveedor = new CtrlProveedor();
                     Txt_RUC.Text = ctrlProveedor.RUC(id);
-                    Cbx_Productos.Enabled = true;
+                    Cbx_Productos.Enabled = true;                    
                     CargarProductos(id);
+                    Cbx_Productos.SelectedIndex = -1;
                 }
             }
             catch (Exception ex)

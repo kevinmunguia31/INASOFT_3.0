@@ -38,10 +38,12 @@ namespace INASOFT_3._0.UserControls
             GraficaCargar_ProductosMasVendidos();
             GraficaCargar_TotalVentasxDias();
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
-            lbCantInvoice.Text = ctrlHome.Total_Facturas_Realizads(fecha).ToString();
-            lbTotalHoy.Text = ctrlHome.TotalFinal_Facturas(fecha).ToString();
-            Lb_FactAnuladas.Text = ctrlHome.Total_FacturasAnuldas().ToString();
-            Lb_Total.Text = ctrlHome.TotalFinal().ToString();
+
+            Lb_CantFactHoy.Text = ctrlHome.Cant_FacturasRealizadasHoy().ToString();
+            Lb_TotalIngresosHoy.Text = ctrlHome.TotalFinal_FacturasHoy().ToString();
+            Lb_FactAnuladasHoy.Text = ctrlHome.Total_FacturasAnuldasHoy().ToString();
+            Lb_TotalAbonoHoy.Text = ctrlHome.Total_AbonoHoy().ToString();
+
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
@@ -52,8 +54,8 @@ namespace INASOFT_3._0.UserControls
 
 
             // Carga la imagen desde la ruta especificada
-            Image imagen = Image.FromFile(rutaImagen);
-            pbImagen.Image = imagen;
+            //Image imagen = Image.FromFile(rutaImagen);
+           //pbImagen.Image = imagen;
         }
 
         private void InfoNegocio()
@@ -93,7 +95,7 @@ namespace INASOFT_3._0.UserControls
         public void Cargar_ProductosMasVendidos()
         {
             Controladores.CtrlHome ctrlHomre = new Controladores.CtrlHome();
-            dataGridView2.DataSource = ctrlHomre.Cargar_ProductosMasVendidos();
+            dataGridView2.DataSource = ctrlHomre.Cargar_ProductosMasVendidosHoy();
         }
 
         public void GraficaCargar_TotalVentasxDias()
@@ -180,11 +182,6 @@ namespace INASOFT_3._0.UserControls
                 pbWifi.Image = Resources.icons8_wifi_apagado_50;
                 return false;
             }
-        }
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

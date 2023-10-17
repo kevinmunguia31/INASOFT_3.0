@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 
 namespace INASOFT_3._0.Controladores
@@ -152,6 +153,26 @@ namespace INASOFT_3._0.Controladores
                 conexioBD.Close();
             }
             return bandera;
+        }
+        
+        public int NumeroCompra()
+        {
+            int id_compra = 0;
+            string SQL = "SELECT COALESCE((SELECT (ID + 1) FROM Compras ORDER BY ID DESC LIMIT 1), 1) AS 'Numero de compra';";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                id_compra = Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                id_compra = 0;
+            }
+            return id_compra;
         }
     }
 }

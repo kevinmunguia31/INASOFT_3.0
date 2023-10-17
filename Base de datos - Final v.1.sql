@@ -1130,6 +1130,7 @@ ORDER BY SUM(a.Cantidad) DESC LIMIT 5;
 
 -- Cuanto se ha ganado en los últimos 7 días
 SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), SUM(Total_Final - Debe) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');
+
 -- --------------------------------------------------------------- Consultas realcionado a la factura -----------------------------------------------------------------
 
 -- Mostrar facturación con campos especificos
@@ -1403,7 +1404,7 @@ INNER JOIN Abono e ON a.ID = e.ID_Credito
 GROUP BY a.ID ORDER BY a.ID ASC;
 
 -- Mostrar estado de cuenta
-CREATE VIEW Mostrar_EstadoCredito AS SELECT e.ID, e.Descripcion AS 'Concepto', CONCAT('C$ ', FORMAT(e.Saldo_Anterior, 2)) AS 'Saldo anterior', CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo', CONCAT('C$ ', FORMAT(e.Monto, 2)) AS 'Abono', CONCAT('C$ ', FORMAT(e.Saldo_Nuevo, 2)) AS 'Saldo nuevo', e.ID_Credito FROM Credito a INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Abono e ON a.ID = e.ID_Credito GROUP BY e.ID ORDER BY e.ID ASC;
+CREATE VIEW Mostrar_EstadoCredito AS SELECT e.ID, e.Fecha, e.Descripcion AS 'Concepto', CONCAT('C$ ', FORMAT(e.Saldo_Anterior, 2)) AS 'Saldo anterior', CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo', CONCAT('C$ ', FORMAT(e.Monto, 2)) AS 'Abono', CONCAT('C$ ', FORMAT(e.Saldo_Nuevo, 2)) AS 'Saldo nuevo', e.ID_Credito FROM Credito a INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Abono e ON a.ID = e.ID_Credito GROUP BY e.ID ORDER BY e.ID ASC;
 
 -- Filtro para la tabla creditos
 DELIMITER //
@@ -1425,7 +1426,7 @@ BEGIN
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
             a.DiaDeVencimiento AS 'Fin del crédito',
-            GREATEST(DATEDIFF(a.DiaDeVencimiento, CURRENT_DATE()), 0) AS 'Días vencidos',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1480,18 +1481,15 @@ BEGIN
         GROUP BY a.ID
         ORDER BY a.ID;
     ELSEIF opcion = 4 THEN
-        -- Buscar facturas al crédito por días vencidos
+           -- Buscar facturas al crédito por días vencidos
         SELECT
             a.ID,
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
-            d.Nombre AS 'Nombre del cliente',
+            d.Nombre AS 'Cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
             a.DiaDeVencimiento AS 'Fin del crédito',
-            CASE
-                WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0'
-                ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)
-            END AS 'Días vencidos',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1500,9 +1498,8 @@ BEGIN
         INNER JOIN Facturas c ON a.ID_Factura = c.ID
         INNER JOIN Clientes d ON c.ID_Cliente = d.ID
         INNER JOIN Abono e ON a.ID = e.ID_Credito
-        WHERE (_DiasVencidos = 1 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) != 0)
-           OR (_DiasVencidos = 2 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) = 0)
-           OR (_DiasVencidos NOT IN (1, 2))
+        WHERE (_DiasVencidos = 1 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) > 0)
+           OR (_DiasVencidos = 2 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) <= 0)
         GROUP BY a.ID
         ORDER BY a.ID;
     ELSE
@@ -1537,22 +1534,22 @@ BEGIN
     ELSEIF opcion = 2 THEN
         -- Ingresos brutos en los últimos 15 días
 			SELECT
-				DATE(Fecha) AS Dia,
+				DATE_FORMAT(Fecha, '%d-%m-%Y') AS Dia,
 				FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
 			FROM Facturas
-			WHERE Fecha >= DATE_SUB(CURRENT_DATE, INTERVAL 15 DAY)
-			GROUP BY DATE(Fecha)
+			WHERE Fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY)
+			GROUP BY Dia
 			ORDER BY Dia;
         
     ELSEIF opcion = 3 THEN
         -- Ingresos brutos en los últimos 7 días
 		SELECT
-			DATE(Fecha) AS Dia,
+			DATE_FORMAT(Fecha, '%d-%m-%Y') AS Dia,
 			FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
 		FROM Facturas
 		WHERE Fecha >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)
-		GROUP BY DATE(Fecha)
-		ORDER BY Dia;
+			GROUP BY Dia
+			ORDER BY Dia;
         
     ELSEIF opcion = 4 THEN
         -- Ingresos brutos en la fecha de hoy
@@ -1941,3 +1938,6 @@ BEGIN
     
 END //
 DELIMITER ;
+
+
+

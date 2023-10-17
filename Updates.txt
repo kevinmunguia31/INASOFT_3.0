@@ -1,0 +1,159 @@
+USE Prueba2; 
+
+DROP PROCEDURE ConsultarIngresos;
+DELIMITER //
+CREATE PROCEDURE ConsultarIngresos(IN opcion INT)
+BEGIN
+    IF opcion = 1 THEN
+        -- Ingresos brutos por mes
+        SELECT
+			CONCAT(YEAR(Fecha), '-', LPAD(WEEK(Fecha, 3), 2, '0')) AS 'Año-Semana',
+			FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
+		FROM Facturas
+		WHERE Fecha >= DATE_SUB(CURRENT_DATE, INTERVAL 12 MONTH)
+		GROUP BY CONCAT(YEAR(Fecha), '-', LPAD(WEEK(Fecha, 3), 2, '0'))
+		ORDER BY CONCAT(YEAR(Fecha), '-', LPAD(WEEK(Fecha, 3), 2, '0'));
+        
+    ELSEIF opcion = 2 THEN
+        -- Ingresos brutos en los últimos 15 días
+			SELECT
+				DATE_FORMAT(Fecha, '%d-%m-%Y') AS Dia,
+				FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
+			FROM Facturas
+			WHERE Fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY)
+			GROUP BY Dia
+			ORDER BY Dia;
+        
+    ELSEIF opcion = 3 THEN
+        -- Ingresos brutos en los últimos 7 días
+		SELECT
+			DATE_FORMAT(Fecha, '%d-%m-%Y') AS Dia,
+			FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
+		FROM Facturas
+		WHERE Fecha >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)
+			GROUP BY Dia
+			ORDER BY Dia;
+        
+    ELSEIF opcion = 4 THEN
+        -- Ingresos brutos en la fecha de hoy
+        SELECT 
+			DATE_FORMAT(Fecha, '%H:00') AS Hora, 
+			FORMAT(SUM(Total_Final - Debe), 2) AS 'Ingresos Brutos'
+		FROM Facturas
+		WHERE Fecha >= CURDATE()
+		GROUP BY Hora
+		ORDER BY Hora;
+		
+    ELSE
+        SELECT 'Opción no válida';
+    END IF;
+END //
+DELIMITER ;
+
+DROP VIEW Mostrar_EstadoCredito;
+CREATE VIEW Mostrar_EstadoCredito AS SELECT e.ID, e.Fecha, e.Descripcion AS 'Concepto', CONCAT('C$ ', FORMAT(e.Saldo_Anterior, 2)) AS 'Saldo anterior', CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo', CONCAT('C$ ', FORMAT(e.Monto, 2)) AS 'Abono', CONCAT('C$ ', FORMAT(e.Saldo_Nuevo, 2)) AS 'Saldo nuevo', e.ID_Credito FROM Credito a INNER JOIN Facturas c ON a.ID_Factura = c.ID INNER JOIN Clientes d ON c.ID_Cliente = d.ID INNER JOIN Abono e ON a.ID = e.ID_Credito GROUP BY e.ID ORDER BY e.ID ASC;
+
+
+DROP PROCEDURE ObtenerFacturasCredito;
+-- Filtro para la tabla creditos
+DELIMITER //
+CREATE PROCEDURE ObtenerFacturasCredito(
+    IN opcion INT,
+    IN Fec_Inicio DATETIME,
+    IN Fec_Final DATETIME,
+    IN _Nombre_Cliente VARCHAR(100),
+    IN _Estado VARCHAR(100),
+    IN _DiasVencidos INT
+)
+BEGIN
+    IF opcion = 1 THEN
+        -- Mostrar las facturas al crédito (Rango entre fechas)
+        SELECT
+            a.ID,
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Cliente',
+            a.Estado,
+            a.DiaDeCredito AS 'Inicio del crédito',
+            a.DiaDeVencimiento AS 'Fin del crédito',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
+            CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
+            CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
+            c.ID AS 'ID Factura'
+        FROM Credito a
+        INNER JOIN Facturas c ON a.ID_Factura = c.ID
+        INNER JOIN Clientes d ON c.ID_Cliente = d.ID
+        INNER JOIN Abono e ON a.ID = e.ID_Credito
+        WHERE DATE_FORMAT(a.DiaDeCredito, '%Y/%m/%d') BETWEEN Fec_Inicio AND Fec_Final
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSEIF opcion = 2 THEN
+        -- Buscar facturas al crédito por nombres de cliente
+        SELECT
+            a.ID,
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Nombre del cliente',
+            a.Estado,
+            a.DiaDeCredito AS 'Inicio del crédito',
+            a.DiaDeVencimiento AS 'Fin del crédito',
+            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
+            CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
+            CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
+            c.ID AS 'ID Factura'
+        FROM Credito a
+        INNER JOIN Facturas c ON a.ID_Factura = c.ID
+        INNER JOIN Clientes d ON c.ID_Cliente = d.ID
+        LEFT JOIN Abono e ON a.ID = e.ID_Credito
+        WHERE d.Nombre LIKE CONCAT('%', _Nombre_Cliente, '%')
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSEIF opcion = 3 THEN
+        -- Buscar facturas al crédito por estado de factura
+        SELECT
+            a.ID,
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Cliente',
+            a.Estado,
+            a.DiaDeCredito AS 'Inicio del crédito',
+            a.DiaDeVencimiento AS 'Fin del crédito',
+            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
+            CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
+            CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
+            c.ID AS 'ID Factura'
+        FROM Credito a
+        INNER JOIN Facturas c ON a.ID_Factura = c.ID
+        INNER JOIN Clientes d ON c.ID_Cliente = d.ID
+        LEFT JOIN Abono e ON a.ID = e.ID_Credito
+        WHERE c.Estado = _Estado
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSEIF opcion = 4 THEN
+           -- Buscar facturas al crédito por días vencidos
+        SELECT
+            a.ID,
+            CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+            d.Nombre AS 'Cliente',
+            a.Estado,
+            a.DiaDeCredito AS 'Inicio del crédito',
+            a.DiaDeVencimiento AS 'Fin del crédito',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
+            CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
+            CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
+            c.ID AS 'ID Factura'
+        FROM Credito a
+        INNER JOIN Facturas c ON a.ID_Factura = c.ID
+        INNER JOIN Clientes d ON c.ID_Cliente = d.ID
+        INNER JOIN Abono e ON a.ID = e.ID_Credito
+        WHERE (_DiasVencidos = 1 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) > 0)
+           OR (_DiasVencidos = 2 AND DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) <= 0)
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSE
+        -- Opción no válida
+        SELECT 'Opción no válida' AS Resultado;
+    END IF;
+END //
+DELIMITER ;

@@ -30,7 +30,7 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 band.ReadOnly = true;
             }
-            datagridView1.Columns[6].Visible = false;
+            datagridView1.Columns[7].Visible = false;
         }
         public void CargarDetalleCredito()
         {

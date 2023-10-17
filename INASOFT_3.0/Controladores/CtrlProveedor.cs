@@ -141,7 +141,7 @@ namespace INASOFT_3._0.Controladores
         public string RUC(int id)
         {
             string ruc = "";
-            string SQL = "SELECT RUC FROM Proveedor WHERE ID = " + id + ";";
+            string SQL = "SELECT RUC FROM Proveedor WHERE ID = "+ id +";";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

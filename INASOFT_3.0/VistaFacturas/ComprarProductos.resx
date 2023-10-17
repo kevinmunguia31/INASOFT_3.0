@@ -124,6 +124,16 @@
     <value>101</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Txt_RUC.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAO1JREFUWEft
+        VjsKwlAQTBGCKIgIiiiSQlBSiSi2IngCa3uvkSJNXj4vpHvXsfUo1tZxJmyRG8RiF4adTGZ3p3yeltZf
+        VBzHgbX2Vtf12BizIS/LcpVl2Zy8C+hnzqBf4F0Q1Iui2MI/Ise+AXok+lX8J+7mDfEE1NuCOIOxyfP8
+        iJ6QA09834V38eYM+gd4CKhjr43IMRfioBP9K/4XkMiNhjept6UBNIAG0AAaQANoAA2gAXoPgAeizx/O
+        uWGapktyGrBwQt4Fj3AGS/Y4MiWo43vNxyg5H5zooegH+quq2nE3b4jHp66l1XN53g/vK2koDDSlYgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="Txt_IVACompra.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAglJREFUWEft

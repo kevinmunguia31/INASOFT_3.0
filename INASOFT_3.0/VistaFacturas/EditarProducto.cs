@@ -97,6 +97,7 @@ namespace INASOFT_3._0.VistaFacturas
                     }
                 }
             }
+            this.Close();
         }
 
         private void Rbttn_ExistProduct_CheckedChanged(object sender, EventArgs e)

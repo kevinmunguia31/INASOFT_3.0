@@ -30,11 +30,11 @@ namespace INASOFT_3._0
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarProductos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarProductos));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -77,7 +77,6 @@ namespace INASOFT_3._0
             this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Txt_DescuentoCompra = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Txt_RUC = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.Txt_TotalCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -123,6 +122,7 @@ namespace INASOFT_3._0
             this.MessageInformation = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.Txt_RUC = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -575,6 +575,7 @@ namespace INASOFT_3._0
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.Txt_RUC);
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.CbxTipoPagos);
             this.groupBox7.Controls.Add(this.groupBox5);
@@ -584,7 +585,6 @@ namespace INASOFT_3._0
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.label10);
             this.groupBox7.Controls.Add(this.Txt_DescuentoCompra);
-            this.groupBox7.Controls.Add(this.Txt_RUC);
             this.groupBox7.Controls.Add(this.label9);
             this.groupBox7.Controls.Add(this.Txt_TotalCompra);
             this.groupBox7.Controls.Add(this.label20);
@@ -758,23 +758,12 @@ namespace INASOFT_3._0
             this.Txt_DescuentoCompra.TabIndex = 97;
             this.Txt_DescuentoCompra.TextChanged += new System.EventHandler(this.Txt_DescuentoCompra_TextChanged);
             // 
-            // Txt_RUC
-            // 
-            this.Txt_RUC.AutoSize = true;
-            this.Txt_RUC.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_RUC.ForeColor = System.Drawing.Color.Black;
-            this.Txt_RUC.Location = new System.Drawing.Point(192, 43);
-            this.Txt_RUC.Name = "Txt_RUC";
-            this.Txt_RUC.Size = new System.Drawing.Size(31, 22);
-            this.Txt_RUC.TabIndex = 96;
-            this.Txt_RUC.Text = "---";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(185, 21);
+            this.label9.Location = new System.Drawing.Point(224, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 22);
             this.label9.TabIndex = 11;
@@ -1115,7 +1104,7 @@ namespace INASOFT_3._0
             0,
             0});
             this.SpinExist.Name = "SpinExist";
-            this.SpinExist.Size = new System.Drawing.Size(106, 30);
+            this.SpinExist.Size = new System.Drawing.Size(94, 30);
             this.SpinExist.TabIndex = 3;
             this.SpinExist.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.SpinExist.UpDownButtonForeColor = System.Drawing.Color.White;
@@ -1364,12 +1353,38 @@ namespace INASOFT_3._0
             // 
             // MessageDialogError
             // 
-            this.MessageDialogError.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageDialogError.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
             this.MessageDialogError.Caption = null;
-            this.MessageDialogError.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            this.MessageDialogError.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
             this.MessageDialogError.Parent = null;
-            this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.MessageDialogError.Text = null;
+            // 
+            // Txt_RUC
+            // 
+            this.Txt_RUC.BackColor = System.Drawing.Color.Transparent;
+            this.Txt_RUC.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Txt_RUC.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Txt_RUC.DefaultText = "";
+            this.Txt_RUC.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Txt_RUC.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Txt_RUC.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_RUC.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_RUC.FillColor = System.Drawing.SystemColors.Control;
+            this.Txt_RUC.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_RUC.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_RUC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Txt_RUC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_RUC.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_RUC.IconLeft")));
+            this.Txt_RUC.Location = new System.Drawing.Point(228, 46);
+            this.Txt_RUC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_RUC.Name = "Txt_RUC";
+            this.Txt_RUC.PasswordChar = '\0';
+            this.Txt_RUC.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.Txt_RUC.PlaceholderText = "Ingrese nombre del vendedor";
+            this.Txt_RUC.SelectedText = "";
+            this.Txt_RUC.Size = new System.Drawing.Size(170, 30);
+            this.Txt_RUC.TabIndex = 105;
             // 
             // ComprarProductos
             // 
@@ -1477,7 +1492,6 @@ namespace INASOFT_3._0
         private Guna.UI2.WinForms.Guna2MessageDialog MessageInformation;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageWarning;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogError;
-        private System.Windows.Forms.Label Txt_RUC;
         public Guna.UI2.WinForms.Guna2TextBox Txt_DescuentoCompra;
         public System.Windows.Forms.ComboBox cbProveedor;
         public Guna.UI2.WinForms.Guna2TextBox Txt_IDProd;
@@ -1509,5 +1523,6 @@ namespace INASOFT_3._0
         private System.Windows.Forms.RadioButton Rbtn_Pendiente;
         private System.Windows.Forms.Label label17;
         public System.Windows.Forms.ComboBox CbxTipoPagos;
+        public Guna.UI2.WinForms.Guna2TextBox Txt_RUC;
     }
 }

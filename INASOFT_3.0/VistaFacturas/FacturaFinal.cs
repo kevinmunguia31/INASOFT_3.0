@@ -53,11 +53,17 @@ namespace INASOFT_3._0.VistaFacturas
             Lb_AuxCodFac.Text = ctrlFactura.Codigo_Factura().ToString();
             txtIdUsuario.Text = Sesion.id.ToString();
             Lb_User.Text = Sesion.nombre;
+            dataGridView1.Columns[5].Visible = false;
 
-            dataGridView1.Columns[0].ReadOnly = true;
+            /*dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = true;
             dataGridView1.Columns[3].ReadOnly = true;
-            dataGridView1.Columns[4].ReadOnly = true;
+            dataGridView1.Columns[4].ReadOnly = true;*/
+
+            foreach (DataGridViewBand band in dataGridView1.Columns)
+            {
+                band.ReadOnly = true;
+            }
 
             datagridView2.Rows.Add("Total", "", "", "", 0, "");
 
@@ -766,7 +772,7 @@ namespace INASOFT_3._0.VistaFacturas
                     DialogResult resultado = MessageDialogError.Show("Seguro que desea eliminar el registro?", "Eliminar");
                     if (resultado == DialogResult.Yes)
                     {
-                        MessageBox.Show(id_pos.ToString());
+                        //MessageBox.Show(id_pos.ToString());
                         dataGridView1.Rows.RemoveAt(id_pos);
                         Limpiar();
                         Cargar_Total();

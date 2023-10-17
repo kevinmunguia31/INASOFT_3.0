@@ -542,6 +542,7 @@
             this.Lb_Pendiente_aux.Size = new System.Drawing.Size(24, 23);
             this.Lb_Pendiente_aux.TabIndex = 106;
             this.Lb_Pendiente_aux.Text = "--";
+            this.Lb_Pendiente_aux.Visible = false;
             // 
             // label8
             // 

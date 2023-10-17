@@ -48,10 +48,10 @@ namespace INASOFT_3._0.Controladores
             return reader;
         }
 
-        public int Total_Facturas_Realizads(string fecha_hoy)
+        public int Cant_FacturasRealizadasHoy()
         {
             int total = 0;
-            string SQL = "SELECT COUNT(*) AS 'Total' FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y/%m/%d') = '" + fecha_hoy + "'";
+            string SQL = "SELECT COUNT(*) AS 'Total' FROM Facturas WHERE DATE(fecha) = CURDATE();";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -68,7 +68,7 @@ namespace INASOFT_3._0.Controladores
             return total;
         } 
 
-        public int Total_FacturasAnuldas()
+        public int Total_FacturasAnuldasHoy()
         {
             int total = 0;
             string SQL = "SELECT COUNT(ID) FROM Facturas WHERE Estado = 'Anulada';";
@@ -87,46 +87,48 @@ namespace INASOFT_3._0.Controladores
             }
             return total;
         }
-        public double TotalFinal_Facturas(string fecha_hoy)
+        
+        public string TotalFinal_FacturasHoy()
         {
-            double total = 0.00;
-            string SQL = "SELECT CASE WHEN SUM(Total_Final - Debe) IS NULL THEN '0' ELSE SUM(Total_Final - Debe) END AS 'Total ingresado por fecha' FROM Facturas WHERE DATE_FORMAT(fecha, '%Y/%m/%d') = '" + fecha_hoy + "'";
+            string total = "";
+            string SQL = "SELECT CONCAT('C$ ',  COALESCE(FORMAT(SUM(Total_Final - Debe), 2), '0.00')) AS 'Total ingresado por fecha' FROM Facturas WHERE DATE(fecha) = CURDATE();";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                total = Convert.ToDouble(comando.ExecuteScalar());
+                total = comando.ExecuteScalar().ToString();
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                total = 0.00;
-            }
-            return total;
-        }
-  
-        public double TotalFinal()
-        {
-            double total = 0.00;
-            string SQL = "SELECT CASE WHEN SUM(Total_Final - Debe) IS NULL THEN '0.00' ELSE SUM(Total_Final - Debe) END AS 'Total ingresado por fecha' FROM Facturas;";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                total = Convert.ToDouble(comando.ExecuteScalar());
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                total = 0.00;
+                total = "";
             }
             return total;
         }
         
+        
+        public string Total_AbonoHoy()
+        {
+            string total = "";
+            string SQL = "SELECT CONCAT('C$ ',  COALESCE(FORMAT(SUM(Monto), 2), '0.00')) AS 'Total ingresado' FROM Abono WHERE DATE(fecha) = CURDATE();";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                total = comando.ExecuteScalar().ToString();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                total = "";
+            }
+            return total;
+        }
+
         public DataTable Cargar_VentasXDias()
         {
             DataTable dt = new DataTable();
@@ -148,12 +150,12 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public DataTable Cargar_ProductosMasVendidos()
+        public DataTable Cargar_ProductosMasVendidosHoy()
         {
             DataTable dt = new DataTable();
             string sql;
 
-            sql = "SELECT b.Nombre AS 'Nombre producto', SUM(a.Cantidad) AS 'Cantidad Vendida' FROM Detalle_Factura a INNER JOIN Productos b ON a.ID_Producto = b.ID WHERE a.Cantidad > 0 GROUP BY b.Nombre  ORDER BY SUM(a.Cantidad) DESC LIMIT 5;";
+            sql = "SELECT \r\n    c.Nombre AS 'Producto', \r\n    SUM(a.Cantidad) AS 'Cant. Vendida' \r\nFROM Detalle_Factura a\r\nINNER JOIN Facturas b ON a.ID_Factura = b.ID\r\nINNER JOIN Productos c ON a.ID_Producto = c.ID\r\nWHERE a.Cantidad > 0 AND DATE(b.Fecha) = CURDATE()\r\nGROUP BY c.Nombre  \r\nORDER BY SUM(a.Cantidad) DESC LIMIT 5;\r\n";
             try
             {
                 MySqlConnection conexionBD = Conexion.getConexion();

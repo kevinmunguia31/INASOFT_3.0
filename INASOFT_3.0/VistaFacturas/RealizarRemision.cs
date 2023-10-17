@@ -26,6 +26,7 @@ namespace INASOFT_3._0.VistaFacturas
             GroupBox_Products.Enabled = false;
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
+            
             radioButton1.Checked = true; datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
             dataGridView1.Columns[6].Visible = false;
@@ -33,6 +34,11 @@ namespace INASOFT_3._0.VistaFacturas
 
             datagridView2.Columns[6].Visible = false;
             datagridView2.Columns[7].Visible = false;
+
+            foreach (DataGridViewBand band in dataGridView1.Columns)
+            {
+                band.ReadOnly = true;
+            }
 
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
@@ -239,7 +245,7 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     DataRow newRow = dataTable.NewRow();
                     newRow[0] = txtCodBarra.Text;
-                    newRow[1] = txtNameP.Text;
+                    newRow[1] = txtNameP.Text.ToUpper();
                     newRow[2] = SpinExist.Value.ToString();
                     newRow[3] = double.Parse(txtPrecioCompra.Text);
                     newRow[4] = double.Parse(txtPrecioVenta.Text);
@@ -351,6 +357,58 @@ namespace INASOFT_3._0.VistaFacturas
                 string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una transacción de remisión de entrada";
                 ctrlInfo.InsertarLog(log);
                 this.Close();
+            }
+        }
+        private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Borrar"))
+            {
+                id_pos = id_pos.Replace("Borrar", "");
+                Eliminar_Producto(int.Parse(id_pos));
+            }
+        }
+        private void Eliminar_Producto(int id_pos)
+        {
+            try
+            {
+                if (id_pos > -1 && id_pos != null)
+                {
+                    bool bandera = false;
+                    DialogResult resultado = MessageDialogError.Show("Seguro que desea eliminar el registro?", "Eliminar");
+                    if (resultado == DialogResult.Yes)
+                    {
+                        //MessageBox.Show(id_pos.ToString());
+                        dataGridView1.Rows.RemoveAt(id_pos);
+                        Limpiar();
+                        Cargar_Total();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex, "Error");
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                }
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
             }
         }
     }
