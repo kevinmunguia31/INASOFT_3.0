@@ -1443,7 +1443,7 @@ BEGIN
         SELECT
             a.ID,
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
-            d.Nombre AS 'Nombre del cliente',
+            d.Nombre AS 'Cliente',
             a.Estado,
             a.DiaDeCredito AS 'Inicio del crédito',
             a.DiaDeVencimiento AS 'Fin del crédito',
@@ -1508,11 +1508,6 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-
--- CONSULTAS PENDIENTES
-
--- Últimos clientes registrados
--- Última factura con el total
 
 
 -- ----------------------------------------------------------- Reportes y Graficos de Ganancias -------------------------------------------------------------

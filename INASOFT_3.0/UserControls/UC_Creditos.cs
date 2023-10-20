@@ -17,7 +17,11 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Document = iTextSharp.text.Document;
 using System.Globalization;
+using System.Globalization;
 using System.Security.Policy;
+using DevExpress.XtraCharts;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DevExpress.Charts.Native;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -29,11 +33,61 @@ namespace INASOFT_3._0.UserControls
             InitializeComponent();
             Cargar_credito();
             dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            foreach (DataGridViewBand band in dataGridView1.Columns)
+            foreach (DataGridViewColumn columna in dataGridView1.Columns)
             {
-                band.ReadOnly = true;
+                columna.ReadOnly = true;
             }
             dataGridView1.Columns[10].Visible = false;
+
+            datagridView2.Rows.Add("Total", "", "", "", "", "", "", "", "C$ 0.00", "C$ 0.00");
+            foreach (DataGridViewColumn columna in datagridView2.Columns)
+            {
+                columna.ReadOnly = true;
+            }
+            Cargar_Total();
+        }
+        public void Cargar_Total()
+        {
+            CultureInfo culture = new CultureInfo("es-NI");
+            double Total_Pendiente = 0.00;
+            double Total_Monto = 0.00;
+            try
+            {
+                
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    Total_Pendiente += double.Parse(dataGridView1.Rows[i].Cells[8].Value.ToString(), NumberStyles.Currency, culture);
+                }
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    Total_Monto += double.Parse(dataGridView1.Rows[i].Cells[9].Value.ToString(), NumberStyles.Currency, culture);
+                }
+                double valorRedondeado1 = Math.Round(Total_Pendiente, 2);
+
+                // Formatea el valor redondeado con el formato "C$ 10,000.00"
+                string valorFormateado1 = valorRedondeado1.ToString("C", new CultureInfo("es-NI"));
+
+                double valorRedondeado2 = Math.Round(Total_Monto, 2);
+
+                // Formatea el valor redondeado con el formato "C$ 10,000.00"
+                string valorFormateado2 = valorRedondeado2.ToString("C", new CultureInfo("es-NI"));
+
+                datagridView2.Rows[0].Cells[0].Value = "Total";
+                datagridView2.Rows[0].Cells[1].Value = "";
+                datagridView2.Rows[0].Cells[2].Value = "";
+                datagridView2.Rows[0].Cells[3].Value = "";
+                datagridView2.Rows[0].Cells[4].Value = "";
+                datagridView2.Rows[0].Cells[5].Value = "";
+                datagridView2.Rows[0].Cells[6].Value = "";
+                datagridView2.Rows[0].Cells[7].Value = "";
+                datagridView2.Rows[0].Cells[8].Value = valorFormateado1;
+                datagridView2.Rows[0].Cells[9].Value = valorFormateado2;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
 
         public void Cargar_credito()
@@ -52,47 +106,47 @@ namespace INASOFT_3._0.UserControls
         {
             try
             {
-                if (id_pos > -1 && id_pos != null)
+                if (id_pos < 0 || id_pos >= dataGridView1.Rows.Count)
                 {
-                    if (dataGridView1.Rows[id_pos].Cells[3].Value.ToString() == "Cancelado")
-                    {
-                        MessageBox_Import.Show("Ya completo el crédtio, de está factura", "Aviso");
-                    }
-                    else
-                    {
-                        RealizarAbono frm = new RealizarAbono();
-                        frm.Lb_FechaCredito.Text = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
-                        string aux1 = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
-                        string[] words1 = aux1.Split(' ');
-                        string aux_fechaIni = words1[0];
-                        string aux2 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
-                        string[] words2 = aux2.Split(' ');
-                        string aux_fechaEnd = words2[0];
-                        frm.Lb_FechaCredito.Text = aux_fechaIni + " - " + aux_fechaEnd;
+                    // Manejo de índices inválidos
+                    return;
+                }
 
-                        string aux3 = dataGridView1.Rows[id_pos].Cells[7].Value.ToString();
-                        string[] words3 = aux3.Split(' ');
-                        string aux_3 = words3[1];
+                string estado = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
 
-                        frm.Lb_Cargo.Text = aux_3;
+                if (estado == "Cancelado")
+                {
+                    MessageBox_Import.Show("Ya completó el crédito de esta factura", "Aviso");
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = dataGridView1.Rows[id_pos];
 
-                        string aux4 = dataGridView1.Rows[id_pos].Cells[8].Value.ToString();
-                        string[] words4 = aux4.Split(' ');
-                        string aux_4 = words4[1];
+                    RealizarAbono frm = new RealizarAbono();
+                    frm.Lb_FechaCredito.Text = selectedRow.Cells[3].Value.ToString();
 
-                        frm.Lb_Pendiente.Text = aux_4;
-                        frm.Lb_Pendiente_aux.Text = aux_4;
-                        frm.Lb_Cliente.Text = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
-                        frm.GBox_Cod_Fact.Text = dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
-                        frm.Txt_IDCredito.Text = dataGridView1.Rows[id_pos].Cells[0].Value.ToString();
-                        frm.Txt_IDFactura.Text = dataGridView1.Rows[id_pos].Cells[10].Value.ToString();
-                        frm.Show();
-                    }
+                    string fechaInicio = selectedRow.Cells[4].Value.ToString().Split(' ')[0];
+                    string fechaFin = selectedRow.Cells[5].Value.ToString().Split(' ')[0];
+                    frm.Lb_FechaCredito.Text = fechaInicio + " - " + fechaFin;
+
+                    string cargo = selectedRow.Cells[7].Value.ToString().Split(' ')[1];
+                    frm.Lb_Cargo.Text = cargo;
+
+                    string pendiente = selectedRow.Cells[8].Value.ToString().Split(' ')[1];
+                    frm.Lb_Pendiente.Text = pendiente;
+                    frm.Lb_Pendiente_aux.Text = pendiente;
+
+                    frm.Lb_Cliente.Text = selectedRow.Cells[2].Value.ToString();
+                    frm.GBox_Cod_Fact.Text = selectedRow.Cells[1].Value.ToString();
+                    frm.Txt_IDCredito.Text = selectedRow.Cells[0].Value.ToString();
+                    frm.Txt_IDFactura.Text = selectedRow.Cells[10].Value.ToString();
+                    frm.Show();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex, "Error");
+                // Manejo de excepciones, puedes mostrar un mensaje de error si es necesario
+                // MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
 
@@ -100,35 +154,46 @@ namespace INASOFT_3._0.UserControls
         {
             try
             {
-                if (id_pos > -1 && id_pos != null)
+                if (id_pos < 0 || id_pos >= dataGridView1.Rows.Count)
                 {
-                    EstadoDelCredito frm = new EstadoDelCredito(int.Parse(dataGridView1.Rows[id_pos].Cells[0].Value.ToString()), int.Parse(dataGridView1.Rows[id_pos].Cells[10].Value.ToString()));
-                    string aux1 = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
-                    string[] words1 = aux1.Split(' ');
-                    string aux_fechaIni = words1[0];
-                    string aux2 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
-                    string[] words2 = aux2.Split(' ');
-                    string aux_fechaEnd = words2[0];
-                    frm.Lb_FechaInicial.Text = aux_fechaIni;
-                    frm.Lb_FechaFin.Text = aux_fechaEnd;
-                    frm.Lb_Estado.Text = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
-                    frm.Lb_DiasVencidos.Text = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
-                    frm.Lb_Cargo.Text = dataGridView1.Rows[id_pos].Cells[7].Value.ToString();
-                    string aux3 = dataGridView1.Rows[id_pos].Cells[8].Value.ToString();
-                    string[] words3 = aux3.Split(' ');
-                    string aux_pendiente = words3[1];
-                    frm.Lb_Pendiente.Text = aux_pendiente;
-                    frm.Lb_Monto.Text = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
-                    frm.groupBox1.Text = "Detalle del crédito del cliente " + dataGridView1.Rows[id_pos].Cells[2].Value.ToString(); 
-                    frm.lbCliente.Text = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
-                    frm.guna2GroupBox2.Text = "          Estado de cuenta de la factura " + dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
-                    frm.lbFactura.Text = dataGridView1.Rows[id_pos].Cells[1].Value.ToString();
-                    frm.Show();
+                    // Manejo de índices inválidos
+                    return;
                 }
+
+                DataGridViewRow selectedRow = dataGridView1.Rows[id_pos];
+                int clienteId = int.Parse(selectedRow.Cells[0].Value.ToString());
+                int facturaId = int.Parse(selectedRow.Cells[10].Value.ToString());
+
+                string fechaInicial = selectedRow.Cells[4].Value.ToString().Split(' ')[0];
+                string fechaFinal = selectedRow.Cells[5].Value.ToString().Split(' ')[0];
+
+                string estado = selectedRow.Cells[3].Value.ToString();
+                string diasVencidos = selectedRow.Cells[6].Value.ToString();
+                string cargo = selectedRow.Cells[7].Value.ToString();
+                string pendiente = selectedRow.Cells[8].Value.ToString().Split(' ')[1];
+                string monto = selectedRow.Cells[9].Value.ToString();
+
+                string clienteNombre = selectedRow.Cells[2].Value.ToString();
+                string facturaNumero = selectedRow.Cells[1].Value.ToString();
+
+                EstadoDelCredito frm = new EstadoDelCredito(clienteId, facturaId);
+                frm.Lb_FechaInicial.Text = fechaInicial;
+                frm.Lb_FechaFin.Text = fechaFinal;
+                frm.Lb_Estado.Text = estado;
+                frm.Lb_DiasVencidos.Text = diasVencidos;
+                frm.Lb_Cargo.Text = cargo;
+                frm.Lb_Pendiente.Text = pendiente;
+                frm.Lb_Monto.Text = monto;
+                frm.groupBox1.Text = $"Detalle del crédito del cliente {clienteNombre}";
+                frm.lbCliente.Text = clienteNombre;
+                frm.guna2GroupBox2.Text = $"Estado de cuenta de la factura {facturaNumero}";
+                frm.lbFactura.Text = facturaNumero;
+                frm.Show();
             }
             catch (Exception ex)
             {
-                //MessageBox_Error.Show("Error:" + ex, "Error");
+                // Manejo de excepciones, puedes mostrar un mensaje de error si es necesario
+                // MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
 
@@ -150,6 +215,7 @@ namespace INASOFT_3._0.UserControls
         private void Guna2Button6_Click(object sender, EventArgs e)
         {
             Cargar_credito();
+            Cargar_Total();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -176,6 +242,8 @@ namespace INASOFT_3._0.UserControls
             {
                 Credito_Filtro(2, fecha_Ini, fecha_End, nombre_cliente, "", 0);
             }
+            txt_NonbCliente.Text = "";
+            Cargar_Total();
         }
 
 
@@ -199,6 +267,7 @@ namespace INASOFT_3._0.UserControls
             //MessageBox.Show(fecha_Ini + " " + fecha_End);
 
             Credito_Filtro(1, fecha_Ini, fecha_End, "", "", 0);
+            Cargar_Total();
         }
 
         private void Guna2Button5_Click_1(object sender, EventArgs e)
@@ -220,6 +289,9 @@ namespace INASOFT_3._0.UserControls
                 estado = "Cancelado";
                 Credito_Filtro(3, fecha_Ini, fecha_End, "", estado, 0);
             }
+            Rbtn_Canceladas.Checked = false;
+            Rbtn_Pendientes.Checked = false;
+            Cargar_Total();
         }
 
         private void Guna2Button7_Click(object sender, EventArgs e)
@@ -241,6 +313,9 @@ namespace INASOFT_3._0.UserControls
                 bandera = 2;
                 Credito_Filtro(4, fecha_Ini, fecha_End, "", "", bandera);
             }
+            Rbtn_DiasVencidos.Checked = false;
+            Rbtn_DiasEstables.Checked = false;
+            Cargar_Total();
         }
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
