@@ -1,4 +1,5 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using Guna.UI2.WinForms;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -127,12 +128,12 @@ namespace INASOFT_3._0
 
                         if (result != null && result != DBNull.Value)
                         {
-                            MessageBox.Show($"La base de datos '{databaseNameToCheck}' existe.");
+                            //MessageBox.Show($"La base de datos '{databaseNameToCheck}' existe.");
                             btnCrearBD.Enabled = false;
                         }
                         else
                         {
-                            MessageBox.Show($"La base de datos '{databaseNameToCheck}' no existe.");
+                            MessageBox.Show($"La base de datos '{databaseNameToCheck}' no existe. La debe Crear");
                             btnCrearBD.Enabled = true;
                         }
                     }
@@ -163,6 +164,11 @@ namespace INASOFT_3._0
         private void ImportBD_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
         }
     }
 }

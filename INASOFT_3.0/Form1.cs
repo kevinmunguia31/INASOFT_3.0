@@ -66,7 +66,7 @@ namespace INASOFT_3._0
 
         private void btnLogaut_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Dispose();
             Login frm = new Login();
             frm.Visible = true;
             Modelos.Sesion sesion = new Modelos.Sesion();

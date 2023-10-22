@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraPrinting.Export.Pdf;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Guna.UI2.WinForms;
 using INASOFT_3._0.Modelos;
 using INASOFT_3._0.UserControls;
 using MySql.Data.MySqlClient;
@@ -20,7 +21,8 @@ namespace INASOFT_3._0
         public Login()
         {
             InitializeComponent();
-           // InfoNegocio();
+            // InfoNegocio();
+            txtPassword.UseSystemPasswordChar = true;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -124,7 +126,27 @@ namespace INASOFT_3._0
                     guna2MessageWar.Show("No existe base de datos creada! :( \n" +
                         "Exporte un respaldo en Configuraciones ⚙️");
                 }
-               // MessageBox.Show("Se presionó Enter en el cuadro de texto.");
+                // MessageBox.Show("Se presionó Enter en el cuadro de texto.");
+            }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Seguro que desea Salir del Programa?", "Aviso", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.Yes)
+            {
+                //Application.Exit();
+                Environment.Exit(0);
+
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
     }

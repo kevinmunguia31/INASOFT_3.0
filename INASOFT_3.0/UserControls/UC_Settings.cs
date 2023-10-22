@@ -217,11 +217,17 @@ namespace INASOFT_3._0.UserControls
             //Cargar Imagen
             string rutaImagen = Properties.Settings.Default.RutaImagen;
 
-            
+            if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+            {
                 // Carga la imagen desde la ruta especificada
-                //Image imagen = Image.FromFile(rutaImagen);
-                //pbImagen.Image = imagen;
-                //txtPath.Text = rutaImagen;
+                Image imagen = Image.FromFile(rutaImagen);
+                pbImagen.Image = imagen;
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
 
         }
     }

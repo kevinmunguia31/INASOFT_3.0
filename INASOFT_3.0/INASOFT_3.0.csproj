@@ -36,8 +36,14 @@
     <ApplicationIcon>log.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="bc-fips-1.0.2, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.bouncy-castle-fips-adapter.8.0.1\lib\netstandard2.0\bc-fips-1.0.2.dll</HintPath>
+    </Reference>
+    <Reference Include="bcpkix-fips-1.0.2, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.bouncy-castle-fips-adapter.8.0.1\lib\netstandard2.0\bcpkix-fips-1.0.2.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>D:\Users\kevin\source\repos\INASOFTWARE\INASOFTWARE\bin\Debug\Bunifu_UI_v1.5.3.dll</HintPath>
@@ -69,8 +75,14 @@
     <Reference Include="itext.barcodes, Version=8.0.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.8.0.1\lib\net461\itext.barcodes.dll</HintPath>
     </Reference>
+    <Reference Include="itext.bouncy-castle-adapter, Version=8.0.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.bouncy-castle-adapter.8.0.1\lib\net461\itext.bouncy-castle-adapter.dll</HintPath>
+    </Reference>
     <Reference Include="itext.bouncy-castle-connector, Version=8.0.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.8.0.1\lib\net461\itext.bouncy-castle-connector.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.bouncy-castle-fips-adapter, Version=8.0.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.bouncy-castle-fips-adapter.8.0.1\lib\netstandard2.0\itext.bouncy-castle-fips-adapter.dll</HintPath>
     </Reference>
     <Reference Include="itext.commons, Version=8.0.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.commons.8.0.1\lib\net461\itext.commons.dll</HintPath>

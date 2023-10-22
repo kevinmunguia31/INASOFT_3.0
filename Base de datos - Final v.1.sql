@@ -240,7 +240,7 @@ CREATE TABLE `InfoGeneral` (
 	`Direccion_negocio` VARCHAR(100) DEFAULT NULL,
 	`Num_ruc` VARCHAR(45) DEFAULT NULL,
 	`Nombre_admin` VARCHAR(45) DEFAULT NULL,
-	`Telefono` VARCHAR(10) DEFAULT NULL,
+	`Telefono` VARCHAR(20) DEFAULT NULL,
 	PRIMARY KEY (`IDinfogeneral`)
 );
 

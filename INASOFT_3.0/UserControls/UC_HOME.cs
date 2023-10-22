@@ -14,6 +14,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,10 +53,16 @@ namespace INASOFT_3._0.UserControls
             //lbNameNeg.Text = Modelos.InfoNegocio.nombre;
             string rutaImagen = Properties.Settings.Default.RutaImagen;
 
-
-            // Carga la imagen desde la ruta especificada
-            //Image imagen = Image.FromFile(rutaImagen);
-           //pbImagen.Image = imagen;
+            if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+            {
+                // Carga la imagen desde la ruta especificada
+                Image imagen = Image.FromFile(rutaImagen);
+                pbImagen.Image = imagen;
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void InfoNegocio()

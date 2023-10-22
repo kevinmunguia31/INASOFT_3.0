@@ -43,13 +43,16 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.MessageDialoginfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPort = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2GroupBox3.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +60,7 @@
             // guna2GroupBox3
             // 
             this.guna2GroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2GroupBox3.Controls.Add(this.button1);
             this.guna2GroupBox3.Controls.Add(this.Bttn_Info);
             this.guna2GroupBox3.Controls.Add(this.btnSeleccionar);
             this.guna2GroupBox3.Controls.Add(this.label5);
@@ -90,7 +94,7 @@
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Bttn_Info.Location = new System.Drawing.Point(317, 136);
-            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4);
             this.Bttn_Info.Name = "Bttn_Info";
             this.Bttn_Info.Size = new System.Drawing.Size(41, 36);
             this.Bttn_Info.TabIndex = 77;
@@ -244,6 +248,8 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox1.Controls.Add(this.label9);
+            this.guna2GroupBox1.Controls.Add(this.guna2ToggleSwitch1);
             this.guna2GroupBox1.Controls.Add(this.btnSave);
             this.guna2GroupBox1.Controls.Add(this.txtPassword);
             this.guna2GroupBox1.Controls.Add(this.label8);
@@ -260,23 +266,35 @@
             this.guna2GroupBox1.TabIndex = 4;
             this.guna2GroupBox1.Text = "Datos de Conexión";
             // 
-            // label4
+            // btnSave
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(12, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 23);
-            this.label4.TabIndex = 78;
-            this.label4.Text = "Puerto:";
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Location = new System.Drawing.Point(204, 130);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(234, 49);
+            this.btnSave.TabIndex = 84;
+            this.btnSave.Text = "Guardar Configuración";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtPort
+            // txtPassword
             // 
-            this.txtPort.Location = new System.Drawing.Point(86, 56);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(100, 30);
-            this.txtPort.TabIndex = 79;
+            this.txtPassword.Location = new System.Drawing.Point(494, 56);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(178, 30);
+            this.txtPassword.TabIndex = 83;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(398, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 23);
+            this.label8.TabIndex = 82;
+            this.label8.Text = "Password:";
             // 
             // txtUser
             // 
@@ -296,34 +314,73 @@
             this.label7.TabIndex = 80;
             this.label7.Text = "Usuario:";
             // 
-            // txtPassword
+            // txtPort
             // 
-            this.txtPassword.Location = new System.Drawing.Point(494, 56);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(158, 30);
-            this.txtPassword.TabIndex = 83;
+            this.txtPort.Location = new System.Drawing.Point(86, 56);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(100, 30);
+            this.txtPort.TabIndex = 79;
             // 
-            // label8
+            // label4
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(398, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 23);
-            this.label8.TabIndex = 82;
-            this.label8.Text = "Password:";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(12, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 23);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Puerto:";
             // 
-            // btnSave
+            // button1
             // 
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(204, 130);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(234, 49);
-            this.btnSave.TabIndex = 84;
-            this.btnSave.Text = "Guardar Configuración";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(322, 137);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 36);
+            this.button1.TabIndex = 78;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Poppins ExtraLight", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(489, 98);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 25);
+            this.label9.TabIndex = 87;
+            this.label9.Text = "Show Password";
+            // 
+            // guna2ToggleSwitch1
+            // 
+            this.guna2ToggleSwitch1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(627, 98);
+            this.guna2ToggleSwitch1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
+            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(44, 21);
+            this.guna2ToggleSwitch1.TabIndex = 86;
+            this.guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2ToggleSwitch1.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.CheckedChanged += new System.EventHandler(this.guna2ToggleSwitch1_CheckedChanged);
             // 
             // ImportBD
             // 
@@ -372,5 +429,8 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label9;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
     }
 }
