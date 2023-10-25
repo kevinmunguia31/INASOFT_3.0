@@ -49,6 +49,7 @@ namespace INASOFT_3._0
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.guna2MessageDialogErr = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogaut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -391,6 +392,15 @@ namespace INASOFT_3._0
             this.guna2MessageDialogErr.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.guna2MessageDialogErr.Text = "";
             // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.MessageBox_Import.Text = null;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -437,6 +447,7 @@ namespace INASOFT_3._0
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
     }
 }
 

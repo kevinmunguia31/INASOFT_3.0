@@ -129,27 +129,6 @@ namespace INASOFT_3._0.Controladores
             return total;
         }
 
-        public DataTable Cargar_VentasXDias()
-        {
-            DataTable dt = new DataTable();
-            string sql;
-
-            sql = "SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), COUNT(ID) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');";
-            try
-            {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-            return dt;
-        }
-
         public DataTable Cargar_ProductosMasVendidosHoy()
         {
             DataTable dt = new DataTable();
@@ -175,7 +154,7 @@ namespace INASOFT_3._0.Controladores
         {
             List<Reporte> ganancias = new List<Reporte>();
 
-            string sql = "SELECT DATE_FORMAT(Fecha, '%H:00') AS Hora, FORMAT(SUM(Total_Final - Debe), 2) AS 'Ganancias' FROM Facturas WHERE Fecha >= CURDATE() AND Fecha < CURDATE() + INTERVAL 1 DAY GROUP BY Hora ORDER BY Hora;";
+            string sql = "SELECT DATE_FORMAT(Fecha, '%H:00') AS Hora, \r\n       CASE \r\n           WHEN ROUND(SUM(Total_Final - Debe), 2) IS NULL THEN 0.00 \r\n           ELSE FORMAT(ROUND(SUM(Total_Final - Debe), 2), 2) \r\n       END AS 'Ganancias' \r\nFROM Facturas \r\nWHERE Fecha >= CURDATE() AND Fecha < CURDATE() + INTERVAL 1 DAY \r\nGROUP BY Hora \r\nORDER BY Hora;";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();

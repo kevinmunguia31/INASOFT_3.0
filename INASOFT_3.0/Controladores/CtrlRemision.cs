@@ -33,12 +33,14 @@ namespace INASOFT_3._0.Controladores
             }
             return bandera;
         }
-        
+
         public bool Remision_ProductosSalida(Productos productos)
         {
             bool bandera = false;
-            
-            string sql = "CALL Detalle_RemisionSalida("+productos.Id+", '"+productos.Nombre+"', "+productos.Existencias+", "+ productos.Id_remision +");";
+
+            string descripcion = MySqlHelper.EscapeString(productos.Nombre); // Escapa las comillas simples
+
+            string sql = $"CALL Detalle_RemisionSalida({productos.Id}, '{descripcion}', {productos.Existencias}, {productos.Id_remision});";
 
             try
             {
@@ -59,15 +61,27 @@ namespace INASOFT_3._0.Controladores
         public bool Remision_ProductosEntrada(Productos productos)
         {
             bool bandera = false;
-            //ID producto - Codigo producto - Nombre producto - Cantidad - Existencias - Precio compra - Precio Venta - Observacion - ID Remision
-            //
-            string sql = "CALL Detalle_RemisionEntrada(" + productos.Id + ", '" + productos.Codigo + "', '" + productos.Nombre + "', " + productos.Existencias + ", " + productos.Existencias_min + ", " + productos.Precio_compra + ", " + productos.Precio_venta + ", '" + productos.Observacion + "', " + productos.Id_remision + ");";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Detalle_RemisionEntrada(@Id, @Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdRemision);";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Id", productos.Id);
+                comando.Parameters.AddWithValue("@Codigo", productos.Codigo);
+                comando.Parameters.AddWithValue("@Nombre", productos.Nombre);
+                comando.Parameters.AddWithValue("@Existencias", productos.Existencias);
+                comando.Parameters.AddWithValue("@ExistenciasMin", productos.Existencias_min);
+                comando.Parameters.AddWithValue("@PrecioCompra", productos.Precio_compra);
+                comando.Parameters.AddWithValue("@PrecioVenta", productos.Precio_venta);
+                comando.Parameters.AddWithValue("@Observacion", productos.Observacion);
+                comando.Parameters.AddWithValue("@IdRemision", productos.Id_remision);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

@@ -352,11 +352,11 @@
     <Compile Include="VistaFacturas\Anular_Factura.Designer.cs">
       <DependentUpon>Anular_Factura.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\DetailsInvoice.cs">
+    <Compile Include="VistaFacturas\DetalleFacturaRealizada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\DetailsInvoice.Designer.cs">
-      <DependentUpon>DetailsInvoice.cs</DependentUpon>
+    <Compile Include="VistaFacturas\DetalleFacturaRealizada.Designer.cs">
+      <DependentUpon>DetalleFacturaRealizada.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\DetalleDevolucion.cs">
       <SubType>Form</SubType>
@@ -388,11 +388,11 @@
     <Compile Include="VistaFacturas\FacturaFinal.Designer.cs">
       <DependentUpon>FacturaFinal.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\Facturar1.cs">
+    <Compile Include="VistaFacturas\AgregarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\Facturar1.Designer.cs">
-      <DependentUpon>Facturar1.cs</DependentUpon>
+    <Compile Include="VistaFacturas\AgregarCliente.Designer.cs">
+      <DependentUpon>AgregarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\RealizarAbono.cs">
       <SubType>Form</SubType>
@@ -469,8 +469,8 @@
     <EmbeddedResource Include="VistaFacturas\Anular_Factura.resx">
       <DependentUpon>Anular_Factura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\DetailsInvoice.resx">
-      <DependentUpon>DetailsInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\DetalleFacturaRealizada.resx">
+      <DependentUpon>DetalleFacturaRealizada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\DetalleDevolucion.resx">
       <DependentUpon>DetalleDevolucion.cs</DependentUpon>
@@ -487,8 +487,8 @@
     <EmbeddedResource Include="VistaFacturas\FacturaFinal.resx">
       <DependentUpon>FacturaFinal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\Facturar1.resx">
-      <DependentUpon>Facturar1.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\AgregarCliente.resx">
+      <DependentUpon>AgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\RealizarAbono.resx">
       <DependentUpon>RealizarAbono.cs</DependentUpon>

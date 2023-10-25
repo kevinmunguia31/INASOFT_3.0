@@ -18,6 +18,7 @@ namespace INASOFT_3._0
 {
     public partial class Login : Form
     {
+        private bool exitConfirmed = false;
         public Login()
         {
             InitializeComponent();
@@ -84,10 +85,6 @@ namespace INASOFT_3._0
             importBD.Show();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-        }
-
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -129,25 +126,29 @@ namespace INASOFT_3._0
                 // MessageBox.Show("Se presionó Enter en el cuadro de texto.");
             }
         }
-
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea Salir del Programa?", "Aviso", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
-            if (resultado == DialogResult.Yes)
+            if (!exitConfirmed)
             {
-                //Application.Exit();
-                Environment.Exit(0);
+                DialogResult resultado = MessageBox_Import.Show("¿Seguro que desea salir del Programa?", "Aviso");
 
+                if (resultado == DialogResult.Yes)
+                {
+                    // Puedes realizar acciones de limpieza o cierre del programa aquí.
+                    // Application.Exit();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario.
+                }
             }
-            else
-            {
-                e.Cancel = true;
-            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            exitConfirmed = true;
+            Close(); // Cierra el formulario.
         }
     }
 }

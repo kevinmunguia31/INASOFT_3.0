@@ -33,11 +33,10 @@ namespace INASOFT_3._0.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_HOME));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -75,6 +74,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GradientPanel6 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -87,6 +87,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.guna2GroupBox7 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.guna2GradientPanel4 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label8 = new System.Windows.Forms.Label();
@@ -94,8 +95,8 @@ namespace INASOFT_3._0.UserControls
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.guna2Elipse7 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse8 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Label_Ganancias = new System.Windows.Forms.Label();
+            this.Label_CantProductos = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -324,6 +325,7 @@ namespace INASOFT_3._0.UserControls
             chartArea1.AxisY.LabelStyle.Format = "C$ {0}";
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea1.AxisY.MajorTickMark.LineWidth = 2;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             chartArea1.BorderColor = System.Drawing.Color.Transparent;
             chartArea1.BorderWidth = 0;
@@ -333,23 +335,17 @@ namespace INASOFT_3._0.UserControls
             chartArea1.CursorY.LineWidth = 0;
             chartArea1.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            legend1.TitleAlignment = System.Drawing.StringAlignment.Near;
-            legend1.TitleFont = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(18, 41);
             this.chart2.Name = "chart2";
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             series1.BackSecondaryColor = System.Drawing.Color.Violet;
+            series1.BorderColor = System.Drawing.Color.Transparent;
             series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.SystemColors.Control;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             series1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.LabelBackColor = System.Drawing.SystemColors.Control;
             series1.LabelForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.YValuesPerPoint = 4;
             this.chart2.Series.Add(series1);
@@ -564,6 +560,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox4.Size = new System.Drawing.Size(258, 97);
             this.guna2GroupBox4.TabIndex = 20;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(48, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 26);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "de hoy";
+            // 
             // guna2GradientPanel1
             // 
             this.guna2GradientPanel1.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -620,19 +628,20 @@ namespace INASOFT_3._0.UserControls
             // 
             this.chartTopProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chartTopProducts.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "ChartArea1";
             this.chartTopProducts.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartTopProducts.Legends.Add(legend2);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartTopProducts.Legends.Add(legend1);
             this.chartTopProducts.Location = new System.Drawing.Point(26, 41);
             this.chartTopProducts.Margin = new System.Windows.Forms.Padding(5);
             this.chartTopProducts.Name = "chartTopProducts";
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
             series2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            series2.BorderColor = System.Drawing.Color.White;
+            series2.BorderColor = System.Drawing.SystemColors.Control;
             series2.BorderWidth = 8;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -719,6 +728,18 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox7.Size = new System.Drawing.Size(258, 97);
             this.guna2GroupBox7.TabIndex = 22;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(48, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 26);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "ingresados de hoy";
+            // 
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
@@ -782,35 +803,39 @@ namespace INASOFT_3._0.UserControls
             this.guna2Elipse8.BorderRadius = 12;
             this.guna2Elipse8.TargetControl = this.guna2GroupBox7;
             // 
-            // label7
+            // Label_Ganancias
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(48, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 26);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "de hoy";
+            this.Label_Ganancias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_Ganancias.AutoSize = true;
+            this.Label_Ganancias.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Ganancias.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Ganancias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Label_Ganancias.Location = new System.Drawing.Point(753, 631);
+            this.Label_Ganancias.Name = "Label_Ganancias";
+            this.Label_Ganancias.Size = new System.Drawing.Size(27, 34);
+            this.Label_Ganancias.TabIndex = 24;
+            this.Label_Ganancias.Text = "...";
             // 
-            // label5
+            // Label_CantProductos
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(48, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 26);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "ingresados de hoy";
+            this.Label_CantProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_CantProductos.AutoSize = true;
+            this.Label_CantProductos.BackColor = System.Drawing.Color.Transparent;
+            this.Label_CantProductos.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CantProductos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Label_CantProductos.Location = new System.Drawing.Point(753, 656);
+            this.Label_CantProductos.Name = "Label_CantProductos";
+            this.Label_CantProductos.Size = new System.Drawing.Size(27, 34);
+            this.Label_CantProductos.TabIndex = 25;
+            this.Label_CantProductos.Text = "...";
             // 
             // UC_HOME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.Label_CantProductos);
+            this.Controls.Add(this.Label_Ganancias);
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.guna2GroupBox7);
             this.Controls.Add(this.groupBox2);
@@ -921,5 +946,7 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Label_Ganancias;
+        private System.Windows.Forms.Label Label_CantProductos;
     }
 }

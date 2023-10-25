@@ -169,7 +169,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1181, 36);
+            this.panel1.Size = new System.Drawing.Size(1193, 36);
             this.panel1.TabIndex = 3;
             // 
             // btnClose
@@ -264,7 +264,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox2.Location = new System.Drawing.Point(12, 308);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(608, 278);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(623, 278);
             this.guna2GroupBox2.TabIndex = 5;
             this.guna2GroupBox2.Text = "          Productos Facturados";
             // 
@@ -322,7 +322,7 @@ namespace INASOFT_3._0.VistaFacturas
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView2.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView2.Size = new System.Drawing.Size(608, 31);
+            this.datagridView2.Size = new System.Drawing.Size(623, 31);
             this.datagridView2.TabIndex = 87;
             // 
             // Column1
@@ -393,7 +393,7 @@ namespace INASOFT_3._0.VistaFacturas
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(608, 214);
+            this.dataGridView1.Size = new System.Drawing.Size(623, 214);
             this.dataGridView1.TabIndex = 25;
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -507,7 +507,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox3.Controls.Add(this.guna2GroupBox4);
             this.guna2GroupBox3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(629, 45);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(645, 45);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(536, 102);
             this.guna2GroupBox3.TabIndex = 6;
@@ -766,7 +766,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnFacturar.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFacturar.ForeColor = System.Drawing.Color.White;
             this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
-            this.btnFacturar.Location = new System.Drawing.Point(987, 547);
+            this.btnFacturar.Location = new System.Drawing.Point(1006, 547);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(175, 39);
             this.btnFacturar.TabIndex = 24;
@@ -787,7 +787,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.Groupbox_fact.CustomBorderThickness = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.Groupbox_fact.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Groupbox_fact.ForeColor = System.Drawing.Color.Black;
-            this.Groupbox_fact.Location = new System.Drawing.Point(629, 153);
+            this.Groupbox_fact.Location = new System.Drawing.Point(645, 153);
             this.Groupbox_fact.Name = "Groupbox_fact";
             this.Groupbox_fact.Size = new System.Drawing.Size(537, 382);
             this.Groupbox_fact.TabIndex = 29;
@@ -1059,7 +1059,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(335, 42);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(288, 71);
+            this.groupBox7.Size = new System.Drawing.Size(300, 71);
             this.groupBox7.TabIndex = 127;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Fecha de hoy";
@@ -1140,7 +1140,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(9, 119);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(614, 183);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(626, 183);
             this.guna2GroupBox1.TabIndex = 128;
             this.guna2GroupBox1.Text = "          Datos de los productos";
             // 
@@ -1253,7 +1253,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(0, 84);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(614, 99);
+            this.groupBox5.Size = new System.Drawing.Size(626, 99);
             this.groupBox5.TabIndex = 87;
             this.groupBox5.TabStop = false;
             // 
@@ -1421,7 +1421,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 594);
+            this.ClientSize = new System.Drawing.Size(1193, 594);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.lbIdFactura);

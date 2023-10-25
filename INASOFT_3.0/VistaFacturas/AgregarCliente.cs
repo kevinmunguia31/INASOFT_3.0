@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace INASOFT_3._0.VistaFacturas
 {
-    public partial class Facturar1 : Form
+    public partial class AgregarCliente : Form
     {
-        public Facturar1()
+        public AgregarCliente()
         {
             InitializeComponent();
             txtIdUser.Text = Sesion.id.ToString();

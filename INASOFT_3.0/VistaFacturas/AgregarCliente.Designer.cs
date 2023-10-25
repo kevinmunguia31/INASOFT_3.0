@@ -1,7 +1,7 @@
 ﻿
 namespace INASOFT_3._0.VistaFacturas
 {
-    partial class Facturar1
+    partial class AgregarCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Facturar1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCliente));
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();

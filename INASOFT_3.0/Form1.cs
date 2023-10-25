@@ -16,6 +16,7 @@ namespace INASOFT_3._0
     public partial class Principal : Form
     {
         int tipoUser;
+        private bool exitConfirmed = false;
         public Principal()
         {
             InitializeComponent();
@@ -74,9 +75,28 @@ namespace INASOFT_3._0
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!exitConfirmed)
+            {
+                DialogResult resultado = MessageBox_Import.Show("¿Seguro que desea salir del Programa?", "Aviso");
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // Puedes realizar acciones de limpieza o cierre del programa aquí.
+                    // Application.Exit();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario.
+                }
+            }
         }
 
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            exitConfirmed = true;
+            Close(); // Cierra el formulario.
+        }
         private void btnClientes_Click(object sender, EventArgs e)
         {
             UC_Clientes uc = new UC_Clientes();

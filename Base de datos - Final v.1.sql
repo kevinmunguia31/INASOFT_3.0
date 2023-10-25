@@ -952,7 +952,6 @@ CREATE VIEW Mostrar_Producto AS SELECT
     a.Nombre AS 'Producto', 
     a.Estado AS 'Estado', 
     a.Existencias, 
-    a.Existencias_Minimas AS 'Existencias Minima', 
     CONCAT('C$ ', FORMAT(a.Precio_Compra, 2)) AS 'Precio de compra', 
     CONCAT('C$ ', FORMAT(a.Precio_Venta, 2)) AS 'Precio de venta', 
     CONCAT('C$ ', FORMAT(a.Precio_Total, 2)) AS 'Precio total', 
@@ -989,6 +988,7 @@ LEFT  JOIN Proveedor d ON c.ID_Proveedor = d.ID WHERE d.ID = 1;
 
 -- Total de capital invertido en productos
 SELECT CASE WHEN ROUND(SUM(precio_total), 2) IS NULL THEN '0' ELSE CONCAT('C$ ', FORMAT(ROUND(SUM(precio_total), 2), 2)) END AS 'Precio Total' FROM Productos;
+
 
 -- Cantidad total de los productos
 SELECT CASE WHEN COUNT(*) IS NULL THEN '0' ELSE COUNT(*)  END 'Cantidad de productos' FROM productos;
@@ -1131,6 +1131,17 @@ ORDER BY SUM(a.Cantidad) DESC LIMIT 5;
 -- Cuanto se ha ganado en los últimos 7 días
 SELECT DATE_FORMAT(Fecha, '%Y-%m-%d'), SUM(Total_Final - Debe) FROM Facturas WHERE DATE_FORMAT(Fecha, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() GROUP BY DATE_FORMAT(Fecha, '%Y-%m-%d');
 
+
+
+SELECT DATE_FORMAT(Fecha, '%H:00') AS Hora, 
+       CASE 
+           WHEN ROUND(SUM(Total_Final - Debe), 2) IS NULL THEN 0.00 
+           ELSE FORMAT(ROUND(SUM(Total_Final - Debe), 2), 2) 
+       END AS 'Ganancias' 
+FROM Facturas 
+WHERE Fecha >= CURDATE() AND Fecha < CURDATE() + INTERVAL 1 DAY 
+GROUP BY Hora 
+ORDER BY Hora;
 -- --------------------------------------------------------------- Consultas realcionado a la factura -----------------------------------------------------------------
 
 -- Mostrar facturación con campos especificos
@@ -1933,6 +1944,3 @@ BEGIN
     
 END //
 DELIMITER ;
-
-
-

@@ -16,10 +16,10 @@ using System.Windows.Forms;
 
 namespace INASOFT_3._0.VistaFacturas
 {
-    public partial class DetailsInvoice : Form
+    public partial class DetalleFacturaRealizada : Form
     {
         string rutaImagen = Properties.Settings.Default.RutaImagen;
-        public DetailsInvoice(string id)
+        public DetalleFacturaRealizada(string id)
         {
             InitializeComponent();
             InfoNegocio();

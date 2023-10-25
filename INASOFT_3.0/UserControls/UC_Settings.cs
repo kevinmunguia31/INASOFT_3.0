@@ -74,7 +74,7 @@ namespace INASOFT_3._0.UserControls
                 if (txtId.Text != "")
                 {
                     _info.Id = int.Parse(txtId.Text);
-                    bandera = ctrlInfo.actualizar(_info);
+                    bandera = ctrlInfo.Actualizar(_info);
                     MessageDialoginfo.Show("Registro Actualizado Con Exito", "Actualizar Información");
                    
                     string log = "[" + DateTime.Now + "] " + Sesion.nombre + " ha cambia la información del negocio";
@@ -84,7 +84,7 @@ namespace INASOFT_3._0.UserControls
                 }
                 else
                 {
-                    bandera = ctrlInfo.insertar(_info);
+                    bandera = ctrlInfo.Insertar(_info);
                     MessageDialoginfo.Show("Información Guardada con Exito", "Guardar Información");
                     string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Ha Registrado la Información del Negocio";
                     ctrlInfo.InsertarLog(log);

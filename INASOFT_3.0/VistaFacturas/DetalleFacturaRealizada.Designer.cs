@@ -1,7 +1,7 @@
 ﻿
 namespace INASOFT_3._0.VistaFacturas
 {
-    partial class DetailsInvoice
+    partial class DetalleFacturaRealizada
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsInvoice));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetalleFacturaRealizada));
             this.lbDireccion = new System.Windows.Forms.Label();
             this.lbTelefono = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();

@@ -44,13 +44,22 @@ namespace INASOFT_3._0.Controladores
         public bool Insertar(Cliente datos)
         {
             bool bandera = false;
-            string sql = "INSERT INTO Clientes (Nombre, Telefono, Direccion, Cedula) VALUES ('" + datos.Nombre + "','" + datos.Telefono + "','" + datos.Direccion + "','" + datos.Cedula + "')";
-            
+
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "INSERT INTO Clientes (Nombre, Telefono, Direccion, Cedula) VALUES (@Nombre, @Telefono, @Direccion, @Cedula)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
+                comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
+                comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
+                comando.Parameters.AddWithValue("@Cedula", datos.Cedula);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
@@ -65,13 +74,23 @@ namespace INASOFT_3._0.Controladores
         public bool Actualizar(Cliente datos)
         {
             bool bandera = false;
-            string sql = "UPDATE clientes SET nombre='" + datos.Nombre + "', telefono='" + datos.Telefono + "', direccion='" + datos.Direccion + "', cedula='" + datos.Cedula + "' WHERE id= '" + datos.Id + "'";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "UPDATE clientes SET nombre = @Nombre, telefono = @Telefono, direccion = @Direccion, cedula = @Cedula WHERE id = @Id";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
+                comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
+                comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
+                comando.Parameters.AddWithValue("@Cedula", datos.Cedula);
+                comando.Parameters.AddWithValue("@Id", datos.Id);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
@@ -107,13 +126,19 @@ namespace INASOFT_3._0.Controladores
         public bool Insertar_NombreCliente(string nombre)
         {
             bool bandera = false;
-            string sql = "INSERT INTO Clientes(Nombre, Telefono, Direccion, Cedula) VALUES('"+ nombre +"','Ninguno', 'Ninguno', 'Ninguno')";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "INSERT INTO Clientes(Nombre, Telefono, Direccion, Cedula) VALUES(@Nombre, 'Ninguno', 'Ninguno', 'Ninguno')";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetro
+                comando.Parameters.AddWithValue("@Nombre", nombre);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

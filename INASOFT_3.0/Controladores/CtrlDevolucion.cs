@@ -84,13 +84,20 @@ namespace INASOFT_3._0.Controladores
         public bool Agregar_Devolucion(Devolucion devolucion)
         {
             bool bandera = false;
-            string sql = "CALL Agregar_Devolucion('"+ devolucion.Descripcion +"', "+ devolucion.Id_Factura +");";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Agregar_Devolucion(@Descripcion, @IdFactura)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Descripcion", devolucion.Descripcion);
+                comando.Parameters.AddWithValue("@IdFactura", devolucion.Id_Factura);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

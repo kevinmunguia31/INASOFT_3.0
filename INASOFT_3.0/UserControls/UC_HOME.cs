@@ -33,11 +33,14 @@ namespace INASOFT_3._0.UserControls
             lbUser.Text = Sesion.nombre;
             string fecha = DateTime.Now.ToString("yyyy/MM/dd");
             lbdate.Text = fecha;
+
+            Label_CantProductos.Visible = false;
+            Label_Ganancias.Visible = false;
             HayInternet();
             GraficoVentasDiarias();
             Cargar_ProductosMasVendidos();
             GraficaCargar_ProductosMasVendidos();
-            //GraficaCargar_TotalVentasxDias();
+            GraficaCargar_TotalVentasxDias();
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
 
             Lb_CantFactHoy.Text = ctrlHome.Cant_FacturasRealizadasHoy().ToString();
@@ -113,25 +116,51 @@ namespace INASOFT_3._0.UserControls
             ArrayList fechas = new ArrayList();
             ArrayList Ganancias = new ArrayList();
 
-            foreach (Reporte ganancia in ganancias)
+            if (ganancias.Count == 0)
             {
-                fechas.Add(ganancia.Fecha);
-                Ganancias.Add(ganancia.Ganancias);
-            }
+                Label_Ganancias.Visible = true;
+                Label_Ganancias.Text = "No se ha hecho ninguna transacción hoy";
+                Label_Ganancias.Location = new System.Drawing.Point(60, 70);
+                chart2.Visible = false;
 
-            chart2.Series[0].Points.DataBindXY(fechas, Ganancias);
+                // Agrega el TextBox al GroupBox
+                guna2GroupBox1.Controls.Add(Label_Ganancias);
+            }
+            else
+            {
+                foreach (Reporte ganancia in ganancias)
+                {
+                    fechas.Add(ganancia.Fecha);
+                    Ganancias.Add(ganancia.Ganancias);
+                }
+                chart2.Series[0].Points.DataBindXY(fechas, Ganancias);
+            }               
         }
 
         public void GraficaCargar_ProductosMasVendidos()
         {
             ArrayList nombreProducto = new ArrayList();
             ArrayList cantidad = new ArrayList();
-            foreach (DataGridViewRow fila in dataGridView2.Rows)
+
+            if (dataGridView2.RowCount == 0) // Cambié "null" a "0" para verificar si no hay filas.
             {
-                nombreProducto.Add(fila.Cells[0].Value);
-                cantidad.Add(fila.Cells[1].Value);
+                Label_CantProductos.Visible = true;
+                Label_CantProductos.Text = "No se ha vendido ningún producto hoy";
+                Label_CantProductos.Location = new System.Drawing.Point(10, 70);
+                chartTopProducts.Visible = false;
+
+                // Agrega el TextBox al GroupBox
+                guna2GroupBox6.Controls.Add(Label_CantProductos);
             }
-            chartTopProducts.Series[0].Points.DataBindXY(nombreProducto, cantidad);
+            else
+            {
+                foreach (DataGridViewRow fila in dataGridView2.Rows)
+                {
+                    nombreProducto.Add(fila.Cells[0].Value);
+                    cantidad.Add(fila.Cells[1].Value);
+                }
+                chartTopProducts.Series[0].Points.DataBindXY(nombreProducto.ToArray(), cantidad.ToArray()); // Agregué "ToArray" para asegurarme de que los datos sean arreglos.
+            }
         }
         private void UC_HOME_Load(object sender, EventArgs e)
         {

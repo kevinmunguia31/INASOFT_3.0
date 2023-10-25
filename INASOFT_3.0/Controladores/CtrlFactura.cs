@@ -151,13 +151,19 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "CALL Actualizar_FacturaAnulada('"+ facturas.Descripcion +"', "+ facturas.Id_Factura +");";
-
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Actualizar_FacturaAnulada(@Descripcion, @IdFactura)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Descripcion", facturas.Descripcion);
+                comando.Parameters.AddWithValue("@IdFactura", facturas.Id_Factura);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

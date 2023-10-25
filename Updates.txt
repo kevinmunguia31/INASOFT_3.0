@@ -157,3 +157,36 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
+
+DROP VIEW Mostrar_Producto;
+CREATE VIEW Mostrar_Producto AS SELECT 
+    a.ID, 
+    a.Codigo,
+    a.Nombre AS 'Producto', 
+    a.Estado AS 'Estado', 
+    a.Existencias, 
+    CONCAT('C$ ', FORMAT(a.Precio_Compra, 2)) AS 'Precio de compra', 
+    CONCAT('C$ ', FORMAT(a.Precio_Venta, 2)) AS 'Precio de venta', 
+    CONCAT('C$ ', FORMAT(a.Precio_Total, 2)) AS 'Precio total', 
+    a.Observacion AS 'Observaciones',
+	e.Tipos, 
+    CASE WHEN (e.ID) = 1 THEN d.Nombre ELSE e.Tipos END AS 'Tipo de entrada' 
+FROM Productos a 
+LEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto 
+LEFT JOIN Compras c ON c.ID = b.ID_Compra
+LEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID  
+INNER JOIN Tipos_Entradas e ON a.ID_Entrada = e.ID 
+GROUP BY 
+    a.ID, 
+    a.Codigo,
+    a.Nombre,
+    a.Estado,
+    a.Existencias, 
+    a.Existencias_Minimas,
+    CONCAT('C$ ', FORMAT(a.Precio_Compra, 2)),
+    CONCAT('C$ ', FORMAT(a.Precio_Venta, 2)),
+    CONCAT('C$ ', FORMAT(a.Precio_Total, 2)),
+    a.Observacion,
+	e.Tipos,
+    CASE WHEN (e.ID) = 1 THEN d.Nombre ELSE e.Tipos END
+ORDER BY a.ID;

@@ -1034,13 +1034,13 @@ namespace INASOFT_3._0.Controladores
 
             sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Reporte de salidas y entradas");
 
-            sl.SetCellValue("A2", "Estado");
+            sl.SetCellValue("A2", "ID");
 
-            sl.SetCellValue("B2", "Fecha");
+            sl.SetCellValue("B2", "Tipo de transacción");
 
-            sl.SetCellValue("C2", "Nombre del producto");
+            sl.SetCellValue("C2", "Fecha");
 
-            sl.SetCellValue("D2", "Cantidad");
+            sl.SetCellValue("D2", "Descripción");
 
             for (int fila = 0; fila < dt.Rows.Count; fila++)
             {

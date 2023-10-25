@@ -87,13 +87,26 @@ namespace INASOFT_3._0.Controladores
         public bool Insertar_Credito(Credito credito)
         {
             bool bandera = false;
-            string sql = "CALL Agregar_Credito('"+ credito.Dia_Inicio +"','" + credito.Dia_Vencimiento +"', "+ credito.Cargo +", '"+ credito.Estado +"', '"+ credito.Descripcion +"', "+ credito.Id_Factura +", "+ credito.Id_Cliente +", "+ credito.Id_TipoPago +");";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Agregar_Credito(@DiaInicio, @DiaVencimiento, @Cargo, @Estado, @Descripcion, @IdFactura, @IdCliente, @IdTipoPago)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@DiaInicio", credito.Dia_Inicio);
+                comando.Parameters.AddWithValue("@DiaVencimiento", credito.Dia_Vencimiento);
+                comando.Parameters.AddWithValue("@Cargo", credito.Cargo);
+                comando.Parameters.AddWithValue("@Estado", credito.Estado);
+                comando.Parameters.AddWithValue("@Descripcion", credito.Descripcion);
+                comando.Parameters.AddWithValue("@IdFactura", credito.Id_Factura);
+                comando.Parameters.AddWithValue("@IdCliente", credito.Id_Cliente);
+                comando.Parameters.AddWithValue("@IdTipoPago", credito.Id_TipoPago);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
@@ -109,13 +122,23 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "CALL Realziar_Abono("+ credito.Monto +", "+ credito.Saldo_Anterior +", "+ credito.Saldo_Nuevo +", '"+ credito.Descripcion_Abono +"', "+ credito.Id_Credito +", "+ credito.Id_Factura +");";
-
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Realizar_Abono(@Monto, @SaldoAnterior, @SaldoNuevo, @DescripcionAbono, @IdCredito, @IdFactura)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Monto", credito.Monto);
+                comando.Parameters.AddWithValue("@SaldoAnterior", credito.Saldo_Anterior);
+                comando.Parameters.AddWithValue("@SaldoNuevo", credito.Saldo_Nuevo);
+                comando.Parameters.AddWithValue("@DescripcionAbono", credito.Descripcion_Abono);
+                comando.Parameters.AddWithValue("@IdCredito", credito.Id_Credito);
+                comando.Parameters.AddWithValue("@IdFactura", credito.Id_Factura);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

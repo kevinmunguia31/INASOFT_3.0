@@ -44,6 +44,7 @@ namespace INASOFT_3._0
             this.label2 = new System.Windows.Forms.Label();
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,10 +56,9 @@ namespace INASOFT_3._0
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::INASOFT_3._0.Properties.Resources.icons8_settings_48;
-            this.pictureBox5.Location = new System.Drawing.Point(316, 0);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Location = new System.Drawing.Point(237, 0);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 41);
+            this.pictureBox5.Size = new System.Drawing.Size(30, 33);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 3;
             this.pictureBox5.TabStop = false;
@@ -78,10 +78,9 @@ namespace INASOFT_3._0
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Poppins ExtraLight", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(525, 296);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(394, 240);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(147, 25);
+            this.label6.Size = new System.Drawing.Size(114, 19);
             this.label6.TabIndex = 23;
             this.label6.Text = "Mostrar contraseña";
             // 
@@ -92,10 +91,9 @@ namespace INASOFT_3._0
             this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(680, 293);
-            this.guna2ToggleSwitch1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(510, 238);
             this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
-            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(47, 28);
+            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(35, 23);
             this.guna2ToggleSwitch1.TabIndex = 22;
             this.guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -118,13 +116,12 @@ namespace INASOFT_3._0
             this.btnLogin.Font = new System.Drawing.Font("Poppins", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Image = global::INASOFT_3._0.Properties.Resources.icons8_login_48;
-            this.btnLogin.Location = new System.Drawing.Point(447, 347);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.Location = new System.Drawing.Point(335, 282);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.BorderRadius = 15;
             this.btnLogin.ShadowDecoration.Depth = 3;
             this.btnLogin.ShadowDecoration.Enabled = true;
-            this.btnLogin.Size = new System.Drawing.Size(216, 57);
+            this.btnLogin.Size = new System.Drawing.Size(162, 46);
             this.btnLogin.TabIndex = 20;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -141,8 +138,9 @@ namespace INASOFT_3._0
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(356, 459);
+            this.guna2Panel1.Size = new System.Drawing.Size(267, 373);
             this.guna2Panel1.TabIndex = 24;
             // 
             // label1
@@ -150,9 +148,10 @@ namespace INASOFT_3._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(294, 430);
+            this.label1.Location = new System.Drawing.Point(220, 349);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 30);
+            this.label1.Size = new System.Drawing.Size(51, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "V.1.0.3";
             // 
@@ -161,9 +160,10 @@ namespace INASOFT_3._0
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(7, 51);
+            this.label4.Location = new System.Drawing.Point(5, 41);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(237, 30);
+            this.label4.Size = new System.Drawing.Size(192, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Inventory Assistan System";
             // 
@@ -172,18 +172,20 @@ namespace INASOFT_3._0
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins Medium", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 9);
+            this.label5.Location = new System.Drawing.Point(2, 7);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(228, 56);
+            this.label5.Size = new System.Drawing.Size(190, 46);
             this.label5.TabIndex = 1;
             this.label5.Text = "InaSoftware";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-65, 84);
+            this.pictureBox1.Location = new System.Drawing.Point(-49, 68);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(451, 343);
+            this.pictureBox1.Size = new System.Drawing.Size(338, 279);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -202,8 +204,8 @@ namespace INASOFT_3._0
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(379, 227);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Location = new System.Drawing.Point(284, 184);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '\0';
             this.txtPassword.PlaceholderForeColor = System.Drawing.Color.DarkGray;
@@ -212,7 +214,7 @@ namespace INASOFT_3._0
             this.txtPassword.ShadowDecoration.BorderRadius = 15;
             this.txtPassword.ShadowDecoration.Depth = 3;
             this.txtPassword.ShadowDecoration.Enabled = true;
-            this.txtPassword.Size = new System.Drawing.Size(348, 48);
+            this.txtPassword.Size = new System.Drawing.Size(261, 39);
             this.txtPassword.TabIndex = 28;
             // 
             // label2
@@ -221,9 +223,10 @@ namespace INASOFT_3._0
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(473, 121);
+            this.label2.Location = new System.Drawing.Point(355, 98);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 36);
+            this.label2.Size = new System.Drawing.Size(140, 28);
             this.label2.TabIndex = 27;
             this.label2.Text = "Inicio de Sesión";
             // 
@@ -241,8 +244,8 @@ namespace INASOFT_3._0
             this.txtUser.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtUser.ForeColor = System.Drawing.Color.Black;
             this.txtUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUser.Location = new System.Drawing.Point(379, 161);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUser.Location = new System.Drawing.Point(284, 131);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
             this.txtUser.PlaceholderForeColor = System.Drawing.Color.DarkGray;
@@ -251,25 +254,36 @@ namespace INASOFT_3._0
             this.txtUser.ShadowDecoration.BorderRadius = 15;
             this.txtUser.ShadowDecoration.Depth = 3;
             this.txtUser.ShadowDecoration.Enabled = true;
-            this.txtUser.Size = new System.Drawing.Size(348, 48);
+            this.txtUser.Size = new System.Drawing.Size(261, 39);
             this.txtUser.TabIndex = 26;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(501, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(376, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(104, 103);
+            this.pictureBox2.Size = new System.Drawing.Size(78, 84);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Import.Text = null;
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnLogin;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(752, 459);
+            this.ClientSize = new System.Drawing.Size(564, 373);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUser);
@@ -280,14 +294,11 @@ namespace INASOFT_3._0
             this.Controls.Add(this.btnLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INA-SOFTWARE vBeta 1.0.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
@@ -313,5 +324,6 @@ namespace INASOFT_3._0
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox txtUser;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
     }
 }

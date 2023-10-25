@@ -140,14 +140,26 @@ namespace INASOFT_3._0.Controladores
         public bool Actualizar(Productos productos)
         {
             bool bandera = false;
-            
-            string sql = "CALL Actualizar_Producto(" + productos.Id +", '"+ productos.Nombre +"', '"+ productos.Estado +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_venta +", '"+ productos.Observacion +"');";
 
-            MySqlConnection conexioBD = Conexion.getConexion();
-            conexioBD.Open();
             try
             {
+                MySqlConnection conexioBD = Conexion.getConexion();
+                conexioBD.Open();
+
+                string sql = "CALL Actualizar_Producto(@Id, @Nombre, @Estado, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion);";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Id", productos.Id);
+                comando.Parameters.AddWithValue("@Nombre", productos.Nombre);
+                comando.Parameters.AddWithValue("@Estado", productos.Estado);
+                comando.Parameters.AddWithValue("@Existencias", productos.Existencias);
+                comando.Parameters.AddWithValue("@ExistenciasMin", productos.Existencias_min);
+                comando.Parameters.AddWithValue("@PrecioCompra", productos.Precio_compra);
+                comando.Parameters.AddWithValue("@PrecioVenta", productos.Precio_venta);
+                comando.Parameters.AddWithValue("@Observacion", productos.Observacion);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

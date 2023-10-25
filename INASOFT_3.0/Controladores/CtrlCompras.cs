@@ -38,13 +38,28 @@ namespace INASOFT_3._0.Controladores
 
         public bool Insertar_Compra(Compras compra)
         {
-            
-            bool bandera = false; string sql = "CALL Realizar_Compra('" + compra.Nombre_venderdor + "', " + compra.Subtotal + ", " + compra.Descuento + "," + compra.Iva + ", '" + compra.Descripcion + "', '" + compra.Estado + "', " + compra.Id_usuario + ", "+ compra.Id_proveedor + ", "+ compra.Id_TipoPago +");";
+            bool bandera = false;
+
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Realizar_Compra(@NombreVendedor, @Subtotal, @Descuento, @Iva, @Descripcion, @Estado, @IdUsuario, @IdProveedor, @IdTipoPago)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@NombreVendedor", compra.Nombre_venderdor);
+                comando.Parameters.AddWithValue("@Subtotal", compra.Subtotal);
+                comando.Parameters.AddWithValue("@Descuento", compra.Descuento);
+                comando.Parameters.AddWithValue("@Iva", compra.Iva);
+                comando.Parameters.AddWithValue("@Descripcion", compra.Descripcion);
+                comando.Parameters.AddWithValue("@Estado", compra.Estado);
+                comando.Parameters.AddWithValue("@IdUsuario", compra.Id_usuario);
+                comando.Parameters.AddWithValue("@IdProveedor", compra.Id_proveedor);
+                comando.Parameters.AddWithValue("@IdTipoPago", compra.Id_TipoPago);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
@@ -78,14 +93,27 @@ namespace INASOFT_3._0.Controladores
         public bool Productos_Comprados(Productos productos)
         {
             bool bandera = false;
-            //ID_Producto - Codigo_Producto - Nombre_Producto - Cantidad - Existencias_Minimas - Precio_Compra - Precio_Venta - Observacion - ID_Compra
-            string sql = "CALL Productos_Comprados("+ productos.Id +", '"+ productos.Codigo +"', '"+ productos.Nombre +"', "+ productos.Existencias +", "+ productos.Existencias_min +", "+ productos.Precio_compra +", "+ productos.Precio_venta +", '"+ productos.Observacion +"', "+ productos.Id_Compra +");";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "CALL Productos_Comprados(@Id, @Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdCompra)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Id", productos.Id);
+                comando.Parameters.AddWithValue("@Codigo", productos.Codigo);
+                comando.Parameters.AddWithValue("@Nombre", productos.Nombre);
+                comando.Parameters.AddWithValue("@Existencias", productos.Existencias);
+                comando.Parameters.AddWithValue("@ExistenciasMin", productos.Existencias_min);
+                comando.Parameters.AddWithValue("@PrecioCompra", productos.Precio_compra);
+                comando.Parameters.AddWithValue("@PrecioVenta", productos.Precio_venta);
+                comando.Parameters.AddWithValue("@Observacion", productos.Observacion);
+                comando.Parameters.AddWithValue("@IdCompra", productos.Id_Compra);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }

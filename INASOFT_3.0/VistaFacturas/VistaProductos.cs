@@ -16,6 +16,8 @@ namespace INASOFT_3._0.VistaFacturas
         {
             InitializeComponent();
             Cargar_TablaProductos();
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
 
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {

@@ -62,7 +62,7 @@ namespace INASOFT_3._0.UserControls
 
         private void txtNewInvoice_Click(object sender, EventArgs e)
         {
-            Facturar1 facturar = new Facturar1();
+            AgregarCliente facturar = new AgregarCliente();
             facturar.Lb_User.Text = Modelos.Sesion.nombre;
             facturar.Show();
         }
@@ -107,7 +107,7 @@ namespace INASOFT_3._0.UserControls
 
                 DataGridViewRow row = dataGridFatura.Rows[id_pos];
 
-                DetailsInvoice frm = new DetailsInvoice(row.Cells[0].Value.ToString());
+                DetalleFacturaRealizada frm = new DetalleFacturaRealizada(row.Cells[0].Value.ToString());
 
                 frm.lbCodFactura.Text = row.Cells[1].Value.ToString();
                 frm.lbFecha.Text = row.Cells[3].Value.ToString();
@@ -162,7 +162,7 @@ namespace INASOFT_3._0.UserControls
             return 0.0;
         }
 
-        private void HandleAnulada(DetailsInvoice frm, int id_pos)
+        private void HandleAnulada(DetalleFacturaRealizada frm, int id_pos)
         {
             frm.Lb_Debe.Visible = false;
             frm.label20.Visible = false;
@@ -184,7 +184,7 @@ namespace INASOFT_3._0.UserControls
             frm.txtDescripcion.Text = ctrlFactura.Desc_FacturaAnulada(int.Parse(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString()));
         }
 
-        private void HandleCancelado(DetailsInvoice frm, DataGridViewRow row)
+        private void HandleCancelado(DetalleFacturaRealizada frm, DataGridViewRow row)
         {
             if (row.Cells[2].Value.ToString() == "Cancelado")
             {

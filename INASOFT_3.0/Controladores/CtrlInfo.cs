@@ -46,17 +46,26 @@ namespace INASOFT_3._0.Controladores
             }
             return lista;
         }
-        public bool insertar(InfoNegocio datos)
+        public bool Insertar(InfoNegocio datos)
         {
             bool bandera = false;
-
-            string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono) VALUES ('" + datos.Nombre + "','" + datos.Direccion + "','" + datos.NumRUC + "','" + datos.NombreAdmin + "','" + datos.Telefono + "')";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "INSERT INTO infogeneral (nombre_negocio, direccion_negocio, num_ruc, nombre_admin, telefono) VALUES (@Nombre, @Direccion, @NumRUC, @NombreAdmin, @Telefono)";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
+                comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
+                comando.Parameters.AddWithValue("@NumRUC", datos.NumRUC);
+                comando.Parameters.AddWithValue("@NombreAdmin", datos.NombreAdmin);
+                comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
@@ -68,17 +77,28 @@ namespace INASOFT_3._0.Controladores
 
             return bandera;
         }
-        public bool actualizar(InfoNegocio datos)
+
+        public bool Actualizar(InfoNegocio datos)
         {
             bool bandera = false;
-
-            string sql = "UPDATE infogeneral SET nombre_negocio='" + datos.Nombre + "', direccion_negocio='" + datos.Direccion + "', num_ruc='" + datos.NumRUC + "', nombre_admin='" + datos.NombreAdmin + "', telefono='" + datos.Telefono + "' WHERE idinfogeneral= '" + datos.Id + "'";
 
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
+
+                string sql = "UPDATE infogeneral SET nombre_negocio=@Nombre, direccion_negocio=@Direccion, num_ruc=@NumRUC, nombre_admin=@NombreAdmin, telefono=@Telefono WHERE idinfogeneral=@Id";
+
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
+                comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
+                comando.Parameters.AddWithValue("@NumRUC", datos.NumRUC);
+                comando.Parameters.AddWithValue("@NombreAdmin", datos.NombreAdmin);
+                comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
+                comando.Parameters.AddWithValue("@Id", datos.Id);
+
                 comando.ExecuteNonQuery();
                 bandera = true;
             }
