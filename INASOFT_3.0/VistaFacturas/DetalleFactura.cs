@@ -428,13 +428,14 @@ namespace INASOFT_3._0.VistaFacturas
                     pdfDoc.Open();
 
                     //Agregamos la imagen del banner al documento
-                    /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.icons8_wifi_apagado_50, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
-                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
-
-                    //img.SetAbsolutePosition(10,100);
-                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);*/
+                    string RutaImagen = Properties.Settings.Default.RutaImagen;
+                    if (!string.IsNullOrEmpty(RutaImagen) && File.Exists(RutaImagen))
+                    {
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(RutaImagen);
+                        img.ScaleToFit(100, 100);
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        pdfDoc.Add(img);
+                    }
 
 
                     //pdfDoc.Add(new Phrase("Hola Mundo"));

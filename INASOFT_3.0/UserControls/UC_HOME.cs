@@ -37,7 +37,7 @@ namespace INASOFT_3._0.UserControls
             GraficoVentasDiarias();
             Cargar_ProductosMasVendidos();
             GraficaCargar_ProductosMasVendidos();
-            GraficaCargar_TotalVentasxDias();
+            //GraficaCargar_TotalVentasxDias();
             Controladores.CtrlHome ctrlHome = new Controladores.CtrlHome();
 
             Lb_CantFactHoy.Text = ctrlHome.Cant_FacturasRealizadasHoy().ToString();

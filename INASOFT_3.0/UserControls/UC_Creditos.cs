@@ -413,8 +413,8 @@ namespace INASOFT_3._0.UserControls
                 filas += "<td>" + row.Cells["Estado"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Cargo"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Pendiente"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Fin del crédito"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Días vencidos"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Fin del credito"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Dias vencidos"].Value.ToString() + "</td>";
                 filas += "</tr>";
 
                 //Total += double.Parse(row.Cells["Total Final"].Value.ToString());

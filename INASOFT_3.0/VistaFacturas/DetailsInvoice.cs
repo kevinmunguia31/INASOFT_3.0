@@ -18,7 +18,7 @@ namespace INASOFT_3._0.VistaFacturas
 {
     public partial class DetailsInvoice : Form
     {
-        string imagen = "C:\\Users\\DELL 5410\\Desktop\\Ferreteria\\logo.png";
+        string rutaImagen = Properties.Settings.Default.RutaImagen;
         public DetailsInvoice(string id)
         {
             InitializeComponent();
@@ -26,6 +26,17 @@ namespace INASOFT_3._0.VistaFacturas
             txtIDFactura.Text = id;
             InfoProducts();
             InstalledPrintersCombo();
+
+            if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
+            {
+                // Carga la imagen desde la ruta especificada
+                Image imagen = Image.FromFile(rutaImagen);
+                pictureBox1.Image = imagen;
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
 
             //dataGridView1.DataSource = InfoProducts();
         }
@@ -66,7 +77,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                Console.WriteLine(ex.Message.ToString());
             }
         }
 
@@ -112,9 +123,9 @@ namespace INASOFT_3._0.VistaFacturas
             Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
-            Image img = Image.FromFile(imagen);
+            Image img = Image.FromFile(rutaImagen);
             e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
-            e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
+            e.Graphics.DrawString(lbDireccion.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono.Text, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
@@ -131,11 +142,11 @@ namespace INASOFT_3._0.VistaFacturas
                 // PROD                     //Cant                                 //Precio                         TOTAL
                 try
                 {
-                    string str = r.Cells[1].Value.ToString();
+                    string str = r.Cells[2].Value.ToString();
                     int desiredLength = 18;
                     string subStr = str.Substring(0, Math.Min(desiredLength, str.Length));
-                    float cant = float.Parse(r.Cells[3].Value.ToString());
-                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[4].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 18, width, 20));
+                    float cant = float.Parse(r.Cells[4].Value.ToString());
+                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[3].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[5].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 18, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
                 catch (ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }

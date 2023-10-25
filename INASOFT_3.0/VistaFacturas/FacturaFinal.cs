@@ -20,6 +20,7 @@ using DevExpress.Utils;
 using INASOFT_3._0.UserControls;
 using DevExpress.XtraCharts;
 using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
+using iTextSharp.text.pdf;
 
 
 namespace INASOFT_3._0.VistaFacturas
@@ -461,8 +462,10 @@ namespace INASOFT_3._0.VistaFacturas
             Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
-            //Image img = Image.FromFile(imagen);
-            //e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
+            string imagen = Properties.Settings.Default.RutaImagen;
+            
+            Image img = Image.FromFile(imagen);
+            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
             e.Graphics.DrawString(lbDireccionNegocio, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
@@ -483,8 +486,8 @@ namespace INASOFT_3._0.VistaFacturas
                     string str = r.Cells[1].Value.ToString();
                     int desiredLength = 18;
                     string subStr = str.Substring(0, Math.Min(desiredLength, str.Length));
-                    float cant = float.Parse(r.Cells[3].Value.ToString());
-                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[4].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                    float cant = float.Parse(r.Cells[2].Value.ToString());
+                    e.Graphics.DrawString(subStr.PadRight(desiredLength, ' ') + new string(' ', 3) + cant.ToString().PadRight(4, ' ') + new string(' ', 8) + float.Parse(r.Cells[3].Value.ToString().PadRight(4, ' ')) + new string(' ', 8) + float.Parse(r.Cells[4].Value.ToString().PadRight(5, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
                 catch (ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }

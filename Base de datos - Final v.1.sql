@@ -262,15 +262,15 @@ INSERT INTO Tipo_Usuarios VALUES(NULL, 'Empleado');
 INSERT INTO Usuarios VALUES (NULL,'Administrador','admin','05fe7461c607c33229772d402505601016a7d0ea',1);
 
 -- Insertar Cliente generico 
-INSERT INTO Clientes VALUES (NULL, 'Cliente génerico', NULL, NULL, NULL);
+INSERT INTO Clientes VALUES (NULL, 'Cliente generico', NULL, NULL, NULL);
 
 -- Insetar Entradas
 INSERT INTO Tipos_Entradas VALUES (NULL, 'Compra de productos');
-INSERT INTO Tipos_Entradas VALUES (NULL, 'Remisión de entrada');
+INSERT INTO Tipos_Entradas VALUES (NULL, 'Remision de entrada');
 
 -- Insetar Tipos de pagos
-INSERT INTO Tipos_Pagos VALUES (NULL, 'Dólares');
-INSERT INTO Tipos_Pagos VALUES (NULL, 'Córdobas');
+INSERT INTO Tipos_Pagos VALUES (NULL, 'Dolares');
+INSERT INTO Tipos_Pagos VALUES (NULL, 'Cordobas');
 INSERT INTO Tipos_Pagos VALUES (NULL, 'Transferencia');
 INSERT INTO Tipos_Pagos VALUES (NULL, 'Cheque');
 
@@ -411,7 +411,7 @@ BEGIN
     INSERT INTO Detalle_Remision (Cantidad, ID_Remision, ID_Producto)
     VALUES (_Cantidad, _ID_Remision, Aux_IDProducto);
     
-    INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos mediante una remisión de entrada de ', _Cantidad, ' ', _Nombre_Producto));
+    INSERT INTO HistorialTransacciones VALUES (NULL, 'Remision de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos mediante una remisión de entrada de ', _Cantidad, ' ', _Nombre_Producto));
 END //
 DELIMITER ;
 
@@ -439,7 +439,7 @@ BEGIN
 			
 			INSERT INTO Detalle_Remision (Cantidad, ID_Remision, ID_Producto) VALUES (_Cantidad, _ID_Remision, _ID_Producto);
 
-			INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de salida', NOW(), CONCAT('Se ha hecho una transacción de salida de productos mediante una remisión de salida de ', _Cantidad, ' ', _Nombre_Producto));
+			INSERT INTO HistorialTransacciones VALUES (NULL, 'Remision de salida', NOW(), CONCAT('Se ha hecho una transacción de salida de productos mediante una remisión de salida de ', _Cantidad, ' ', _Nombre_Producto));
 			
 			-- Actualizar existencias y precio total
 			UPDATE Productos SET Existencias = Existencias - _Cantidad WHERE ID = _ID_Producto;
@@ -533,7 +533,7 @@ BEGIN
 
     -- Insertar en la tabla Detalle_Compra
     INSERT INTO Detalle_Compra (Cantidad, ID_Compra, ID_Producto) VALUES (_Cantidad, _ID_Compra, Aux_IDProducto);
-	INSERT INTO HistorialTransacciones VALUES (NULL, 'Remisión de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una compra de ', _Cantidad, '  ', _Nombre_Producto));
+	INSERT INTO HistorialTransacciones VALUES (NULL, 'Remision de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una compra de ', _Cantidad, '  ', _Nombre_Producto));
 END //
 DELIMITER ;
 
@@ -644,7 +644,7 @@ BEGIN
             UPDATE Productos SET Estado = 'No activo' WHERE ID = _ID_Producto;
         END IF;
 	
-		INSERT INTO HistorialTransacciones VALUES (NULL, 'Facturación', NOW(), CONCAT('Se ha hecho una transacción de salida de productos de mendiante una facturacion de ', _Cantidad, '  ', Aux_NombreProducto));
+		INSERT INTO HistorialTransacciones VALUES (NULL, 'Facturacion', NOW(), CONCAT('Se ha hecho una transacción de salida de productos de mendiante una facturacion de ', _Cantidad, '  ', Aux_NombreProducto));
 			
         -- Confirmar la transacción
         COMMIT;
@@ -796,7 +796,7 @@ DELIMITER //
 			-- Actualizar Detalle_Factura
 			UPDATE Detalle_Factura SET Cantidad = Cantidad - _Cantidad WHERE ID_Producto = _ID_Producto AND ID_Factura = _ID_Factura;
 			
-			INSERT INTO HistorialTransacciones VALUES (NULL, 'Devolución', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una devolución de ', _Cantidad, '  ', Aux_NombreProducto));
+			INSERT INTO HistorialTransacciones VALUES (NULL, 'Devolucion', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos de mendiante una devolución de ', _Cantidad, '  ', Aux_NombreProducto));
 
 			-- Confirmar la transacción
 			COMMIT;
@@ -1146,7 +1146,7 @@ CREATE VIEW Mostrar_Factura AS SELECT
     CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
     CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
     CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
-    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolución',
+    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
     CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
     d.Nombre AS 'Nombre empleado'
 FROM Facturas a
@@ -1170,7 +1170,7 @@ CREATE VIEW Mostrar_TodasFactura AS  SELECT
     CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
     CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
     CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
-    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolución',
+    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
     CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
     d.Nombre AS 'Nombre empleado'
 FROM Facturas a
@@ -1204,7 +1204,7 @@ BEGIN
             CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
             CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
             CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
-            CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolución',
+            CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
             CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
             d.Nombre AS 'Nombre empleado'
         FROM Facturas a
@@ -1229,7 +1229,7 @@ BEGIN
 			CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
 			CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
 			CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
-			CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolución',
+			CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
 			CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
 			d.Nombre AS 'Nombre empleado'
 		FROM Facturas a
@@ -1390,9 +1390,9 @@ CREATE VIEW Mostrar_Creditos AS SELECT
     CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
     d.Nombre AS 'Cliente',
     a.Estado,
-    a.DiaDeCredito AS 'Inicio del crédito',
-    a.DiaDeVencimiento AS 'Fin del crédito',
-    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+    a.DiaDeCredito AS 'Inicio del credito',
+    a.DiaDeVencimiento AS 'Fin del credito',
+    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Dias vencidos',
     CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
     CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
     CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1424,9 +1424,9 @@ BEGIN
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Cliente',
             a.Estado,
-            a.DiaDeCredito AS 'Inicio del crédito',
-            a.DiaDeVencimiento AS 'Fin del crédito',
-    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            a.DiaDeCredito AS 'Inicio del credito',
+            a.DiaDeVencimiento AS 'Fin del credito',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Dias vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1445,9 +1445,9 @@ BEGIN
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Cliente',
             a.Estado,
-            a.DiaDeCredito AS 'Inicio del crédito',
-            a.DiaDeVencimiento AS 'Fin del crédito',
-            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            a.DiaDeCredito AS 'Inicio del credito',
+            a.DiaDeVencimiento AS 'Fin del credito',
+            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Dias vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1466,9 +1466,9 @@ BEGIN
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Cliente',
             a.Estado,
-            a.DiaDeCredito AS 'Inicio del crédito',
-            a.DiaDeVencimiento AS 'Fin del crédito',
-            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            a.DiaDeCredito AS 'Inicio del credito',
+            a.DiaDeVencimiento AS 'Fin del credito',
+            CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Dias vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',
@@ -1487,9 +1487,9 @@ BEGIN
             CONCAT('FAC-', LPAD(c.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
             d.Nombre AS 'Cliente',
             a.Estado,
-            a.DiaDeCredito AS 'Inicio del crédito',
-            a.DiaDeVencimiento AS 'Fin del crédito',
-    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Días vencidos',
+            a.DiaDeCredito AS 'Inicio del credito',
+            a.DiaDeVencimiento AS 'Fin del credito',
+    	    CASE WHEN (DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento)) < 0 THEN '0' ELSE DATEDIFF(CURRENT_DATE(), a.DiaDeVencimiento) END AS 'Dias vencidos',
             CONCAT('C$ ', FORMAT(a.Cargo, 2)) AS 'Cargo',
             CONCAT('C$ ', FORMAT(c.Debe, 2)) AS 'Pendiente',
             CONCAT('C$ ', FORMAT(SUM(e.Monto), 2)) AS 'Total de monto',

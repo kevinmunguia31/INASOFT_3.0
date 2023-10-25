@@ -125,7 +125,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(876, 44);
             this.panel1.TabIndex = 2;
@@ -143,7 +143,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.Location = new System.Drawing.Point(820, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 32);
             this.btnClose.TabIndex = 2;
@@ -165,7 +165,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -192,7 +192,7 @@ namespace INASOFT_3._0.VistaFacturas
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(756, 4);
-            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(39, 30);
             this.txtIdCliente.TabIndex = 6;
@@ -242,7 +242,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnBuscar.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
             this.btnBuscar.Location = new System.Drawing.Point(16, 146);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(847, 585);
             this.btnBuscar.TabIndex = 4;
@@ -260,12 +260,13 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
             this.errorProvider1.SetIconAlignment(this.guna2GroupBox5, System.Windows.Forms.ErrorIconAlignment.TopRight);
             this.guna2GroupBox5.Location = new System.Drawing.Point(673, 49);
-            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
             this.guna2GroupBox5.Size = new System.Drawing.Size(173, 71);
             this.guna2GroupBox5.TabIndex = 29;
             this.guna2GroupBox5.Text = "Precio de compra";
             this.guna2GroupBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.guna2GroupBox5.Visible = false;
             // 
             // label11
             // 
@@ -303,7 +304,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(1, 260);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(845, 324);
             this.guna2GroupBox2.TabIndex = 83;
@@ -314,7 +315,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_bill_40px;
             this.pictureBox4.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(41, 41);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -355,7 +356,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.datagridView2.EnableHeadersVisualStyles = false;
             this.datagridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.datagridView2.Location = new System.Drawing.Point(0, 287);
-            this.datagridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.datagridView2.Margin = new System.Windows.Forms.Padding(4);
             this.datagridView2.Name = "datagridView2";
             this.datagridView2.ReadOnly = true;
             this.datagridView2.RowHeadersVisible = false;
@@ -430,7 +431,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.datagridView1.EnableHeadersVisualStyles = false;
             this.datagridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.datagridView1.Location = new System.Drawing.Point(0, 48);
-            this.datagridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.datagridView1.Margin = new System.Windows.Forms.Padding(4);
             this.datagridView1.Name = "datagridView1";
             this.datagridView1.RowHeadersVisible = false;
             this.datagridView1.RowHeadersWidth = 51;
@@ -452,7 +453,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::INASOFT_3._0.Properties.Resources.icons8_trolley_40px;
             this.pictureBox3.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(41, 41);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -471,7 +472,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(593, 62);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 38);
             this.button1.TabIndex = 81;
@@ -520,7 +521,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.Cbx_Productos.FormattingEnabled = true;
             this.Cbx_Productos.IntegralHeight = false;
             this.Cbx_Productos.Location = new System.Drawing.Point(19, 60);
-            this.Cbx_Productos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cbx_Productos.Margin = new System.Windows.Forms.Padding(4);
             this.Cbx_Productos.Name = "Cbx_Productos";
             this.Cbx_Productos.Size = new System.Drawing.Size(327, 34);
             this.Cbx_Productos.TabIndex = 73;
@@ -529,7 +530,7 @@ namespace INASOFT_3._0.VistaFacturas
             // txtIdProduc
             // 
             this.txtIdProduc.Location = new System.Drawing.Point(804, 4);
-            this.txtIdProduc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdProduc.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdProduc.Name = "txtIdProduc";
             this.txtIdProduc.Size = new System.Drawing.Size(39, 30);
             this.txtIdProduc.TabIndex = 21;
@@ -553,9 +554,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox1.Controls.Add(this.SpinCantidad);
             this.groupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(1, 107);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(845, 145);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
@@ -656,7 +657,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnAñadirProducto.ForeColor = System.Drawing.Color.White;
             this.btnAñadirProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnAñadirProducto.Image")));
             this.btnAñadirProducto.Location = new System.Drawing.Point(643, 98);
-            this.btnAñadirProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAñadirProducto.Margin = new System.Windows.Forms.Padding(4);
             this.btnAñadirProducto.Name = "btnAñadirProducto";
             this.btnAñadirProducto.Size = new System.Drawing.Size(195, 38);
             this.btnAñadirProducto.TabIndex = 23;
@@ -854,9 +855,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.lbIdFactura.Controls.Add(this.label12);
             this.lbIdFactura.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIdFactura.Location = new System.Drawing.Point(16, 52);
-            this.lbIdFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbIdFactura.Margin = new System.Windows.Forms.Padding(4);
             this.lbIdFactura.Name = "lbIdFactura";
-            this.lbIdFactura.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbIdFactura.Padding = new System.Windows.Forms.Padding(4);
             this.lbIdFactura.Size = new System.Drawing.Size(460, 87);
             this.lbIdFactura.TabIndex = 120;
             this.lbIdFactura.TabStop = false;
@@ -915,9 +916,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox2.Controls.Add(this.Lb_FechaHoy);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(484, 52);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(379, 87);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
@@ -949,7 +950,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnGenerar.ForeColor = System.Drawing.Color.Black;
             this.btnGenerar.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
             this.btnGenerar.Location = new System.Drawing.Point(311, 738);
-            this.btnGenerar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(281, 44);
             this.btnGenerar.TabIndex = 110;
@@ -970,7 +971,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DetalleFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetalleFactura";
