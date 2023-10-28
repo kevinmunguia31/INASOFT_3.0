@@ -1,4 +1,5 @@
-﻿using INASOFT_3._0.Modelos;
+﻿using INASOFT_3._0.Controladores;
+using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,18 @@ namespace INASOFT_3._0.VistaFacturas
         public AgregarCliente()
         {
             InitializeComponent();
-            txtIdUser.Text = Sesion.id.ToString();
             Cargar_Clientes();
+            CargarDatosIniciales();
+        }
 
+        private void CargarDatosIniciales()
+        {
             Cbx_Clientes.SelectedIndex = -1;
+            txtIdUser.Text = Sesion.id.ToString();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            this.Hide();
             this.Close();
         }
 
@@ -40,23 +43,31 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Clientes.ValueMember = "ID";
             Cbx_Clientes.DisplayMember = "Nombre";
         }
-
         private void btnAddCliente_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "")
+            string nombre = txtNombre.Text.Trim();
+            string cedula = Txt_Cedula.Text.Trim();
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(cedula))
             {
-                MessageBox_Import.Show("Por favor introduzca el nombre del cliente");
+                MessageBox_Error.Show("Por favor introduzca los datos del cliente", "Error");
+                return;
             }
-            else
+
+            Cliente cliente = new Cliente();
+            cliente.Nombre = nombre;
+            cliente.Cedula = cedula;
+            Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
+            if (ctrlClientes.Insertar_NombreCedulaCliente(cliente))
             {
-                Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
-                if (ctrlClientes.Insertar_NombreCliente(txtNombre.Text))
-                {
-                    MessageBox_Ok.Show("Cliente Registrado Correctamente", "Registrar Cliete");
-                    txtNombre.Text = "";
-                    Limpiar();
-                    Cargar_Clientes();
-                }
+                MessageBox_Import.Show("Cliente registrado correctamente", "Aviso importante");
+
+                string log = $"[{DateTime.Now}] {Sesion.nombre} Se registró un usuario de cedula: {cedula}";
+                Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
+                ctrlInfo.InsertarLog(log);
+
+                Limpiar();
+                Cargar_Clientes();
             }
         }
 
@@ -65,35 +76,23 @@ namespace INASOFT_3._0.VistaFacturas
             if (Cbx_Clientes.SelectedIndex == -1)
             {
                 MessageBox_Import.Show("Tiene que seleccionar a un cliente", "Importante");
+                return;
             }
-            else
-            {
-                FacturaFinal frm = new FacturaFinal();
-                frm.txtIdCliente.Text = txtIdCliente.Text;
-                int limite = 20;
 
-                if (lbNombre.Text.Length > limite)
-                {
-                    frm.lbNombreCliente.Text = lbNombre.Text.Substring(0, limite) + "...";
-                }
-                else
-                {
-                    frm.lbNombreCliente.Text = lbNombre.Text;
-                }
+            FacturaFinal frm = new FacturaFinal();
+            frm.txtIdCliente.Text = txtIdCliente.Text;
+            int limite = 30;
 
-                if (Lb_User.Text.Length > limite)
-                {
-                    frm.Lb_User.Text = Lb_User.Text.Substring(0, limite) + "...";
-                }
-                else
-                {
-                    frm.Lb_User.Text = Lb_User.Text;
-                }
+            frm.lbNombreCliente.Text = TruncateString(lbNombre.Text, limite);
+            frm.Lb_User.Text = TruncateString(Lb_User.Text, limite);
 
-                frm.Show();
-                this.Hide();
-                this.Close();
-            }
+            frm.Show();
+            this.Hide();
+        }
+
+        private string TruncateString(string input, int length)
+        {
+            return input.Length > length ? input.Substring(0, length) + "..." : input;
         }
 
         private void TxtBuscar_Clientes_TextChanged(object sender, EventArgs e)
@@ -111,44 +110,11 @@ namespace INASOFT_3._0.VistaFacturas
             lbDireccion.Text = "";
             lbTelefono.Text = "";
             Cbx_Clientes.SelectedIndex = -1;
+            txtNombre.Text = "";
+            TxtBuscar_Clientes.Text = "";
+            Txt_Cedula.Text = "";
         }
 
-        private void Cbx_Clientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Cbx_Clientes.SelectedIndex == -1)
-                {
-                    Limpiar();
-                    txtIdCliente.Text = "";
-                }
-                else
-                {
-                    txtIdCliente.Text = Cbx_Clientes.SelectedValue.ToString();
-                    int id = int.Parse(txtIdCliente.Text);
-                    Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
-                    lbNombre.Text = ctrlClientes.Nombre_Cliente(id);
-                    lbTelefono.Text = ctrlClientes.Telefono_Cliente(id);
-                    lbDireccion.Text = ctrlClientes.Direccion_Cliente(id);
-                    lbCedula.Text = ctrlClientes.Cedula_Cliente(id);
-
-                    int limite = 15;
-
-                    if (lbDireccion.Text.Length > limite)
-                    {
-                        lbDireccion.Text = lbDireccion.Text.Substring(0, limite) + "...";
-                    }
-                    else
-                    {
-                        lbDireccion.Text = lbDireccion.Text;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error: " + ex.Message);
-            }
-        }
         private void Button1_Click_1(object sender, EventArgs e)
         {
             Cargar_Clientes();
@@ -157,6 +123,34 @@ namespace INASOFT_3._0.VistaFacturas
         private void Timer1_Tick(object sender, EventArgs e)
         {
             lbFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void Cbx_Clientes_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (Cbx_Clientes.SelectedIndex == -1)
+            {
+                Limpiar();
+                txtIdCliente.Text = "";
+                return;
+            }
+
+            try
+            {
+                int id = (int)Cbx_Clientes.SelectedValue;
+                Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
+                Cliente cliente = new Cliente();
+                cliente = ctrlClientes.MostrarDatosClientes(id);
+
+                txtIdCliente.Text = id.ToString();
+                lbNombre.Text = cliente.Nombre;
+                lbTelefono.Text = cliente.Telefono;
+                lbDireccion.Text = TruncateString(cliente.Direccion, 30);
+                lbCedula.Text = cliente.Cedula;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores (puedes mostrar un MessageBox o hacer otra acción)
+            }
         }
     }
 }

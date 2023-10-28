@@ -19,8 +19,14 @@ namespace INASOFT_3._0.VistaFacturas
         public Anular_Factura(string id_Factura)
         {
             InitializeComponent();
-            Txt_Facturar.Text = id_Factura;
             CargarDetalleDevolucion();
+            CargarDatosIniciales(id_Factura);
+
+        }
+
+        private void CargarDatosIniciales(string id_Factura)
+        {
+            Txt_Facturar.Text = id_Factura;
 
             foreach (DataGridViewBand band in datagridView1.Columns)
             {
@@ -78,6 +84,11 @@ namespace INASOFT_3._0.VistaFacturas
                 UserControls.UC_Factura uc_Factura = new UserControls.UC_Factura();
                 uc_Factura.CargarFacturas();
                 MessageBox_Import.Show($"La fact. {Lb_Factura.Text} fue anulada con éxito\n", "Importante");
+
+                string log = $"[{DateTime.Now}] {Sesion.nombre} Se ha anulado la factura: {Lb_Factura}";
+                Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
+                ctrlInfo.InsertarLog(log);
+
                 this.Close();
             }
         }

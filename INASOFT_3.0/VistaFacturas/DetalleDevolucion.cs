@@ -15,18 +15,24 @@ namespace INASOFT_3._0.VistaFacturas
         public DetalleDevolucion(string id_devolucion)
         {
             InitializeComponent();
+            CargarDatosIniciales(id_devolucion);
+            CargarDetalleDevolucion();
+        }
+
+        private void CargarDatosIniciales(string id_devolucion)
+        {
             Txt_Devolucion.Text = id_devolucion;
             Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
             txtDescripcion.Text = ctrlDevolucion.Desc_Devolucion(int.Parse(id_devolucion));
-            CargarDetalleDevolucion();
+        }
 
+        public void CargarDetalleDevolucion()
+        {
             foreach (DataGridViewBand band in datagridView1.Columns)
             {
                 band.ReadOnly = true;
             }
-        }
-        public void CargarDetalleDevolucion()
-        {
+
             Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
             datagridView1.DataSource = ctrlDevolucion.DetalleDevolución(Txt_Devolucion.Text);
         }
@@ -37,35 +43,28 @@ namespace INASOFT_3._0.VistaFacturas
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToString("hh:mm:ss tt");
+            Lb_FechaHoy.Text = DateTime.Now.ToLongDateString() + " - " + DateTime.Now.ToString("hh:mm:ss tt");
         }
 
-        private void DatagridView1_MouseClick_1(object sender, MouseEventArgs e)
+        private void datagridView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                int pos = datagridView1.HitTest(e.X, e.Y).RowIndex;
-                if (pos > -1 && pos != null)
+                int rowIndex = datagridView1.HitTest(e.X, e.Y).RowIndex;
+
+                if (rowIndex >= 0)
                 {
-                    if (GroupB_Detalle.Text == datagridView1.Rows[pos].Cells[0].Value.ToString())
+                    string selectedProductName = datagridView1.Rows[rowIndex].Cells[2].Value.ToString();
+
+                    if (GroupB_Detalle.Text == selectedProductName)
                     {
-                        MessageBoxError.Show("Ya estás trabajando con esté producto");
+                        MessageBoxError.Show("Ya estás trabajando con este producto");
                     }
                     else
                     {
-                        GroupB_Detalle.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
-                        int limite = 25;
-                        if (GroupB_Detalle.Text.Length > limite)
-                        {
-                            GroupB_Detalle.Text = "Detalle de " + GroupB_Detalle.Text.Substring(0, limite) + "...";
-                        }
-                        else
-                        {
-                            GroupB_Detalle.Text = "Detalle de " + GroupB_Detalle.Text;
-                        }
-                        lbCodProdu.Text = datagridView1.Rows[pos].Cells[0].Value.ToString();
-                        lbExistencias.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
-                        //GroupB_Detalle.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
+                        GroupB_Detalle.Text = "Detalle de " + selectedProductName.Substring(0, Math.Min(selectedProductName.Length, 25)) + "...";
+                        lbCodProdu.Text = datagridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                        lbExistencias.Text = datagridView1.Rows[rowIndex].Cells[4].Value.ToString();
                     }
                 }
             }

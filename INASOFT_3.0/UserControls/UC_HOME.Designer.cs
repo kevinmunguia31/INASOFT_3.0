@@ -97,6 +97,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Elipse8 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.Label_Ganancias = new System.Windows.Forms.Label();
             this.Label_CantProductos = new System.Windows.Forms.Label();
+            this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Error = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Ok = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.MessageBox_Warnings = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -829,6 +833,42 @@ namespace INASOFT_3._0.UserControls
             this.Label_CantProductos.TabIndex = 25;
             this.Label_CantProductos.Text = "...";
             // 
+            // MessageBox_Import
+            // 
+            this.MessageBox_Import.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Import.Caption = null;
+            this.MessageBox_Import.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Import.Parent = null;
+            this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.MessageBox_Import.Text = null;
+            // 
+            // MessageBox_Error
+            // 
+            this.MessageBox_Error.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Error.Caption = null;
+            this.MessageBox_Error.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+            this.MessageBox_Error.Parent = null;
+            this.MessageBox_Error.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Error.Text = null;
+            // 
+            // MessageBox_Ok
+            // 
+            this.MessageBox_Ok.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Ok.Caption = null;
+            this.MessageBox_Ok.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            this.MessageBox_Ok.Parent = null;
+            this.MessageBox_Ok.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Ok.Text = null;
+            // 
+            // MessageBox_Warnings
+            // 
+            this.MessageBox_Warnings.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.MessageBox_Warnings.Caption = null;
+            this.MessageBox_Warnings.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            this.MessageBox_Warnings.Parent = null;
+            this.MessageBox_Warnings.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.MessageBox_Warnings.Text = null;
+            // 
             // UC_HOME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -948,5 +988,9 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label Label_Ganancias;
         private System.Windows.Forms.Label Label_CantProductos;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Error;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Ok;
+        private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Warnings;
     }
 }

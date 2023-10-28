@@ -190,3 +190,35 @@ GROUP BY
 	e.Tipos,
     CASE WHEN (e.ID) = 1 THEN d.Nombre ELSE e.Tipos END
 ORDER BY a.ID;
+
+DROP PROCEDURE Actualizar_facturacion;
+DELIMITER //
+CREATE PROCEDURE Actualizar_facturacion(_ID_Devolucion INT, _ID_Factura INT)
+BEGIN
+    DECLARE Aux_Total DOUBLE;
+
+    -- Verificar si la devolución está relacionada con la factura _ID_Factura
+    SELECT SUM(a.Precio_Venta * b.Cantidad) INTO Aux_Total
+    FROM Productos a
+    INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Producto
+    INNER JOIN Devoluciones c ON b.ID_Devolucion = c.ID
+    WHERE c.ID = _ID_Devolucion AND c.ID_Factura = _ID_Factura;
+
+    IF Aux_Total IS NOT NULL THEN
+        -- Actualizar los valores en la factura
+        UPDATE Facturas
+        SET
+            Subtotal = Subtotal - Aux_Total,
+            Total_Final = Total_Final - Aux_Total
+        WHERE ID = _ID_Factura;
+
+        -- Calcular la Devolución y actualizar la Devolución en la factura
+        UPDATE Facturas
+        SET Devolucion =  Efectivo - Total_Final
+        WHERE ID = _ID_Factura;
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'La devolución no está relacionada con la factura especificada.';
+    END IF;
+END //
+DELIMITER ;

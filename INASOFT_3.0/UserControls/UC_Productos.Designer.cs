@@ -573,6 +573,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
             this.pictureBox1.Location = new System.Drawing.Point(4, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -1120,6 +1121,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_50px;
             this.pictureBox4.Location = new System.Drawing.Point(4, 4);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";

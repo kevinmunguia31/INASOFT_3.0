@@ -41,25 +41,54 @@ namespace INASOFT_3._0.VistaFacturas
         public FacturaFinal()
         {
             InitializeComponent();
-            //InfoProducts();
             InstalledPrintersCombo();
             InfoNegocio();
             Cargar_CbxProductos();
             CargarTiposPagos();
-            Cargar_TablaProducto();
-            Limpiar();
+            CargarDatosIniciales();
+            CargarDataGridView();
+            Cargar_Total();
+        }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(SpinCantidad, "");
+            timer.Stop();
+        }
+
+        private void CargarDatosIniciales()
+        {
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
             lbIdFactura.Text = lbIdFactura.Text + " " + ctrlFactura.Codigo_Factura().ToString();
             Lb_AuxCodFac.Text = ctrlFactura.Codigo_Factura().ToString();
             txtIdUsuario.Text = Sesion.id.ToString();
             Lb_User.Text = Sesion.nombre;
-            dataGridView1.Columns[5].Visible = false;
 
-            /*dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[1].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = true;
-            dataGridView1.Columns[4].ReadOnly = true;*/
+            Txt_descuento.Enabled = false;
+            RBtn_AlContado.Checked = true;
+            radioButton1.Checked = true;
+            btnFacturar.Enabled = false;
+            Groupbox_fact.Enabled = false;
+            CbxTipoPagos.SelectedIndex = 1;
+            Cbx_Productos.SelectedIndex = -1;
+
+            timer = new Timer();
+            timer.Interval = 5000;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void CargarDataGridView()
+        {
+            dataTable.Columns.Add("Código");
+            dataTable.Columns.Add("Nombre Producto");
+            dataTable.Columns.Add("Cantidad");
+            dataTable.Columns.Add("Precio");
+            dataTable.Columns.Add("Total");
+            dataTable.Columns.Add("ID");
+
+            dataGridView1.DataSource = dataTable;
+
+            dataGridView1.Columns[5].Visible = false;
 
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
@@ -72,23 +101,6 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 band.ReadOnly = true;
             }
-            Cargar_Total();
-
-            Txt_descuento.Enabled = false;
-            RBtn_AlContado.Checked = true;
-            radioButton1.Checked = true;
-            btnFacturar.Enabled = false;
-            Groupbox_fact.Enabled = false;
-            CbxTipoPagos.SelectedIndex = 1;
-
-            timer = new Timer();
-            timer.Interval = 5000; // 5000 milisegundos = 5 segundos
-            timer.Tick += Timer_Tick;
-        }
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(SpinCantidad, "");
-            timer.Stop();
         }
 
         private void Cargar_CbxProductos()
@@ -97,7 +109,7 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Productos.Items.Clear();
 
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo();
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo("");
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }
@@ -137,19 +149,6 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show("Error: " + ex);
             }
         }
-
-        public void Cargar_TablaProducto()
-        {
-            dataTable.Columns.Add("Código");
-            dataTable.Columns.Add("Nombre Producto");
-            dataTable.Columns.Add("Cantidad");
-            dataTable.Columns.Add("Precio");
-            dataTable.Columns.Add("Total");
-            dataTable.Columns.Add("ID");
-
-            dataGridView1.DataSource = dataTable;
-        }
-
         public void Limpiar()
         {
             Lb_Precio_Venta.Text = "...";
@@ -189,43 +188,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        /*
-        public void InfoProducts()
-        {
-            dataGridView1.AutoGenerateColumns = false;
-
-            // Define las columnas que deseas mostrar en el DataGridView
-            DataGridViewTextBoxColumn columnaCod = new DataGridViewTextBoxColumn();
-            columnaCod.DataPropertyName = "Codigo_producto";
-            columnaCod.HeaderText = "Cod. Producto";
-
-            DataGridViewTextBoxColumn columnaProd = new DataGridViewTextBoxColumn();
-            columnaProd.DataPropertyName = "Nombre_producto";
-            columnaProd.HeaderText = "Nombre producto";
-
-            DataGridViewTextBoxColumn columnaCant = new DataGridViewTextBoxColumn();
-            columnaCant.DataPropertyName = "Cantidad";
-            columnaCant.HeaderText = "Cantidad";
-
-            DataGridViewTextBoxColumn columnaPrecio = new DataGridViewTextBoxColumn();
-            columnaPrecio.DataPropertyName = "Precio";
-            columnaPrecio.HeaderText = "Precio";
-
-            DataGridViewTextBoxColumn columnaTotal = new DataGridViewTextBoxColumn();
-            columnaTotal.DataPropertyName = "Total";
-            columnaTotal.HeaderText = "Total";
-
-            // Agrega las columnas al DataGridView
-            dataGridView1.Columns.Add(columnaCod);
-            dataGridView1.Columns.Add(columnaProd);
-            dataGridView1.Columns.Add(columnaCant);
-            dataGridView1.Columns.Add(columnaPrecio);
-            dataGridView1.Columns.Add(columnaTotal);
-
-            // Establece la lista de personas como origen de datos
-            dataGridView1.DataSource = lista_Productos;   
-        }
-        */
+       
         private void InstalledPrintersCombo()
         {
             String pkInstalledPrinters;
@@ -241,7 +204,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             if (txtIdCliente.Text == "1")
             {
-                MessageBox_Import.Show("En está opción no se permitirá facturar al crédito", "AVISO");
+                MessageBox_Import.Show("En está opción no se permitirá facturar al crédito", "Aviso Importante");
                 lbNombreCliente.Text = "Cliente génerico";
 
                 RBtn_Credito.Visible = false;
@@ -280,21 +243,14 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void guna2TextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!Txt_Efectivo.Text.Contains(".")))
-            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
                 e.Handled = false;
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                // Desactiva otras teclas
                 e.Handled = true;
             }
         }
@@ -377,6 +333,17 @@ namespace INASOFT_3._0.VistaFacturas
 
                     if (RBtn_Credito.Checked)
                     {
+                        if (DateTime_inicio.Text == DateTime_vencimiento.Text)
+                        {
+                            MessageBox_Error.Show("La fecha de vencimiento del crédito no puede ser igual a la fecha de inicio", "Error");
+                            return;
+                        }
+                        if (TxtMonto.Text == lbTotal.Text || double.Parse(TxtMonto.Text) >= double.Parse(lbTotal.Text))
+                        {
+                            MessageBox_Error.Show("No puede dejar un monto igual o mayor al Total de la compra, por favor escoja la opción 'Al contado'\n", "Error");
+                            return;
+                        }
+
                         double monto = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text));
                         double saldo_anterior = double.Parse(lbSubtotal.Text);
                         double saldo_nuevo = saldo_anterior - monto; ;
@@ -554,21 +521,14 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void Txt_descuento_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!Txt_descuento.Text.Contains(".")))
-            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
                 e.Handled = false;
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                // Desactiva otras teclas
                 e.Handled = true;
             }
         }
@@ -590,21 +550,14 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void TxtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!TxtMonto.Text.Contains(".")))
-            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
                 e.Handled = false;
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                // Desactiva otras teclas
                 e.Handled = true;
             }
         }
@@ -643,37 +596,40 @@ namespace INASOFT_3._0.VistaFacturas
         {
             try
             {
+                int id;
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
-                    SpinCantidad.Enabled = false; // Si no hay selección, desactiva SpinCantidad
+                    SpinCantidad.Enabled = false;// Si no hay selección, desactiva SpinCantidad
+                    id = 0; 
                     return; // Salir del método ya que no hay selección válida
                 }
+                else
+                {
+                    id = int.Parse(Cbx_Productos.SelectedValue.ToString());
+                    Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
 
-                int id = int.Parse(Cbx_Productos.SelectedValue.ToString());
-                Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
+                    Productos productos = ctrlProductos.MostrarDatosProductos(id);
 
-                Productos productos = ctrlProductos.MostrarDatosProductos(id);
+                    txtIdProduc.Text = id.ToString();
+                    lbCodProdu.Text = productos.Codigo.ToString();
+                    lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
+                    lbExistencias.Text = productos.Existencias.ToString();
+                    Lb_Precio_Venta.Text = productos.Precio_venta.ToString();
 
-                txtIdProduc.Text = id.ToString();
-                lbCodProdu.Text = productos.Codigo.ToString();
-                lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
-                lbExistencias.Text = productos.Existencias.ToString();
-                Lb_Precio_Venta.Text = productos.Precio_venta.ToString();
+                    errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
+                    lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
 
-                errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
-                lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
-
-                SpinCantidad.Enabled = true; // Habilitar SpinCantidad después de seleccionar un producto
+                    SpinCantidad.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
                 // Manejar la excepción aquí
-                // MessageBox.Show("Error: " + ex);
+                //MessageBox.Show("Error: " + ex);
             }
         }
 
-        // Función para limitar la longitud de una cadena y agregar "..." si es necesario
         private string LimitarLongitud(string input, int maxLength)
         {
             if (input.Length > maxLength)
@@ -686,7 +642,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.BuscarProductoActivo(TxtBuscar_Productos.Text);
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo(TxtBuscar_Productos.Text);
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }

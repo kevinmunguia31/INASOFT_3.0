@@ -71,7 +71,7 @@ namespace INASOFT_3._0.Controladores
         public int Total_FacturasAnuldasHoy()
         {
             int total = 0;
-            string SQL = "SELECT COUNT(ID) FROM Facturas WHERE Estado = 'Anulada';";
+            string SQL = "SELECT COUNT(ID) FROM Facturas WHERE Estado = 'Anulada' WHERE DATE(fecha) = CURDATE();";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

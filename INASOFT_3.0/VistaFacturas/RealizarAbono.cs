@@ -194,26 +194,27 @@ namespace INASOFT_3._0.VistaFacturas
             e.Graphics.DrawString("        Recibi Conforme     ", font3, Brushes.Black, new RectangleF(45, y += 20, width, 20));
         }
 
-        private void TxtMonto_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void TxtMonto_TextChanged_1(object sender, EventArgs e)
         {
-            double pendiente = double.Parse(Lb_Pendiente.Text);
-            double aux_pendiente = double.Parse(Lb_Pendiente_aux.Text);
-            double monto;
             try
             {
-                if (TxtMonto.Text == "")
+                double aux_pendiente;
+                if (double.TryParse(Lb_Pendiente_aux.Text, out aux_pendiente))
                 {
-                    Lb_Pendiente.Text = Lb_Pendiente_aux.Text;
-                }
-                else
-                {
-                    monto = double.Parse(TxtMonto.Text);
-                    Lb_Pendiente.Text = (aux_pendiente - monto).ToString();
+                    if (double.TryParse(TxtMonto.Text, out double monto))
+                    {
+                        Lb_Pendiente.Text = (aux_pendiente - monto).ToString();
+                    }
+                    else if (string.IsNullOrWhiteSpace(TxtMonto.Text))
+                    {
+                        Lb_Pendiente.Text = Lb_Pendiente_aux.Text;
+                    }
+                    else
+                    {
+                        // Aquí puedes manejar el caso en que la entrada no sea un número válido
+                        TxtMonto.Text = "";
+                        Lb_Pendiente.Text = Lb_Pendiente_aux.Text;
+                    }
                 }
             }
             catch (Exception ex)
@@ -225,54 +226,30 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void TxtMonto_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!TxtMonto.Text.Contains(".")))
-            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
                 e.Handled = false;
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                // Desactiva otras teclas
                 e.Handled = true;
             }
         }
 
         private void Txt_Efectivo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
-            {
-                e.Handled = false;
-            }
-            else if ((e.KeyChar == '.') && (!Txt_Efectivo.Text.Contains(".")))
-            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
                 e.Handled = false;
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                // Desactiva otras teclas
                 e.Handled = true;
             }
-        }
-
-        private void GBox_Cod_Fact_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

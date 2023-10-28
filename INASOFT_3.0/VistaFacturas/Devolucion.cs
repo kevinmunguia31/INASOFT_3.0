@@ -20,18 +20,22 @@ namespace INASOFT_3._0.VistaFacturas
         public Devolucion(string id_factura)
         {
             InitializeComponent();
-            Txt_Factura.Text = id_factura;
+            CargarDatosIniciales(id_factura);
             CargarDetalleFacturas();
             cargar_tabla();
             Cargar_Total();
 
+        }
+        private void CargarDatosIniciales(string id_factura)
+        {
+            Txt_Factura.Text = id_factura;
+        }
+        public void CargarDetalleFacturas()
+        {
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
                 band.ReadOnly = true;
             }
-        }
-        public void CargarDetalleFacturas()
-        {
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
             datagridView1.DataSource = ctrlFactura.DetalleFactura(Txt_Factura.Text);
         }
@@ -215,6 +219,10 @@ namespace INASOFT_3._0.VistaFacturas
                     uC_Factura.CargarFacturas();
                     MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n", "Importante");
 
+                    CtrlInfo ctrlInfo = new CtrlInfo();
+                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Se ha realizado una devolución en la Fact." + lbIdFactura.Text;
+                    ctrlInfo.InsertarLog(log);
+
                     this.Hide();
                     this.Close();
                 }
@@ -296,16 +304,14 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 Lb_EstadoFactura.ForeColor = Color.Orange;
             }
-
-            if(double.Parse(Lb_Debe.Text) > 0.00)
+            
+            if(Lb_Debe.Text != "C$ 0.00")
             {
                 Lb_Debe.ForeColor = Color.Red;
-                label22.ForeColor = Color.Red;
             }
             else
             {
                 Lb_Debe.ForeColor = Color.Green;
-                label22.ForeColor = Color.Green;
             }
         }
 

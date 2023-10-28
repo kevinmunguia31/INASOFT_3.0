@@ -20,12 +20,12 @@ using System.Windows.Forms;
 
 namespace INASOFT_3._0.VistaFacturas
 {
-    public partial class DetalleFactura : Form
+    public partial class Proforma : Form
     {
         public DataTable dataTable = new DataTable();
         private Timer timer;
 
-        public DetalleFactura()
+        public Proforma()
         {
             InitializeComponent();
 
@@ -37,13 +37,14 @@ namespace INASOFT_3._0.VistaFacturas
             cargar_tabla();
             Limpiar();
 
-            datagridView1.Columns[0].ReadOnly = true;
-            datagridView1.Columns[1].ReadOnly = true;
-            datagridView1.Columns[4].ReadOnly = true;
-
             datagridView2.Rows.Add("Total", "", "", "", 0);
 
             foreach (DataGridViewBand band in datagridView2.Columns)
+            {
+                band.ReadOnly = true;
+            }
+
+            foreach (DataGridViewBand band in datagridView1.Columns)
             {
                 band.ReadOnly = true;
             }

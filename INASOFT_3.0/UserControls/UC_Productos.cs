@@ -34,7 +34,7 @@ namespace INASOFT_3._0.UserControls
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
-            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
 
             dataGridView2.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -273,11 +273,11 @@ namespace INASOFT_3._0.UserControls
             lbCodigo.Text = dataGridView1.Rows[pos].Cells[1].Value.ToString();
             lbNameP.Text = dataGridView1.Rows[pos].Cells[2].Value.ToString();
             lbExistencias.Text = dataGridView1.Rows[pos].Cells[4].Value.ToString();
-            lbPrecioCompra.Text = dataGridView1.Rows[pos].Cells[6].Value.ToString();
-            lbPrecioVenta.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
-            lbPrecioTotal.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
-            lbObservaciones.Text = dataGridView1.Rows[pos].Cells[9].Value.ToString();
-            lbProveedor.Text = dataGridView1.Rows[pos].Cells[11].Value.ToString();
+            lbPrecioCompra.Text = dataGridView1.Rows[pos].Cells[5].Value.ToString();
+            lbPrecioVenta.Text = dataGridView1.Rows[pos].Cells[6].Value.ToString();
+            lbPrecioTotal.Text = dataGridView1.Rows[pos].Cells[7].Value.ToString();
+            lbObservaciones.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
+            lbProveedor.Text = dataGridView1.Rows[pos].Cells[10].Value.ToString();
 
             if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) <= 0)
             {

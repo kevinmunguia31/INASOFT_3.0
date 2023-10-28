@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace INASOFT_3._0.Modelos
 {
-    class Cliente
+    public class Cliente
     {
         private int id;
         private string nombre;

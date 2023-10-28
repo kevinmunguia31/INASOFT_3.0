@@ -323,7 +323,7 @@
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridView1.Size = new System.Drawing.Size(477, 244);
             this.datagridView1.TabIndex = 119;
-            this.datagridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DatagridView1_MouseClick_1);
+            this.datagridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.datagridView1_MouseClick);
             // 
             // Txt_Devolucion
             // 
@@ -481,6 +481,7 @@
             this.GroupB_Detalle.Controls.Add(this.lbExistencias);
             this.GroupB_Detalle.Controls.Add(this.lbCodProdu);
             this.GroupB_Detalle.Controls.Add(this.label10);
+            this.GroupB_Detalle.CustomBorderThickness = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.GroupB_Detalle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupB_Detalle.ForeColor = System.Drawing.Color.Black;
             this.GroupB_Detalle.Location = new System.Drawing.Point(495, 260);
@@ -510,6 +511,7 @@
             // guna2GroupBox3
             // 
             this.guna2GroupBox3.Controls.Add(this.txtDescripcion);
+            this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.guna2GroupBox3.Enabled = false;
             this.guna2GroupBox3.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -537,7 +539,7 @@
             this.txtDescripcion.ForeColor = System.Drawing.Color.White;
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtDescripcion.IconLeft")));
-            this.txtDescripcion.Location = new System.Drawing.Point(0, 40);
+            this.txtDescripcion.Location = new System.Drawing.Point(0, 36);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
@@ -546,7 +548,7 @@
             this.txtDescripcion.PlaceholderText = "Descripción";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescripcion.SelectedText = "";
-            this.txtDescripcion.Size = new System.Drawing.Size(399, 83);
+            this.txtDescripcion.Size = new System.Drawing.Size(399, 87);
             this.txtDescripcion.TabIndex = 25;
             // 
             // Lb_FechaHoy

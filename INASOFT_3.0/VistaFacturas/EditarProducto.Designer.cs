@@ -429,6 +429,7 @@
             this.txtPrecioVenta.SelectedText = "";
             this.txtPrecioVenta.Size = new System.Drawing.Size(191, 30);
             this.txtPrecioVenta.TabIndex = 13;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
             // 
@@ -455,6 +456,7 @@
             this.txtPrecioCompra.SelectedText = "";
             this.txtPrecioCompra.Size = new System.Drawing.Size(191, 30);
             this.txtPrecioCompra.TabIndex = 21;
+            this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
             // label13
             // 

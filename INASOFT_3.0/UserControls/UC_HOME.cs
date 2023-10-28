@@ -64,7 +64,7 @@ namespace INASOFT_3._0.UserControls
             }
             else
             {
-                MessageBox.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox_Import.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones\n", "Información");
             }
         }
 

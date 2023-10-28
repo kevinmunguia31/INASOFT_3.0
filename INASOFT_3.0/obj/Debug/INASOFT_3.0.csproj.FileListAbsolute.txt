@@ -962,7 +962,6 @@ C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserCont
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.UserControls.UC_Usuarios.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Anular_Factura.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleDevolucion.resources
-C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFactura.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Devolucion.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.EstadoDelCredito.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.FacturaFinal.resources
@@ -978,3 +977,4 @@ C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.pdb
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleFacturaRealizada.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.AgregarCliente.resources
+C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Proforma.resources

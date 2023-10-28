@@ -75,31 +75,19 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
-
-        public DataTable BuscarProductoActivo(string dato)
+        
+        public DataTable Cargar_NombreProductoActivo(string dato )
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT * FROM Mostrar_Producto WHERE Estado = 'Activo' AND Producto LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%';";
-
-            MySqlConnection conexionBD = Conexion.getConexion();
-            conexionBD.Open();
-            try
+            string SQL = "";
+            if (dato == "")
             {
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
+                SQL = "SELECT ID, Nombre FROM Productos WHERE Estado = 'Activo'";
             }
-            catch (MySqlException ex)
+            else
             {
-                Console.WriteLine(ex.Message.ToString());
-            }
-            return dt;
-        }
-
-        public DataTable Cargar_NombreProductoActivo()
-        {
-            DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Productos;";
+                SQL = "SELECT ID, Nombre FROM Productos WHERE Estado = 'Activo' AND Nombre LIKE '%" + dato + "%' OR Codigo LIKE '%" + dato + "%';";
+            }           
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

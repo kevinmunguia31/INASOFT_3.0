@@ -219,63 +219,47 @@ namespace INASOFT_3._0.UserControls
         {
             try
             {
-                if (id_pos > -1 && id_pos != null)
+                if (id_pos >= 0 && dataGridFatura.Rows.Count > id_pos)
                 {
-                    if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Anulada")
+                    if (dataGridFatura.Rows[id_pos].Cells.Count > 2 && dataGridFatura.Rows[id_pos].Cells[2].Value != null)
                     {
-                        MessageBox_Error.Show("Está factura ya está anulada", "Eror");
-                    }
-                    if (dataGridFatura.Rows[id_pos].Cells[2].Value.ToString() == "Pendiente")
-                    {
-                        MessageBox_Error.Show("Está factura es al crédito, no se puede hacer una devoluciòn", "Eror");
-                    }
-                    else
-                    {
-                        Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-                        int id_factura = int.Parse(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
-                        if (ctrlDevolucion.Verificar_Devolucion(id_factura) == 1)
+                        string estadoFactura = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
+                        if (estadoFactura == "Anulada")
                         {
-                            MessageBox_Error.Show("Está factura ya se le realizo una devolución", "Eror");
+                            MessageBox_Error.Show("Esta factura ya está anulada", "Error");
+                        }
+                        else if (estadoFactura == "Pendiente")
+                        {
+                            MessageBox_Error.Show("Esta factura es a crédito, no se puede hacer una devolución", "Error");
                         }
                         else
                         {
                             VistaFacturas.Devolucion frm = new VistaFacturas.Devolucion(dataGridFatura.Rows[id_pos].Cells[0].Value.ToString());
                             frm.lbIdFactura.Text = dataGridFatura.Rows[id_pos].Cells[1].Value.ToString();
-                            frm.lbClienteName.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
                             frm.Lb_EstadoFactura.Text = dataGridFatura.Rows[id_pos].Cells[2].Value.ToString();
-
-                            string aux1 = dataGridFatura.Rows[id_pos].Cells[9].Value.ToString();
-                            string[] words1 = aux1.Split(' ');
-                            double aux_total = Double.Parse(words1[1]);
-
-                            string aux2 = dataGridFatura.Rows[id_pos].Cells[8].Value.ToString();
-                            string[] words2 = aux2.Split(' ');
-                            double aux_desc = Double.Parse(words2[1]);
-
-                            frm.Lb_Subtotal.Text = (aux_total + aux_desc).ToString();
-                            frm.Lb_TotalFacturado.Text = aux_total.ToString();
-                            frm.Lb_Descuento.Text = aux_desc.ToString();
-
-                            string aux3 = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
-                            string[] words3 = aux3.Split(' ');
-                            double aux_efectivo = Double.Parse(words3[1]);
-
-                            frm.Lb_Efectivo.Text = aux_efectivo.ToString();
-
-                            string aux4 = dataGridFatura.Rows[id_pos].Cells[12].Value.ToString();
-                            string[] words4 = aux4.Split(' ');
-                            double aux_pendiente = Double.Parse(words4[1]);
-
-                            frm.Lb_Debe.Text = aux_pendiente.ToString();
+                            frm.lbClienteName.Text = dataGridFatura.Rows[id_pos].Cells[4].Value.ToString();
+                            frm.Lb_Subtotal.Text = dataGridFatura.Rows[id_pos].Cells[7].Value.ToString();
+                            frm.Lb_Descuento.Text = dataGridFatura.Rows[id_pos].Cells[8].Value.ToString();
+                            frm.Lb_TotalFacturado.Text = dataGridFatura.Rows[id_pos].Cells[9].Value.ToString();
+                            frm.Lb_Efectivo.Text = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
+                            frm.Lb_Debe.Text = dataGridFatura.Rows[id_pos].Cells[12].Value.ToString();
                             frm.Lb_Trabajador.Text = dataGridFatura.Rows[id_pos].Cells[13].Value.ToString();
                             frm.Show();
                         }
                     }
+                    else
+                    {
+                        MessageBox_Error.Show("La celda 2 de la fila no contiene datos válidos", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox_Error.Show("Índice fuera de límites", "Error");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox_Error.Show("Error:" + ex, "Error");
+                MessageBox_Error.Show("Error: " + ex.Message, "Error");
             }
         }
 
@@ -522,7 +506,7 @@ namespace INASOFT_3._0.UserControls
 
         private void btnProforna_Click(object sender, EventArgs e)
         {
-            DetalleFactura frm = new DetalleFactura();
+            Proforma frm = new Proforma();
             frm.txtNombreCliente.Visible = true;
             frm.Lb_User.Text = Sesion.nombre;
             frm.btnGenerar.Visible = true;

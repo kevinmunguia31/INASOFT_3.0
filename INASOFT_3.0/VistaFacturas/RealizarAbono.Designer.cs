@@ -175,7 +175,7 @@
             this.cbImpresoras.ItemHeight = 30;
             this.cbImpresoras.Location = new System.Drawing.Point(97, 243);
             this.cbImpresoras.Name = "cbImpresoras";
-            this.cbImpresoras.Size = new System.Drawing.Size(156, 36);
+            this.cbImpresoras.Size = new System.Drawing.Size(232, 36);
             this.cbImpresoras.TabIndex = 100;
             // 
             // TxtMonto
@@ -260,7 +260,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(7, 61);
+            this.label3.Location = new System.Drawing.Point(7, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 23);
             this.label3.TabIndex = 92;
@@ -511,7 +511,6 @@
             this.GBox_Cod_Fact.Size = new System.Drawing.Size(367, 220);
             this.GBox_Cod_Fact.TabIndex = 97;
             this.GBox_Cod_Fact.Text = "Cod. Fact.: --";
-            this.GBox_Cod_Fact.Click += new System.EventHandler(this.GBox_Cod_Fact_Click);
             // 
             // groupBox1
             // 
@@ -529,7 +528,6 @@
             this.groupBox1.TabIndex = 99;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle de crédito";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Lb_Pendiente_aux
             // 

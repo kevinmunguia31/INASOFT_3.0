@@ -23,9 +23,14 @@ namespace INASOFT_3._0.VistaFacturas
         {
             InitializeComponent();
             InfoNegocio();
-            txtIDFactura.Text = id;
+            CargarDatosIniciales(id);
             InfoProducts();
             InstalledPrintersCombo();
+        }
+
+        private void CargarDatosIniciales(string id)
+        {
+            txtIDFactura.Text = id;
 
             if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
             {
@@ -37,14 +42,13 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox.Show("La imagen no se encontró en la ruta especificada. Cargue el logo desde las configuraciones", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            //dataGridView1.DataSource = InfoProducts();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         public void InfoProducts()
         {
             string idFactura = txtIDFactura.Text;
@@ -55,7 +59,6 @@ namespace INASOFT_3._0.VistaFacturas
         private void InfoNegocio()
         {
             MySqlDataReader reader = null;
-            //string sql = "SELECT direccion_negocio, telefono, logoNegocio FROM infogeneral";
             string sql = "SELECT direccion_negocio, telefono FROM infogeneral";
             try
             {
@@ -67,9 +70,6 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     while (reader.Read())
                     {
-                        //MemoryStream ms = new MemoryStream((byte[])reader["logoNegocio"]);
-                        //Bitmap bmp = new Bitmap(ms);
-                        //pictureBox1.Image = bmp;
                         lbDireccion.Text = reader.GetString("direccion_negocio");
                         lbTelefono.Text = reader.GetString("telefono");
                     }

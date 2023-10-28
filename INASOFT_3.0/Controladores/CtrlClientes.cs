@@ -18,25 +18,37 @@ namespace INASOFT_3._0.Controladores
             DataTable dt = new DataTable();
             string sql;
 
-            if (dato == null)
-            {
-                sql = "SELECT * FROM Clientes WHERE ID != 1;";
-            }
-            else
-            {
-                sql = "SELECT * FROM Clientes WHERE ID != 1 AND Nombre LIKE '%"+ dato +"%' ORDER BY Nombre ASC;";
-            }
             try
             {
-                MySqlConnection conexionBD = Conexion.getConexion();
-                conexionBD.Open();
-                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
+                using (MySqlConnection conexionBD = Conexion.getConexion())
+                {
+                    conexionBD.Open();
+                    if (string.IsNullOrEmpty(dato))
+                    {
+                        sql = "SELECT * FROM Clientes WHERE ID != 1;";
+                    }
+                    else
+                    {
+                        sql = "SELECT * FROM Clientes WHERE ID != 1 AND Nombre LIKE @dato ORDER BY Nombre ASC;";
+                    }
+
+                    using (MySqlCommand comando = new MySqlCommand(sql, conexionBD))
+                    {
+                        if (!string.IsNullOrEmpty(dato))
+                        {
+                            comando.Parameters.AddWithValue("@dato", "%" + dato + "%");
+                        }
+
+                        using (MySqlDataAdapter adaptador = new MySqlDataAdapter(comando))
+                        {
+                            adaptador.Fill(dt);
+                        }
+                    }
+                }
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine(ex.Message);
             }
             return dt;
         }
@@ -45,28 +57,28 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            try
+            using (MySqlConnection conexioBD = Conexion.getConexion())
             {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
+                try
+                {
+                    conexioBD.Open();
+                    string sql = "INSERT INTO Clientes (Nombre, Telefono, Direccion, Cedula) VALUES (@Nombre, @Telefono, @Direccion, @Cedula)";
+                    MySqlCommand comando = new MySqlCommand(sql, conexioBD);
 
-                string sql = "INSERT INTO Clientes (Nombre, Telefono, Direccion, Cedula) VALUES (@Nombre, @Telefono, @Direccion, @Cedula)";
+                    // Agregar parámetros
+                    comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
+                    comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
+                    comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
+                    comando.Parameters.AddWithValue("@Cedula", datos.Cedula);
 
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-
-                // Agregar parámetros
-                comando.Parameters.AddWithValue("@Nombre", datos.Nombre);
-                comando.Parameters.AddWithValue("@Telefono", datos.Telefono);
-                comando.Parameters.AddWithValue("@Direccion", datos.Direccion);
-                comando.Parameters.AddWithValue("@Cedula", datos.Cedula);
-
-                comando.ExecuteNonQuery();
-                bandera = true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                bandera = false;
+                    comando.ExecuteNonQuery();
+                    bandera = true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message.ToString());
+                    bandera = false;
+                }
             }
             return bandera;
         }
@@ -123,139 +135,12 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool Insertar_NombreCliente(string nombre)
-        {
-            bool bandera = false;
-
-            try
-            {
-                MySqlConnection conexioBD = Conexion.getConexion();
-                conexioBD.Open();
-
-                string sql = "INSERT INTO Clientes(Nombre, Telefono, Direccion, Cedula) VALUES(@Nombre, 'Ninguno', 'Ninguno', 'Ninguno')";
-
-                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
-
-                // Agregar parámetro
-                comando.Parameters.AddWithValue("@Nombre", nombre);
-
-                comando.ExecuteNonQuery();
-                bandera = true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                bandera = false;
-            }
-            return bandera;
-        }
-
-        public DataTable Cargar_NombreClientes ()
-        {
-            DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Clientes WHERE ID != 1;";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                adaptador.Fill(dt);
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return dt;
-        }
-
-        public string Nombre_Cliente(int id)
-        {
-            string nombreCliente = "";
-            string SQL = "SELECT Nombre FROM Clientes WHERE ID = " + id + ";";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                nombreCliente = comando.ExecuteScalar().ToString();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                nombreCliente = "";
-            }
-            return nombreCliente;
-        }
-
-        public string Cedula_Cliente(int id)
-        {
-            string cedulaCliente = "";
-            string SQL = "SELECT Cedula FROM Clientes WHERE ID = " + id + ";";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                cedulaCliente = comando.ExecuteScalar().ToString();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                cedulaCliente = "";
-            }
-            return cedulaCliente;
-        }
-
-        public string Telefono_Cliente(int id)
-        {
-            string telefonoCliente = "";
-            string SQL = "SELECT Telefono FROM Clientes WHERE ID = " + id + ";";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                telefonoCliente = comando.ExecuteScalar().ToString();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                telefonoCliente = "";
-            }
-            return telefonoCliente;
-        }
-
-        public string Direccion_Cliente(int id)
-        {
-            string direccionCliente = "";
-            string SQL = "SELECT Direccion FROM Clientes WHERE ID = " + id + ";";
-
-            MySqlConnection conexionDB = Conexion.getConexion();
-            conexionDB.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                direccionCliente = comando.ExecuteScalar().ToString();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                direccionCliente = "";
-            }
-            return direccionCliente;
-        }
 
         public DataTable Buscar_NombreCliente(string dato)
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Clientes WHERE Nombre LIKE '%"+ dato +"%' AND ID != 1;";
-            
+            string SQL = "SELECT * FROM Clientes WHERE ID !=1 AND Nombre LIKE '%" + dato + "%' OR Cedula LIKE '%" + dato + "%'";
+
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
 
@@ -270,6 +155,85 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine("Error: " + ex.Message);
             }
             return dt;
+        }
+
+        public bool Insertar_NombreCedulaCliente(Cliente cliente)
+        {
+            using (MySqlConnection conexioBD = Conexion.getConexion())
+            {
+                string sql = "INSERT INTO Clientes (Nombre, Telefono, Direccion, Cedula) VALUES (@Nombre, 'Ninguno', 'Ninguno', @Cedula)";
+                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+                comando.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                comando.Parameters.AddWithValue("@Cedula", cliente.Cedula);
+
+                try
+                {
+                    conexioBD.Open();
+                    comando.ExecuteNonQuery();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public DataTable Cargar_NombreClientes()
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Clientes WHERE ID != 1 ORDER BY ID DESC;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        public Cliente MostrarDatosClientes(int id)
+        {
+            Cliente cliente = null; // Inicializamos producto como nulo
+            string sql = "SELECT Nombre, Telefono, Direccion, Cedula FROM Clientes WHERE ID = " + id + " LIMIT 1;";
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cliente = new Cliente()
+                        {
+                            Nombre = reader[0].ToString(),
+                            Telefono = reader[1].ToString(),
+                            Direccion = reader[2].ToString(),
+                            Cedula = reader[3].ToString()
+                        };
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+            return cliente; // Retornamos un solo objeto en lugar de una lista
         }
 
         public int TotalClientes()
