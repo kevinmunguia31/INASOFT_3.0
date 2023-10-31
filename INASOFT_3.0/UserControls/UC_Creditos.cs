@@ -17,7 +17,6 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Document = iTextSharp.text.Document;
 using System.Globalization;
-using System.Globalization;
 using System.Security.Policy;
 using DevExpress.XtraCharts;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;

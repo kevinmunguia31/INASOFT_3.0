@@ -345,7 +345,7 @@ namespace INASOFT_3._0.UserControls
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    string aux1 = dataGridView1.Rows[i].Cells[8].Value.ToString();
+                    string aux1 = dataGridView1.Rows[i].Cells[7].Value.ToString();
                     string[] words1 = aux1.Split('$');
                     string aux_Total = words1[1];
                     Total += double.Parse(aux_Total);

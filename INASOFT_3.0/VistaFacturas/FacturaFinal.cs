@@ -378,7 +378,7 @@ namespace INASOFT_3._0.VistaFacturas
                             ctrlCredito_Abono.Realizar_Abono(credito1);
 
                             MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
-
+                           
                             string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Crédito: Fact." + ctrlFactura.ID_Factura();
                             ctrlInfo.InsertarLog(log);
                         }
@@ -393,7 +393,9 @@ namespace INASOFT_3._0.VistaFacturas
                         PrinterSettings ps = new PrinterSettings();
                         ps.PrinterName = cbImpresoras.Text;
                         printDocument1.PrinterSettings = ps;
+                        ps.Copies = 1; // Esto imprimirá dos copias
                         printDocument1.PrintPage += Imprimir;
+                        printDocument1.Print();
                         printDocument1.Print();
 
                         MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
@@ -420,6 +422,49 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
+        private void ImprimirRecibo(object sender, PrintPageEventArgs e)
+        {
+            Credito credito1 = new Credito();
+            int width = 280;
+            int y = 20;
+            Font font2 = new Font("Consolas", 9, FontStyle.Regular, GraphicsUnit.Point);
+            Font font3 = new Font("Consolas", 8, FontStyle.Regular, GraphicsUnit.Point);
+            Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+            Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
+            string imagen = Properties.Settings.Default.RutaImagen;
+            InfoNegocio info = new InfoNegocio();
+            Image img = Image.FromFile(imagen);
+            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
+            e.Graphics.DrawString(info.Direccion, font2, Brushes.Black, new RectangleF(20, y += 95, width, 20));
+            //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
+            e.Graphics.DrawString(info.Telefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Factura:" + Lb_AuxCodFac.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
+            e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Fecha: " + DateTime.Now, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Caja: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("            RECIBO DE CAJA", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
+            e.Graphics.DrawString("Saldo Incial: C$" + credito1.Monto, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Saldo Pendiente: C$" + credito1.Saldo_Anterior, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Abono: C$" + TxtMonto.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Nuevo Saldo: C$" + credito1.Saldo_Nuevo, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
+
+            float Abono = float.Parse(TxtMonto.Text, CultureInfo.InvariantCulture);
+            float recibido = float.Parse(TxtMonto.Text, CultureInfo.InvariantCulture);
+            double vuelto = 0.0;
+
+            e.Graphics.DrawString("Total:     C$" + Abono.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("-------------------------", font3, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("Recibido:  C$" + recibido.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+            e.Graphics.DrawString("Cambio:    C$" + vuelto.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));
+
+            e.Graphics.DrawString("________________________________", font3, Brushes.Black, new RectangleF(45, y += 80, width, 20));
+            e.Graphics.DrawString("        Recibi Conforme     ", font3, Brushes.Black, new RectangleF(45, y += 20, width, 20));
+        }
+
         private void Imprimir(object sender, PrintPageEventArgs e)
         {
             int width = 280;
@@ -430,12 +475,12 @@ namespace INASOFT_3._0.VistaFacturas
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
             string imagen = Properties.Settings.Default.RutaImagen;
-            
+            InfoNegocio info = new InfoNegocio();
             Image img = Image.FromFile(imagen);
             e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
-            e.Graphics.DrawString(lbDireccionNegocio, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
+            e.Graphics.DrawString(info.Direccion, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
-            e.Graphics.DrawString(lbTelefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
+            e.Graphics.DrawString(info.Telefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Factura:" + Lb_AuxCodFac.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
             e.Graphics.DrawString("Cliente: " + lbNombreCliente.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));

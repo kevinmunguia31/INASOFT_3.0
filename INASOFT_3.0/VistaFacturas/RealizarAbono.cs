@@ -18,7 +18,7 @@ namespace INASOFT_3._0.VistaFacturas
 {
     public partial class RealizarAbono : Form
     {
-        string imagen = "C:\\Users\\DELL 5410\\Desktop\\Ferreteria\\logo.png";
+        string imagen = Properties.Settings.Default.RutaImagen;
         public RealizarAbono()
         {
             InitializeComponent();
@@ -141,8 +141,9 @@ namespace INASOFT_3._0.VistaFacturas
                     printDocument1 = new PrintDocument();
                     PrinterSettings ps = new PrinterSettings();
                     ps.PrinterName = cbImpresoras.Text;
-                    printDocument1.PrinterSettings = ps;
+                    ps.Copies = 1; // Esto imprimirá dos copias
                     printDocument1.PrintPage += Imprimir;
+                    printDocument1.Print();
                     printDocument1.Print();
                 }
 
@@ -162,9 +163,9 @@ namespace INASOFT_3._0.VistaFacturas
             Font font4 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
 
-            //Image img = Image.FromFile(imagen);
-            //e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
-            e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 100, width, 20));
+            Image img = Image.FromFile(imagen);
+            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
+            e.Graphics.DrawString(lbDireccionNegocio.Text, font2, Brushes.Black, new RectangleF(20, y += 95, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(lbTelefono.Text, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));

@@ -127,7 +127,7 @@ namespace INASOFT_3._0.Controladores
                 MySqlConnection conexioBD = Conexion.getConexion();
                 conexioBD.Open();
 
-                string sql = "CALL Realizar_Abono(@Monto, @SaldoAnterior, @SaldoNuevo, @DescripcionAbono, @IdCredito, @IdFactura)";
+                string sql = "CALL Realziar_Abono(@Monto, @SaldoAnterior, @SaldoNuevo, @DescripcionAbono, @IdCredito, @IdFactura)";
 
                 MySqlCommand comando = new MySqlCommand(sql, conexioBD);
 
