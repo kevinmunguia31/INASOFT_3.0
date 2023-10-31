@@ -61,7 +61,7 @@ namespace INASOFT_3._0.UserControls
         public void CargarReporteProductosActivoNoActivo()
         {
             Controladores.CtrlReporteGraficos ctrl = new Controladores.CtrlReporteGraficos();
-            dataGridView2.DataSource = ctrl.CargarProductosActivoNoActivo();
+            dataGridView2.DataSource = ctrl.CargarProductosNoActivo();
         }
 
         public void CargarReporteProductosCambioPrecio()
@@ -114,18 +114,8 @@ namespace INASOFT_3._0.UserControls
         public void GraficasProductoBajoInventario()
         {
             Controladores.CtrlReporteGraficos ctrl = new Controladores.CtrlReporteGraficos();
-            List<Reporte> ganancias = ctrl.CargarProductosBajoInventario();
 
-            ArrayList nombre = new ArrayList();
-            ArrayList cantidad = new ArrayList();
-
-            foreach (Reporte ganancia in ganancias)
-            {
-                nombre.Add(ganancia.Nombre);
-                cantidad.Add(ganancia.Canitdad);
-            }
-
-            chart5.Series[0].Points.DataBindXY(nombre, cantidad);
+            dataGridView7.DataSource = ctrl.CargarProductosBajoInventario();
         }
         private void btnThisMonth_Click(object sender, EventArgs e)
         {

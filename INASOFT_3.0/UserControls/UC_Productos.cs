@@ -137,19 +137,18 @@ namespace INASOFT_3._0.UserControls
                     string nombre = dataGridView1.Rows[id_pos].Cells[2].Value.ToString();
                     string estado = dataGridView1.Rows[id_pos].Cells[3].Value.ToString();
                     string existencia = dataGridView1.Rows[id_pos].Cells[4].Value.ToString();
-                    string existencia_min = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
 
-                    string aux1 = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
+                    string aux1 = dataGridView1.Rows[id_pos].Cells[5].Value.ToString();
                     string[] words1 = aux1.Split(' ');
                     string aux_PrecioCompra = words1[1];
                     string precio_compra = aux_PrecioCompra;
 
-                    string aux2 = dataGridView1.Rows[id_pos].Cells[7].Value.ToString();
+                    string aux2 = dataGridView1.Rows[id_pos].Cells[6].Value.ToString();
                     string[] words2 = aux2.Split(' ');
                     string aux_PrecioVenta = words2[1];
 
                     string precio_venta = aux_PrecioVenta;
-                    string observaciones = dataGridView1.Rows[id_pos].Cells[9].Value.ToString();
+                    string observaciones = dataGridView1.Rows[id_pos].Cells[8].Value.ToString();
 
                     Ver_EditarProducto update = new Ver_EditarProducto();
                     //update.labelTitle.Text = "Editar producto";
@@ -159,7 +158,6 @@ namespace INASOFT_3._0.UserControls
                     update.txtCodBarra.Text = codigo;
                     update.txtNameP.Text = nombre;
                     update.Lb_CantStocks.Text = existencia;
-                    update.SpinExis_Min.Text = existencia_min;
                     update.txtPrecioCompra.Text = precio_compra;
                     update.txtPrecioVenta.Text = precio_venta;
                     update.txtObservacion.Text = observaciones;

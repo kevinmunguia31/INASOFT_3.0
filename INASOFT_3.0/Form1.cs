@@ -82,7 +82,7 @@ namespace INASOFT_3._0
                 if (resultado == DialogResult.Yes)
                 {
                     // Puedes realizar acciones de limpieza o cierre del programa aquí.
-                    // Application.Exit();
+                    Application.Exit();
                     Environment.Exit(0);
                 }
                 else

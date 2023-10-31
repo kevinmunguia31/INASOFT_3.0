@@ -220,10 +220,10 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public System.Data.DataTable CargarProductosActivoNoActivo()
+        public System.Data.DataTable CargarProductosNoActivo()
         {
             System.Data.DataTable dt = new System.Data.DataTable();
-            string sql = "SELECT * FROM ProductosActivosNoActivos;";
+            string sql = "SELECT \r\n    'No activo' AS 'Estado',\r\n    Nombre AS 'Producto', \r\n    Existencias AS 'Existencias Actuales'\r\nFROM Productos\r\nWHERE Estado = 'No activo' \r\nORDER BY Estado, `Existencias Actuales` DESC;";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
@@ -240,40 +240,25 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
-        public List<Reporte> CargarProductosBajoInventario()
+        public System.Data.DataTable CargarProductosBajoInventario()
         {
-            List<Reporte> ganancias = new List<Reporte>();
+            System.Data.DataTable dt = new System.Data.DataTable();
 
-            string sql = "SELECT Nombre, Existencias FROM Productos WHERE Existencias <= 10;";
+            string sql = "SELECT Nombre, Existencias FROM Productos WHERE Existencias <= 10 ORDER BY Existencias DESC;";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
-
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                using (var reader = comando.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Reporte ganancia = new Reporte
-                        {
-                            Nombre = reader[0].ToString(),
-                            Canitdad = Convert.ToInt32(reader[1])
-                        };
-                        ganancias.Add(ganancia);
-                    }
-                }
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message.ToString());
             }
-            finally
-            {
-                conexionBD.Close();
-            }
-            return ganancias;
+            return dt;
         }
 
         public System.Data.DataTable CargarProductosNoVendidos()
