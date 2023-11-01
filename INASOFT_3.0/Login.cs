@@ -136,7 +136,7 @@ namespace INASOFT_3._0
                 {
                     // Puedes realizar acciones de limpieza o cierre del programa aquí.
                     Application.Exit();
-                    //Environment.Exit(0);
+                    Environment.Exit(0);
                 }
                 else
                 {

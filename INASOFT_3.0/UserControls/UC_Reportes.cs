@@ -234,7 +234,7 @@ namespace INASOFT_3._0.UserControls
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             Controladores.CtrlReporte ctrlReporte = new Controladores.CtrlReporte();
-            ctrlReporte.ReporteKardexInventario(dataGridView2, dataGridView6, dataGridView5);
+            ctrlReporte.ReporteKardexInventario(dataGridView2, dataGridView6, dataGridView5, dataGridView7);
         }
 
         private void guna2Button8_Click(object sender, EventArgs e)

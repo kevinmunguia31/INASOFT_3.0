@@ -781,11 +781,12 @@ namespace INASOFT_3._0.Controladores
         }
 
         //Reporte kardex de invenatario
-        public void ReporteKardexInventario(DataGridView dt, DataGridView dt2, DataGridView dt3)
+        public void ReporteKardexInventario(DataGridView dt, DataGridView dt2, DataGridView dt3, DataGridView dt4)
         {
             int cabecera = 3, celda_ini = 3;
             int cabecera1 = 3, celda_ini1 = 3;
             int cabecera2 = 3, celda_ini2 = 3;
+            int cabecera3 = 3, celda_ini3 = 3;
 
             SLDocument sl = new SLDocument();
             CultureInfo culturaLocal = CultureInfo.CurrentCulture;
@@ -951,32 +952,58 @@ namespace INASOFT_3._0.Controladores
                 }
             }
 
+            sl.SetCellValue("M2", "Prodcutos existencias bajas en el inventario");
+            sl.SetCellStyle("M2", estilo_Ca);
+            sl.SetCellStyle("M3", "N3", estilo_Ca);
+
+            sl.SetCellValue("M3", "Nombre del producto");
+
+            sl.SetCellValue("N3", "Cant. en stock");
+
+            for (int fila = 0; fila < dt4.Rows.Count; fila++)
+            {
+                cabecera3++;
+                var valorCelda0 = dt4.Rows[fila].Cells[0].Value;
+                if (valorCelda0 != null)
+                {
+                    sl.SetCellValue("M" + cabecera3, valorCelda0.ToString());
+                }
+                else
+                {
+                    sl.SetCellValue("M" + cabecera3, ""); // Otra opción podría ser establecer un valor predeterminado
+                }
+
+                var valorCelda1 = dt4.Rows[fila].Cells[1].Value;
+                if (valorCelda1 != null)
+                {
+                    sl.SetCellValue("N" + cabecera3, int.Parse(valorCelda1.ToString()));
+                }
+                else
+                {
+                    sl.SetCellValue("N" + cabecera3, ""); // Otra opción podría ser establecer un valor predeterminado
+                }
+            }
             //Borde de las celdas
             SLStyle estiloB = sl.CreateStyle();
             estiloB.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
             estiloB.Border.LeftBorder.Color = System.Drawing.Color.Black;
 
-            estiloB.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
-            estiloB.Border.RightBorder.Color = System.Drawing.Color.Black;
-
-            estiloB.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
-            estiloB.Border.TopBorder.Color = System.Drawing.Color.Black;
-
-            estiloB.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
-            estiloB.Border.BottomBorder.Color = System.Drawing.Color.Black;
-
             sl.SetCellStyle("A" + celda_ini, "C" + cabecera, estiloB);
             sl.SetCellStyle("A" + celda_ini, "C" + cabecera, estilo_celda);
 
-            sl.SetCellStyle("E" + celda_ini1, "H" + cabecera, estiloB);
-            sl.SetCellStyle("E" + celda_ini1, "H" + cabecera, estilo_celda);
+            sl.SetCellStyle("E" + celda_ini1, "H" + cabecera1, estiloB);
+            sl.SetCellStyle("E" + celda_ini1, "H" + cabecera1, estilo_celda);
             
-            sl.SetCellStyle("J" + celda_ini1, "K" + cabecera, estiloB);
-            sl.SetCellStyle("J" + celda_ini1, "K" + cabecera, estilo_celda);
+            sl.SetCellStyle("J" + celda_ini2, "K" + cabecera2, estiloB);
+            sl.SetCellStyle("J" + celda_ini2, "K" + cabecera2, estilo_celda);
+
+            sl.SetCellStyle("M" + celda_ini3, "N" + cabecera3, estiloB);
+            sl.SetCellStyle("M" + celda_ini3, "N" + cabecera3, estilo_celda);
 
             sl.AutoFitColumn("A", "C");
             sl.AutoFitColumn("E", "H");
             sl.AutoFitColumn("J", "K");
+            sl.AutoFitColumn("M", "N");
 
             SLStyle cellStyle = sl.CreateStyle();
             cellStyle.FormatCode = "#,##0.00";
