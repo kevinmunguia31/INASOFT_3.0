@@ -128,6 +128,8 @@ namespace INASOFT_3._0
         }
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Environment.Exit(0);
+            /*
             if (!exitConfirmed)
             {
                 DialogResult resultado = MessageBox_Import.Show("¿Seguro que desea salir del Programa?", "Aviso");
@@ -142,7 +144,7 @@ namespace INASOFT_3._0
                 {
                     e.Cancel = true; // Cancela el cierre del formulario.
                 }
-            }
+            }*/
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
