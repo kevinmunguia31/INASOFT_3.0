@@ -96,7 +96,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
              
-            string sql = "CALL Realizar_Remision('"+ remision.Descripcion + "')";
+            string sql = "CALL Realizar_Remision('"+ remision.Descripcion + "', '"+ remision.Tipo_Remision + "', "+ remision.Id_Usuario +")";
 
             MySqlConnection conexioBD = Conexion.getConexion();
             conexioBD.Open();

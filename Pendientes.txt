@@ -11,6 +11,9 @@
 11. Reporte de EXCEL en el modulo de Productos. ✓
 12. Solo aceptar valor numerico en los TextBox. ✓
 13. Contador facturas anuladas. ✓
+14. Revisar la facturacion (credito, genera dos facturas).
+15. Compras (Filtros Al pendiente/cancelado)
+16.
 
 
 

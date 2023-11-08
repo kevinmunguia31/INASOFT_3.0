@@ -167,6 +167,13 @@ namespace INASOFT_3._0.VistaFacturas
             txtPrecioVenta.Text = "";
         }
 
+        public void LimpiarFactura()
+        {
+            Txt_Efectivo.Text = "";
+            TxtMonto.Text = "";
+            Txt_descuento.Text = "";
+        }
+
         private void InfoNegocio()
         {
             MySqlDataReader reader = null;
@@ -549,13 +556,15 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void RBtn_AlContado_CheckedChanged(object sender, EventArgs e)
         {
+            LimpiarFactura();
             GroupBox_Credito.Visible = false;
             GroupBox_Alcontado.Visible = true;
-            Groupbox_fact.Text = "Realizar fact. al contado";
+            Groupbox_fact.Text = "Realizar fact. al contado";            
         }
 
         private void RBtn_Credito_CheckedChanged(object sender, EventArgs e)
         {
+            LimpiarFactura();
             GroupBox_Credito.Visible = true;
             GroupBox_Alcontado.Visible = false;
             Groupbox_fact.Text = "Realizar fact. al credito";

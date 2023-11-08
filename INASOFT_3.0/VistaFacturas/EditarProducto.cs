@@ -78,6 +78,8 @@ namespace INASOFT_3._0.VistaFacturas
                 // Realizar operaciones relacionadas con remesas
                 Remision remision = new Remision();
                 remision.Descripcion = Txt_Descripcion.Text;
+                remision.Id_Usuario = Sesion.id;
+                remision.Tipo_Remision = "Remisión de Salida";
 
                 CtrlRemision ctrlRemision = new CtrlRemision();
                 bool bandera2 = ctrlRemision.RealizarRemesa(remision);

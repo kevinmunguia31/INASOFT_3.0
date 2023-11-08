@@ -330,6 +330,8 @@ namespace INASOFT_3._0.VistaFacturas
             Controladores.CtrlRemision ctrl = new Controladores.CtrlRemision();
             Modelos.Remision remision = new Modelos.Remision();
             remision.Descripcion = string.IsNullOrWhiteSpace(TxtDescripcion.Text) ? "El usuario: " + Lb_NombreUsuario.Text + " ha realizado una remisión de entrada" : (TxtDescripcion.Text);
+            remision.Id_Usuario = Sesion.id;
+            remision.Tipo_Remision = "Remisión de Entrada";
             bool bandera = ctrl.RealizarRemesa(remision);
 
             if (bandera)
