@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,86 @@ namespace INASOFT_3._0.Controladores
 {
     internal class CtrlRemision
     {
-        
+        public DataTable CargarRemisiones()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT * FROM Mostrar_Remisiones";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable CargarDetalleRemisiones(int id)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT\r\n    b.ID AS 'ID',\r\n    c.Codigo AS 'Codigo',\r\n    c.Nombre AS 'Nombre producto',\r\n    c.Precio_Venta AS 'Precio de venta',\r\n    c.Precio_Compra AS 'Precio de compra',\r\n    b.Cantidad AS 'Cant. Productos',\r\n    a.Tipo_Remision AS 'Tipo de remisión'\r\nFROM Remisiones a \r\nINNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision\r\nINNER JOIN Productos c ON b.ID_Producto = c.ID\r\nWHERE a.ID = "+id+"\r\nORDER BY b.ID;";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable CargarFiltroRemisiones(int op)
+        {
+            DataTable dt = new DataTable();
+            string sql = "CALL Filtro_Remisiones("+op+")";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable CargarRemisionesxFecha(string fecha_Ini, string fecha_Fin )
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT * FROM Mostrar_Remisiones WHERE DATE_FORMAT(Fecha, '%Y/%m/%d') BETWEEN '"+fecha_Ini+"' AND '"+fecha_Fin+"';";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
         public bool RealizarRemesa(Remision remision)
         {
             bool bandera = false;

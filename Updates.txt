@@ -1,0 +1,402 @@
+USE Prueba2;
+
+DROP VIEW Mostrar_Factura;
+CREATE VIEW Mostrar_Factura AS SELECT
+    a.ID AS 'ID',
+    CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
+    a.Estado,
+    a.Fecha,
+    c.Nombre AS 'Cliente',
+    COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
+    e.Tipos AS 'Tipo de pago',
+    CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
+    CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
+    CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
+    CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
+    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
+    CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
+    d.Nombre AS 'Nombre empleado'
+FROM Facturas a
+INNER JOIN Clientes c ON a.ID_Cliente = c.ID
+INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
+INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
+LEFT JOIN Detalle_Factura b ON a.ID = b.ID_Factura
+WHERE DATE(a.Fecha) = CURDATE()
+GROUP BY a.ID
+ORDER BY a.ID DESC LIMIT 10;
+
+
+DROP VIEW Mostrar_TodasFactura;
+CREATE VIEW Mostrar_TodasFactura AS  SELECT
+    a.ID AS 'ID',
+    CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
+    a.Estado,
+    a.Fecha,
+    c.Nombre AS 'Cliente',
+    COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
+    e.Tipos AS 'Tipo de pago',
+    CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
+    CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
+    CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
+    CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
+    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
+    CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
+    d.Nombre AS 'Nombre empleado'
+FROM Facturas a
+INNER JOIN Clientes c ON a.ID_Cliente = c.ID
+INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
+INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
+LEFT JOIN Detalle_Factura b ON a.ID = b.ID_Factura
+GROUP BY a.ID
+ORDER BY a.ID;
+
+
+DROP PROCEDURE SeleccionarProcedimiento;
+DELIMITER //
+CREATE PROCEDURE SeleccionarProcedimiento(
+IN opcion INT,
+    IN FechaInicio DATE,
+    IN FechaFinal DATE,
+    IN _NombreCliente VARCHAR(100)
+)
+BEGIN
+    IF opcion = 1 THEN
+        -- Mostrar facturación con campos específicos (Rango entre fechas)
+	SELECT
+            a.ID AS 'ID',
+            CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
+            a.Estado,
+            a.Fecha,
+            c.Nombre AS 'Cliente',
+	    COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
+            e.Tipos AS 'Tipo de pago',
+            CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
+            CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
+            CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
+            CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
+            CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
+            CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
+            d.Nombre AS 'Nombre empleado'
+        FROM Facturas a
+        INNER JOIN Detalle_Factura b ON a.ID = b.ID_Factura
+        INNER JOIN Clientes c ON a.ID_Cliente = c.ID
+        INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
+        INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
+        WHERE DATE_FORMAT(a.Fecha, '%Y/%m/%d') BETWEEN FechaInicio AND FechaFinal
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSEIF opcion = 2 THEN
+        -- Buscar facturas por nombres de cliente
+	SELECT
+		a.ID AS 'ID',
+		CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
+		a.Estado,
+		a.Fecha,
+		c.Nombre AS 'Cliente',
+		COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
+		e.Tipos AS 'Tipo de pago',
+		CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
+		CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
+		CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
+		CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
+		CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
+		CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
+		d.Nombre AS 'Nombre empleado'
+	FROM Facturas a
+	INNER JOIN Detalle_Factura b ON a.ID = b.ID_Factura
+	INNER JOIN Clientes c ON a.ID_Cliente = c.ID
+	INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
+	INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
+	WHERE c.Nombre LIKE CONCAT('%', _NombreCliente, '%')
+	GROUP BY a.ID
+	ORDER BY a.ID;
+    ELSE
+        -- Opción no válida
+        SELECT 'Opción no válida' AS Resultado;
+    END IF;
+END //
+DELIMITER ;
+
+
+ALTER TABLE Remisiones
+ADD COLUMN ID_Usuario INT,
+ADD COLUMN Tipo_Remision VARCHAR(255),
+ADD CONSTRAINT Remisionesfk FOREIGN KEY(ID_Usuario) REFERENCES Usuarios(ID) ON UPDATE CASCADE ON DELETE CASCADE;
+
+UPDATE Remisiones SET ID_Usuario = 1, Tipo_Remision = 'Remisión de Entrada';
+
+
+DROP PROCEDURE Realizar_Remision;
+DELIMITER //
+CREATE PROCEDURE Realizar_Remision(
+    	IN _Descripcion VARCHAR(200),
+    	IN _Tipo_Remision VARCHAR(200),
+	IN _ID_Usuario INT
+)
+BEGIN
+    -- Insertar en la tabla Remisiones
+    INSERT INTO Remisiones (Descripcion, Fecha, ID_Usuario, Tipo_Remision) VALUES (_Descripcion, NOW(), _ID_Usuario, _Tipo_Remision);
+END //
+DELIMITER ;
+
+DROP VIEW Mostrar_Remisiones;
+CREATE VIEW Mostrar_Remisiones AS
+SELECT
+    a.ID,
+    a.Fecha,
+    a.Descripcion AS 'Descripcion',
+    COUNT(b.ID) AS 'Cant. Productos',
+	a.Tipo_Remision AS 'Tipo de remisión',
+	c.Nombre AS 'Nombre del empleado'
+FROM Remisiones a 
+INNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision
+INNER JOIN UsuarioS c ON a.ID_Usuario = c.ID
+GROUP BY a.ID
+ORDER BY a.ID;
+
+
+DROP PROCEDURE Anular_Factura;
+DELIMITER //
+CREATE PROCEDURE Anular_Factura(
+    IN _Cantidad INT,
+    IN _ID_Producto INT,
+    IN _ID_Factura INT
+)
+	BEGIN
+		DECLARE Total_Prod DOUBLE;
+		DECLARE Aux_Precio DOUBLE;
+
+		-- Iniciar una transacción
+		START TRANSACTION;
+		SELECT Precio_Compra INTO Aux_Precio FROM Productos WHERE ID = _ID_Producto;
+
+		-- Calcular el Total_Producto
+		SET Total_Prod =  Aux_Precio * _Cantidad;
+
+		-- Actualizar Cantidad y Total en Detalle_Factura
+		UPDATE Detalle_Factura SET Cantidad = Cantidad - _Cantidad WHERE ID_Factura = _ID_Factura AND ID_Producto = _ID_Producto;
+
+		-- Confirmar la transacción
+		COMMIT;
+	END //
+DELIMITER ;
+
+
+DROP PROCEDURE Actualizar_FacturaAnulada;
+DELIMITER //
+	CREATE PROCEDURE Actualizar_FacturaAnulada(_Desc VARCHAR(200), _ID_Factura INT)
+	BEGIN
+		UPDATE Facturas SET 
+			Estado = 'Anulada', 
+			Descuento = 0.00, 
+			Subtotal = 0.00, 
+			Total_Final = 0.00,
+			Efectivo = 0.00,
+			Debe = 0.00,
+			Devolucion = 0.00,
+			Tipo_Factura = '--' WHERE ID = _ID_Factura;
+
+			INSERT INTO Facturas_Anuladas VALUES(NULL, _Desc, _ID_Factura);
+
+			IF (SELECT ID FROM Credito WHERE ID_Factura = _ID_Factura) IS NOT NULL THEN
+				DELETE FROM Credito WHERE ID_Factura = _ID_Factura;
+			END IF;
+
+			DELETE FROM Detalle_Factura WHERE ID_Factura = _ID_Factura;
+	END//
+DELIMITER ;
+
+UPDATE Remisiones SET Tipo_Remision = 'Remisión de Entrada';
+
+DROP VIEW Mostrar_Devoluciones;
+CREATE VIEW Mostrar_Devoluciones AS SELECT
+    MAX(a.ID), 
+    CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+    COUNT(a.ID) AS 'Cant. Devoluciones',
+    CONCAT('C$ ', FORMAT(SUM(c.Precio_Venta * b.Cantidad), 2)) AS 'Total Devoluciones',
+    MAX(a.Fecha) AS 'Fecha de última Devolución',
+    MAX(d.Estado) AS 'Estado',
+    MAX(a.Descripcion) AS 'Descripción',
+    MAX(e.Nombre) AS 'Cliente',
+    MAX(f.Nombre) AS 'Trabajador'
+FROM Devoluciones a
+INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Devolucion
+INNER JOIN Productos c ON c.ID = b.ID_Producto
+INNER JOIN Facturas d ON a.ID_Factura = d.ID
+INNER JOIN Clientes e ON d.ID_Cliente = e.ID
+INNER JOIN Usuarios f ON d.ID_Usuario = f.ID
+GROUP BY d.Codigo_Fac
+ORDER BY 'Cod. Factura' ASC;
+
+DROP PROCEDURE ObtenerDevoluciones;
+DELIMITER //
+CREATE PROCEDURE ObtenerDevoluciones(
+    IN opcion INT,
+    IN Fec_Inicio DATETIME,
+    IN Fec_Final DATETIME,
+    IN _Nombre_Cliente VARCHAR(100),
+    IN _Estado VARCHAR(100)
+)
+BEGIN
+    IF opcion = 1 THEN
+        -- Mostrar las devoluciones (Rango entre fechas)
+         SELECT
+    		MAX(a.ID), 
+    		CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+	    	COUNT(a.ID) AS 'Cant. Devoluciones',
+   		CONCAT('C$ ', FORMAT(SUM(c.Precio_Venta * b.Cantidad), 2)) AS 'Total Devoluciones',
+  		MAX(a.Fecha) AS 'Fecha de última Devolución',
+		MAX(d.Estado) AS 'Estado',
+	 	MAX(a.Descripcion) AS 'Descripción',
+    		MAX(e.Nombre) AS 'Cliente',
+	    	MAX(f.Nombre) AS 'Trabajador'
+	FROM Devoluciones a
+	INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Devolucion
+	INNER JOIN Productos c ON c.ID = b.ID_Producto
+	INNER JOIN Facturas d ON a.ID_Factura = d.ID
+	INNER JOIN Clientes e ON d.ID_Cliente = e.ID
+	INNER JOIN Usuarios f ON d.ID_Usuario = f.ID
+        WHERE DATE_FORMAT(a.Fecha, '%Y/%m/%d') BETWEEN Fec_Inicio AND Fec_Final
+        GROUP BY d.Codigo_Fac
+	ORDER BY 'Cod. Factura' ASC;
+    ELSEIF opcion = 2 THEN
+        -- Buscar devolución por nombres de cliente
+        SELECT
+    		MAX(a.ID), 
+    		CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+	    	COUNT(a.ID) AS 'Cant. Devoluciones',
+   		CONCAT('C$ ', FORMAT(SUM(c.Precio_Venta * b.Cantidad), 2)) AS 'Total Devoluciones',
+  		MAX(a.Fecha) AS 'Fecha de última Devolución',
+		MAX(d.Estado) AS 'Estado',
+	 	MAX(a.Descripcion) AS 'Descripción',
+    		MAX(e.Nombre) AS 'Cliente',
+	    	MAX(f.Nombre) AS 'Trabajador'
+	FROM Devoluciones a
+	INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Devolucion
+	INNER JOIN Productos c ON c.ID = b.ID_Producto
+	INNER JOIN Facturas d ON a.ID_Factura = d.ID
+	INNER JOIN Clientes e ON d.ID_Cliente = e.ID
+	INNER JOIN Usuarios f ON d.ID_Usuario = f.ID
+        WHERE e.Nombre LIKE CONCAT('%', _Nombre_Cliente, '%')
+        GROUP BY d.Codigo_Fac
+	ORDER BY 'Cod. Factura' ASC;
+    ELSEIF opcion = 3 THEN
+        -- Buscar devolución por estado de factura
+         SELECT
+    		MAX(a.ID), 
+    		CONCAT('FAC-', LPAD(d.Codigo_Fac, 5, '0')) AS 'Cod. Factura',
+	    	COUNT(a.ID) AS 'Cant. Devoluciones',
+   		CONCAT('C$ ', FORMAT(SUM(c.Precio_Venta * b.Cantidad), 2)) AS 'Total Devoluciones',
+  		MAX(a.Fecha) AS 'Fecha de última Devolución',
+		MAX(d.Estado) AS 'Estado',
+	 	MAX(a.Descripcion) AS 'Descripción',
+    		MAX(e.Nombre) AS 'Cliente',
+	    	MAX(f.Nombre) AS 'Trabajador'
+	FROM Devoluciones a
+	INNER JOIN Detalle_Devolucion b ON a.ID = b.ID_Devolucion
+	INNER JOIN Productos c ON c.ID = b.ID_Producto
+	INNER JOIN Facturas d ON a.ID_Factura = d.ID
+	INNER JOIN Clientes e ON d.ID_Cliente = e.ID
+	INNER JOIN Usuarios f ON d.ID_Usuario = f.ID
+        WHERE d.Estado = _Estado
+        GROUP BY d.Codigo_Fac
+	ORDER BY 'Cod. Factura' ASC;
+    ELSE
+        -- Opción no válida
+        SELECT 'Opción no válida' AS Resultado;
+    END IF;
+END //
+DELIMITER ;
+
+DROP PROCEDURE Filtro_Remisiones;
+DELIMITER //
+CREATE PROCEDURE Filtro_Remisiones(IN OP INT)
+BEGIN
+    IF OP = 1 THEN
+        -- Consulta de Remisiones de Entrada
+        SELECT
+            a.ID,
+            a.Fecha,
+            a.Descripcion AS 'Descripcion',
+            COUNT(b.ID) AS 'Cant. Productos',
+            a.Tipo_Remision AS 'Tipo de remisión',
+            c.Nombre AS 'Nombre del empleado'
+        FROM Remisiones a 
+        INNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision
+        INNER JOIN Usuarios c ON a.ID_Usuario = c.ID
+        WHERE a.Tipo_Remision = 'Remisión de Entrada'
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSEIF OP = 2 THEN
+        -- Consulta de Remisiones de Salida
+        SELECT
+            a.ID,
+            a.Fecha,
+            a.Descripcion AS 'Descripcion',
+            COUNT(b.ID) AS 'Cant. Productos',
+            a.Tipo_Remision AS 'Tipo de remisión',
+            c.Nombre AS 'Nombre del empleado'
+        FROM Remisiones a 
+        INNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision
+        INNER JOIN Usuarios c ON a.ID_Usuario = c.ID
+        WHERE a.Tipo_Remision = 'Remisión de Salida'
+        GROUP BY a.ID
+        ORDER BY a.ID;
+    ELSE
+        -- Opción no válida
+        SELECT 'Opción no válida' AS 'Resultado';
+    END IF;
+END//
+DELIMITER ;
+
+ALTER TABLE Detalle_Factura
+ADD COLUMN `Descripcion` VARCHAR(200) NOT NULL;
+
+
+DROP PROCEDURE Facturar_Productos;
+DELIMITER //
+CREATE PROCEDURE Facturar_Productos(
+    IN _Cantidad INT,
+    IN _Descripcion VARCHAR(200),
+    IN _ID_Factura INT,
+    IN _ID_Producto INT
+)
+BEGIN
+    DECLARE productoExistencias INT;
+    DECLARE Aux_ID_DetalleFactura INT;
+	DECLARE Aux_NombreProducto VARCHAR(100);
+ 
+    -- Iniciar una transacción
+    START TRANSACTION;
+
+    -- Obtener existencias actuales del producto
+    SELECT Existencias INTO productoExistencias FROM Productos WHERE ID = _ID_Producto;
+	SELECT Nombre INTO Aux_NombreProducto FROM Productos WHERE ID = _ID_Producto;
+
+    -- Verificar si hay suficientes existencias para la venta
+    IF productoExistencias >= _Cantidad THEN
+        -- Registrar la venta en Detalle_Factura
+        INSERT INTO Detalle_Factura (Cantidad, Descripcion, ID_Factura, ID_Producto) VALUES (_Cantidad, _Descripcion, _ID_Factura, _ID_Producto);
+		SET Aux_ID_DetalleFactura = LAST_INSERT_ID();
+		
+        -- Actualizar existencias y precio total
+        UPDATE Productos SET Existencias = (Existencias - _Cantidad) WHERE ID = _ID_Producto;
+		UPDATE Productos SET Precio_Total =  (Precio_Compra * Existencias) WHERE ID = _ID_Producto;
+		
+        -- Verificar si las existencias se han agotado
+        IF (productoExistencias - _Cantidad) = 0 THEN
+            UPDATE Productos SET Estado = 'No activo' WHERE ID = _ID_Producto;
+        END IF;
+	
+		INSERT INTO HistorialTransacciones VALUES (NULL, 'Facturacion', NOW(), CONCAT('Se ha hecho una transacción de salida de productos de mendiante una facturacion de ', _Cantidad, '  ', Aux_NombreProducto));
+			
+        -- Confirmar la transacción
+        COMMIT;
+    ELSE
+        -- Si no hay suficientes existencias, revertir la transacción
+        ROLLBACK;
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No hay suficientes existencias para esta venta.';
+    END IF;
+END //
+DELIMITER ;

@@ -71,6 +71,8 @@ namespace INASOFT_3._0.VistaFacturas
             Groupbox_fact.Enabled = false;
             CbxTipoPagos.SelectedIndex = 1;
             Cbx_Productos.SelectedIndex = -1;
+            RbtCambioPrecNo.Checked = true;
+
 
             timer = new Timer();
             timer.Interval = 5000;
@@ -85,17 +87,19 @@ namespace INASOFT_3._0.VistaFacturas
             dataTable.Columns.Add("Precio");
             dataTable.Columns.Add("Total");
             dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("Descripcion");
 
             dataGridView1.DataSource = dataTable;
 
             dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
 
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
             }
 
-            datagridView2.Rows.Add("Total", "", "", "", 0, "");
+            datagridView2.Rows.Add("Total", "", "", "", 0, "","");
 
             foreach (DataGridViewBand band in datagridView2.Columns)
             {
@@ -159,6 +163,8 @@ namespace INASOFT_3._0.VistaFacturas
             lbCodProdu.Text = "...";
             txtIdProduc.Text = "";
             TxtBuscar_Productos.Text = "";
+            Lb_Observacion.Text = "...";
+            txtPrecioVenta.Text = "";
         }
 
         private void InfoNegocio()
@@ -287,6 +293,23 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox_Error.Show("No deje la opción de 'Tipo de pago' sin marcar.", "Error");
                 return;
+            } 
+
+            if (RBtn_AlContado.Checked == true)
+            {
+                if(Txt_Efectivo.Text == "")
+                {
+                    MessageBox_Error.Show("Al pagar al contado no puede dejar el campo 'Efectivo' en blanco\n\n.", "Error");
+                    return;
+                }
+                else
+                {
+                    if (double.Parse(Txt_Efectivo.Text) < double.Parse(lbDevolucion.Text))
+                    {
+                        MessageBox_Error.Show("Al pagar al contado no puede dejar el campo 'Efectivo' en blanco\n\n.", "Error");
+                        return;
+                    }
+                }
             }
 
             try
@@ -320,7 +343,8 @@ namespace INASOFT_3._0.VistaFacturas
                             {
                                 Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
                                 Id_Factura = ctrlFactura.ID_Factura(),
-                                Id_Producto = int.Parse(fila.Cells[5].Value.ToString())
+                                Id_Producto = int.Parse(fila.Cells[5].Value.ToString()),
+                                DescripcionPrecio = fila.Cells[6].Value.ToString()
                             };
                             lista.Add(facturas1);
                         }
@@ -661,6 +685,8 @@ namespace INASOFT_3._0.VistaFacturas
                     lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
                     lbExistencias.Text = productos.Existencias.ToString();
                     Lb_Precio_Venta.Text = productos.Precio_venta.ToString();
+                    txtPrecioVenta.Text = productos.Precio_venta.ToString();
+                    Lb_Observacion.Text = LimitarLongitud(productos.Observacion.ToString(), 20);
 
                     errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
                     lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
@@ -694,6 +720,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
+            string descPrecio = "";
             if (Cbx_Productos.SelectedIndex == -1)
             {
                 MessageBox_Error.Show("Tiene que escoger un producto a facturar", "Error");
@@ -731,6 +758,22 @@ namespace INASOFT_3._0.VistaFacturas
                 return;
             }
 
+            if (Lb_Precio_Venta.Text != txtPrecioVenta.Text)
+            {
+                if(txtDescripcion.Text == "")
+                {
+                    descPrecio = "Se ha realizado un descuento en este producto";
+                }
+                else
+                {
+                    descPrecio = txtDescripcion.Text;
+                }
+            }
+            else
+            {
+                descPrecio = "Se ha vendido por su precio estandar";
+            }
+
             int id = int.Parse(txtIdProduc.Text);
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             Productos productos = ctrlProductos.MostrarDatosProductos(id);
@@ -742,6 +785,7 @@ namespace INASOFT_3._0.VistaFacturas
             newRow[3] = double.Parse(Lb_Precio_Venta.Text);
             newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
             newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
+            newRow[6] = descPrecio;
 
             dataTable.Rows.Add(newRow);
 
@@ -865,8 +909,28 @@ namespace INASOFT_3._0.VistaFacturas
             }
         }
 
-        private void CbxTipoPagos_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
+        }
+
+        private void RbtCambioPrecSi_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPrecioVenta.Enabled = true;
+        }
+
+        private void RbtCambioPrecNo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPrecioVenta.Enabled = false;
         }
     }
 }

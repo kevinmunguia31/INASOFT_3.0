@@ -29,7 +29,9 @@ namespace INASOFT_3._0.VistaFacturas
         private void CargarDatosIniciales(string id_factura)
         {
             Txt_Factura.Text = id_factura;
+            lbTotalDevolucion.Enabled = false;
         }
+
         public void CargarDetalleFacturas()
         {
             foreach (DataGridViewBand band in datagridView2.Columns)
@@ -37,7 +39,7 @@ namespace INASOFT_3._0.VistaFacturas
                 band.ReadOnly = true;
             }
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            datagridView1.DataSource = ctrlFactura.DetalleFactura(Txt_Factura.Text);
+            datagridView1.DataSource = ctrlFactura.DetalleFactura(int.Parse(Txt_Factura.Text));
         }
 
         private void DatagridView1_MouseClick_1(object sender, MouseEventArgs e)

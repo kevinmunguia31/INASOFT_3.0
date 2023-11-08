@@ -423,7 +423,7 @@ namespace INASOFT_3._0.Controladores
             estilo_Ca.Font.Bold = true;
             estilo_Ca.Font.FontColor = System.Drawing.Color.Orange;
             estilo_Ca.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.Bisque, System.Drawing.Color.Bisque);
-            sl.SetCellStyle("B9", "M9", estilo_Ca);
+            sl.SetCellStyle("B9", "L9", estilo_Ca);
 
 
             sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, "Reporte del inventario");
@@ -438,19 +438,17 @@ namespace INASOFT_3._0.Controladores
 
             sl.SetCellValue("F9", "Exsistencias");
 
-            sl.SetCellValue("G9", "Existencia minimas");
+            sl.SetCellValue("G9", "Precio compra");
 
-            sl.SetCellValue("H9", "Precio compra");
+            sl.SetCellValue("H9", "Precio venta");
 
-            sl.SetCellValue("I9", "Precio venta");
+            sl.SetCellValue("I9", "Precio Total");
 
-            sl.SetCellValue("J9", "Precio Total");
+            sl.SetCellValue("J9", "Observaciones");
 
-            sl.SetCellValue("K9", "Observaciones");
+            sl.SetCellValue("K9", "Tipo de entrada");
 
-            sl.SetCellValue("L9", "Tipo de entrada");
-
-            sl.SetCellValue("M9", "Entrada especifica");
+            sl.SetCellValue("L9", "Entrada especifica");
 
             for (int fila = 0; fila < dt.Rows.Count; fila++)
             {
@@ -464,32 +462,30 @@ namespace INASOFT_3._0.Controladores
                 sl.SetCellValue("E" + cabecera, dt.Rows[fila].Cells[3].Value.ToString());
 
                 sl.SetCellValue("F" + cabecera, int.Parse(dt.Rows[fila].Cells[4].Value.ToString()));
-
-                sl.SetCellValue("G" + cabecera, int.Parse(dt.Rows[fila].Cells[5].Value.ToString()));
                 
-                string aux1 = dt.Rows[fila].Cells[6].Value.ToString();
+                string aux1 = dt.Rows[fila].Cells[5].Value.ToString();
                 string[] words1 = aux1.Split(' ');
                 double aux_1 = Double.Parse(words1[1]);
 
-                sl.SetCellValue("H" + cabecera, aux_1);
+                sl.SetCellValue("G" + cabecera, aux_1);
 
-                string aux2 = dt.Rows[fila].Cells[7].Value.ToString();
+                string aux2 = dt.Rows[fila].Cells[6].Value.ToString();
                 string[] words2 = aux2.Split(' ');
                 double aux_2 = Double.Parse(words2[1]);
 
-                sl.SetCellValue("I" + cabecera, aux_2);
+                sl.SetCellValue("H" + cabecera, aux_2);
 
-                string aux3 = dt.Rows[fila].Cells[8].Value.ToString();
+                string aux3 = dt.Rows[fila].Cells[7].Value.ToString();
                 string[] words3 = aux3.Split(' ');
                 double aux_3 = Double.Parse(words3[1]);
 
-                sl.SetCellValue("J" + cabecera, aux_3);
+                sl.SetCellValue("I" + cabecera, aux_3);
+
+                sl.SetCellValue("J" + cabecera, dt.Rows[fila].Cells[8].Value.ToString());
 
                 sl.SetCellValue("K" + cabecera, dt.Rows[fila].Cells[9].Value.ToString());
 
                 sl.SetCellValue("L" + cabecera, dt.Rows[fila].Cells[10].Value.ToString());
-
-                sl.SetCellValue("M" + cabecera, dt.Rows[fila].Cells[11].Value.ToString());
             }
 
             //Borde de las celdas
@@ -506,13 +502,13 @@ namespace INASOFT_3._0.Controladores
             estiloB.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
             estiloB.Border.BottomBorder.Color = System.Drawing.Color.Black;
 
-            sl.SetCellStyle("B" + celda_ini, "M" + cabecera, estiloB);
-            sl.SetCellStyle("B" + celda_ini, "M" + cabecera, estilo_celda);
-            sl.AutoFitColumn("B", "M");
+            sl.SetCellStyle("B" + celda_ini, "L" + cabecera, estiloB);
+            sl.SetCellStyle("B" + celda_ini, "L" + cabecera, estilo_celda);
+            sl.AutoFitColumn("B", "L");
 
             SLStyle cellStyle = sl.CreateStyle();
             cellStyle.FormatCode = "#,##0.00";
-            sl.SetCellStyle("H" + celda_ini, "J" + cabecera, cellStyle);
+            sl.SetCellStyle("G" + celda_ini, "I" + cabecera, cellStyle);
 
             // Genera un nombre de archivo temporal sin la extensión .tmp
             string tempFileName = Path.GetTempFileName();

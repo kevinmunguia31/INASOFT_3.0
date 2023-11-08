@@ -37,6 +37,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.Cbx_Clientes = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbTelefono = new System.Windows.Forms.Label();
@@ -53,9 +54,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnAddCliente = new Guna.UI2.WinForms.Guna2Button();
-            this.Txt_Cedula = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
@@ -73,7 +72,6 @@ namespace INASOFT_3._0.VistaFacturas
             this.GroupBox_Fact = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Cbx_Clientes = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -155,6 +153,21 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox1.Size = new System.Drawing.Size(381, 258);
             this.guna2GroupBox1.TabIndex = 5;
             this.guna2GroupBox1.Text = "          Información del cliente";
+            // 
+            // Cbx_Clientes
+            // 
+            this.Cbx_Clientes.BackColor = System.Drawing.SystemColors.Control;
+            this.Cbx_Clientes.DropDownHeight = 90;
+            this.Cbx_Clientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbx_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cbx_Clientes.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbx_Clientes.FormattingEnabled = true;
+            this.Cbx_Clientes.IntegralHeight = false;
+            this.Cbx_Clientes.Location = new System.Drawing.Point(10, 49);
+            this.Cbx_Clientes.Name = "Cbx_Clientes";
+            this.Cbx_Clientes.Size = new System.Drawing.Size(179, 30);
+            this.Cbx_Clientes.TabIndex = 95;
+            this.Cbx_Clientes.SelectedIndexChanged += new System.EventHandler(this.Cbx_Clientes_SelectedIndexChanged_1);
             // 
             // pictureBox2
             // 
@@ -361,9 +374,7 @@ namespace INASOFT_3._0.VistaFacturas
             // 
             // guna2GroupBox2
             // 
-            this.guna2GroupBox2.Controls.Add(this.label2);
             this.guna2GroupBox2.Controls.Add(this.btnAddCliente);
-            this.guna2GroupBox2.Controls.Add(this.Txt_Cedula);
             this.guna2GroupBox2.Controls.Add(this.pictureBox3);
             this.guna2GroupBox2.Controls.Add(this.label10);
             this.guna2GroupBox2.Controls.Add(this.txtNombre);
@@ -371,22 +382,9 @@ namespace INASOFT_3._0.VistaFacturas
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox2.Location = new System.Drawing.Point(399, 115);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(341, 219);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(341, 179);
             this.guna2GroupBox2.TabIndex = 6;
             this.guna2GroupBox2.Text = "          Registrar nuevo cliente";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(3, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 23);
-            this.label2.TabIndex = 94;
-            this.label2.Text = "Cédula del cliente:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnAddCliente
             // 
@@ -399,34 +397,12 @@ namespace INASOFT_3._0.VistaFacturas
             this.btnAddCliente.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCliente.ForeColor = System.Drawing.Color.White;
             this.btnAddCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCliente.Image")));
-            this.btnAddCliente.Location = new System.Drawing.Point(101, 176);
+            this.btnAddCliente.Location = new System.Drawing.Point(101, 129);
             this.btnAddCliente.Name = "btnAddCliente";
             this.btnAddCliente.Size = new System.Drawing.Size(136, 35);
             this.btnAddCliente.TabIndex = 17;
             this.btnAddCliente.Text = "Registrar Cliente";
             this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
-            // 
-            // Txt_Cedula
-            // 
-            this.Txt_Cedula.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_Cedula.DefaultText = "";
-            this.Txt_Cedula.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_Cedula.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_Cedula.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_Cedula.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_Cedula.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_Cedula.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Cedula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Txt_Cedula.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_Cedula.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_identification_documents_20px;
-            this.Txt_Cedula.Location = new System.Drawing.Point(7, 135);
-            this.Txt_Cedula.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_Cedula.Name = "Txt_Cedula";
-            this.Txt_Cedula.PasswordChar = '\0';
-            this.Txt_Cedula.PlaceholderText = "Ingrese la cédula del cliente";
-            this.Txt_Cedula.SelectedText = "";
-            this.Txt_Cedula.Size = new System.Drawing.Size(230, 30);
-            this.Txt_Cedula.TabIndex = 93;
             // 
             // pictureBox3
             // 
@@ -445,7 +421,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(3, 47);
+            this.label10.Location = new System.Drawing.Point(3, 53);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(142, 23);
             this.label10.TabIndex = 92;
@@ -465,7 +441,7 @@ namespace INASOFT_3._0.VistaFacturas
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNombre.IconLeft")));
-            this.txtNombre.Location = new System.Drawing.Point(7, 74);
+            this.txtNombre.Location = new System.Drawing.Point(7, 80);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
@@ -616,21 +592,6 @@ namespace INASOFT_3._0.VistaFacturas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fecha de hoy";
             // 
-            // Cbx_Clientes
-            // 
-            this.Cbx_Clientes.BackColor = System.Drawing.SystemColors.Control;
-            this.Cbx_Clientes.DropDownHeight = 90;
-            this.Cbx_Clientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbx_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Cbx_Clientes.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cbx_Clientes.FormattingEnabled = true;
-            this.Cbx_Clientes.IntegralHeight = false;
-            this.Cbx_Clientes.Location = new System.Drawing.Point(10, 49);
-            this.Cbx_Clientes.Name = "Cbx_Clientes";
-            this.Cbx_Clientes.Size = new System.Drawing.Size(179, 30);
-            this.Cbx_Clientes.TabIndex = 95;
-            this.Cbx_Clientes.SelectedIndexChanged += new System.EventHandler(this.Cbx_Clientes_SelectedIndexChanged_1);
-            // 
             // AgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,8 +670,6 @@ namespace INASOFT_3._0.VistaFacturas
         public System.Windows.Forms.GroupBox GroupBox_Fact;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox Txt_Cedula;
         public System.Windows.Forms.ComboBox Cbx_Clientes;
     }
 }

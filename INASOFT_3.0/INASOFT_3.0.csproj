@@ -352,6 +352,12 @@
     <Compile Include="VistaFacturas\Anular_Factura.Designer.cs">
       <DependentUpon>Anular_Factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaFacturas\DetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\DetalleCompra.Designer.cs">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\DetalleFacturaRealizada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +369,12 @@
     </Compile>
     <Compile Include="VistaFacturas\DetalleDevolucion.Designer.cs">
       <DependentUpon>DetalleDevolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\DetalleRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\DetalleRemision.Designer.cs">
+      <DependentUpon>DetalleRemision.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\Proforma.cs">
       <SubType>Form</SubType>
@@ -469,11 +481,17 @@
     <EmbeddedResource Include="VistaFacturas\Anular_Factura.resx">
       <DependentUpon>Anular_Factura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\DetalleCompra.resx">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\DetalleFacturaRealizada.resx">
       <DependentUpon>DetalleFacturaRealizada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\DetalleDevolucion.resx">
       <DependentUpon>DetalleDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\DetalleRemision.resx">
+      <DependentUpon>DetalleRemision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\Proforma.resx">
       <DependentUpon>Proforma.cs</DependentUpon>

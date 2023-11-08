@@ -31,11 +31,13 @@ namespace INASOFT_3._0.UserControls
             CargarTablaProduct();
             Cargar_Compras();
             CargarProveedor();
+            CargarTablaRemisiones();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
             lbCantiTota.Text = ctrlProductos.TotalProductos();
             dataGridView1.Columns[9].Visible = false;
 
+            dataGridView3.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView2.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
@@ -43,6 +45,10 @@ namespace INASOFT_3._0.UserControls
                 band.ReadOnly = true;
             }
             foreach (DataGridViewBand band in dataGridView2.Columns)
+            {
+                band.ReadOnly = true;
+            }
+            foreach (DataGridViewBand band in dataGridView3.Columns)
             {
                 band.ReadOnly = true;
             }
@@ -60,7 +66,11 @@ namespace INASOFT_3._0.UserControls
             CtrlProductos _ctrlProductos = new CtrlProductos();
             dataGridView1.DataSource = _ctrlProductos.CargarProductos();
         }
-
+        public void CargarTablaRemisiones()
+        {
+            CtrlRemision ctrlRemision = new CtrlRemision();
+            dataGridView3.DataSource = ctrlRemision.CargarRemisiones();
+        } 
         public void CargarProveedor()
         {
             cbProveedor.DataSource = null;
@@ -306,6 +316,33 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
+        private void menuClick_OpcionesRemsiones(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Ver detalle"))
+            {
+                id_pos = id_pos.Replace("Ver detalle", "");
+                VerDetalleRemision(int.Parse(id_pos));
+            }
+        }
+
+        private void VerDetalleRemision(int id_pos)
+        {
+            try
+            {
+                if (id_pos > -1 && id_pos != null)
+                {
+                    DetalleRemision remision = new DetalleRemision(int.Parse(dataGridView1.Rows[id_pos].Cells[0].Value.ToString()));                    
+                    remision.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex, "Error");
+            }
+        }
+
         private void btnPDF_Click(object sender, EventArgs e)
         {
             InfoNegocio infoNegocio = new InfoNegocio();
@@ -387,12 +424,6 @@ namespace INASOFT_3._0.UserControls
                     ctrlInfo.InsertarLog(log);
                 }
             }
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            RealizarRemision add = new RealizarRemision();
-            add.ShowDialog();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -500,6 +531,61 @@ namespace INASOFT_3._0.UserControls
                 MessageBox_Error.Show("Error: " + ex.Message, "Error");
             }
 
+        }
+
+        private void guna2Button2_Click_1(object sender, EventArgs e)
+        {
+            RealizarRemision add = new RealizarRemision();
+            add.ShowDialog();
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            string fecha_Ini = DateTimeTimer_Ini.Text;
+            string fecha_End = DateTimeTimer_End.Text;
+
+            CtrlRemision ctrl = new CtrlRemision();
+            dataGridView3.DataSource = ctrl.CargarRemisionesxFecha(fecha_Ini, fecha_End);
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            CargarTablaRemisiones();
+        }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            CtrlRemision ctrl = new CtrlRemision();
+            if (Rbt_RemisionEntrada.Checked == false && Rbt_RemisionSalida.Checked == false)
+            {
+                MessageBox_Error.Show("Tiene que marcar una de las dos opciones", "Error");
+            }
+            else if (Rbt_RemisionEntrada.Checked == true && Rbt_RemisionSalida.Checked == false)
+            {
+                dataGridView3.DataSource = ctrl.CargarFiltroRemisiones(1);
+            }
+            else if (Rbt_RemisionEntrada.Checked == false && Rbt_RemisionSalida.Checked == true)
+            {
+                dataGridView3.DataSource = ctrl.CargarFiltroRemisiones(2);
+            }
+            Rbt_RemisionEntrada.Checked = false;
+            Rbt_RemisionSalida.Checked = false;
+        }
+
+        private void dataGridView3_MouseClick(object sender, MouseEventArgs e)
+        {
+            int pos = dataGridView3.HitTest(e.X, e.Y).RowIndex;
+
+            if (pos < 0)
+                return;
+
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+                menu.Items.Add("Ver detalle").Name = "Ver detalle"+ pos;
+                menu.Show(dataGridView3, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_OpcionesRemsiones);
+            }
         }
     }
 }

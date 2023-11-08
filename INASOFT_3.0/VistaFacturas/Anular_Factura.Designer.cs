@@ -53,6 +53,7 @@
             this.Lb_Devolucion3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -97,8 +98,9 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView1.Size = new System.Drawing.Size(299, 29);
+            this.datagridView1.Size = new System.Drawing.Size(299, 49);
             this.datagridView1.TabIndex = 85;
+            this.datagridView1.Visible = false;
             // 
             // panel1
             // 
@@ -334,6 +336,15 @@
             this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.MessageBox_Import.Text = null;
             // 
+            // guna2MessageDialog1
+            // 
+            this.guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            this.guna2MessageDialog1.Caption = null;
+            this.guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+            this.guna2MessageDialog1.Parent = null;
+            this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            this.guna2MessageDialog1.Text = null;
+            // 
             // Anular_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,5 +399,6 @@
         public System.Windows.Forms.Label Lb_Devolucion3;
         private System.Windows.Forms.GroupBox groupBox3;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
+        private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

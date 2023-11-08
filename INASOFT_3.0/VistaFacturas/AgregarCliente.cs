@@ -46,23 +46,21 @@ namespace INASOFT_3._0.VistaFacturas
         private void btnAddCliente_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
-            string cedula = Txt_Cedula.Text.Trim();
 
-            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(cedula))
+            if (string.IsNullOrEmpty(nombre))
             {
-                MessageBox_Error.Show("Por favor introduzca los datos del cliente", "Error");
+                MessageBox_Error.Show("Por favor introduzca el nombre del cliente", "Error");
                 return;
             }
 
             Cliente cliente = new Cliente();
             cliente.Nombre = nombre;
-            cliente.Cedula = cedula;
             Controladores.CtrlClientes ctrlClientes = new Controladores.CtrlClientes();
             if (ctrlClientes.Insertar_NombreCedulaCliente(cliente))
             {
                 MessageBox_Import.Show("Cliente registrado correctamente", "Aviso importante");
 
-                string log = $"[{DateTime.Now}] {Sesion.nombre} Se registró un usuario de cedula: {cedula}";
+                string log = $"[{DateTime.Now}] {Sesion.nombre} Se registró un usuario de nombre: {nombre}";
                 Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
                 ctrlInfo.InsertarLog(log);
 
@@ -112,7 +110,6 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Clientes.SelectedIndex = -1;
             txtNombre.Text = "";
             TxtBuscar_Clientes.Text = "";
-            Txt_Cedula.Text = "";
         }
 
         private void Button1_Click_1(object sender, EventArgs e)

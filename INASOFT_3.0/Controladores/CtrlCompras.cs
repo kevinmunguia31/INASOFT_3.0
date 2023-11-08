@@ -36,6 +36,26 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable CargarDetalleCompras(int id)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT\r\n    b.ID AS 'ID',\r\n    c.Codigo AS 'Codigo',\r\n    c.Nombre AS 'Nombre producto',\r\n    c.Precio_Venta AS 'Precio de venta',\r\n    c.Precio_Compra AS 'Precio de compra',\r\n    b.Cantidad AS 'Cant. Productos'\r\nFROM Compras a \r\nINNER JOIN Detalle_Compra b ON a.ID = b.ID_Compra\r\nINNER JOIN Productos c ON b.ID_Producto = c.ID\r\nWHERE a.ID = "+id+"\r\nORDER BY b.ID;";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
+
         public bool Insertar_Compra(Compras compra)
         {
             bool bandera = false;

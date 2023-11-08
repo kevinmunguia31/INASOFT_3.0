@@ -71,7 +71,7 @@ namespace INASOFT_3._0.Controladores
         public int Total_FacturasAnuldasHoy()
         {
             int total = 0;
-            string SQL = "SELECT COUNT(ID) FROM Facturas WHERE Estado = 'Anulada' WHERE DATE(fecha) = CURDATE();";
+            string SQL = "SELECT COUNT(a.ID) AS 'Cant. Facturas Anuladas'\r\nFROM Facturas_Anuladas a\r\nINNER JOIN Facturas b ON a.ID_Factura = b.ID\r\nWHERE DATE(b.Fecha) = CURDATE();";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

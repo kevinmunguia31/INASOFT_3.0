@@ -329,7 +329,7 @@ namespace INASOFT_3._0.VistaFacturas
 
             Controladores.CtrlRemision ctrl = new Controladores.CtrlRemision();
             Modelos.Remision remision = new Modelos.Remision();
-            remision.Descripcion = string.IsNullOrWhiteSpace(TxtDescripcion.Text) ? "El usuario: " + Lb_NombreUsuario + " ha realizado una remisión de entrada" : (TxtDescripcion.Text);
+            remision.Descripcion = string.IsNullOrWhiteSpace(TxtDescripcion.Text) ? "El usuario: " + Lb_NombreUsuario.Text + " ha realizado una remisión de entrada" : (TxtDescripcion.Text);
             bool bandera = ctrl.RealizarRemesa(remision);
 
             if (bandera)
@@ -409,6 +409,34 @@ namespace INASOFT_3._0.VistaFacturas
                 }
                 menu.Show(dataGridView1, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
             }
         }
     }

@@ -53,7 +53,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             string idFactura = txtIDFactura.Text;
             Controladores.CtrlFactura ctrlFactura = new Controladores.CtrlFactura();
-            dataGridView1.DataSource = ctrlFactura.DetalleFactura(idFactura);
+            dataGridView1.DataSource = ctrlFactura.DetalleFactura(int.Parse(idFactura));
         }
 
         private void InfoNegocio()

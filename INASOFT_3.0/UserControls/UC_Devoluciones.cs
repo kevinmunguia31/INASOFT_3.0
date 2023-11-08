@@ -18,6 +18,8 @@ namespace INASOFT_3._0.UserControls
         {
             InitializeComponent();
             Cargar_devolucion();
+            dataGridDevolucion.Columns[0].Visible = false;
+
             dataGridDevolucion.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridDevolucion.Columns)
             {
@@ -44,13 +46,12 @@ namespace INASOFT_3._0.UserControls
                 if (id_pos > -1 && id_pos != null)
                 {
                     DetalleDevolucion frm = new DetalleDevolucion(dataGridDevolucion.Rows[id_pos].Cells[0].Value.ToString());
-                    frm.Lb_tipoFactura.Text = dataGridDevolucion.Rows[id_pos].Cells[3].Value.ToString();
+                    frm.Lb_tipoFactura.Text = dataGridDevolucion.Rows[id_pos].Cells[5].Value.ToString();
                     frm.lbClienteName.Text = dataGridDevolucion.Rows[id_pos].Cells[7].Value.ToString();
                     frm.Lb_Trabajador.Text = dataGridDevolucion.Rows[id_pos].Cells[8].Value.ToString();
-                    frm.Lb_Fecha.Text = dataGridDevolucion.Rows[id_pos].Cells[2].Value.ToString();
+                    frm.Lb_Fecha.Text = dataGridDevolucion.Rows[id_pos].Cells[4].Value.ToString();
                     frm.lbIdFactura.Text = dataGridDevolucion.Rows[id_pos].Cells[1].Value.ToString();
                     Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-                    frm.txtDescripcion.Text = ctrlDevolucion.Desc_Devolucion(int.Parse(dataGridDevolucion.Rows[id_pos].Cells[0].Value.ToString()));
                     frm.Show();
                 }
             }
@@ -128,7 +129,34 @@ namespace INASOFT_3._0.UserControls
 
         private void dataGridDevolucion_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
+            if (dataGridDevolucion.Columns[e.ColumnIndex].Index == 5)
+            {
+                try
+                {
+                    if (e.Value.GetType() != typeof(System.DBNull))
+                    {
+                        if (e.Value.ToString() == "Cancelado")
+                        {
+                            e.CellStyle.BackColor = System.Drawing.Color.Green;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
+                        }
+                        else if (e.Value.ToString() == "Pendiente")
+                        {
+                            e.CellStyle.BackColor = System.Drawing.Color.Yellow;
+                            e.CellStyle.ForeColor = System.Drawing.Color.Black;
+                        }
+                        else if (e.Value.ToString() == "Anulada")
+                        {
+                            e.CellStyle.BackColor = System.Drawing.Color.Red;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    MessageBox.Show("" + ex);
+                }
+            }
         }
 
         private void dataGridDevolucion_MouseClick(object sender, MouseEventArgs e)

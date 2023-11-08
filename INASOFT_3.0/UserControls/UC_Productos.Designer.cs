@@ -35,6 +35,8 @@ namespace INASOFT_3._0.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editar = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +83,6 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
             this.Inv = new System.Windows.Forms.TabPage();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -89,6 +90,29 @@ namespace INASOFT_3._0.UserControls
             this.btnPDF = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Remisiones = new System.Windows.Forms.TabPage();
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.Rbt_RemisionSalida = new System.Windows.Forms.RadioButton();
+            this.guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
+            this.Rbt_RemisionEntrada = new System.Windows.Forms.RadioButton();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.DateTimeTimer_Ini = new System.Windows.Forms.DateTimePicker();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.DateTimeTimer_End = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
+            this.guna2GroupBox7 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.Compras = new System.Windows.Forms.TabPage();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -124,6 +148,13 @@ namespace INASOFT_3._0.UserControls
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Remisiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.guna2GroupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.Compras.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -563,7 +594,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(783, 12);
+            this.guna2Button6.Location = new System.Drawing.Point(981, 11);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(135, 33);
             this.guna2Button6.TabIndex = 88;
@@ -636,7 +667,7 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(924, 12);
+            this.txtSearch.Location = new System.Drawing.Point(1122, 11);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -649,6 +680,7 @@ namespace INASOFT_3._0.UserControls
             // guna2TabControl1
             // 
             this.guna2TabControl1.Controls.Add(this.Inv);
+            this.guna2TabControl1.Controls.Add(this.Remisiones);
             this.guna2TabControl1.Controls.Add(this.Compras);
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2TabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -681,7 +713,6 @@ namespace INASOFT_3._0.UserControls
             // 
             // Inv
             // 
-            this.Inv.Controls.Add(this.guna2Button2);
             this.Inv.Controls.Add(this.guna2GroupBox3);
             this.Inv.Controls.Add(this.groupBox1);
             this.Inv.Controls.Add(this.pictureBox1);
@@ -700,25 +731,6 @@ namespace INASOFT_3._0.UserControls
             this.Inv.TabIndex = 0;
             this.Inv.Text = "Inventario de productos";
             this.Inv.UseVisualStyleBackColor = true;
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button2.BorderRadius = 10;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(1146, 12);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(195, 34);
-            this.guna2Button2.TabIndex = 90;
-            this.guna2Button2.Text = "Recepcionar Remisión";
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2GroupBox3
             // 
@@ -843,6 +855,360 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting_1);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
+            // Remisiones
+            // 
+            this.Remisiones.Controls.Add(this.guna2Button7);
+            this.Remisiones.Controls.Add(this.pictureBox6);
+            this.Remisiones.Controls.Add(this.guna2GroupBox6);
+            this.Remisiones.Controls.Add(this.label19);
+            this.Remisiones.Controls.Add(this.button4);
+            this.Remisiones.Controls.Add(this.groupBox9);
+            this.Remisiones.Controls.Add(this.guna2Button2);
+            this.Remisiones.Location = new System.Drawing.Point(4, 54);
+            this.Remisiones.Name = "Remisiones";
+            this.Remisiones.Size = new System.Drawing.Size(1346, 529);
+            this.Remisiones.TabIndex = 2;
+            this.Remisiones.Text = "Remisiones Entrada/Salida";
+            this.Remisiones.UseVisualStyleBackColor = true;
+            // 
+            // guna2Button7
+            // 
+            this.guna2Button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button7.Animated = true;
+            this.guna2Button7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.BorderRadius = 10;
+            this.guna2Button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2Button7.Location = new System.Drawing.Point(995, 14);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.Size = new System.Drawing.Size(135, 34);
+            this.guna2Button7.TabIndex = 97;
+            this.guna2Button7.Text = "Restablecer";
+            this.guna2Button7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::INASOFT_3._0.Properties.Resources.icons8_backup_66;
+            this.pictureBox6.Location = new System.Drawing.Point(7, 3);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 90;
+            this.pictureBox6.TabStop = false;
+            // 
+            // guna2GroupBox6
+            // 
+            this.guna2GroupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GroupBox6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.guna2GroupBox6.Controls.Add(this.groupBox8);
+            this.guna2GroupBox6.Controls.Add(this.groupBox7);
+            this.guna2GroupBox6.Controls.Add(this.button3);
+            this.guna2GroupBox6.Controls.Add(this.guna2GroupBox7);
+            this.guna2GroupBox6.Controls.Add(this.label17);
+            this.guna2GroupBox6.Controls.Add(this.label18);
+            this.guna2GroupBox6.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
+            this.guna2GroupBox6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox6.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox6.Location = new System.Drawing.Point(979, 62);
+            this.guna2GroupBox6.Name = "guna2GroupBox6";
+            this.guna2GroupBox6.Size = new System.Drawing.Size(363, 297);
+            this.guna2GroupBox6.TabIndex = 96;
+            this.guna2GroupBox6.Text = "Buscar remisiones";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox8.Controls.Add(this.Rbt_RemisionSalida);
+            this.groupBox8.Controls.Add(this.guna2Button8);
+            this.groupBox8.Controls.Add(this.Rbt_RemisionEntrada);
+            this.groupBox8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.ForeColor = System.Drawing.Color.Black;
+            this.groupBox8.Location = new System.Drawing.Point(0, 160);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(363, 137);
+            this.groupBox8.TabIndex = 101;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Buscardor por tipos de facturas";
+            // 
+            // Rbt_RemisionSalida
+            // 
+            this.Rbt_RemisionSalida.AutoSize = true;
+            this.Rbt_RemisionSalida.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbt_RemisionSalida.Location = new System.Drawing.Point(14, 76);
+            this.Rbt_RemisionSalida.Name = "Rbt_RemisionSalida";
+            this.Rbt_RemisionSalida.Size = new System.Drawing.Size(140, 26);
+            this.Rbt_RemisionSalida.TabIndex = 27;
+            this.Rbt_RemisionSalida.TabStop = true;
+            this.Rbt_RemisionSalida.Text = "Remisión de Salida";
+            this.Rbt_RemisionSalida.UseVisualStyleBackColor = true;
+            // 
+            // guna2Button8
+            // 
+            this.guna2Button8.BorderRadius = 10;
+            this.guna2Button8.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button8.ForeColor = System.Drawing.Color.White;
+            this.guna2Button8.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button8.Image")));
+            this.guna2Button8.Location = new System.Drawing.Point(261, 90);
+            this.guna2Button8.Name = "guna2Button8";
+            this.guna2Button8.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button8.TabIndex = 91;
+            this.guna2Button8.Text = "Buscar";
+            this.guna2Button8.Click += new System.EventHandler(this.guna2Button8_Click);
+            // 
+            // Rbt_RemisionEntrada
+            // 
+            this.Rbt_RemisionEntrada.AutoSize = true;
+            this.Rbt_RemisionEntrada.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rbt_RemisionEntrada.Location = new System.Drawing.Point(14, 34);
+            this.Rbt_RemisionEntrada.Name = "Rbt_RemisionEntrada";
+            this.Rbt_RemisionEntrada.Size = new System.Drawing.Size(149, 26);
+            this.Rbt_RemisionEntrada.TabIndex = 26;
+            this.Rbt_RemisionEntrada.TabStop = true;
+            this.Rbt_RemisionEntrada.Text = "Remisión de Entrada";
+            this.Rbt_RemisionEntrada.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.DateTimeTimer_Ini);
+            this.groupBox7.Controls.Add(this.guna2Button3);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.DateTimeTimer_End);
+            this.groupBox7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.ForeColor = System.Drawing.Color.Black;
+            this.groupBox7.Location = new System.Drawing.Point(0, 51);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(363, 103);
+            this.groupBox7.TabIndex = 95;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Buscador por fecha:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(13, 64);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 22);
+            this.label14.TabIndex = 99;
+            this.label14.Text = "Hasta:";
+            // 
+            // DateTimeTimer_Ini
+            // 
+            this.DateTimeTimer_Ini.CustomFormat = "yyyy/MM/dd";
+            this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeTimer_Ini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimeTimer_Ini.Location = new System.Drawing.Point(69, 32);
+            this.DateTimeTimer_Ini.Name = "DateTimeTimer_Ini";
+            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_Ini.TabIndex = 96;
+            // 
+            // guna2Button3
+            // 
+            this.guna2Button3.BorderRadius = 10;
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
+            this.guna2Button3.Location = new System.Drawing.Point(261, 57);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button3.TabIndex = 91;
+            this.guna2Button3.Text = "Buscar";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(13, 32);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 22);
+            this.label20.TabIndex = 98;
+            this.label20.Text = "De:";
+            // 
+            // DateTimeTimer_End
+            // 
+            this.DateTimeTimer_End.CustomFormat = "yyyy/MM/dd";
+            this.DateTimeTimer_End.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 64);
+            this.DateTimeTimer_End.Name = "DateTimeTimer_End";
+            this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_End.TabIndex = 97;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button3.ForeColor = System.Drawing.SystemColors.Control;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(126, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 29);
+            this.button3.TabIndex = 94;
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // guna2GroupBox7
+            // 
+            this.guna2GroupBox7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox7.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox7.Location = new System.Drawing.Point(0, 40);
+            this.guna2GroupBox7.Name = "guna2GroupBox7";
+            this.guna2GroupBox7.Size = new System.Drawing.Size(0, 0);
+            this.guna2GroupBox7.TabIndex = 92;
+            this.guna2GroupBox7.Text = "Buscar por nombre del cliente:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.label17.Location = new System.Drawing.Point(6, 265);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(0, 26);
+            this.label17.TabIndex = 88;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.label18.Location = new System.Drawing.Point(3, 51);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 26);
+            this.label18.TabIndex = 85;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.label19.Location = new System.Drawing.Point(51, 12);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(247, 36);
+            this.label19.TabIndex = 88;
+            this.label19.Text = "Remisiones realizadas";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button4.ForeColor = System.Drawing.SystemColors.Control;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(273, 14);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 29);
+            this.button4.TabIndex = 89;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.dataGridView3);
+            this.groupBox9.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(3, 48);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(969, 446);
+            this.groupBox9.TabIndex = 95;
+            this.groupBox9.TabStop = false;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView3.ColumnHeadersHeight = 35;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView3.EnableHeadersVisualStyles = false;
+            this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.dataGridView3.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView3.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView3.Size = new System.Drawing.Size(963, 422);
+            this.dataGridView3.TabIndex = 9;
+            this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseClick);
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button2.BorderRadius = 10;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
+            this.guna2Button2.Location = new System.Drawing.Point(1136, 14);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(195, 34);
+            this.guna2Button2.TabIndex = 91;
+            this.guna2Button2.Text = "Recepcionar Remisión";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
+            // 
             // Compras
             // 
             this.Compras.Controls.Add(this.guna2GroupBox4);
@@ -879,7 +1245,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.Size = new System.Drawing.Size(363, 238);
             this.guna2GroupBox4.TabIndex = 94;
-            this.guna2GroupBox4.Text = "Buscar facturas";
+            this.guna2GroupBox4.Text = "Buscar compras";
             // 
             // groupBox5
             // 
@@ -1091,14 +1457,14 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
             this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.ColumnHeadersHeight = 35;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1108,12 +1474,12 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(963, 422);
             this.dataGridView2.TabIndex = 9;
@@ -1190,6 +1556,17 @@ namespace INASOFT_3._0.UserControls
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Remisiones.ResumeLayout(false);
+            this.Remisiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.guna2GroupBox6.ResumeLayout(false);
+            this.guna2GroupBox6.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.Compras.ResumeLayout(false);
             this.Compras.PerformLayout();
             this.guna2GroupBox4.ResumeLayout(false);
@@ -1267,7 +1644,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2Button btnExcel;
         private Guna.UI2.WinForms.Guna2Button btnPDF;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1284,5 +1660,28 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.RadioButton Rbtn_Pendientes;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.ComboBox cbProveedor;
+        private System.Windows.Forms.TabPage Remisiones;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox6;
+        public System.Windows.Forms.Button button3;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox7;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker DateTimeTimer_Ini;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DateTimePicker DateTimeTimer_End;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.RadioButton Rbt_RemisionSalida;
+        private Guna.UI2.WinForms.Guna2Button guna2Button8;
+        private System.Windows.Forms.RadioButton Rbt_RemisionEntrada;
     }
 }

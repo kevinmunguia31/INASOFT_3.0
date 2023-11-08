@@ -59,7 +59,7 @@ namespace INASOFT_3._0.Controladores
         }
 
        
-        public DataTable DetalleFactura(string idFactura)
+        public DataTable DetalleFactura(int idFactura)
         {
             DataTable dt = new DataTable();
             string sql;
@@ -85,7 +85,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "CALL Facturar_Productos("+ facturas.Cantidad +", "+ facturas.Id_Factura +", "+ facturas.Id_Producto+");";
+            string sql = "CALL Facturar_Productos("+ facturas.Cantidad +", '"+facturas.DescripcionPrecio+"', "+ facturas.Id_Factura +", "+ facturas.Id_Producto+");";
 
             try
             {
