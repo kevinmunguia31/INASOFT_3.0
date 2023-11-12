@@ -77,7 +77,8 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 // Realizar operaciones relacionadas con remesas
                 Remision remision = new Remision();
-                remision.Descripcion = Txt_Descripcion.Text;
+                //remision.Descripcion = Txt_Descripcion.Text;
+                remision.Descripcion = string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ? "El usuario: " + Sesion.nombre + " ha realizado una remisión de entrada" : Txt_Descripcion.Text;
                 remision.Id_Usuario = Sesion.id;
                 remision.Tipo_Remision = "Remisión de Salida";
 

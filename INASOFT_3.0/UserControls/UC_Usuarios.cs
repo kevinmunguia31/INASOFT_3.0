@@ -1,6 +1,8 @@
-﻿using INASOFT_3._0.Controladores;
+﻿using DevExpress.XtraBars.Docking2010.Customization;
+using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,34 +134,52 @@ namespace INASOFT_3._0.UserControls
 
         private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool bandera = false;
-            DialogResult resultado = MessageDialog.Show("Seguro que desea eliminar este Usuario?", "Eliminar");
-            if (resultado == DialogResult.Yes)
+            int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+
+            if (id == 1)
             {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                ModeloUsers _ctrl = new ModeloUsers();
-                bandera = _ctrl.eliminar(id);
-                if (bandera)
+                MessageDialogWar.Show("No se puede eliminar el Usuario administrador");
+            }
+            else
+            {
+                string user = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                if (user == Sesion.usuario)
                 {
-                    MessageDialogInfo.Show("Usuario Eliminado con exito", "AVISO");
-                    CargarTablaUser();
-
-                    string log = "Se elimino un Usuario a las " + DateTime.Now + " por: " + Sesion.nombre;
-                    MySqlConnection conexionDB = Conexion.getConexion();
-                    conexionDB.Open();
-
-                    try
+                    MessageDialogWar.Show("No se puede eliminar el Usuario por que esta Logueado");
+                }
+                else
+                {
+                    bool bandera = false;
+                    DialogResult resultado = MessageDialog.Show("Seguro que desea eliminar este Usuario?", "Eliminar");
+                    if (resultado == DialogResult.Yes)
                     {
-                        MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
-                        comando.ExecuteNonQuery();
-                        Console.WriteLine("Logs Almacenado");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        Console.WriteLine("Error al guardar el Log" + ex);
+                        //int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                        ModeloUsers _ctrl = new ModeloUsers();
+                        bandera = _ctrl.eliminar(id);
+                        if (bandera)
+                        {
+                            MessageDialogInfo.Show("Usuario Eliminado con exito", "AVISO");
+                            CargarTablaUser();
+
+                            string log = "[" + DateTime.Now + "]" + "Se elimino un Usuario por: " + Sesion.nombre;
+                            MySqlConnection conexionDB = Conexion.getConexion();
+                            conexionDB.Open();
+
+                            try
+                            {
+                                MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
+                                comando.ExecuteNonQuery();
+                                Console.WriteLine("Logs Almacenado");
+                            }
+                            catch (MySqlException ex)
+                            {
+                                Console.WriteLine("Error al guardar el Log" + ex);
+                            }
+                        }
                     }
                 }
             }
+           
         }
 
         private void guna2CheckBox1_CheckedChanged(object sender, EventArgs e)

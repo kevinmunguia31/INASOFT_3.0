@@ -225,6 +225,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArqueoCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArqueoCaja.Designer.cs">
+      <DependentUpon>ArqueoCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\CtrlCompras.cs" />
     <Compile Include="Controladores\CtrlRemision.cs" />
     <Compile Include="Controladores\CtrlReporteGraficos.cs" />
@@ -430,6 +436,9 @@
     <Compile Include="VistaFacturas\VistaProductos.Designer.cs">
       <DependentUpon>VistaProductos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ArqueoCaja.resx">
+      <DependentUpon>ArqueoCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImportBD.resx">
       <DependentUpon>ImportBD.cs</DependentUpon>
     </EmbeddedResource>
@@ -734,6 +743,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="log.ico" />
+    <None Include="Resources\image-removebg-preview %283%29.png" />
+    <None Include="Resources\icons8-cash-register-96.png" />
+    <None Include="Resources\icons8-save-30.png" />
+    <None Include="Resources\bf91b6dacf1cb44689c33bbf2b4e3743-icono-de-finanzas-de-billete-de-da-lar.png" />
     <None Include="Resources\EstadoCuentaTemplate.html" />
     <None Include="Resources\ClientesTemplate.html" />
     <None Include="Resources\ProveedorTemplate.html" />

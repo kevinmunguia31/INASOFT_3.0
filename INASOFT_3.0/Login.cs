@@ -152,5 +152,14 @@ namespace INASOFT_3._0
             exitConfirmed = true;
             Close(); // Cierra el formulario.
         }
+
+        private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Evita que se genere el sonido de Windows al presionar Enter
+                SelectNextControl((System.Windows.Forms.Control)sender, true, true, true, true);
+            }
+        }
     }
 }

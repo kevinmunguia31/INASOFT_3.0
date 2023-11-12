@@ -122,7 +122,7 @@ namespace INASOFT_3._0
             this.btnLogin.ShadowDecoration.Depth = 3;
             this.btnLogin.ShadowDecoration.Enabled = true;
             this.btnLogin.Size = new System.Drawing.Size(162, 46);
-            this.btnLogin.TabIndex = 20;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -215,7 +215,7 @@ namespace INASOFT_3._0
             this.txtPassword.ShadowDecoration.Depth = 3;
             this.txtPassword.ShadowDecoration.Enabled = true;
             this.txtPassword.Size = new System.Drawing.Size(261, 39);
-            this.txtPassword.TabIndex = 28;
+            this.txtPassword.TabIndex = 1;
             // 
             // label2
             // 
@@ -255,7 +255,8 @@ namespace INASOFT_3._0
             this.txtUser.ShadowDecoration.Depth = 3;
             this.txtUser.ShadowDecoration.Enabled = true;
             this.txtUser.Size = new System.Drawing.Size(261, 39);
-            this.txtUser.TabIndex = 26;
+            this.txtUser.TabIndex = 0;
+            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUser_KeyPress);
             // 
             // pictureBox2
             // 

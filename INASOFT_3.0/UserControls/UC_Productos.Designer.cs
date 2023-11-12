@@ -133,6 +133,7 @@ namespace INASOFT_3._0.UserControls
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnImportExcel = new Guna.UI2.WinForms.Guna2Button();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -857,6 +858,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // Remisiones
             // 
+            this.Remisiones.Controls.Add(this.btnImportExcel);
             this.Remisiones.Controls.Add(this.guna2Button7);
             this.Remisiones.Controls.Add(this.pictureBox6);
             this.Remisiones.Controls.Add(this.guna2GroupBox6);
@@ -886,13 +888,14 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2Button7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2Button7.Location = new System.Drawing.Point(995, 14);
             this.guna2Button7.Name = "guna2Button7";
             this.guna2Button7.Size = new System.Drawing.Size(135, 34);
             this.guna2Button7.TabIndex = 97;
-            this.guna2Button7.Text = "Restablecer";
+            this.guna2Button7.Text = "Actualizar";
             this.guna2Button7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
             // 
@@ -1525,6 +1528,25 @@ namespace INASOFT_3._0.UserControls
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // btnImportExcel
+            // 
+            this.btnImportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportExcel.BorderRadius = 10;
+            this.btnImportExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnImportExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnImportExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnImportExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnImportExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnImportExcel.Font = new System.Drawing.Font("Poppins", 10F);
+            this.btnImportExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnImportExcel.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
+            this.btnImportExcel.Location = new System.Drawing.Point(767, 14);
+            this.btnImportExcel.Name = "btnImportExcel";
+            this.btnImportExcel.Size = new System.Drawing.Size(222, 34);
+            this.btnImportExcel.TabIndex = 98;
+            this.btnImportExcel.Text = "Importar Datos de Excel";
+            this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
+            // 
             // productosBindingSource
             // 
             this.productosBindingSource.DataSource = typeof(INASOFT_3._0.Modelos.Productos);
@@ -1683,5 +1705,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.RadioButton Rbt_RemisionSalida;
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
         private System.Windows.Forms.RadioButton Rbt_RemisionEntrada;
+        private Guna.UI2.WinForms.Guna2Button btnImportExcel;
     }
 }

@@ -20,6 +20,7 @@ namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Clientes : UserControl
     {
+        int tipoUser;
         public UC_Clientes()
         {
             InitializeComponent();
@@ -79,6 +80,7 @@ namespace INASOFT_3._0.UserControls
 
         private void editInfo_Click(object sender, EventArgs e)
         {
+
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
@@ -90,6 +92,7 @@ namespace INASOFT_3._0.UserControls
             txtTelefono.Text = telefono;
             txtDireccion.Text = direccion;
             txtCedula.Text = cedula;
+           
         }
 
         private void deleteClient_Click(object sender, EventArgs e)

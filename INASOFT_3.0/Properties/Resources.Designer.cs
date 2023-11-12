@@ -81,6 +81,16 @@ namespace INASOFT_3._0.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bf91b6dacf1cb44689c33bbf2b4e3743_icono_de_finanzas_de_billete_de_da_lar {
+            get {
+                object obj = ResourceManager.GetObject("bf91b6dacf1cb44689c33bbf2b4e3743-icono-de-finanzas-de-billete-de-da-lar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
         ///&lt;head&gt;
@@ -324,6 +334,16 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_cash_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_cash_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cash_register_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cash-register-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -681,6 +701,16 @@ namespace INASOFT_3._0.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_schedule_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_schedule_20px", resourceCulture);
@@ -824,6 +854,16 @@ namespace INASOFT_3._0.Properties {
         internal static System.Drawing.Bitmap icons8_wifi_apagado_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-wifi-apagado-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__3_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (3)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

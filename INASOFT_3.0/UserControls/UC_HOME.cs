@@ -55,6 +55,8 @@ namespace INASOFT_3._0.UserControls
 
             //lbNameNeg.Text = Modelos.InfoNegocio.nombre;
             string rutaImagen = Properties.Settings.Default.RutaImagen;
+            string Dolar = Properties.Settings.Default.Dolar;
+            txtDolar.Text = Dolar;
 
             if (!string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen))
             {
@@ -218,6 +220,19 @@ namespace INASOFT_3._0.UserControls
                 pbWifi.Image = Resources.icons8_wifi_apagado_50;
                 return false;
             }
+        }
+
+        private void btnSaveDolar_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Dolar = txtDolar.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Información Guardada correctamente.");
+        }
+
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            ArqueoCaja arqueoCaja = new ArqueoCaja();
+            arqueoCaja.ShowDialog();
         }
     }
 }

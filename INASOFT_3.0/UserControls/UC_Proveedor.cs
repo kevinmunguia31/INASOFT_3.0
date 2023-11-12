@@ -20,6 +20,7 @@ namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Proveedor : UserControl
     {
+        int tipoUser;
         public UC_Proveedor()
         {
             InitializeComponent();
@@ -60,35 +61,53 @@ namespace INASOFT_3._0.UserControls
 
         private void editarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            string direccion = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            string ruc = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            tipoUser = Modelos.Sesion.id_tipo;
+            if(tipoUser == 1)
+            {
+                string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                string direccion = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                string ruc = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
-            txtId.Text = id;
-            txtNombreYapellido.Text = nombre;
-            txtTelefono.Text = telefono;
-            txtDireccion.Text = direccion;
-            txtRuc.Text = ruc;
+                txtId.Text = id;
+                txtNombreYapellido.Text = nombre;
+                txtTelefono.Text = telefono;
+                txtDireccion.Text = direccion;
+                txtRuc.Text = ruc;
+            }
+            else
+            {
+                MessageBox_Error.Show("No tiene permisos para Editar esta Información", "Administración de Permisos");
+            }
         }
 
         private void eliminarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool bandera = false;
-            DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
-            if (resultado == DialogResult.Yes)
+            tipoUser = Modelos.Sesion.id_tipo;
+            if (tipoUser == 1)
             {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                CtrlProveedor _ctrl = new CtrlProveedor();
-                bandera = _ctrl.eliminar(id);
-                if (bandera)
+                bool bandera = false;
+                DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
+                if (resultado == DialogResult.Yes)
                 {
-                    MessageDialogInfo.Show("Registro Eliminado con exito", "Importante");
-                    CargarTablaProvider(null);
-                    TotalProovedor();
+                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    CtrlProveedor _ctrl = new CtrlProveedor();
+                    bandera = _ctrl.eliminar(id);
+                    if (bandera)
+                    {
+                        MessageDialogInfo.Show("Registro Eliminado con exito", "Importante");
+                        CargarTablaProvider(null);
+                        TotalProovedor();
+                    }
                 }
             }
+            else
+            {
+                MessageBox_Error.Show("No tiene permisos para Eliminar esta Información", "Administración de Permisos");
+            }
+
+            
         }
 
         private void Guna2Button2_Click(object sender, EventArgs e)

@@ -20,11 +20,13 @@ using iTextSharp.tool.xml;
 using Document = iTextSharp.text.Document;
 using DevExpress.XtraEditors;
 using DocumentFormat.OpenXml.Drawing;
+using SpreadsheetLight;
 
 namespace INASOFT_3._0.UserControls
 {
     public partial class UC_Productos : UserControl
     {
+        int tipoUser;
         public UC_Productos()
         {
             InitializeComponent();
@@ -33,7 +35,11 @@ namespace INASOFT_3._0.UserControls
             CargarProveedor();
             CargarTablaRemisiones();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
-            lbCapital.Text = ctrlProductos.CapitalInvertido();
+            tipoUser = Modelos.Sesion.id_tipo;
+            if (tipoUser != 2)
+            {
+                lbCapital.Text = ctrlProductos.CapitalInvertido();
+            }            
             lbCantiTota.Text = ctrlProductos.TotalProductos();
             dataGridView1.Columns[9].Visible = false;
 
@@ -270,6 +276,7 @@ namespace INASOFT_3._0.UserControls
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
+           
             int limite = 20;
             int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
@@ -310,7 +317,11 @@ namespace INASOFT_3._0.UserControls
             {
                 ContextMenuStrip menu = new ContextMenuStrip();
                 menu.Items.Add("Cambiar estado").Name = "Cambiar estado" + pos;
-                menu.Items.Add("Editar").Name = "Editar" + pos;
+                tipoUser = Modelos.Sesion.id_tipo;
+                if (tipoUser != 2)
+                {
+                    menu.Items.Add("Editar").Name = "Editar" + pos;
+                }
                 menu.Show(dataGridView1, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
             }
@@ -585,6 +596,88 @@ namespace INASOFT_3._0.UserControls
                 menu.Items.Add("Ver detalle").Name = "Ver detalle"+ pos;
                 menu.Show(dataGridView3, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_OpcionesRemsiones);
+            }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos Excel|*.xls;*.xlsx|Todos los archivos|*.*";
+            openFileDialog.Title = "Seleccionar archivo Excel";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string filePath = openFileDialog.FileName;
+                    SLDocument sl = new SLDocument(filePath);
+                    SLWorksheetStatistics propiedades = sl.GetWorksheetStatistics();
+
+                    int ultimafila = propiedades.EndRowIndex;
+
+                    MySqlConnection conexionBD = Conexion.getConexion();
+                    conexionBD.Open();
+
+                    string error = "";
+
+                    for (int x = 2; x <= ultimafila; x++)
+                    {
+                        string codigo = sl.GetCellValueAsString("A" + x);
+
+                        if (existeProducto(codigo))
+                        {
+                            error = "Ya hay productos con el mismo codigo " + codigo + "\n";
+                        }
+                        else
+                        {
+                            string sql = "CALL Detalle_RemisionEntrada(@Id,@Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdRemision);";
+                            try
+                            {
+                                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+
+                                // Agregar parámetros
+                                comando.Parameters.AddWithValue("@Id", sl.GetCellValueAsString("A" + x));
+                                comando.Parameters.AddWithValue("@Codigo", sl.GetCellValueAsString("B" + x));
+                                comando.Parameters.AddWithValue("@Nombre", sl.GetCellValueAsString("C" + x));
+                                comando.Parameters.AddWithValue("@Existencias", sl.GetCellValueAsString("D" + x));
+                                comando.Parameters.AddWithValue("@ExistenciasMin", sl.GetCellValueAsString("E" + x));
+                                comando.Parameters.AddWithValue("@PrecioCompra", sl.GetCellValueAsString("F" + x));
+                                comando.Parameters.AddWithValue("@PrecioVenta", sl.GetCellValueAsString("G" + x));
+                                comando.Parameters.AddWithValue("@Observacion", sl.GetCellValueAsString("H" + x));
+                                comando.Parameters.AddWithValue("@IdRemision", sl.GetCellValueAsString("I" + x));
+                                comando.ExecuteNonQuery();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        MessageBox.Show("Plantilla Cargada Correctamente \n" + error);
+                    }
+                }
+                catch (System.IO.IOException ex)
+                {
+                    MessageBox.Show("Cierre el Archivo de Plantilla para poder Importar los datos", "Error Al Importar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+        }
+
+        private bool existeProducto(string codigo)
+        {
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            string sql = "select id from productos WHERE codigo='" + codigo + "'";
+            MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+            int num = Convert.ToInt32(comando.ExecuteScalar());
+
+            if (num > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
