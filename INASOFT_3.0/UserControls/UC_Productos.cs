@@ -21,6 +21,7 @@ using Document = iTextSharp.text.Document;
 using DevExpress.XtraEditors;
 using DocumentFormat.OpenXml.Drawing;
 using SpreadsheetLight;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -257,13 +258,13 @@ namespace INASOFT_3._0.UserControls
                     {
                         if (Convert.ToInt32(e.Value) > 0)
                         {
-                            e.CellStyle.BackColor = Color.Green;
-                            e.CellStyle.ForeColor = Color.White;
+                            e.CellStyle.BackColor = System.Drawing.Color.Green;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
                         }
                         else
                         {
-                            e.CellStyle.BackColor = Color.Red;
-                            e.CellStyle.ForeColor = Color.White;
+                            e.CellStyle.BackColor = System.Drawing.Color.Red;
+                            e.CellStyle.ForeColor = System.Drawing.Color.White;
                         }
                     }
                 }
@@ -296,11 +297,11 @@ namespace INASOFT_3._0.UserControls
 
             if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) <= 0)
             {
-                lbExistencias.ForeColor = Color.Red;
+                lbExistencias.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
-                lbExistencias.ForeColor = Color.Black;
+                lbExistencias.ForeColor = System.Drawing.Color.Red;
             }
 
             if (lbNameP.Text.Length > limite)
@@ -619,6 +620,12 @@ namespace INASOFT_3._0.UserControls
                     conexionBD.Open();
 
                     string error = "";
+                    Controladores.CtrlRemision ctrl = new Controladores.CtrlRemision();
+                    Modelos.Remision remision = new Modelos.Remision();
+                    remision.Descripcion = "El usuario: " + Sesion.nombre + " ha realizado una remisión de entrada";
+                    remision.Id_Usuario = Sesion.id;
+                    remision.Tipo_Remision = "Remisión de Entrada";
+                    bool bandera = ctrl.RealizarRemesa(remision);
 
                     for (int x = 2; x <= ultimafila; x++)
                     {
@@ -644,7 +651,7 @@ namespace INASOFT_3._0.UserControls
                                 comando.Parameters.AddWithValue("@PrecioCompra", sl.GetCellValueAsString("F" + x));
                                 comando.Parameters.AddWithValue("@PrecioVenta", sl.GetCellValueAsString("G" + x));
                                 comando.Parameters.AddWithValue("@Observacion", sl.GetCellValueAsString("H" + x));
-                                comando.Parameters.AddWithValue("@IdRemision", sl.GetCellValueAsString("I" + x));
+                                comando.Parameters.AddWithValue("@IdRemision", ctrl.ID_Remision());
                                 comando.ExecuteNonQuery();
                             }
                             catch (MySqlException ex)
