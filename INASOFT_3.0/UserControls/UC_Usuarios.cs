@@ -24,7 +24,7 @@ namespace INASOFT_3._0.UserControls
         }
         public void CargarTablaUser()
         {
-            string sql = "select usuarios.id, usuarios.nombre, usuarios.usuario, usuarios.password, tipo_usuarios.nombre as Rol from usuarios inner join tipo_usuarios on usuarios.id_tipo = tipo_usuarios.id";
+            string sql = "select usuarios.id, usuarios.nombre, usuarios.usuario, tipo_usuarios.nombre as Rol from usuarios inner join tipo_usuarios on usuarios.id_tipo = tipo_usuarios.id";
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -190,6 +190,12 @@ namespace INASOFT_3._0.UserControls
         {
             CargarCategoria();
             CargarTablaUser();
+        }
+
+        private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtpassword.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
+            txtConfirmP.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
         }
     }
 }

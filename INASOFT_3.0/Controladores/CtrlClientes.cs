@@ -117,7 +117,7 @@ namespace INASOFT_3._0.Controladores
         public bool Eliminar(int id)
         {
             bool bandera = false;
-            string sql = "DELETE FROM clientes WHERE id= '" + id + "'";
+            string sql = "CALL Eliminarcliente(" + id + ");";
 
             try
             {

@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS Prueba3;
-CREATE DATABASE Prueba3;
+DROP DATABASE IF EXISTS Prueba2;
+CREATE DATABASE Prueba2;
 
-USE Prueba3;
+USE Prueba2;
 
 -- TABLA Tipos de Usuarios
 CREATE TABLE `Tipo_Usuarios` (
@@ -289,6 +289,37 @@ INSERT INTO Tipos_Pagos VALUES (NULL, 'Cordobas');
 INSERT INTO Tipos_Pagos VALUES (NULL, 'Transferencia');
 INSERT INTO Tipos_Pagos VALUES (NULL, 'Cheque');
 
+-- ---------------------------------------------------------------- Procedimientos de Usuarios ----------------------------------------------------------------
+
+-- Al borrar un usuario pasar sus facturas al Administrador
+DELIMITER //
+
+CREATE PROCEDURE EliminarUsuario(_ID INT) 
+BEGIN
+    -- Actualizar las facturas relacionadas al usuario que se eliminará
+    UPDATE Facturas SET ID_Usuario = 1 WHERE ID_Usuario = _ID;
+
+    -- Eliminar al usuario
+    DELETE FROM Usuarios WHERE ID = _ID;
+END //
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------- Procedimientos de Cliente ----------------------------------------------------------------
+
+-- Al borrar un cliente pasar sus facturas al Administrador
+DELIMITER //
+
+CREATE PROCEDURE Eliminarcliente(_ID INT) 
+BEGIN
+    -- Actualizar las facturas relacionadas al usuario que se eliminará
+    UPDATE Facturas SET ID_Cliente = 1 WHERE ID_Cliente = _ID;
+
+    -- Eliminar al usuario
+    DELETE FROM Clientes WHERE ID = _ID;
+END //
+
+DELIMITER ;
 
 -- ---------------------------------------------------------------- Procedimientos de Productos ----------------------------------------------------------------
 
@@ -1189,7 +1220,7 @@ SELECT
 FROM Remisiones a 
 INNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision
 INNER JOIN Productos c ON b.ID_Producto = c.ID
-WHERE a.ID = 1
+WHERE a.ID = 2
 ORDER BY b.ID;
 
 -- ---------------------------------------------------------------- Consultas realcionado al Home -----------------------------------------------------------------

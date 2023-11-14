@@ -251,7 +251,7 @@ namespace INASOFT_3._0.VistaFacturas
                     newRow[4] = double.Parse(txtPrecioVenta.Text);
                     newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());
                     newRow[6] = Txt_IDProd.Text;
-                    newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Compra del producto {txtNameP.Text}" : txtObservacion.Text;
+                    newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Remisión de entrada del producto {txtNameP.Text}" : txtObservacion.Text;
 
                     dataTable.Rows.Add(newRow);
 
@@ -269,7 +269,7 @@ namespace INASOFT_3._0.VistaFacturas
                 newRow[4] = double.Parse(txtPrecioVenta.Text);
                 newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());
                 newRow[6] = Txt_IDProd.Text;
-                newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Compra del producto {txtNameP.Text}" : txtObservacion.Text;
+                newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Remisión de entrada del producto {txtNameP.Text}" : txtObservacion.Text;
 
                 dataTable.Rows.Add(newRow);
 

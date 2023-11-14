@@ -94,6 +94,8 @@ namespace INASOFT_3._0.VistaFacturas
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
 
+            datagridView2.Columns[5].Visible = false;
+
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
@@ -730,6 +732,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void btnAñadirProducto_Click(object sender, EventArgs e)
         {
             string descPrecio = "";
+            string precioVenta = "";
             if (Cbx_Productos.SelectedIndex == -1)
             {
                 MessageBox_Error.Show("Tiene que escoger un producto a facturar", "Error");
@@ -769,6 +772,7 @@ namespace INASOFT_3._0.VistaFacturas
 
             if (Lb_Precio_Venta.Text != txtPrecioVenta.Text)
             {
+                precioVenta = txtPrecioVenta.Text;
                 if(txtDescripcion.Text == "")
                 {
                     descPrecio = "Se ha realizado un descuento en este producto";
@@ -780,6 +784,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
             else
             {
+                precioVenta = Lb_Precio_Venta.Text;
                 descPrecio = "Se ha vendido por su precio estandar";
             }
 
@@ -791,8 +796,8 @@ namespace INASOFT_3._0.VistaFacturas
             newRow[0] = productos.Codigo.ToString();
             newRow[1] = productos.Nombre.ToString();
             newRow[2] = SpinCantidad.Value.ToString();
-            newRow[3] = double.Parse(Lb_Precio_Venta.Text);
-            newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[3] = double.Parse(precioVenta);
+            newRow[4] = double.Parse(precioVenta) * int.Parse(SpinCantidad.Value.ToString());
             newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
             newRow[6] = descPrecio;
 

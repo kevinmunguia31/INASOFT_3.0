@@ -983,3 +983,4 @@ C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFac
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleCompra.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.DetalleRemision.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ArqueoCaja.resources
+C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ArqueoCaja.resources

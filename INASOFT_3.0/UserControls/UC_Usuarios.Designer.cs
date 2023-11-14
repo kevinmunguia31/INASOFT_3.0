@@ -56,6 +56,8 @@ namespace INASOFT_3._0.UserControls
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,7 +79,7 @@ namespace INASOFT_3._0.UserControls
             this.cbRoles.ItemHeight = 30;
             this.cbRoles.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cbRoles.ItemsAppearance.SelectedForeColor = System.Drawing.Color.White;
-            this.cbRoles.Location = new System.Drawing.Point(13, 322);
+            this.cbRoles.Location = new System.Drawing.Point(13, 338);
             this.cbRoles.Name = "cbRoles";
             this.cbRoles.Size = new System.Drawing.Size(430, 36);
             this.cbRoles.TabIndex = 6;
@@ -87,7 +89,7 @@ namespace INASOFT_3._0.UserControls
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 296);
+            this.label2.Location = new System.Drawing.Point(9, 312);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 23);
             this.label2.TabIndex = 7;
@@ -104,7 +106,7 @@ namespace INASOFT_3._0.UserControls
             this.btnSave.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(172, 364);
+            this.btnSave.Location = new System.Drawing.Point(171, 401);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 42);
             this.btnSave.TabIndex = 4;
@@ -128,11 +130,12 @@ namespace INASOFT_3._0.UserControls
             this.txtConfirmP.Location = new System.Drawing.Point(13, 262);
             this.txtConfirmP.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmP.Name = "txtConfirmP";
-            this.txtConfirmP.PasswordChar = '\0';
+            this.txtConfirmP.PasswordChar = '●';
             this.txtConfirmP.PlaceholderText = "Confirmar Contraseña";
             this.txtConfirmP.SelectedText = "";
             this.txtConfirmP.Size = new System.Drawing.Size(430, 30);
             this.txtConfirmP.TabIndex = 3;
+            this.txtConfirmP.UseSystemPasswordChar = true;
             // 
             // txtpassword
             // 
@@ -151,11 +154,12 @@ namespace INASOFT_3._0.UserControls
             this.txtpassword.Location = new System.Drawing.Point(13, 202);
             this.txtpassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtpassword.Name = "txtpassword";
-            this.txtpassword.PasswordChar = '\0';
+            this.txtpassword.PasswordChar = '●';
             this.txtpassword.PlaceholderText = "Introduzca Contraseña";
             this.txtpassword.SelectedText = "";
             this.txtpassword.Size = new System.Drawing.Size(430, 30);
             this.txtpassword.TabIndex = 2;
+            this.txtpassword.UseSystemPasswordChar = true;
             // 
             // txtUserName
             // 
@@ -235,7 +239,7 @@ namespace INASOFT_3._0.UserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(573, 415);
+            this.dataGridView1.Size = new System.Drawing.Size(573, 478);
             this.dataGridView1.TabIndex = 9;
             // 
             // contextMenuStrip1
@@ -322,6 +326,8 @@ namespace INASOFT_3._0.UserControls
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.Controls.Add(this.label7);
+            this.guna2GroupBox1.Controls.Add(this.guna2ToggleSwitch1);
             this.guna2GroupBox1.Controls.Add(this.btnSave);
             this.guna2GroupBox1.Controls.Add(this.cbRoles);
             this.guna2GroupBox1.Controls.Add(this.txtId);
@@ -339,7 +345,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(601, 62);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(474, 415);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(474, 478);
             this.guna2GroupBox1.TabIndex = 90;
             this.guna2GroupBox1.Text = "          Registrar nuevo usuario";
             // 
@@ -406,6 +412,34 @@ namespace INASOFT_3._0.UserControls
             this.label6.TabIndex = 106;
             this.label6.Text = "Ingrese el nombre y apellido del usuario:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Poppins ExtraLight", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(292, 301);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 19);
+            this.label7.TabIndex = 111;
+            this.label7.Text = "Mostrar contraseña";
+            // 
+            // guna2ToggleSwitch1
+            // 
+            this.guna2ToggleSwitch1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(408, 299);
+            this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
+            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(35, 23);
+            this.guna2ToggleSwitch1.TabIndex = 110;
+            this.guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2ToggleSwitch1.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2ToggleSwitch1.CheckedChanged += new System.EventHandler(this.guna2ToggleSwitch1_CheckedChanged);
+            // 
             // UC_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,5 +489,7 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
     }
 }

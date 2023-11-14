@@ -1,0 +1,29 @@
+CALL Realizar_Remision('--', 'Remisión de Entrada', 1);
+
+DELIMITER //
+
+CREATE PROCEDURE EliminarUsuario(_ID INT) 
+BEGIN
+    -- Actualizar las facturas relacionadas al usuario que se eliminará
+    UPDATE Facturas SET ID_Usuario = 1 WHERE ID_Usuario = _ID;
+
+    -- Eliminar al usuario
+    DELETE FROM Usuario WHERE ID = _ID;
+END //
+
+DELIMITER ;
+
+
+-- Al borrar un cliente pasar sus facturas al Administrador
+DELIMITER //
+
+CREATE PROCEDURE Eliminarcliente(_ID INT) 
+BEGIN
+    -- Actualizar las facturas relacionadas al usuario que se eliminará
+    UPDATE Facturas SET ID_Cliente = 1 WHERE ID_Cliente = _ID;
+
+    -- Eliminar al usuario
+    DELETE FROM Clientes WHERE ID = _ID;
+END //
+
+DELIMITER ;

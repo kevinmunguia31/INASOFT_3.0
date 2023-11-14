@@ -125,7 +125,7 @@ namespace INASOFT_3._0.Modelos
         {
             bool bandera = false;
 
-            string sql = "DELETE FROM usuarios WHERE id= '" + id + "'";
+            string sql = "CALL EliminarUsuario (" + id + ")";
 
             try
             {

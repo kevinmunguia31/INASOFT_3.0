@@ -344,7 +344,7 @@ namespace INASOFT_3._0.UserControls
             {
                 if (id_pos > -1 && id_pos != null)
                 {
-                    DetalleRemision remision = new DetalleRemision(int.Parse(dataGridView1.Rows[id_pos].Cells[0].Value.ToString()));                    
+                    DetalleRemision remision = new DetalleRemision(int.Parse(dataGridView3.Rows[id_pos].Cells[0].Value.ToString()));                    
                     remision.ShowDialog();
                 }
             }
@@ -652,8 +652,8 @@ namespace INASOFT_3._0.UserControls
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        MessageBox.Show("Plantilla Cargada Correctamente \n" + error);
                     }
+                    MessageBox_Import.Show("Plantilla Cargada Correctamente \n", "Aviso importante");
                 }
                 catch (System.IO.IOException ex)
                 {

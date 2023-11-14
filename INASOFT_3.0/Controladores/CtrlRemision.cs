@@ -35,7 +35,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable CargarDetalleRemisiones(int id)
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT\r\n    b.ID AS 'ID',\r\n    c.Codigo AS 'Codigo',\r\n    c.Nombre AS 'Nombre producto',\r\n    c.Precio_Venta AS 'Precio de venta',\r\n    c.Precio_Compra AS 'Precio de compra',\r\n    b.Cantidad AS 'Cant. Productos',\r\n    a.Tipo_Remision AS 'Tipo de remisión'\r\nFROM Remisiones a \r\nINNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision\r\nINNER JOIN Productos c ON b.ID_Producto = c.ID\r\nWHERE a.ID = "+id+"\r\nORDER BY b.ID;";
+            string sql = "SELECT\r\n    b.ID AS 'ID',\r\n    c.Codigo AS 'Codigo',\r\n    c.Nombre AS 'Nombre producto',\r\n    c.Precio_Venta AS 'Precio de venta',\r\n    c.Precio_Compra AS 'Precio de compra',\r\n    b.Cantidad AS 'Cant. Productos',\r\n    a.Tipo_Remision AS 'Tipo de remisión'\r\nFROM Remisiones a \r\nINNER JOIN Detalle_Remision b ON a.ID = b.ID_Remision\r\nINNER JOIN Productos c ON b.ID_Producto = c.ID\r\nWHERE a.ID = "+ id +"\r\nORDER BY b.ID;";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
