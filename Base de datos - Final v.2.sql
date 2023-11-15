@@ -351,7 +351,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE Actualizar_Producto(
     IN _ID_Producto INT,
-	IN _Nombre_Producto VARCHAR(100),
+    IN _Nombre_Producto VARCHAR(100),
     IN _Estado VARCHAR(50),
     IN _Existencias INT,
     IN _Existencias_Min INT,
@@ -362,6 +362,7 @@ CREATE PROCEDURE Actualizar_Producto(
 BEGIN
     DECLARE Total DOUBLE;
     DECLARE Aux_PrecioCompra DOUBLE;
+    DECLARE Aux_Existencias INT;
 
     -- Obtener el precio de compra actual del producto
     SELECT Precio_Compra INTO Aux_PrecioCompra FROM Productos WHERE ID = _ID_Producto;
@@ -369,27 +370,29 @@ BEGIN
     -- Verificar si el nuevo precio de compra es diferente al precio anterior
     IF Aux_PrecioCompra != _Precio_Compra THEN
         -- Insertar un registro en el historial de precios
-        INSERT INTO Historial_Precio (ID_Producto, Precio_Antiguo, Precio_Nuevo,  Descripcion, Fecha_Cambio) VALUES (_ID_Producto, Aux_PrecioCompra, _Precio_Compra, CONCAT('Se ha  cambió el precio del producto'), NOW());
+        INSERT INTO Historial_Precio (ID_Producto, Precio_Antiguo, Precio_Nuevo, Descripcion, Fecha_Cambio) VALUES (_ID_Producto, Aux_PrecioCompra, _Precio_Compra, CONCAT('Se ha cambiado el precio del producto'), NOW());
     END IF;
 
     -- Actualizar los detalles del producto
     UPDATE Productos 
     SET 
         Estado = _Estado, 
-		Nombre = _Nombre_Producto,
+        Nombre = _Nombre_Producto,
         Existencias_Minimas = _Existencias_Min, 
         Precio_Compra = _Precio_Compra, 
         Precio_Venta = _Precio_Venta, 
-        Precio_Total = _Existencias * _Precio_Compra, 
         Observacion = _Observacion 
     WHERE ID = _ID_Producto;
 
+	SELECT Existencias INTO Aux_Existencias FROM Productos WHERE ID = _ID_Producto;
     -- Calcular el nuevo valor para Precio_Total
-    SET Total = ROUND(_Precio_Compra * _Existencias, 2);
+    SET Total = ROUND(_Precio_Compra * Aux_Existencias, 2);
 
     -- Actualizar el Precio_Total y Existencias
-    UPDATE Productos SET  Precio_Total = Precio_Total + Total,  Existencias = Existencias + _Existencias  WHERE ID = _ID_Producto;
-	
+    UPDATE Productos SET 
+        Precio_Total = Total -- Cambiado aquí
+    WHERE ID = _ID_Producto;
+    
 END //
 DELIMITER ;
 
