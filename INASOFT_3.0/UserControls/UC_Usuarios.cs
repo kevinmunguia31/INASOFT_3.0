@@ -194,8 +194,16 @@ namespace INASOFT_3._0.UserControls
 
         private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            txtpassword.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
-            txtConfirmP.UseSystemPasswordChar = !guna2ToggleSwitch1.Checked;
+            if (guna2ToggleSwitch1.Checked == true)
+            {
+                txtConfirmP.UseSystemPasswordChar = false;
+                txtpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtConfirmP.UseSystemPasswordChar = true;
+                txtpassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }

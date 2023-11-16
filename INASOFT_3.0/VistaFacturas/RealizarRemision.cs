@@ -1,6 +1,8 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using INASOFT_3._0.UserControls;
+using MySql.Data.MySqlClient;
+using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +28,7 @@ namespace INASOFT_3._0.VistaFacturas
             GroupBox_Products.Enabled = false;
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
+            btnImportExcel.Visible = false;
             
             radioButton1.Checked = true; datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
@@ -88,6 +91,7 @@ namespace INASOFT_3._0.VistaFacturas
             txtCodBarra.Enabled = true;
             radioButton2.Checked = true;
             GroupBox_CambioProd.Enabled = false;
+            btnImportExcel.Visible = true;
         }
 
         private void Rbtn_ActualizarProducto_CheckedChanged(object sender, EventArgs e)
@@ -101,6 +105,7 @@ namespace INASOFT_3._0.VistaFacturas
             txtCodBarra.Enabled = false;
             radioButton1.Checked = true;
             GroupBox_CambioProd.Enabled = true;
+            btnImportExcel.Visible = false;
         }
 
         public void Limpiar()
@@ -439,6 +444,102 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 // Desactiva otras teclas
                 e.Handled = true;
+            }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageDialogError.Show("Seguro que desea cargar los registros desde EXCEL.\n\n?", "Importante");
+            if (resultado == DialogResult.Yes)
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Archivos Excel|*.xls;*.xlsx|Todos los archivos|*.*";
+                openFileDialog.Title = "Seleccionar archivo Excel";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string filePath = openFileDialog.FileName;
+                        SLDocument sl = new SLDocument(filePath);
+                        SLWorksheetStatistics propiedades = sl.GetWorksheetStatistics();
+
+                        int ultimafila = propiedades.EndRowIndex;
+
+                        MySqlConnection conexionBD = Conexion.getConexion();
+                        conexionBD.Open();
+
+                        string error = "";
+                        Controladores.CtrlRemision ctrl = new Controladores.CtrlRemision();
+                        Modelos.Remision remision = new Modelos.Remision();
+                        remision.Descripcion = "El usuario: " + Sesion.nombre + " ha realizado una remisión de entrada";
+                        remision.Id_Usuario = Sesion.id;
+                        remision.Tipo_Remision = "Remisión de Entrada";
+                        bool bandera = ctrl.RealizarRemesa(remision);
+
+                        for (int x = 2; x <= ultimafila; x++)
+                        {
+                            string codigo = sl.GetCellValueAsString("A" + x);
+
+                            if (existeProducto(codigo))
+                            {
+                                error = "Ya hay productos con el mismo codigo " + codigo + "\n";
+                            }
+                            else
+                            {
+                                string sql = "CALL Detalle_RemisionEntrada(@Id,@Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdRemision);";
+                                try
+                                {
+                                    MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+
+                                    // Agregar parámetros
+                                    comando.Parameters.AddWithValue("@Id", sl.GetCellValueAsString("A" + x));
+                                    comando.Parameters.AddWithValue("@Codigo", sl.GetCellValueAsString("B" + x));
+                                    comando.Parameters.AddWithValue("@Nombre", sl.GetCellValueAsString("C" + x));
+                                    comando.Parameters.AddWithValue("@Existencias", sl.GetCellValueAsString("D" + x));
+                                    comando.Parameters.AddWithValue("@ExistenciasMin", sl.GetCellValueAsString("E" + x));
+                                    comando.Parameters.AddWithValue("@PrecioCompra", sl.GetCellValueAsString("F" + x));
+                                    comando.Parameters.AddWithValue("@PrecioVenta", sl.GetCellValueAsString("G" + x));
+                                    comando.Parameters.AddWithValue("@Observacion", sl.GetCellValueAsString("H" + x));
+                                    comando.Parameters.AddWithValue("@IdRemision", ctrl.ID_Remision());
+                                    comando.ExecuteNonQuery();
+                                }
+                                catch (MySqlException ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                            }
+                        }
+                        MessageBox_Import.Show("Plantilla Cargada Correctamente \n", "Aviso importante");
+                        this.Close();
+                    }
+                    catch (System.IO.IOException ex)
+                    {
+                        MessageBox.Show("Cierre el Archivo de Plantilla para poder Importar los datos", "Error Al Importar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        private bool existeProducto(string codigo)
+        {
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            string sql = "select id from productos WHERE codigo='" + codigo + "'";
+            MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+            int num = Convert.ToInt32(comando.ExecuteScalar());
+
+            if (num > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

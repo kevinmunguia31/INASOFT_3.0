@@ -21,6 +21,9 @@ using INASOFT_3._0.UserControls;
 using DevExpress.XtraCharts;
 using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 using iTextSharp.text.pdf;
+using DevExpress.Charts.Native;
+using DocumentFormat.OpenXml.EMMA;
+using INASOFT_3._0.VistaFacturas;
 
 
 namespace INASOFT_3._0.VistaFacturas
@@ -284,11 +287,9 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnFacturar_Click(object sender, EventArgs e)
         {
-            CtrlInfo ctrlInfo = new CtrlInfo();
-
             if (!RBtn_Credito.Checked && !RBtn_AlContado.Checked)
             {
-                MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará");
+                MessageBox_Error.Show("Tiene que marcar el tipo de factura que se realizará\n", "Error");
                 return;
             }
 
@@ -298,155 +299,16 @@ namespace INASOFT_3._0.VistaFacturas
                 return;
             }
 
-            if (CbxTipoPagos.SelectedIndex == -1)
-            {
-                MessageBox_Error.Show("No deje la opción de 'Tipo de pago' sin marcar.", "Error");
-                return;
-            } 
-
-            if (RBtn_AlContado.Checked == true)
-            {
-                if(Txt_Efectivo.Text == "")
-                {
-                    MessageBox_Error.Show("Al pagar al contado no puede dejar el campo 'Efectivo' en blanco\n\n.", "Error");
-                    return;
-                }
-                else
-                {
-                    if (double.Parse(Txt_Efectivo.Text) < double.Parse(lbDevolucion.Text))
-                    {
-                        MessageBox_Error.Show("Al pagar al contado no puede dejar el campo 'Efectivo' en blanco\n\n.", "Error");
-                        return;
-                    }
-                }
-            }
-
             try
             {
-                Modelos.Facturas facturas = new Modelos.Facturas
+                if (RBtn_AlContado.Checked)
                 {
-                    Estado = RBtn_Credito.Checked ? "Pendiente" : "Cancelado",
-                    Descuento = RBtn_Credito.Checked ? 0.00 : double.Parse(Txt_descuento.Text),
-                    Subtotal = double.Parse(lbSubtotal.Text),
-                    Efectivo = RBtn_Credito.Checked ? 0.00 : double.Parse(Txt_Efectivo.Text),
-                    Debe = RBtn_Credito.Checked ? double.Parse(lbSubtotal.Text) : 0.00,
-                    Tipo_Factura = RBtn_Credito.Checked ? "Crédito" : "Al contado",
-                    Id_Usuario = int.Parse(txtIdUsuario.Text),
-                    Id_Cliente = int.Parse(txtIdCliente.Text),
-                    Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
-                };
+                    FacturaAlContado();
+                }
 
-                Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
-                bool bandera = ctrlFactura.Facturacion_Final(facturas);
-
-                if (bandera)
+                if (RBtn_Credito.Checked)
                 {
-                    facturas.Id_Factura = ctrlFactura.ID_Factura();
-                    List<Modelos.Facturas> lista = new List<Modelos.Facturas>();
-
-                    foreach (DataGridViewRow fila in dataGridView1.Rows)
-                    {
-                        if (!fila.IsNewRow)
-                        {
-                            Modelos.Facturas facturas1 = new Modelos.Facturas
-                            {
-                                Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
-                                Id_Factura = ctrlFactura.ID_Factura(),
-                                Id_Producto = int.Parse(fila.Cells[5].Value.ToString()),
-                                DescripcionPrecio = fila.Cells[6].Value.ToString()
-                            };
-                            lista.Add(facturas1);
-                        }
-                    }
-
-                    foreach (Modelos.Facturas facturas2 in lista)
-                    {
-                        ctrlFactura.Facturar_Productos(facturas2);
-                    }
-
-                    if (RBtn_Credito.Checked)
-                    {
-                        if (DateTime_inicio.Text == DateTime_vencimiento.Text)
-                        {
-                            MessageBox_Error.Show("La fecha de vencimiento del crédito no puede ser igual a la fecha de inicio", "Error");
-                            return;
-                        }
-                        if (TxtMonto.Text == lbTotal.Text || double.Parse(TxtMonto.Text) >= double.Parse(lbTotal.Text))
-                        {
-                            MessageBox_Error.Show("No puede dejar un monto igual o mayor al Total de la compra, por favor escoja la opción 'Al contado'\n", "Error");
-                            return;
-                        }
-
-                        double monto = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text));
-                        double saldo_anterior = double.Parse(lbSubtotal.Text);
-                        double saldo_nuevo = saldo_anterior - monto; ;
-                        string desc_credito = (string.IsNullOrEmpty(txtDescripcion.Text) ? "Factura realizada al crédito al cliente " + lbNombreCliente.Text + " con un saldo pendiente de: " + lbTotal.Text : txtDescripcion.Text);
-                        string desc_abono = (monto > 0 ? "Primer abono realizado es de C$" + monto + " el mismo día que se hizo la factura." : "Primer abono realizado es de C$ 0.00 el mismo día que se hizo la factura.");
-
-                        Credito credito = new Credito
-                        {
-                            Dia_Inicio = DateTime_inicio.Text,
-                            Dia_Vencimiento = DateTime_vencimiento.Text,
-                            Cargo = double.Parse(lbSubtotal.Text),
-                            Estado = "Pendiente",
-                            Descripcion = desc_credito,
-                            Id_Factura = ctrlFactura.ID_Factura(),
-                            Id_Cliente = int.Parse(txtIdCliente.Text),
-                            Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
-                        };
-
-                        Controladores.CtrlCredito_Abono ctrlCredito_Abono = new Controladores.CtrlCredito_Abono();
-                        bool bandera1 = ctrlCredito_Abono.Insertar_Credito(credito);
-
-                        if (bandera1)
-                        {
-                            Credito credito1 = new Credito();
-                            credito1.Monto = monto;
-                            credito1.Saldo_Anterior = saldo_anterior;
-                            credito1.Saldo_Nuevo = saldo_nuevo;
-                            credito1.Descripcion_Abono = desc_abono;
-                            credito1.Id_Credito = ctrlCredito_Abono.ID_Credito();
-                            credito1.Id_Factura = ctrlFactura.ID_Factura();
-
-                            ctrlCredito_Abono.Realizar_Abono(credito1);
-
-                            MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
-                           
-                            string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura al Crédito: Fact." + ctrlFactura.ID_Factura();
-                            ctrlInfo.InsertarLog(log);
-                        }
-                    }
-
-                    DialogResult result = RBtn_Credito.Checked ? DialogResult.No : MessageBox_Question.Show("¿Desea Imprimir la factura?");
-
-                    if (result == DialogResult.Yes)
-                    {
-                        //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
-                        printDocument1 = new PrintDocument();
-                        PrinterSettings ps = new PrinterSettings();
-                        ps.PrinterName = cbImpresoras.Text;
-                        printDocument1.PrinterSettings = ps;
-                        ps.Copies = 1; // Esto imprimirá dos copias
-                        printDocument1.PrintPage += Imprimir;
-                        printDocument1.Print();
-                        printDocument1.Print();
-
-                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                        string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura: Fact." + ctrlFactura.ID_Factura();
-                        ctrlInfo.InsertarLog(log);
-                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                        uC_Factura.CargarFacturas();
-                        this.Close();
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                        string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero la Factura: Fact." + ctrlFactura.ID_Factura();
-                        ctrlInfo.InsertarLog(log);
-                        UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
-                        uC_Factura.CargarFacturas();
-                        this.Close();
-                    }
+                    FacturaAlCredito();
                 }
             }
             catch (MySqlException ex)
@@ -454,6 +316,214 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void FacturaAlContado()
+        {
+            CtrlInfo ctrlInfo = new CtrlInfo();
+            Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+
+            if (CbxTipoPagos.SelectedIndex == -1)
+            {
+                MessageBox_Error.Show("No deje la opción de 'Tipo de pago' sin marcar.\n\n", "Error");
+                return;
+            }
+
+            if (Txt_Efectivo.Text == "")
+            {
+                MessageBox_Error.Show("Al pagar al contado no puede dejar el campo 'Efectivo' en blanco\n\n.", "Error");
+                return;
+            }
+
+            if (double.Parse(Txt_Efectivo.Text) < double.Parse(lbTotal.Text) || double.Parse(lbDevolucion.Text) < 0.00)
+            {
+                MessageBox_Error.Show("El pago debe ser completo.\n\n.", "Error");
+                return;
+            }
+
+            Modelos.Facturas facturaAlContado = new Modelos.Facturas
+            {
+                Estado = "Cancelado",
+                Descuento = string.IsNullOrEmpty(Txt_descuento.Text) ? 0.00 : double.Parse(Txt_descuento.Text),
+                Subtotal = double.Parse(lbSubtotal.Text),
+                Efectivo = double.Parse(Txt_Efectivo.Text),
+                Debe = 0.00,
+                Tipo_Factura = "Al contado",
+                Referencia = string.IsNullOrEmpty(TxtReferencia.Text) ? "Ninguna referencia" : TxtReferencia.Text,
+                Id_Usuario = int.Parse(txtIdUsuario.Text),
+                Id_Cliente = int.Parse(txtIdCliente.Text),
+                Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
+            };
+
+            bool bandera = ctrlFactura.Facturacion_Final(facturaAlContado);
+
+            if (bandera)
+            {
+
+                facturaAlContado.Id_Factura = ctrlFactura.ID_Factura();
+                List<Modelos.Facturas> listaFacturaAlcontado = new List<Modelos.Facturas>();
+
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    if (!fila.IsNewRow)
+                    {
+                        Modelos.Facturas factura = new Modelos.Facturas
+                        {
+                            Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
+                            Id_Factura = ctrlFactura.ID_Factura(),
+                            Id_Producto = int.Parse(fila.Cells[5].Value.ToString()),
+                            DescripcionPrecio = fila.Cells[6].Value.ToString()
+                        };
+                        listaFacturaAlcontado.Add(factura);
+                    }
+                }
+
+                foreach (Modelos.Facturas facturas in listaFacturaAlcontado)
+                {
+                    ctrlFactura.Facturar_Productos(facturas);
+                }
+
+                DialogResult result = MessageBox_Question.Show("¿Desea Imprimir la factura?", "Importante");
+
+                if (result == DialogResult.Yes)
+                {
+                    //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                    printDocument1 = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    ps.PrinterName = cbImpresoras.Text;
+                    printDocument1.PrinterSettings = ps;
+                    ps.Copies = 1; // Esto imprimirá dos copias
+                    printDocument1.PrintPage += Imprimir;
+                    printDocument1.Print();
+                    printDocument1.Print();
+                }
+
+                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Género la Factura al contado: Fact." + ctrlFactura.ID_Factura();
+                ctrlInfo.InsertarLog(log);
+
+                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                uC_Factura.CargarFacturas();
+                this.Close();
+            }
+        }
+
+        private void FacturaAlCredito()
+        {
+            CtrlInfo ctrlInfo = new CtrlInfo();
+            Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+
+            if (DateTime_inicio.Text == DateTime_vencimiento.Text)
+            {
+                MessageBox_Error.Show("La fecha de vencimiento del crédito no puede ser igual a la fecha de inicio.\n\n", "Error");
+                return;
+            }
+            double montoAux = (string.IsNullOrEmpty(txtDescripcion.Text) ? 0.00 : double.Parse(txtDescripcion.Text));
+
+            if (montoAux >= double.Parse(lbSubtotal.Text))
+            {
+                MessageBox_Error.Show("El monto no puede ser igual o mayor al pago final.\n\n", "Error");
+                return;
+            }
+
+            Modelos.Facturas facturaAlCredito = new Modelos.Facturas
+            {
+                Estado = "Pendiente",
+                Descuento = 0.00,
+                Subtotal = double.Parse(lbSubtotal.Text),
+                Efectivo = 0.00,
+                Debe = double.Parse(lbSubtotal.Text),
+                Tipo_Factura = "Crédito",
+                Referencia = (string.IsNullOrEmpty(txtDescripcion.Text) ? "Ninguna" : txtDescripcion.Text),
+                Id_Usuario = int.Parse(txtIdUsuario.Text),
+                Id_Cliente = int.Parse(txtIdCliente.Text),
+                Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
+            };
+
+            bool bandera = ctrlFactura.Facturacion_Final(facturaAlCredito);
+
+            if (bandera)
+            {
+                facturaAlCredito.Id_Factura = ctrlFactura.ID_Factura();
+                List<Modelos.Facturas> listaFacturaAlcredito = new List<Modelos.Facturas>();
+
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    if (!fila.IsNewRow)
+                    {
+                        Modelos.Facturas factura = new Modelos.Facturas
+                        {
+                            Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
+                            Id_Factura = ctrlFactura.ID_Factura(),
+                            Id_Producto = int.Parse(fila.Cells[5].Value.ToString()),
+                            DescripcionPrecio = fila.Cells[6].Value.ToString()
+                        };
+                        listaFacturaAlcredito.Add(factura);
+                    }
+                }
+
+                foreach (Modelos.Facturas facturas in listaFacturaAlcredito)
+                {
+                    ctrlFactura.Facturar_Productos(facturas);
+                }
+
+                double monto = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text));
+                double saldo_anterior = double.Parse(lbSubtotal.Text);
+                double saldo_nuevo = saldo_anterior - monto; ;
+                string desc_credito = (string.IsNullOrEmpty(txtDescripcion.Text) ? "Factura realizada al crédito al cliente " + lbNombreCliente.Text + " con un saldo pendiente de: " + lbTotal.Text : txtDescripcion.Text);
+                string desc_abono = (monto > 0 ? "Primer abono realizado es de C$" + monto + " el mismo día que se hizo la factura." : "Primer abono realizado es de C$ 0.00 el mismo día que se hizo la factura.");
+
+                Credito credito = new Credito
+                {
+                    Dia_Inicio = DateTime_inicio.Text,
+                    Dia_Vencimiento = DateTime_vencimiento.Text,
+                    Cargo = double.Parse(lbSubtotal.Text),
+                    Estado = "Pendiente",
+                    Descripcion = desc_credito,
+                    Id_Factura = ctrlFactura.ID_Factura(),
+                    Id_Cliente = int.Parse(txtIdCliente.Text),
+                    Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
+                };
+
+                CtrlCredito_Abono ctrlCredito_Abono = new CtrlCredito_Abono();
+                bool bandera1 = ctrlCredito_Abono.Insertar_Credito(credito);
+
+                if (bandera1)
+                {
+                    Credito credito1 = new Credito();
+                    credito1.Monto = monto;
+                    credito1.Saldo_Anterior = saldo_anterior;
+                    credito1.Saldo_Nuevo = saldo_nuevo;
+                    credito1.Descripcion_Abono = desc_abono;
+                    credito1.Id_Credito = ctrlCredito_Abono.ID_Credito();
+                    credito1.Id_Factura = ctrlFactura.ID_Factura();
+                    ctrlCredito_Abono.Realizar_Abono(credito1);
+
+                    MessageBox_Import.Show("Se realizó la acción con éxito, el cliente debe C$ " + lbTotal.Text + "\n", "Importante");
+                }
+                DialogResult result = MessageBox_Question.Show("¿Desea Imprimir el recibo?", "Importante");
+
+                if (result == DialogResult.Yes)
+                {
+                    //////////////// IMPRESION DE LA FACTURA /////////////////////////////////////////////////
+                    printDocument1 = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    ps.PrinterName = cbImpresoras.Text;
+                    printDocument1.PrinterSettings = ps;
+                    ps.Copies = 1; // Esto imprimirá dos copias
+                    printDocument1.PrintPage += ImprimirRecibo;
+                    printDocument1.Print();
+                    printDocument1.Print();
+                }
+
+                MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
+                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Generó una Factura al crédito: Fact." + ctrlFactura.ID_Factura();
+                ctrlInfo.InsertarLog(log);
+
+                UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
+                uC_Factura.CargarFacturas();
+                this.Close();
+            }
+        }       
 
         private void ImprimirRecibo(object sender, PrintPageEventArgs e)
         {

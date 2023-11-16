@@ -1,0 +1,96 @@
+USE Prueba2;
+
+DROP PROCEDURE Facturacion_Final;
+DELIMITER //
+CREATE PROCEDURE Facturacion_Final(
+    IN _Estado VARCHAR(50),
+    IN _Descuento DOUBLE,
+    IN _Subtotal DOUBLE,
+    IN _Efectivo DOUBLE,
+    IN _Debe DOUBLE,
+    IN _TipoFactura VARCHAR(50), 
+    IN _ID_Usuario INT,
+    IN _ID_Cliente INT,
+    IN _ID_TipoPagos INT
+)
+BEGIN
+    DECLARE Total DOUBLE;
+    DECLARE Vuelto DOUBLE;
+
+    IF (_TipoFactura = 'Al contado') THEN
+        IF (_Descuento = 0.00) THEN
+                SET Total = _Subtotal;
+         ELSE
+             SET Total = _Subtotal - _Descuento;
+         END IF;
+        SET Vuelto = _Efectivo - Total;
+    ELSE
+        SET Total = _Subtotal;        
+        SET Vuelto = 0.00;
+    END IF;
+        
+    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+END //
+DELIMITER ;
+
+DROP VIEW Mostrar_Factura;
+CREATE VIEW Mostrar_Factura AS SELECT
+    a.ID AS 'ID',
+    CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
+    a.Estado,
+    a.Fecha,
+    c.Nombre AS 'Cliente',
+    COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
+    e.Tipos AS 'Tipo de pago',
+    CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
+    CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
+    CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
+    CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
+    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
+    CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
+    d.Nombre AS 'Nombre empleado'
+FROM Facturas a
+INNER JOIN Clientes c ON a.ID_Cliente = c.ID
+INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
+INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
+LEFT JOIN Detalle_Factura b ON a.ID = b.ID_Factura
+WHERE DATE(a.Fecha) = CURDATE()
+GROUP BY a.ID
+ORDER BY a.ID;
+
+ALTER TABLE Facturas
+ADD COLUMN Referencia VARCHAR(300);
+
+DROP PROCEDURE Facturacion_Final;
+DELIMITER //
+CREATE PROCEDURE Facturacion_Final(
+    IN _Estado VARCHAR(50),
+    IN _Descuento DOUBLE,
+    IN _Subtotal DOUBLE,
+    IN _Efectivo DOUBLE,
+    IN _Debe DOUBLE,
+    IN _TipoFactura VARCHAR(50), 
+    IN _Referencia VARCHAR(300),
+    IN _ID_Usuario INT,
+    IN _ID_Cliente INT,
+    IN _ID_TipoPagos INT
+)
+BEGIN
+    DECLARE Total DOUBLE;
+    DECLARE Vuelto DOUBLE;
+
+    IF (_TipoFactura = 'Al contado') THEN
+        IF (_Descuento = 0.00) THEN
+                SET Total = _Subtotal;
+         ELSE
+             SET Total = _Subtotal - _Descuento;
+         END IF;
+        SET Vuelto = _Efectivo - Total;
+    ELSE
+        SET Total = _Subtotal;        
+        SET Vuelto = 0.00;
+    END IF;
+        
+    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, Referencia, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _Referencia, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+END //
+DELIMITER ;

@@ -159,6 +159,7 @@ CREATE TABLE `Facturas`(
 	`Devolucion` DOUBLE DEFAULT NULL,
 	`Debe` DOUBLE DEFAULT NULL,
 	`Tipo_Factura` VARCHAR(50) DEFAULT NULL,
+	`Referencia` VARCHAR(300),
 	`ID_Usuario` INT NOT NULL,
 	`ID_Cliente` INT NOT NULL,
 	`ID_TiposPago` INT NOT NULL,
@@ -632,6 +633,7 @@ CREATE PROCEDURE Facturacion_Final(
     IN _Efectivo DOUBLE,
     IN _Debe DOUBLE,
     IN _TipoFactura VARCHAR(50), 
+	IN _Referencia VARCHAR(300),
     IN _ID_Usuario INT,
     IN _ID_Cliente INT,
     IN _ID_TipoPagos INT
@@ -647,17 +649,12 @@ BEGIN
              SET Total = _Subtotal - _Descuento;
          END IF;
         SET Vuelto = _Efectivo - Total;
-    ELSEIF (_TipoFactura = 'Crédito') THEN
-        -- Factura al crédito
-        IF (_Descuento = 0.00) THEN
-            SET Total = _Subtotal;
-        ELSE
-            SET Total = _Subtotal - _Descuento;
-        END IF;
+    ELSE
+        SET Total = _Subtotal;        
         SET Vuelto = 0.00;
     END IF;
         
-    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, Referencia, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _Referencia, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
 END //
 DELIMITER ;
 
@@ -1302,7 +1299,7 @@ INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
 LEFT JOIN Detalle_Factura b ON a.ID = b.ID_Factura
 WHERE DATE(a.Fecha) = CURDATE()
 GROUP BY a.ID
-ORDER BY a.ID DESC LIMIT 10;
+ORDER BY a.ID;
 
 -- Mostrar todas las facturas sin excepciones
 CREATE VIEW Mostrar_TodasFactura AS  SELECT

@@ -26,6 +26,7 @@ namespace INASOFT_3._0.Modelos
         private double precio;
         private string detalle_Descuento;
         private string descripcion;
+        private string referencia;
         private string descripcionPrecio;
 		private int id_Factura;
 		private int id_Producto;
@@ -51,5 +52,6 @@ namespace INASOFT_3._0.Modelos
         public string Detalle_Descuento { get => detalle_Descuento; set => detalle_Descuento = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string DescripcionPrecio { get => descripcionPrecio; set => descripcionPrecio = value; }
+        public string Referencia { get => referencia; set => referencia = value; }
     }
 }
