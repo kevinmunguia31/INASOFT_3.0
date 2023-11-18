@@ -1,96 +1,126 @@
 USE Prueba2;
 
-DROP PROCEDURE Facturacion_Final;
+ALTER TABLE Productos 
+MODIFY COLUMN Nombre VARCHAR(300);
+
+DROP PROCEDURE Actualizar_Producto;
 DELIMITER //
-CREATE PROCEDURE Facturacion_Final(
+CREATE PROCEDURE Actualizar_Producto(
+    IN _ID_Producto INT,
+    IN _Nombre_Producto VARCHAR(300),
     IN _Estado VARCHAR(50),
-    IN _Descuento DOUBLE,
-    IN _Subtotal DOUBLE,
-    IN _Efectivo DOUBLE,
-    IN _Debe DOUBLE,
-    IN _TipoFactura VARCHAR(50), 
-    IN _ID_Usuario INT,
-    IN _ID_Cliente INT,
-    IN _ID_TipoPagos INT
+    IN _Existencias INT,
+    IN _Existencias_Min INT,
+    IN _Precio_Compra DOUBLE,
+    IN _Precio_Venta DOUBLE,
+    IN _Observacion VARCHAR(200)
 )
 BEGIN
     DECLARE Total DOUBLE;
-    DECLARE Vuelto DOUBLE;
+    DECLARE Aux_PrecioCompra DOUBLE;
+    DECLARE Aux_Existencias INT;
 
-    IF (_TipoFactura = 'Al contado') THEN
-        IF (_Descuento = 0.00) THEN
-                SET Total = _Subtotal;
-         ELSE
-             SET Total = _Subtotal - _Descuento;
-         END IF;
-        SET Vuelto = _Efectivo - Total;
-    ELSE
-        SET Total = _Subtotal;        
-        SET Vuelto = 0.00;
+    -- Obtener el precio de compra actual del producto
+    SELECT Precio_Compra INTO Aux_PrecioCompra FROM Productos WHERE ID = _ID_Producto;
+
+    -- Verificar si el nuevo precio de compra es diferente al precio anterior
+    IF Aux_PrecioCompra != _Precio_Compra THEN
+        -- Insertar un registro en el historial de precios
+        INSERT INTO Historial_Precio (ID_Producto, Precio_Antiguo, Precio_Nuevo, Descripcion, Fecha_Cambio) VALUES (_ID_Producto, Aux_PrecioCompra, _Precio_Compra, CONCAT('Se ha cambiado el precio del producto'), NOW());
     END IF;
-        
-    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+
+    -- Actualizar los detalles del producto
+    UPDATE Productos 
+    SET 
+        Estado = _Estado, 
+        Nombre = _Nombre_Producto,
+	Existencias = Existencias + _Existencias,
+        Existencias_Minimas = _Existencias_Min, 
+        Precio_Compra = _Precio_Compra, 
+        Precio_Venta = _Precio_Venta, 
+        Observacion = _Observacion 
+    WHERE ID = _ID_Producto;
+
+	SELECT Existencias INTO Aux_Existencias FROM Productos WHERE ID = _ID_Producto;
+    -- Calcular el nuevo valor para Precio_Total
+    SET Total = ROUND(_Precio_Compra * Aux_Existencias, 2);
+
+    -- Actualizar el Precio_Total y Existencias
+    UPDATE Productos SET 
+        Precio_Total = Total -- Cambiado aquí
+    WHERE ID = _ID_Producto;
+    
 END //
 DELIMITER ;
 
-DROP VIEW Mostrar_Factura;
-CREATE VIEW Mostrar_Factura AS SELECT
-    a.ID AS 'ID',
-    CONCAT('FAC-', LPAD(a.Codigo_Fac, 5, '0')) AS 'Codigo',
-    a.Estado,
-    a.Fecha,
-    c.Nombre AS 'Cliente',
-    COALESCE(COUNT(b.ID), 0) AS 'Cant. Productos',
-    e.Tipos AS 'Tipo de pago',
-    CONCAT('C$ ', FORMAT(a.Subtotal, 2)) AS 'Subtotal',
-    CONCAT('C$ ', FORMAT(a.Descuento, 2)) AS 'Descuento',
-    CONCAT('C$ ', FORMAT(a.Total_Final, 2)) AS 'Total Final',
-    CONCAT('C$ ', FORMAT(a.Efectivo, 2)) AS 'Efectivo',
-    CONCAT('C$ ', FORMAT(a.Devolucion, 2)) AS 'Devolucion',
-    CONCAT('C$ ', FORMAT(a.Debe, 2)) AS 'Debe',
-    d.Nombre AS 'Nombre empleado'
-FROM Facturas a
-INNER JOIN Clientes c ON a.ID_Cliente = c.ID
-INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
-INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
-LEFT JOIN Detalle_Factura b ON a.ID = b.ID_Factura
-WHERE DATE(a.Fecha) = CURDATE()
-GROUP BY a.ID
-ORDER BY a.ID;
-
-ALTER TABLE Facturas
-ADD COLUMN Referencia VARCHAR(300);
-
-DROP PROCEDURE Facturacion_Final;
+DROP PROCEDURE Insertar_Producto;
+-- Insertar Producto
 DELIMITER //
-CREATE PROCEDURE Facturacion_Final(
-    IN _Estado VARCHAR(50),
-    IN _Descuento DOUBLE,
-    IN _Subtotal DOUBLE,
-    IN _Efectivo DOUBLE,
-    IN _Debe DOUBLE,
-    IN _TipoFactura VARCHAR(50), 
-    IN _Referencia VARCHAR(300),
-    IN _ID_Usuario INT,
-    IN _ID_Cliente INT,
-    IN _ID_TipoPagos INT
+CREATE PROCEDURE Insertar_Producto(
+    _Codigo VARCHAR(45),
+    _Nombre VARCHAR(300),
+    _Existencias INT,
+    _Existencias_Min INT,
+    _Precio_Compra DOUBLE,
+    _Precio_Venta DOUBLE,
+    _Observacion VARCHAR(200),
+    _ID_Entrada INT
 )
 BEGIN
     DECLARE Total DOUBLE;
-    DECLARE Vuelto DOUBLE;
+    DECLARE Aux_IDProducto INT;
+    DECLARE Aux_Estado VARCHAR(30);
 
-    IF (_TipoFactura = 'Al contado') THEN
-        IF (_Descuento = 0.00) THEN
-                SET Total = _Subtotal;
-         ELSE
-             SET Total = _Subtotal - _Descuento;
-         END IF;
-        SET Vuelto = _Efectivo - Total;
+    -- Ajustar el tamaño de la columna _Nombre según sea necesario
+    IF _Existencias = 0 THEN
+        SET Aux_Estado = 'No Activo';
     ELSE
-        SET Total = _Subtotal;        
-        SET Vuelto = 0.00;
+        SET Aux_Estado = 'Activo';
     END IF;
-        
-    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, Referencia, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _Referencia, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+
+    -- Ajustar la precisión del tipo de dato
+    SET Total = ROUND(_Precio_Compra * _Existencias, 2);
+
+    -- Insertar datos en la tabla Productos
+    INSERT INTO Productos (Codigo, Nombre, Estado, Existencias, Existencias_Minimas, Precio_Compra, Precio_Venta, Precio_Total, Observacion, ID_Entrada)
+    VALUES(_Codigo, _Nombre, Aux_Estado, _Existencias, _Existencias_Min , _Precio_Compra, _Precio_Venta, Total, _Observacion, _ID_Entrada);
+
+END //
+DELIMITER ;
+
+DROP PROCEDURE Detalle_RemisionEntrada;
+-- Realizar remisiones de entrada de productos
+DELIMITER //
+CREATE PROCEDURE Detalle_RemisionEntrada(
+    IN _ID_Producto INT,
+    IN _Codigo_Producto VARCHAR(45),
+    IN _Nombre_Producto VARCHAR(100),
+    IN _Cantidad INT,
+    IN _Existencias_Min INT,
+    IN _Precio_Compra DOUBLE,
+    IN _Precio_Venta DOUBLE,
+    IN _Observacion VARCHAR(200),
+    IN _ID_Remision INT
+)
+BEGIN
+    DECLARE Aux_IDProducto INT;
+
+    -- Verificar si el dato ya existe en la tabla Productos
+    SELECT ID INTO Aux_IDProducto FROM Productos WHERE ID = _ID_Producto;
+
+    -- Comprobar el resultado
+    IF Aux_IDProducto != 0 THEN
+        CALL Actualizar_Producto(_ID_Producto, _Nombre_Producto, 'Activo', _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion);
+    ELSE
+        CALL Insertar_Producto(_Codigo_Producto, _Nombre_Producto, _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion, 2);
+        -- Obtener el ID del último producto insertado
+       SET Aux_IDProducto = LAST_INSERT_ID();
+    END IF;
+
+    -- Insertar en la tabla Detalle_Remisiones
+    INSERT INTO Detalle_Remision (Cantidad, ID_Remision, ID_Producto)
+    VALUES (_Cantidad, _ID_Remision, Aux_IDProducto);
+    
+    INSERT INTO HistorialTransacciones VALUES (NULL, 'Remision de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos mediante una remisión de entrada de ', _Cantidad, ' ', _Nombre_Producto));
 END //
 DELIMITER ;

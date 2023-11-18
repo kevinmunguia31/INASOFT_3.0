@@ -69,7 +69,7 @@ CREATE TABLE `Proveedor` (
 CREATE TABLE `Productos` (
   	`ID` INT NOT NULL AUTO_INCREMENT,
   	`Codigo` VARCHAR(45) UNIQUE NOT NULL,
-  	`Nombre` VARCHAR(100) NOT NULL,
+  	`Nombre` VARCHAR(300) NOT NULL,
 	`Estado` ENUM('Activo', 'No activo') DEFAULT 'Activo',
   	`Existencias` INT NOT NULL,
 	`Existencias_Minimas` INT NOT NULL,	
@@ -328,8 +328,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE Insertar_Producto(
     _Codigo VARCHAR(45),
-    _Nombre VARCHAR(100),
-    _Cantidad INT,
+    _Nombre VARCHAR(300),
+    _Existencias INT,
     _Existencias_Min INT,
     _Precio_Compra DOUBLE,
     _Precio_Venta DOUBLE,
@@ -337,22 +337,34 @@ CREATE PROCEDURE Insertar_Producto(
     _ID_Entrada INT
 )
 BEGIN
-    DECLARE Total FLOAT;
+    DECLARE Total DOUBLE;
     DECLARE Aux_IDProducto INT;
-    
-    SET Total = ROUND(_Precio_Compra * _Cantidad, 2);
+    DECLARE Aux_Estado VARCHAR(30);
+
+    -- Ajustar el tamaño de la columna _Nombre según sea necesario
+    IF _Existencias = 0 THEN
+        SET Aux_Estado = 'No Activo';
+    ELSE
+        SET Aux_Estado = 'Activo';
+    END IF;
+
+    -- Ajustar la precisión del tipo de dato
+    SET Total = ROUND(_Precio_Compra * _Existencias, 2);
+
+    -- Insertar datos en la tabla Productos
     INSERT INTO Productos (Codigo, Nombre, Estado, Existencias, Existencias_Minimas, Precio_Compra, Precio_Venta, Precio_Total, Observacion, ID_Entrada)
-    VALUES(_Codigo, _Nombre, 'Activo', _Cantidad, _Existencias_Min , _Precio_Compra, _Precio_Venta, Total, _Observacion, _ID_Entrada);
-    
+    VALUES(_Codigo, _Nombre, Aux_Estado, _Existencias, _Existencias_Min , _Precio_Compra, _Precio_Venta, Total, _Observacion, _ID_Entrada);
+
 END //
 DELIMITER ;
+
 
 
 -- Actualizar Producto
 DELIMITER //
 CREATE PROCEDURE Actualizar_Producto(
     IN _ID_Producto INT,
-    IN _Nombre_Producto VARCHAR(100),
+    IN _Nombre_Producto VARCHAR(300),
     IN _Estado VARCHAR(50),
     IN _Existencias INT,
     IN _Existencias_Min INT,
@@ -379,6 +391,7 @@ BEGIN
     SET 
         Estado = _Estado, 
         Nombre = _Nombre_Producto,
+		Existencias = Existencias + _Existencias,
         Existencias_Minimas = _Existencias_Min, 
         Precio_Compra = _Precio_Compra, 
         Precio_Venta = _Precio_Venta, 
@@ -431,6 +444,7 @@ BEGIN
 END //
 DELIMITER ;
 
+
 -- Realizar remisiones de entrada de productos
 DELIMITER //
 CREATE PROCEDURE Detalle_RemisionEntrada(
@@ -451,7 +465,7 @@ BEGIN
     SELECT ID INTO Aux_IDProducto FROM Productos WHERE ID = _ID_Producto;
 
     -- Comprobar el resultado
-    IF Aux_IDProducto IS NOT NULL THEN
+    IF Aux_IDProducto != 0 THEN
         CALL Actualizar_Producto(_ID_Producto, _Nombre_Producto, 'Activo', _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion);
     ELSE
         CALL Insertar_Producto(_Codigo_Producto, _Nombre_Producto, _Cantidad, _Existencias_Min, _Precio_Compra, _Precio_Venta, _Observacion, 2);
@@ -466,6 +480,7 @@ BEGIN
     INSERT INTO HistorialTransacciones VALUES (NULL, 'Remision de entrada', NOW(), CONCAT('Se ha hecho una transacción de entrada de productos mediante una remisión de entrada de ', _Cantidad, ' ', _Nombre_Producto));
 END //
 DELIMITER ;
+
 
 -- Realizar remisiones de salidas de productos
 DELIMITER //
@@ -2078,5 +2093,4 @@ BEGIN
     
 END //
 DELIMITER ;
-
 

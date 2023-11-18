@@ -29,6 +29,8 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
             btnImportExcel.Visible = false;
+            TxtBuscar_Productos.Visible = false;
+            button1.Visible = false;
             
             radioButton1.Checked = true; datagridView2.Rows.Add("Total", "", "", "", "", 0, "", "");
 
@@ -92,6 +94,8 @@ namespace INASOFT_3._0.VistaFacturas
             radioButton2.Checked = true;
             GroupBox_CambioProd.Enabled = false;
             btnImportExcel.Visible = true;
+            TxtBuscar_Productos.Visible = false;
+            button1.Visible = false;
         }
 
         private void Rbtn_ActualizarProducto_CheckedChanged(object sender, EventArgs e)
@@ -106,6 +110,8 @@ namespace INASOFT_3._0.VistaFacturas
             radioButton1.Checked = true;
             GroupBox_CambioProd.Enabled = true;
             btnImportExcel.Visible = false;
+            TxtBuscar_Productos.Visible = true;
+            button1.Visible = true;
         }
 
         public void Limpiar()
@@ -117,6 +123,7 @@ namespace INASOFT_3._0.VistaFacturas
             txtObservacion.Text = "";
             SpinExist.Value = 0;
             Lb_CantStocks.Text = "--";
+            TxtBuscar_Productos.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -449,7 +456,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void btnImportExcel_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageDialogError.Show("Seguro que desea cargar los registros desde EXCEL.\n\n?", "Importante");
+            DialogResult resultado = MessageDialogError.Show("¿Seguro que desea cargar los registros desde EXCEL?\n\n", "Importante");
             if (resultado == DialogResult.Yes)
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -487,25 +494,26 @@ namespace INASOFT_3._0.VistaFacturas
                             }
                             else
                             {
-                                string sql = "CALL Detalle_RemisionEntrada(@Id,@Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdRemision);";
+                                string sql = "CALL Detalle_RemisionEntrada(@Id, @Codigo, @Nombre, @Existencias, @ExistenciasMin, @PrecioCompra, @PrecioVenta, @Observacion, @IdRemision);";
                                 try
                                 {
                                     MySqlCommand comando = new MySqlCommand(sql, conexionBD);
 
                                     // Agregar parámetros
-                                    comando.Parameters.AddWithValue("@Id", sl.GetCellValueAsString("A" + x));
-                                    comando.Parameters.AddWithValue("@Codigo", sl.GetCellValueAsString("B" + x));
-                                    comando.Parameters.AddWithValue("@Nombre", sl.GetCellValueAsString("C" + x));
-                                    comando.Parameters.AddWithValue("@Existencias", sl.GetCellValueAsString("D" + x));
-                                    comando.Parameters.AddWithValue("@ExistenciasMin", sl.GetCellValueAsString("E" + x));
-                                    comando.Parameters.AddWithValue("@PrecioCompra", sl.GetCellValueAsString("F" + x));
-                                    comando.Parameters.AddWithValue("@PrecioVenta", sl.GetCellValueAsString("G" + x));
-                                    comando.Parameters.AddWithValue("@Observacion", sl.GetCellValueAsString("H" + x));
+                                    comando.Parameters.AddWithValue("@Id", 0);
+                                    comando.Parameters.AddWithValue("@Codigo", sl.GetCellValueAsString("A" + x));
+                                    comando.Parameters.AddWithValue("@Nombre", sl.GetCellValueAsString("B" + x));
+                                    comando.Parameters.AddWithValue("@Existencias", sl.GetCellValueAsString("C" + x));
+                                    comando.Parameters.AddWithValue("@ExistenciasMin", sl.GetCellValueAsString("D" + x));
+                                    comando.Parameters.AddWithValue("@PrecioCompra", sl.GetCellValueAsString("E" + x));
+                                    comando.Parameters.AddWithValue("@PrecioVenta", sl.GetCellValueAsString("F" + x));
+                                    comando.Parameters.AddWithValue("@Observacion", sl.GetCellValueAsString("G" + x));
                                     comando.Parameters.AddWithValue("@IdRemision", ctrl.ID_Remision());
                                     comando.ExecuteNonQuery();
                                 }
                                 catch (MySqlException ex)
                                 {
+                                    //MessageBox.Show(sl.GetCellValueAsString("B" + x));
                                     MessageBox.Show(ex.Message);
                                 }
                             }
@@ -541,6 +549,19 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 return false;
             }
+        }
+
+        private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
+        {
+            Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo(TxtBuscar_Productos.Text);
+            Cbx_Productos.ValueMember = "ID";
+            Cbx_Productos.DisplayMember = "Nombre";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CargarProductos();
         }
     }
 }

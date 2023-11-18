@@ -1,0 +1,6 @@
+1. TextBox del buscador de producto en la remisiones.
+2. Actualizar stock mediante Remisión.
+3. Nueva forma de cargar los datos del EXCEL a la Remisión.
+
+
+

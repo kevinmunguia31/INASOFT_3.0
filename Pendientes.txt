@@ -1,9 +1,0 @@
-1. Revisar la facturacion (credito, genera dos facturas). √
-2. Compras (Filtros al pendiente/cancelado) √
-3. Controlar la eliminación de la factura al borrar cliente (Pasar la factura al cliente generico). √
-4. Controlar la eliminación de la factura al borrar un usuario (Pasar la factura al usuario Admin). √
-5. Ver el detalle de la remisión.  √
-6. Facturación no está agarrando el precio si se cambia. √
-
-
-

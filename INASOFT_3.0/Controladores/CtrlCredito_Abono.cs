@@ -209,5 +209,41 @@ namespace INASOFT_3._0.Controladores
             }
             return saldo;
         }
+
+        public Credito MostrarDatosCreditoAbono(int id)
+        {
+            Credito credito = null; // Inicializamos producto como nulo
+            string sql = "SELECT Fecha, Monto, Saldo_Anterior, Saldo_Nuevo, Descripcion FROM Abono WHERE ID_Credito = " + id + " LIMIT 1;";
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                using (var reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        credito = new Credito
+                        {
+                            Fecha = reader[0].ToString(),
+                            Monto = Convert.ToDouble(reader[1].ToString()),
+                            Saldo_Anterior = Convert.ToInt32(reader[2]),
+                            Saldo_Nuevo = Convert.ToInt32(reader[3]),
+                            Descripcion = reader[4].ToString()
+                        };
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+            return credito; // Retornamos un solo objeto en lugar de una lista
+        }
     }
 }

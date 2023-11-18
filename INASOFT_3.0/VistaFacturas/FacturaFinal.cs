@@ -394,7 +394,6 @@ namespace INASOFT_3._0.VistaFacturas
                     ps.Copies = 1; // Esto imprimirá dos copias
                     printDocument1.PrintPage += Imprimir;
                     printDocument1.Print();
-                    printDocument1.Print();
                 }
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
@@ -417,7 +416,7 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox_Error.Show("La fecha de vencimiento del crédito no puede ser igual a la fecha de inicio.\n\n", "Error");
                 return;
             }
-            double montoAux = (string.IsNullOrEmpty(txtDescripcion.Text) ? 0.00 : double.Parse(txtDescripcion.Text));
+            double montoAux = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text));
 
             if (montoAux >= double.Parse(lbSubtotal.Text))
             {
@@ -512,7 +511,6 @@ namespace INASOFT_3._0.VistaFacturas
                     ps.Copies = 1; // Esto imprimirá dos copias
                     printDocument1.PrintPage += ImprimirRecibo;
                     printDocument1.Print();
-                    printDocument1.Print();
                 }
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
@@ -527,7 +525,10 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void ImprimirRecibo(object sender, PrintPageEventArgs e)
         {
-            Credito credito1 = new Credito();
+            Modelos.Credito credito = new Modelos.Credito();
+            CtrlCredito_Abono ctrlCredito_Abono = new CtrlCredito_Abono();
+            credito = ctrlCredito_Abono.MostrarDatosCreditoAbono(ctrlCredito_Abono.ID_Credito());
+
             int width = 280;
             int y = 20;
             Font font2 = new Font("Consolas", 9, FontStyle.Regular, GraphicsUnit.Point);
@@ -536,8 +537,8 @@ namespace INASOFT_3._0.VistaFacturas
             Font font5 = new Font("Consolas", 7, FontStyle.Regular, GraphicsUnit.Point);
             string imagen = Properties.Settings.Default.RutaImagen;
             InfoNegocio info = new InfoNegocio();
-            Image img = Image.FromFile(imagen);
-            e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
+            //Image img = Image.FromFile(imagen);
+            //e.Graphics.DrawImage(img, new System.Drawing.Rectangle(40, y += 0, 200, 90));
             e.Graphics.DrawString(info.Direccion, font2, Brushes.Black, new RectangleF(20, y += 95, width, 20));
             //e.Graphics.DrawString("Norte, Sucursal - El Viejo", font2, Brushes.Black, new RectangleF(40, y += 20, width, 20));
             e.Graphics.DrawString(info.Telefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
@@ -549,14 +550,14 @@ namespace INASOFT_3._0.VistaFacturas
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("            RECIBO DE CAJA", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
-            e.Graphics.DrawString("Saldo Incial: C$" + credito1.Monto, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Saldo Pendiente: C$" + credito1.Saldo_Anterior, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Saldo Incial: C$" + credito.Monto, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Saldo Pendiente: C$" + credito.Saldo_Anterior, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Abono: C$" + TxtMonto.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Nuevo Saldo: C$" + credito1.Saldo_Nuevo, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString("Nuevo Saldo: C$" + credito.Saldo_Nuevo, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 18, width, 20));
-
-            float Abono = float.Parse(TxtMonto.Text, CultureInfo.InvariantCulture);
-            float recibido = float.Parse(TxtMonto.Text, CultureInfo.InvariantCulture);
+            
+            double Abono = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text, CultureInfo.InvariantCulture));
+            double recibido = (string.IsNullOrEmpty(TxtMonto.Text) ? 0.00 : double.Parse(TxtMonto.Text, CultureInfo.InvariantCulture));
             double vuelto = 0.0;
 
             e.Graphics.DrawString("Total:     C$" + Abono.ToString("0,0", CultureInfo.InvariantCulture), font2, Brushes.Black, new RectangleF(140, y += 20, width, 20));

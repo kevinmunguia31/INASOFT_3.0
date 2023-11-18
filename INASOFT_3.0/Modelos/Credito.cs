@@ -19,6 +19,7 @@ namespace INASOFT_3._0.Modelos
         private int id_Cliente;
         private int id_TipoPago;
         private double monto;
+        private string fecha;
         private double saldo_Anterior;
         private double saldo_Nuevo;
         private string descripcion_Abono;
@@ -37,5 +38,6 @@ namespace INASOFT_3._0.Modelos
         public double Saldo_Nuevo { get => saldo_Nuevo; set => saldo_Nuevo = value; }
         public int Id_Credito { get => id_Credito; set => id_Credito = value; }
         public string Descripcion_Abono { get => descripcion_Abono; set => descripcion_Abono = value; }
+        public string Fecha { get => fecha; set => fecha = value; }
     }
 }
