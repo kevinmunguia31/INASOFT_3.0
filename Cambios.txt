@@ -1,6 +1,9 @@
 1. TextBox del buscador de producto en la remisiones.
 2. Actualizar stock mediante Remisión.
 3. Nueva forma de cargar los datos del EXCEL a la Remisión.
+4. Remisión multiplo de salida
+5. Tabla total precio compra por cantidad en Modulo de compra.
+6. Buscador de producto en formulario de compra.
 
 
 

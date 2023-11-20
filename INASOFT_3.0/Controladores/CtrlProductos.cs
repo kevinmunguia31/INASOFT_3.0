@@ -338,7 +338,7 @@ namespace INASOFT_3._0.Controladores
         public string TotalProductos()
         {
             string total = "";
-            string SQL = "SELECT CASE WHEN COUNT(*) IS NULL THEN '0' ELSE COUNT(*)  END 'Cantidad de productos' FROM productos;";
+            string SQL = "SELECT CASE WHEN COUNT(*) IS NULL THEN '0' ELSE COUNT(ID)  END 'Cantidad de productos' FROM productos;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

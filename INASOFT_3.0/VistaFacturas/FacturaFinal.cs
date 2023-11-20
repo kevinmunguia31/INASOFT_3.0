@@ -158,6 +158,7 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBox.Show("Error: " + ex);
             }
         }
+
         public void Limpiar()
         {
             Lb_Precio_Venta.Text = "...";

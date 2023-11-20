@@ -45,7 +45,7 @@ namespace INASOFT_3._0.UserControls
             this.label11 = new System.Windows.Forms.Label();
             this.lbCapital = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.lbCantiTota = new System.Windows.Forms.Label();
+            this.lbCantTotal = new System.Windows.Forms.Label();
             this.MessageDialog = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogWar = new Guna.UI2.WinForms.Guna2MessageDialog();
@@ -134,6 +134,7 @@ namespace INASOFT_3._0.UserControls
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -199,7 +200,7 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.lbCapital);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.lbCantiTota);
+            this.groupBox2.Controls.Add(this.lbCantTotal);
             this.groupBox2.Location = new System.Drawing.Point(0, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(206, 153);
@@ -237,16 +238,16 @@ namespace INASOFT_3._0.UserControls
             this.label12.TabIndex = 2;
             this.label12.Text = "Total Invertido:";
             // 
-            // lbCantiTota
+            // lbCantTotal
             // 
-            this.lbCantiTota.AutoSize = true;
-            this.lbCantiTota.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCantiTota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCantiTota.Location = new System.Drawing.Point(151, 21);
-            this.lbCantiTota.Name = "lbCantiTota";
-            this.lbCantiTota.Size = new System.Drawing.Size(22, 28);
-            this.lbCantiTota.TabIndex = 1;
-            this.lbCantiTota.Text = "0";
+            this.lbCantTotal.AutoSize = true;
+            this.lbCantTotal.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCantTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lbCantTotal.Location = new System.Drawing.Point(151, 21);
+            this.lbCantTotal.Name = "lbCantTotal";
+            this.lbCantTotal.Size = new System.Drawing.Size(22, 28);
+            this.lbCantTotal.TabIndex = 1;
+            this.lbCantTotal.Text = "0";
             // 
             // MessageDialog
             // 
@@ -857,6 +858,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // Remisiones
             // 
+            this.Remisiones.Controls.Add(this.guna2Button9);
             this.Remisiones.Controls.Add(this.guna2Button7);
             this.Remisiones.Controls.Add(this.pictureBox6);
             this.Remisiones.Controls.Add(this.guna2GroupBox6);
@@ -889,7 +891,7 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button7.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button7.Location = new System.Drawing.Point(995, 14);
+            this.guna2Button7.Location = new System.Drawing.Point(826, 14);
             this.guna2Button7.Name = "guna2Button7";
             this.guna2Button7.Size = new System.Drawing.Size(135, 34);
             this.guna2Button7.TabIndex = 97;
@@ -1203,11 +1205,11 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(1136, 14);
+            this.guna2Button2.Location = new System.Drawing.Point(1152, 14);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(195, 34);
+            this.guna2Button2.Size = new System.Drawing.Size(179, 34);
             this.guna2Button2.TabIndex = 91;
-            this.guna2Button2.Text = "Recepcionar Remisión";
+            this.guna2Button2.Text = "Remisión de entrada";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
             // 
             // Compras
@@ -1530,6 +1532,25 @@ namespace INASOFT_3._0.UserControls
             // 
             this.productosBindingSource.DataSource = typeof(INASOFT_3._0.Modelos.Productos);
             // 
+            // guna2Button9
+            // 
+            this.guna2Button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button9.BorderRadius = 10;
+            this.guna2Button9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button9.ForeColor = System.Drawing.Color.White;
+            this.guna2Button9.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button9.Image")));
+            this.guna2Button9.Location = new System.Drawing.Point(967, 14);
+            this.guna2Button9.Name = "guna2Button9";
+            this.guna2Button9.Size = new System.Drawing.Size(179, 34);
+            this.guna2Button9.TabIndex = 98;
+            this.guna2Button9.Text = "Remisión de salida";
+            this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
+            // 
             // UC_Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1591,7 +1612,7 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.BindingSource productosBindingSource;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lbCantiTota;
+        private System.Windows.Forms.Label lbCantTotal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbCapital;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
@@ -1684,5 +1705,6 @@ namespace INASOFT_3._0.UserControls
         private System.Windows.Forms.RadioButton Rbt_RemisionSalida;
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
         private System.Windows.Forms.RadioButton Rbt_RemisionEntrada;
+        private Guna.UI2.WinForms.Guna2Button guna2Button9;
     }
 }

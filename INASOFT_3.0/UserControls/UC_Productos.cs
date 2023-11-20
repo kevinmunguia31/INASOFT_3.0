@@ -41,7 +41,7 @@ namespace INASOFT_3._0.UserControls
             {
                 lbCapital.Text = ctrlProductos.CapitalInvertido();
             }            
-            lbCantiTota.Text = ctrlProductos.TotalProductos();
+            lbCantTotal.Text = ctrlProductos.TotalProductos();
             dataGridView1.Columns[9].Visible = false;
 
             dataGridView3.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -130,7 +130,7 @@ namespace INASOFT_3._0.UserControls
                 CambiarEstado(int.Parse(id_pos));
                 Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
                 lbCapital.Text = ctrlProductos.CapitalInvertido();
-                lbCantiTota.Text = ctrlProductos.TotalProductos();
+                lbCantTotal.Text = ctrlProductos.TotalProductos();
             }
 
             if (id_pos.Contains("Editar"))
@@ -139,7 +139,7 @@ namespace INASOFT_3._0.UserControls
                 Editar_Producto(int.Parse(id_pos));
                 Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
                 lbCapital.Text = ctrlProductos.CapitalInvertido();
-                lbCantiTota.Text = ctrlProductos.TotalProductos();
+                lbCantTotal.Text = ctrlProductos.TotalProductos();
             }
         }
 
@@ -245,7 +245,7 @@ namespace INASOFT_3._0.UserControls
             CargarTablaProduct();
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
             lbCapital.Text = ctrlProductos.CapitalInvertido();
-            lbCantiTota.Text = ctrlProductos.TotalProductos();
+            lbCantTotal.Text = ctrlProductos.TotalProductos();
         }
 
         private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
@@ -598,6 +598,12 @@ namespace INASOFT_3._0.UserControls
                 menu.Show(dataGridView3, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_OpcionesRemsiones);
             }
+        }
+
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            RealizarRemisionSalida add = new RealizarRemisionSalida();
+            add.ShowDialog();
         }
     }
 }

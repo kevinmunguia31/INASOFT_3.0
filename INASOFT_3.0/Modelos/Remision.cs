@@ -13,6 +13,7 @@ namespace INASOFT_3._0.Modelos
         private string fecha;
         private string descripcion;
         private string tipo_Remision;
+        private string nombreProducto;
         private int id_Producto;
         private int id_Entrada;
         private int id_Usuario;
@@ -25,5 +26,6 @@ namespace INASOFT_3._0.Modelos
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Tipo_Remision { get => tipo_Remision; set => tipo_Remision = value; }
         public int Id_Usuario { get => id_Usuario; set => id_Usuario = value; }
+        public string NombreProducto { get => nombreProducto; set => nombreProducto = value; }
     }
 }
