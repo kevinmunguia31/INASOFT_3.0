@@ -547,7 +547,7 @@ namespace INASOFT_3._0.UserControls
 
         private void guna2Button2_Click_1(object sender, EventArgs e)
         {
-            RealizarRemision add = new RealizarRemision();
+            RealizarRemisionEntrada add = new RealizarRemisionEntrada();
             add.ShowDialog();
         }
 

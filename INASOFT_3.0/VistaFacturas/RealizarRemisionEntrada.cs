@@ -15,10 +15,10 @@ using System.Windows.Forms;
 
 namespace INASOFT_3._0.VistaFacturas
 {
-    public partial class RealizarRemision : Form
+    public partial class RealizarRemisionEntrada : Form
     {
         public DataTable dataTable = new DataTable();
-        public RealizarRemision()
+        public RealizarRemisionEntrada()
         {
             InitializeComponent();
             CargarProductos();

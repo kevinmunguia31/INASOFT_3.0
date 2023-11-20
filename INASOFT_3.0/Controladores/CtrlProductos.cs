@@ -12,6 +12,7 @@ using iText.StyledXmlParser.Jsoup.Select;
 using System.Windows.Forms;
 using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 using DevExpress.Utils.DirectXPaint;
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace INASOFT_3._0.Controladores
 {
@@ -230,7 +231,6 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine("Error: " + ex.Message);
             }
             return dt;
-
         }
 
         public DataTable Buscar_NombreProducto(string dato)
@@ -253,6 +253,28 @@ namespace INASOFT_3._0.Controladores
             }
             return dt;
         }
+
+        public DataTable Buscar_NombreProducto_IDProveedor(int idProveedor, string dato)
+        {
+            DataTable dt = new DataTable();
+
+            string SQL = "SELECT \r\n    a.ID, a.Nombre \r\nFROM Productos a \r\nLEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto \r\nLEFT JOIN Compras c ON c.ID = b.ID_Compra\r\nLEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID \r\nWHERE d.ID = "+idProveedor+" AND (a.Nombre LIKE '%"+dato+"%' OR a.Codigo LIKE '%"+dato+"%');";
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
         public Productos MostrarDatosProductos(int id)
         {
             Productos producto = null; // Inicializamos producto como nulo

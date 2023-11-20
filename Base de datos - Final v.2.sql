@@ -1055,6 +1055,15 @@ SELECT CASE WHEN COUNT(*) IS NULL THEN '0' ELSE COUNT(*)  END 'Cantidad de produ
 -- Buscar producto por su nombre o por codigo
 SELECT * FROM Mostrar_Producto WHERE Producto LIKE '%%' OR Codigo LIKE '%01%';
 
+-- Buscar productos por su nombre o por codigo, dependiendo del Proveedor
+SELECT 
+    a.ID, a.Nombre 
+FROM Productos a 
+LEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto 
+LEFT JOIN Compras c ON c.ID = b.ID_Compra
+LEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID 
+WHERE d.ID = 1 AND (a.Nombre LIKE '% %' OR a.Codigo LIKE '% %');
+
 -- ------------------------------------------------------------ Consultas realcionado a las compras --------------------------------------------------------------
 
 --  Mostrar todas las compras realizadas
@@ -2093,4 +2102,5 @@ BEGIN
     
 END //
 DELIMITER ;
+
 

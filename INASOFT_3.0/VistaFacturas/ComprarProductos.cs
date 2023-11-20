@@ -52,6 +52,8 @@ namespace INASOFT_3._0
 
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
+            TxtBuscar_Productos.Enabled = false;
+            button1.Enabled = false;
         }
 
         private void CargarDatosDataGridView()
@@ -284,7 +286,7 @@ namespace INASOFT_3._0
                 newRow[2] = SpinExist.Value.ToString();
                 newRow[3] = double.Parse(txtPrecioCompra.Text);
                 newRow[4] = double.Parse(txtPrecioVenta.Text);
-                newRow[5] = double.Parse(txtPrecioVenta.Text) * int.Parse(SpinExist.Value.ToString());
+                newRow[5] = double.Parse(txtPrecioCompra.Text) * int.Parse(SpinExist.Value.ToString());
                 newRow[6] = Txt_IDProd.Text;
                 newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Compra del producto {txtNameP.Text}" : txtObservacion.Text;
 
@@ -455,7 +457,9 @@ namespace INASOFT_3._0
                     int id = int.Parse(cbProveedor.SelectedValue.ToString());
                     Controladores.CtrlProveedor ctrlProveedor = new CtrlProveedor();
                     Txt_RUC.Text = ctrlProveedor.RUC(id);
-                    Cbx_Productos.Enabled = true;                    
+                    Cbx_Productos.Enabled = true;    
+                    TxtBuscar_Productos.Enabled = true;
+                    button1.Enabled = true;
                     CargarProductos(id);
                     Cbx_Productos.SelectedIndex = -1;
                 }
@@ -554,6 +558,23 @@ namespace INASOFT_3._0
         private void SpinDescuentoCompra_ValueChanged(object sender, EventArgs e)
         {
             CalcularTotal();
+        }
+
+        private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(cbProveedor.SelectedValue.ToString());
+            Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
+            Cbx_Productos.DataSource = ctrl.Buscar_NombreProducto_IDProveedor(id, TxtBuscar_Productos.Text);
+            Cbx_Productos.ValueMember = "ID";
+            Cbx_Productos.DisplayMember = "Nombre";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(cbProveedor.SelectedValue.ToString());
+            Cbx_Productos.Enabled = true;
+            CargarProductos(id);
+            Cbx_Productos.SelectedIndex = -1;
         }
     }
 }

@@ -424,11 +424,17 @@
     <Compile Include="VistaFacturas\EditarProducto.Designer.cs">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaFacturas\RealizarRemision.cs">
+    <Compile Include="VistaFacturas\RealizarRemisionEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VistaFacturas\RealizarRemision.Designer.cs">
-      <DependentUpon>RealizarRemision.cs</DependentUpon>
+    <Compile Include="VistaFacturas\RealizarRemisionEntrada.Designer.cs">
+      <DependentUpon>RealizarRemisionEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturas\RealizarRemisionSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\RealizarRemisionSalida.Designer.cs">
+      <DependentUpon>RealizarRemisionSalida.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturas\VistaProductos.cs">
       <SubType>Form</SubType>
@@ -523,8 +529,11 @@
     <EmbeddedResource Include="VistaFacturas\EditarProducto.resx">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VistaFacturas\RealizarRemision.resx">
-      <DependentUpon>RealizarRemision.cs</DependentUpon>
+    <EmbeddedResource Include="VistaFacturas\RealizarRemisionEntrada.resx">
+      <DependentUpon>RealizarRemisionEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\RealizarRemisionSalida.resx">
+      <DependentUpon>RealizarRemisionSalida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\VistaProductos.resx">
       <DependentUpon>VistaProductos.cs</DependentUpon>

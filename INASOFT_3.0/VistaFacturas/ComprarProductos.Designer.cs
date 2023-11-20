@@ -30,11 +30,11 @@ namespace INASOFT_3._0
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarProductos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarProductos));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -124,6 +124,8 @@ namespace INASOFT_3._0
             this.MessageInformation = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.TxtBuscar_Productos = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -512,6 +514,8 @@ namespace INASOFT_3._0
             // 
             // guna2GroupBox2
             // 
+            this.guna2GroupBox2.Controls.Add(this.button1);
+            this.guna2GroupBox2.Controls.Add(this.TxtBuscar_Productos);
             this.guna2GroupBox2.Controls.Add(this.groupBox8);
             this.guna2GroupBox2.Controls.Add(this.Lb_Producto);
             this.guna2GroupBox2.Controls.Add(this.groupBox7);
@@ -1401,6 +1405,56 @@ namespace INASOFT_3._0
             this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.MessageDialogError.Text = null;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(812, 163);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 31);
+            this.button1.TabIndex = 108;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TxtBuscar_Productos
+            // 
+            this.TxtBuscar_Productos.Animated = true;
+            this.TxtBuscar_Productos.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TxtBuscar_Productos.BackgroundImage = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
+            this.TxtBuscar_Productos.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.TxtBuscar_Productos.BorderRadius = 5;
+            this.TxtBuscar_Productos.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.TxtBuscar_Productos.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtBuscar_Productos.DefaultText = "";
+            this.TxtBuscar_Productos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtBuscar_Productos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtBuscar_Productos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtBuscar_Productos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtBuscar_Productos.FillColor = System.Drawing.SystemColors.Window;
+            this.TxtBuscar_Productos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtBuscar_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscar_Productos.ForeColor = System.Drawing.Color.Black;
+            this.TxtBuscar_Productos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtBuscar_Productos.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
+            this.TxtBuscar_Productos.Location = new System.Drawing.Point(655, 163);
+            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtBuscar_Productos.Name = "TxtBuscar_Productos";
+            this.TxtBuscar_Productos.PasswordChar = '\0';
+            this.TxtBuscar_Productos.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.TxtBuscar_Productos.PlaceholderText = "Buscar productos";
+            this.TxtBuscar_Productos.SelectedText = "";
+            this.TxtBuscar_Productos.Size = new System.Drawing.Size(151, 30);
+            this.TxtBuscar_Productos.TabIndex = 107;
+            this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
+            // 
             // ComprarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1544,5 +1598,7 @@ namespace INASOFT_3._0
         private System.Windows.Forms.Label label16;
         public Guna.UI2.WinForms.Guna2NumericUpDown SpinDescuentoCompra;
         public Guna.UI2.WinForms.Guna2NumericUpDown SpinIVACompra;
+        public System.Windows.Forms.Button button1;
+        public Guna.UI2.WinForms.Guna2TextBox TxtBuscar_Productos;
     }
 }
