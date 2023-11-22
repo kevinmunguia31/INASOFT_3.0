@@ -1113,6 +1113,7 @@ INNER JOIN Detalle_Compra b ON a.ID = b.ID_Compra
 INNER JOIN Proveedor c ON a.ID_Proveedor = c.ID 
 INNER JOIN Usuarios d ON a.ID_Usuario = d.ID 
 INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID 
+WHERE a.Nombre_Vendedor != '--'
 GROUP BY a.ID
 ORDER BY a.ID; 
 
@@ -1145,7 +1146,7 @@ BEGIN
         INNER JOIN Proveedor c ON a.ID_Proveedor = c.ID
         INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
         INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
-        WHERE c.ID = idProveedor
+        WHERE c.ID = idProveedor AND a.Nombre_Vendedor != '--'
         GROUP BY a.ID
         ORDER BY a.ID;
         
@@ -1170,7 +1171,7 @@ BEGIN
         INNER JOIN Proveedor c ON a.ID_Proveedor = c.ID
         INNER JOIN Usuarios d ON a.ID_Usuario = d.ID
         INNER JOIN Tipos_Pagos e ON a.ID_TiposPago = e.ID
-        WHERE a.Estado = estadoCompra
+        WHERE a.Estado = estadoCompra AND a.Nombre_Vendedor != '--'
         GROUP BY a.ID
         ORDER BY a.ID;
         

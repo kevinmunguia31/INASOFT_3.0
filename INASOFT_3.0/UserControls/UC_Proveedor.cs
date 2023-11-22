@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Document = iTextSharp.text.Document;
+using System.Reflection;
 
 namespace INASOFT_3._0.UserControls
 {
@@ -59,107 +60,10 @@ namespace INASOFT_3._0.UserControls
             }
         }
 
-        private void editarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tipoUser = Modelos.Sesion.id_tipo;
-            if(tipoUser == 1)
-            {
-                string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                string nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                string telefono = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                string direccion = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                string ruc = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-
-                txtId.Text = id;
-                txtNombreYapellido.Text = nombre;
-                txtTelefono.Text = telefono;
-                txtDireccion.Text = direccion;
-                txtRuc.Text = ruc;
-            }
-            else
-            {
-                MessageBox_Error.Show("No tiene permisos para Editar esta Información", "Administración de Permisos");
-            }
-        }
-
-        private void eliminarProveedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tipoUser = Modelos.Sesion.id_tipo;
-            if (tipoUser == 1)
-            {
-                bool bandera = false;
-                DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
-                if (resultado == DialogResult.Yes)
-                {
-                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    CtrlProveedor _ctrl = new CtrlProveedor();
-                    bandera = _ctrl.eliminar(id);
-                    if (bandera)
-                    {
-                        MessageDialogInfo.Show("Registro Eliminado con exito", "Importante");
-                        CargarTablaProvider(null);
-                        TotalProovedor();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox_Error.Show("No tiene permisos para Eliminar esta Información", "Administración de Permisos");
-            }
-
-            
-        }
-
         private void Guna2Button2_Click(object sender, EventArgs e)
         {
             string dato = txtSearch.Text;
             CargarTablaProvider(dato);
-        }
-
-        private void Guna2Button1_Click(object sender, EventArgs e)
-        {
-            bool bandera = false;
-            if (txtNombreYapellido.Text != "" && txtTelefono.Text != "" && txtDireccion.Text != "" && txtRuc.Text != "")
-            {
-                Proveedor _proveedor = new Proveedor();
-                _proveedor.Nombre = txtNombreYapellido.Text;
-                _proveedor.Telefono = txtTelefono.Text;
-                _proveedor.Direccion = txtDireccion.Text;
-                _proveedor.Ruc = txtRuc.Text;
-
-
-                CtrlProveedor ctrProveedor = new CtrlProveedor();
-                if (txtId.Text != "")
-                {
-                    _proveedor.Id = int.Parse(txtId.Text);
-                    bandera = ctrProveedor.actualizar(_proveedor);
-                    MessageDialogInfo.Show("Registro Actualizado Con Exito", "Actualizar Proveedor");
-                    TotalProovedor();
-                    CargarTablaProvider(null);
-                    txtNombreYapellido.Text = "";
-                    txtTelefono.Text = "";
-                    txtDireccion.Text = "";
-                    txtRuc.Text = "";
-                    txtId.Text = "";
-
-                }
-                else
-                {
-                    bandera = ctrProveedor.insertar(_proveedor);
-                    MessageDialogInfo.Show("Registro Guardado Con Exito", "Guardar Proveedor");
-                    CargarTablaProvider(null);
-                    TotalProovedor();
-                    txtNombreYapellido.Text = "";
-                    txtTelefono.Text = "";
-                    txtDireccion.Text = "";
-                    txtRuc.Text = "";
-                    txtId.Text = "";
-                }
-            }
-            else
-            {
-                MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
-            }
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
@@ -225,6 +129,150 @@ namespace INASOFT_3._0.UserControls
 
                 }
 
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+            if (pos < 0)
+                return;
+
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+                menu.Items.Add("Editar").Name = "Editar" + pos;
+                menu.Items.Add("Eliminar").Name = "Eliminar" + pos;
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Editar"))
+            {
+                id_pos = id_pos.Replace("Editar", "");
+                Editar(int.Parse(id_pos));
+            }
+
+            if (id_pos.Contains("Eliminar"))
+            {
+                id_pos = id_pos.Replace("Eliminar", "");
+                Eliminar(int.Parse(id_pos));
+            }
+        }
+
+        private void Eliminar(int id_pos)
+        {
+            tipoUser = Modelos.Sesion.id_tipo;
+            if (tipoUser == 1)
+            {
+                bool bandera = false;
+                DialogResult resultado = guna2MessageDialog1.Show("¿Seguro que desea eliminar el registro?", "Eliminar");
+                if (resultado == DialogResult.Yes)
+                {
+                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    CtrlProveedor _ctrl = new CtrlProveedor();
+                    bandera = _ctrl.eliminar(id);
+                    if (bandera)
+                    {
+                        MessageDialogInfo.Show("Registro Eliminado con exito", "Importante");
+                        CargarTablaProvider(null);
+                        TotalProovedor();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox_Error.Show("No tiene permisos para Eliminar esta Información", "Administración de Permisos");
+            }
+        }
+        private void Editar(int id_pos)
+        {
+            try
+            {
+                if (id_pos >= 0 && id_pos < dataGridView1.Rows.Count)
+                {
+                    bool bandera = false;
+                    if (txtNombreYapellido.Text != "" && txtTelefono.Text != "" && txtDireccion.Text != "" && txtRuc.Text != "")
+                    {
+                        Proveedor _proveedor = new Proveedor();
+                        _proveedor.Nombre = txtNombreYapellido.Text;
+                        _proveedor.Telefono = txtTelefono.Text;
+                        _proveedor.Direccion = txtDireccion.Text;
+                        _proveedor.Ruc = txtRuc.Text;
+
+
+                        CtrlProveedor ctrProveedor = new CtrlProveedor();
+                        if (txtId.Text != "")
+                        {
+                            _proveedor.Id = int.Parse(txtId.Text);
+                            bandera = ctrProveedor.actualizar(_proveedor);
+                            MessageDialogInfo.Show("Registro Actualizado Con Exito", "Actualizar Proveedor");
+                            TotalProovedor();
+                            CargarTablaProvider(null);
+                            txtNombreYapellido.Text = "";
+                            txtTelefono.Text = "";
+                            txtDireccion.Text = "";
+                            txtRuc.Text = "";
+                            txtId.Text = "";
+
+                        }
+                        else
+                        {
+                            bandera = ctrProveedor.insertar(_proveedor);
+                            MessageDialogInfo.Show("Registro Guardado Con Exito", "Guardar Proveedor");
+                            CargarTablaProvider(null);
+                            TotalProovedor();
+                            txtNombreYapellido.Text = "";
+                            txtTelefono.Text = "";
+                            txtDireccion.Text = "";
+                            txtRuc.Text = "";
+                            txtId.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        MessageDialogWar.Show("Rellene Todos los campos", "Aviso");
+                    }
+                }
+                else
+                {
+                    MessageBox_Error.Show("Seleccione una fila válida en la tabla.", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox_Error.Show("Error: " + ex.Message, "Error");
+            }
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            bool bandera = false;
+            if (txtNombreYapellido.Text != "" && txtTelefono.Text != "" && txtDireccion.Text != "" && txtRuc.Text != "")
+            {
+                Proveedor _proveedor = new Proveedor();
+                _proveedor.Nombre = txtNombreYapellido.Text;
+                _proveedor.Telefono = txtTelefono.Text;
+                _proveedor.Direccion = txtDireccion.Text;
+                _proveedor.Ruc = txtRuc.Text;
+
+                CtrlProveedor ctrProveedor = new CtrlProveedor();
+                bandera = ctrProveedor.insertar(_proveedor);
+                MessageDialogInfo.Show("Registro Guardado Con Exito", "Guardar Proveedor");
+                CargarTablaProvider(null);
+                TotalProovedor();
+                txtNombreYapellido.Text = "";
+                txtTelefono.Text = "";
+                txtDireccion.Text = "";
+                txtRuc.Text = "";
+                txtId.Text = "";
             }
         }
     }

@@ -139,7 +139,8 @@ namespace INASOFT_3._0.UserControls
                     frm.GBox_Cod_Fact.Text = selectedRow.Cells[1].Value.ToString();
                     frm.Txt_IDCredito.Text = selectedRow.Cells[0].Value.ToString();
                     frm.Txt_IDFactura.Text = selectedRow.Cells[10].Value.ToString();
-                    frm.Show();
+                    frm.ShowDialog();
+                    Cargar_credito();
                 }
             }
             catch (Exception ex)

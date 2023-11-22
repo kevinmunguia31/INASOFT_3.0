@@ -48,27 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.Txt_RUC = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txt_NombreProveedor = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.Lb_Producto = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.SpinDescuentoCompra = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.SpinIVACompra = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.Txt_Referencia = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.CbxTipoPagos = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.Rbtn_Cancelado = new System.Windows.Forms.RadioButton();
-            this.Rbtn_Pendiente = new System.Windows.Forms.RadioButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.Txt_TotalCompra = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.Btn_RealizarCompra = new Guna.UI2.WinForms.Guna2Button();
             this.Txt_IDProd = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -98,14 +79,11 @@
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.Btn_RealizarCompra = new Guna.UI2.WinForms.Guna2Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinDescuentoCompra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinIVACompra)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView2)).BeginInit();
@@ -122,7 +100,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(947, 36);
+            this.panel2.Size = new System.Drawing.Size(747, 36);
             this.panel2.TabIndex = 2;
             // 
             // btnClose
@@ -135,9 +113,9 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(902, 3);
+            this.btnClose.Location = new System.Drawing.Point(700, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(37, 26);
+            this.btnClose.Size = new System.Drawing.Size(36, 26);
             this.btnClose.TabIndex = 2;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -177,10 +155,10 @@
             // 
             this.guna2GroupBox2.Controls.Add(this.TxtIDProducto);
             this.guna2GroupBox2.Controls.Add(this.button1);
+            this.guna2GroupBox2.Controls.Add(this.Btn_RealizarCompra);
             this.guna2GroupBox2.Controls.Add(this.TxtBuscar_Productos);
             this.guna2GroupBox2.Controls.Add(this.groupBox8);
             this.guna2GroupBox2.Controls.Add(this.Lb_Producto);
-            this.guna2GroupBox2.Controls.Add(this.groupBox7);
             this.guna2GroupBox2.Controls.Add(this.Txt_IDProd);
             this.guna2GroupBox2.Controls.Add(this.guna2GroupBox1);
             this.guna2GroupBox2.Controls.Add(this.GroupBox_Products);
@@ -190,16 +168,17 @@
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(12, 42);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(924, 660);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(724, 660);
             this.guna2GroupBox2.TabIndex = 128;
             this.guna2GroupBox2.Text = "Detalle de la compra";
             // 
             // TxtIDProducto
             // 
-            this.TxtIDProducto.Location = new System.Drawing.Point(896, 3);
+            this.TxtIDProducto.Location = new System.Drawing.Point(696, 3);
             this.TxtIDProducto.Name = "TxtIDProducto";
             this.TxtIDProducto.Size = new System.Drawing.Size(25, 25);
             this.TxtIDProducto.TabIndex = 109;
+            this.TxtIDProducto.Visible = false;
             // 
             // button1
             // 
@@ -256,12 +235,10 @@
             this.groupBox8.Controls.Add(this.label1);
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.Txt_RUC);
-            this.groupBox8.Controls.Add(this.txt_NombreProveedor);
-            this.groupBox8.Controls.Add(this.label8);
             this.groupBox8.Controls.Add(this.cbProveedor);
             this.groupBox8.Location = new System.Drawing.Point(1, 42);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(940, 93);
+            this.groupBox8.Size = new System.Drawing.Size(723, 93);
             this.groupBox8.TabIndex = 106;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Datos del proveedor";
@@ -282,7 +259,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(540, 21);
+            this.label9.Location = new System.Drawing.Point(276, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 22);
             this.label9.TabIndex = 11;
@@ -304,7 +281,7 @@
             this.Txt_RUC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_RUC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_RUC.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_RUC.IconLeft")));
-            this.Txt_RUC.Location = new System.Drawing.Point(544, 46);
+            this.Txt_RUC.Location = new System.Drawing.Point(280, 46);
             this.Txt_RUC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_RUC.Name = "Txt_RUC";
             this.Txt_RUC.PasswordChar = '\0';
@@ -313,44 +290,6 @@
             this.Txt_RUC.SelectedText = "";
             this.Txt_RUC.Size = new System.Drawing.Size(232, 30);
             this.Txt_RUC.TabIndex = 105;
-            // 
-            // txt_NombreProveedor
-            // 
-            this.txt_NombreProveedor.BackColor = System.Drawing.Color.Transparent;
-            this.txt_NombreProveedor.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txt_NombreProveedor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_NombreProveedor.DefaultText = "";
-            this.txt_NombreProveedor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txt_NombreProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txt_NombreProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_NombreProveedor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_NombreProveedor.FillColor = System.Drawing.SystemColors.Control;
-            this.txt_NombreProveedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_NombreProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NombreProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_NombreProveedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_NombreProveedor.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_team_20px;
-            this.txt_NombreProveedor.Location = new System.Drawing.Point(281, 46);
-            this.txt_NombreProveedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_NombreProveedor.Name = "txt_NombreProveedor";
-            this.txt_NombreProveedor.PasswordChar = '\0';
-            this.txt_NombreProveedor.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txt_NombreProveedor.PlaceholderText = "Ingrese nombre del vendedor";
-            this.txt_NombreProveedor.SelectedText = "";
-            this.txt_NombreProveedor.Size = new System.Drawing.Size(231, 30);
-            this.txt_NombreProveedor.TabIndex = 9;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(277, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(147, 22);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Nombre del vendedor:";
             // 
             // cbProveedor
             // 
@@ -378,262 +317,6 @@
             this.Lb_Producto.Size = new System.Drawing.Size(76, 22);
             this.Lb_Producto.TabIndex = 97;
             this.Lb_Producto.Text = "Productos:";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox7.Controls.Add(this.SpinDescuentoCompra);
-            this.groupBox7.Controls.Add(this.SpinIVACompra);
-            this.groupBox7.Controls.Add(this.Txt_Referencia);
-            this.groupBox7.Controls.Add(this.label17);
-            this.groupBox7.Controls.Add(this.CbxTipoPagos);
-            this.groupBox7.Controls.Add(this.groupBox5);
-            this.groupBox7.Controls.Add(this.label14);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Controls.Add(this.label10);
-            this.groupBox7.Controls.Add(this.label19);
-            this.groupBox7.Controls.Add(this.Txt_TotalCompra);
-            this.groupBox7.Controls.Add(this.label20);
-            this.groupBox7.Controls.Add(this.label18);
-            this.groupBox7.Controls.Add(this.Btn_RealizarCompra);
-            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox7.Location = new System.Drawing.Point(512, 381);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(397, 266);
-            this.groupBox7.TabIndex = 88;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Detalles de la compra";
-            // 
-            // SpinDescuentoCompra
-            // 
-            this.SpinDescuentoCompra.BackColor = System.Drawing.SystemColors.Control;
-            this.SpinDescuentoCompra.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinDescuentoCompra.FillColor = System.Drawing.SystemColors.Control;
-            this.SpinDescuentoCompra.Font = new System.Drawing.Font("Poppins", 9F);
-            this.SpinDescuentoCompra.Location = new System.Drawing.Point(236, 141);
-            this.SpinDescuentoCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SpinDescuentoCompra.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.SpinDescuentoCompra.Name = "SpinDescuentoCompra";
-            this.SpinDescuentoCompra.Size = new System.Drawing.Size(56, 30);
-            this.SpinDescuentoCompra.TabIndex = 109;
-            this.SpinDescuentoCompra.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
-            // 
-            // SpinIVACompra
-            // 
-            this.SpinIVACompra.BackColor = System.Drawing.SystemColors.Control;
-            this.SpinIVACompra.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinIVACompra.FillColor = System.Drawing.SystemColors.Control;
-            this.SpinIVACompra.Font = new System.Drawing.Font("Poppins", 9F);
-            this.SpinIVACompra.Location = new System.Drawing.Point(67, 141);
-            this.SpinIVACompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SpinIVACompra.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.SpinIVACompra.Name = "SpinIVACompra";
-            this.SpinIVACompra.Size = new System.Drawing.Size(56, 30);
-            this.SpinIVACompra.TabIndex = 108;
-            this.SpinIVACompra.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
-            // 
-            // Txt_Referencia
-            // 
-            this.Txt_Referencia.BackColor = System.Drawing.Color.Transparent;
-            this.Txt_Referencia.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Txt_Referencia.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_Referencia.DefaultText = "";
-            this.Txt_Referencia.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_Referencia.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_Referencia.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_Referencia.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_Referencia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_Referencia.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Referencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Txt_Referencia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_Referencia.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_Referencia.IconLeft")));
-            this.Txt_Referencia.Location = new System.Drawing.Point(211, 46);
-            this.Txt_Referencia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_Referencia.Name = "Txt_Referencia";
-            this.Txt_Referencia.PasswordChar = '\0';
-            this.Txt_Referencia.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_Referencia.PlaceholderText = "Ingrese la referencia";
-            this.Txt_Referencia.SelectedText = "";
-            this.Txt_Referencia.Size = new System.Drawing.Size(180, 30);
-            this.Txt_Referencia.TabIndex = 106;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(6, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(92, 22);
-            this.label17.TabIndex = 103;
-            this.label17.Text = "Tipo de Pago:";
-            // 
-            // CbxTipoPagos
-            // 
-            this.CbxTipoPagos.BackColor = System.Drawing.SystemColors.Control;
-            this.CbxTipoPagos.DropDownHeight = 90;
-            this.CbxTipoPagos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxTipoPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CbxTipoPagos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbxTipoPagos.FormattingEnabled = true;
-            this.CbxTipoPagos.IntegralHeight = false;
-            this.CbxTipoPagos.Location = new System.Drawing.Point(6, 46);
-            this.CbxTipoPagos.Name = "CbxTipoPagos";
-            this.CbxTipoPagos.Size = new System.Drawing.Size(190, 30);
-            this.CbxTipoPagos.TabIndex = 104;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox5.Controls.Add(this.Rbtn_Cancelado);
-            this.groupBox5.Controls.Add(this.Rbtn_Pendiente);
-            this.groupBox5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(0, 83);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(397, 51);
-            this.groupBox5.TabIndex = 92;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Estado de la compras";
-            // 
-            // Rbtn_Cancelado
-            // 
-            this.Rbtn_Cancelado.AutoSize = true;
-            this.Rbtn_Cancelado.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Cancelado.Location = new System.Drawing.Point(146, 23);
-            this.Rbtn_Cancelado.Name = "Rbtn_Cancelado";
-            this.Rbtn_Cancelado.Size = new System.Drawing.Size(94, 26);
-            this.Rbtn_Cancelado.TabIndex = 27;
-            this.Rbtn_Cancelado.TabStop = true;
-            this.Rbtn_Cancelado.Text = "Cancelado";
-            this.Rbtn_Cancelado.UseVisualStyleBackColor = true;
-            // 
-            // Rbtn_Pendiente
-            // 
-            this.Rbtn_Pendiente.AutoSize = true;
-            this.Rbtn_Pendiente.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Pendiente.Location = new System.Drawing.Point(6, 23);
-            this.Rbtn_Pendiente.Name = "Rbtn_Pendiente";
-            this.Rbtn_Pendiente.Size = new System.Drawing.Size(87, 26);
-            this.Rbtn_Pendiente.TabIndex = 26;
-            this.Rbtn_Pendiente.TabStop = true;
-            this.Rbtn_Pendiente.Text = "Pendiente";
-            this.Rbtn_Pendiente.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(78, 148);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 23);
-            this.label14.TabIndex = 101;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(13, 145);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 22);
-            this.label15.TabIndex = 99;
-            this.label15.Text = "IVA %:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(305, 147);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 23);
-            this.label10.TabIndex = 98;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(207, 21);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(78, 22);
-            this.label19.TabIndex = 89;
-            this.label19.Text = "Referencia:";
-            // 
-            // Txt_TotalCompra
-            // 
-            this.Txt_TotalCompra.BackColor = System.Drawing.SystemColors.Control;
-            this.Txt_TotalCompra.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Txt_TotalCompra.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_TotalCompra.DefaultText = "";
-            this.Txt_TotalCompra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_TotalCompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_TotalCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_TotalCompra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_TotalCompra.FillColor = System.Drawing.SystemColors.Control;
-            this.Txt_TotalCompra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_TotalCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_TotalCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Txt_TotalCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_TotalCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_TotalCompra.IconLeft")));
-            this.Txt_TotalCompra.Location = new System.Drawing.Point(64, 187);
-            this.Txt_TotalCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_TotalCompra.Name = "Txt_TotalCompra";
-            this.Txt_TotalCompra.PasswordChar = '\0';
-            this.Txt_TotalCompra.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.Txt_TotalCompra.PlaceholderText = "";
-            this.Txt_TotalCompra.SelectedText = "";
-            this.Txt_TotalCompra.Size = new System.Drawing.Size(176, 30);
-            this.Txt_TotalCompra.TabIndex = 94;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(13, 195);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 22);
-            this.label20.TabIndex = 95;
-            this.label20.Text = "Total:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(144, 145);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(92, 22);
-            this.label18.TabIndex = 93;
-            this.label18.Text = "Descuento %:";
-            // 
-            // Btn_RealizarCompra
-            // 
-            this.Btn_RealizarCompra.BorderRadius = 8;
-            this.Btn_RealizarCompra.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_RealizarCompra.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_RealizarCompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Btn_RealizarCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Btn_RealizarCompra.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(9)))), ((int)(((byte)(108)))));
-            this.Btn_RealizarCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RealizarCompra.ForeColor = System.Drawing.Color.White;
-            this.Btn_RealizarCompra.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RealizarCompra.Image")));
-            this.Btn_RealizarCompra.Location = new System.Drawing.Point(236, 226);
-            this.Btn_RealizarCompra.Name = "Btn_RealizarCompra";
-            this.Btn_RealizarCompra.Size = new System.Drawing.Size(155, 34);
-            this.Btn_RealizarCompra.TabIndex = 4;
-            this.Btn_RealizarCompra.Text = "Cambiar proveedor";
-            this.Btn_RealizarCompra.Click += new System.EventHandler(this.Btn_RealizarCompra_Click);
             // 
             // Txt_IDProd
             // 
@@ -818,7 +501,7 @@
             this.GroupBox_Products.Controls.Add(this.label3);
             this.GroupBox_Products.Location = new System.Drawing.Point(1, 199);
             this.GroupBox_Products.Name = "GroupBox_Products";
-            this.GroupBox_Products.Size = new System.Drawing.Size(908, 176);
+            this.GroupBox_Products.Size = new System.Drawing.Size(723, 176);
             this.GroupBox_Products.TabIndex = 86;
             this.GroupBox_Products.TabStop = false;
             // 
@@ -929,7 +612,7 @@
             this.Btn_AddProducto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_AddProducto.ForeColor = System.Drawing.Color.White;
             this.Btn_AddProducto.Image = ((System.Drawing.Image)(resources.GetObject("Btn_AddProducto.Image")));
-            this.Btn_AddProducto.Location = new System.Drawing.Point(765, 128);
+            this.Btn_AddProducto.Location = new System.Drawing.Point(580, 128);
             this.Btn_AddProducto.Name = "Btn_AddProducto";
             this.Btn_AddProducto.Size = new System.Drawing.Size(137, 34);
             this.Btn_AddProducto.TabIndex = 88;
@@ -1095,11 +778,29 @@
             this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.MessageBox_Import.Text = null;
             // 
+            // Btn_RealizarCompra
+            // 
+            this.Btn_RealizarCompra.BorderRadius = 8;
+            this.Btn_RealizarCompra.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_RealizarCompra.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_RealizarCompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_RealizarCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_RealizarCompra.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(9)))), ((int)(((byte)(108)))));
+            this.Btn_RealizarCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_RealizarCompra.ForeColor = System.Drawing.Color.White;
+            this.Btn_RealizarCompra.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RealizarCompra.Image")));
+            this.Btn_RealizarCompra.Location = new System.Drawing.Point(566, 613);
+            this.Btn_RealizarCompra.Name = "Btn_RealizarCompra";
+            this.Btn_RealizarCompra.Size = new System.Drawing.Size(155, 34);
+            this.Btn_RealizarCompra.TabIndex = 4;
+            this.Btn_RealizarCompra.Text = "Cambiar proveedor";
+            this.Btn_RealizarCompra.Click += new System.EventHandler(this.Btn_RealizarCompra_Click);
+            // 
             // Cambiar_Proveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 718);
+            this.ClientSize = new System.Drawing.Size(747, 718);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1112,12 +813,6 @@
             this.guna2GroupBox2.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinDescuentoCompra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinIVACompra)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView2)).EndInit();
@@ -1143,13 +838,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         public Guna.UI2.WinForms.Guna2TextBox Txt_RUC;
-        public Guna.UI2.WinForms.Guna2TextBox txt_NombreProveedor;
-        private System.Windows.Forms.Label label8;
         public System.Windows.Forms.ComboBox cbProveedor;
         private System.Windows.Forms.Label Lb_Producto;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.RadioButton Rbtn_Cancelado;
-        private System.Windows.Forms.RadioButton Rbtn_Pendiente;
         public Guna.UI2.WinForms.Guna2TextBox Txt_IDProd;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -1169,20 +859,6 @@
         public Guna.UI2.WinForms.Guna2TextBox txtObservacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Cbx_Productos;
-        private System.Windows.Forms.GroupBox groupBox7;
-        public Guna.UI2.WinForms.Guna2NumericUpDown SpinDescuentoCompra;
-        public Guna.UI2.WinForms.Guna2NumericUpDown SpinIVACompra;
-        public Guna.UI2.WinForms.Guna2TextBox Txt_Referencia;
-        private System.Windows.Forms.Label label17;
-        public System.Windows.Forms.ComboBox CbxTipoPagos;
-        public System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        public System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label19;
-        public Guna.UI2.WinForms.Guna2TextBox Txt_TotalCompra;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label18;
-        private Guna.UI2.WinForms.Guna2Button Btn_RealizarCompra;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageDialogError;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBoxError;
@@ -1194,5 +870,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.TextBox TxtIDProducto;
+        private Guna.UI2.WinForms.Guna2Button Btn_RealizarCompra;
     }
 }

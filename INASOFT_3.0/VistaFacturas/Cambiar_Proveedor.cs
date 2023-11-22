@@ -22,7 +22,6 @@ namespace INASOFT_3._0.VistaFacturas
         {
             InitializeComponent();
             CargarProveedor();
-            CargarTiposPagos();
             CargarProductos();
             CargarDatosIniciales();
             CargarDatosDataGridView();
@@ -33,7 +32,6 @@ namespace INASOFT_3._0.VistaFacturas
         {
             GroupBox_Products.Enabled = false;
             Txt_RUC.Enabled = false;
-            Txt_TotalCompra.Enabled = false;
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
             txtObservacion.Enabled = false;
@@ -71,11 +69,6 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 band.ReadOnly = true;
             }
-
-            if (dataGridView1.RowCount == 0)
-            {
-                groupBox7.Enabled = false;
-            }
         }
 
         public void Cargar_Total()
@@ -96,8 +89,6 @@ namespace INASOFT_3._0.VistaFacturas
                 datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
                 datagridView2.Rows[0].Cells[5].Value = "";
 
-                //Txt_TotalCompra.Text = subtotal.ToString();
-                Txt_TotalCompra.Text = string.Format(culturaNicaragua, "{0:C}", Total);
             }
             catch (Exception ex)
             {
@@ -114,17 +105,6 @@ namespace INASOFT_3._0.VistaFacturas
             cbProveedor.DataSource = ctrl.CargarProveddores();
             cbProveedor.ValueMember = "ID";
             cbProveedor.DisplayMember = "Nombre";
-        }
-
-        public void CargarTiposPagos()
-        {
-            CbxTipoPagos.DataSource = null;
-            CbxTipoPagos.Items.Clear();
-
-            Controladores.CtrlTipo_Pago ctrl = new Controladores.CtrlTipo_Pago();
-            CbxTipoPagos.DataSource = ctrl.Cargar_Tipos_Pago();
-            CbxTipoPagos.ValueMember = "ID";
-            CbxTipoPagos.DisplayMember = "Tipos";
         }
 
         private void CargarProductos()
@@ -207,7 +187,6 @@ namespace INASOFT_3._0.VistaFacturas
                 dataGridView1.DataSource = dataTable;
                 Cargar_Total();
 
-                groupBox7.Enabled = dataGridView1.RowCount > 0;
             }
 
             Clear();
@@ -253,29 +232,6 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void Btn_RealizarCompra_Click(object sender, EventArgs e)
         {
-            if (cbProveedor.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txt_NombreProveedor.Text))
-            {
-                MessageBoxError.Show("No deje los datos del proveedor sin rellenar", "Error");
-                return;
-            }
-
-            if (CbxTipoPagos.SelectedIndex == -1)
-            {
-                MessageBoxError.Show("Tiene que indicar el tipo de pago", "Error");
-                return;
-            }
-
-            if (!Rbtn_Pendiente.Checked && !Rbtn_Cancelado.Checked)
-            {
-                MessageBoxError.Show("Tiene que indicar el estado de la compra", "Error");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(Txt_Referencia.Text))
-            {
-                MessageBoxError.Show("Tienes que indicar la referencia", "Error");
-                return;
-            }
 
             if (dataGridView1.RowCount == 0)
             {
@@ -283,20 +239,16 @@ namespace INASOFT_3._0.VistaFacturas
                 return;
             }
 
-            string estado = Rbtn_Cancelado.Checked ? "Cancelado" : "Pendiente";
-            int descuento = int.Parse(SpinDescuentoCompra.Value.ToString());
-            int iva = int.Parse(SpinIVACompra.Value.ToString());
-
             //Insertar datos a las tablas
             Modelos.Compras compras = new Modelos.Compras
             {
-                Nombre_venderdor = txt_NombreProveedor.Text,
+                Nombre_venderdor = "--",
                 Subtotal = double.Parse(datagridView2.Rows[0].Cells[4].Value.ToString()),
-                Descuento = descuento,
-                Iva = iva,
-                Descripcion = Txt_Referencia.Text,
-                Estado = estado,
-                Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString()),
+                Descuento = 0.00,
+                Iva = 0.00,
+                Descripcion = "--",
+                Estado = "--",
+                Id_TipoPago = 1,
                 Id_usuario = Sesion.id,
                 Id_proveedor = int.Parse(cbProveedor.SelectedValue.ToString())
             };

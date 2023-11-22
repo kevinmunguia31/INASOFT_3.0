@@ -64,7 +64,8 @@ namespace INASOFT_3._0.UserControls
         {
             AgregarCliente facturar = new AgregarCliente();
             facturar.Lb_User.Text = Modelos.Sesion.nombre;
-            facturar.Show();
+            facturar.ShowDialog();
+            CargarFacturas();
         }
 
         private void Guna2Button1_Click(object sender, EventArgs e)
@@ -72,7 +73,8 @@ namespace INASOFT_3._0.UserControls
             FacturaFinal frm = new FacturaFinal();
             frm.lbNombreCliente.Text = "";
             frm.txtIdCliente.Text = "1";
-            frm.Show();
+            frm.ShowDialog();
+            CargarFacturas();
         }
 
         private void Guna2Button2_Click(object sender, EventArgs e)
@@ -141,6 +143,7 @@ namespace INASOFT_3._0.UserControls
                 }
 
                 frm.ShowDialog();
+                CargarFacturas();
             }
             catch (Exception ex)
             {
@@ -244,7 +247,8 @@ namespace INASOFT_3._0.UserControls
                             frm.Lb_Efectivo.Text = dataGridFatura.Rows[id_pos].Cells[10].Value.ToString();
                             frm.Lb_Debe.Text = dataGridFatura.Rows[id_pos].Cells[12].Value.ToString();
                             frm.Lb_Trabajador.Text = dataGridFatura.Rows[id_pos].Cells[13].Value.ToString();
-                            frm.Show();
+                            frm.ShowDialog();
+                            CargarFacturas();
                         }
                     }
                     else
@@ -291,6 +295,7 @@ namespace INASOFT_3._0.UserControls
                         frm.Lb_Devolucion3.Visible = false;
                     }
                     frm.ShowDialog();
+                    CargarFacturas();
                 }
                 else
                 {

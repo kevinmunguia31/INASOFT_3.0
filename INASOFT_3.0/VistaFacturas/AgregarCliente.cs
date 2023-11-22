@@ -1,5 +1,6 @@
 ﻿using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
+using INASOFT_3._0.UserControls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,9 @@ namespace INASOFT_3._0.VistaFacturas
             frm.lbNombreCliente.Text = TruncateString(lbNombre.Text, limite);
             frm.Lb_User.Text = TruncateString(Lb_User.Text, limite);
 
-            frm.Show();
+            frm.ShowDialog();
+            UC_Factura userControl = new UC_Factura();
+            userControl.CargarFacturas();
             this.Hide();
         }
 

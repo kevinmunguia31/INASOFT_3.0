@@ -1,6 +1,5 @@
-1. Remisiones de salida se duplican (A veces). ✓
-2. Actualizar stock de productos desde remisones, No sirve. ✓
-3. El orden de registro de compras (Descuento/IVA) están al reves. ✓
-4. Actualizar el tipo de entrada (Proveedores) en un nuevo formulario. ✓
-
+1. Filtro de estado no sirve en Compras. ✓
+2. Al hacer una devolucion pero al devolver todo no se pone en Anulada la factura. ✓
+3. Revisar el combo al actualizar el producto de un proveedor en orden de compra, esta duplicando los items. ✓
+4. Desaparecer los datos de compra en actualizar a proveedor.
 

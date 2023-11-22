@@ -43,6 +43,7 @@ namespace INASOFT_3._0.UserControls
             }            
             lbCantTotal.Text = ctrlProductos.TotalProductos();
             dataGridView1.Columns[9].Visible = false;
+            dataGridView2.Columns[1].Visible = false;
 
             dataGridView3.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView2.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -106,6 +107,8 @@ namespace INASOFT_3._0.UserControls
         {
             ComprarProductos frm = new ComprarProductos();
             frm.ShowDialog();
+            Cargar_Compras();
+            CargarTablaProduct();
         }
 
         public void Limpiar()
@@ -187,6 +190,7 @@ namespace INASOFT_3._0.UserControls
                     update.txtPrecioVenta.Enabled = false;
                     update.SpinExist.Enabled = false;
                     update.ShowDialog();
+                    CargarTablaProduct();
                 }
             }
             catch (Exception ex)
@@ -476,7 +480,7 @@ namespace INASOFT_3._0.UserControls
             }
             else if (Rbtn_Pendientes.Checked == false && Rbtn_Canceladas.Checked == true)
             {
-                estado = "Cancelada";
+                estado = "Cancelado";
                 ComprarFiltro(2, 0, estado);
             }
         }
@@ -549,6 +553,8 @@ namespace INASOFT_3._0.UserControls
         {
             RealizarRemisionEntrada add = new RealizarRemisionEntrada();
             add.ShowDialog();
+            CargarTablaRemisiones();
+            CargarTablaProduct();
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -604,12 +610,16 @@ namespace INASOFT_3._0.UserControls
         {
             RealizarRemisionSalida add = new RealizarRemisionSalida();
             add.ShowDialog();
+            CargarTablaRemisiones();
+            CargarTablaProduct();
         }
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             Cambiar_Proveedor cambiar_Proveedor = new Cambiar_Proveedor();
             cambiar_Proveedor.ShowDialog();
+            Cargar_Compras();
+            CargarTablaProduct();
         }
     }
 }

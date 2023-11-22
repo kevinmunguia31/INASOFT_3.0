@@ -23,18 +23,34 @@ namespace INASOFT_3._0.Controladores
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();
+
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, conexionBD);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 adaptador.Fill(dt);
+
+                // Agregar una nueva columna llamada "Iterador" al principio de la colección de columnas
+                dt.Columns.Add("Iterador", typeof(int)).SetOrdinal(0);
+
+                // Llenar la columna "Iterador" con números de fila (1-indexed)
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dt.Rows[i]["Iterador"] = i + 1;
+                }
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message.ToString());
             }
+            finally
+            {
+                conexionBD.Close();
+            }
+
             return dt;
         }
+
 
         public DataTable CargarDetalleCompras(int id)
         {

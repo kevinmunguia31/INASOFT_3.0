@@ -215,7 +215,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable Cargar_NombreProductoRemision()
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2;";
+            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2 GROUP BY ID;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -236,7 +236,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable Buscar_NombreProductoRemision(string dato)
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2 AND (Nombre LIKE '%"+dato+"%' OR Codigo LIKE '%"+dato+"%');";
+            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2 AND (Nombre LIKE '%"+dato+"%' OR Codigo LIKE '%"+dato+ "%') GROUP BY ID;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -258,7 +258,7 @@ namespace INASOFT_3._0.Controladores
         {
             DataTable dt = new DataTable();
 
-            string SQL = "SELECT a.ID, a.Nombre FROM Productos a LEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto LEFT JOIN Compras c ON c.ID = b.ID_Compra LEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID WHERE d.ID = " + idProveedor + ";";
+            string SQL = "SELECT a.ID, a.Nombre FROM Productos a LEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto LEFT JOIN Compras c ON c.ID = b.ID_Compra LEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID WHERE d.ID = " + idProveedor + " GROUP BY a.ID;";
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
 
@@ -300,7 +300,7 @@ namespace INASOFT_3._0.Controladores
         {
             DataTable dt = new DataTable();
 
-            string SQL = "SELECT \r\n    a.ID, a.Nombre \r\nFROM Productos a \r\nLEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto \r\nLEFT JOIN Compras c ON c.ID = b.ID_Compra\r\nLEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID \r\nWHERE d.ID = "+idProveedor+" AND (a.Nombre LIKE '%"+dato+"%' OR a.Codigo LIKE '%"+dato+"%');";
+            string SQL = "SELECT \r\n    a.ID, a.Nombre \r\nFROM Productos a \r\nLEFT JOIN Detalle_Compra b ON a.ID = b.ID_Producto \r\nLEFT JOIN Compras c ON c.ID = b.ID_Compra\r\nLEFT JOIN Proveedor d ON c.ID_Proveedor = d.ID \r\nWHERE d.ID = "+idProveedor+" AND (a.Nombre LIKE '%"+dato+"%' OR a.Codigo LIKE '%"+dato+ "%') GROUP BY a.ID;;";
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
 

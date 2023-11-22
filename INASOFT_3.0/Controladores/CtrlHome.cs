@@ -51,7 +51,7 @@ namespace INASOFT_3._0.Controladores
         public int Cant_FacturasRealizadasHoy()
         {
             int total = 0;
-            string SQL = "SELECT COUNT(*) AS 'Total' FROM Facturas WHERE DATE(fecha) = CURDATE();";
+            string SQL = "SELECT COUNT(*) AS 'Total' FROM Facturas WHERE DATE(fecha) = CURDATE() AND Estado != 'Anulada';";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

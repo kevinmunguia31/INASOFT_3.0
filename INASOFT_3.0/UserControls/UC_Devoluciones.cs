@@ -52,7 +52,8 @@ namespace INASOFT_3._0.UserControls
                     frm.Lb_Fecha.Text = dataGridDevolucion.Rows[id_pos].Cells[4].Value.ToString();
                     frm.lbIdFactura.Text = dataGridDevolucion.Rows[id_pos].Cells[1].Value.ToString();
                     Controladores.CtrlDevolucion ctrlDevolucion = new Controladores.CtrlDevolucion();
-                    frm.Show();
+                    frm.ShowDialog();
+                    Cargar_devolucion();
                 }
             }
             catch (Exception ex)
