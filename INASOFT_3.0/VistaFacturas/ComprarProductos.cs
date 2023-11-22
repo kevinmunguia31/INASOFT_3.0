@@ -54,6 +54,8 @@ namespace INASOFT_3._0
             Lb_Producto.Visible = false;
             TxtBuscar_Productos.Enabled = false;
             button1.Enabled = false;
+            TxtBuscar_Productos.Visible = false;
+            button1.Visible = false;
         }
 
         private void CargarDatosDataGridView()
@@ -304,6 +306,8 @@ namespace INASOFT_3._0
             GroupBox_Products.Enabled = false;
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
+            TxtBuscar_Productos.Visible = false;
+            button1.Visible = false;
             Cbx_Productos.SelectedIndex = -1;
         }
 
@@ -343,7 +347,6 @@ namespace INASOFT_3._0
                 MessageBox.Show("Error:" + ex, "Error");
             }
         }
-
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -394,8 +397,8 @@ namespace INASOFT_3._0
             }
 
             string estado = Rbtn_Cancelado.Checked ? "Cancelado" : "Pendiente";
-            int descuento = int.Parse(SpinIVACompra.Value.ToString());
-            int iva = int.Parse(SpinDescuentoCompra.Value.ToString());
+            int descuento = int.Parse(SpinDescuentoCompra.Value.ToString());
+            int iva = int.Parse(SpinIVACompra.Value.ToString());
 
             //Insertar datos a las tablas
             Modelos.Compras compras = new Modelos.Compras
@@ -528,6 +531,8 @@ namespace INASOFT_3._0
             Cbx_Productos.Enabled = false;
             Cbx_Productos.Visible = false;
             Lb_Producto.Visible = false;
+            button1.Visible = false;
+            TxtBuscar_Productos.Visible = false;
             txtNameP.Enabled = true;
             txtCodBarra.Enabled = true;
             GroupBox_CambioProd.Enabled = false;
@@ -543,6 +548,8 @@ namespace INASOFT_3._0
             Cbx_Productos.Enabled = true;
             Cbx_Productos.Visible = true;
             Lb_Producto.Visible = true;
+            button1.Visible = true;
+            TxtBuscar_Productos.Visible = true;
             txtCodBarra.Enabled = false;
             txtNameP.Enabled = false;
             GroupBox_CambioProd.Enabled = true;
@@ -575,6 +582,7 @@ namespace INASOFT_3._0
             Cbx_Productos.Enabled = true;
             CargarProductos(id);
             Cbx_Productos.SelectedIndex = -1;
+            Clear();
         }
     }
 }

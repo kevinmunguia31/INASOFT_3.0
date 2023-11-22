@@ -145,6 +145,36 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
+        public bool CambiarProveedorProducto(Productos productos)
+        {
+            bool bandera = false;
+
+            try
+            {
+                MySqlConnection conexioBD = Conexion.getConexion();
+                conexioBD.Open();
+
+                string sql = "CALL CambiarProveedorProducto(@Id, @Existencia, @Id_Proveedor, @Id_Compra)";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexioBD);
+
+                // Agregar parámetros
+                comando.Parameters.AddWithValue("@Id", productos.Id);
+                comando.Parameters.AddWithValue("@Existencia", productos.Existencias);
+                comando.Parameters.AddWithValue("@Id_Proveedor", productos.Id_proveedor);
+                comando.Parameters.AddWithValue("@Id_Compra", productos.Id_Compra);
+
+                comando.ExecuteNonQuery();
+                bandera = true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                bandera = false;
+            }
+            return bandera;
+        }
+
         public DataTable Compras_Filtro(int op, int id, string estado)
         {
             DataTable tabla = new DataTable();

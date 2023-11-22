@@ -212,6 +212,48 @@ namespace INASOFT_3._0.Controladores
             return dt;
         }
 
+        public DataTable Cargar_NombreProductoRemision()
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2;";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        public DataTable Buscar_NombreProductoRemision(string dato)
+        {
+            DataTable dt = new DataTable();
+            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2 AND (Nombre LIKE '%"+dato+"%' OR Codigo LIKE '%"+dato+"%');";
+
+            MySqlConnection conexionDB = Conexion.getConexion();
+            conexionDB.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
         public DataTable Cargar_NombreProducto_IDProveedor(int idProveedor)
         {
             DataTable dt = new DataTable();

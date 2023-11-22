@@ -985,3 +985,4 @@ C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.Arqueo
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ArqueoCaja.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionEntrada.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionSalida.resources
+C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Cambiar_Proveedor.resources

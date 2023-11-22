@@ -94,10 +94,10 @@ namespace INASOFT_3._0.VistaFacturas
 
                     txtIdProduc.Text = id.ToString();
                     lbCodProdu.Text = productos.Codigo.ToString();
-                    lbProductName.Text = LimitarLongitud(productos.Nombre, 15);
+                    lbProductName.Text = LimitarLongitud(productos.Nombre, 30);
                     lbExistencias.Text = productos.Existencias.ToString();
                     Lb_Precio_Compra.Text = productos.Precio_compra.ToString();
-                    Lb_Observacion.Text = LimitarLongitud(productos.Observacion.ToString(), 20);
+                    Lb_Observacion.Text = LimitarLongitud(productos.Observacion.ToString(), 30);
 
                     lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
 
@@ -220,7 +220,7 @@ namespace INASOFT_3._0.VistaFacturas
                 MessageBoxError.Show("No hay esa cantidad en el Stock.", "Errir");
                 Limpiar();
                 return;
-            } 
+            }
 
             int id = int.Parse(txtIdProduc.Text);
             Controladores.CtrlProductos ctrlProductos = new CtrlProductos();
@@ -290,6 +290,60 @@ namespace INASOFT_3._0.VistaFacturas
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void menuClick_Opciones(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string id_pos = e.ClickedItem.Name.ToString();
+
+            if (id_pos.Contains("Borrar"))
+            {
+                id_pos = id_pos.Replace("Borrar", "");
+                Eliminar_Producto(int.Parse(id_pos));
+            }
+        } 
+
+        private void Eliminar_Producto(int id_pos)
+        {
+            try
+            {
+                if (id_pos > -1 && id_pos != null)
+                {
+                    bool bandera = false;
+                    DialogResult resultado = MessageDialogError.Show("Seguro que desea eliminar el registro?", "Eliminar");
+                    if (resultado == DialogResult.Yes)
+                    {
+                        //MessageBox.Show(id_pos.ToString());
+                        dataGridView1.Rows.RemoveAt(id_pos);
+                        Limpiar();
+                        Cargar_Total();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex, "Error");
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                int pos = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                if (pos > -1)
+                {
+                    menu.Items.Add("Borrar").Name = "Borrar" + pos;
+                }
+                menu.Show(dataGridView1, e.X, e.Y);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
         }
     }
 }

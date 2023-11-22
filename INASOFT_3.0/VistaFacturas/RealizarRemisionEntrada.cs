@@ -293,6 +293,9 @@ namespace INASOFT_3._0.VistaFacturas
             Rbtn_ActualizarProducto.Checked = false;
             Rbtn_NuevoProducto.Checked = false;
             Cbx_Productos.Visible = false;
+            Lb_Producto.Visible = false;
+            TxtBuscar_Productos.Visible = false;
+            button1.Visible = false;
             Cbx_Productos.SelectedIndex = -1;
         }
 

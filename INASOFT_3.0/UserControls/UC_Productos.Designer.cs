@@ -91,6 +91,7 @@ namespace INASOFT_3._0.UserControls
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Remisiones = new System.Windows.Forms.TabPage();
+            this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -114,6 +115,7 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.Compras = new System.Windows.Forms.TabPage();
+            this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Rbtn_Canceladas = new System.Windows.Forms.RadioButton();
@@ -134,7 +136,6 @@ namespace INASOFT_3._0.UserControls
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -873,6 +874,25 @@ namespace INASOFT_3._0.UserControls
             this.Remisiones.Text = "Remisiones Entrada/Salida";
             this.Remisiones.UseVisualStyleBackColor = true;
             // 
+            // guna2Button9
+            // 
+            this.guna2Button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button9.BorderRadius = 10;
+            this.guna2Button9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button9.ForeColor = System.Drawing.Color.White;
+            this.guna2Button9.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button9.Image")));
+            this.guna2Button9.Location = new System.Drawing.Point(967, 14);
+            this.guna2Button9.Name = "guna2Button9";
+            this.guna2Button9.Size = new System.Drawing.Size(179, 34);
+            this.guna2Button9.TabIndex = 98;
+            this.guna2Button9.Text = "Remisión de salida";
+            this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
+            // 
             // guna2Button7
             // 
             this.guna2Button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1214,6 +1234,7 @@ namespace INASOFT_3._0.UserControls
             // 
             // Compras
             // 
+            this.Compras.Controls.Add(this.guna2Button10);
             this.Compras.Controls.Add(this.guna2GroupBox4);
             this.Compras.Controls.Add(this.guna2Button1);
             this.Compras.Controls.Add(this.groupBox3);
@@ -1230,6 +1251,25 @@ namespace INASOFT_3._0.UserControls
             this.Compras.TabIndex = 1;
             this.Compras.Text = "Compras realizadas";
             this.Compras.UseVisualStyleBackColor = true;
+            // 
+            // guna2Button10
+            // 
+            this.guna2Button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button10.BorderRadius = 10;
+            this.guna2Button10.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button10.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button10.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button10.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Button10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button10.ForeColor = System.Drawing.Color.White;
+            this.guna2Button10.Image = global::INASOFT_3._0.Properties.Resources.icons8_bill_40px;
+            this.guna2Button10.Location = new System.Drawing.Point(947, 12);
+            this.guna2Button10.Name = "guna2Button10";
+            this.guna2Button10.Size = new System.Drawing.Size(250, 34);
+            this.guna2Button10.TabIndex = 95;
+            this.guna2Button10.Text = "Actualizar provedor de productos";
+            this.guna2Button10.Click += new System.EventHandler(this.guna2Button10_Click);
             // 
             // guna2GroupBox4
             // 
@@ -1429,9 +1469,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(1062, 12);
+            this.guna2Button1.Location = new System.Drawing.Point(806, 12);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(135, 36);
             this.guna2Button1.TabIndex = 92;
@@ -1531,25 +1572,6 @@ namespace INASOFT_3._0.UserControls
             // productosBindingSource
             // 
             this.productosBindingSource.DataSource = typeof(INASOFT_3._0.Modelos.Productos);
-            // 
-            // guna2Button9
-            // 
-            this.guna2Button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button9.BorderRadius = 10;
-            this.guna2Button9.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button9.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2Button9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button9.ForeColor = System.Drawing.Color.White;
-            this.guna2Button9.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button9.Image")));
-            this.guna2Button9.Location = new System.Drawing.Point(967, 14);
-            this.guna2Button9.Name = "guna2Button9";
-            this.guna2Button9.Size = new System.Drawing.Size(179, 34);
-            this.guna2Button9.TabIndex = 98;
-            this.guna2Button9.Text = "Remisión de salida";
-            this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
             // 
             // UC_Productos
             // 
@@ -1706,5 +1728,6 @@ namespace INASOFT_3._0.UserControls
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
         private System.Windows.Forms.RadioButton Rbt_RemisionEntrada;
         private Guna.UI2.WinForms.Guna2Button guna2Button9;
+        private Guna.UI2.WinForms.Guna2Button guna2Button10;
     }
 }

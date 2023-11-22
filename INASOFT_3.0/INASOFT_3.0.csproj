@@ -258,6 +258,12 @@
     <Compile Include="UserControls\UC_Reportes.Designer.cs">
       <DependentUpon>UC_Reportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaFacturas\Cambiar_Proveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\Cambiar_Proveedor.Designer.cs">
+      <DependentUpon>Cambiar_Proveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\ComprarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -451,6 +457,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UserControls\UC_Reportes.resx">
       <DependentUpon>UC_Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\Cambiar_Proveedor.resx">
+      <DependentUpon>Cambiar_Proveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\ComprarProductos.resx">
       <DependentUpon>ComprarProductos.cs</DependentUpon>

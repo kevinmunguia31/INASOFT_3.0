@@ -1,9 +1,6 @@
-1. TextBox del buscador de producto en la remisiones.
-2. Actualizar stock mediante Remisión.
-3. Nueva forma de cargar los datos del EXCEL a la Remisión.
-4. Remisión multiplo de salida
-5. Tabla total precio compra por cantidad en Modulo de compra.
-6. Buscador de producto en formulario de compra.
-
+1. Remisiones de salida se duplican (A veces). ✓
+2. Actualizar stock de productos desde remisones, No sirve. ✓
+3. El orden de registro de compras (Descuento/IVA) están al reves. ✓
+4. Actualizar el tipo de entrada (Proveedores) en un nuevo formulario. ✓
 
 

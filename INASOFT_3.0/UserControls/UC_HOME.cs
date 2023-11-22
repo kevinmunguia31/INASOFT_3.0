@@ -96,7 +96,7 @@ namespace INASOFT_3._0.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("No hay Información del Negocio, Por favor Agreguela en Configuraciones", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox_Import.Show("No hay Información del Negocio, Por favor Agreguela en Configuraciones", "AVISO");
                 }
             }
             catch (MySqlException ex)

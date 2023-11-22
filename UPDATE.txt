@@ -1,0 +1,23 @@
+USE Prueba2;
+
+-- Actualizar el proveedor de los productos de remisión
+DELIMITER //
+CREATE PROCEDURE CambiarProveedorProducto(
+    IN _ID_Producto INT,
+	IN _Cantidad INT,
+	IN _ID_Proveedor INT,
+	IN _ID_Compra INT
+)
+BEGIN
+	DECLARE Aux_NombreProducto VARCHAR(200);
+	DECLARE Aux_NombreProveedor VARCHAR(200);
+
+    SELECT Nombre INTO Aux_NombreProducto FROM Productos WHERE ID = _ID_Producto;
+    SELECT Nombre INTO Aux_NombreProveedor FROM Proveedor WHERE ID = _ID_Proveedor;
+	
+	UPDATE Productos SET ID_Entrada = 1 WHERE ID = _ID_Producto;
+	
+    INSERT INTO Detalle_Compra (Cantidad, ID_Compra, ID_Producto) VALUES (_Cantidad, _ID_Compra, _ID_Producto);
+	INSERT INTO HistorialTransacciones VALUES (NULL, 'Cambio a proveedor', NOW(), CONCAT('Se ha hecho un cambio al proveedor ', Aux_NombreProveedor, ' de ', _Cantidad, '  ', Aux_NombreProducto));
+END //
+DELIMITER ;

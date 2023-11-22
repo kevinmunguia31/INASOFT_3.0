@@ -605,5 +605,11 @@ namespace INASOFT_3._0.UserControls
             RealizarRemisionSalida add = new RealizarRemisionSalida();
             add.ShowDialog();
         }
+
+        private void guna2Button10_Click(object sender, EventArgs e)
+        {
+            Cambiar_Proveedor cambiar_Proveedor = new Cambiar_Proveedor();
+            cambiar_Proveedor.ShowDialog();
+        }
     }
 }
