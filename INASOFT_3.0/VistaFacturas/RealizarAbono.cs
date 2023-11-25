@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
 using INASOFT_3._0.Controladores;
 using INASOFT_3._0.Modelos;
 using MySql.Data.MySqlClient;
@@ -125,6 +126,10 @@ namespace INASOFT_3._0.VistaFacturas
                 double vuelto = efectivo > monto ? efectivo - monto : 0.00;
                 MessageBox_Import.Show($"Se ha realizado correctamente el abono, le debe devolver al cliente C$ {vuelto}\n\n", "Importante");
                 int bandera2 = ctrlCredito_Abono.Actualizar_FacturaCredito(credito);
+                CtrlInfo ctrlInfo = new CtrlInfo();
+                string log = Sesion.nombre + " Realizo un abono a la factura #" + Txt_IDFactura.Text + " a PDF";
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
 
                 if (bandera2 == 1)
                 {

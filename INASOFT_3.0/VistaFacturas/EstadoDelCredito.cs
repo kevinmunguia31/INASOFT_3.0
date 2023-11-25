@@ -128,13 +128,14 @@ namespace INASOFT_3._0.VistaFacturas
                     {
                         XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
                     }
-                    MessageBox_Import.Show("Exportando Proveedores a PDF.....\n" +
+                    MessageBox_Import.Show("Exportando Estado de Cuenta a PDF.....\n" +
                         "Espere un momento.....", "Exportando a PDF");
                     pdfDoc.Close();
                     stream.Close();
-                    MessageBox_Ok.Show("Reporte de Proveedores Exportado a PDF", "Exportando a PDF");
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Proveedores en PDF";
-                    ctrlInfo.InsertarLog(log);
+                    MessageBox_Ok.Show("Reporte de Estado de Cuenta Exportado a PDF", "Exportando a PDF");
+                    string log = Sesion.nombre + " Exporto el Detalle de Cuenta de " + lbCliente.Text + " a PDF";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
 
                 }
 

@@ -371,8 +371,9 @@ namespace INASOFT_3._0.VistaFacturas
 
                 MessageBox_Import.Show("Se ha realizado la remsión de manera exitosa", "Importante");
                 CtrlInfo ctrlInfo = new CtrlInfo();
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una transacción de remisión de entrada";
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Genero una transacción de remisión de entrada";
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:ss:mm");
+                ctrlInfo.InsertarLog(fecha, log);
                 this.Close();
             }
         }

@@ -449,8 +449,9 @@ namespace INASOFT_3._0.VistaFacturas
                     pdfDoc.Close();
                     stream.Close();
                     MessageBox_Ok.Show("Proforma Exportada a PDF", "Exportando a PDF");
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Realizo una Proforma a nombre de " + txtNombreCliente.Text + " en PDF";
-                    ctrlInfo.InsertarLog(log);
+                    string log = Sesion.nombre + " Realizo una Proforma a nombre de " + txtNombreCliente.Text + " en PDF";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                     this.Dispose();
                 }
             }

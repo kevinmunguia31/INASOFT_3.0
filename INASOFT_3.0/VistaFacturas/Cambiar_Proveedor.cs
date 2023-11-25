@@ -273,8 +273,9 @@ namespace INASOFT_3._0.VistaFacturas
 
                 MessageBox_Import.Show("Se ha realizado el proveedor del producto", "Importante");
                 CtrlInfo ctrlInfo = new CtrlInfo();
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Cambio el proveedor de los productos mediante la compra : " + compras.Descripcion;
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Cambio el proveedor de los productos mediante la compra : " + compras.Descripcion;
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
                 this.Close();
             }           
         }

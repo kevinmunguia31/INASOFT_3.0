@@ -192,8 +192,9 @@ namespace INASOFT_3._0.UserControls
                     pdfDoc.Close();
                     stream.Close();
                     MessageBox_Ok.Show("Reporte de Clientes Exportado a PDF", "Exportando a PDF");
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Clientes en PDF";
-                    ctrlInfo.InsertarLog(log);
+                    string log = Sesion.nombre + " Exporto un Reporte de Clientes en PDF";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
 
                 }
 

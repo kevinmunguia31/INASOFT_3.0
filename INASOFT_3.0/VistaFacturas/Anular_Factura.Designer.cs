@@ -54,6 +54,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -86,7 +87,8 @@
             this.datagridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagridView1.EnableHeadersVisualStyles = false;
             this.datagridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.datagridView1.Location = new System.Drawing.Point(217, 0);
+            this.datagridView1.Location = new System.Drawing.Point(289, 0);
+            this.datagridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.datagridView1.Name = "datagridView1";
             this.datagridView1.ReadOnly = true;
             this.datagridView1.RowHeadersVisible = false;
@@ -98,19 +100,21 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView1.Size = new System.Drawing.Size(299, 49);
+            this.datagridView1.Size = new System.Drawing.Size(399, 60);
             this.datagridView1.TabIndex = 85;
             this.datagridView1.Visible = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
+            this.panel1.Controls.Add(this.guna2ControlBox1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(541, 36);
+            this.panel1.Size = new System.Drawing.Size(721, 44);
             this.panel1.TabIndex = 103;
             // 
             // label5
@@ -118,18 +122,20 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(43, 3);
+            this.label5.Location = new System.Drawing.Point(57, 4);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(171, 26);
+            this.label5.Size = new System.Drawing.Size(222, 34);
             this.label5.TabIndex = 1;
             this.label5.Text = "Anulación de factura";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_cancel_subscription_50px;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 33);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -139,25 +145,28 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(2, 27);
+            this.label1.Location = new System.Drawing.Point(3, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 22);
+            this.label1.Size = new System.Drawing.Size(260, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "¿Por qué se va anular la factura?";
             // 
             // Txt_Devolucion
             // 
-            this.Txt_Devolucion.Location = new System.Drawing.Point(48, 313);
+            this.Txt_Devolucion.Location = new System.Drawing.Point(64, 385);
+            this.Txt_Devolucion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_Devolucion.Name = "Txt_Devolucion";
-            this.Txt_Devolucion.Size = new System.Drawing.Size(29, 20);
+            this.Txt_Devolucion.Size = new System.Drawing.Size(37, 22);
             this.Txt_Devolucion.TabIndex = 104;
             this.Txt_Devolucion.Visible = false;
             // 
             // Txt_Facturar
             // 
-            this.Txt_Facturar.Location = new System.Drawing.Point(12, 313);
+            this.Txt_Facturar.Location = new System.Drawing.Point(16, 385);
+            this.Txt_Facturar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_Facturar.Name = "Txt_Facturar";
-            this.Txt_Facturar.Size = new System.Drawing.Size(29, 20);
+            this.Txt_Facturar.Size = new System.Drawing.Size(37, 22);
             this.Txt_Facturar.TabIndex = 105;
             this.Txt_Facturar.Visible = false;
             // 
@@ -171,9 +180,10 @@
             this.Lb_Credito1.AutoSize = true;
             this.Lb_Credito1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Credito1.ForeColor = System.Drawing.Color.Red;
-            this.Lb_Credito1.Location = new System.Drawing.Point(6, 133);
+            this.Lb_Credito1.Location = new System.Drawing.Point(8, 164);
+            this.Lb_Credito1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Credito1.Name = "Lb_Credito1";
-            this.Lb_Credito1.Size = new System.Drawing.Size(397, 22);
+            this.Lb_Credito1.Size = new System.Drawing.Size(510, 26);
             this.Lb_Credito1.TabIndex = 107;
             this.Lb_Credito1.Text = "Está factura está al pendiente de completar el crédito, si se anula, ";
             this.Lb_Credito1.Visible = false;
@@ -183,9 +193,10 @@
             this.Lb_Credito2.AutoSize = true;
             this.Lb_Credito2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Credito2.ForeColor = System.Drawing.Color.Red;
-            this.Lb_Credito2.Location = new System.Drawing.Point(6, 152);
+            this.Lb_Credito2.Location = new System.Drawing.Point(8, 187);
+            this.Lb_Credito2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Credito2.Name = "Lb_Credito2";
-            this.Lb_Credito2.Size = new System.Drawing.Size(135, 22);
+            this.Lb_Credito2.Size = new System.Drawing.Size(170, 26);
             this.Lb_Credito2.TabIndex = 108;
             this.Lb_Credito2.Text = "tendrá que devolver: ";
             this.Lb_Credito2.Visible = false;
@@ -195,9 +206,10 @@
             this.Lb_Factura.AutoSize = true;
             this.Lb_Factura.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Factura.ForeColor = System.Drawing.Color.Black;
-            this.Lb_Factura.Location = new System.Drawing.Point(6, 21);
+            this.Lb_Factura.Location = new System.Drawing.Point(8, 26);
+            this.Lb_Factura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Factura.Name = "Lb_Factura";
-            this.Lb_Factura.Size = new System.Drawing.Size(24, 22);
+            this.Lb_Factura.Size = new System.Drawing.Size(30, 26);
             this.Lb_Factura.TabIndex = 109;
             this.Lb_Factura.Text = "--";
             // 
@@ -207,9 +219,10 @@
             this.Lb_Fecha.BackColor = System.Drawing.Color.Transparent;
             this.Lb_Fecha.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Fecha.ForeColor = System.Drawing.Color.Black;
-            this.Lb_Fecha.Location = new System.Drawing.Point(6, 21);
+            this.Lb_Fecha.Location = new System.Drawing.Point(8, 26);
+            this.Lb_Fecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Fecha.Name = "Lb_Fecha";
-            this.Lb_Fecha.Size = new System.Drawing.Size(16, 23);
+            this.Lb_Fecha.Size = new System.Drawing.Size(21, 30);
             this.Lb_Fecha.TabIndex = 111;
             this.Lb_Fecha.Text = "..";
             // 
@@ -235,8 +248,8 @@
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtDescripcion.IconLeft")));
-            this.txtDescripcion.Location = new System.Drawing.Point(6, 54);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDescripcion.Location = new System.Drawing.Point(8, 66);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
@@ -244,7 +257,7 @@
             this.txtDescripcion.PlaceholderText = "Descripción";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescripcion.SelectedText = "";
-            this.txtDescripcion.Size = new System.Drawing.Size(504, 75);
+            this.txtDescripcion.Size = new System.Drawing.Size(672, 92);
             this.txtDescripcion.TabIndex = 106;
             // 
             // AnularFactura
@@ -257,9 +270,10 @@
             this.AnularFactura.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.AnularFactura.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AnularFactura.ForeColor = System.Drawing.Color.White;
-            this.AnularFactura.Location = new System.Drawing.Point(373, 313);
+            this.AnularFactura.Location = new System.Drawing.Point(497, 385);
+            this.AnularFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AnularFactura.Name = "AnularFactura";
-            this.AnularFactura.Size = new System.Drawing.Size(156, 31);
+            this.AnularFactura.Size = new System.Drawing.Size(208, 38);
             this.AnularFactura.TabIndex = 101;
             this.AnularFactura.Text = "Confirmar anulación";
             this.AnularFactura.Click += new System.EventHandler(this.AnularFactura_Click);
@@ -268,9 +282,11 @@
             // 
             this.groupBox2.Controls.Add(this.Lb_Fecha);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(231, 42);
+            this.groupBox2.Location = new System.Drawing.Point(308, 52);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(298, 59);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(397, 73);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fecha de hoy";
@@ -282,9 +298,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(234, 73);
+            this.label2.Location = new System.Drawing.Point(312, 90);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 22);
+            this.label2.Size = new System.Drawing.Size(0, 26);
             this.label2.TabIndex = 126;
             // 
             // groupBox1
@@ -297,9 +314,11 @@
             this.groupBox1.Controls.Add(this.Lb_Credito2);
             this.groupBox1.Controls.Add(this.datagridView1);
             this.groupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 107);
+            this.groupBox1.Location = new System.Drawing.Point(17, 132);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(516, 200);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(688, 246);
             this.groupBox1.TabIndex = 127;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle de la anulación";
@@ -309,9 +328,10 @@
             this.Lb_Devolucion3.AutoSize = true;
             this.Lb_Devolucion3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Devolucion3.ForeColor = System.Drawing.Color.Red;
-            this.Lb_Devolucion3.Location = new System.Drawing.Point(6, 172);
+            this.Lb_Devolucion3.Location = new System.Drawing.Point(8, 212);
+            this.Lb_Devolucion3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Devolucion3.Name = "Lb_Devolucion3";
-            this.Lb_Devolucion3.Size = new System.Drawing.Size(404, 22);
+            this.Lb_Devolucion3.Size = new System.Drawing.Size(516, 26);
             this.Lb_Devolucion3.TabIndex = 109;
             this.Lb_Devolucion3.Text = "Al hacer la devolución de todos los productos, deberá devolver C$ ";
             this.Lb_Devolucion3.Visible = false;
@@ -320,9 +340,11 @@
             // 
             this.groupBox3.Controls.Add(this.Lb_Factura);
             this.groupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(12, 42);
+            this.groupBox3.Location = new System.Drawing.Point(16, 52);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(213, 59);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(284, 73);
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Anulación de la Fact.:";
@@ -345,11 +367,21 @@
             this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.guna2MessageDialog1.Text = null;
             // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Red;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(660, 6);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox1.TabIndex = 2;
+            // 
             // Anular_Factura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 356);
+            this.ClientSize = new System.Drawing.Size(721, 438);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -358,6 +390,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AnularFactura);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Anular_Factura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anular_Factura";
@@ -400,5 +433,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private Guna.UI2.WinForms.Guna2MessageDialog MessageBox_Import;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

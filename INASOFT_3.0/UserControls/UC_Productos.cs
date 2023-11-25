@@ -47,7 +47,7 @@ namespace INASOFT_3._0.UserControls
 
             dataGridView3.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView2.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             foreach (DataGridViewBand band in dataGridView1.Columns)
             {
                 band.ReadOnly = true;
@@ -436,8 +436,9 @@ namespace INASOFT_3._0.UserControls
                     pdfDoc.Close();
                     stream.Close();
                     MessageBox_Ok.Show("Reporte de Inventario Exportado a PDF", "Exportando a PDF");
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Exporto un Reporte de Inventario en PDF";
-                    ctrlInfo.InsertarLog(log);
+                    string log = Sesion.nombre + " Exporto un Reporte de Inventario en PDF";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha,log);
                 }
             }
         }

@@ -77,8 +77,9 @@ namespace INASOFT_3._0.UserControls
                     bandera = ctrlInfo.Actualizar(_info);
                     MessageDialoginfo.Show("Registro Actualizado Con Exito", "Actualizar Información");
                    
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " ha cambia la información del negocio";
-                    ctrlInfo.InsertarLog(log);
+                    string log = Sesion.nombre + " ha cambia la información del negocio";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                     InfoNegocio();
 
                 }
@@ -86,8 +87,9 @@ namespace INASOFT_3._0.UserControls
                 {
                     bandera = ctrlInfo.Insertar(_info);
                     MessageDialoginfo.Show("Información Guardada con Exito", "Guardar Información");
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Ha Registrado la Información del Negocio";
-                    ctrlInfo.InsertarLog(log);
+                    string log = Sesion.nombre + " Ha Registrado la Información del Negocio";
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                     InfoNegocio();
                 }
             }
@@ -114,7 +116,7 @@ namespace INASOFT_3._0.UserControls
         private void CargarLogs()
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT descripcion FROM logs";
+            string sql = "SELECT fecha, descripcion FROM logs";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
@@ -125,24 +127,7 @@ namespace INASOFT_3._0.UserControls
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(dt);
 
-                listViewLogs.Clear();
-                listViewLogs.View = View.Details;
-
-                listViewLogs.FullRowSelect = true;
-                listViewLogs.Columns.Add(dt.Columns[0].ToString(), 800);
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    string[] arr = new string[1];
-                    ListViewItem item = new ListViewItem();
-                    
-                    for (int i = 0; i < arr.Length; i++) 
-                    {
-                        arr[i] = row[i].ToString();
-                        item = new ListViewItem(arr);
-                    }
-                    listViewLogs.Items.Add(item);
-                }
+                dataGridView1.DataSource = dt;
             }
             catch (MySqlException ex)
             {
@@ -172,8 +157,9 @@ namespace INASOFT_3._0.UserControls
                 bk.ExportToFile(ruta);
                 conexionBD.Close();
                 MessageDialoginfo.Show("Respaldo Generado con Exito!", "Aviso");
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero un Respaldo de la Base de Datos";
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Genero un Respaldo de la Base de Datos";
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
 
             }
         }
@@ -229,6 +215,24 @@ namespace INASOFT_3._0.UserControls
             }
 
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string fecha = dateTimePicker1.Value.ToString("yyyy/MM/dd");
+            //MessageBox.Show(fecha);
+            CtrlInfo _ctrlInfo = new CtrlInfo();
+            dataGridView1.DataSource = _ctrlInfo.BuscarLogs(fecha);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CargarLogs();
         }
     }
 }

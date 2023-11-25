@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Devoluciones));
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -88,9 +88,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label2.Location = new System.Drawing.Point(53, 7);
+            this.label2.Location = new System.Drawing.Point(71, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(272, 36);
+            this.label2.Size = new System.Drawing.Size(336, 44);
             this.label2.TabIndex = 88;
             this.label2.Text = "Devoluciones Realizadas";
             // 
@@ -99,9 +100,11 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridDevolucion);
-            this.groupBox1.Location = new System.Drawing.Point(9, 49);
+            this.groupBox1.Location = new System.Drawing.Point(12, 60);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1013, 524);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1351, 645);
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             // 
@@ -111,41 +114,42 @@
             this.dataGridDevolucion.AllowUserToDeleteRows = false;
             this.dataGridDevolucion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDevolucion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridDevolucion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridDevolucion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.dataGridDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridDevolucion.ColumnHeadersHeight = 35;
             this.dataGridDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridDevolucion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridDevolucion.EnableHeadersVisualStyles = false;
-            this.dataGridDevolucion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridDevolucion.Location = new System.Drawing.Point(3, 16);
+            this.dataGridDevolucion.GridColor = System.Drawing.Color.Gray;
+            this.dataGridDevolucion.Location = new System.Drawing.Point(4, 19);
+            this.dataGridDevolucion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridDevolucion.Name = "dataGridDevolucion";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridDevolucion.RowHeadersVisible = false;
             this.dataGridDevolucion.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridDevolucion.Size = new System.Drawing.Size(1007, 505);
+            this.dataGridDevolucion.Size = new System.Drawing.Size(1343, 622);
             this.dataGridDevolucion.TabIndex = 10;
             this.dataGridDevolucion.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridDevolucion_CellFormatting);
             this.dataGridDevolucion.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridDevolucion_MouseClick);
@@ -161,10 +165,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 3);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(52, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 90;
             this.pictureBox1.TabStop = false;
@@ -180,9 +184,10 @@
             this.Bttn_Info.ForeColor = System.Drawing.SystemColors.Control;
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Bttn_Info.Location = new System.Drawing.Point(321, 10);
+            this.Bttn_Info.Location = new System.Drawing.Point(428, 12);
+            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Bttn_Info.Name = "Bttn_Info";
-            this.Bttn_Info.Size = new System.Drawing.Size(31, 29);
+            this.Bttn_Info.Size = new System.Drawing.Size(41, 36);
             this.Bttn_Info.TabIndex = 89;
             this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Bttn_Info.UseVisualStyleBackColor = false;
@@ -205,9 +210,10 @@
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(893, 10);
+            this.guna2Button6.Location = new System.Drawing.Point(1191, 12);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(129, 33);
+            this.guna2Button6.Size = new System.Drawing.Size(172, 41);
             this.guna2Button6.TabIndex = 96;
             this.guna2Button6.Text = "Restablecer";
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -272,9 +278,10 @@
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(1039, 10);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1385, 12);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(363, 323);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(484, 398);
             this.guna2GroupBox2.TabIndex = 100;
             this.guna2GroupBox2.Text = "Buscar Devoluciones";
             // 
@@ -286,9 +293,11 @@
             this.groupBox4.Controls.Add(this.Rbtn_Pendientes);
             this.groupBox4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(0, 247);
+            this.groupBox4.Location = new System.Drawing.Point(0, 304);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(360, 75);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(480, 92);
             this.groupBox4.TabIndex = 100;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Buscardor por tipos de facturas";
@@ -297,9 +306,10 @@
             // 
             this.Rbtn_Canceladas.AutoSize = true;
             this.Rbtn_Canceladas.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Canceladas.Location = new System.Drawing.Point(123, 33);
+            this.Rbtn_Canceladas.Location = new System.Drawing.Point(164, 41);
+            this.Rbtn_Canceladas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbtn_Canceladas.Name = "Rbtn_Canceladas";
-            this.Rbtn_Canceladas.Size = new System.Drawing.Size(100, 26);
+            this.Rbtn_Canceladas.Size = new System.Drawing.Size(125, 30);
             this.Rbtn_Canceladas.TabIndex = 27;
             this.Rbtn_Canceladas.TabStop = true;
             this.Rbtn_Canceladas.Text = "Canceladas";
@@ -316,9 +326,10 @@
             this.guna2Button5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
             this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
-            this.guna2Button5.Location = new System.Drawing.Point(259, 28);
+            this.guna2Button5.Location = new System.Drawing.Point(345, 34);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button5.Size = new System.Drawing.Size(121, 39);
             this.guna2Button5.TabIndex = 91;
             this.guna2Button5.Text = "Buscar";
             this.guna2Button5.Click += new System.EventHandler(this.Guna2Button5_Click);
@@ -327,9 +338,10 @@
             // 
             this.Rbtn_Pendientes.AutoSize = true;
             this.Rbtn_Pendientes.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Pendientes.Location = new System.Drawing.Point(12, 34);
+            this.Rbtn_Pendientes.Location = new System.Drawing.Point(16, 42);
+            this.Rbtn_Pendientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbtn_Pendientes.Name = "Rbtn_Pendientes";
-            this.Rbtn_Pendientes.Size = new System.Drawing.Size(93, 26);
+            this.Rbtn_Pendientes.Size = new System.Drawing.Size(116, 30);
             this.Rbtn_Pendientes.TabIndex = 26;
             this.Rbtn_Pendientes.TabStop = true;
             this.Rbtn_Pendientes.Text = "Pendientes";
@@ -345,9 +357,11 @@
             this.groupBox3.Controls.Add(this.DateTimeTimer_End);
             this.groupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(0, 138);
+            this.groupBox3.Location = new System.Drawing.Point(0, 170);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 103);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(480, 127);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Buscador por fecha";
@@ -358,9 +372,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(13, 64);
+            this.label5.Location = new System.Drawing.Point(17, 79);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 22);
+            this.label5.Size = new System.Drawing.Size(58, 26);
             this.label5.TabIndex = 99;
             this.label5.Text = "Hasta:";
             // 
@@ -369,9 +384,10 @@
             this.DateTimeTimer_Ini.CustomFormat = "yyyy/MM/dd";
             this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_Ini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeTimer_Ini.Location = new System.Drawing.Point(69, 32);
+            this.DateTimeTimer_Ini.Location = new System.Drawing.Point(92, 39);
+            this.DateTimeTimer_Ini.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DateTimeTimer_Ini.Name = "DateTimeTimer_Ini";
-            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_Ini.TabIndex = 96;
             // 
             // guna2Button3
@@ -385,9 +401,10 @@
             this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.Location = new System.Drawing.Point(259, 57);
+            this.guna2Button3.Location = new System.Drawing.Point(345, 70);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button3.Size = new System.Drawing.Size(121, 39);
             this.guna2Button3.TabIndex = 91;
             this.guna2Button3.Text = "Buscar";
             this.guna2Button3.Click += new System.EventHandler(this.Guna2Button3_Click);
@@ -398,9 +415,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(13, 32);
+            this.label4.Location = new System.Drawing.Point(17, 39);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 22);
+            this.label4.Size = new System.Drawing.Size(35, 26);
             this.label4.TabIndex = 98;
             this.label4.Text = "De:";
             // 
@@ -409,9 +427,10 @@
             this.DateTimeTimer_End.CustomFormat = "yyyy/MM/dd";
             this.DateTimeTimer_End.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 64);
+            this.DateTimeTimer_End.Location = new System.Drawing.Point(92, 79);
+            this.DateTimeTimer_End.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DateTimeTimer_End.Name = "DateTimeTimer_End";
-            this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_End.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_End.TabIndex = 97;
             // 
             // groupBox2
@@ -420,9 +439,11 @@
             this.groupBox2.Controls.Add(this.txt_NonbCliente);
             this.groupBox2.Controls.Add(this.guna2Button4);
             this.groupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 51);
+            this.groupBox2.Location = new System.Drawing.Point(0, 63);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 81);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(480, 100);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Busqueda por cliente";
@@ -439,13 +460,13 @@
             this.txt_NonbCliente.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NonbCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_NonbCliente.IconLeft = ((System.Drawing.Image)(resources.GetObject("txt_NonbCliente.IconLeft")));
-            this.txt_NonbCliente.Location = new System.Drawing.Point(11, 29);
-            this.txt_NonbCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_NonbCliente.Location = new System.Drawing.Point(15, 36);
+            this.txt_NonbCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_NonbCliente.Name = "txt_NonbCliente";
             this.txt_NonbCliente.PasswordChar = '\0';
             this.txt_NonbCliente.PlaceholderText = "Ingrese el nombre del Cliente";
             this.txt_NonbCliente.SelectedText = "";
-            this.txt_NonbCliente.Size = new System.Drawing.Size(203, 30);
+            this.txt_NonbCliente.Size = new System.Drawing.Size(271, 37);
             this.txt_NonbCliente.TabIndex = 5;
             // 
             // guna2Button4
@@ -459,9 +480,10 @@
             this.guna2Button4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
-            this.guna2Button4.Location = new System.Drawing.Point(259, 29);
+            this.guna2Button4.Location = new System.Drawing.Point(345, 36);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button4.Size = new System.Drawing.Size(121, 39);
             this.guna2Button4.TabIndex = 86;
             this.guna2Button4.Text = "Buscar";
             this.guna2Button4.Click += new System.EventHandler(this.Guna2Button4_Click);
@@ -477,9 +499,10 @@
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(158, 4);
+            this.button1.Location = new System.Drawing.Point(211, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 29);
+            this.button1.Size = new System.Drawing.Size(41, 36);
             this.button1.TabIndex = 94;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
@@ -488,7 +511,8 @@
             // 
             this.guna2GroupBox4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox4.Location = new System.Drawing.Point(0, 40);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(0, 49);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.Size = new System.Drawing.Size(0, 0);
             this.guna2GroupBox4.TabIndex = 92;
@@ -500,9 +524,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label3.Location = new System.Drawing.Point(6, 265);
+            this.label3.Location = new System.Drawing.Point(8, 326);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 26);
+            this.label3.Size = new System.Drawing.Size(0, 34);
             this.label3.TabIndex = 88;
             // 
             // label1
@@ -511,9 +536,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(3, 51);
+            this.label1.Location = new System.Drawing.Point(4, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 26);
+            this.label1.Size = new System.Drawing.Size(0, 34);
             this.label1.TabIndex = 85;
             // 
             // guna2GroupBox1
@@ -527,9 +553,10 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(1039, 352);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(1385, 433);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(363, 107);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(484, 132);
             this.guna2GroupBox1.TabIndex = 99;
             this.guna2GroupBox1.Text = "Exportación de tabla";
             // 
@@ -544,9 +571,10 @@
             this.button2.ForeColor = System.Drawing.Color.Transparent;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(158, 3);
+            this.button2.Location = new System.Drawing.Point(211, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 29);
+            this.button2.Size = new System.Drawing.Size(41, 36);
             this.button2.TabIndex = 95;
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
@@ -563,9 +591,10 @@
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
-            this.guna2Button2.Location = new System.Drawing.Point(203, 52);
+            this.guna2Button2.Location = new System.Drawing.Point(271, 64);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(134, 43);
+            this.guna2Button2.Size = new System.Drawing.Size(179, 53);
             this.guna2Button2.TabIndex = 92;
             this.guna2Button2.Text = "Exportar a EXCEL";
             this.guna2Button2.Click += new System.EventHandler(this.Guna2Button2_Click);
@@ -582,9 +611,10 @@
             this.guna2Button1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
-            this.guna2Button1.Location = new System.Drawing.Point(27, 52);
+            this.guna2Button1.Location = new System.Drawing.Point(36, 64);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(134, 43);
+            this.guna2Button1.Size = new System.Drawing.Size(179, 53);
             this.guna2Button1.TabIndex = 91;
             this.guna2Button1.Text = "Exportar a PDF";
             // 
@@ -600,7 +630,7 @@
             // 
             // UC_Devoluciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.guna2GroupBox2);
@@ -610,8 +640,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Bttn_Info);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_Devoluciones";
-            this.Size = new System.Drawing.Size(1415, 587);
+            this.Size = new System.Drawing.Size(1887, 722);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDevolucion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

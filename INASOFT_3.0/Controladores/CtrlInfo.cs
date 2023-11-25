@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,12 +112,12 @@ namespace INASOFT_3._0.Controladores
             return bandera;
         }
 
-        public bool InsertarLog(string desc)
+        public bool InsertarLog(string fecha, string desc)
         {
             bool bandera = false;
 
-            string sql = "INSERT INTO logs (descripcion) VALUES ('" + desc + "')";
-
+            string sql = "INSERT INTO logs (fecha,descripcion) VALUES ('" + fecha + "', '" + desc + "')";
+             
             try
             {
                 MySqlConnection conexioBD = Conexion.getConexion();
@@ -132,6 +133,26 @@ namespace INASOFT_3._0.Controladores
             }
 
             return bandera;
+        }
+
+        public DataTable BuscarLogs(string dato)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT fecha, descripcion FROM logs WHERE fecha = '" + dato + "';";
+
+            MySqlConnection conexionBD = Conexion.getConexion();
+            conexionBD.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
         }
 
         /* public bool eliminar(int id)

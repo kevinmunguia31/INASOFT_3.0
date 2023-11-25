@@ -969,7 +969,6 @@ C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaF
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.AgregarCliente.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarAbono.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Ver_EditarProducto.resources
-C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemision.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.VistaProductos.resources
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.csproj.GenerateResource.cache
 C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3.0.exe.licenses
@@ -986,3 +985,6 @@ C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.ArqueoCa
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionEntrada.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionSalida.resources
 C:\Users\HP\source\repos\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Cambiar_Proveedor.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.Cambiar_Proveedor.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionEntrada.resources
+C:\Users\DELL 5410\Desktop\INASOFT_3.0\INASOFT_3.0\obj\Debug\INASOFT_3._0.VistaFacturas.RealizarRemisionSalida.resources

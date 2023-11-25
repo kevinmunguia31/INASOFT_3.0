@@ -30,19 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RealizarRemisionEntrada));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.btnImportExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.TxtBuscar_Productos = new Guna.UI2.WinForms.Guna2TextBox();
             this.LbDescripcion = new System.Windows.Forms.Label();
             this.TxtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.GroupBox_Products = new System.Windows.Forms.GroupBox();
+            this.btnImportExcel = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.SpinExist = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -91,8 +93,6 @@
             this.MessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.TxtBuscar_Productos = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
@@ -146,7 +146,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(43, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(228, 26);
+            this.label5.Size = new System.Drawing.Size(299, 34);
             this.label5.TabIndex = 1;
             this.label5.Text = "Realizar remisión de entrada";
             // 
@@ -182,24 +182,55 @@
             this.guna2GroupBox2.TabIndex = 129;
             this.guna2GroupBox2.Text = "Detalle de la remisión";
             // 
-            // btnImportExcel
+            // button1
             // 
-            this.btnImportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportExcel.BorderRadius = 10;
-            this.btnImportExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnImportExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnImportExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnImportExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnImportExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnImportExcel.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnImportExcel.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
-            this.btnImportExcel.Location = new System.Drawing.Point(439, 188);
-            this.btnImportExcel.Name = "btnImportExcel";
-            this.btnImportExcel.Size = new System.Drawing.Size(165, 34);
-            this.btnImportExcel.TabIndex = 100;
-            this.btnImportExcel.Text = "Importar desde Excel";
-            this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(710, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 31);
+            this.button1.TabIndex = 101;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TxtBuscar_Productos
+            // 
+            this.TxtBuscar_Productos.Animated = true;
+            this.TxtBuscar_Productos.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TxtBuscar_Productos.BackgroundImage = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
+            this.TxtBuscar_Productos.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.TxtBuscar_Productos.BorderRadius = 5;
+            this.TxtBuscar_Productos.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.TxtBuscar_Productos.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtBuscar_Productos.DefaultText = "";
+            this.TxtBuscar_Productos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtBuscar_Productos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtBuscar_Productos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtBuscar_Productos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtBuscar_Productos.FillColor = System.Drawing.SystemColors.Window;
+            this.TxtBuscar_Productos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtBuscar_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscar_Productos.ForeColor = System.Drawing.Color.Black;
+            this.TxtBuscar_Productos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtBuscar_Productos.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
+            this.TxtBuscar_Productos.Location = new System.Drawing.Point(553, 63);
+            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtBuscar_Productos.Name = "TxtBuscar_Productos";
+            this.TxtBuscar_Productos.PasswordChar = '\0';
+            this.TxtBuscar_Productos.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.TxtBuscar_Productos.PlaceholderText = "Buscar productos";
+            this.TxtBuscar_Productos.SelectedText = "";
+            this.TxtBuscar_Productos.Size = new System.Drawing.Size(151, 30);
+            this.TxtBuscar_Productos.TabIndex = 100;
+            this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
             // 
             // LbDescripcion
             // 
@@ -209,7 +240,7 @@
             this.LbDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.LbDescripcion.Location = new System.Drawing.Point(460, 335);
             this.LbDescripcion.Name = "LbDescripcion";
-            this.LbDescripcion.Size = new System.Drawing.Size(82, 22);
+            this.LbDescripcion.Size = new System.Drawing.Size(105, 26);
             this.LbDescripcion.TabIndex = 99;
             this.LbDescripcion.Text = "Descripción:";
             // 
@@ -262,6 +293,25 @@
             this.GroupBox_Products.TabStop = false;
             this.GroupBox_Products.Text = "Detalle del producto";
             // 
+            // btnImportExcel
+            // 
+            this.btnImportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportExcel.BorderRadius = 10;
+            this.btnImportExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnImportExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnImportExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnImportExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnImportExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnImportExcel.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnImportExcel.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
+            this.btnImportExcel.Location = new System.Drawing.Point(439, 188);
+            this.btnImportExcel.Name = "btnImportExcel";
+            this.btnImportExcel.Size = new System.Drawing.Size(165, 34);
+            this.btnImportExcel.TabIndex = 100;
+            this.btnImportExcel.Text = "Importar desde Excel";
+            this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.label13);
@@ -283,7 +333,7 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(6, 20);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 22);
+            this.label13.Size = new System.Drawing.Size(100, 26);
             this.label13.TabIndex = 11;
             this.label13.Text = "Cant. Stock:";
             // 
@@ -313,7 +363,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(119, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 22);
+            this.label2.Size = new System.Drawing.Size(139, 26);
             this.label2.TabIndex = 4;
             this.label2.Text = "Cant. comprada:";
             // 
@@ -324,7 +374,7 @@
             this.Lb_CantStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Lb_CantStocks.Location = new System.Drawing.Point(6, 40);
             this.Lb_CantStocks.Name = "Lb_CantStocks";
-            this.Lb_CantStocks.Size = new System.Drawing.Size(24, 22);
+            this.Lb_CantStocks.Size = new System.Drawing.Size(30, 26);
             this.Lb_CantStocks.TabIndex = 12;
             this.Lb_CantStocks.Text = "--";
             // 
@@ -360,7 +410,7 @@
             this.radioButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(74, 13);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 26);
+            this.radioButton1.Size = new System.Drawing.Size(54, 30);
             this.radioButton1.TabIndex = 27;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "No";
@@ -373,7 +423,7 @@
             this.radioButton2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(6, 13);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(38, 26);
+            this.radioButton2.Size = new System.Drawing.Size(46, 30);
             this.radioButton2.TabIndex = 26;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Si";
@@ -387,7 +437,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(6, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 22);
+            this.label6.Size = new System.Drawing.Size(149, 26);
             this.label6.TabIndex = 9;
             this.label6.Text = "Precio de compra:";
             // 
@@ -425,7 +475,7 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(163, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 22);
+            this.label7.Size = new System.Drawing.Size(131, 26);
             this.label7.TabIndex = 10;
             this.label7.Text = "Precio de venta:";
             // 
@@ -508,7 +558,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(6, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 22);
+            this.label3.Size = new System.Drawing.Size(128, 26);
             this.label3.TabIndex = 6;
             this.label3.Text = "Observaciones:";
             // 
@@ -537,7 +587,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(6, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 22);
+            this.label4.Size = new System.Drawing.Size(177, 26);
             this.label4.TabIndex = 7;
             this.label4.Text = "Nombre del producto:";
             // 
@@ -600,7 +650,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(239, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 22);
+            this.label1.Size = new System.Drawing.Size(172, 26);
             this.label1.TabIndex = 8;
             this.label1.Text = "Código del producto:";
             // 
@@ -612,7 +662,7 @@
             this.Lb_Producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Lb_Producto.Location = new System.Drawing.Point(299, 37);
             this.Lb_Producto.Name = "Lb_Producto";
-            this.Lb_Producto.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Producto.Size = new System.Drawing.Size(94, 26);
             this.Lb_Producto.TabIndex = 97;
             this.Lb_Producto.Text = "Productos:";
             // 
@@ -645,7 +695,7 @@
             this.Cbx_Productos.IntegralHeight = false;
             this.Cbx_Productos.Location = new System.Drawing.Point(303, 63);
             this.Cbx_Productos.Name = "Cbx_Productos";
-            this.Cbx_Productos.Size = new System.Drawing.Size(244, 30);
+            this.Cbx_Productos.Size = new System.Drawing.Size(244, 34);
             this.Cbx_Productos.TabIndex = 82;
             this.Cbx_Productos.SelectedIndexChanged += new System.EventHandler(this.Cbx_Productos_SelectedIndexChanged_1);
             // 
@@ -668,7 +718,7 @@
             this.Rbtn_ActualizarProducto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rbtn_ActualizarProducto.Location = new System.Drawing.Point(148, 21);
             this.Rbtn_ActualizarProducto.Name = "Rbtn_ActualizarProducto";
-            this.Rbtn_ActualizarProducto.Size = new System.Drawing.Size(126, 26);
+            this.Rbtn_ActualizarProducto.Size = new System.Drawing.Size(160, 30);
             this.Rbtn_ActualizarProducto.TabIndex = 27;
             this.Rbtn_ActualizarProducto.TabStop = true;
             this.Rbtn_ActualizarProducto.Text = "Actualizar stocks";
@@ -681,7 +731,7 @@
             this.Rbtn_NuevoProducto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rbtn_NuevoProducto.Location = new System.Drawing.Point(9, 21);
             this.Rbtn_NuevoProducto.Name = "Rbtn_NuevoProducto";
-            this.Rbtn_NuevoProducto.Size = new System.Drawing.Size(124, 26);
+            this.Rbtn_NuevoProducto.Size = new System.Drawing.Size(155, 30);
             this.Rbtn_NuevoProducto.TabIndex = 26;
             this.Rbtn_NuevoProducto.TabStop = true;
             this.Rbtn_NuevoProducto.Text = "Nuevo producto";
@@ -711,30 +761,30 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.dataGridView1.GridColor = System.Drawing.Color.Gray;
             this.dataGridView1.Location = new System.Drawing.Point(0, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(445, 197);
             this.dataGridView1.TabIndex = 25;
@@ -750,14 +800,14 @@
             this.datagridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagridView2.BackgroundColor = System.Drawing.Color.White;
             this.datagridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.datagridView2.ColumnHeadersHeight = 35;
             this.datagridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.datagridView2.ColumnHeadersVisible = false;
@@ -772,18 +822,18 @@
             this.Column8});
             this.datagridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.datagridView2.EnableHeadersVisualStyles = false;
-            this.datagridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.datagridView2.GridColor = System.Drawing.Color.Gray;
             this.datagridView2.Location = new System.Drawing.Point(0, 227);
             this.datagridView2.Name = "datagridView2";
             this.datagridView2.ReadOnly = true;
             this.datagridView2.RowHeadersVisible = false;
             this.datagridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            this.datagridView2.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.datagridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridView2.Size = new System.Drawing.Size(445, 32);
             this.datagridView2.TabIndex = 87;
@@ -888,7 +938,7 @@
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label12.Location = new System.Drawing.Point(6, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 22);
+            this.label12.Size = new System.Drawing.Size(101, 26);
             this.label12.TabIndex = 13;
             this.label12.Text = "Trabajador:";
             // 
@@ -899,7 +949,7 @@
             this.Lb_NombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Lb_NombreUsuario.Location = new System.Drawing.Point(83, 22);
             this.Lb_NombreUsuario.Name = "Lb_NombreUsuario";
-            this.Lb_NombreUsuario.Size = new System.Drawing.Size(24, 22);
+            this.Lb_NombreUsuario.Size = new System.Drawing.Size(28, 26);
             this.Lb_NombreUsuario.TabIndex = 11;
             this.Lb_NombreUsuario.Text = "--";
             // 
@@ -922,7 +972,7 @@
             this.Lb_Fecha.ForeColor = System.Drawing.Color.Black;
             this.Lb_Fecha.Location = new System.Drawing.Point(6, 21);
             this.Lb_Fecha.Name = "Lb_Fecha";
-            this.Lb_Fecha.Size = new System.Drawing.Size(16, 23);
+            this.Lb_Fecha.Size = new System.Drawing.Size(21, 30);
             this.Lb_Fecha.TabIndex = 111;
             this.Lb_Fecha.Text = "..";
             // 
@@ -958,59 +1008,9 @@
             this.MessageDialogError.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.MessageDialogError.Text = null;
             // 
-            // button1
+            // RealizarRemisionEntrada
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(710, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 31);
-            this.button1.TabIndex = 101;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TxtBuscar_Productos
-            // 
-            this.TxtBuscar_Productos.Animated = true;
-            this.TxtBuscar_Productos.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TxtBuscar_Productos.BackgroundImage = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
-            this.TxtBuscar_Productos.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TxtBuscar_Productos.BorderRadius = 5;
-            this.TxtBuscar_Productos.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.TxtBuscar_Productos.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtBuscar_Productos.DefaultText = "";
-            this.TxtBuscar_Productos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtBuscar_Productos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtBuscar_Productos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtBuscar_Productos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtBuscar_Productos.FillColor = System.Drawing.SystemColors.Window;
-            this.TxtBuscar_Productos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtBuscar_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscar_Productos.ForeColor = System.Drawing.Color.Black;
-            this.TxtBuscar_Productos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtBuscar_Productos.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
-            this.TxtBuscar_Productos.Location = new System.Drawing.Point(553, 63);
-            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TxtBuscar_Productos.Name = "TxtBuscar_Productos";
-            this.TxtBuscar_Productos.PasswordChar = '\0';
-            this.TxtBuscar_Productos.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.TxtBuscar_Productos.PlaceholderText = "Buscar productos";
-            this.TxtBuscar_Productos.SelectedText = "";
-            this.TxtBuscar_Productos.Size = new System.Drawing.Size(151, 30);
-            this.TxtBuscar_Productos.TabIndex = 100;
-            this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
-            // 
-            // RealizarRemision
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 34F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 714);
             this.Controls.Add(this.groupBox4);
@@ -1020,7 +1020,7 @@
             this.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Name = "RealizarRemision";
+            this.Name = "RealizarRemisionEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RealizarRemision";
             this.panel1.ResumeLayout(false);

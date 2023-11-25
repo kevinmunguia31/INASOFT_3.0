@@ -439,8 +439,9 @@ namespace INASOFT_3._0
 
                 MessageBox_Import.Show("Se ha realizado la compra de manera exitosa", "Importante");
                 CtrlInfo ctrlInfo = new CtrlInfo();
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Genero una orden de compra con referencia: " + compras.Descripcion;
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Genero una orden de compra con referencia: " + compras.Descripcion;
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
                 this.Close();
             }
         }

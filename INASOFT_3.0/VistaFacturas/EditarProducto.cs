@@ -69,8 +69,9 @@ namespace INASOFT_3._0.VistaFacturas
 
                 CtrlInfo ctrlInfo = new CtrlInfo();
 
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Modifico el producto con codigo: " + productos.Codigo;
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Modifico el producto con codigo: " + productos.Codigo;
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
             }
 
             if (radioButton4.Checked)

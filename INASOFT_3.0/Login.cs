@@ -52,8 +52,9 @@ namespace INASOFT_3._0
                 if (respuesta.Length > 0)
                 {
                     guna2MessageWar.Show(respuesta, "Aviso");
-                    string log = "[" + DateTime.Now + "] " + "Intento Fallido de inicio de Sesion" + " por la PC: " + PcUser;
-                    ctrlInfo.InsertarLog(log);
+                    string log = "Intento Fallido de inicio de Sesion" + " por la PC: " + PcUser;
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                     Limpiar();
                 }
                 else
@@ -62,8 +63,9 @@ namespace INASOFT_3._0
                     frm.Visible = true;
                     this.Visible = false;
 
-                    string log = "[" + DateTime.Now + "] " + "Inicio de Sesion " + " por: " + Sesion.nombre;
-                    ctrlInfo.InsertarLog(log);
+                    string log = "Inicio de Sesion " + " por: " + Sesion.nombre;
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                 }
             }
             catch (MySqlException ex)
@@ -103,8 +105,9 @@ namespace INASOFT_3._0
                     if (respuesta.Length > 0)
                     {
                         guna2MessageWar.Show(respuesta, "Aviso");
-                        string log = "[" + DateTime.Now + "] " + "Intento Fallido de inicio de Sesion" + " por la PC: " + PcUser;
-                        ctrlInfo.InsertarLog(log);
+                        string log = "Intento Fallido de inicio de Sesion" + " por la PC: " + PcUser;
+                        string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                        ctrlInfo.InsertarLog(fecha, log);
                         Limpiar();
                     }
                     else
@@ -113,8 +116,9 @@ namespace INASOFT_3._0
                         frm.Visible = true;
                         this.Visible = false;
 
-                        string log = "[" + DateTime.Now + "] " + "Inicio de Sesion " + " por: " + Sesion.nombre;
-                        ctrlInfo.InsertarLog(log);
+                        string log = "Inicio de Sesion " + " por: " + Sesion.nombre;
+                        string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                        ctrlInfo.InsertarLog(fecha, log);
                     }
                 }
                 catch (MySqlException ex)

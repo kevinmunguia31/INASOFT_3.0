@@ -252,6 +252,7 @@ CREATE TABLE `InfoGeneral` (
 -- TABLA Logs
 CREATE TABLE `Logs` (
 	`IDlogs` INT NOT NULL AUTO_INCREMENT,
+    `Fecha` DATETIME,
 	`Descripcion` VARCHAR(200) DEFAULT NULL,
 	PRIMARY KEY (`IDlogs`)
 );

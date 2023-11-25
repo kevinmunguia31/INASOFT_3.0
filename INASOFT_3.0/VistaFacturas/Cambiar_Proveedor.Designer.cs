@@ -43,6 +43,7 @@
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.TxtIDProducto = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Btn_RealizarCompra = new Guna.UI2.WinForms.Guna2Button();
             this.TxtBuscar_Productos = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.MessageDialogError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.MessageBox_Import = new Guna.UI2.WinForms.Guna2MessageDialog();
-            this.Btn_RealizarCompra = new Guna.UI2.WinForms.Guna2Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
@@ -99,8 +99,9 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(747, 36);
+            this.panel2.Size = new System.Drawing.Size(996, 44);
             this.panel2.TabIndex = 2;
             // 
             // btnClose
@@ -113,9 +114,10 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(700, 3);
+            this.btnClose.Location = new System.Drawing.Point(933, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 26);
+            this.btnClose.Size = new System.Drawing.Size(48, 32);
             this.btnClose.TabIndex = 2;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -124,18 +126,20 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(43, 3);
+            this.labelTitle.Location = new System.Drawing.Point(57, 4);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(177, 26);
+            this.labelTitle.Size = new System.Drawing.Size(228, 34);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Cambio de proveedor";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(45, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -166,17 +170,19 @@
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(12, 42);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(16, 52);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(724, 660);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(965, 812);
             this.guna2GroupBox2.TabIndex = 128;
             this.guna2GroupBox2.Text = "Detalle de la compra";
             // 
             // TxtIDProducto
             // 
-            this.TxtIDProducto.Location = new System.Drawing.Point(696, 3);
+            this.TxtIDProducto.Location = new System.Drawing.Point(928, 4);
+            this.TxtIDProducto.Margin = new System.Windows.Forms.Padding(4);
             this.TxtIDProducto.Name = "TxtIDProducto";
-            this.TxtIDProducto.Size = new System.Drawing.Size(25, 25);
+            this.TxtIDProducto.Size = new System.Drawing.Size(32, 30);
             this.TxtIDProducto.TabIndex = 109;
             this.TxtIDProducto.Visible = false;
             // 
@@ -191,12 +197,32 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(462, 163);
+            this.button1.Location = new System.Drawing.Point(616, 201);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 31);
+            this.button1.Size = new System.Drawing.Size(48, 38);
             this.button1.TabIndex = 108;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
+            // 
+            // Btn_RealizarCompra
+            // 
+            this.Btn_RealizarCompra.BorderRadius = 8;
+            this.Btn_RealizarCompra.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_RealizarCompra.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_RealizarCompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_RealizarCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_RealizarCompra.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(9)))), ((int)(((byte)(108)))));
+            this.Btn_RealizarCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_RealizarCompra.ForeColor = System.Drawing.Color.White;
+            this.Btn_RealizarCompra.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RealizarCompra.Image")));
+            this.Btn_RealizarCompra.Location = new System.Drawing.Point(755, 754);
+            this.Btn_RealizarCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_RealizarCompra.Name = "Btn_RealizarCompra";
+            this.Btn_RealizarCompra.Size = new System.Drawing.Size(207, 42);
+            this.Btn_RealizarCompra.TabIndex = 4;
+            this.Btn_RealizarCompra.Text = "Cambiar proveedor";
+            this.Btn_RealizarCompra.Click += new System.EventHandler(this.Btn_RealizarCompra_Click);
             // 
             // TxtBuscar_Productos
             // 
@@ -218,14 +244,14 @@
             this.TxtBuscar_Productos.ForeColor = System.Drawing.Color.Black;
             this.TxtBuscar_Productos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TxtBuscar_Productos.IconLeft = global::INASOFT_3._0.Properties.Resources.icons8_search_20px;
-            this.TxtBuscar_Productos.Location = new System.Drawing.Point(305, 163);
-            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtBuscar_Productos.Location = new System.Drawing.Point(407, 201);
+            this.TxtBuscar_Productos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtBuscar_Productos.Name = "TxtBuscar_Productos";
             this.TxtBuscar_Productos.PasswordChar = '\0';
             this.TxtBuscar_Productos.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.TxtBuscar_Productos.PlaceholderText = "Buscar productos";
             this.TxtBuscar_Productos.SelectedText = "";
-            this.TxtBuscar_Productos.Size = new System.Drawing.Size(151, 30);
+            this.TxtBuscar_Productos.Size = new System.Drawing.Size(201, 37);
             this.TxtBuscar_Productos.TabIndex = 107;
             this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
             // 
@@ -236,9 +262,11 @@
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.Txt_RUC);
             this.groupBox8.Controls.Add(this.cbProveedor);
-            this.groupBox8.Location = new System.Drawing.Point(1, 42);
+            this.groupBox8.Location = new System.Drawing.Point(1, 52);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(723, 93);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Size = new System.Drawing.Size(964, 114);
             this.groupBox8.TabIndex = 106;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Datos del proveedor";
@@ -248,9 +276,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(6, 21);
+            this.label1.Location = new System.Drawing.Point(8, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 22);
+            this.label1.Size = new System.Drawing.Size(111, 26);
             this.label1.TabIndex = 6;
             this.label1.Text = "Proveedores:";
             // 
@@ -259,9 +288,10 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(276, 21);
+            this.label9.Location = new System.Drawing.Point(368, 26);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 22);
+            this.label9.Size = new System.Drawing.Size(48, 26);
             this.label9.TabIndex = 11;
             this.label9.Text = "RUC:";
             // 
@@ -281,14 +311,14 @@
             this.Txt_RUC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_RUC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Txt_RUC.IconLeft = ((System.Drawing.Image)(resources.GetObject("Txt_RUC.IconLeft")));
-            this.Txt_RUC.Location = new System.Drawing.Point(280, 46);
-            this.Txt_RUC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_RUC.Location = new System.Drawing.Point(373, 57);
+            this.Txt_RUC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txt_RUC.Name = "Txt_RUC";
             this.Txt_RUC.PasswordChar = '\0';
             this.Txt_RUC.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.Txt_RUC.PlaceholderText = "Número de RUC";
             this.Txt_RUC.SelectedText = "";
-            this.Txt_RUC.Size = new System.Drawing.Size(232, 30);
+            this.Txt_RUC.Size = new System.Drawing.Size(309, 37);
             this.Txt_RUC.TabIndex = 105;
             // 
             // cbProveedor
@@ -300,9 +330,10 @@
             this.cbProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.IntegralHeight = false;
-            this.cbProveedor.Location = new System.Drawing.Point(10, 46);
+            this.cbProveedor.Location = new System.Drawing.Point(13, 57);
+            this.cbProveedor.Margin = new System.Windows.Forms.Padding(4);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(253, 30);
+            this.cbProveedor.Size = new System.Drawing.Size(336, 34);
             this.cbProveedor.TabIndex = 89;
             this.cbProveedor.SelectedIndexChanged += new System.EventHandler(this.cbProveedor_SelectedIndexChanged);
             // 
@@ -312,9 +343,10 @@
             this.Lb_Producto.BackColor = System.Drawing.Color.Transparent;
             this.Lb_Producto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Lb_Producto.Location = new System.Drawing.Point(7, 138);
+            this.Lb_Producto.Location = new System.Drawing.Point(9, 170);
+            this.Lb_Producto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Producto.Name = "Lb_Producto";
-            this.Lb_Producto.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Producto.Size = new System.Drawing.Size(94, 26);
             this.Lb_Producto.TabIndex = 97;
             this.Lb_Producto.Text = "Productos:";
             // 
@@ -332,14 +364,14 @@
             this.Txt_IDProd.Font = new System.Drawing.Font("Poppins", 9F);
             this.Txt_IDProd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Txt_IDProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_IDProd.Location = new System.Drawing.Point(1024, 4);
-            this.Txt_IDProd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_IDProd.Location = new System.Drawing.Point(1365, 5);
+            this.Txt_IDProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txt_IDProd.Name = "Txt_IDProd";
             this.Txt_IDProd.PasswordChar = '\0';
             this.Txt_IDProd.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.Txt_IDProd.PlaceholderText = "";
             this.Txt_IDProd.SelectedText = "";
-            this.Txt_IDProd.Size = new System.Drawing.Size(29, 26);
+            this.Txt_IDProd.Size = new System.Drawing.Size(39, 32);
             this.Txt_IDProd.TabIndex = 96;
             this.Txt_IDProd.Visible = false;
             // 
@@ -350,9 +382,10 @@
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(11, 381);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(15, 469);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(495, 266);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(660, 327);
             this.guna2GroupBox1.TabIndex = 87;
             this.guna2GroupBox1.Text = "Productos comprados";
             // 
@@ -367,7 +400,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -378,20 +411,21 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 31);
+            this.dataGridView1.GridColor = System.Drawing.Color.Gray;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 38);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(495, 203);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 250);
             this.dataGridView1.TabIndex = 25;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
@@ -406,7 +440,7 @@
             this.datagridView2.BackgroundColor = System.Drawing.Color.White;
             this.datagridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -425,20 +459,21 @@
             this.Column6});
             this.datagridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.datagridView2.EnableHeadersVisualStyles = false;
-            this.datagridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.datagridView2.Location = new System.Drawing.Point(0, 234);
+            this.datagridView2.GridColor = System.Drawing.Color.Gray;
+            this.datagridView2.Location = new System.Drawing.Point(0, 288);
+            this.datagridView2.Margin = new System.Windows.Forms.Padding(4);
             this.datagridView2.Name = "datagridView2";
             this.datagridView2.ReadOnly = true;
             this.datagridView2.RowHeadersVisible = false;
             this.datagridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.datagridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridView2.Size = new System.Drawing.Size(495, 32);
+            this.datagridView2.Size = new System.Drawing.Size(660, 39);
             this.datagridView2.TabIndex = 87;
             // 
             // Column1
@@ -499,9 +534,11 @@
             this.GroupBox_Products.Controls.Add(this.label5);
             this.GroupBox_Products.Controls.Add(this.txtObservacion);
             this.GroupBox_Products.Controls.Add(this.label3);
-            this.GroupBox_Products.Location = new System.Drawing.Point(1, 199);
+            this.GroupBox_Products.Location = new System.Drawing.Point(1, 245);
+            this.GroupBox_Products.Margin = new System.Windows.Forms.Padding(4);
             this.GroupBox_Products.Name = "GroupBox_Products";
-            this.GroupBox_Products.Size = new System.Drawing.Size(723, 176);
+            this.GroupBox_Products.Padding = new System.Windows.Forms.Padding(4);
+            this.GroupBox_Products.Size = new System.Drawing.Size(964, 217);
             this.GroupBox_Products.TabIndex = 86;
             this.GroupBox_Products.TabStop = false;
             // 
@@ -510,9 +547,10 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(391, 108);
+            this.label13.Location = new System.Drawing.Point(521, 133);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 22);
+            this.label13.Size = new System.Drawing.Size(103, 26);
             this.label13.TabIndex = 11;
             this.label13.Text = "Cant. Stock:";
             // 
@@ -521,9 +559,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(391, 21);
+            this.label6.Location = new System.Drawing.Point(521, 26);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 22);
+            this.label6.Size = new System.Drawing.Size(149, 26);
             this.label6.TabIndex = 9;
             this.label6.Text = "Precio de compra:";
             // 
@@ -543,14 +582,14 @@
             this.txtPrecioCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrecioCompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioCompra.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioCompra.IconLeft")));
-            this.txtPrecioCompra.Location = new System.Drawing.Point(391, 45);
-            this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(521, 55);
+            this.txtPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.PasswordChar = '\0';
             this.txtPrecioCompra.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtPrecioCompra.PlaceholderText = "Prc. Compra";
             this.txtPrecioCompra.SelectedText = "";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(121, 30);
+            this.txtPrecioCompra.Size = new System.Drawing.Size(161, 37);
             this.txtPrecioCompra.TabIndex = 6;
             // 
             // Lb_CantStocks
@@ -558,9 +597,10 @@
             this.Lb_CantStocks.AutoSize = true;
             this.Lb_CantStocks.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_CantStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Lb_CantStocks.Location = new System.Drawing.Point(391, 128);
+            this.Lb_CantStocks.Location = new System.Drawing.Point(521, 158);
+            this.Lb_CantStocks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_CantStocks.Name = "Lb_CantStocks";
-            this.Lb_CantStocks.Size = new System.Drawing.Size(24, 22);
+            this.Lb_CantStocks.Size = new System.Drawing.Size(30, 26);
             this.Lb_CantStocks.TabIndex = 12;
             this.Lb_CantStocks.Text = "--";
             // 
@@ -569,9 +609,10 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(538, 21);
+            this.label7.Location = new System.Drawing.Point(717, 26);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 22);
+            this.label7.Size = new System.Drawing.Size(132, 26);
             this.label7.TabIndex = 10;
             this.label7.Text = "Precio de venta:";
             // 
@@ -591,14 +632,14 @@
             this.txtPrecioVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrecioVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioVenta.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPrecioVenta.IconLeft")));
-            this.txtPrecioVenta.Location = new System.Drawing.Point(538, 45);
-            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(717, 55);
+            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.PasswordChar = '\0';
             this.txtPrecioVenta.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtPrecioVenta.PlaceholderText = "Prc. Venta";
             this.txtPrecioVenta.SelectedText = "";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(121, 30);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(161, 37);
             this.txtPrecioVenta.TabIndex = 7;
             // 
             // Btn_AddProducto
@@ -612,9 +653,10 @@
             this.Btn_AddProducto.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_AddProducto.ForeColor = System.Drawing.Color.White;
             this.Btn_AddProducto.Image = ((System.Drawing.Image)(resources.GetObject("Btn_AddProducto.Image")));
-            this.Btn_AddProducto.Location = new System.Drawing.Point(580, 128);
+            this.Btn_AddProducto.Location = new System.Drawing.Point(773, 158);
+            this.Btn_AddProducto.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_AddProducto.Name = "Btn_AddProducto";
-            this.Btn_AddProducto.Size = new System.Drawing.Size(137, 34);
+            this.Btn_AddProducto.Size = new System.Drawing.Size(183, 42);
             this.Btn_AddProducto.TabIndex = 88;
             this.Btn_AddProducto.Text = "Agregar producto";
             this.Btn_AddProducto.Click += new System.EventHandler(this.Btn_AddProducto_Click);
@@ -624,9 +666,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(6, 21);
+            this.label4.Location = new System.Drawing.Point(8, 26);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 22);
+            this.label4.Size = new System.Drawing.Size(178, 26);
             this.label4.TabIndex = 7;
             this.label4.Text = "Nombre del producto:";
             // 
@@ -646,14 +689,14 @@
             this.txtNameP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNameP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameP.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtNameP.IconLeft")));
-            this.txtNameP.Location = new System.Drawing.Point(6, 45);
-            this.txtNameP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNameP.Location = new System.Drawing.Point(8, 55);
+            this.txtNameP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNameP.Name = "txtNameP";
             this.txtNameP.PasswordChar = '\0';
             this.txtNameP.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtNameP.PlaceholderText = "Nombre del Producto";
             this.txtNameP.SelectedText = "";
-            this.txtNameP.Size = new System.Drawing.Size(177, 30);
+            this.txtNameP.Size = new System.Drawing.Size(236, 37);
             this.txtNameP.TabIndex = 1;
             // 
             // txtCodBarra
@@ -672,14 +715,14 @@
             this.txtCodBarra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCodBarra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodBarra.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtCodBarra.IconLeft")));
-            this.txtCodBarra.Location = new System.Drawing.Point(196, 45);
-            this.txtCodBarra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCodBarra.Location = new System.Drawing.Point(261, 55);
+            this.txtCodBarra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCodBarra.Name = "txtCodBarra";
             this.txtCodBarra.PasswordChar = '\0';
             this.txtCodBarra.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtCodBarra.PlaceholderText = "Ingrese Codigo de Barra";
             this.txtCodBarra.SelectedText = "";
-            this.txtCodBarra.Size = new System.Drawing.Size(177, 30);
+            this.txtCodBarra.Size = new System.Drawing.Size(236, 37);
             this.txtCodBarra.TabIndex = 0;
             // 
             // label5
@@ -687,9 +730,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(192, 21);
+            this.label5.Location = new System.Drawing.Point(256, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 22);
+            this.label5.Size = new System.Drawing.Size(171, 26);
             this.label5.TabIndex = 8;
             this.label5.Text = "Código del producto:";
             // 
@@ -709,8 +753,8 @@
             this.txtObservacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObservacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacion.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtObservacion.IconLeft")));
-            this.txtObservacion.Location = new System.Drawing.Point(10, 108);
-            this.txtObservacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtObservacion.Location = new System.Drawing.Point(13, 133);
+            this.txtObservacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasswordChar = '\0';
@@ -718,7 +762,7 @@
             this.txtObservacion.PlaceholderText = "Observaciones";
             this.txtObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacion.SelectedText = "";
-            this.txtObservacion.Size = new System.Drawing.Size(363, 54);
+            this.txtObservacion.Size = new System.Drawing.Size(484, 66);
             this.txtObservacion.TabIndex = 5;
             // 
             // label3
@@ -726,9 +770,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(6, 82);
+            this.label3.Location = new System.Drawing.Point(8, 101);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 22);
+            this.label3.Size = new System.Drawing.Size(130, 26);
             this.label3.TabIndex = 6;
             this.label3.Text = "Observaciones:";
             // 
@@ -741,9 +786,10 @@
             this.Cbx_Productos.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Productos.FormattingEnabled = true;
             this.Cbx_Productos.IntegralHeight = false;
-            this.Cbx_Productos.Location = new System.Drawing.Point(11, 163);
+            this.Cbx_Productos.Location = new System.Drawing.Point(15, 201);
+            this.Cbx_Productos.Margin = new System.Windows.Forms.Padding(4);
             this.Cbx_Productos.Name = "Cbx_Productos";
-            this.Cbx_Productos.Size = new System.Drawing.Size(288, 30);
+            this.Cbx_Productos.Size = new System.Drawing.Size(383, 34);
             this.Cbx_Productos.TabIndex = 82;
             this.Cbx_Productos.SelectedIndexChanged += new System.EventHandler(this.Cbx_Productos_SelectedIndexChanged);
             // 
@@ -778,32 +824,15 @@
             this.MessageBox_Import.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.MessageBox_Import.Text = null;
             // 
-            // Btn_RealizarCompra
-            // 
-            this.Btn_RealizarCompra.BorderRadius = 8;
-            this.Btn_RealizarCompra.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_RealizarCompra.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_RealizarCompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Btn_RealizarCompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Btn_RealizarCompra.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(9)))), ((int)(((byte)(108)))));
-            this.Btn_RealizarCompra.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RealizarCompra.ForeColor = System.Drawing.Color.White;
-            this.Btn_RealizarCompra.Image = ((System.Drawing.Image)(resources.GetObject("Btn_RealizarCompra.Image")));
-            this.Btn_RealizarCompra.Location = new System.Drawing.Point(566, 613);
-            this.Btn_RealizarCompra.Name = "Btn_RealizarCompra";
-            this.Btn_RealizarCompra.Size = new System.Drawing.Size(155, 34);
-            this.Btn_RealizarCompra.TabIndex = 4;
-            this.Btn_RealizarCompra.Text = "Cambiar proveedor";
-            this.Btn_RealizarCompra.Click += new System.EventHandler(this.Btn_RealizarCompra_Click);
-            // 
             // Cambiar_Proveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 718);
+            this.ClientSize = new System.Drawing.Size(996, 884);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Cambiar_Proveedor";
             this.Text = "Cambiar_Proveedor";
             this.panel2.ResumeLayout(false);

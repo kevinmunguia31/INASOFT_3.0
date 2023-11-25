@@ -134,8 +134,9 @@ namespace INASOFT_3._0.VistaFacturas
 
                         CtrlInfo ctrlInfo = new CtrlInfo();
                         MessageBox_Import.Show("Se ha realizacón la anulación de la factura con éxito.\n", "Aviso");
-                        string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Se ha anulado la Fact." + Lb_Factura.Text;
-                        ctrlInfo.InsertarLog(log);
+                        string log = Sesion.nombre + " Se ha anulado la Fact." + Lb_Factura.Text;
+                        string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                        ctrlInfo.InsertarLog(fecha, log);
                         this.Close();
                     }
                 }

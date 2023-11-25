@@ -172,9 +172,10 @@ namespace INASOFT_3._0.UserControls
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label1.Location = new System.Drawing.Point(48, 8);
+            this.label1.Location = new System.Drawing.Point(64, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 36);
+            this.label1.Size = new System.Drawing.Size(326, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Productos en inventario";
             // 
@@ -202,9 +203,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox2.Controls.Add(this.lbCapital);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.lbCantTotal);
-            this.groupBox2.Location = new System.Drawing.Point(0, 39);
+            this.groupBox2.Location = new System.Drawing.Point(0, 48);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(206, 153);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(275, 188);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             // 
@@ -212,9 +215,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 23);
+            this.label11.Location = new System.Drawing.Point(8, 28);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(150, 25);
+            this.label11.Size = new System.Drawing.Size(182, 30);
             this.label11.TabIndex = 5;
             this.label11.Text = "Cant. de Productos:";
             // 
@@ -223,9 +227,10 @@ namespace INASOFT_3._0.UserControls
             this.lbCapital.AutoSize = true;
             this.lbCapital.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCapital.Location = new System.Drawing.Point(12, 90);
+            this.lbCapital.Location = new System.Drawing.Point(16, 111);
+            this.lbCapital.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCapital.Name = "lbCapital";
-            this.lbCapital.Size = new System.Drawing.Size(22, 28);
+            this.lbCapital.Size = new System.Drawing.Size(28, 36);
             this.lbCapital.TabIndex = 4;
             this.lbCapital.Text = "0";
             // 
@@ -233,9 +238,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 65);
+            this.label12.Location = new System.Drawing.Point(8, 80);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 25);
+            this.label12.Size = new System.Drawing.Size(144, 30);
             this.label12.TabIndex = 2;
             this.label12.Text = "Total Invertido:";
             // 
@@ -244,9 +250,10 @@ namespace INASOFT_3._0.UserControls
             this.lbCantTotal.AutoSize = true;
             this.lbCantTotal.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCantTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lbCantTotal.Location = new System.Drawing.Point(151, 21);
+            this.lbCantTotal.Location = new System.Drawing.Point(201, 26);
+            this.lbCantTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCantTotal.Name = "lbCantTotal";
-            this.lbCantTotal.Size = new System.Drawing.Size(22, 28);
+            this.lbCantTotal.Size = new System.Drawing.Size(28, 36);
             this.lbCantTotal.TabIndex = 1;
             this.lbCantTotal.Text = "0";
             // 
@@ -285,27 +292,30 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox1.Controls.Add(this.groupBox_Detalle);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(5, 332);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(7, 409);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(956, 192);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1275, 236);
             this.guna2GroupBox1.TabIndex = 77;
             this.guna2GroupBox1.Text = "          Detalles del Producto:";
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox3.Size = new System.Drawing.Size(41, 41);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 87;
             this.pictureBox3.TabStop = false;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(921, 3);
+            this.txtID.Location = new System.Drawing.Point(1228, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(32, 27);
+            this.txtID.Size = new System.Drawing.Size(41, 32);
             this.txtID.TabIndex = 18;
             this.txtID.Visible = false;
             // 
@@ -330,9 +340,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox_Detalle.Controls.Add(this.label3);
             this.groupBox_Detalle.Controls.Add(this.label2);
             this.groupBox_Detalle.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_Detalle.Location = new System.Drawing.Point(3, 42);
+            this.groupBox_Detalle.Location = new System.Drawing.Point(4, 52);
+            this.groupBox_Detalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox_Detalle.Name = "groupBox_Detalle";
-            this.groupBox_Detalle.Size = new System.Drawing.Size(953, 150);
+            this.groupBox_Detalle.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_Detalle.Size = new System.Drawing.Size(1271, 185);
             this.groupBox_Detalle.TabIndex = 3;
             this.groupBox_Detalle.TabStop = false;
             this.groupBox_Detalle.Text = "Producto ....";
@@ -341,9 +353,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbProveedor.AutoSize = true;
             this.lbProveedor.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProveedor.Location = new System.Drawing.Point(706, 73);
+            this.lbProveedor.Location = new System.Drawing.Point(941, 90);
+            this.lbProveedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbProveedor.Name = "lbProveedor";
-            this.lbProveedor.Size = new System.Drawing.Size(27, 25);
+            this.lbProveedor.Size = new System.Drawing.Size(33, 30);
             this.lbProveedor.TabIndex = 17;
             this.lbProveedor.Text = ".....";
             // 
@@ -351,9 +364,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbObservaciones.AutoSize = true;
             this.lbObservaciones.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbObservaciones.Location = new System.Drawing.Point(738, 28);
+            this.lbObservaciones.Location = new System.Drawing.Point(984, 34);
+            this.lbObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbObservaciones.Name = "lbObservaciones";
-            this.lbObservaciones.Size = new System.Drawing.Size(27, 25);
+            this.lbObservaciones.Size = new System.Drawing.Size(33, 30);
             this.lbObservaciones.TabIndex = 16;
             this.lbObservaciones.Text = ".....";
             // 
@@ -361,9 +375,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbPrecioTotal.AutoSize = true;
             this.lbPrecioTotal.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioTotal.Location = new System.Drawing.Point(483, 117);
+            this.lbPrecioTotal.Location = new System.Drawing.Point(644, 144);
+            this.lbPrecioTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioTotal.Name = "lbPrecioTotal";
-            this.lbPrecioTotal.Size = new System.Drawing.Size(27, 25);
+            this.lbPrecioTotal.Size = new System.Drawing.Size(33, 30);
             this.lbPrecioTotal.TabIndex = 15;
             this.lbPrecioTotal.Text = ".....";
             // 
@@ -372,9 +387,10 @@ namespace INASOFT_3._0.UserControls
             this.lbPrecioVenta.AutoSize = true;
             this.lbPrecioVenta.BackColor = System.Drawing.Color.Transparent;
             this.lbPrecioVenta.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioVenta.Location = new System.Drawing.Point(433, 72);
+            this.lbPrecioVenta.Location = new System.Drawing.Point(577, 89);
+            this.lbPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioVenta.Name = "lbPrecioVenta";
-            this.lbPrecioVenta.Size = new System.Drawing.Size(32, 25);
+            this.lbPrecioVenta.Size = new System.Drawing.Size(38, 30);
             this.lbPrecioVenta.TabIndex = 13;
             this.lbPrecioVenta.Text = ".....";
             // 
@@ -383,9 +399,10 @@ namespace INASOFT_3._0.UserControls
             this.lbPrecioCompra.AutoSize = true;
             this.lbPrecioCompra.BackColor = System.Drawing.Color.Transparent;
             this.lbPrecioCompra.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecioCompra.Location = new System.Drawing.Point(451, 29);
+            this.lbPrecioCompra.Location = new System.Drawing.Point(601, 36);
+            this.lbPrecioCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrecioCompra.Name = "lbPrecioCompra";
-            this.lbPrecioCompra.Size = new System.Drawing.Size(27, 25);
+            this.lbPrecioCompra.Size = new System.Drawing.Size(33, 30);
             this.lbPrecioCompra.TabIndex = 12;
             this.lbPrecioCompra.Text = ".....";
             // 
@@ -395,9 +412,10 @@ namespace INASOFT_3._0.UserControls
             this.lbExistencias.BackColor = System.Drawing.Color.Transparent;
             this.lbExistencias.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbExistencias.ForeColor = System.Drawing.Color.Black;
-            this.lbExistencias.Location = new System.Drawing.Point(118, 117);
+            this.lbExistencias.Location = new System.Drawing.Point(157, 144);
+            this.lbExistencias.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(27, 25);
+            this.lbExistencias.Size = new System.Drawing.Size(33, 30);
             this.lbExistencias.TabIndex = 11;
             this.lbExistencias.Text = ".....";
             // 
@@ -405,9 +423,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbNameP.AutoSize = true;
             this.lbNameP.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameP.Location = new System.Drawing.Point(104, 72);
+            this.lbNameP.Location = new System.Drawing.Point(139, 89);
+            this.lbNameP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNameP.Name = "lbNameP";
-            this.lbNameP.Size = new System.Drawing.Size(27, 25);
+            this.lbNameP.Size = new System.Drawing.Size(33, 30);
             this.lbNameP.TabIndex = 10;
             this.lbNameP.Text = ".....";
             // 
@@ -415,9 +434,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.lbCodigo.AutoSize = true;
             this.lbCodigo.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodigo.Location = new System.Drawing.Point(90, 28);
+            this.lbCodigo.Location = new System.Drawing.Point(120, 34);
+            this.lbCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(27, 25);
+            this.lbCodigo.Size = new System.Drawing.Size(33, 30);
             this.lbCodigo.TabIndex = 9;
             this.lbCodigo.Text = ".....";
             // 
@@ -426,9 +446,10 @@ namespace INASOFT_3._0.UserControls
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(600, 73);
+            this.label8.Location = new System.Drawing.Point(800, 90);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 25);
+            this.label8.Size = new System.Drawing.Size(133, 30);
             this.label8.TabIndex = 8;
             this.label8.Text = "       Proveedor:";
             // 
@@ -438,9 +459,10 @@ namespace INASOFT_3._0.UserControls
             this.label9.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Image = global::INASOFT_3._0.Properties.Resources.icons8_invisible_20px;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(600, 28);
+            this.label9.Location = new System.Drawing.Point(800, 34);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 25);
+            this.label9.Size = new System.Drawing.Size(174, 30);
             this.label9.TabIndex = 7;
             this.label9.Text = "       Observaciones:";
             // 
@@ -449,9 +471,10 @@ namespace INASOFT_3._0.UserControls
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(289, 117);
+            this.label10.Location = new System.Drawing.Point(385, 144);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(203, 25);
+            this.label10.Size = new System.Drawing.Size(250, 30);
             this.label10.TabIndex = 6;
             this.label10.Text = "       Precio Total (Exit*Unid): ";
             // 
@@ -460,9 +483,10 @@ namespace INASOFT_3._0.UserControls
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(289, 72);
+            this.label6.Location = new System.Drawing.Point(385, 89);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 25);
+            this.label6.Size = new System.Drawing.Size(184, 30);
             this.label6.TabIndex = 4;
             this.label6.Text = "       Precio de Venta: ";
             // 
@@ -471,9 +495,10 @@ namespace INASOFT_3._0.UserControls
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.Location = new System.Drawing.Point(289, 29);
+            this.label7.Location = new System.Drawing.Point(385, 36);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(168, 25);
+            this.label7.Size = new System.Drawing.Size(205, 30);
             this.label7.TabIndex = 3;
             this.label7.Text = "       Precio de Compra: ";
             // 
@@ -482,9 +507,10 @@ namespace INASOFT_3._0.UserControls
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(6, 117);
+            this.label4.Location = new System.Drawing.Point(8, 144);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 25);
+            this.label4.Size = new System.Drawing.Size(141, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "       Existencias:";
             // 
@@ -493,9 +519,10 @@ namespace INASOFT_3._0.UserControls
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Location = new System.Drawing.Point(8, 89);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 25);
+            this.label3.Size = new System.Drawing.Size(124, 30);
             this.label3.TabIndex = 1;
             this.label3.Text = "       Producto:";
             // 
@@ -504,9 +531,10 @@ namespace INASOFT_3._0.UserControls
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(6, 29);
+            this.label2.Location = new System.Drawing.Point(8, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 25);
+            this.label2.Size = new System.Drawing.Size(109, 30);
             this.label2.TabIndex = 0;
             this.label2.Text = "       Codigo:";
             // 
@@ -517,18 +545,20 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox2.Controls.Add(this.groupBox2);
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(967, 332);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1289, 409);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(206, 192);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(275, 236);
             this.guna2GroupBox2.TabIndex = 78;
             this.guna2GroupBox2.Text = "          Datos generales";
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox2.Size = new System.Drawing.Size(41, 41);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 87;
             this.pictureBox2.TabStop = false;
@@ -596,9 +626,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button6.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button6.Location = new System.Drawing.Point(981, 11);
+            this.guna2Button6.Location = new System.Drawing.Point(1308, 14);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(135, 33);
+            this.guna2Button6.Size = new System.Drawing.Size(180, 41);
             this.guna2Button6.TabIndex = 88;
             this.guna2Button6.Text = "Restablecer";
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -607,10 +638,10 @@ namespace INASOFT_3._0.UserControls
             // pictureBox1
             // 
             this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_maintenance_50px;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(52, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 84;
             this.pictureBox1.TabStop = false;
@@ -626,9 +657,10 @@ namespace INASOFT_3._0.UserControls
             this.Bttn_Info.ForeColor = System.Drawing.SystemColors.Control;
             this.Bttn_Info.Image = ((System.Drawing.Image)(resources.GetObject("Bttn_Info.Image")));
             this.Bttn_Info.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Bttn_Info.Location = new System.Drawing.Point(302, 11);
+            this.Bttn_Info.Location = new System.Drawing.Point(403, 14);
+            this.Bttn_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Bttn_Info.Name = "Bttn_Info";
-            this.Bttn_Info.Size = new System.Drawing.Size(31, 29);
+            this.Bttn_Info.Size = new System.Drawing.Size(41, 36);
             this.Bttn_Info.TabIndex = 76;
             this.Bttn_Info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Bttn_Info.UseVisualStyleBackColor = false;
@@ -646,9 +678,10 @@ namespace INASOFT_3._0.UserControls
             this.btnAdd.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(1203, 12);
+            this.btnAdd.Location = new System.Drawing.Point(1604, 15);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(138, 34);
+            this.btnAdd.Size = new System.Drawing.Size(184, 42);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Realizar compra";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -669,13 +702,13 @@ namespace INASOFT_3._0.UserControls
             this.txtSearch.Font = new System.Drawing.Font("Poppins", 9F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.Location = new System.Drawing.Point(1122, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearch.Location = new System.Drawing.Point(1496, 14);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Buscar Producto";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(216, 33);
+            this.txtSearch.Size = new System.Drawing.Size(288, 41);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -688,10 +721,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2TabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.ItemSize = new System.Drawing.Size(210, 50);
             this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
-            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1354, 587);
+            this.guna2TabControl1.Size = new System.Drawing.Size(1805, 722);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -726,10 +759,10 @@ namespace INASOFT_3._0.UserControls
             this.Inv.Controls.Add(this.txtSearch);
             this.Inv.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Inv.Location = new System.Drawing.Point(4, 54);
-            this.Inv.Margin = new System.Windows.Forms.Padding(2);
+            this.Inv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Inv.Name = "Inv";
-            this.Inv.Padding = new System.Windows.Forms.Padding(2);
-            this.Inv.Size = new System.Drawing.Size(1346, 529);
+            this.Inv.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Inv.Size = new System.Drawing.Size(1797, 664);
             this.Inv.TabIndex = 0;
             this.Inv.Text = "Inventario de productos";
             this.Inv.UseVisualStyleBackColor = true;
@@ -742,18 +775,20 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox3.Controls.Add(this.groupBox4);
             this.guna2GroupBox3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox3.Location = new System.Drawing.Point(1179, 332);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(1572, 409);
+            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(159, 192);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(212, 236);
             this.guna2GroupBox3.TabIndex = 88;
             this.guna2GroupBox3.Text = "          Datos generales";
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox5.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 33);
+            this.pictureBox5.Size = new System.Drawing.Size(41, 41);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 87;
             this.pictureBox5.TabStop = false;
@@ -764,9 +799,11 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btnExcel);
             this.groupBox4.Controls.Add(this.btnPDF);
-            this.groupBox4.Location = new System.Drawing.Point(0, 39);
+            this.groupBox4.Location = new System.Drawing.Point(0, 48);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(159, 153);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(212, 188);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             // 
@@ -782,9 +819,10 @@ namespace INASOFT_3._0.UserControls
             this.btnExcel.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.ForeColor = System.Drawing.Color.Black;
             this.btnExcel.Image = global::INASOFT_3._0.Properties.Resources.icons8_microsoft_excel_20px;
-            this.btnExcel.Location = new System.Drawing.Point(11, 23);
+            this.btnExcel.Location = new System.Drawing.Point(15, 28);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(136, 37);
+            this.btnExcel.Size = new System.Drawing.Size(181, 46);
             this.btnExcel.TabIndex = 94;
             this.btnExcel.Text = "Exportar a EXCEL";
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -801,9 +839,10 @@ namespace INASOFT_3._0.UserControls
             this.btnPDF.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPDF.ForeColor = System.Drawing.Color.Black;
             this.btnPDF.Image = global::INASOFT_3._0.Properties.Resources.icons8_pdf_20px;
-            this.btnPDF.Location = new System.Drawing.Point(11, 76);
+            this.btnPDF.Location = new System.Drawing.Point(15, 94);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPDF.Name = "btnPDF";
-            this.btnPDF.Size = new System.Drawing.Size(136, 37);
+            this.btnPDF.Size = new System.Drawing.Size(181, 46);
             this.btnPDF.TabIndex = 93;
             this.btnPDF.Text = "Exportar a PDF";
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
@@ -814,9 +853,11 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 46);
+            this.groupBox1.Location = new System.Drawing.Point(4, 57);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1338, 280);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1784, 345);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             // 
@@ -826,10 +867,10 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -840,19 +881,20 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView1.GridColor = System.Drawing.Color.Gray;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 27);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1332, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(1776, 314);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting_1);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -868,8 +910,9 @@ namespace INASOFT_3._0.UserControls
             this.Remisiones.Controls.Add(this.groupBox9);
             this.Remisiones.Controls.Add(this.guna2Button2);
             this.Remisiones.Location = new System.Drawing.Point(4, 54);
+            this.Remisiones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Remisiones.Name = "Remisiones";
-            this.Remisiones.Size = new System.Drawing.Size(1346, 529);
+            this.Remisiones.Size = new System.Drawing.Size(1797, 664);
             this.Remisiones.TabIndex = 2;
             this.Remisiones.Text = "Remisiones Entrada/Salida";
             this.Remisiones.UseVisualStyleBackColor = true;
@@ -886,9 +929,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button9.ForeColor = System.Drawing.Color.White;
             this.guna2Button9.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button9.Image")));
-            this.guna2Button9.Location = new System.Drawing.Point(967, 14);
+            this.guna2Button9.Location = new System.Drawing.Point(1289, 17);
+            this.guna2Button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button9.Name = "guna2Button9";
-            this.guna2Button9.Size = new System.Drawing.Size(179, 34);
+            this.guna2Button9.Size = new System.Drawing.Size(239, 42);
             this.guna2Button9.TabIndex = 98;
             this.guna2Button9.Text = "Remisión de salida";
             this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
@@ -911,9 +955,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button7.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button7.Location = new System.Drawing.Point(826, 14);
+            this.guna2Button7.Location = new System.Drawing.Point(1101, 17);
+            this.guna2Button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button7.Name = "guna2Button7";
-            this.guna2Button7.Size = new System.Drawing.Size(135, 34);
+            this.guna2Button7.Size = new System.Drawing.Size(180, 42);
             this.guna2Button7.TabIndex = 97;
             this.guna2Button7.Text = "Actualizar";
             this.guna2Button7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -922,10 +967,10 @@ namespace INASOFT_3._0.UserControls
             // pictureBox6
             // 
             this.pictureBox6.Image = global::INASOFT_3._0.Properties.Resources.icons8_backup_66;
-            this.pictureBox6.Location = new System.Drawing.Point(7, 3);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox6.Location = new System.Drawing.Point(9, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox6.Size = new System.Drawing.Size(52, 49);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 90;
             this.pictureBox6.TabStop = false;
@@ -943,9 +988,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox6.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox6.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox6.Location = new System.Drawing.Point(979, 62);
+            this.guna2GroupBox6.Location = new System.Drawing.Point(1305, 76);
+            this.guna2GroupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox6.Name = "guna2GroupBox6";
-            this.guna2GroupBox6.Size = new System.Drawing.Size(363, 297);
+            this.guna2GroupBox6.Size = new System.Drawing.Size(484, 366);
             this.guna2GroupBox6.TabIndex = 96;
             this.guna2GroupBox6.Text = "Buscar remisiones";
             // 
@@ -957,9 +1003,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox8.Controls.Add(this.Rbt_RemisionEntrada);
             this.groupBox8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.ForeColor = System.Drawing.Color.Black;
-            this.groupBox8.Location = new System.Drawing.Point(0, 160);
+            this.groupBox8.Location = new System.Drawing.Point(0, 197);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(363, 137);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Size = new System.Drawing.Size(484, 169);
             this.groupBox8.TabIndex = 101;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Buscardor por tipos de facturas";
@@ -968,9 +1016,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.Rbt_RemisionSalida.AutoSize = true;
             this.Rbt_RemisionSalida.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbt_RemisionSalida.Location = new System.Drawing.Point(14, 76);
+            this.Rbt_RemisionSalida.Location = new System.Drawing.Point(19, 94);
+            this.Rbt_RemisionSalida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbt_RemisionSalida.Name = "Rbt_RemisionSalida";
-            this.Rbt_RemisionSalida.Size = new System.Drawing.Size(140, 26);
+            this.Rbt_RemisionSalida.Size = new System.Drawing.Size(176, 30);
             this.Rbt_RemisionSalida.TabIndex = 27;
             this.Rbt_RemisionSalida.TabStop = true;
             this.Rbt_RemisionSalida.Text = "Remisión de Salida";
@@ -987,9 +1036,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button8.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button8.ForeColor = System.Drawing.Color.White;
             this.guna2Button8.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button8.Image")));
-            this.guna2Button8.Location = new System.Drawing.Point(261, 90);
+            this.guna2Button8.Location = new System.Drawing.Point(348, 111);
+            this.guna2Button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button8.Name = "guna2Button8";
-            this.guna2Button8.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button8.Size = new System.Drawing.Size(121, 39);
             this.guna2Button8.TabIndex = 91;
             this.guna2Button8.Text = "Buscar";
             this.guna2Button8.Click += new System.EventHandler(this.guna2Button8_Click);
@@ -998,9 +1048,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.Rbt_RemisionEntrada.AutoSize = true;
             this.Rbt_RemisionEntrada.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbt_RemisionEntrada.Location = new System.Drawing.Point(14, 34);
+            this.Rbt_RemisionEntrada.Location = new System.Drawing.Point(19, 42);
+            this.Rbt_RemisionEntrada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbt_RemisionEntrada.Name = "Rbt_RemisionEntrada";
-            this.Rbt_RemisionEntrada.Size = new System.Drawing.Size(149, 26);
+            this.Rbt_RemisionEntrada.Size = new System.Drawing.Size(188, 30);
             this.Rbt_RemisionEntrada.TabIndex = 26;
             this.Rbt_RemisionEntrada.TabStop = true;
             this.Rbt_RemisionEntrada.Text = "Remisión de Entrada";
@@ -1016,9 +1067,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox7.Controls.Add(this.DateTimeTimer_End);
             this.groupBox7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(0, 51);
+            this.groupBox7.Location = new System.Drawing.Point(0, 63);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(363, 103);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Size = new System.Drawing.Size(484, 127);
             this.groupBox7.TabIndex = 95;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Buscador por fecha:";
@@ -1029,9 +1082,10 @@ namespace INASOFT_3._0.UserControls
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(13, 64);
+            this.label14.Location = new System.Drawing.Point(17, 79);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 22);
+            this.label14.Size = new System.Drawing.Size(58, 26);
             this.label14.TabIndex = 99;
             this.label14.Text = "Hasta:";
             // 
@@ -1040,9 +1094,10 @@ namespace INASOFT_3._0.UserControls
             this.DateTimeTimer_Ini.CustomFormat = "yyyy/MM/dd";
             this.DateTimeTimer_Ini.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_Ini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeTimer_Ini.Location = new System.Drawing.Point(69, 32);
+            this.DateTimeTimer_Ini.Location = new System.Drawing.Point(92, 39);
+            this.DateTimeTimer_Ini.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DateTimeTimer_Ini.Name = "DateTimeTimer_Ini";
-            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_Ini.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_Ini.TabIndex = 96;
             // 
             // guna2Button3
@@ -1056,9 +1111,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.Location = new System.Drawing.Point(261, 57);
+            this.guna2Button3.Location = new System.Drawing.Point(348, 70);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button3.Size = new System.Drawing.Size(121, 39);
             this.guna2Button3.TabIndex = 91;
             this.guna2Button3.Text = "Buscar";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -1069,9 +1125,10 @@ namespace INASOFT_3._0.UserControls
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(13, 32);
+            this.label20.Location = new System.Drawing.Point(17, 39);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 22);
+            this.label20.Size = new System.Drawing.Size(35, 26);
             this.label20.TabIndex = 98;
             this.label20.Text = "De:";
             // 
@@ -1080,9 +1137,10 @@ namespace INASOFT_3._0.UserControls
             this.DateTimeTimer_End.CustomFormat = "yyyy/MM/dd";
             this.DateTimeTimer_End.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeTimer_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeTimer_End.Location = new System.Drawing.Point(69, 64);
+            this.DateTimeTimer_End.Location = new System.Drawing.Point(92, 79);
+            this.DateTimeTimer_End.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DateTimeTimer_End.Name = "DateTimeTimer_End";
-            this.DateTimeTimer_End.Size = new System.Drawing.Size(145, 25);
+            this.DateTimeTimer_End.Size = new System.Drawing.Size(192, 30);
             this.DateTimeTimer_End.TabIndex = 97;
             // 
             // button3
@@ -1096,9 +1154,10 @@ namespace INASOFT_3._0.UserControls
             this.button3.ForeColor = System.Drawing.SystemColors.Control;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(126, 3);
+            this.button3.Location = new System.Drawing.Point(168, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 29);
+            this.button3.Size = new System.Drawing.Size(41, 36);
             this.button3.TabIndex = 94;
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = false;
@@ -1107,7 +1166,8 @@ namespace INASOFT_3._0.UserControls
             // 
             this.guna2GroupBox7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox7.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox7.Location = new System.Drawing.Point(0, 40);
+            this.guna2GroupBox7.Location = new System.Drawing.Point(0, 49);
+            this.guna2GroupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox7.Name = "guna2GroupBox7";
             this.guna2GroupBox7.Size = new System.Drawing.Size(0, 0);
             this.guna2GroupBox7.TabIndex = 92;
@@ -1119,9 +1179,10 @@ namespace INASOFT_3._0.UserControls
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label17.Location = new System.Drawing.Point(6, 265);
+            this.label17.Location = new System.Drawing.Point(8, 326);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(0, 26);
+            this.label17.Size = new System.Drawing.Size(0, 34);
             this.label17.TabIndex = 88;
             // 
             // label18
@@ -1130,9 +1191,10 @@ namespace INASOFT_3._0.UserControls
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label18.Location = new System.Drawing.Point(3, 51);
+            this.label18.Location = new System.Drawing.Point(4, 63);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(0, 26);
+            this.label18.Size = new System.Drawing.Size(0, 34);
             this.label18.TabIndex = 85;
             // 
             // label19
@@ -1140,9 +1202,10 @@ namespace INASOFT_3._0.UserControls
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label19.Location = new System.Drawing.Point(51, 12);
+            this.label19.Location = new System.Drawing.Point(68, 15);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(247, 36);
+            this.label19.Size = new System.Drawing.Size(305, 44);
             this.label19.TabIndex = 88;
             this.label19.Text = "Remisiones realizadas";
             // 
@@ -1157,9 +1220,10 @@ namespace INASOFT_3._0.UserControls
             this.button4.ForeColor = System.Drawing.SystemColors.Control;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(273, 14);
+            this.button4.Location = new System.Drawing.Point(364, 17);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 29);
+            this.button4.Size = new System.Drawing.Size(41, 36);
             this.button4.TabIndex = 89;
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.UseVisualStyleBackColor = false;
@@ -1171,9 +1235,11 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox9.Controls.Add(this.dataGridView3);
             this.groupBox9.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(3, 48);
+            this.groupBox9.Location = new System.Drawing.Point(4, 59);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(969, 446);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Size = new System.Drawing.Size(1292, 549);
             this.groupBox9.TabIndex = 95;
             this.groupBox9.TabStop = false;
             // 
@@ -1183,11 +1249,11 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1197,19 +1263,20 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.EnableHeadersVisualStyles = false;
-            this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView3.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView3.GridColor = System.Drawing.Color.Gray;
+            this.dataGridView3.Location = new System.Drawing.Point(4, 27);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 10F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView3.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(963, 422);
+            this.dataGridView3.Size = new System.Drawing.Size(1284, 518);
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseClick);
             // 
@@ -1225,9 +1292,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(1152, 14);
+            this.guna2Button2.Location = new System.Drawing.Point(1536, 17);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(179, 34);
+            this.guna2Button2.Size = new System.Drawing.Size(239, 42);
             this.guna2Button2.TabIndex = 91;
             this.guna2Button2.Text = "Remisión de entrada";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
@@ -1244,10 +1312,10 @@ namespace INASOFT_3._0.UserControls
             this.Compras.Controls.Add(this.btnAdd);
             this.Compras.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Compras.Location = new System.Drawing.Point(4, 54);
-            this.Compras.Margin = new System.Windows.Forms.Padding(2);
+            this.Compras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Compras.Name = "Compras";
-            this.Compras.Padding = new System.Windows.Forms.Padding(2);
-            this.Compras.Size = new System.Drawing.Size(1346, 529);
+            this.Compras.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Compras.Size = new System.Drawing.Size(1797, 664);
             this.Compras.TabIndex = 1;
             this.Compras.Text = "Compras realizadas";
             this.Compras.UseVisualStyleBackColor = true;
@@ -1264,9 +1332,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button10.ForeColor = System.Drawing.Color.White;
             this.guna2Button10.Image = global::INASOFT_3._0.Properties.Resources.icons8_bill_40px;
-            this.guna2Button10.Location = new System.Drawing.Point(947, 12);
+            this.guna2Button10.Location = new System.Drawing.Point(1263, 15);
+            this.guna2Button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button10.Name = "guna2Button10";
-            this.guna2Button10.Size = new System.Drawing.Size(250, 34);
+            this.guna2Button10.Size = new System.Drawing.Size(333, 42);
             this.guna2Button10.TabIndex = 95;
             this.guna2Button10.Text = "Actualizar provedor de productos";
             this.guna2Button10.Click += new System.EventHandler(this.guna2Button10_Click);
@@ -1284,9 +1353,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(123)))), ((int)(((byte)(200)))));
             this.guna2GroupBox4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox4.Location = new System.Drawing.Point(978, 70);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(1304, 86);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
-            this.guna2GroupBox4.Size = new System.Drawing.Size(363, 238);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(484, 293);
             this.guna2GroupBox4.TabIndex = 94;
             this.guna2GroupBox4.Text = "Buscar compras";
             // 
@@ -1298,9 +1368,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox5.Controls.Add(this.Rbtn_Pendientes);
             this.groupBox5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(0, 156);
+            this.groupBox5.Location = new System.Drawing.Point(0, 192);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(365, 83);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Size = new System.Drawing.Size(487, 102);
             this.groupBox5.TabIndex = 101;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Buscardor por tipos de facturas";
@@ -1309,9 +1381,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.Rbtn_Canceladas.AutoSize = true;
             this.Rbtn_Canceladas.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Canceladas.Location = new System.Drawing.Point(123, 33);
+            this.Rbtn_Canceladas.Location = new System.Drawing.Point(164, 41);
+            this.Rbtn_Canceladas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbtn_Canceladas.Name = "Rbtn_Canceladas";
-            this.Rbtn_Canceladas.Size = new System.Drawing.Size(100, 26);
+            this.Rbtn_Canceladas.Size = new System.Drawing.Size(125, 30);
             this.Rbtn_Canceladas.TabIndex = 27;
             this.Rbtn_Canceladas.TabStop = true;
             this.Rbtn_Canceladas.Text = "Canceladas";
@@ -1328,9 +1401,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
             this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
-            this.guna2Button5.Location = new System.Drawing.Point(254, 45);
+            this.guna2Button5.Location = new System.Drawing.Point(339, 55);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button5.Size = new System.Drawing.Size(121, 39);
             this.guna2Button5.TabIndex = 91;
             this.guna2Button5.Text = "Buscar";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
@@ -1339,9 +1413,10 @@ namespace INASOFT_3._0.UserControls
             // 
             this.Rbtn_Pendientes.AutoSize = true;
             this.Rbtn_Pendientes.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rbtn_Pendientes.Location = new System.Drawing.Point(12, 34);
+            this.Rbtn_Pendientes.Location = new System.Drawing.Point(16, 42);
+            this.Rbtn_Pendientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Rbtn_Pendientes.Name = "Rbtn_Pendientes";
-            this.Rbtn_Pendientes.Size = new System.Drawing.Size(93, 26);
+            this.Rbtn_Pendientes.Size = new System.Drawing.Size(116, 30);
             this.Rbtn_Pendientes.TabIndex = 26;
             this.Rbtn_Pendientes.TabStop = true;
             this.Rbtn_Pendientes.Text = "Pendientes";
@@ -1354,9 +1429,11 @@ namespace INASOFT_3._0.UserControls
             this.groupBox6.Controls.Add(this.cbProveedor);
             this.groupBox6.Controls.Add(this.guna2Button4);
             this.groupBox6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(0, 51);
+            this.groupBox6.Location = new System.Drawing.Point(0, 63);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(363, 99);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Size = new System.Drawing.Size(484, 122);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Busqueda por proveedores";
@@ -1366,9 +1443,10 @@ namespace INASOFT_3._0.UserControls
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(8, 30);
+            this.label13.Location = new System.Drawing.Point(11, 37);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 22);
+            this.label13.Size = new System.Drawing.Size(111, 26);
             this.label13.TabIndex = 90;
             this.label13.Text = "Proveedores:";
             // 
@@ -1381,9 +1459,10 @@ namespace INASOFT_3._0.UserControls
             this.cbProveedor.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.IntegralHeight = false;
-            this.cbProveedor.Location = new System.Drawing.Point(12, 50);
+            this.cbProveedor.Location = new System.Drawing.Point(16, 62);
+            this.cbProveedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(201, 30);
+            this.cbProveedor.Size = new System.Drawing.Size(267, 34);
             this.cbProveedor.TabIndex = 91;
             // 
             // guna2Button4
@@ -1397,9 +1476,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
-            this.guna2Button4.Location = new System.Drawing.Point(254, 61);
+            this.guna2Button4.Location = new System.Drawing.Point(339, 75);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(91, 32);
+            this.guna2Button4.Size = new System.Drawing.Size(121, 39);
             this.guna2Button4.TabIndex = 86;
             this.guna2Button4.Text = "Buscar";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
@@ -1415,9 +1495,10 @@ namespace INASOFT_3._0.UserControls
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(126, 3);
+            this.button2.Location = new System.Drawing.Point(168, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 29);
+            this.button2.Size = new System.Drawing.Size(41, 36);
             this.button2.TabIndex = 94;
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
@@ -1426,7 +1507,8 @@ namespace INASOFT_3._0.UserControls
             // 
             this.guna2GroupBox5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox5.Location = new System.Drawing.Point(0, 40);
+            this.guna2GroupBox5.Location = new System.Drawing.Point(0, 49);
+            this.guna2GroupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
             this.guna2GroupBox5.Size = new System.Drawing.Size(0, 0);
             this.guna2GroupBox5.TabIndex = 92;
@@ -1438,9 +1520,10 @@ namespace INASOFT_3._0.UserControls
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label15.Location = new System.Drawing.Point(6, 265);
+            this.label15.Location = new System.Drawing.Point(8, 326);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(0, 26);
+            this.label15.Size = new System.Drawing.Size(0, 34);
             this.label15.TabIndex = 88;
             // 
             // label16
@@ -1449,9 +1532,10 @@ namespace INASOFT_3._0.UserControls
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label16.Location = new System.Drawing.Point(3, 51);
+            this.label16.Location = new System.Drawing.Point(4, 63);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 26);
+            this.label16.Size = new System.Drawing.Size(0, 34);
             this.label16.TabIndex = 85;
             // 
             // guna2Button1
@@ -1472,9 +1556,10 @@ namespace INASOFT_3._0.UserControls
             this.guna2Button1.Image = global::INASOFT_3._0.Properties.Resources.icons8_restart_80px;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(806, 12);
+            this.guna2Button1.Location = new System.Drawing.Point(1075, 15);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(135, 36);
+            this.guna2Button1.Size = new System.Drawing.Size(180, 44);
             this.guna2Button1.TabIndex = 92;
             this.guna2Button1.Text = "Restablecer";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1487,9 +1572,11 @@ namespace INASOFT_3._0.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.dataGridView2);
             this.groupBox3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 49);
+            this.groupBox3.Location = new System.Drawing.Point(4, 60);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(969, 446);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(1292, 549);
             this.groupBox3.TabIndex = 90;
             this.groupBox3.TabStop = false;
             // 
@@ -1499,11 +1586,11 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(148)))), ((int)(((byte)(242)))));
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(44)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 10F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1513,29 +1600,30 @@ namespace INASOFT_3._0.UserControls
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.dataGridView2.Location = new System.Drawing.Point(3, 21);
+            this.dataGridView2.GridColor = System.Drawing.Color.Gray;
+            this.dataGridView2.Location = new System.Drawing.Point(4, 27);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(135)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 10F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(963, 422);
+            this.dataGridView2.Size = new System.Drawing.Size(1284, 518);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_buy_50px;
-            this.pictureBox4.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox4.Size = new System.Drawing.Size(52, 49);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 87;
             this.pictureBox4.TabStop = false;
@@ -1545,9 +1633,10 @@ namespace INASOFT_3._0.UserControls
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))));
-            this.label5.Location = new System.Drawing.Point(48, 8);
+            this.label5.Location = new System.Drawing.Point(64, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(226, 36);
+            this.label5.Size = new System.Drawing.Size(278, 44);
             this.label5.TabIndex = 85;
             this.label5.Text = "Compras realizadas";
             // 
@@ -1562,9 +1651,10 @@ namespace INASOFT_3._0.UserControls
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(270, 10);
+            this.button1.Location = new System.Drawing.Point(360, 12);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 29);
+            this.button1.Size = new System.Drawing.Size(41, 36);
             this.button1.TabIndex = 86;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
@@ -1575,13 +1665,14 @@ namespace INASOFT_3._0.UserControls
             // 
             // UC_Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.guna2TabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_Productos";
-            this.Size = new System.Drawing.Size(1354, 587);
+            this.Size = new System.Drawing.Size(1805, 722);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);

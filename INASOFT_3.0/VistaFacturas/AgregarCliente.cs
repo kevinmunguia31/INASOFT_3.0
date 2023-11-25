@@ -61,9 +61,10 @@ namespace INASOFT_3._0.VistaFacturas
             {
                 MessageBox_Import.Show("Cliente registrado correctamente", "Aviso importante");
 
-                string log = $"[{DateTime.Now}] {Sesion.nombre} Se registró un usuario de nombre: {nombre}";
+                string log = Sesion.nombre + " Registró un usuario de nombre: " + nombre;
                 Controladores.CtrlInfo ctrlInfo = new Controladores.CtrlInfo();
-                ctrlInfo.InsertarLog(log);
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
 
                 Limpiar();
                 Cargar_Clientes();

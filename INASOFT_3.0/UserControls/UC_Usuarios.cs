@@ -99,25 +99,14 @@ namespace INASOFT_3._0.UserControls
                     {
                         MessageDialogInfo.Show("Usuario Registrado", "Aviso");
                         CargarTablaUser();
+                        CtrlInfo ctrlInfo = new CtrlInfo();
+                        string log = Sesion.nombre + " Registro un nuevo Usuario: " + txtNombreYapellido.Text;
+                        string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                        ctrlInfo.InsertarLog(fecha, log);
                         txtNombreYapellido.Text = "";
                         txtUserName.Text = "";
                         txtpassword.Text = "";
                         txtConfirmP.Text = "";
-
-                        string log = "Se registro un Usuario a las " + DateTime.Now + " por: " + Sesion.nombre;
-                        MySqlConnection conexionDB = Conexion.getConexion();
-                        conexionDB.Open();
-
-                        try
-                        {
-                            MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
-                            comando.ExecuteNonQuery();
-                            Console.WriteLine("Logs Almacenado");
-                        }
-                        catch (MySqlException ex)
-                        {
-                            Console.WriteLine("Error al guardar el Log" + ex);
-                        }
                     }
                 }
                 catch (Exception ex)
@@ -159,22 +148,11 @@ namespace INASOFT_3._0.UserControls
                         if (bandera)
                         {
                             MessageDialogInfo.Show("Usuario Eliminado con exito", "AVISO");
+                            CtrlInfo ctrlInfo = new CtrlInfo();
+                            string log = Sesion.nombre + " Elimino al Usuario: " + user;
+                            string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                            ctrlInfo.InsertarLog(fecha, log);
                             CargarTablaUser();
-
-                            string log = "[" + DateTime.Now + "]" + "Se elimino un Usuario por: " + Sesion.nombre;
-                            MySqlConnection conexionDB = Conexion.getConexion();
-                            conexionDB.Open();
-
-                            try
-                            {
-                                MySqlCommand comando = new MySqlCommand("INSERT INTO logs (descripcion) VALUES ('" + log + "')", conexionDB);
-                                comando.ExecuteNonQuery();
-                                Console.WriteLine("Logs Almacenado");
-                            }
-                            catch (MySqlException ex)
-                            {
-                                Console.WriteLine("Error al guardar el Log" + ex);
-                            }
                         }
                     }
                 }

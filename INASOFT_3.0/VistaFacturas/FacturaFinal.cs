@@ -398,8 +398,9 @@ namespace INASOFT_3._0.VistaFacturas
                 }
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Género la Factura al contado: Fact." + ctrlFactura.ID_Factura();
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Género la Factura al contado: Fact." + ctrlFactura.ID_Factura();
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
 
                 UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                 uC_Factura.CargarFacturas();
@@ -515,8 +516,9 @@ namespace INASOFT_3._0.VistaFacturas
                 }
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
-                string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Generó una Factura al crédito: Fact." + ctrlFactura.ID_Factura();
-                ctrlInfo.InsertarLog(log);
+                string log = Sesion.nombre + " Generó una Factura al crédito: Fact." + ctrlFactura.ID_Factura();
+                string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                ctrlInfo.InsertarLog(fecha, log);
 
                 UserControls.UC_Factura uC_Factura = new UserControls.UC_Factura();
                 uC_Factura.CargarFacturas();

@@ -222,9 +222,9 @@ namespace INASOFT_3._0.VistaFacturas
                     MessageBox_Import.Show("La devolución se ha hecho correctamente, le tiene que devolver al cliente un monto de: C$ " + lbTotalDevolucion.Text + "\n\n", "Importante");
 
                     CtrlInfo ctrlInfo = new CtrlInfo();
-                    string log = "[" + DateTime.Now + "] " + Sesion.nombre + " Se ha realizado una devolución en la Fact." + lbIdFactura.Text;
-                    ctrlInfo.InsertarLog(log);
-
+                    string log = Sesion.nombre + " Se ha realizado una devolución en la Fact." + lbIdFactura.Text;
+                    string fecha = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+                    ctrlInfo.InsertarLog(fecha, log);
                     this.Hide();
                     this.Close();
                 }
