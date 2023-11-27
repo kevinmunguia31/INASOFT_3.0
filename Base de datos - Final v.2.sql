@@ -664,7 +664,6 @@ DELIMITER ;
 
 -- Facturación al contado Final 
 DELIMITER //
-
 CREATE PROCEDURE Facturacion_Final(
     IN _Estado VARCHAR(50),
     IN _Descuento DOUBLE,
@@ -673,6 +672,7 @@ CREATE PROCEDURE Facturacion_Final(
     IN _Debe DOUBLE,
     IN _TipoFactura VARCHAR(50), 
 	IN _Referencia VARCHAR(300),
+	IN _Fecha DATETIME, 
     IN _ID_Usuario INT,
     IN _ID_Cliente INT,
     IN _ID_TipoPagos INT
@@ -693,7 +693,7 @@ BEGIN
         SET Vuelto = 0.00;
     END IF;
         
-    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, Referencia, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, (NOW()), _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _Referencia, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
+    INSERT INTO Facturas (Estado, Fecha, Descuento, Subtotal, Total_Final, Efectivo, Devolucion, Debe, Tipo_Factura, Referencia, ID_Usuario, ID_Cliente, ID_TiposPago) VALUES(_Estado, _Fecha, _Descuento, _Subtotal, Total, _Efectivo, Vuelto, _Debe, _TipoFactura, _Referencia, _ID_Usuario, _ID_Cliente, _ID_TipoPagos);
 END //
 DELIMITER ;
 

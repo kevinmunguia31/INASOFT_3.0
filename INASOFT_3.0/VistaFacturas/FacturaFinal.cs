@@ -322,6 +322,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             CtrlInfo ctrlInfo = new CtrlInfo();
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+            DateTime fechaSeleccionada = DateTimeFact.Value;
 
             if (CbxTipoPagos.SelectedIndex == -1)
             {
@@ -350,6 +351,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Debe = 0.00,
                 Tipo_Factura = "Al contado",
                 Referencia = string.IsNullOrEmpty(TxtReferencia.Text) ? "Ninguna referencia" : TxtReferencia.Text,
+                Fecha = fechaSeleccionada.ToString("yyyy-MM-dd HH:mm:ss"),
                 Id_Usuario = int.Parse(txtIdUsuario.Text),
                 Id_Cliente = int.Parse(txtIdCliente.Text),
                 Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())
@@ -412,6 +414,7 @@ namespace INASOFT_3._0.VistaFacturas
         {
             CtrlInfo ctrlInfo = new CtrlInfo();
             Controladores.CtrlFactura ctrlFactura = new CtrlFactura();
+            DateTime fechaSeleccionada = DateTime_inicio.Value;
 
             if (DateTime_inicio.Text == DateTime_vencimiento.Text)
             {
@@ -435,6 +438,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Debe = double.Parse(lbSubtotal.Text),
                 Tipo_Factura = "Crédito",
                 Referencia = (string.IsNullOrEmpty(txtDescripcion.Text) ? "Ninguna" : txtDescripcion.Text),
+                Fecha = fechaSeleccionada.ToString("yyyy-MM-dd HH:mm:ss"),
                 Id_Usuario = int.Parse(txtIdUsuario.Text),
                 Id_Cliente = int.Parse(txtIdCliente.Text),
                 Id_TipoPago = int.Parse(CbxTipoPagos.SelectedValue.ToString())

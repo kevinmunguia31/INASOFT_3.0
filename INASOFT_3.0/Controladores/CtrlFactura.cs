@@ -107,7 +107,7 @@ namespace INASOFT_3._0.Controladores
         {
             bool bandera = false;
 
-            string sql = "CALL Facturacion_Final('"+ facturas.Estado +"', "+ facturas.Descuento +", "+ facturas.Subtotal +", "+ facturas.Efectivo +", "+ facturas.Debe+", '"+ facturas.Tipo_Factura + "', '"+ facturas.Referencia +"', " + facturas.Id_Usuario +", "+ facturas.Id_Cliente +", "+ facturas.Id_TipoPago +");";
+            string sql = "CALL Facturacion_Final('"+ facturas.Estado +"', "+ facturas.Descuento +", "+ facturas.Subtotal +", "+ facturas.Efectivo +", "+ facturas.Debe+", '"+ facturas.Tipo_Factura + "', '"+ facturas.Referencia + "', '"+ facturas.Fecha +"', " + facturas.Id_Usuario +", "+ facturas.Id_Cliente +", "+ facturas.Id_TipoPago +");";
 
             try
             {

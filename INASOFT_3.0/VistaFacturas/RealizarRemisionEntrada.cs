@@ -71,7 +71,7 @@ namespace INASOFT_3._0.VistaFacturas
             Cbx_Productos.Items.Clear();
 
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Cargar_NombreProducto();
+            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoRemision();
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }
@@ -558,7 +558,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
             Controladores.CtrlProductos ctrl = new Controladores.CtrlProductos();
-            Cbx_Productos.DataSource = ctrl.Cargar_NombreProductoActivo(TxtBuscar_Productos.Text);
+            Cbx_Productos.DataSource = ctrl.Buscar_NombreProductoRemision(TxtBuscar_Productos.Text);
             Cbx_Productos.ValueMember = "ID";
             Cbx_Productos.DisplayMember = "Nombre";
         }
