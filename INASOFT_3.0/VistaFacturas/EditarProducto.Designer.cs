@@ -48,7 +48,6 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.SpinExist = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.GroupBox_CambioProd = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -59,7 +58,6 @@
             this.txtPrecioCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Lb_CantStocks = new System.Windows.Forms.Label();
-            this.SpinExis_Min = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.Btn_AddProducto = new Guna.UI2.WinForms.Guna2Button();
             this.Txt_IDProd = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,15 +68,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNameP = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.TxtExistemcias = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TxtCantidad = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.GroupBox_EditarProd.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.GroupBox_CambioProd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExis_Min)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,7 +116,7 @@
             this.Lb_titulo.ForeColor = System.Drawing.Color.White;
             this.Lb_titulo.Location = new System.Drawing.Point(43, 3);
             this.Lb_titulo.Name = "Lb_titulo";
-            this.Lb_titulo.Size = new System.Drawing.Size(276, 26);
+            this.Lb_titulo.Size = new System.Drawing.Size(358, 34);
             this.Lb_titulo.TabIndex = 1;
             this.Lb_titulo.Text = "Realizar remisión o Editar producto";
             // 
@@ -188,11 +186,11 @@
             // 
             // GroupBox_EditarProd
             // 
+            this.GroupBox_EditarProd.Controls.Add(this.TxtExistemcias);
             this.GroupBox_EditarProd.Controls.Add(this.groupBox1);
             this.GroupBox_EditarProd.Controls.Add(this.groupBox2);
             this.GroupBox_EditarProd.Controls.Add(this.label13);
             this.GroupBox_EditarProd.Controls.Add(this.Lb_CantStocks);
-            this.GroupBox_EditarProd.Controls.Add(this.SpinExis_Min);
             this.GroupBox_EditarProd.Controls.Add(this.Btn_AddProducto);
             this.GroupBox_EditarProd.Controls.Add(this.Txt_IDProd);
             this.GroupBox_EditarProd.Controls.Add(this.label2);
@@ -213,11 +211,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TxtCantidad);
             this.groupBox1.Controls.Add(this.Txt_Descripcion);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.SpinExist);
             this.groupBox1.Location = new System.Drawing.Point(16, 255);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(394, 204);
@@ -260,7 +258,7 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(140, 65);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(236, 22);
+            this.label8.Size = new System.Drawing.Size(282, 26);
             this.label8.TabIndex = 105;
             this.label8.Text = "Descripción de la remisión de salida";
             // 
@@ -280,7 +278,7 @@
             this.radioButton3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(74, 13);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(44, 26);
+            this.radioButton3.Size = new System.Drawing.Size(54, 30);
             this.radioButton3.TabIndex = 27;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "No";
@@ -293,7 +291,7 @@
             this.radioButton4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.Location = new System.Drawing.Point(6, 13);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(38, 26);
+            this.radioButton4.Size = new System.Drawing.Size(46, 30);
             this.radioButton4.TabIndex = 26;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Si";
@@ -307,28 +305,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(6, 65);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 22);
+            this.label5.Size = new System.Drawing.Size(128, 26);
             this.label5.TabIndex = 103;
             this.label5.Text = "Cant. de salida:";
-            // 
-            // SpinExist
-            // 
-            this.SpinExist.BackColor = System.Drawing.SystemColors.Control;
-            this.SpinExist.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinExist.FillColor = System.Drawing.SystemColors.Control;
-            this.SpinExist.Font = new System.Drawing.Font("Poppins", 9F);
-            this.SpinExist.Location = new System.Drawing.Point(6, 91);
-            this.SpinExist.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SpinExist.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.SpinExist.Name = "SpinExist";
-            this.SpinExist.Size = new System.Drawing.Size(94, 30);
-            this.SpinExist.TabIndex = 19;
-            this.SpinExist.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.SpinExist.UpDownButtonForeColor = System.Drawing.Color.White;
             // 
             // groupBox2
             // 
@@ -362,7 +341,7 @@
             this.radioButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(74, 13);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 26);
+            this.radioButton1.Size = new System.Drawing.Size(54, 30);
             this.radioButton1.TabIndex = 27;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "No";
@@ -375,7 +354,7 @@
             this.radioButton2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(6, 13);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(38, 26);
+            this.radioButton2.Size = new System.Drawing.Size(46, 30);
             this.radioButton2.TabIndex = 26;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Si";
@@ -389,7 +368,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(6, 69);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 22);
+            this.label6.Size = new System.Drawing.Size(149, 26);
             this.label6.TabIndex = 22;
             this.label6.Text = "Precio de compra:";
             // 
@@ -400,7 +379,7 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(2, 129);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 22);
+            this.label7.Size = new System.Drawing.Size(132, 26);
             this.label7.TabIndex = 14;
             this.label7.Text = "Precio de venta:";
             // 
@@ -465,7 +444,7 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(448, 218);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 22);
+            this.label13.Size = new System.Drawing.Size(103, 26);
             this.label13.TabIndex = 106;
             this.label13.Text = "Cant. Stock:";
             // 
@@ -476,28 +455,9 @@
             this.Lb_CantStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Lb_CantStocks.Location = new System.Drawing.Point(448, 240);
             this.Lb_CantStocks.Name = "Lb_CantStocks";
-            this.Lb_CantStocks.Size = new System.Drawing.Size(24, 22);
+            this.Lb_CantStocks.Size = new System.Drawing.Size(30, 26);
             this.Lb_CantStocks.TabIndex = 107;
             this.Lb_CantStocks.Text = "--";
-            // 
-            // SpinExis_Min
-            // 
-            this.SpinExis_Min.BackColor = System.Drawing.SystemColors.Control;
-            this.SpinExis_Min.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinExis_Min.FillColor = System.Drawing.SystemColors.Control;
-            this.SpinExis_Min.Font = new System.Drawing.Font("Poppins", 9F);
-            this.SpinExis_Min.Location = new System.Drawing.Point(547, 244);
-            this.SpinExis_Min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SpinExis_Min.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.SpinExis_Min.Name = "SpinExis_Min";
-            this.SpinExis_Min.Size = new System.Drawing.Size(94, 30);
-            this.SpinExis_Min.TabIndex = 102;
-            this.SpinExis_Min.UpDownButtonFillColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.SpinExis_Min.UpDownButtonForeColor = System.Drawing.Color.White;
             // 
             // Btn_AddProducto
             // 
@@ -550,7 +510,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(543, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 22);
+            this.label2.Size = new System.Drawing.Size(124, 26);
             this.label2.TabIndex = 20;
             this.label2.Text = "Exist. Minimas:";
             // 
@@ -587,7 +547,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 22);
+            this.label1.Size = new System.Drawing.Size(171, 26);
             this.label1.TabIndex = 18;
             this.label1.Text = "Código del producto:";
             // 
@@ -626,7 +586,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(12, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 22);
+            this.label3.Size = new System.Drawing.Size(130, 26);
             this.label3.TabIndex = 17;
             this.label3.Text = "Observaciones:";
             // 
@@ -637,7 +597,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(12, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 22);
+            this.label4.Size = new System.Drawing.Size(178, 26);
             this.label4.TabIndex = 12;
             this.label4.Text = "Nombre del producto:";
             // 
@@ -673,9 +633,63 @@
             this.guna2DragControl1.TargetControl = this.panel1;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // TxtExistemcias
+            // 
+            this.TxtExistemcias.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtExistemcias.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TxtExistemcias.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtExistemcias.DefaultText = "";
+            this.TxtExistemcias.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtExistemcias.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtExistemcias.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtExistemcias.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtExistemcias.FillColor = System.Drawing.SystemColors.Control;
+            this.TxtExistemcias.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtExistemcias.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtExistemcias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtExistemcias.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtExistemcias.IconLeft = ((System.Drawing.Image)(resources.GetObject("TxtExistemcias.IconLeft")));
+            this.TxtExistemcias.Location = new System.Drawing.Point(548, 240);
+            this.TxtExistemcias.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtExistemcias.Name = "TxtExistemcias";
+            this.TxtExistemcias.PasswordChar = '\0';
+            this.TxtExistemcias.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TxtExistemcias.PlaceholderText = "Existencias min";
+            this.TxtExistemcias.SelectedText = "";
+            this.TxtExistemcias.Size = new System.Drawing.Size(111, 37);
+            this.TxtExistemcias.TabIndex = 110;
+            this.TxtExistemcias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtExistemcias_KeyPress);
+            // 
+            // TxtCantidad
+            // 
+            this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TxtCantidad.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCantidad.DefaultText = "";
+            this.TxtCantidad.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCantidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCantidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.FillColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtCantidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.IconLeft = ((System.Drawing.Image)(resources.GetObject("TxtCantidad.IconLeft")));
+            this.TxtCantidad.Location = new System.Drawing.Point(11, 96);
+            this.TxtCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtCantidad.Name = "TxtCantidad";
+            this.TxtCantidad.PasswordChar = '\0';
+            this.TxtCantidad.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TxtCantidad.PlaceholderText = "Cantidad";
+            this.TxtCantidad.SelectedText = "";
+            this.TxtCantidad.Size = new System.Drawing.Size(111, 37);
+            this.TxtCantidad.TabIndex = 111;
+            this.TxtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCantidad_KeyPress);
+            // 
             // Ver_EditarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 507);
             this.Controls.Add(this.GroupBox_EditarProd);
@@ -695,12 +709,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExist)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.GroupBox_CambioProd.ResumeLayout(false);
             this.GroupBox_CambioProd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinExis_Min)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -723,7 +735,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_AddProducto;
         public Guna.UI2.WinForms.Guna2TextBox Txt_IDProd;
         public Guna.UI2.WinForms.Guna2TextBox txtPrecioCompra;
-        public Guna.UI2.WinForms.Guna2NumericUpDown SpinExist;
         private System.Windows.Forms.Label label6;
         public Guna.UI2.WinForms.Guna2TextBox txtCodBarra;
         private System.Windows.Forms.Label label1;
@@ -735,7 +746,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         public System.Windows.Forms.Label Lb_CantStocks;
-        public Guna.UI2.WinForms.Guna2NumericUpDown SpinExis_Min;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox GroupBox_CambioProd;
@@ -747,5 +757,7 @@
         private System.Windows.Forms.RadioButton radioButton4;
         public Guna.UI2.WinForms.Guna2TextBox Txt_Descripcion;
         private System.Windows.Forms.Label label8;
+        public Guna.UI2.WinForms.Guna2TextBox TxtExistemcias;
+        public Guna.UI2.WinForms.Guna2TextBox TxtCantidad;
     }
 }

@@ -12,7 +12,7 @@ namespace INASOFT_3._0.Modelos
 		private int id;
 		private string cod_producto;
         private string nombre_producto;
-        private int cantidad;
+        private double cantidad;
 		private double precio_compra;
 		private double iva;
 		private double descuento;
@@ -22,7 +22,7 @@ namespace INASOFT_3._0.Modelos
         public int Id { get => id; set => id = value; }
         public string Cod_producto { get => cod_producto; set => cod_producto = value; }
         public string Nombre_producto { get => nombre_producto; set => nombre_producto = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
+        public double Cantidad { get => cantidad; set => cantidad = value; }
         public double Precio_compra { get => precio_compra; set => precio_compra = value; }
         public double Iva { get => iva; set => iva = value; }
         public double Descuento { get => descuento; set => descuento = value; }

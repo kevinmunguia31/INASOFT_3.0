@@ -69,7 +69,7 @@ namespace INASOFT_3._0.VistaFacturas
                         lbCodProdu.Text = datagridView1.Rows[pos].Cells[1].Value.ToString();
                         LbPrecio.Text = datagridView1.Rows[pos].Cells[3].Value.ToString();
                         lbExistencias.Text = datagridView1.Rows[pos].Cells[4].Value.ToString();
-                        SpinCantidad.Text = datagridView1.Rows[pos].Cells[4].Value.ToString();
+                        TxtCantidad.Text = datagridView1.Rows[pos].Cells[4].Value.ToString();
                     }
                 }
             }
@@ -140,6 +140,7 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(datagridView2.Rows[i].Cells[5].Value.ToString());
                 }
+                Total = (float)Math.Round(Total, 2);
                 lbTotalDevolucion.Text = Total.ToString();
             }
             catch (Exception ex)
@@ -154,7 +155,7 @@ namespace INASOFT_3._0.VistaFacturas
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             LbPrecio.Text = "...";
-            SpinCantidad.Value = 0;
+            TxtCantidad.Text = "";
             lbCodProdu.Text = "...";
             Txt_IdProducto.Text = "";
         }
@@ -201,7 +202,7 @@ namespace INASOFT_3._0.VistaFacturas
                         if (!fila.IsNewRow) // Excluye la fila de nueva entrada si la tienes
                         {
                             Modelos.Devolucion devolucion1 = new Modelos.Devolucion();
-                            devolucion1.Cantidad = int.Parse(fila.Cells[3].Value.ToString());
+                            devolucion1.Cantidad = double.Parse(fila.Cells[3].Value.ToString());
                             devolucion1.Id_devolucion = ctrlDevolucion.ID_Devolucion();
                             devolucion1.Id_producto = int.Parse(fila.Cells[0].Value.ToString());
                             devolucion1.Id_Factura = int.Parse(Txt_Factura.Text);
@@ -240,7 +241,7 @@ namespace INASOFT_3._0.VistaFacturas
             }
             else
             {
-                if (SpinCantidad.Value > int.Parse(lbExistencias.Text))
+                if (double.Parse(TxtCantidad.Text) > double.Parse(lbExistencias.Text))
                 {
                     MessageBox_Error.Show("El cliente no compro esa cantidad");
                 }
@@ -265,9 +266,9 @@ namespace INASOFT_3._0.VistaFacturas
                         newRow[0] = Txt_IdProducto.Text;
                         newRow[1] = lbCodProdu.Text;
                         newRow[2] = lbProductName.Text;
-                        newRow[3] = SpinCantidad.Value;
+                        newRow[3] = TxtCantidad.Text;
                         newRow[4] = LbPrecio.Text;
-                        newRow[5] = (double.Parse(LbPrecio.Text) * double.Parse(SpinCantidad.Value.ToString())).ToString();
+                        newRow[5] = (double.Parse(LbPrecio.Text) * double.Parse(TxtCantidad.Text)).ToString();
                         
 
                         dataTable.Rows.Add(newRow);
@@ -420,6 +421,20 @@ namespace INASOFT_3._0.VistaFacturas
                 }
                 menu.Show(datagridView2, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(menuClick_Opciones);
+            }
+        }
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
             }
         }
     }

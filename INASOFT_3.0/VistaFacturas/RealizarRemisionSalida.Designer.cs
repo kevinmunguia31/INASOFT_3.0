@@ -60,7 +60,6 @@
             this.lbProductName = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.SpinCantidad = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.datagridView2 = new System.Windows.Forms.DataGridView();
@@ -82,12 +81,12 @@
             this.TxtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.TxtCantidad = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinCantidad)).BeginInit();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView2)).BeginInit();
@@ -102,7 +101,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1055, 44);
             this.panel1.TabIndex = 34;
@@ -120,7 +119,7 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.Location = new System.Drawing.Point(1005, 4);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(45, 32);
             this.guna2Button1.TabIndex = 3;
@@ -142,7 +141,7 @@
             // 
             this.pictureBox2.Image = global::INASOFT_3._0.Properties.Resources.icons8_show_property_50px;
             this.pictureBox2.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(45, 33);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -163,7 +162,7 @@
             this.guna2GroupBox1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(12, 48);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1027, 279);
             this.guna2GroupBox1.TabIndex = 130;
@@ -172,7 +171,7 @@
             // txtIdProduc
             // 
             this.txtIdProduc.Location = new System.Drawing.Point(884, 4);
-            this.txtIdProduc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdProduc.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdProduc.Name = "txtIdProduc";
             this.txtIdProduc.Size = new System.Drawing.Size(39, 30);
             this.txtIdProduc.TabIndex = 130;
@@ -183,7 +182,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::INASOFT_3._0.Properties.Resources.icons8_client_management_40px_2;
             this.pictureBox1.Location = new System.Drawing.Point(8, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(33, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -202,7 +201,7 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(648, 59);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 38);
             this.button1.TabIndex = 91;
@@ -212,7 +211,7 @@
             // txtIdUsuario
             // 
             this.txtIdUsuario.Location = new System.Drawing.Point(932, 4);
-            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.Size = new System.Drawing.Size(37, 30);
             this.txtIdUsuario.TabIndex = 7;
@@ -258,7 +257,7 @@
             this.Cbx_Productos.FormattingEnabled = true;
             this.Cbx_Productos.IntegralHeight = false;
             this.Cbx_Productos.Location = new System.Drawing.Point(8, 59);
-            this.Cbx_Productos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cbx_Productos.Margin = new System.Windows.Forms.Padding(4);
             this.Cbx_Productos.Name = "Cbx_Productos";
             this.Cbx_Productos.Size = new System.Drawing.Size(421, 34);
             this.Cbx_Productos.TabIndex = 89;
@@ -267,7 +266,7 @@
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(979, 4);
-            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(37, 30);
             this.txtIdCliente.TabIndex = 6;
@@ -278,6 +277,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.TxtCantidad);
             this.groupBox5.Controls.Add(this.Lb_Observacion);
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.lbCodProdu);
@@ -291,12 +291,11 @@
             this.groupBox5.Controls.Add(this.lbProductName);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.SpinCantidad);
             this.groupBox5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(0, 103);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(1027, 177);
             this.groupBox5.TabIndex = 87;
             this.groupBox5.TabStop = false;
@@ -366,7 +365,7 @@
             this.lbExistencias.AutoSize = true;
             this.lbExistencias.BackColor = System.Drawing.Color.Transparent;
             this.lbExistencias.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExistencias.Location = new System.Drawing.Point(780, 26);
+            this.lbExistencias.Location = new System.Drawing.Point(774, 26);
             this.lbExistencias.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbExistencias.Name = "lbExistencias";
             this.lbExistencias.Size = new System.Drawing.Size(21, 26);
@@ -409,7 +408,7 @@
             this.btnAñadirProducto.ForeColor = System.Drawing.Color.White;
             this.btnAñadirProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnAñadirProducto.Image")));
             this.btnAñadirProducto.Location = new System.Drawing.Point(824, 123);
-            this.btnAñadirProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAñadirProducto.Margin = new System.Windows.Forms.Padding(4);
             this.btnAñadirProducto.Name = "btnAñadirProducto";
             this.btnAñadirProducto.Size = new System.Drawing.Size(195, 38);
             this.btnAñadirProducto.TabIndex = 23;
@@ -464,25 +463,6 @@
             this.label22.TabIndex = 13;
             this.label22.Text = "Cantidad:";
             // 
-            // SpinCantidad
-            // 
-            this.SpinCantidad.BackColor = System.Drawing.Color.Transparent;
-            this.SpinCantidad.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SpinCantidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpinCantidad.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SpinCantidad.Location = new System.Drawing.Point(924, 23);
-            this.SpinCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.SpinCantidad.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpinCantidad.Name = "SpinCantidad";
-            this.SpinCantidad.Size = new System.Drawing.Size(83, 32);
-            this.SpinCantidad.TabIndex = 22;
-            this.SpinCantidad.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.SpinCantidad.UpDownButtonForeColor = System.Drawing.Color.White;
-            // 
             // guna2GroupBox2
             // 
             this.guna2GroupBox2.Controls.Add(this.pictureBox4);
@@ -493,7 +473,7 @@
             this.guna2GroupBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox2.Location = new System.Drawing.Point(12, 336);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(635, 315);
             this.guna2GroupBox2.TabIndex = 129;
@@ -504,7 +484,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::INASOFT_3._0.Properties.Resources.icons8_bill_40px;
             this.pictureBox4.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(41, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -544,7 +524,7 @@
             this.datagridView2.EnableHeadersVisualStyles = false;
             this.datagridView2.GridColor = System.Drawing.Color.Gray;
             this.datagridView2.Location = new System.Drawing.Point(0, 276);
-            this.datagridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.datagridView2.Margin = new System.Windows.Forms.Padding(4);
             this.datagridView2.Name = "datagridView2";
             this.datagridView2.ReadOnly = true;
             this.datagridView2.RowHeadersVisible = false;
@@ -624,7 +604,7 @@
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Gray;
             this.dataGridView1.Location = new System.Drawing.Point(0, 43);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -691,7 +671,7 @@
             this.btnFacturar.ForeColor = System.Drawing.Color.White;
             this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
             this.btnFacturar.Location = new System.Drawing.Point(805, 603);
-            this.btnFacturar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFacturar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(233, 48);
             this.btnFacturar.TabIndex = 131;
@@ -768,6 +748,32 @@
             this.guna2Elipse1.BorderRadius = 15;
             this.guna2Elipse1.TargetControl = this;
             // 
+            // TxtCantidad
+            // 
+            this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TxtCantidad.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCantidad.DefaultText = "";
+            this.TxtCantidad.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCantidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCantidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.FillColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtCantidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.IconLeft = ((System.Drawing.Image)(resources.GetObject("TxtCantidad.IconLeft")));
+            this.TxtCantidad.Location = new System.Drawing.Point(919, 26);
+            this.TxtCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtCantidad.Name = "TxtCantidad";
+            this.TxtCantidad.PasswordChar = '\0';
+            this.TxtCantidad.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TxtCantidad.PlaceholderText = "Cantidad";
+            this.TxtCantidad.SelectedText = "";
+            this.TxtCantidad.Size = new System.Drawing.Size(97, 31);
+            this.TxtCantidad.TabIndex = 112;
+            // 
             // RealizarRemisionSalida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -780,7 +786,7 @@
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RealizarRemisionSalida";
             this.Text = "RealizarRemisionSalida";
             this.panel1.ResumeLayout(false);
@@ -791,7 +797,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpinCantidad)).EndInit();
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -830,7 +835,6 @@
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private Guna.UI2.WinForms.Guna2NumericUpDown SpinCantidad;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.DataGridView datagridView2;
@@ -852,5 +856,6 @@
         public Guna.UI2.WinForms.Guna2TextBox TxtDescripcion;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        public Guna.UI2.WinForms.Guna2TextBox TxtCantidad;
     }
 }

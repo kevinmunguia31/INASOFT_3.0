@@ -45,7 +45,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Nombre = txtNameP.Text.ToUpper(),
                 Estado = "Activo",
                 Existencias = 0,
-                Existencias_min = int.Parse(SpinExis_Min.Value.ToString()),
+                Existencias_min = double.Parse(TxtExistemcias.Text),
                 Precio_compra = double.Parse(txtPrecioCompra.Text),
                 Precio_venta = double.Parse(txtPrecioVenta.Text),
                 Observacion = string.IsNullOrWhiteSpace(txtObservacion.Text) ? "Se ha modificado el producto" : txtObservacion.Text
@@ -91,7 +91,7 @@ namespace INASOFT_3._0.VistaFacturas
                     Productos productos1 = new Productos();
                     productos1.Id = int.Parse(Txt_IDProd.Text);
                     productos1.Nombre = txtNameP.Text;
-                    productos1.Existencias = int.Parse(SpinExist.Value.ToString());
+                    productos1.Existencias = double.Parse(TxtCantidad.Text);
                     productos1.Id_remision = ctrlRemision.ID_Remision();
                     bool bandera3 = ctrlRemision.Remision_ProductosSalida(productos1);
 
@@ -124,13 +124,13 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            SpinExist.Enabled = false;
+            TxtCantidad.Enabled = false;
             Txt_Descripcion.Enabled = false;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            SpinExist.Enabled = true;
+            TxtCantidad.Enabled = true;
             Txt_Descripcion.Enabled = true;
         }
 
@@ -149,6 +149,34 @@ namespace INASOFT_3._0.VistaFacturas
         }
 
         private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
+        }
+
+        private void TxtExistemcias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
+        }
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
             {

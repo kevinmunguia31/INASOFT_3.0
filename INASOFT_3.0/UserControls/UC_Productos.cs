@@ -188,7 +188,7 @@ namespace INASOFT_3._0.UserControls
                     update.txtCodBarra.Enabled = false;
                     update.txtPrecioCompra.Enabled = false;
                     update.txtPrecioVenta.Enabled = false;
-                    update.SpinExist.Enabled = false;
+                    update.TxtCantidad.Enabled = false;
                     update.ShowDialog();
                     CargarTablaProduct();
                 }

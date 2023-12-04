@@ -22,7 +22,7 @@ namespace INASOFT_3._0.Modelos
 		private int id_Usuario;
 		private int id_Cliente;
 		private int id_TipoPago;
-		private int cantidad;
+		private double cantidad;
         private double precio;
         private string detalle_Descuento;
         private string descripcion;
@@ -45,7 +45,7 @@ namespace INASOFT_3._0.Modelos
         public int Id_Usuario { get => id_Usuario; set => id_Usuario = value; }
         public int Id_Cliente { get => id_Cliente; set => id_Cliente = value; }
         public int Id_TipoPago { get => id_TipoPago; set => id_TipoPago = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
+        public double Cantidad { get => cantidad; set => cantidad = value; }
         public int Id_Factura { get => id_Factura; set => id_Factura = value; }
         public int Id_Producto { get => id_Producto; set => id_Producto = value; }
         public double Precio { get => precio; set => precio = value; }

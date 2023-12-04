@@ -71,8 +71,8 @@ CREATE TABLE `Productos` (
   	`Codigo` VARCHAR(45) UNIQUE NOT NULL,
   	`Nombre` VARCHAR(300) NOT NULL,
 	`Estado` ENUM('Activo', 'No activo') DEFAULT 'Activo',
-  	`Existencias` INT NOT NULL,
-	`Existencias_Minimas` INT NOT NULL,	
+  	`Existencias` DOUBLE NOT NULL,
+	`Existencias_Minimas` DOUBLE NOT NULL,	
 	`Precio_Compra` DOUBLE NOT NULL,
 	`Precio_Venta` DOUBLE NOT NULL,
   	`Precio_Total` DOUBLE NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `Compras`(
 
 CREATE TABLE `Detalle_Compra`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
-	`Cantidad` INT NOT NULL,
+	`Cantidad` DOUBLE NOT NULL,
 	`ID_Compra` INT NOT NULL,
 	`ID_Producto` INT NOT NULL,
 	CONSTRAINT Detalle_Comprapk PRIMARY KEY(ID),
@@ -138,7 +138,7 @@ CREATE TABLE `Remisiones` (
 -- TABLA Detalle remisión de prodcutos
 CREATE TABLE `Detalle_Remision`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
-	`Cantidad` INT NOT NULL,
+	`Cantidad` DOUBLE NOT NULL,
 	`ID_Remision` INT NOT NULL,
 	`ID_Producto` INT NOT NULL,
 	CONSTRAINT Detalle_Remisionpk PRIMARY KEY(ID),
@@ -172,7 +172,7 @@ CREATE TABLE `Facturas`(
 -- TABLA Detalle de la facturas
 CREATE TABLE `Detalle_Factura`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
-	`Cantidad` INT NOT NULL,
+	`Cantidad` DOUBLE NOT NULL,
 	`Descripcion` VARCHAR(200) NOT NULL,
 	`ID_Factura` INT NOT NULL,
 	`ID_Producto` INT NOT NULL,
@@ -202,7 +202,7 @@ CREATE TABLE `Devoluciones`(
 -- TABLA Detalles de la devolución
 CREATE TABLE `Detalle_Devolucion`(
 	`ID` INT NOT NULL AUTO_INCREMENT,
-	`Cantidad` INT NOT NULL,
+	`Cantidad` DOUBLE NOT NULL,
 	`ID_Devolucion` INT NOT NULL,
 	`ID_Producto` INT NOT NULL,
 	CONSTRAINT Detalle_Devolucionpk PRIMARY KEY(ID),
@@ -330,8 +330,8 @@ DELIMITER //
 CREATE PROCEDURE Insertar_Producto(
     _Codigo VARCHAR(45),
     _Nombre VARCHAR(300),
-    _Existencias INT,
-    _Existencias_Min INT,
+    _Existencias DOUBLE,
+    _Existencias_Min DOUBLE,
     _Precio_Compra DOUBLE,
     _Precio_Venta DOUBLE,
     _Observacion VARCHAR(200),
@@ -366,8 +366,8 @@ CREATE PROCEDURE Actualizar_Producto(
     IN _ID_Producto INT,
     IN _Nombre_Producto VARCHAR(300),
     IN _Estado VARCHAR(50),
-    IN _Existencias INT,
-    IN _Existencias_Min INT,
+    IN _Existencias DOUBLE,
+    IN _Existencias_Min DOUBLE,
     IN _Precio_Compra DOUBLE,
     IN _Precio_Venta DOUBLE,
     IN _Observacion VARCHAR(200)
@@ -375,7 +375,7 @@ CREATE PROCEDURE Actualizar_Producto(
 BEGIN
     DECLARE Total DOUBLE;
     DECLARE Aux_PrecioCompra DOUBLE;
-    DECLARE Aux_Existencias INT;
+    DECLARE Aux_Existencias DOUBLE;
 
     -- Obtener el precio de compra actual del producto
     SELECT Precio_Compra INTO Aux_PrecioCompra FROM Productos WHERE ID = _ID_Producto;
@@ -452,8 +452,8 @@ CREATE PROCEDURE Detalle_RemisionEntrada(
     IN _ID_Producto INT,
     IN _Codigo_Producto VARCHAR(45),
     IN _Nombre_Producto VARCHAR(100),
-    IN _Cantidad INT,
-    IN _Existencias_Min INT,
+    IN _Cantidad DOUBLE,
+    IN _Existencias_Min DOUBLE,
     IN _Precio_Compra DOUBLE,
     IN _Precio_Venta DOUBLE,
     IN _Observacion VARCHAR(200),
@@ -488,7 +488,7 @@ DELIMITER //
 CREATE PROCEDURE Detalle_RemisionSalida(
     IN _ID_Producto INT,
     IN _Nombre_Producto VARCHAR(100),
-    IN _Cantidad INT,
+    IN _Cantidad DOUBLE,
     IN _ID_Remision INT
 )
 BEGIN
@@ -573,7 +573,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE CambiarProveedorProducto(
     IN _ID_Producto INT,
-	IN _Cantidad INT,
+	IN _Cantidad DOUBLE,
 	IN _ID_Proveedor INT,
 	IN _ID_Compra INT
 )
@@ -598,8 +598,8 @@ CREATE PROCEDURE Productos_Comprados(
     IN _ID_Producto INT,
     IN _Codigo_Producto VARCHAR(45),
     IN _Nombre_Producto VARCHAR(100),
-    IN _Cantidad INT,
-    IN _Existencias_Min INT,
+    IN _Cantidad DOUBLE,
+    IN _Existencias_Min DOUBLE,
     IN _Precio_Compra DOUBLE,
     IN _Precio_Venta DOUBLE,
     IN _Observacion VARCHAR(200),
@@ -700,13 +700,13 @@ DELIMITER ;
 -- Facturación de los prodcutos con el ID de la factura
 DELIMITER //
 CREATE PROCEDURE Facturar_Productos(
-    IN _Cantidad INT,
+    IN _Cantidad DOUBLE,
 	IN _Descripcion VARCHAR(200),
     IN _ID_Factura INT,
     IN _ID_Producto INT
 )
 BEGIN
-    DECLARE productoExistencias INT;
+    DECLARE productoExistencias DOUBLE;
     DECLARE Aux_ID_DetalleFactura INT;
 	DECLARE Aux_NombreProducto VARCHAR(100);
  
@@ -776,7 +776,7 @@ DELIMITER ;
 -- Anular una factura
 DELIMITER //
 CREATE PROCEDURE Anular_Factura(
-    IN _Cantidad INT,
+    IN _Cantidad DOUBLE,
     IN _ID_Producto INT,
     IN _ID_Factura INT
 )
@@ -843,7 +843,7 @@ DELIMITER ;
 -- Devolución de los prodcutos con el ID de la factura 
 DELIMITER //
 	CREATE PROCEDURE Devolver_Productos(
-		IN _Cantidad INT,
+		IN _Cantidad DOUBLE,
 		IN _ID_Devolucion INT,
 		IN _ID_Producto INT,
 		IN _ID_Factura INT

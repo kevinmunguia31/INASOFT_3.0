@@ -81,7 +81,7 @@ namespace INASOFT_3._0.VistaFacturas
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
-                    SpinCantidad.Enabled = false;// Si no hay selección, desactiva SpinCantidad
+                    TxtCantidad.Enabled = false;// Si no hay selección, desactiva SpinCantidad
                     id = 0;
                     return; // Salir del método ya que no hay selección válida
                 }
@@ -101,7 +101,7 @@ namespace INASOFT_3._0.VistaFacturas
 
                     lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
 
-                    SpinCantidad.Enabled = true;
+                    TxtCantidad.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace INASOFT_3._0.VistaFacturas
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
-            SpinCantidad.Value = 0;
+            TxtCantidad.Text = "";
             lbCodProdu.Text = "...";
             txtIdProduc.Text = "";
             TxtBuscar_Productos.Text = "";
@@ -142,14 +142,14 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                 }
-                int numeroRedondeado = (int)Math.Ceiling(Total);
+                Total = (float)Math.Round(Total, 2);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
+                datagridView2.Rows[0].Cells[4].Value = Total;
 
-                lbSubtotal.Text = numeroRedondeado.ToString();
+                lbSubtotal.Text = Total.ToString();
             }
             catch (Exception ex)
             {
@@ -193,7 +193,7 @@ namespace INASOFT_3._0.VistaFacturas
                 return; // Salir del método si no se ha seleccionado un producto.
             }
 
-            if (SpinCantidad.Value == 0)
+            if (TxtCantidad.Text == "")
             {
                 MessageBoxError.Show("Tiene que indicar la cantidad.", "Error");
                 return; // Salir del método si la cantidad es cero.
@@ -215,7 +215,7 @@ namespace INASOFT_3._0.VistaFacturas
                 return; // Salir del método si el producto ya está en la lista.
             }
 
-            if (SpinCantidad.Value > int.Parse(lbExistencias.Text))
+            if (double.Parse(TxtCantidad.Text) > double.Parse(lbExistencias.Text))
             {
                 MessageBoxError.Show("No hay esa cantidad en el Stock.", "Errir");
                 Limpiar();
@@ -229,9 +229,9 @@ namespace INASOFT_3._0.VistaFacturas
             DataRow newRow = dataTable.NewRow();
             newRow[0] = productos.Codigo.ToString();
             newRow[1] = productos.Nombre.ToString();
-            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[2] = TxtCantidad.Text;
             newRow[3] = double.Parse(Lb_Precio_Compra.Text);
-            newRow[4] = double.Parse(Lb_Precio_Compra.Text) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[4] = double.Parse(Lb_Precio_Compra.Text) * double.Parse(TxtCantidad.Text);
             newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
 
             dataTable.Rows.Add(newRow);
@@ -267,7 +267,7 @@ namespace INASOFT_3._0.VistaFacturas
                         {
                             Id = int.Parse(fila.Cells[5].Value.ToString()),
                             Nombre = fila.Cells[1].Value.ToString(),
-                            Existencias = int.Parse(fila.Cells[2].Value.ToString()),
+                            Existencias = double.Parse(fila.Cells[2].Value.ToString()),
                             Id_remision = ctrlRemision.ID_Remision()
                         };
                         lista.Add(productos);

@@ -81,12 +81,12 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                 }
-                int numeroRedondeado = (int)Math.Ceiling(Total);
+                Total = (float)Math.Round(Total, 2);
                 datagridView2.Rows[0].Cells[0].Value = "Subtotal";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
+                datagridView2.Rows[0].Cells[4].Value = Total;
                 datagridView2.Rows[0].Cells[5].Value = "";
 
             }
@@ -179,7 +179,7 @@ namespace INASOFT_3._0.VistaFacturas
                 newRow[1] = txtNameP.Text.ToUpper();
                 newRow[2] = Lb_CantStocks.Text.ToString();
                 newRow[3] = double.Parse(txtPrecioCompra.Text);
-                newRow[4] = double.Parse(txtPrecioCompra.Text) * int.Parse(Lb_CantStocks.Text.ToString());
+                newRow[4] = double.Parse(txtPrecioCompra.Text) * double.Parse(Lb_CantStocks.Text.ToString());
                 newRow[5] = TxtIDProducto.Text;
 
                 dataTable.Rows.Add(newRow);
@@ -218,7 +218,7 @@ namespace INASOFT_3._0.VistaFacturas
                 txtPrecioCompra.Text = productos.Precio_compra.ToString();
                 txtObservacion.Text = productos.Observacion.ToString();
 
-                int existencias = productos.Existencias;
+                double existencias = productos.Existencias;
                 GroupBox_Products.Enabled = true;
                 //errorProvider1.SetError(Lb_CantStocks, existencias <= 0 ? "Ya no hay productos en el almacén." : "");
                 Lb_CantStocks.ForeColor = existencias <= 0 ? Color.Red : Color.Black;
@@ -263,7 +263,7 @@ namespace INASOFT_3._0.VistaFacturas
                     Modelos.Productos productos = new Modelos.Productos
                     {
                         Id = int.Parse(row.Cells[5].Value.ToString()),
-                        Existencias = int.Parse(row.Cells[2].Value.ToString()),
+                        Existencias = double.Parse(row.Cells[2].Value.ToString()),
                         Id_proveedor = int.Parse(cbProveedor.SelectedValue.ToString()),
                         Id_Compra = ctrlCompras.ID_Compra()
                     };

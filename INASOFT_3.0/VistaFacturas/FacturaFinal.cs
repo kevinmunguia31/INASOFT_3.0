@@ -55,7 +55,7 @@ namespace INASOFT_3._0.VistaFacturas
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            errorProvider1.SetError(SpinCantidad, "");
+            errorProvider1.SetError(TxtCantidad, "");
             timer.Stop();
         }
 
@@ -143,15 +143,15 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                 }
-                int numeroRedondeado = (int)Math.Ceiling(Total);
+                Total = (float)Math.Round(Total, 2);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
+                datagridView2.Rows[0].Cells[4].Value = Total;
 
-                lbSubtotal.Text = numeroRedondeado.ToString();
-                lbTotal.Text = numeroRedondeado.ToString();
+                lbSubtotal.Text = Total.ToString();
+                lbTotal.Text = Total.ToString();
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace INASOFT_3._0.VistaFacturas
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
-            SpinCantidad.Value = 0;
+            TxtCantidad.Text = "";
             lbCodProdu.Text = "...";
             txtIdProduc.Text = "";
             TxtBuscar_Productos.Text = "";
@@ -371,7 +371,7 @@ namespace INASOFT_3._0.VistaFacturas
                     {
                         Modelos.Facturas factura = new Modelos.Facturas
                         {
-                            Cantidad = int.Parse(fila.Cells[2].Value.ToString()),
+                            Cantidad = double.Parse(fila.Cells[2].Value.ToString()),
                             Id_Factura = ctrlFactura.ID_Factura(),
                             Id_Producto = int.Parse(fila.Cells[5].Value.ToString()),
                             DescripcionPrecio = fila.Cells[6].Value.ToString()
@@ -758,7 +758,7 @@ namespace INASOFT_3._0.VistaFacturas
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
-                    SpinCantidad.Enabled = false;// Si no hay selección, desactiva SpinCantidad
+                    TxtCantidad.Enabled = false;// Si no hay selección, desactiva SpinCantidad
                     id = 0; 
                     return; // Salir del método ya que no hay selección válida
                 }
@@ -780,7 +780,7 @@ namespace INASOFT_3._0.VistaFacturas
                     errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
                     lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
 
-                    SpinCantidad.Enabled = true;
+                    TxtCantidad.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -818,10 +818,10 @@ namespace INASOFT_3._0.VistaFacturas
                 return; // Salir del método si no se ha seleccionado un producto.
             }
 
-            if (SpinCantidad.Value == 0)
+            if (TxtCantidad.Text == "")
             {
                 MessageBox_Error.Show("Tiene que indicar la cantidad.", "Error");
-                errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar.");
+                errorProvider1.SetError(TxtCantidad, "Debe indicar la cantidad que desea facturar.");
                 return; // Salir del método si la cantidad es cero.
             }
 
@@ -841,7 +841,7 @@ namespace INASOFT_3._0.VistaFacturas
                 return; // Salir del método si el producto ya está en la lista.
             }
 
-            if(SpinCantidad.Value > int.Parse(lbExistencias.Text))
+            if(double.Parse(TxtCantidad.Text) > double.Parse(lbExistencias.Text))
             {
                 MessageBox_Error.Show("No hay esa cantidad en el Stock.", "Errir");
                 Limpiar();
@@ -873,9 +873,9 @@ namespace INASOFT_3._0.VistaFacturas
             DataRow newRow = dataTable.NewRow();
             newRow[0] = productos.Codigo.ToString();
             newRow[1] = productos.Nombre.ToString();
-            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[2] = TxtCantidad.Text;
             newRow[3] = double.Parse(precioVenta);
-            newRow[4] = double.Parse(precioVenta) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[4] = double.Parse(precioVenta) * double.Parse(TxtCantidad.Text);
             newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
             newRow[6] = descPrecio;
 
@@ -1023,6 +1023,20 @@ namespace INASOFT_3._0.VistaFacturas
         private void RbtCambioPrecNo_CheckedChanged(object sender, EventArgs e)
         {
             txtPrecioVenta.Enabled = false;
+        }
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
         }
     }
 }

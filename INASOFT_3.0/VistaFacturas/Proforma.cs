@@ -58,7 +58,7 @@ namespace INASOFT_3._0.VistaFacturas
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Al transcurrir el tiempo, limpiar el mensaje de error y detener el temporizador
-            errorProvider1.SetError(SpinCantidad, "");
+            errorProvider1.SetError(TxtCantidad, "");
             timer.Stop();
         }
 
@@ -107,12 +107,12 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());                   
                 }
-                int numeroRedondeado = (int)Math.Ceiling(Total);
+                Total = (float)Math.Round(Total, 2);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
-                datagridView2.Rows[0].Cells[4].Value = numeroRedondeado;
+                datagridView2.Rows[0].Cells[4].Value = Total;
             }
             catch (Exception ex)
             {
@@ -147,10 +147,10 @@ namespace INASOFT_3._0.VistaFacturas
                 return; // Salir del método si no se ha seleccionado un producto.
             }
 
-            if (SpinCantidad.Value == 0)
+            if (TxtCantidad.Text == "")
             {
                 MessageBox_Error.Show("Tiene que indicar la cantidad", "Error");
-                errorProvider1.SetError(SpinCantidad, "Debe indicar la cantidad que desea facturar");
+                errorProvider1.SetError(TxtCantidad, "Debe indicar la cantidad que desea facturar");
                 return; // Salir del método si la cantidad es cero.
             }
 
@@ -177,9 +177,9 @@ namespace INASOFT_3._0.VistaFacturas
             DataRow newRow = dataTable.NewRow();
             newRow[0] = productos.Codigo.ToString();
             newRow[1] = productos.Nombre.ToString();
-            newRow[2] = SpinCantidad.Value.ToString();
+            newRow[2] = TxtCantidad.Text;
             newRow[3] = double.Parse(Lb_Precio_Venta.Text);
-            newRow[4] = double.Parse(Lb_Precio_Venta.Text) * int.Parse(SpinCantidad.Value.ToString());
+            newRow[4] = double.Parse(Lb_Precio_Venta.Text) * double.Parse(TxtCantidad.Text);
             //newRow[5] = int.Parse(Cbx_Productos.SelectedValue.ToString());
 
             dataTable.Rows.Add(newRow);
@@ -194,7 +194,7 @@ namespace INASOFT_3._0.VistaFacturas
             lbExistencias.Text = "...";
             lbProductName.Text = "...";
             Cbx_Productos.SelectedIndex = -1;
-            SpinCantidad.Value = 0;
+            TxtCantidad.Text = "";
             lbCodProdu.Text = "...";
             txtIdProduc.Text = "";
             TxtBuscar_Productos.Text = "";
@@ -226,7 +226,7 @@ namespace INASOFT_3._0.VistaFacturas
                 if (Cbx_Productos.SelectedIndex == -1)
                 {
                     Limpiar();
-                    SpinCantidad.Enabled = false; // Si no hay selección, desactiva SpinCantidad
+                    TxtCantidad.Enabled = false; // Si no hay selección, desactiva SpinCantidad
                     return; // Salir del método ya que no hay selección válida
                 }
 
@@ -244,7 +244,7 @@ namespace INASOFT_3._0.VistaFacturas
                 errorProvider1.SetError(lbExistencias, (int.Parse(lbExistencias.Text) <= 0) ? "Ya no hay productos en el almacén." : "");
                 lbExistencias.ForeColor = (int.Parse(lbExistencias.Text) <= 0) ? Color.Red : Color.Black;
 
-                SpinCantidad.Enabled = true; // Habilitar SpinCantidad después de seleccionar un producto
+                TxtCantidad.Enabled = true; // Habilitar SpinCantidad después de seleccionar un producto
             }
             catch (Exception ex)
             {
@@ -456,7 +456,20 @@ namespace INASOFT_3._0.VistaFacturas
                 }
             }
         }
-            
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
+        }
     }
 }
 

@@ -137,13 +137,13 @@ namespace INASOFT_3._0
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
                 }
-                int numeroRedondeado = (int)Math.Ceiling(Total);
+                Total = (float)Math.Round(Total, 2);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
                 datagridView2.Rows[0].Cells[3].Value = "";
                 datagridView2.Rows[0].Cells[4].Value = "";
-                datagridView2.Rows[0].Cells[5].Value = numeroRedondeado;
+                datagridView2.Rows[0].Cells[5].Value = Total;
                 datagridView2.Rows[0].Cells[6].Value = "";
                 datagridView2.Rows[0].Cells[7].Value = "";
 
@@ -193,7 +193,7 @@ namespace INASOFT_3._0
         {
             txtCodBarra.Text = "";
             txtNameP.Text = "";
-            SpinExist.Value = 0;
+            TxtCantidad.Text = "";
             txtPrecioCompra.Text = "";
             txtPrecioVenta.Text = "";
             txtObservacion.Text = "";
@@ -232,7 +232,7 @@ namespace INASOFT_3._0
                 txtPrecioCompra.Text = productos.Precio_compra.ToString();
                 txtObservacion.Text = productos.Observacion.ToString();
 
-                int existencias = productos.Existencias;
+                double existencias = productos.Existencias;
                 //errorProvider1.SetError(Lb_CantStocks, existencias <= 0 ? "Ya no hay productos en el almacén." : "");
                 Lb_CantStocks.ForeColor = existencias <= 0 ? Color.Red : Color.Black;
             }
@@ -251,10 +251,10 @@ namespace INASOFT_3._0
                 return;
             }
 
-            if (SpinExist.Value == 0)
+            if (TxtCantidad.Text == "")
             {
                 MessageBoxError.Show("Debe indicar la cantidad", "Error");
-                errorProvider1.SetError(SpinExist, "Debe indicar la cantidad que desea facturar");
+                errorProvider1.SetError(TxtCantidad, "Debe indicar la cantidad que desea facturar");
                 return;
             }
 
@@ -272,7 +272,7 @@ namespace INASOFT_3._0
             }
 
             errorProvider1.SetError(txtPrecioVenta, "");
-            errorProvider1.SetError(SpinExist, "");
+            errorProvider1.SetError(TxtCantidad, "");
 
             bool seRepite = dataGridView1.Rows.Cast<DataGridViewRow>().Any(fila => fila.Cells[0].Value != null && fila.Cells[0].Value.ToString() == txtCodBarra.Text);
 
@@ -285,10 +285,10 @@ namespace INASOFT_3._0
                 DataRow newRow = dataTable.NewRow();
                 newRow[0] = txtCodBarra.Text;
                 newRow[1] = txtNameP.Text.ToUpper();
-                newRow[2] = SpinExist.Value.ToString();
+                newRow[2] = TxtCantidad.Text;
                 newRow[3] = double.Parse(txtPrecioCompra.Text);
                 newRow[4] = double.Parse(txtPrecioVenta.Text);
-                newRow[5] = double.Parse(txtPrecioCompra.Text) * int.Parse(SpinExist.Value.ToString());
+                newRow[5] = double.Parse(txtPrecioCompra.Text) * double.Parse(TxtCantidad.Text);
                 newRow[6] = Txt_IDProd.Text;
                 newRow[7] = string.IsNullOrEmpty(txtObservacion.Text) ? $"Compra del producto {txtNameP.Text}" : txtObservacion.Text;
 
@@ -426,7 +426,7 @@ namespace INASOFT_3._0
                         Id = int.Parse(row.Cells[6].Value.ToString()),
                         Codigo = row.Cells[0].Value.ToString(),
                         Nombre = row.Cells[1].Value.ToString(),
-                        Existencias = int.Parse(row.Cells[2].Value.ToString()),
+                        Existencias = double.Parse(row.Cells[2].Value.ToString()),
                         Existencias_min = 1,
                         Precio_compra = double.Parse(row.Cells[3].Value.ToString()),
                         Precio_venta = double.Parse(row.Cells[4].Value.ToString()),
@@ -584,6 +584,20 @@ namespace INASOFT_3._0
             CargarProductos(id);
             Cbx_Productos.SelectedIndex = -1;
             Clear();
+        }
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || Char.IsControl(e.KeyChar))
+            {
+                // Permite dígitos, un punto decimal y teclas de control (retroceso)
+                e.Handled = false;
+            }
+            else
+            {
+                // Desactiva otras teclas
+                e.Handled = true;
+            }
         }
     }
 }
