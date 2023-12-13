@@ -91,19 +91,24 @@ namespace INASOFT_3._0.Controladores
         public string TotalFinal_FacturasHoy()
         {
             string total = "";
-            string SQL = "SELECT CONCAT('C$ ',  COALESCE(FORMAT(SUM(Total_Final - Debe), 2), '0.00')) AS 'Total ingresado por fecha' FROM Facturas WHERE DATE(fecha) = CURDATE();";
+            string SQL = "SELECT \r\n  CONCAT('C$', COALESCE(FORMAT(SUM(Total), 0), '0.00')) AS TotalGeneral\r\nFROM (\r\n    SELECT \r\n        DATE(Fecha) AS FECHA,\r\n        SUM(Total_Final) AS Total\r\n    FROM facturas\r\n    WHERE Tipo_Factura = 'Al Contado'\r\n        AND DATE(Fecha) = DATE(NOW())\r\n    GROUP BY DATE(Fecha)\r\n\r\n    UNION ALL\r\n\r\n    SELECT \r\n        DATE(Fecha) AS FECHA,\r\n        SUM(monto) AS Total\r\n    FROM abono\r\n    WHERE DATE(Fecha) = DATE(NOW())\r\n    GROUP BY DATE(Fecha)\r\n) AS subconsulta\r\nGROUP BY FECHA;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(SQL, conexionDB);
-                total = comando.ExecuteScalar().ToString();
+                var result = comando.ExecuteScalar();
+
+                if (result != null)
+                {
+                    total = result.ToString();
+                }
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                total = "";
+                total = "0";
             }
             return total;
         }
@@ -148,7 +153,28 @@ namespace INASOFT_3._0.Controladores
                 Console.WriteLine(ex.Message.ToString());
             }
             return dt;
-        }       
+        }
+
+        public DataTable CargarVentasHoy()
+        {
+            DataTable dt = new DataTable();
+            string sql;
+
+            sql = "SELECT DATE(Fecha)AS FECHA, CONCAT('FACT-', Codigo_Fac) AS CONCEPTO, Total_Final FROM facturas WHERE Tipo_Factura = 'Al Contado'AND DATE(Fecha) = DATE(NOW()) UNION SELECT DATE(Fecha)     AS FECHA, CONCAT('Abono#', ID) AS ABONOS, Monto FROM abono WHERE  DATE(Fecha) = DATE(NOW()) ";
+            try
+            {
+                MySqlConnection conexionBD = Conexion.getConexion();
+                conexionBD.Open();
+                MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                adaptador.Fill(dt);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            return dt;
+        }
 
         public List<Reporte> Cargar_TotalVentasxDias()
         {

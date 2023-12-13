@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Guna.UI2.WinForms;
 using INASOFT_3._0.Modelos;
 using INASOFT_3._0.Properties;
+using INASOFT_3._0.VistaFacturas;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using System;
@@ -233,6 +234,12 @@ namespace INASOFT_3._0.UserControls
         {
             ArqueoCaja arqueoCaja = new ArqueoCaja();
             arqueoCaja.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReporteVentasDiario frm = new ReporteVentasDiario();
+            frm.ShowDialog();
         }
     }
 }

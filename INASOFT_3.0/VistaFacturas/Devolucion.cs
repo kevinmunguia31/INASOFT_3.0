@@ -172,11 +172,11 @@ namespace INASOFT_3._0.VistaFacturas
                 if (resultado == DialogResult.Yes)
                 {
                     string descripcion;
-                    int cantidad = 0;
+                    double cantidad = 0.0;
 
                     for (int i = 0; i < datagridView2.Rows.Count; i++)
                     {
-                        cantidad += int.Parse(datagridView2.Rows[i].Cells[3].Value.ToString());
+                        cantidad += Double.Parse(datagridView2.Rows[i].Cells[3].Value.ToString());
                     }
 
                     if (txtDescripcion.Text == "")

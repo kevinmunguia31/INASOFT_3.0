@@ -299,7 +299,7 @@ namespace INASOFT_3._0.UserControls
             lbObservaciones.Text = dataGridView1.Rows[pos].Cells[8].Value.ToString();
             lbProveedor.Text = dataGridView1.Rows[pos].Cells[10].Value.ToString();
 
-            if (int.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) <= 0)
+            if (Double.Parse(dataGridView1.Rows[pos].Cells[4].Value.ToString()) <= 0)
             {
                 lbExistencias.ForeColor = System.Drawing.Color.Red;
             }

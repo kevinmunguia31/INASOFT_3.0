@@ -138,7 +138,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable BuscarLogs(string dato)
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT fecha, descripcion FROM logs WHERE fecha = '" + dato + "';";
+            string sql = "SELECT fecha, descripcion FROM logs WHERE DATE_FORMAT(Fecha, '%Y/%m/%d') = '" + dato + "';";
 
             MySqlConnection conexionBD = Conexion.getConexion();
             conexionBD.Open();

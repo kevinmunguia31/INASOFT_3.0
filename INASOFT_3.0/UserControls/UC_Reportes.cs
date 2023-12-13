@@ -242,5 +242,6 @@ namespace INASOFT_3._0.UserControls
             Controladores.CtrlReporte ctrlReporte = new Controladores.CtrlReporte();
             ctrlReporte.ReporteSalidasEntradas(dataGridView3);
         }
+
     }
 }

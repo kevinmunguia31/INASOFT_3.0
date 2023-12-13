@@ -147,6 +147,24 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.30\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -252,6 +270,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\UC_Reportes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -442,6 +461,12 @@
     <Compile Include="VistaFacturas\RealizarRemisionSalida.Designer.cs">
       <DependentUpon>RealizarRemisionSalida.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaFacturas\ReporteVentasDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturas\ReporteVentasDiario.Designer.cs">
+      <DependentUpon>ReporteVentasDiario.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaFacturas\VistaProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -543,6 +568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\RealizarRemisionSalida.resx">
       <DependentUpon>RealizarRemisionSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturas\ReporteVentasDiario.resx">
+      <DependentUpon>ReporteVentasDiario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturas\VistaProductos.resx">
       <DependentUpon>VistaProductos.cs</DependentUpon>
@@ -761,6 +789,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="log.ico" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\icons8-printer-35.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\image-removebg-preview %283%29.png" />
     <None Include="Resources\icons8-cash-register-96.png" />
     <None Include="Resources\icons8-save-30.png" />

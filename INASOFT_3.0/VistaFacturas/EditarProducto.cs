@@ -23,6 +23,7 @@ namespace INASOFT_3._0.VistaFacturas
             txtCodBarra.Enabled = false;
             radioButton1.Checked = true;
             radioButton3.Checked = true;
+            TxtExistemcias.Text = "0.0";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -44,7 +45,7 @@ namespace INASOFT_3._0.VistaFacturas
                 Id = int.Parse(Txt_IDProd.Text),
                 Nombre = txtNameP.Text.ToUpper(),
                 Estado = "Activo",
-                Existencias = 0,
+                Existencias = 0.0,
                 Existencias_min = double.Parse(TxtExistemcias.Text),
                 Precio_compra = double.Parse(txtPrecioCompra.Text),
                 Precio_venta = double.Parse(txtPrecioVenta.Text),
