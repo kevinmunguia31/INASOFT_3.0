@@ -215,7 +215,7 @@ namespace INASOFT_3._0.Controladores
         public DataTable Cargar_NombreProductoRemision()
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT ID, Nombre FROM Productos WHERE ID_Entrada = 2 GROUP BY ID;";
+            string SQL = "SELECT ID, Nombre FROM Productos GROUP BY ID;";
 
             MySqlConnection conexionDB = Conexion.getConexion();
             conexionDB.Open();

@@ -1,5 +1,0 @@
-1. Filtro de estado no sirve en Compras. ✓
-2. Al hacer una devolucion pero al devolver todo no se pone en Anulada la factura. ✓
-3. Revisar el combo al actualizar el producto de un proveedor en orden de compra, esta duplicando los items. ✓
-4. Desaparecer los datos de compra en actualizar a proveedor.
-

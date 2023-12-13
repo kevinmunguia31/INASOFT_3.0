@@ -52,9 +52,10 @@
             // pbImagen
             // 
             this.pbImagen.Image = global::INASOFT_3._0.Properties.Resources.descargar;
-            this.pbImagen.Location = new System.Drawing.Point(30, 2);
+            this.pbImagen.Location = new System.Drawing.Point(22, 2);
+            this.pbImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(211, 100);
+            this.pbImagen.Size = new System.Drawing.Size(158, 81);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagen.TabIndex = 0;
             this.pbImagen.TabStop = false;
@@ -62,9 +63,10 @@
             // lbDireccion
             // 
             this.lbDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDireccion.Location = new System.Drawing.Point(27, 105);
+            this.lbDireccion.Location = new System.Drawing.Point(20, 85);
+            this.lbDireccion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDireccion.Name = "lbDireccion";
-            this.lbDireccion.Size = new System.Drawing.Size(214, 20);
+            this.lbDireccion.Size = new System.Drawing.Size(160, 16);
             this.lbDireccion.TabIndex = 1;
             this.lbDireccion.Text = "Dirección";
             this.lbDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,9 +74,10 @@
             // lbTelefono
             // 
             this.lbTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTelefono.Location = new System.Drawing.Point(27, 125);
+            this.lbTelefono.Location = new System.Drawing.Point(20, 102);
+            this.lbTelefono.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTelefono.Name = "lbTelefono";
-            this.lbTelefono.Size = new System.Drawing.Size(214, 19);
+            this.lbTelefono.Size = new System.Drawing.Size(160, 15);
             this.lbTelefono.TabIndex = 2;
             this.lbTelefono.Text = "Telefono";
             this.lbTelefono.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,43 +85,48 @@
             // lbFecha
             // 
             this.lbFecha.AutoSize = true;
-            this.lbFecha.Location = new System.Drawing.Point(76, 156);
+            this.lbFecha.Location = new System.Drawing.Point(57, 127);
+            this.lbFecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(44, 16);
+            this.lbFecha.Size = new System.Drawing.Size(35, 13);
             this.lbFecha.TabIndex = 3;
             this.lbFecha.Text = "label3";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(12, 156);
+            this.label4.Location = new System.Drawing.Point(9, 127);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 20);
+            this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Fecha:";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(12, 196);
+            this.label5.Location = new System.Drawing.Point(9, 159);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 19);
+            this.label5.Size = new System.Drawing.Size(52, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "Operador:";
             // 
             // lbUsuario
             // 
             this.lbUsuario.AutoSize = true;
-            this.lbUsuario.Location = new System.Drawing.Point(79, 196);
+            this.lbUsuario.Location = new System.Drawing.Point(59, 159);
+            this.lbUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(44, 16);
+            this.lbUsuario.Size = new System.Drawing.Size(35, 13);
             this.lbUsuario.TabIndex = 6;
             this.lbUsuario.Text = "label6";
             // 
             // guna2Separator1
             // 
             this.guna2Separator1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Separator1.Location = new System.Drawing.Point(15, 217);
+            this.guna2Separator1.Location = new System.Drawing.Point(11, 176);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(270, 10);
+            this.guna2Separator1.Size = new System.Drawing.Size(202, 8);
             this.guna2Separator1.TabIndex = 7;
             // 
             // dataGridView1
@@ -129,12 +137,13 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 218);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 177);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(273, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(205, 216);
             this.dataGridView1.TabIndex = 8;
             // 
             // btnPrint
@@ -142,9 +151,10 @@
             this.btnPrint.Font = new System.Drawing.Font("Poppins", 9F);
             this.btnPrint.Image = global::INASOFT_3._0.Properties.Resources.icons8_printer_35;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(155, 531);
+            this.btnPrint.Location = new System.Drawing.Point(116, 431);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(130, 39);
+            this.btnPrint.Size = new System.Drawing.Size(98, 32);
             this.btnPrint.TabIndex = 9;
             this.btnPrint.Text = "IMPRIMIR";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -153,17 +163,19 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 176);
+            this.label1.Location = new System.Drawing.Point(9, 143);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 20);
+            this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 10;
             this.label1.Text = "Hora:";
             // 
             // lbHora
             // 
-            this.lbHora.Location = new System.Drawing.Point(76, 176);
+            this.lbHora.Location = new System.Drawing.Point(57, 143);
+            this.lbHora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(165, 20);
+            this.lbHora.Size = new System.Drawing.Size(124, 16);
             this.lbHora.TabIndex = 11;
             this.lbHora.Text = "Hora:";
             // 
@@ -172,35 +184,38 @@
             this.txtTotal.BackColor = System.Drawing.SystemColors.HotTrack;
             this.txtTotal.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.White;
-            this.txtTotal.Location = new System.Drawing.Point(142, 494);
+            this.txtTotal.Location = new System.Drawing.Point(106, 401);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(142, 31);
+            this.txtTotal.Size = new System.Drawing.Size(108, 26);
             this.txtTotal.TabIndex = 12;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 500);
+            this.label2.Location = new System.Drawing.Point(16, 406);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 23);
+            this.label2.Size = new System.Drawing.Size(90, 19);
             this.label2.TabIndex = 13;
             this.label2.Text = "TOTAL: C$";
             // 
             // cbImpresoras
             // 
             this.cbImpresoras.FormattingEnabled = true;
-            this.cbImpresoras.Location = new System.Drawing.Point(12, 541);
+            this.cbImpresoras.Location = new System.Drawing.Point(9, 440);
+            this.cbImpresoras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbImpresoras.Name = "cbImpresoras";
-            this.cbImpresoras.Size = new System.Drawing.Size(137, 24);
+            this.cbImpresoras.Size = new System.Drawing.Size(104, 21);
             this.cbImpresoras.TabIndex = 14;
             // 
             // ReporteVentasDiario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 577);
+            this.ClientSize = new System.Drawing.Size(261, 469);
             this.Controls.Add(this.cbImpresoras);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTotal);
@@ -218,6 +233,7 @@
             this.Controls.Add(this.pbImagen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReporteVentasDiario";
