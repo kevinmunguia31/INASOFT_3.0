@@ -134,6 +134,13 @@ namespace INASOFT_3._0.VistaFacturas
             CbxTipoPagos.DisplayMember = "Tipos";
         }
 
+        // Funcion para redondear
+        public double RoundUp(double value)
+        {
+            double result = Math.Ceiling(value);
+            return result;
+        }
+
         public void Cargar_Total()
         {
             double Total = 0.00;
@@ -143,7 +150,7 @@ namespace INASOFT_3._0.VistaFacturas
                 {
                     Total += float.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                 }
-                Total = (float)Math.Round(Total, 2);
+                Total = RoundUp(Total);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
@@ -397,6 +404,7 @@ namespace INASOFT_3._0.VistaFacturas
                     ps.Copies = 1; // Esto imprimirá dos copias
                     printDocument1.PrintPage += Imprimir;
                     printDocument1.Print();
+                    printDocument1.Print();
                 }
 
                 MessageDialogInfo.Show("Gracias por preferirnos", "Facturar");
@@ -516,6 +524,7 @@ namespace INASOFT_3._0.VistaFacturas
                     printDocument1.PrinterSettings = ps;
                     ps.Copies = 1; // Esto imprimirá dos copias
                     printDocument1.PrintPage += ImprimirRecibo;
+                    printDocument1.Print();
                     printDocument1.Print();
                 }
 

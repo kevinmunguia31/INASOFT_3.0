@@ -112,7 +112,6 @@ namespace INASOFT_3._0.VistaFacturas
                 ps.Copies = 1; // Esto imprimirá dos copias
                 printDocument1.PrintPage += Imprimir;
                 printDocument1.Print();
-                printDocument1.Print();
             }
         }
 

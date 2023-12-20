@@ -119,7 +119,7 @@ namespace INASOFT_3._0.VistaFacturas
             e.Graphics.DrawString(info.Telefono, font2, Brushes.Black, new RectangleF(80, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Fecha:" + lbFecha.Text, font2, Brushes.Black, new RectangleF(0, y += 15, width, 20));
-            e.Graphics.DrawString("Fecha:" + lbHora.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            e.Graphics.DrawString(" Hora:" + lbHora.Text, font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Operador: " + Sesion.nombre, font3, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("**************************************", font2, Brushes.Black, new RectangleF(0, y += 20, width, 20));
             e.Graphics.DrawString("Fecha            Descripción              Total", font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
@@ -132,7 +132,7 @@ namespace INASOFT_3._0.VistaFacturas
                     DateTime fecha = (DateTime)r.Cells[0].Value;
                     string strFecha = fecha.ToString("dd/MM/yyyy");
                     string Concepto = r.Cells[1].Value.ToString();
-                    e.Graphics.DrawString(fecha + new string(' ', 5) + Concepto.ToString().PadRight(4, ' ') + new string(' ', 10) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')) + new string(' ', 8), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+                    e.Graphics.DrawString(fecha.ToString("dd/MM/yyyy") + new string(' ', 9) + Concepto.ToString().PadRight(4, ' ') + new string(' ', 15) + float.Parse(r.Cells[2].Value.ToString().PadRight(4, ' ')), font4, Brushes.Black, new RectangleF(0, y += 20, width, 20));
                 }
                 catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Error: " + ex.Message); }
                 catch (ArgumentNullException ex) { Console.WriteLine("Error: " + ex.Message); }

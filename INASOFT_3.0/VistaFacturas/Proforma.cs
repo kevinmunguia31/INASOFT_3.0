@@ -17,6 +17,7 @@ using iTextSharp.text.pdf;
 using Document = iTextSharp.text.Document;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlX.XDevAPI.Common;
 
 namespace INASOFT_3._0.VistaFacturas
 {
@@ -100,14 +101,14 @@ namespace INASOFT_3._0.VistaFacturas
         public void Cargar_Total()
         {
             double Total = 0.00;
-            
+
             try
             {
                 for (int i = 0; i < datagridView1.Rows.Count; i++)
                 {
-                    Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());                   
+                    Total += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
                 }
-                Total = (float)Math.Round(Total, 2);
+                Total = RoundUp(Total);
                 datagridView2.Rows[0].Cells[0].Value = "Total";
                 datagridView2.Rows[0].Cells[1].Value = "";
                 datagridView2.Rows[0].Cells[2].Value = "";
@@ -187,6 +188,7 @@ namespace INASOFT_3._0.VistaFacturas
             datagridView1.DataSource = dataTable;
             Limpiar();
             Cargar_Total();
+            Subtotal();
         }
 
         public void Limpiar()
@@ -201,15 +203,23 @@ namespace INASOFT_3._0.VistaFacturas
             Lb_PrecioCompra.Text = "...";
         }
 
+        public double RoundUp(double value)
+        {
+            double result = Math.Ceiling(value);
+            return result;
+        }
+
         public void Subtotal()
         {
-            float subtotal = 0;
+            double subtotal = 0;
 
             for (int i = 0; i < datagridView1.Rows.Count; i++)
             {
-                subtotal += float.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
+                subtotal += double.Parse(datagridView1.Rows[i].Cells[4].Value.ToString());
             }
-            lbSubtotal.Text = subtotal.ToString();
+
+            double redondearSubtotal = RoundUp(subtotal);
+            lbSubtotal.Text = redondearSubtotal.ToString();
         }
         private void TxtBuscar_Productos_TextChanged(object sender, EventArgs e)
         {
@@ -410,7 +420,7 @@ namespace INASOFT_3._0.VistaFacturas
                 filas += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
                 filas += "</tr>";
 
-                Total += double.Parse(row.Cells["Total"].Value.ToString());
+                Total += RoundUp(double.Parse(row.Cells["Total"].Value.ToString()));
 
             }
             paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);

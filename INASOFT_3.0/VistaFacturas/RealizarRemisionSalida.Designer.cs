@@ -47,6 +47,7 @@
             this.Cbx_Productos = new System.Windows.Forms.ComboBox();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.TxtCantidad = new Guna.UI2.WinForms.Guna2TextBox();
             this.Lb_Observacion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbCodProdu = new System.Windows.Forms.Label();
@@ -81,7 +82,6 @@
             this.TxtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.TxtCantidad = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -246,6 +246,7 @@
             this.TxtBuscar_Productos.SelectedText = "";
             this.TxtBuscar_Productos.Size = new System.Drawing.Size(201, 37);
             this.TxtBuscar_Productos.TabIndex = 90;
+            this.TxtBuscar_Productos.TextChanged += new System.EventHandler(this.TxtBuscar_Productos_TextChanged);
             // 
             // Cbx_Productos
             // 
@@ -299,6 +300,32 @@
             this.groupBox5.Size = new System.Drawing.Size(1027, 177);
             this.groupBox5.TabIndex = 87;
             this.groupBox5.TabStop = false;
+            // 
+            // TxtCantidad
+            // 
+            this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TxtCantidad.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtCantidad.DefaultText = "";
+            this.TxtCantidad.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtCantidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtCantidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtCantidad.FillColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtCantidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtCantidad.IconLeft = ((System.Drawing.Image)(resources.GetObject("TxtCantidad.IconLeft")));
+            this.TxtCantidad.Location = new System.Drawing.Point(919, 26);
+            this.TxtCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TxtCantidad.Name = "TxtCantidad";
+            this.TxtCantidad.PasswordChar = '\0';
+            this.TxtCantidad.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TxtCantidad.PlaceholderText = "Cantidad";
+            this.TxtCantidad.SelectedText = "";
+            this.TxtCantidad.Size = new System.Drawing.Size(97, 31);
+            this.TxtCantidad.TabIndex = 112;
             // 
             // Lb_Observacion
             // 
@@ -747,32 +774,6 @@
             // 
             this.guna2Elipse1.BorderRadius = 15;
             this.guna2Elipse1.TargetControl = this;
-            // 
-            // TxtCantidad
-            // 
-            this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtCantidad.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TxtCantidad.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtCantidad.DefaultText = "";
-            this.TxtCantidad.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtCantidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtCantidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtCantidad.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtCantidad.FillColor = System.Drawing.SystemColors.Control;
-            this.TxtCantidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtCantidad.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtCantidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtCantidad.IconLeft = ((System.Drawing.Image)(resources.GetObject("TxtCantidad.IconLeft")));
-            this.TxtCantidad.Location = new System.Drawing.Point(919, 26);
-            this.TxtCantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TxtCantidad.Name = "TxtCantidad";
-            this.TxtCantidad.PasswordChar = '\0';
-            this.TxtCantidad.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.TxtCantidad.PlaceholderText = "Cantidad";
-            this.TxtCantidad.SelectedText = "";
-            this.TxtCantidad.Size = new System.Drawing.Size(97, 31);
-            this.TxtCantidad.TabIndex = 112;
             // 
             // RealizarRemisionSalida
             // 

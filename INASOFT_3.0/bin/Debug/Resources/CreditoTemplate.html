@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title of the document</title>
+    <style>
+        table.border {
+            border-collapse: collapse;
+        }
+
+            table.border th {
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+            table.border td {
+                padding: 5px;
+                border: 1px solid black;
+            }
+        .elemento-inferior {
+            position: fixed;
+            bottom: 0;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <td style="width:20%"></td>
+            <td style="width:60%" align="center" valign="top">
+                <table>
+                    <tr><td align="center"><h4 style="margin:0px; font-size:20px;">@NombreNegocio</h4></td></tr>
+                    <tr><td align="center">@Direccion</td></tr>
+                    <tr><td align="center">@Telefono</td></tr>
+                    <tr><td align="center"><h4 style="margin:0px;">REPORTE DE FACTURAS CON SALDOS PENDIENTES</h4></td></tr>
+                </table>
+            </td>
+
+        </tr>
+
+        <tr><td colspan="3" height="20"></td></tr>
+
+        <tr>
+            <td colspan="2">
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:20%">Generado Por:</td>
+                        <td style="width:30%;border-bottom:1px solid black">@Usuario</td>
+                        <td style="width:10%">Fecha:</td>
+                        <td style="width:40%;border-bottom:1px solid black">@FECHA</td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr><td colspan="3" height="30"></td></tr>
+
+        <tr>
+            <td colspan="3">
+                <table class="border" style="width:100%;">
+                    <thead>
+                        <tr style="background-color:#D8D8D8; font-size:14px;">
+                            <th>Cod. Factura</th>
+                            <th>Cliente</th>
+                            <th>Estado</th>
+                            <th>Total Deuda</th>
+                            <th>Saldo Pendiente</th>
+                            <th>Fecha Fin</th>
+                            <th>Dias Vencido</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size:12px;">
+                        <!--<tr>
+                            <td>1</td>
+                            <td>sdafsda</td>
+                            <td>2.4</td>
+                            <td>2.4</td>
+                        </tr>-->
+                        @FILAS
+                        <tr>
+                            <td style="border: 0px !important"></td>
+                            <td style="border: 0px !important"></td>
+                            <td style="border: 0px !important"></td>
+                            <td align="right" style="font-size:14px;">Total C$:</td>
+                            <td style="font-size:14px;">@TOTAL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <p class="elemento-inferior"><i>Creado por Inasoftware</i></p>
+</body>
+</html>
